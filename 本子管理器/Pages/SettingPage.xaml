@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="EroMangaManager.Pages.SettingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EroMangaManager.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+	NavigationCacheMode="Enabled">
+
+    <StackPanel>
+        <AppBarButton Icon="Clear"
+                      Click="AppBarButton_Click"
+                      Label="清除缓存" />
+        <AppBarButton Icon="OpenFile"
+                      Label="打开文件夹"
+                      Click="AppBarButton_Click_1" />
+    </StackPanel>
+</Page>

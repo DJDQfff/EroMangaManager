@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   t="1638775493177"
+   class="icon"
+   viewBox="0 0 1024 1024"
+   version="1.1"
+   p-id="1552"
+   width="200"
+   height="200"
+   id="svg8"
+   sodipodi:docname="书籍 - 副本.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview10"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="4.06"
+     inkscape:cx="100"
+     inkscape:cy="100.12315"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8" />
+  <defs
+     id="defs4">
+    <style
+       type="text/css"
+       id="style2" />
+  </defs>
+  <path
+     d="M772.0768 388.928A6.3872 6.3872 0 0 0 774.4 384V166.4a6.4 6.4 0 0 0-6.4-6.4h-89.6a6.4 6.4 0 0 0-6.4 6.4v217.6c0 1.984 0.9024 3.7568 2.3232 4.928 0.4096-0.576 0.8704-1.1328 1.3888-1.6576l38.528-38.8992a12.5824 12.5824 0 0 1 17.92 0l38.528 38.8992c0.5184 0.5248 0.9792 1.0752 1.3888 1.664z m75.0464 302.3232A153.3504 153.3504 0 0 0 838.4 742.4c0 17.9328 3.072 35.1488 8.7232 51.1488-0.768 0.032-1.5424 0.0512-2.3232 0.0512H288a51.2 51.2 0 1 1 0-102.4h556.8c0.7808 0 1.5552 0.0192 2.3232 0.0512zM851.2 665.6H268.8a51.2 51.2 0 0 0-51.2 51.2v51.2a51.2 51.2 0 0 0 51.2 51.2h578.6752a51.2192 51.2192 0 0 1-47.4752 32H236.8a51.2 51.2 0 0 1-51.2-51.2V198.4a51.2 51.2 0 0 1 51.2-51.2h563.2a51.2 51.2 0 0 1 51.2 51.2v467.2z"
+     fill="#1296db"
+     p-id="1553"
+     id="path6"
+     style="fill:#585858;fill-opacity:1" />
+</svg>

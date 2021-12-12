@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="EroMangaManager.Pages.ReadPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="Transparent"
+    NavigationCacheMode="Enabled"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Style x:Key="ImageNavigateButton" TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="60" />
+            </Grid.ColumnDefinitions>
+
+            <Image x:Name="Image" Grid.Column="1" />
+
+            <Button
+                x:Name="LastImage"
+                Grid.Column="0"
+                Click="LastImage_Click"
+                Style="{StaticResource ImageNavigateButton}">
+                <FontIcon FontFamily="Segoe UI Symbol" Glyph="&#x2B45;" />
+            </Button>
+
+            <Button
+                x:Name="NextImage"
+                Grid.Column="2"
+                Click="NextImage_Click"
+                Style="{StaticResource ImageNavigateButton}">
+                <FontIcon FontFamily="Segoe UI Symbol" Glyph="&#x2B46;" />
+            </Button>
+        </Grid>
+
+        <ProgressRing
+            x:Name="ProgressRing"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch" />
+    </Grid>
+</Page>
