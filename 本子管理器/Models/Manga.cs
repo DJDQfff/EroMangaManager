@@ -50,17 +50,27 @@ namespace EroMangaManager.Models
         /// <summary> 本子文件全名（不带扩展名） </summary>
         private readonly string fileDisplayname;
 
+        private string mangaName;
+
         /// <summary> 本子名字 </summary>
-        public string MangaName { set; get; }
+        public string MangaName
+        {
+            get => mangaName;
+            set
+            {
+                mangaName = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         /// <summary> 是否无修，ture为无修，默认为false </summary>
-        public bool IsNonMosaic { private set; get; } = false;
+        public bool Tag_NonMosaic { private set; get; } = false;
 
         /// <summary> 是否全彩，true是全彩，默认为false </summary>
-        public bool IsFullColor { private set; get; } = false;
+        public bool Tag_FullColor { private set; get; } = false;
 
         /// <summary> 语言,日，中，英 </summary>
-        public string Language { get; } = "jp";
+        public string Tag_Language { get; } = "jp";
 
         /// <summary> 实例化EroManga </summary>
         /// <param name="storageFile"> </param>
@@ -69,11 +79,13 @@ namespace EroMangaManager.Models
             StorageFolder = storageFolder;
             StorageFile = storageFile;
             fileDisplayname = storageFile.DisplayName;
-            SetNonMosaicAndColor();
-            SetName(fileDisplayname);
+            SetTag_NonMosaicAndColor();
+            InitializeMangaName(fileDisplayname);
         }
 
-        /// <summary> 返回BitmapImage，作为Image控件的source </summary>
+        /// <summary>
+        /// 返回BitmapImage，作为Image控件的source
+        /// </summary>
         /// <returns> </returns>
         public async Task SetCover ()
         {
@@ -85,9 +97,14 @@ namespace EroMangaManager.Models
             Cover = bitmapImage;
         }
 
+        public void SetTranslateName (string name)
+        {
+            this.MangaName = name;
+        }
+
         /// <summary> 设置本子的名字 </summary>
         /// <param name="fullname"> </param>
-        private void SetName (string fullname)
+        private void InitializeMangaName (string fullname)
         {
             fullname = fullname.Trim();
             int index = 0;
@@ -121,32 +138,32 @@ namespace EroMangaManager.Models
             index = fullname.IndexOfAny(new char[] { '[', '【', '（', '(' });
             if (index != -1)
             {
-                MangaName = fullname.Substring(0, index).Trim();
+                mangaName = fullname.Substring(0, index).Trim();
                 return;
             }
             else
-            { MangaName = fullname; return; }//剩到最后的部分
+            { mangaName = fullname; return; }//剩到最后的部分
         Include:
             if (index != -1)
             {
                 fullname = fullname.Substring(index + 1);
-                SetName(fullname);
+                InitializeMangaName(fullname);
             }
             else
-            { MangaName = "请补全括号"; return; }
+            { mangaName = "请补全括号"; return; }    // TODO：这里要改
         }
 
         /// <summary> 判断本子是否无修及是否全彩 </summary>
-        private void SetNonMosaicAndColor ()
+        private void SetTag_NonMosaicAndColor ()
         {
             if (fileDisplayname.Contains("无修") || fileDisplayname.Contains("無修"))
             {
-                IsNonMosaic = true;
+                Tag_NonMosaic = true;
             }
 
             if (fileDisplayname.Contains("全彩"))
             {
-                IsFullColor = true;
+                Tag_FullColor = true;
             }
         }
 

@@ -33,9 +33,9 @@
                             Click="MenuFlyoutItem_Click"
                             DataContext="{x:Bind}"
                             Text="{x:Bind MangaName}" />
-                        <MenuFlyoutItem Text="{x:Bind Language}" />
-                        <MenuFlyoutItem Text="{x:Bind IsFullColor}" />
-                        <MenuFlyoutItem Text="{x:Bind IsNonMosaic}" />
+                        <MenuFlyoutItem Text="{x:Bind Tag_Language}" />
+                        <MenuFlyoutItem Text="{x:Bind Tag_FullColor}" />
+                        <MenuFlyoutItem Text="{x:Bind Tag_NonMosaic}" />
                         <MenuFlyoutSeparator />
                         <MenuFlyoutSubItem Text="文件操作">
                             <MenuFlyoutItem
@@ -60,20 +60,31 @@
                     Margin="1"
                     Padding="0,0,4,0"
                     HorizontalTextAlignment="Center"
-                    Text="{x:Bind MangaName}"
+                    Text="{x:Bind MangaName, Mode=OneWay}"
                     TextWrapping="Wrap" />
             </Grid>
         </DataTemplate>
     </Page.Resources>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <CommandBar Grid.Row="0">
+            <AppBarButton
+                Click="TranslateEachMangaName"
+                Icon="Font"
+                Label="翻译" />
+        </CommandBar>
         <GridView
+            Grid.Row="1"
             Margin="4"
             IsItemClickEnabled="True"
             ItemClick="GridView_ItemClick"
             ItemContainerStyle="{ThemeResource GridViewItemRevealStyle}"
             ItemTemplate="{StaticResource template_1}"
-            ItemsSource="{x:Bind app:MainPage.current.mangaManager.MangaList, Mode=OneWay}"
+            ItemsSource="{x:Bind app:MainPage.current.listObserver.MangaList, Mode=OneWay}"
             SelectionMode="None" />
     </Grid>
 </Page>

@@ -7,7 +7,8 @@ using Windows.UI.Xaml.Navigation;
 using EroMangaManager.Helpers;
 using ExtensionMethod;
 
-// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
+// https://go.microsoft.com/fwlink/?LinkId=234238
+// 上介绍了“空白页”项模板
 
 namespace EroMangaManager.Pages
 {
@@ -25,7 +26,7 @@ namespace EroMangaManager.Pages
 
             if (folder != null)
             {
-                MainPage.current.mangaManager.AddFolder(folder);
+                MainPage.current.listObserver.AddFolder(folder);
             }
         }
 
@@ -34,7 +35,7 @@ namespace EroMangaManager.Pages
             Button button = sender as Button;
             StorageFolder storageFolder = button.DataContext as StorageFolder;
 
-            MainPage.current.mangaManager.RemoveFolder(storageFolder);
+            MainPage.current.listObserver.RemoveFolder(storageFolder);
         }
     }
 }

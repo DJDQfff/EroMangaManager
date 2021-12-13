@@ -1,12 +1,15 @@
 ﻿using System;
-
+using System.Text.Json;
 using EroMangaManager.Models;
-
+using System.Linq;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media.Imaging;
+using BaiduTranslate;
+using BaiduTranslate.Models;
 
-// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
+// https://go.microsoft.com/fwlink/?LinkId=234238
+// 上介绍了“空白页”项模板
 
 namespace EroMangaManager.Pages
 {
@@ -43,9 +46,9 @@ namespace EroMangaManager.Pages
             await eroManga.RemoveFile();
         }
 
-        private void image_Loaded (object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void TranslateEachMangaName (object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            Image image = sender as Image;
+            await Translater.TranslateAllMangaName();
         }
     }
 }

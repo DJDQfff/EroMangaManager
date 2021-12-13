@@ -13,12 +13,12 @@ using static Windows.Storage.AccessCache.StorageApplicationPermissions;
 
 namespace EroMangaManager.Models
 {
-    public class Manager
+    public class ListObserver
     {
-        public ObservableCollection<StorageFolder> StorageFolders { set; get; } = new ObservableCollection<StorageFolder>();
+        public ObservableCollection<StorageFolder> FolderList { set; get; } = new ObservableCollection<StorageFolder>();
         public ObservableCollection<Manga> MangaList { set; get; } = new ObservableCollection<Manga>();
 
-        public Manager ()
+        public ListObserver ()
         {
             Initialize();
         }
@@ -26,7 +26,7 @@ namespace EroMangaManager.Models
         /// <summary> 初始化文件夹 </summary>
         public async void Initialize ()
         {
-            StorageFolders.Clear();
+            FolderList.Clear();
             MangaList.Clear();//初始化清零
 
             var folders = FutureAccessList.Entries;
@@ -35,14 +35,14 @@ namespace EroMangaManager.Models
                 try
                 {
                     StorageFolder storageFolder = await FutureAccessList.GetFolderAsync(item.Token);
-                    StorageFolders.Add(storageFolder);
+                    FolderList.Add(storageFolder);
                 }
                 catch (Exception)
                 {
                     // 文件夹被移除，找不到，
                 }
             }
-            foreach (var folder in StorageFolders)
+            foreach (var folder in FolderList)
             {
                 await PickMangas(folder);
             }
@@ -52,11 +52,11 @@ namespace EroMangaManager.Models
         {
             FutureAccessList.Add(folder);
 
-            var query = StorageFolders.Where(n => n.Path == folder.Path).Count();
+            var query = FolderList.Where(n => n.Path == folder.Path).Count();
 
             if (query == 0)
             {
-                StorageFolders.Add(folder);
+                FolderList.Add(folder);
 
                 await PickMangas(folder);
             }
@@ -64,7 +64,7 @@ namespace EroMangaManager.Models
 
         public void RemoveFolder (StorageFolder folder)
         {
-            StorageFolders.Remove(folder);
+            FolderList.Remove(folder);
 
             string token = FutureAccessList.Add(folder);
             FutureAccessList.Remove(token);
