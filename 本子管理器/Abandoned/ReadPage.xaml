@@ -1,14 +1,4 @@
-﻿<!--
-    想写个用使用FLIPview集合的界面
-    绑定ZipArchiveEntry类
-    所有item都默认不加载
-    只有某item处于前台时，从绑定的数据获取图源
-    但是后来发现不行
-    无法判断某个item是否处于前台。应该有API，但一时半会也不知道
-    故放弃，改用手动切换源的形式
--->
-
-<Page
+﻿<Page
     x:Class="Abandoned.EroMangaManager.Pages.ReadPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -22,27 +12,20 @@
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="VerticalAlignment" Value="Stretch" />
             <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Foreground" Value="#FF776D6D" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="BorderThickness" Value="0" />
         </Style>
     </Page.Resources>
     <Grid>
-        <!--<FlipView x:Name="FLIP"
-                  ItemsSource="{x:Bind bitmapImages,Mode=OneWay}">
-            <FlipView.ItemTemplate>
-                <DataTemplate x:DataType="BitmapImage">
-                    <Grid>
-                        <Image Source="{x:Bind}" />
-                    </Grid>
-                </DataTemplate>
-            </FlipView.ItemTemplate>
-        </FlipView>-->
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition />
                 <ColumnDefinition Width="60" />
             </Grid.ColumnDefinitions>
+
             <Image x:Name="Image" Grid.Column="1" />
+
             <Button
                 x:Name="LastImage"
                 Grid.Column="0"
@@ -50,15 +33,16 @@
                 Style="{StaticResource ImageNavigateButton}">
                 <FontIcon FontFamily="Segoe UI Symbol" Glyph="&#x2B45;" />
             </Button>
+
             <Button
                 x:Name="NextImage"
                 Grid.Column="2"
                 Click="NextImage_Click"
-                FocusVisualPrimaryBrush="White"
                 Style="{StaticResource ImageNavigateButton}">
                 <FontIcon FontFamily="Segoe UI Symbol" Glyph="&#x2B46;" />
             </Button>
         </Grid>
+
         <ProgressRing
             x:Name="ProgressRing"
             HorizontalAlignment="Stretch"

@@ -126,7 +126,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Abandoned\ReadPage.xaml.cs">
+    <Compile Include="Pages\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -152,7 +152,7 @@
     <Compile Include="Pages\Bookcase.xaml.cs">
       <DependentUpon>Bookcase.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ReadPage.xaml.cs">
+    <Compile Include="Abandoned\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SettingPage.xaml.cs">
@@ -183,7 +183,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Abandoned\ReadPage.xaml">
+    <Page Include="Pages\ReadPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -199,7 +199,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ReadPage.xaml">
+    <Page Include="Abandoned\ReadPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

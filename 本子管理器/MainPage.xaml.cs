@@ -32,7 +32,7 @@ namespace EroMangaManager
         protected override void OnNavigatedTo (NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            MainFrame.Navigate(typeof(LibraryPage));
+            MainFrame.Navigate(typeof(Bookcase));
         }
 
         private void MainNavigationView_ItemInvoked (NavigationView sender, NavigationViewItemInvokedEventArgs args)

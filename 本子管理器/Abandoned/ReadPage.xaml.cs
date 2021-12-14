@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.IO.Compression;
 
@@ -11,8 +13,11 @@ using Windows.UI.Xaml.Navigation;
 
 using static System.Net.Mime.MediaTypeNames;
 using static EroMangaManager.Helpers.ZipArchiveHelper;
+using EroMangaManager.Helpers;
+using EroMangaManager;
 
-// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
+// https://go.microsoft.com/fwlink/?LinkId=234238
+// 上介绍了“空白页”项模板
 
 namespace Abandoned.EroMangaManager.Pages
 {
@@ -20,39 +25,53 @@ namespace Abandoned.EroMangaManager.Pages
     public sealed partial class ReadPage : Page
     {
         private Manga eroManga;
-        private ObservableCollection<ZipArchiveEntry> zipArchiveEntries = new ObservableCollection<ZipArchiveEntry>();
+        private ObservableCollection<ZipArchiveEntry> zipArchiveEntries;
         private ObservableCollection<BitmapImage> bitmapImages = new ObservableCollection<BitmapImage>();
         private int index = 0;
+        private List<BitmapImage> images = new List<BitmapImage>(5);
 
         public ReadPage ()
         {
             this.InitializeComponent();
         }
 
-        protected override async void OnNavigatedTo (NavigationEventArgs e)
+        // TODO:添加ocr功能，实现实时翻译，实例代码可以参考
+        protected override void OnNavigatedTo (NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            //判断是否来自Bookcase页面跳转,这很重要
-            if (e.Parameter is Manga)
+
+            // 判断数据类型,这很重要
+            switch (e.Parameter)
             {
-                eroManga = e.Parameter as Manga;
-                Stream stream = await eroManga.StorageFile.OpenStreamForReadAsync();
-                ZipArchive zipArchive = new ZipArchive(stream);
-                foreach (var entry in zipArchive.Entries)
-                {
-                    if (entry.Length != 0)
-                    {
-                        zipArchiveEntries.Add(entry);
+                case Manga manga when eroManga == null:
+                    SetSource(manga);
+                    break;
 
-                        //BitmapImage bitmapImage = await OpenEntryAsync(entry);
+                case Manga manga when eroManga == manga:
+                    //Do Nothing
+                    break;
 
-                        //bitmapImages.Add(bitmapImage);
-                    }
-                }
+                case Manga manga when eroManga != manga:
+                    SetSource(manga);
+                    break;
             }
-            BitmapImage bitmapImage = await OpenEntryAsync(zipArchiveEntries[1]);
-            Image.Source = bitmapImage;
+            MainPage.current.MainNavigationView.IsPaneOpen = false;
             ProgressRing.Visibility = Visibility.Collapsed;
+
+            async void SetSource (Manga tempmanga)
+            {
+                eroManga = tempmanga;
+                List<ZipArchiveEntry> list = await ZipArchiveHelper.GetEntriesAsync(tempmanga.StorageFile);
+                zipArchiveEntries = new ObservableCollection<ZipArchiveEntry>(list);
+                BitmapImage bitmapImage = await OpenEntryAsync(zipArchiveEntries[0]);
+                Image.Source = bitmapImage;
+            }
+        }
+
+        protected override void OnNavigatedFrom (NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            MainPage.current.MainNavigationView.IsPaneOpen = true;
         }
 
         private async void LastImage_Click (object sender, RoutedEventArgs e)
