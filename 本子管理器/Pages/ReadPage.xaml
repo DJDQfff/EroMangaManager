@@ -20,7 +20,7 @@
                             VerticalScrollBarVisibility="Disabled"
                             VerticalScrollMode="Enabled"
                             ZoomMode="Enabled">
-                            <Image Source="{x:Bind Mode=OneWay}" />
+                            <Image Source="{x:Bind}" />
                         </ScrollViewer>
                     </Grid>
                 </DataTemplate>
