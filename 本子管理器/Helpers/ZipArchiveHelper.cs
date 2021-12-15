@@ -8,8 +8,6 @@ using Windows.Storage;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
 using EroMangaManager.Models;
-using EroMangaManager.Helpers;
-using System.Runtime.InteropServices.ComTypes;
 
 namespace EroMangaManager.Helpers
 {
@@ -35,19 +33,6 @@ namespace EroMangaManager.Helpers
                 }
             }
             return canuse;
-        }
-
-        public static void GetSortedFilteredEntries (this ZipArchive zipArchive, IList<ZipArchiveEntry> entries)
-        {
-            foreach (var entry in zipArchive.Entries)
-            {
-                bool cansue = entry.EntryFilter();
-                if (cansue)
-                {
-                    entries.Add(entry);
-                }
-            }
-            entries.SortEntries();
         }
 
         public static async Task<BitmapImage> OpenEntryAsync (ZipArchiveEntry zipArchiveEntry)

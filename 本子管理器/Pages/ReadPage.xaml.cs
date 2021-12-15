@@ -1,9 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.IO;
 using System.IO.Compression;
-using System.Threading.Tasks;
+
 using EroMangaManager.Models;
-using System.Collections;
+
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
@@ -12,7 +12,6 @@ using EroMangaManager.Helpers;
 using static System.Net.Mime.MediaTypeNames;
 using static EroMangaManager.Helpers.ZipArchiveHelper;
 using System.Collections.Generic;
-using System.Linq;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
@@ -40,8 +39,8 @@ namespace EroMangaManager.Pages
             // 判断数据类型,这很重要
             switch (e.Parameter)
             {
-                case Manga manga when currentManga == null:                 // 初次打开，传入一个新漫画
-                    await SetNewSource(manga);
+                case Manga manga when currentManga == null:                 // 未打开漫画，传入一个新漫画
+                    SetNewSource(manga);
                     break;
 
                 case Manga manga when currentManga == manga:                // 传入的漫画和已打开漫画是同一本
@@ -49,42 +48,27 @@ namespace EroMangaManager.Pages
                     break;
 
                 case Manga manga when currentManga != manga:                // 传入的新漫画和已打开漫画不一致
-                    await SetNewSource(manga);
+                    SetNewSource(manga);
                     break;
             }
-            async Task SetNewSource (Manga manga)
+
+            async void SetNewSource (Manga manga)
             {
                 currentManga = manga;
-                zipArchiveEntries.Clear();
                 bitmapImages.Clear();
                 Stream stream = await currentManga.StorageFile.OpenStreamForReadAsync();
                 ZipArchive zipArchive = new ZipArchive(stream);
-                zipArchive.GetSortedFilteredEntries(zipArchiveEntries);
-                foreach (var entry in zipArchiveEntries)
+                foreach (var entry in zipArchive.Entries)
                 {
-                    BitmapImage bitmapImage = await OpenEntryAsync(entry);
+                    bool cansue = entry.EntryFilter();              
+                    if (cansue)
+                    {
+                        zipArchiveEntries.Add(entry);
 
-                    bitmapImages.Add(bitmapImage);
-                }
-            }
-        }
+                        BitmapImage bitmapImage = await OpenEntryAsync(entry);
 
-        private async Task SetNewSource0 (Manga manga)
-        {
-            currentManga = manga;
-            bitmapImages.Clear();
-            Stream stream = await currentManga.StorageFile.OpenStreamForReadAsync();
-            ZipArchive zipArchive = new ZipArchive(stream);
-            foreach (var entry in zipArchive.Entries)
-            {
-                bool cansue = entry.EntryFilter();
-                if (cansue)
-                {
-                    zipArchiveEntries.Add(entry);
-
-                    BitmapImage bitmapImage = await OpenEntryAsync(entry);
-
-                    bitmapImages.Add(bitmapImage);
+                        bitmapImages.Add(bitmapImage);
+                    }
                 }
             }
         }
