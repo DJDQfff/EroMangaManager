@@ -23,9 +23,9 @@ namespace EroMangaManager.Helpers
             {
                 if (!entry.FullName.EndsWith('/'))                      // 排除文件夹entry
                 {
-                    using (Stream stream1 = entry.Open())               // 不能对stream设置position
+                    using (Stream stream = entry.Open())               // 不能对stream设置position
                     {
-                        if (HashManager.StreamHashFilter(stream1))      // 第二个条件：计算流hash，判断唯一性
+                        if (HashManager.StreamHashFilter(stream))      // 第二个条件：计算流hash，判断唯一性
                         {
                             canuse = true;                              // 符合以上条件，这个entry不会被过滤掉
                         }
@@ -33,35 +33,6 @@ namespace EroMangaManager.Helpers
                 }
             }
             return canuse;
-        }
-
-        public static async Task<int> CountPage (this StorageFile storageFile)
-        {
-            int count;
-            using (Stream stream = await storageFile.OpenStreamForReadAsync())
-            {
-                using (ZipArchive zipArchive = new ZipArchive(stream))
-                {
-                    count = zipArchive.Entries.Count(n => n.Length != 0);
-                }
-            }
-            return count;
-        }
-
-        public static async Task<List<ZipArchiveEntry>> GetEntriesAsync (StorageFile storageFile)
-        {
-            Stream stream = await storageFile.OpenStreamForReadAsync();
-            ZipArchive zipArchive = new ZipArchive(stream);
-            List<ZipArchiveEntry> zipArchiveEntries = new List<ZipArchiveEntry>();
-            foreach (var entry in zipArchive.Entries)
-            {
-                if (entry.Length != 0)
-                {
-                    zipArchiveEntries.Add(entry);
-                }
-            }
-
-            return zipArchiveEntries;
         }
 
         public static async Task<BitmapImage> OpenEntryAsync (ZipArchiveEntry zipArchiveEntry)
