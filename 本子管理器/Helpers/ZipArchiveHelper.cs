@@ -19,7 +19,7 @@ namespace EroMangaManager.Helpers
         public static bool EntryFilter (this ZipArchiveEntry entry)
         {
             bool canuse = false;
-            if (HashManager.LengthFilter(entry.Length, 0))              // 第一个条件：解压后大小符合条件，在vary范围了符合即可
+            if (HashManager.LengthFilter(entry.Length))              // 第一个条件：比较数据库，解压后大小
             {
                 if (!entry.FullName.EndsWith('/'))                      // 排除文件夹entry
                 {

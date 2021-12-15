@@ -12,9 +12,9 @@ namespace EroMangaManager.Database.Tools
     {
         public static Tables.Database table = new Tables.Database();
 
-        public static int LengthConditionCount (long length, long vary = 0)
+        public static int LengthConditionCount (long length)
         {
-            var query = table.imageHashes.Where(n => n.ZipEntryLength <= length + vary).Where(n => n.ZipEntryLength >= length + vary).Count();
+            var query = table.imageHashes.Where(n => n.ZipEntryLength == length ).Count();
             return query;
         }
 

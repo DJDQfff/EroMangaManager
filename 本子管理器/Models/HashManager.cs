@@ -14,9 +14,9 @@ namespace EroMangaManager.Models
 {
     public static class HashManager
     {
-        public static bool LengthFilter (long length, long vary)
+        public static bool LengthFilter (long length)
         {
-            int count = HashOperation.LengthConditionCount(length, vary);
+            int count = HashOperation.LengthConditionCount(length);
             return count == 0 ? true : false;
         }
 
