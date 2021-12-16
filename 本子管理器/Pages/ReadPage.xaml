@@ -10,9 +10,12 @@
     mc:Ignorable="d">
 
     <Grid>
-        <FlipView x:Name="FLIP" ItemsSource="{x:Bind bitmapImages, Mode=OneWay}">
+        <FlipView
+            x:Name="FLIP"
+            ItemsSource="{x:Bind zipArchiveEntries, Mode=OneWay}"
+            SelectionChanged="FLIP_SelectionChanged">
             <FlipView.ItemTemplate>
-                <DataTemplate x:DataType="BitmapImage">
+                <DataTemplate x:DataType="zip:ZipArchiveEntry">
                     <Grid>
                         <ScrollViewer
                             HorizontalScrollBarVisibility="Hidden"
@@ -20,7 +23,7 @@
                             VerticalScrollBarVisibility="Disabled"
                             VerticalScrollMode="Enabled"
                             ZoomMode="Enabled">
-                            <Image Source="{x:Bind}" />
+                            <Image DataContext="{x:Bind}" />
                         </ScrollViewer>
                     </Grid>
                 </DataTemplate>

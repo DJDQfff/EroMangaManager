@@ -34,7 +34,6 @@ namespace EroMangaManager.Models
             Reader reader = new Reader(manga);
             await reader.OpenStream();
             reader.OpenArchive();
-            reader.OpenEntries();
             Debug.WriteLine(reader.GetHashCode());
             return reader;
         }
@@ -50,14 +49,14 @@ namespace EroMangaManager.Models
         }
 
         /// <summary> 对自身的可观察集合添加项 </summary>
-        private void OpenEntries ()
+        public void OpenEntries (ObservableCollection<ZipArchiveEntry> entries)
         {
             foreach (var entry in zipArchive.Entries)
             {
                 bool cansue = entry.EntryFilter();
                 if (cansue)
                 {
-                    zipArchiveEntries.Add(entry);
+                    entries.Add(entry);
                 }
             }
         }

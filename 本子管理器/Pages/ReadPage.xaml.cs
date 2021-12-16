@@ -1,19 +1,19 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using System.Threading.Tasks;
 
+using EroMangaManager.Helpers;
 using EroMangaManager.Models;
 
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
-using EroMangaManager.Helpers;
-using static System.Net.Mime.MediaTypeNames;
+
 using static EroMangaManager.Helpers.ZipArchiveHelper;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Diagnostics;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
@@ -60,8 +60,30 @@ namespace EroMangaManager.Pages
                 bitmapImages.Clear();
                 currentReader = await Reader.Create(manga);
                 Debug.WriteLine(currentReader.GetHashCode());
-                await currentReader.OpenImages(bitmapImages);
+                currentReader.OpenEntries(zipArchiveEntries);
             }
+        }
+
+        private async void Image_Loaded (object sender, RoutedEventArgs e)
+        {
+            Image image = sender as Image;
+            ZipArchiveEntry zipArchiveEntry = FLIP.SelectedItem as ZipArchiveEntry;
+            // TODO ZipArchiveEntry entry =
+            // FLIP.SelectedItem;
+            image.Source = await OpenEntryAsync(zipArchiveEntry);
+        }
+
+        private async void FLIP_SelectionChanged (object sender, SelectionChangedEventArgs e)
+        {
+            ZipArchiveEntry entry = e.AddedItems[0] as ZipArchiveEntry;
+            FlipViewItem item = FLIP.ContainerFromItem(entry) as FlipViewItem;
+            var root = item.ContentTemplateRoot as Grid;
+
+            //root.FindName("image");               // TODO 此方法有bug，应该是控件bug，有空翻文档
+
+            var sc = root.Children[0] as ScrollViewer;
+            var image = sc.Content as Image;
+            image.Source = await OpenEntryAsync(entry);
         }
     }
 }
