@@ -20,5 +20,14 @@ namespace EroMangaManager.Helpers
             StorageFolder folder = await folderPicker.PickSingleFolderAsync();
             return folder;
         }
+
+        public static async Task<StorageFile> SavePicture ()
+        {
+            FileSavePicker file = new FileSavePicker();
+            file.FileTypeChoices.Add("图片", new List<string>() { ".jpg", ".png" });
+            file.SuggestedStartLocation = PickerLocationId.Desktop;
+            StorageFile storageFile = await file.PickSaveFileAsync();
+            return storageFile;
+        }
     }
 }

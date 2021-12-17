@@ -102,5 +102,17 @@ namespace EroMangaManager.Pages
             string path = Path.Combine(storageFolder.Path, count + 1 + ".jpg");
             entry.ExtractToFile(path);
         }
+
+        private async void MenuFlyoutItem_Click_1 (object sender, RoutedEventArgs e)
+        {
+            ZipArchiveEntry entry = FLIP.SelectedItem as ZipArchiveEntry;
+            StorageFile storageFile = await PickHelper.SavePicture();
+            if (storageFile != null)
+            {
+                Stream stream = await storageFile.OpenStreamForWriteAsync();
+                Stream stream1 = entry.Open();
+                await stream1.CopyToAsync(stream);
+            }
+        }
     }
 }

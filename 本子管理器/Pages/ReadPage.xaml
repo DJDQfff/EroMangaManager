@@ -23,6 +23,10 @@
                                     Click="MenuFlyoutItem_Click"
                                     DataContext="{x:Bind}"
                                     Text="过滤" />
+                                <MenuFlyoutItem
+                                    Click="MenuFlyoutItem_Click_1"
+                                    DataContext="{x:Bind}"
+                                    Text="另存为" />
                             </MenuFlyout>
                         </Grid.ContextFlyout>
                         <ScrollViewer
