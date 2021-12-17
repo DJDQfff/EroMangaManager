@@ -134,8 +134,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CoverHelper.cs" />
-    <Compile Include="Helpers\CoversFolder.cs" />
-    <Compile Include="Helpers\ZipArchiveHelper.cs" />
+    <Compile Include="Helpers\FoldersHelper.cs" />
+    <Compile Include="Helpers\ZipEntryHelper.cs" />
     <Compile Include="Helpers\HashComputer.cs" />
     <Compile Include="Helpers\TagHelper.cs" />
     <Compile Include="Helpers\PickHelper.cs" />

@@ -16,13 +16,13 @@ using Windows.UI.Xaml.Navigation;
 using EroMangaManager.Helpers;
 using Windows.Storage;
 using System.Threading.Tasks;
-// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
+
+// https://go.microsoft.com/fwlink/?LinkId=234238
+// 上介绍了“空白页”项模板
 
 namespace EroMangaManager.Pages
 {
-    /// <summary>
-    /// 可用于自身或导航至 Frame 内部的空白页。
-    /// </summary>
+    /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class SettingPage : Page
     {
         public SettingPage ()
@@ -30,21 +30,19 @@ namespace EroMangaManager.Pages
             this.InitializeComponent();
         }
 
-
         private async void AppBarButton_Click (object sender, RoutedEventArgs e)
         {
-            StorageFolder storageFolder = await CoversFolder.Get();
+            StorageFolder storageFolder = await FoldersHelper.GetCoversFolder();
             var files = await storageFolder.GetFilesAsync();
             foreach (var file in files)
             {
                 await file.DeleteAsync(StorageDeleteOption.PermanentDelete);
             }
-
         }
 
         private async void AppBarButton_Click_1 (object sender, RoutedEventArgs e)
         {
-            StorageFolder storageFolder = await CoversFolder.Get();
+            StorageFolder storageFolder = await FoldersHelper.GetCoversFolder();
             await Windows.System.Launcher.LaunchFolderAsync(storageFolder);
         }
     }

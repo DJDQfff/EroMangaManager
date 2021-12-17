@@ -16,7 +16,8 @@ namespace EroMangaManager
     sealed partial class App : Application
     {
         /// <summary>
-        /// 初始化单一实例应用程序对象。这是执行的创作代码的第一行， 已执行，逻辑上等同于 main() 或 WinMain()。
+        /// 初始化单一实例应用程序对象。这是执行的创作代码的第一行， 已执行，逻辑上等同于 main() 或
+        /// WinMain()。
         /// </summary>
         public App ()
         {
@@ -24,14 +25,16 @@ namespace EroMangaManager
             this.Suspending += OnSuspending;
         }
 
-        /// <summary> 在应用程序由最终用户正常启动时进行调用。 将在启动应用程序以打开特定文件等情况下使用。 </summary>
+        /// <summary>
+        /// 在应用程序由最终用户正常启动时进行调用。 将在启动应用程序以打开特定文件等情况下使用。
+        /// </summary>
         /// <param name="e"> 有关启动请求和过程的详细信息。 </param>
         protected override async void OnLaunched (LaunchActivatedEventArgs e)
         {
             EroMangaManager.Database.Tables.Database database = new Database.Tables.Database();
             database.Database.Migrate();
 
-            await CoversFolder.EnsureCreat();
+            await FoldersHelper.EnsureFolders();
             Frame rootFrame = Window.Current.Content as Frame;
 
             // 不要在窗口已包含内容时重复应用程序初始化， 只需确保窗口处于活动状态
@@ -75,7 +78,8 @@ namespace EroMangaManager
         }
 
         /// <summary>
-        /// 在将要挂起应用程序执行时调用。 在不知道应用程序 无需知道应用程序会被终止还是会恢复， 并让内存内容保持不变。
+        /// 在将要挂起应用程序执行时调用。 在不知道应用程序 无需知道应用程序会被终止还是会恢复，
+        /// 并让内存内容保持不变。
         /// </summary>
         /// <param name="sender"> 挂起的请求的源。 </param>
         /// <param name="e">      有关挂起请求的详细信息。 </param>

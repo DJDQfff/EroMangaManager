@@ -27,9 +27,9 @@ namespace EroMangaManager.Models
             return count == 0 ? true : false;
         }
 
-        public static void Add (string hash, long length)
+        public static void Add (string hash)
         {
-            HashOperation.Add(hash, length);
+            HashOperation.Add(hash);
         }
 
         public static void Remove (string hash)

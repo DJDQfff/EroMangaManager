@@ -12,8 +12,9 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
-
-using static EroMangaManager.Helpers.ZipArchiveHelper;
+using Windows.Storage;
+using static EroMangaManager.Helpers.ZipEntryHelper;
+using System;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
@@ -23,11 +24,9 @@ namespace EroMangaManager.Pages
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class ReadPage : Page
     {
-        private Manga currentManga;
+        private StorageFile currentFile;
         private readonly ObservableCollection<ZipArchiveEntry> zipArchiveEntries = new ObservableCollection<ZipArchiveEntry>();
-        private ObservableCollection<BitmapImage> bitmapImages = new ObservableCollection<BitmapImage>();
         public Reader currentReader;
-        private Reader pastReader;
 
         public ReadPage ()
         {
@@ -43,47 +42,65 @@ namespace EroMangaManager.Pages
             // 判断数据类型,这很重要
             switch (e.Parameter)
             {
-                case Manga manga when currentManga == null:                 // 未打开漫画，传入一个新漫画
-                    await SetNewSource(manga);
+                case StorageFile file when currentFile == null:                 // 未打开漫画，传入一个新漫画
+                    await SetNewSource(file);
                     break;
 
-                case Manga manga when currentManga == manga:                // 传入的漫画和已打开漫画是同一本
+                case StorageFile file when currentFile == file:                // 传入的漫画和已打开漫画是同一本
                     //Do Nothing
                     break;
 
-                case Manga manga when currentManga != manga:                // 传入的新漫画和已打开漫画不一致
-                    await SetNewSource(manga);
+                case StorageFile file when currentFile != file:                // 传入的新漫画和已打开漫画不一致
+                    await SetNewSource(file);
                     break;
             }
-            async Task SetNewSource (Manga manga)
+            async Task SetNewSource (StorageFile file)
             {
-                bitmapImages.Clear();
-                currentReader = await Reader.Create(manga);
+                currentFile = file;
+                zipArchiveEntries.Clear();
+                currentReader = await Reader.Create(file);
                 Debug.WriteLine(currentReader.GetHashCode());
                 currentReader.OpenEntries(zipArchiveEntries);
             }
         }
 
-        private async void Image_Loaded (object sender, RoutedEventArgs e)
-        {
-            Image image = sender as Image;
-            ZipArchiveEntry zipArchiveEntry = FLIP.SelectedItem as ZipArchiveEntry;
-            // TODO ZipArchiveEntry entry =
-            // FLIP.SelectedItem;
-            image.Source = await OpenEntryAsync(zipArchiveEntry);
-        }
-
         private async void FLIP_SelectionChanged (object sender, SelectionChangedEventArgs e)
         {
+            int c = e.AddedItems.Count;
+
+            if (c == 0)                 // 从集合中移出项，触发两次此事件，第一次additems个数为0，第二次additems不为0
+                return;
+
             ZipArchiveEntry entry = e.AddedItems[0] as ZipArchiveEntry;
-            FlipViewItem item = FLIP.ContainerFromItem(entry) as FlipViewItem;
+
+            FlipViewItem item = FLIP.ContainerFromItem(entry) as FlipViewItem;      // TODO 一个稳定必现的bug，创建封面文件后，打开本子，这里会提示item为null
             var root = item.ContentTemplateRoot as Grid;
 
-            //root.FindName("image");               // TODO 此方法有bug，应该是控件bug，有空翻文档
+            //root.FindName("image");               // TODO 此方法有bug，应该是控件bug，有空翻文档细看
 
             var sc = root.Children[0] as ScrollViewer;
             var image = sc.Content as Image;
-            image.Source = await OpenEntryAsync(entry);
+            image.Source = await ShowEntryAsync(entry);
+        }
+
+        /// <summary>
+        /// 移出项时，执行一次此方法，然后引发两次SelectionChanged事件
+        /// </summary>
+        /// <param name="sender"> </param>
+        /// <param name="e">      </param>
+        private async void MenuFlyoutItem_Click (object sender, RoutedEventArgs e)
+        {
+            ZipArchiveEntry entry = FLIP.SelectedItem as ZipArchiveEntry;
+            zipArchiveEntries.Remove(entry);
+
+            string hash = entry.ComputeHash();
+            HashManager.Add(hash);
+
+            StorageFolder storageFolder = await FoldersHelper.GetFilterFolder();
+            var storageFiles = await storageFolder.GetFilesAsync();
+            int count = storageFiles.Count;
+            string path = Path.Combine(storageFolder.Path, count + 1 + ".jpg");
+            entry.ExtractToFile(path);
         }
     }
 }

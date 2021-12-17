@@ -11,7 +11,7 @@ using EroMangaManager.Models;
 
 namespace EroMangaManager.Helpers
 {
-    public static class ZipArchiveHelper
+    public static class ZipEntryHelper
     {
         /// <summary> 过滤掉不属于本子的内容，如：汉化组信息、付款码等 </summary>
         /// <param name="entry"> </param>
@@ -35,7 +35,7 @@ namespace EroMangaManager.Helpers
             return canuse;
         }
 
-        public static async Task<BitmapImage> OpenEntryAsync (ZipArchiveEntry zipArchiveEntry)
+        public static async Task<BitmapImage> ShowEntryAsync (ZipArchiveEntry zipArchiveEntry)
         {
             using (Stream stream1 = zipArchiveEntry.Open())
             {

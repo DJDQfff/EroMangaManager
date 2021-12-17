@@ -1,37 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.Storage;
-using EroMangaManager.Models;
-using System.Collections.ObjectModel;
+
 using EroMangaManager.Helpers;
+using EroMangaManager.Models;
+
+using Windows.Storage;
 using Windows.UI.Xaml.Media.Imaging;
-using static EroMangaManager.Helpers.ZipArchiveHelper;
-using System.Diagnostics;
-using System.ComponentModel;
+
+using static EroMangaManager.Helpers.ZipEntryHelper;
 
 namespace EroMangaManager.Models
 {
     public class Reader
     {
-        private Manga manga { set; get; }
+        private StorageFile File { set; get; }
         private Stream stream { set; get; }
         private ZipArchive zipArchive { set; get; }
         private ObservableCollection<ZipArchiveEntry> zipArchiveEntries { set; get; } = new ObservableCollection<ZipArchiveEntry>();
         private ObservableCollection<BitmapImage> bitmapImages { set; get; } = new ObservableCollection<BitmapImage>();
 
-        private Reader (Manga _manga)
+        private Reader (StorageFile file)
         {
-            manga = _manga;
+            this.File = file;
         }
 
-        public static async Task<Reader> Create (Manga manga)
+        public static async Task<Reader> Create (StorageFile file)
         {
-            Reader reader = new Reader(manga);
+            Reader reader = new Reader(file);
             await reader.OpenStream();
             reader.OpenArchive();
             Debug.WriteLine(reader.GetHashCode());
@@ -40,7 +43,7 @@ namespace EroMangaManager.Models
 
         private async Task OpenStream ()
         {
-            stream = await manga.StorageFile.OpenStreamForReadAsync();
+            stream = await File.OpenStreamForReadAsync();
         }
 
         private void OpenArchive ()
@@ -65,7 +68,7 @@ namespace EroMangaManager.Models
         {
             foreach (var entry in zipArchiveEntries)
             {
-                BitmapImage bitmapImage = await OpenEntryAsync(entry);
+                BitmapImage bitmapImage = await ShowEntryAsync(entry);
 
                 bitmapImages.Add(bitmapImage);
             }

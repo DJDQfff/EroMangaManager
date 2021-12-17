@@ -17,6 +17,14 @@
             <FlipView.ItemTemplate>
                 <DataTemplate x:DataType="zip:ZipArchiveEntry">
                     <Grid>
+                        <Grid.ContextFlyout>
+                            <MenuFlyout>
+                                <MenuFlyoutItem
+                                    Click="MenuFlyoutItem_Click"
+                                    DataContext="{x:Bind}"
+                                    Text="过滤" />
+                            </MenuFlyout>
+                        </Grid.ContextFlyout>
                         <ScrollViewer
                             HorizontalScrollBarVisibility="Hidden"
                             HorizontalScrollMode="Disabled"

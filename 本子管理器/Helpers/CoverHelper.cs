@@ -20,7 +20,7 @@ namespace EroMangaManager.Helpers
         /// <returns> </returns>
         public static async Task CreatCoverFile (this StorageFile storageFile)
         {
-            StorageFolder coverfolder = await CoversFolder.Get();
+            StorageFolder coverfolder = await FoldersHelper.GetCoversFolder();
 
             // TODO：一个可能的bug，两个文件的displayname相同，但后缀不同（应该不会，文件选择器，只会挑选zip文件）
             // TODO：解决了一个bug：原来是手动创建一个文件，然后写入流，再添加后缀名，来实现解压并创建文件功能
@@ -39,8 +39,6 @@ namespace EroMangaManager.Helpers
                             bool canuse = entry.EntryFilter();
                             if (canuse)
                             {
-                                //Stream stream1 = entry.Open();
-                                //await stream1.CopyToAsync(coverstream);
                                 string path = Path.Combine(coverfolder.Path, storageFile.DisplayName + ".jpg");
                                 entry.ExtractToFile(path);
                                 break;

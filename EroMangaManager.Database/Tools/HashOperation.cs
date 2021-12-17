@@ -14,7 +14,7 @@ namespace EroMangaManager.Database.Tools
 
         public static int LengthConditionCount (long length)
         {
-            var query = table.imageHashes.Where(n => n.ZipEntryLength == length ).Count();
+            var query = table.imageHashes.Where(n => n.ZipEntryLength == length).Count();
             return query;
         }
 
@@ -25,12 +25,11 @@ namespace EroMangaManager.Database.Tools
             return query;
         }
 
-        public static void Add (string hash, long length)
+        public static void Add (string hash)
         {
             ImageHash imageHash = new ImageHash()
             {
                 Hash = hash,
-                ZipEntryLength = length,
             };
             table.Add(imageHash);
             table.SaveChanges();

@@ -89,7 +89,7 @@ namespace EroMangaManager.Models
         /// <returns> </returns>
         public async Task SetCover ()
         {
-            StorageFolder coverfolder = await CoversFolder.Get();
+            StorageFolder coverfolder = await FoldersHelper.GetCoversFolder();
             StorageFile cover = await coverfolder.GetFileAsync(StorageFile.DisplayName + ".jpg");
 
             BitmapImage bitmapImage = await CoverHelper.GetCoverThumbnail_SystemAsync(cover);
@@ -183,7 +183,7 @@ namespace EroMangaManager.Models
         /// <returns> </returns>
         public async Task EnsureCoverFile ()
         {
-            StorageFolder folder = await CoversFolder.Get();
+            StorageFolder folder = await FoldersHelper.GetCoversFolder();
             IStorageItem storageItem = await folder.TryGetItemAsync(this.StorageFile.DisplayName + ".jpg");
             if (storageItem is null)
             {

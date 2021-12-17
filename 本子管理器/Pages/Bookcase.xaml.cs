@@ -27,7 +27,7 @@ namespace EroMangaManager.Pages
 
             //MainPage.current.MainFrame.Navigate(typeof(ReadPage), storageFile);
             //使用下面这个更好
-            this.Frame.Navigate(typeof(EroMangaManager.Pages.ReadPage), a);
+            this.Frame.Navigate(typeof(EroMangaManager.Pages.ReadPage), a.StorageFile);
 
             MainPage.current.MainNavigationView.SelectedItem = MainPage.current.MainNavigationView.MenuItems[2];
         }
