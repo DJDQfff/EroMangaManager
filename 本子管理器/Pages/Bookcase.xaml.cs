@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text.Json;
 using EroMangaManager.Models;
+using EroMangaManager.Helpers;
 using System.Linq;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -27,7 +28,7 @@ namespace EroMangaManager.Pages
 
             //MainPage.current.MainFrame.Navigate(typeof(ReadPage), storageFile);
             //使用下面这个更好
-            this.Frame.Navigate(typeof(EroMangaManager.Pages.ReadPage), a.StorageFile);
+            this.Frame.Navigate(typeof(EroMangaManager.Pages.ReadPage), a);
 
             MainPage.current.MainNavigationView.SelectedItem = MainPage.current.MainNavigationView.MenuItems[2];
         }
@@ -49,6 +50,13 @@ namespace EroMangaManager.Pages
         private async void TranslateEachMangaName (object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             await Translater.TranslateAllMangaName();
+        }
+
+        private async void AppBarButton_Click (object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            await CoverHelper.ClearCovers();
+
+            MainPage.current.listObserver.Initialize();
         }
     }
 }

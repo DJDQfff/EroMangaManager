@@ -21,20 +21,20 @@ namespace EroMangaManager.Models
 {
     public class Reader
     {
-        private StorageFile File { set; get; }
+        private Manga manga { set; get; }
         private Stream stream { set; get; }
         private ZipArchive zipArchive { set; get; }
         private ObservableCollection<ZipArchiveEntry> zipArchiveEntries { set; get; } = new ObservableCollection<ZipArchiveEntry>();
         private ObservableCollection<BitmapImage> bitmapImages { set; get; } = new ObservableCollection<BitmapImage>();
 
-        private Reader (StorageFile file)
+        private Reader (Manga _manga)
         {
-            this.File = file;
+            this.manga = _manga;
         }
 
-        public static async Task<Reader> Create (StorageFile file)
+        public static async Task<Reader> Create (Manga manga)
         {
-            Reader reader = new Reader(file);
+            Reader reader = new Reader(manga);
             await reader.OpenStream();
             reader.OpenArchive();
             Debug.WriteLine(reader.GetHashCode());
@@ -43,7 +43,7 @@ namespace EroMangaManager.Models
 
         private async Task OpenStream ()
         {
-            stream = await File.OpenStreamForReadAsync();
+            stream = await manga.StorageFile.OpenStreamForReadAsync();
         }
 
         private void OpenArchive ()

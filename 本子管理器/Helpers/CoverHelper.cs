@@ -3,7 +3,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
-
+using System.Collections.Generic;
 using EroMangaManager.Models;
 
 using Windows.Storage;
@@ -66,8 +66,7 @@ namespace EroMangaManager.Helpers
         }
 
         /// <summary>
-        /// 自己解析的缩率图，性能、美观、分辨率、尺寸拉伸方面可能没有系统缩率图好，但是不会出现系统缩率图的问题（如上所述），
-        /// 更新：原bug消除，此功能不再需要
+        /// 系统缩率图存在更新迟缓的问题，还是得靠自己写缩率图 更新：原bug消除，此功能不再需要
         /// </summary>
         /// <param name="cover"> </param>
         /// <returns> </returns>
@@ -84,6 +83,20 @@ namespace EroMangaManager.Helpers
             await bitmapImage.SetSourceAsync(randomAccessStream);
 
             return bitmapImage;
+        }
+
+        public static async Task ClearCovers ()
+        {
+            StorageFolder storageFolder = await FoldersHelper.GetCoversFolder();
+            var files = await storageFolder.GetFilesAsync();
+            List<Task> tasks = new List<Task>();
+
+            foreach (var file in files)
+            {
+                tasks.Add(Task.Run(() => file.DeleteAsync(StorageDeleteOption.PermanentDelete)));
+            }
+
+            await Task.WhenAll(tasks);
         }
     }
 }

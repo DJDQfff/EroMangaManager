@@ -32,12 +32,7 @@ namespace EroMangaManager.Pages
 
         private async void AppBarButton_Click (object sender, RoutedEventArgs e)
         {
-            StorageFolder storageFolder = await FoldersHelper.GetCoversFolder();
-            var files = await storageFolder.GetFilesAsync();
-            foreach (var file in files)
-            {
-                await file.DeleteAsync(StorageDeleteOption.PermanentDelete);
-            }
+            await CoverHelper.ClearCovers();
         }
 
         private async void AppBarButton_Click_1 (object sender, RoutedEventArgs e)

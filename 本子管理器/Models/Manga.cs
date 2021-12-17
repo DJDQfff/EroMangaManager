@@ -90,9 +90,10 @@ namespace EroMangaManager.Models
         public async Task SetCover ()
         {
             StorageFolder coverfolder = await FoldersHelper.GetCoversFolder();
+
             StorageFile cover = await coverfolder.GetFileAsync(StorageFile.DisplayName + ".jpg");
 
-            BitmapImage bitmapImage = await CoverHelper.GetCoverThumbnail_SystemAsync(cover);
+            BitmapImage bitmapImage = await CoverHelper.GetCoverThumbnail_CustomAsync(cover);
 
             Cover = bitmapImage;
         }

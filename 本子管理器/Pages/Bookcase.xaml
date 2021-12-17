@@ -71,11 +71,15 @@
             <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <CommandBar Grid.Row="0">
+        <CommandBar Grid.Row="0" Background="Transparent">
             <AppBarButton
                 Click="TranslateEachMangaName"
                 Icon="Font"
                 Label="翻译" />
+            <AppBarButton
+                Click="AppBarButton_Click"
+                Icon="Refresh"
+                Label="刷新" />
         </CommandBar>
         <GridView
             Grid.Row="1"
