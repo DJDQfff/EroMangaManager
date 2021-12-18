@@ -209,21 +209,24 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.11</Version>
     </PackageReference>
+    <PackageReference Include="SkiaSharp">
+      <Version>2.80.3</Version>
+    </PackageReference>
     <PackageReference Include="System.Text.Json">
       <Version>6.0.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\百度翻译\BaiduTranslate\BaiduTranslate.csproj">
-      <Project>{8a5e9fff-2268-4a27-9d4c-12665bf4f253}</Project>
-      <Name>BaiduTranslate</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EroMangaManager.Database\EroMangaManager.Database.csproj">
       <Project>{9e3ec0bd-841e-41bd-a892-0031f1a19875}</Project>
       <Name>EroMangaManager.Database</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="BaiduTranslate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\百度翻译\BaiduTranslate\bin\Debug\netstandard2.0\BaiduTranslate.dll</HintPath>
+    </Reference>
     <Reference Include="ExtensionMethod">
       <HintPath>..\..\ExtensionMethod\ExtensionMethod\bin\Debug\netstandard2.0\ExtensionMethod.dll</HintPath>
     </Reference>

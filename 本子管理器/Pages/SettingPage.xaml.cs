@@ -30,12 +30,12 @@ namespace EroMangaManager.Pages
             this.InitializeComponent();
         }
 
-        private async void AppBarButton_Click (object sender, RoutedEventArgs e)
+        private async void RefreshMangaList (object sender, RoutedEventArgs e)
         {
             await CoverHelper.ClearCovers();
         }
 
-        private async void AppBarButton_Click_1 (object sender, RoutedEventArgs e)
+        private async void RefreshMangaList_1 (object sender, RoutedEventArgs e)
         {
             StorageFolder storageFolder = await FoldersHelper.GetCoversFolder();
             await Windows.System.Launcher.LaunchFolderAsync(storageFolder);

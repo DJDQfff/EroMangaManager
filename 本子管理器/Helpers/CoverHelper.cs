@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
-using System.Collections.Generic;
+
 using EroMangaManager.Models;
+
+using SkiaSharp;
 
 using Windows.Storage;
 using Windows.Storage.FileProperties;
@@ -15,10 +18,53 @@ namespace EroMangaManager.Helpers
 {
     public static class CoverHelper
     {
-        /// <summary> 创建封面文件 </summary>
+        /// <summary> 创建 缩略图 作为封面文件 </summary>
         /// <param name="storageFile"> </param>
         /// <returns> </returns>
-        public static async Task CreatCoverFile (this StorageFile storageFile)
+        public static async Task CreatCoverFile_Thumbnail (this StorageFile storageFile)
+        {
+            StorageFolder coverFolder = await FoldersHelper.GetCoversFolder();
+            StorageFile coverFIle = await coverFolder.CreateFileAsync(storageFile.DisplayName + ".jpg");
+
+            using (Stream stream = await storageFile.OpenStreamForReadAsync())
+            {
+                using (ZipArchive zipArchive = new ZipArchive(stream))
+                {
+                    if (zipArchive.Entries.Count != 0)                                  // 非空压缩包
+                    {
+                        foreach (ZipArchiveEntry entry in zipArchive.Entries)
+                        {
+                            bool canuse = entry.EntryFilter();
+                            if (canuse)
+                            {
+                                using (MemoryStream memoryStream = new MemoryStream())
+                                {
+                                    using (Stream entrystream = entry.Open())
+                                    {
+                                        entrystream.CopyTo(memoryStream);
+                                    }
+
+                                    memoryStream.Position = 0;
+
+                                    using (Stream writestream = await coverFIle.OpenStreamForWriteAsync())
+                                    {
+                                        SkiaSharp.SKBitmap sKBitmap = SkiaSharp.SKBitmap.Decode(memoryStream);
+                                        SKBitmap sKBitmap1 = sKBitmap.Resize(new SKImageInfo(sKBitmap.Width, sKBitmap.Height), SKFilterQuality.Low);
+                                        sKBitmap1.Encode(writestream, SKEncodedImageFormat.Jpeg, 30);
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary> 创建 原图 作为封面文件 </summary>
+        /// <param name="storageFile"> </param>
+        /// <returns> </returns>
+        public static async Task CreatCoverFile_Origin (this StorageFile storageFile)
         {
             StorageFolder coverfolder = await FoldersHelper.GetCoversFolder();
 

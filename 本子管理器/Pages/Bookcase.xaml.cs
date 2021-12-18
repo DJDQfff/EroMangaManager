@@ -52,11 +52,16 @@ namespace EroMangaManager.Pages
             await Translater.TranslateAllMangaName();
         }
 
-        private async void AppBarButton_Click (object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void RefreshMangaList (object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            AppBarButton button = sender as AppBarButton;
+            button.IsEnabled = false;
+
             await CoverHelper.ClearCovers();
 
             MainPage.current.listObserver.Initialize();
+
+            button.IsEnabled = true;
         }
     }
 }

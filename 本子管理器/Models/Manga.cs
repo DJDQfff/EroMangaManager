@@ -93,8 +93,10 @@ namespace EroMangaManager.Models
 
             StorageFile cover = await coverfolder.GetFileAsync(StorageFile.DisplayName + ".jpg");
 
-            BitmapImage bitmapImage = await CoverHelper.GetCoverThumbnail_CustomAsync(cover);
+            BitmapImage bitmapImage = await CoverHelper.GetCoverThumbnail_SystemAsync(cover);
 
+            //string path = Path.Combine(coverfolder.Path, StorageFile.DisplayName + ".jpg");
+            //BitmapImage bitmapImage = new BitmapImage(new Uri(path));
             Cover = bitmapImage;
         }
 
@@ -190,7 +192,7 @@ namespace EroMangaManager.Models
             {
                 try
                 {
-                    await CoverHelper.CreatCoverFile(this.StorageFile);
+                    await CoverHelper.CreatCoverFile_Thumbnail(this.StorageFile);
                 }
                 catch (Exception ex)
                 {
