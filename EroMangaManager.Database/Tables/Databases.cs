@@ -7,14 +7,14 @@ using EroMangaManager.Database.Entities;
 
 namespace EroMangaManager.Database.Tables
 {
-    public class Database : DbContext
+    public class Databases : DbContext
     {
-        public DbSet<ImageHash> imageHashes { set; get; }
+        public DbSet<ImageFilter> ImageFilterTable { set; get; }
         public DbSet<Record> ReadingRecords { set; get; }
 
         private readonly string ConnectionString;
 
-        public Database () => ConnectionString = "Data Source=Database.db";
+        public Databases () => ConnectionString = "Data Source=Database.db";
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
         {

@@ -7,7 +7,7 @@ namespace EroMangaManager.Database.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "imageHashes",
+                name: "ImageFilterTable",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -17,7 +17,7 @@ namespace EroMangaManager.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_imageHashes", x => x.ID);
+                    table.PrimaryKey("PK_ImageFilterTable", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -39,7 +39,7 @@ namespace EroMangaManager.Database.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "imageHashes");
+                name: "ImageFilterTable");
 
             migrationBuilder.DropTable(
                 name: "ReadingRecords");

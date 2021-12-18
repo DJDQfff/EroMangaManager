@@ -11,7 +11,7 @@ namespace EroMangaManager.Database.Tools
     {
         public static void UpdateRecordPosition (this string path, int position, int amount)
         {
-            using (Tables.Database table = new Tables.Database())
+            using (Tables.Databases table = new Tables.Databases())
             {
                 var record = table.ReadingRecords.Where(n => n.AbsolutePath == path).Single();
                 if (record == null)

@@ -99,7 +99,7 @@ namespace EroMangaManager.Pages
             StorageFolder storageFolder = await FoldersHelper.GetFilterFolder();
             var storageFiles = await storageFolder.GetFilesAsync();
             int count = storageFiles.Count;
-            string path = Path.Combine(storageFolder.Path, count + 1 + ".jpg");
+            string path = Path.Combine(storageFolder.Path, hash + ".jpg");
             entry.ExtractToFile(path);
         }
 

@@ -31,7 +31,7 @@ namespace EroMangaManager
         /// <param name="e"> 有关启动请求和过程的详细信息。 </param>
         protected override async void OnLaunched (LaunchActivatedEventArgs e)
         {
-            EroMangaManager.Database.Tables.Database database = new Database.Tables.Database();
+            EroMangaManager.Database.Tables.Databases database = new Database.Tables.Databases();
             database.Database.Migrate();
 
             await FoldersHelper.EnsureFolders();

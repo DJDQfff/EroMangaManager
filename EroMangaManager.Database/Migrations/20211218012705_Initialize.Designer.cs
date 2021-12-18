@@ -2,20 +2,22 @@
 using EroMangaManager.Database.Tables;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EroMangaManager.Database.Migrations
 {
-    [DbContext(typeof(Tables. Database))]
-    partial class DatabaseModelSnapshot : ModelSnapshot
+    [DbContext(typeof(Databases))]
+    [Migration("20211218012705_Initialize")]
+    partial class Initialize
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.21");
 
-            modelBuilder.Entity("EroMangaManager.Database.Entities.ImageHash", b =>
+            modelBuilder.Entity("EroMangaManager.Database.Entities.ImageFilter", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -29,7 +31,7 @@ namespace EroMangaManager.Database.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("imageHashes");
+                    b.ToTable("ImageFilterTable");
                 });
 
             modelBuilder.Entity("EroMangaManager.Database.Entities.Record", b =>

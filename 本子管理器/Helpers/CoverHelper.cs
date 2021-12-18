@@ -58,10 +58,14 @@ namespace EroMangaManager.Helpers
             BitmapImage bitmapImage = new BitmapImage();
             // TODO：对于刚创建的图片文件，尚未生成系统缩率图，此时返回的是通用图片缩率图，而不是具体图片的缩率图
             //thumbnailMode.picturemode有坑,缩略图不完整
+            IRandomAccessStream randomAccessStream;
+
             using (StorageItemThumbnail thumbnail = await cover.GetThumbnailAsync(ThumbnailMode.SingleItem, 80))
             {
-                await bitmapImage.SetSourceAsync(thumbnail);
+                randomAccessStream = thumbnail.CloneStream();
             }
+            await bitmapImage.SetSourceAsync(randomAccessStream);
+
             return bitmapImage;
         }
 
