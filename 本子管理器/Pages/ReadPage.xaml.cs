@@ -64,6 +64,9 @@ namespace EroMangaManager.Pages
             }
         }
 
+        /// <summary> 切换图 </summary>
+        /// <param name="sender"> </param>
+        /// <param name="e">      </param>
         private async void FLIP_SelectionChanged (object sender, SelectionChangedEventArgs e)
         {
             int c = e.AddedItems.Count;
@@ -83,12 +86,10 @@ namespace EroMangaManager.Pages
             image.Source = await ShowEntryAsync(entry);
         }
 
-        /// <summary>
-        /// 移出项时，执行一次此方法，然后引发两次SelectionChanged事件
-        /// </summary>
+        /// <summary> 添加此图片到过滤图库 </summary>
         /// <param name="sender"> </param>
         /// <param name="e">      </param>
-        private async void MenuFlyoutItem_Click (object sender, RoutedEventArgs e)
+        private async void FilteThisImage_Click (object sender, RoutedEventArgs e)
         {
             ZipArchiveEntry entry = FLIP.SelectedItem as ZipArchiveEntry;
             zipArchiveEntries.Remove(entry);
@@ -103,7 +104,10 @@ namespace EroMangaManager.Pages
             entry.ExtractToFile(path);
         }
 
-        private async void MenuFlyoutItem_Click_1 (object sender, RoutedEventArgs e)
+        /// <summary> 此图片另存为 </summary>
+        /// <param name="sender"> </param>
+        /// <param name="e">      </param>
+        private async void SaveImageAs_Click (object sender, RoutedEventArgs e)
         {
             ZipArchiveEntry entry = FLIP.SelectedItem as ZipArchiveEntry;
             StorageFile storageFile = await PickHelper.SavePicture();

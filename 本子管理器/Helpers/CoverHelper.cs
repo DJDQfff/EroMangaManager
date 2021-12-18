@@ -76,6 +76,8 @@ namespace EroMangaManager.Helpers
         /// <returns> </returns>
         public static async Task<BitmapImage> GetCoverThumbnail_CustomAsync (this StorageFile cover)
         {
+            var porperty = await cover.Properties.GetImagePropertiesAsync();
+
             BitmapImage bitmapImage = new BitmapImage();
 
             Stream stream = await cover.OpenStreamForReadAsync();

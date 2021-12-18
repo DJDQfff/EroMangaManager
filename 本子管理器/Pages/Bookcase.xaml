@@ -30,7 +30,7 @@
                 <Grid.ContextFlyout>
                     <MenuFlyout>
                         <MenuFlyoutItem
-                            Click="MenuFlyoutItem_Click"
+                            Click="FilteThisImage_Click"
                             DataContext="{x:Bind}"
                             Text="{x:Bind MangaName}" />
                         <MenuFlyoutItem Text="{x:Bind Tag_Language}" />

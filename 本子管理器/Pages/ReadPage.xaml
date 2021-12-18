@@ -16,24 +16,24 @@
             SelectionChanged="FLIP_SelectionChanged">
             <FlipView.ItemTemplate>
                 <DataTemplate x:DataType="zip:ZipArchiveEntry">
-                    <Grid>
+                    <Grid x:Name="RootGrid">
                         <Grid.ContextFlyout>
                             <MenuFlyout>
                                 <MenuFlyoutItem
-                                    Click="MenuFlyoutItem_Click"
+                                    Click="FilteThisImage_Click"
                                     DataContext="{x:Bind}"
-                                    Text="过滤" />
+                                    Text="不显示" />
                                 <MenuFlyoutItem
-                                    Click="MenuFlyoutItem_Click_1"
+                                    Click="SaveImageAs_Click"
                                     DataContext="{x:Bind}"
                                     Text="另存为" />
                             </MenuFlyout>
                         </Grid.ContextFlyout>
                         <ScrollViewer
-                            HorizontalScrollBarVisibility="Hidden"
+                            HorizontalScrollBarVisibility="Disabled"
                             HorizontalScrollMode="Disabled"
                             VerticalScrollBarVisibility="Disabled"
-                            VerticalScrollMode="Enabled"
+                            VerticalScrollMode="Disabled"
                             ZoomMode="Enabled">
                             <Image DataContext="{x:Bind}" />
                         </ScrollViewer>

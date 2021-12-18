@@ -33,7 +33,7 @@ namespace EroMangaManager.Pages
             MainPage.current.MainNavigationView.SelectedItem = MainPage.current.MainNavigationView.MenuItems[2];
         }
 
-        private async void MenuFlyoutItem_Click (object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void FilteThisImage_Click (object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
             Manga eroManga = menuFlyout.DataContext as Manga;
