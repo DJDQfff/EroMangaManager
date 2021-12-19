@@ -4,15 +4,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:page="using:EroMangaManager.Pages"
     xmlns:zip="using:System.IO.Compression"
     Background="Transparent"
     NavigationCacheMode="Enabled"
     mc:Ignorable="d">
 
     <Grid>
+        <ProgressRing
+            Width="50"
+            Height="50"
+            IsActive="True" />
+
         <FlipView
             x:Name="FLIP"
-            ItemsSource="{x:Bind zipArchiveEntries, Mode=OneWay}"
+            ItemsSource="{x:Bind page:ReadPage.zipArchiveEntries, Mode=OneWay}"
             SelectionChanged="FLIP_SelectionChanged">
             <FlipView.ItemTemplate>
                 <DataTemplate x:DataType="zip:ZipArchiveEntry">
@@ -29,7 +35,6 @@
                                     Text="另存为" />
                             </MenuFlyout>
                         </Grid.ContextFlyout>
-                        <ProgressRing IsActive="True" />
                         <ScrollViewer
                             HorizontalScrollBarVisibility="Disabled"
                             HorizontalScrollMode="Disabled"

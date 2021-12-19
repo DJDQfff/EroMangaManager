@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="using:EroMangaManager.Models"
-    Name="readpage"
     Background="Transparent"
     NavigationCacheMode="Enabled"
     mc:Ignorable="d">
@@ -82,6 +81,7 @@
                 Label="刷新" />
         </CommandBar>
         <GridView
+            x:Name="Bookcase_GridView"
             Grid.Row="1"
             Margin="4"
             IsItemClickEnabled="True"

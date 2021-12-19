@@ -24,11 +24,6 @@ namespace EroMangaManager
             current = this;
         }
 
-        protected override void OnNavigatedFrom (NavigationEventArgs e)
-        {
-            base.OnNavigatedFrom(e);
-        }
-
         protected override void OnNavigatedTo (NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
