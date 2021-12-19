@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 using EroMangaManager.Database.Entities;
 using EroMangaManager.Database.Tables;
@@ -25,21 +26,21 @@ namespace EroMangaManager.Database.Tools
             return query;
         }
 
-        public static void Add (string hash)
+        public static async Task Add (string hash)
         {
             ImageFilter imageHash = new ImageFilter()
             {
                 Hash = hash,
             };
             table.Add(imageHash);
-            table.SaveChanges();
+            await table.SaveChangesAsync();
         }
 
-        public static void Remove (string hash)
+        public static async Task Remove (string[] hashes)
         {
-            var h = table.ImageFilterTable.Where(n => n.Hash == hash).Single();
-            table.Remove(h);
-            table.SaveChanges();
+            var h = table.ImageFilterTable.Where(n => hashes.Contains(n.Hash)).ToArray();
+            table.RemoveRange(h);
+            await table.SaveChangesAsync();
         }
     }
 }

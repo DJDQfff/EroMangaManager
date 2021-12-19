@@ -8,9 +8,7 @@ namespace DatabaseOperation
 {
     internal class Program
     {
-        private static string str1 = "";
-
-        private static void Main (string[] args)
+        private static void Main ()
         {
             Console.WriteLine("Hello World!");
         }

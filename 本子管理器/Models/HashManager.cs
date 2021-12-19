@@ -17,24 +17,24 @@ namespace EroMangaManager.Models
         public static bool LengthFilter (long length)
         {
             int count = HashOperation.LengthConditionCount(length);
-            return count == 0 ? true : false;
+            return count == 0;
         }
 
         public static bool StreamHashFilter (Stream stream)
         {
             string hash = stream.ComputeHash();
             int count = HashOperation.HashConditionCount(hash);
-            return count == 0 ? true : false;
+            return count == 0;
         }
 
-        public static void Add (string hash)
+        public static async Task Add (string hash)
         {
-            HashOperation.Add(hash);
+            await HashOperation.Add(hash);
         }
 
-        public static void Remove (string hash)
+        public static async Task Remove (string[] hashes)
         {
-            HashOperation.Remove(hash);
+            await HashOperation.Remove(hashes);
         }
     }
 }

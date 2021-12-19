@@ -194,7 +194,7 @@ namespace EroMangaManager.Models
                 {
                     await CoverHelper.CreatCoverFile_Thumbnail(this.StorageFile);
                 }
-                catch (Exception ex)
+                catch
                 {
                 }
             }

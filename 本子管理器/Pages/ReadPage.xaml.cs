@@ -59,7 +59,7 @@ namespace EroMangaManager.Pages
             }
         }
 
-        protected override async void OnNavigatedTo (NavigationEventArgs e)
+        protected override void OnNavigatedTo (NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
@@ -97,11 +97,9 @@ namespace EroMangaManager.Pages
             zipArchiveEntries.Remove(entry);
 
             string hash = entry.ComputeHash();
-            HashManager.Add(hash);
+            await HashManager.Add(hash);
 
             StorageFolder storageFolder = await FoldersHelper.GetFilterFolder();
-            var storageFiles = await storageFolder.GetFilesAsync();
-            int count = storageFiles.Count;
             string path = Path.Combine(storageFolder.Path, hash + ".jpg");
             entry.ExtractToFile(path);
         }
