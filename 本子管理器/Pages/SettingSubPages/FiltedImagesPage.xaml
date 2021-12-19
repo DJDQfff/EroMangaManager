@@ -34,8 +34,8 @@
             VerticalAlignment="Top"
             Click="Button_Click">
             <StackPanel Orientation="Horizontal">
-                <TextBlock VerticalAlignment="Center" Text="移除" />
-                <FontIcon FontFamily="Segoe UI Emoji" Glyph="&#x2716;" />
+                <TextBlock VerticalAlignment="Center" Text="还原" />
+                <FontIcon FontFamily="Segoe UI Emoji" Glyph="&#x2714;" />
             </StackPanel>
         </Button>
     </Grid>

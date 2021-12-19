@@ -12,6 +12,7 @@
         <NavigationView
             x:Name="MainNavigationView"
             x:FieldModifier="public"
+            OpenPaneLength="200"
             FlowDirection="LeftToRight"
             IsBackButtonVisible="Collapsed"
             IsSettingsVisible="True"
