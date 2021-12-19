@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using Windows.Storage;
+using static EroMangaManager.MainPage;
 using static EroMangaManager.Helpers.ZipEntryHelper;
 using System;
 
@@ -24,20 +25,27 @@ namespace EroMangaManager.Pages
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class ReadPage : Page
     {
-        private Manga currentManga;
         private readonly ObservableCollection<ZipArchiveEntry> zipArchiveEntries = new ObservableCollection<ZipArchiveEntry>();
-        public Reader currentReader;
+
+        public event Action ChangedReadingManga;
+
+        public static ReadPage currentReadPage;
 
         public ReadPage ()
         {
             this.InitializeComponent();
+            currentReadPage = this;
+        }
+
+        public void TryChangeReadPage (object sender, ItemClickEventArgs e)
+        {
         }
 
         protected override async void OnNavigatedTo (NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
-            MainPage.current.MainNavigationView.IsPaneOpen = false;
+            MainPage.currentMainPage.MainNavigationView.IsPaneOpen = false;
 
             // 判断数据类型,这很重要
             switch (e.Parameter)

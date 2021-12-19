@@ -12,11 +12,11 @@ namespace EroMangaManager.Models
     {
         public static async Task TranslateAllMangaName ()
         {
-            var names = MainPage.current.listObserver.MangaList.Select(n => n.MangaName).ToList();
+            var names = MainPage.currentMainPage.listObserver.MangaList.Select(n => n.MangaName).ToList();
 
             Controller controller = new Controller();
             var results = await controller.CommonTranslateAsync(names, "zh");
-            foreach (var manga in MainPage.current.listObserver.MangaList)
+            foreach (var manga in MainPage.currentMainPage.listObserver.MangaList)
             {
                 string newname = results.Where(n => n.src == manga.MangaName)?.FirstOrDefault()?.dst;
                 if (newname != null)

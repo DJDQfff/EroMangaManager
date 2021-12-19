@@ -2,6 +2,7 @@
 using System.Text.Json;
 using EroMangaManager.Models;
 using EroMangaManager.Helpers;
+using static EroMangaManager.MainPage;
 using System.Linq;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -17,19 +18,21 @@ namespace EroMangaManager.Pages
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class Bookcase : Page
     {
+        public static Manga a;
+
         public Bookcase ()
         {
             this.InitializeComponent();
+            Bookcase_GridView.ItemClick += currentMainPage.TryChangeReadPage;
+            ;
         }
 
         private void GridView_ItemClick (object sender, ItemClickEventArgs e)
         {
-            var a = (Manga) e.ClickedItem;
-
             //MainPage.current.MainFrame.Navigate(typeof(ReadPage), storageFile);
             //使用下面这个更好
-            this.Frame.Navigate(typeof(EroMangaManager.Pages.ReadPage), a);
-            MainPage.current.MainNavigationView.SelectedItem = MainPage.current.MainNavigationView.MenuItems[2];
+            this.Frame.Navigate(typeof(EroMangaManager.Pages.ReadPage));
+            MainPage.currentMainPage.MainNavigationView.SelectedItem = MainPage.currentMainPage.MainNavigationView.MenuItems[2];
         }
 
         private async void FilteThisImage_Click (object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -58,7 +61,7 @@ namespace EroMangaManager.Pages
 
             await CoverHelper.ClearCovers();
 
-            MainPage.current.listObserver.Initialize();
+            MainPage.currentMainPage.listObserver.Initialize();
 
             button.IsEnabled = true;
         }

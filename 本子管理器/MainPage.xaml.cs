@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 using EroMangaManager.Models;
 using EroMangaManager.Pages;
@@ -14,19 +16,16 @@ namespace EroMangaManager
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class MainPage : Page
     {
-        public ListObserver listObserver = new ListObserver();
+        public static ListObserver listObserver = new ListObserver();
 
-        public static MainPage current;
+        public static MainPage currentMainPage;
+
+        public static event Action ChangingReadingManga;
 
         public MainPage ()
         {
             this.InitializeComponent();
-            current = this;
-        }
-
-        protected override void OnNavigatedFrom (NavigationEventArgs e)
-        {
-            base.OnNavigatedFrom(e);
+            currentMainPage = this;
         }
 
         protected override void OnNavigatedTo (NavigationEventArgs e)

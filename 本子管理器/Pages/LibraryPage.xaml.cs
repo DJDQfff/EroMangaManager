@@ -5,6 +5,7 @@ using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using EroMangaManager.Helpers;
+using static EroMangaManager.MainPage;
 using ExtensionMethod;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
@@ -26,7 +27,7 @@ namespace EroMangaManager.Pages
 
             if (folder != null)
             {
-                MainPage.current.listObserver.AddFolder(folder);
+                listObserver.AddFolder(folder);
             }
         }
 
@@ -35,7 +36,7 @@ namespace EroMangaManager.Pages
             Button button = sender as Button;
             StorageFolder storageFolder = button.DataContext as StorageFolder;
 
-            MainPage.current.listObserver.RemoveFolder(storageFolder);
+            listObserver.RemoveFolder(storageFolder);
         }
     }
 }
