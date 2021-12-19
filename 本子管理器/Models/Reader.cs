@@ -25,7 +25,6 @@ namespace EroMangaManager.Models
         private Stream stream { set; get; }
         private ZipArchive zipArchive { set; get; }
         private ObservableCollection<ZipArchiveEntry> zipArchiveEntries { set; get; } = new ObservableCollection<ZipArchiveEntry>();
-        private ObservableCollection<BitmapImage> bitmapImages { set; get; } = new ObservableCollection<BitmapImage>();
 
         private Reader (Manga _manga)
         {

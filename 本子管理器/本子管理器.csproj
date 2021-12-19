@@ -159,6 +159,7 @@
     <Compile Include="Pages\SettingSubPages\FiltedImagesPage.xaml.cs">
       <DependentUpon>FiltedImagesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SettingSubPages\ImageItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

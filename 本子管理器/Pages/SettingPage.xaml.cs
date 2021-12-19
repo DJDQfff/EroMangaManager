@@ -29,12 +29,7 @@ namespace EroMangaManager.Pages
         {
             this.InitializeComponent();
 
-            SettingFrame.Navigate(typeof(SettingSubPages.FiltedImagesPage));
-        }
-
-        private async void RefreshMangaList (object sender, RoutedEventArgs e)
-        {
-            await CoverHelper.ClearCovers();
+            //SettingFrame.Navigate(typeof(SettingSubPages.FiltedImagesPage));
         }
 
         private async void RefreshMangaList_1 (object sender, RoutedEventArgs e)
@@ -45,6 +40,7 @@ namespace EroMangaManager.Pages
 
         private void Button_Click (object sender, RoutedEventArgs e)
         {
+            SettingFrame.Navigate(typeof(SettingSubPages.FiltedImagesPage));
         }
     }
 }
