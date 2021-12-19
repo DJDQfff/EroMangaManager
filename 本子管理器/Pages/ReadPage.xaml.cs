@@ -24,34 +24,29 @@ namespace EroMangaManager.Pages
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class ReadPage : Page
     {
-        private Manga currentManga;
-        private readonly ObservableCollection<ZipArchiveEntry> zipArchiveEntries = new ObservableCollection<ZipArchiveEntry>();
-        public Reader currentReader;
+        private static Manga currentManga;
+        public static ObservableCollection<ZipArchiveEntry> zipArchiveEntries = new ObservableCollection<ZipArchiveEntry>();
+        public static Reader currentReader;
+        public static ReadPage currentReadPage;
 
         public ReadPage ()
         {
+            currentReadPage = this;
+
             this.InitializeComponent();
         }
 
-        protected override async void OnNavigatedTo (NavigationEventArgs e)
+        public static async void TryChangeManga (object sender, ItemClickEventArgs e)
         {
-            base.OnNavigatedTo(e);
-
-            MainPage.current.MainNavigationView.IsPaneOpen = false;
-
             // 判断数据类型,这很重要
-            switch (e.Parameter)
+            switch (e.ClickedItem)
             {
-                case Manga manga when currentManga == null:                 // 未打开漫画，传入一个新漫画
+                case Manga manga when manga != currentManga:                 // 未打开漫画，传入一个新漫画
                     await SetNewSource(manga);
                     break;
 
-                case Manga manga when currentManga == manga:                // 传入的漫画和已打开漫画是同一本
+                case Manga manga when manga == currentManga:                // 传入的漫画和已打开漫画是同一本
                     //Do Nothing
-                    break;
-
-                case Manga manga when currentManga != manga:                // 传入的新漫画和已打开漫画不一致
-                    await SetNewSource(manga);
                     break;
             }
             async Task SetNewSource (Manga manga)
@@ -62,6 +57,13 @@ namespace EroMangaManager.Pages
                 Debug.WriteLine(currentReader.GetHashCode());
                 currentReader.OpenEntries(zipArchiveEntries);
             }
+        }
+
+        protected override async void OnNavigatedTo (NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            MainPage.current.MainNavigationView.IsPaneOpen = false;
         }
 
         /// <summary> 切换图 </summary>
@@ -81,7 +83,7 @@ namespace EroMangaManager.Pages
 
             //root.FindName("image");               // TODO 此方法有bug，应该是控件bug，有空翻文档细看
 
-            var sc = root.Children[1] as ScrollViewer;
+            var sc = root.Children[0] as ScrollViewer;
             var image = sc.Content as Image;
             image.Source = await ShowEntryAsync(entry);
         }
