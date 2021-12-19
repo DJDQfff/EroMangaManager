@@ -7,15 +7,22 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     NavigationCacheMode="Enabled"
     mc:Ignorable="d">
-
-    <StackPanel>
-        <AppBarButton
-            Click="RefreshMangaList"
-            Icon="Clear"
-            Label="清除缓存" />
-        <AppBarButton
-            Click="RefreshMangaList_1"
-            Icon="OpenFile"
-            Label="打开文件夹" />
-    </StackPanel>
+    <Page.Resources>
+        <Style TargetType="Button" >
+            <Setter Property="Margin"
+                    Value="24,4,24,4" />
+            <Setter Property="Background"
+                    Value="Wheat" />
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel  Orientation="Horizontal" VerticalAlignment="Bottom">
+            <Button Content="过滤" Click="Button_Click" />
+        </StackPanel>
+        <Frame x:Name="SettingFrame" Grid.Row="1" Content="sd" />
+    </Grid>
 </Page>

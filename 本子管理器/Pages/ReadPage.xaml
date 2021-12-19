@@ -29,6 +29,7 @@
                                     Text="另存为" />
                             </MenuFlyout>
                         </Grid.ContextFlyout>
+                        <ProgressRing IsActive="True" />
                         <ScrollViewer
                             HorizontalScrollBarVisibility="Disabled"
                             HorizontalScrollMode="Disabled"

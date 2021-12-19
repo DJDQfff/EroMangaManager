@@ -28,6 +28,8 @@ namespace EroMangaManager.Pages
         public SettingPage ()
         {
             this.InitializeComponent();
+
+            SettingFrame.Navigate(typeof(SettingSubPages.FiltedImagesPage));
         }
 
         private async void RefreshMangaList (object sender, RoutedEventArgs e)
@@ -39,6 +41,10 @@ namespace EroMangaManager.Pages
         {
             StorageFolder storageFolder = await FoldersHelper.GetCoversFolder();
             await Windows.System.Launcher.LaunchFolderAsync(storageFolder);
+        }
+
+        private void Button_Click (object sender, RoutedEventArgs e)
+        {
         }
     }
 }

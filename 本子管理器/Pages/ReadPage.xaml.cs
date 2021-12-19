@@ -81,7 +81,7 @@ namespace EroMangaManager.Pages
 
             //root.FindName("image");               // TODO 此方法有bug，应该是控件bug，有空翻文档细看
 
-            var sc = root.Children[0] as ScrollViewer;
+            var sc = root.Children[1] as ScrollViewer;
             var image = sc.Content as Image;
             image.Source = await ShowEntryAsync(entry);
         }
