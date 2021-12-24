@@ -34,14 +34,14 @@ namespace EroMangaManager.Pages
         private async void FilteThisImage_Click (object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
-            Manga eroManga = menuFlyout.DataContext as Manga;
+            MangaBook eroManga = menuFlyout.DataContext as MangaBook;
             await new ContentDialog() { CloseButtonText = eroManga.MangaName }.ShowAsync();
         }
 
         private async void DeleteEroManga (object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
-            Manga eroManga = menuFlyout.DataContext as Manga;
+            MangaBook eroManga = menuFlyout.DataContext as MangaBook;
             await eroManga.RemoveFile();
         }
 

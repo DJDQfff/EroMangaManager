@@ -24,7 +24,7 @@ namespace EroMangaManager.Pages
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class ReadPage : Page
     {
-        private static Manga currentManga;
+        private static MangaBook currentManga;
         public static ObservableCollection<ZipArchiveEntry> zipArchiveEntries = new ObservableCollection<ZipArchiveEntry>();
         public static Reader currentReader;
         public static ReadPage currentReadPage;
@@ -41,15 +41,15 @@ namespace EroMangaManager.Pages
             // 判断数据类型,这很重要
             switch (e.ClickedItem)
             {
-                case Manga manga when manga != currentManga:                 // 未打开漫画，传入一个新漫画
+                case MangaBook manga when manga != currentManga:                 // 未打开漫画，传入一个新漫画
                     await SetNewSource(manga);
                     break;
 
-                case Manga manga when manga == currentManga:                // 传入的漫画和已打开漫画是同一本
+                case MangaBook manga when manga == currentManga:                // 传入的漫画和已打开漫画是同一本
                     //Do Nothing
                     break;
             }
-            async Task SetNewSource (Manga manga)
+            async Task SetNewSource (MangaBook manga)
             {
                 currentManga = manga;
                 zipArchiveEntries.Clear();

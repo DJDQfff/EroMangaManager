@@ -31,26 +31,6 @@ namespace EroMangaManager.Database.Migrations
 
                     b.ToTable("ImageFilterTable");
                 });
-
-            modelBuilder.Entity("EroMangaManager.Database.Entities.Record", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("AbsolutePath")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("PageAmount")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ReadingPosition")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("ReadingRecords");
-                });
 #pragma warning restore 612, 618
         }
     }

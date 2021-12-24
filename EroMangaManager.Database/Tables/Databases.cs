@@ -10,7 +10,6 @@ namespace EroMangaManager.Database.Tables
     public class Databases : DbContext
     {
         public DbSet<ImageFilter> ImageFilterTable { set; get; }
-        public DbSet<Record> ReadingRecords { set; get; }
 
         private readonly string ConnectionString;
 
@@ -20,6 +19,10 @@ namespace EroMangaManager.Database.Tables
         {
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlite(ConnectionString);
+        }
+        protected override void OnModelCreating (ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

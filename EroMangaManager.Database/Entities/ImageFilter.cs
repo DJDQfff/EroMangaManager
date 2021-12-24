@@ -9,11 +9,11 @@ namespace EroMangaManager.Database.Entities
     {
         /// <summary> 主键 </summary>
         public int ID { set; get; }
+        /// <summary> ZipEntry 的解压后流大小，判断唯一性第一步</summary>
+        public long ZipEntryLength { set; get; }
 
-        /// <summary> 图片流的sha256哈希值 </summary>
+        /// <summary> 图片流的sha256哈希值，判断唯一性第二步 </summary>
         public string Hash { set; get; }
 
-        /// <summary> ZipEntry 的解压后流大小 </summary>
-        public long ZipEntryLength { set; get; }
     }
 }

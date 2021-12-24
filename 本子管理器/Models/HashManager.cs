@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using EroMangaManager.Database.Entities;
 using EroMangaManager.Database.Tables;
-using EroMangaManager.Database.Tools;
+using EroMangaManager.Database.BasicQuery;
 using EroMangaManager.Helpers;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 

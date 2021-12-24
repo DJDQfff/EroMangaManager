@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using EroMangaManager.Database.Entities;
 using EroMangaManager.Database.Tables;
 
-namespace EroMangaManager.Database.Tools
+namespace EroMangaManager.Database.BasicQuery
 {
     public static class HashOperation
     {

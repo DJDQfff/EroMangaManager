@@ -126,6 +126,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Models\InfoRecorder.cs" />
     <Compile Include="Models\Reader.cs" />
     <Compile Include="Pages\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
@@ -137,14 +138,13 @@
     <Compile Include="Helpers\FoldersHelper.cs" />
     <Compile Include="Helpers\ZipEntryHelper.cs" />
     <Compile Include="Helpers\HashComputer.cs" />
-    <Compile Include="Helpers\TagHelper.cs" />
     <Compile Include="Helpers\PickHelper.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Abandoned\EroManga.cs" />
     <Compile Include="Models\HashManager.cs" />
-    <Compile Include="Models\Manga.cs" />
+    <Compile Include="Models\MangaBook.cs" />
     <Compile Include="Models\ListObserver.cs" />
     <Compile Include="Models\Translater.cs" />
     <Compile Include="Pages\LibraryPage.xaml.cs">

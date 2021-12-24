@@ -20,7 +20,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <DataTemplate x:Key="template_1" x:DataType="models:Manga">
+        <DataTemplate x:Key="template_1" x:DataType="models:MangaBook">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
@@ -32,9 +32,9 @@
                             Click="FilteThisImage_Click"
                             DataContext="{x:Bind}"
                             Text="{x:Bind MangaName}" />
-                        <MenuFlyoutItem Text="{x:Bind Tag_Language}" />
-                        <MenuFlyoutItem Text="{x:Bind Tag_FullColor}" />
-                        <MenuFlyoutItem Text="{x:Bind Tag_NonMosaic}" />
+                        <MenuFlyoutItem Text="{x:Bind TagInfo.Language}" />
+                        <MenuFlyoutItem Text="{x:Bind TagInfo.DisplayName}" />
+                        <MenuFlyoutItem Text="{x:Bind TagInfo.NonMosaic}" />
                         <MenuFlyoutSeparator />
                         <MenuFlyoutSubItem Text="文件操作">
                             <MenuFlyoutItem

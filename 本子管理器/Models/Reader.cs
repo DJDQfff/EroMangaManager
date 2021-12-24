@@ -21,17 +21,17 @@ namespace EroMangaManager.Models
 {
     public class Reader
     {
-        private Manga manga { set; get; }
+        private MangaBook manga { set; get; }
         private Stream stream { set; get; }
         private ZipArchive zipArchive { set; get; }
         private ObservableCollection<ZipArchiveEntry> zipArchiveEntries { set; get; } = new ObservableCollection<ZipArchiveEntry>();
 
-        private Reader (Manga _manga)
+        private Reader (MangaBook _manga)
         {
             this.manga = _manga;
         }
 
-        public static async Task<Reader> Create (Manga manga)
+        public static async Task<Reader> Create (MangaBook manga)
         {
             Reader reader = new Reader(manga);
             await reader.OpenStream();

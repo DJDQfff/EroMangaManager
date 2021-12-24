@@ -16,7 +16,7 @@ namespace EroMangaManager.Models
     public class ListObserver
     {
         public ObservableCollection<StorageFolder> FolderList { set; get; } = new ObservableCollection<StorageFolder>();
-        public ObservableCollection<Manga> MangaList { set; get; } = new ObservableCollection<Manga>();
+        public ObservableCollection<MangaBook> MangaList { set; get; } = new ObservableCollection<MangaBook>();
 
         public ListObserver ()
         {
@@ -86,7 +86,7 @@ namespace EroMangaManager.Models
             // bug，普通的遍历添加反而不会出现 bug bug 名称：已为另一线程调用
             for (int i = 0; i < files.Count; i++)
             {
-                Manga manga = new Manga(files[i], storageFolder);
+                MangaBook manga = new MangaBook(files[i], storageFolder);
 
                 MangaList.Add(manga);         // TODO：多线程下，对list进行写操作，会出bug
 

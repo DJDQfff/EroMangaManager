@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EroMangaManager.Database.Migrations
 {
     [DbContext(typeof(Databases))]
-    [Migration("20211218012705_Initialize")]
+    [Migration("20211224135139_Initialize")]
     partial class Initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,26 +32,6 @@ namespace EroMangaManager.Database.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("ImageFilterTable");
-                });
-
-            modelBuilder.Entity("EroMangaManager.Database.Entities.Record", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("AbsolutePath")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("PageAmount")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ReadingPosition")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("ReadingRecords");
                 });
 #pragma warning restore 612, 618
         }
