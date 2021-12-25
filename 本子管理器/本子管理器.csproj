@@ -161,6 +161,7 @@
     </Compile>
     <Compile Include="Pages\SettingSubPages\ImageItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValueConverters\ProgressRingVisibility.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

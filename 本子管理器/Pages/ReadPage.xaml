@@ -12,10 +12,11 @@
 
     <Grid>
         <ProgressRing
+            x:Name="ReadPage_ProgressRing_0"
             Width="50"
             Height="50"
-            IsActive="True" />
-
+            IsActive="True"
+            Visibility="Collapsed" />
         <FlipView
             x:Name="FLIP"
             ItemsSource="{x:Bind page:ReadPage.zipArchiveEntries, Mode=OneWay}"

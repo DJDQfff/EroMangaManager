@@ -31,9 +31,8 @@ namespace EroMangaManager.Pages
 
         public ReadPage ()
         {
-            currentReadPage = this;
-
             this.InitializeComponent();
+            currentReadPage = this;
         }
 
         public static async void TryChangeManga (object sender, ItemClickEventArgs e)
@@ -42,6 +41,7 @@ namespace EroMangaManager.Pages
             switch (e.ClickedItem)
             {
                 case MangaBook manga when manga != currentManga:                 // 未打开漫画，传入一个新漫画
+                    currentReadPage.ReadPage_ProgressRing_0.Visibility = Visibility.Visible;
                     await SetNewSource(manga);
                     break;
 

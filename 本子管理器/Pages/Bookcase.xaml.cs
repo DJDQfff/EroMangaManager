@@ -54,7 +54,7 @@ namespace EroMangaManager.Pages
             {
                 await Translater.TranslateAllMangaName();
             }
-            finally
+            catch
             {
             }
 
