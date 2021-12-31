@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		处理BUG.md = 处理BUG.md
 		更新日志.md = 更新日志.md
 		添加功能.md = 添加功能.md
+		结构调整.md = 结构调整.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "本子管理器", "本子管理器\本子管理器.csproj", "{79BF3F69-21E1-41F2-95B4-F60B65BDF2A9}"

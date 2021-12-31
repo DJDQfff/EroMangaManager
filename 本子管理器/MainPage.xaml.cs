@@ -14,7 +14,7 @@ namespace EroMangaManager
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class MainPage : Page
     {
-        public ListObserver listObserver = new ListObserver();
+        public CollectionObserver collectionObserver = new CollectionObserver();
 
         public static MainPage current;
 

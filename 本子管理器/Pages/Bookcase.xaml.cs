@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Text.Json;
-using EroMangaManager.Models;
+
 using EroMangaManager.Helpers;
-using System.Linq;
+using EroMangaManager.Models;
+
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
-using Windows.UI.Xaml.Media.Imaging;
-using BaiduTranslate;
-using BaiduTranslate.Models;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
@@ -69,7 +65,7 @@ namespace EroMangaManager.Pages
             {
                 await CoverHelper.ClearCovers();
 
-                MainPage.current.listObserver.Initialize();
+                MainPage.current.collectionObserver.Initialize();
             }
             finally
             {

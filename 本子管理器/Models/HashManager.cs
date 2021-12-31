@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using System.Threading.Tasks;
-using System.IO;
-using EroMangaManager.Database.Entities;
-using EroMangaManager.Database.Tables;
-using EroMangaManager.Database.BasicQuery;
+
+using EroMangaManager.Database.DatabaseOperation;
 using EroMangaManager.Helpers;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace EroMangaManager.Models
 {

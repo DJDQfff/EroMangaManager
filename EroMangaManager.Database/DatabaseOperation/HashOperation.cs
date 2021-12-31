@@ -1,33 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using EroMangaManager.Database.Entities;
-using EroMangaManager.Database.Tables;
 
-namespace EroMangaManager.Database.BasicQuery
+namespace EroMangaManager.Database.DatabaseOperation
 {
     public static class HashOperation
     {
-        public static Tables.Databases table = new Tables.Databases();
-
         public static int LengthConditionCount (long length)
         {
-            var query = table.ImageFilterTable.Where(n => n.ZipEntryLength == length).Count();
+            Tables.Databases table = new Tables.Databases();
+
+            var query = table.ImageFilters.Where(n => n.ZipEntryLength == length).Count();
             return query;
         }
 
         public static int HashConditionCount (string hash)
         {
+            Tables.Databases table = new Tables.Databases();
             var query = 6;
-            query = table.ImageFilterTable.Where(n => n.Hash == hash).Count();
+            query = table.ImageFilters.Where(n => n.Hash == hash).Count();
             return query;
         }
 
         public static async Task Add (string hash)
         {
+            Tables.Databases table = new Tables.Databases();
             ImageFilter imageHash = new ImageFilter()
             {
                 Hash = hash,
@@ -38,7 +37,8 @@ namespace EroMangaManager.Database.BasicQuery
 
         public static async Task Remove (string[] hashes)
         {
-            var h = table.ImageFilterTable.Where(n => hashes.Contains(n.Hash)).ToArray();
+            Tables.Databases table = new Tables.Databases();
+            var h = table.ImageFilters.Where(n => hashes.Contains(n.Hash)).ToArray();
             table.RemoveRange(h);
             await table.SaveChangesAsync();
         }

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-using Windows.Storage;
+
+using EroMangaManager.Models;
+
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
-using EroMangaManager.Models;
 
 namespace EroMangaManager.Helpers
 {

@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using EroMangaManager.Database.Entities;
 
 using Microsoft.EntityFrameworkCore;
-using EroMangaManager.Database.Entities;
 
 namespace EroMangaManager.Database.Tables
 {
     public class Databases : DbContext
     {
-        public DbSet<ImageFilter> ImageFilterTable { set; get; }
+        public DbSet<ImageFilter> ImageFilters { set; get; }
+        public DbSet<MangaTag> MangaTags { set; get; }
+        public DbSet<UserTagFilter> TagFilters { set; get; }
+        public DbSet<ReadingInfo> ReadingRecords { set; get; }
 
         private readonly string ConnectionString;
 
@@ -20,6 +20,7 @@ namespace EroMangaManager.Database.Tables
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlite(ConnectionString);
         }
+
         protected override void OnModelCreating (ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

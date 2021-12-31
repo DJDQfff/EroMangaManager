@@ -1,8 +1,10 @@
 ﻿using System;
-using System.IO;
-using System.Threading.Tasks;
 using System.ComponentModel;
-using Abandoned.EroMangaManager.Models;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+
+using EroMangaManager.Database.Entities;
+using EroMangaManager.Database.Utility;
 
 /*
  * 简化版EroManga类
@@ -11,14 +13,11 @@ using Abandoned.EroMangaManager.Models;
  */
 
 using EroMangaManager.Helpers;
-using EroMangaManager.Database.Entities;
+
 using Windows.Storage;
-using Windows.Storage.FileProperties;
-using Windows.Storage.Streams;
-using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Media;
-using System.Runtime.CompilerServices;
-using EroMangaManager.Database.Utility;
+using Windows.UI.Xaml.Media.Imaging;
+
 namespace EroMangaManager.Models
 {
     /// <summary> 本子 </summary>
@@ -47,9 +46,10 @@ namespace EroMangaManager.Models
         /// <summary> 本子所属文件夹 </summary>
         public StorageFolder StorageFolder { set; get; }
 
-        public MangaTagInfo TagInfo { set; get; }
+        public MangaTag TagInfo { set; get; }
 
         private string _manganame;
+
         /// <summary> 本子名字 </summary>
         public string MangaName
         {
@@ -67,9 +67,9 @@ namespace EroMangaManager.Models
         {
             StorageFolder = storageFolder;
             StorageFile = storageFile;
-            TagInfo = MangaTagInfoFactory.Creat(StorageFile.Path);
+            TagInfo = MangaTagFactory.Creat(StorageFile.Path);
             _manganame = TagInfo.MangaName;
-        }        
+        }
 
         /// <summary>
         /// 返回BitmapImage，作为Image控件的source
@@ -91,10 +91,9 @@ namespace EroMangaManager.Models
             this.MangaName = name;
         }
 
-
         /// <summary> 删除文件 </summary>
         /// <returns> </returns>
-        public async Task RemoveFile ()=>await this.StorageFile.DeleteAsync();       
+        public async Task RemoveFile () => await this.StorageFile.DeleteAsync();
 
         private void NotifyPropertyChanged ([CallerMemberName] string propertyName = "")
         {

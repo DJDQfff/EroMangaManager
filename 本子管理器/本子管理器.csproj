@@ -145,7 +145,7 @@
     <Compile Include="Abandoned\EroManga.cs" />
     <Compile Include="Models\HashManager.cs" />
     <Compile Include="Models\MangaBook.cs" />
-    <Compile Include="Models\ListObserver.cs" />
+    <Compile Include="Models\CollectionObserver.cs" />
     <Compile Include="Models\Translater.cs" />
     <Compile Include="Pages\LibraryPage.xaml.cs">
       <DependentUpon>LibraryPage.xaml</DependentUpon>

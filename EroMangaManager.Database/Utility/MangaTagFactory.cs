@@ -1,48 +1,99 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 using EroMangaManager.Database.Entities;
 
 namespace EroMangaManager.Database.Utility
 {
-    public static class MangaTagInfoFactory
+    public static class MangaTagFactory
     {
-        public static MangaTagInfo Creat (string absolutePath)
+        public static MangaTag Creat (string absolutePath)
         {
-            MangaTagInfo mangaTagInfo = new MangaTagInfo();
+            MangaTag mangaTagInfo = new MangaTag() { IsFullColor = false, IsDL = false, Language = "Janpanese", NonMosaic = false, PaisIsDouble = true };
             mangaTagInfo.SetAbsolutePath(absolutePath);
             mangaTagInfo.SetDisplayName();
             mangaTagInfo.canbePair();
             if (mangaTagInfo.PaisIsDouble)
             {
                 mangaTagInfo.SplitTags(mangaTagInfo.DisplayName);
+                mangaTagInfo.ParseTags();
             }
             return mangaTagInfo;
         }
 
-        /// <summary> 判断本子是否无修及是否全彩 </summary>
-        private static void SetNonMosaicAndColor (this MangaTagInfo mangaTagInfo)
+        private static void ParseTags (this MangaTag mangaTagInfo)
         {
             string[] tags = mangaTagInfo.UnknownTags.Split('\r');
-            foreach (var tag in tags)
-            {
-                if (tag.Contains("无修") || tag.Contains("無修"))
-                {
-                    mangaTagInfo.NonMosaic = true;
-                }
+            string[] fullCollarTags = { "全彩" };
+            string[] nonMosaicTags = { "无修", "無修" };
+            string[] dlTags = { "DL版" };
+            string[] magazineTags = { "COMIC" };
+            string[] cmTags = { "C" };
+            string[] translatorTags_Chinese = { "漢化", "中国語", "汉化", "中国翻訳" };
+            string[] translatorTags_English = { "英訳" };
 
-                if (tag.Contains("全彩"))
+            foreach (string tag in tags)
+            {
+                // 判断本子是否全彩
+                if (tag.ParseInclude(fullCollarTags))
                 {
                     mangaTagInfo.IsFullColor = true;
+                    continue;
+                }
+                // 判断本子是否无修
+                if (tag.ParseInclude(nonMosaicTags))
+                {
+                    mangaTagInfo.NonMosaic = true;
+                    continue;
+                }
+                // 判断本子是否是DL版
+                if (tag.ParseInclude(dlTags))
+                {
+                    mangaTagInfo.IsDL = true;
+                    continue;
+                }
+                // 判断是否是杂志
+                if (tag.ParseInclude(magazineTags))
+                {
+                    string magazine = tag;
+                    foreach (var t in magazineTags)
+                    {
+                        magazine = magazine.Replace(t, "");
+                    }
+
+                    mangaTagInfo.MagazinePublished = magazine;
+                    continue;
+                }
+                //判断CM展会信息
+                if (tag.ParseInclude(cmTags))// 初步判断
+                {
+                    string cmVersion = tag;
+                    foreach (var t in cmTags)
+                    {
+                        cmVersion = cmVersion.Replace(t, "");
+                    }
+
+                    mangaTagInfo.MagazinePublished = cmVersion;
+                    continue;
+                }
+                if (tag.ParseInclude(translatorTags_Chinese))
+                {
+                    mangaTagInfo.Translator = tag;
+                    mangaTagInfo.Language = "Chinese";
+                    continue;
+                }
+                if (tag.ParseInclude(translatorTags_English))
+                {
+                    mangaTagInfo.Translator = tag;
+                    mangaTagInfo.Language = "English";
+                    continue;
                 }
             }
         }
 
-        public static void canbePair (this MangaTagInfo mangaTagInfo)
+        public static void canbePair (this MangaTag mangaTagInfo)
         {
             char[] chars1 = { '[', '【', '（', '(', '{' };// 左括号
             char[] chars2 = { ']', '】', '）', ')', '}' };// 右括号
@@ -61,7 +112,7 @@ namespace EroMangaManager.Database.Utility
             mangaTagInfo.PaisIsDouble = true;
         }
 
-        public static void SplitTags (this MangaTagInfo mangaTagInfo, string tags)
+        public static void SplitTags (this MangaTag mangaTagInfo, string tags)
         {
             char[] chars1 = new char[] { '[', '【', '（', '(', '{' };// 左括号
             char[] chars2 = new char[] { ']', '】', ')', '）', '}' };// 右括号
@@ -115,7 +166,7 @@ namespace EroMangaManager.Database.Utility
             }
         }
 
-        public static void SetDisplayName (this MangaTagInfo mangaTagInfo)
+        public static void SetDisplayName (this MangaTag mangaTagInfo)
         {
             string path = mangaTagInfo.AbsolutePath;
             string DisplayName = Path.GetFileNameWithoutExtension(path);
@@ -125,9 +176,21 @@ namespace EroMangaManager.Database.Utility
         /// <summary> 初始化 </summary>
         /// <param name="mangaTagInfo"> </param>
         /// <param name="absolutePath"> </param>
-        public static void SetAbsolutePath (this MangaTagInfo mangaTagInfo, string absolutePath)
+        public static void SetAbsolutePath (this MangaTag mangaTagInfo, string absolutePath)
         {
             mangaTagInfo.AbsolutePath = absolutePath;
+        }
+
+        private static bool ParseInclude (this string _unknownTag, IEnumerable<string> tags)
+        {
+            foreach (var tag in tags)
+            {
+                if (_unknownTag.Contains(tag))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

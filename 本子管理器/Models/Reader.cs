@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using EroMangaManager.Helpers;
-using EroMangaManager.Models;
 
-using Windows.Storage;
 using Windows.UI.Xaml.Media.Imaging;
 
 using static EroMangaManager.Helpers.ZipEntryHelper;

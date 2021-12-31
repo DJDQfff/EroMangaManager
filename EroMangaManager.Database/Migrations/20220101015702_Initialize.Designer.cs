@@ -2,14 +2,16 @@
 using EroMangaManager.Database.Tables;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EroMangaManager.Database.Migrations
 {
     [DbContext(typeof(Databases))]
-    partial class DatabasesModelSnapshot : ModelSnapshot
+    [Migration("20220101015702_Initialize")]
+    partial class Initialize
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

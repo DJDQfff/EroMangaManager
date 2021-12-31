@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 using EroMangaManager.Helpers;
 using EroMangaManager.Models;
 
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
-using Windows.Storage;
+
 using static EroMangaManager.Helpers.ZipEntryHelper;
-using System;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板

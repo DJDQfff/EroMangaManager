@@ -1,24 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-using EroMangaManager.Helpers;
-
 using Windows.Storage;
-using Windows.UI.Xaml.Controls;
 
 using static Windows.Storage.AccessCache.StorageApplicationPermissions;
 
 namespace EroMangaManager.Models
 {
-    public class ListObserver
+    public class CollectionObserver
     {
         public ObservableCollection<StorageFolder> FolderList { set; get; } = new ObservableCollection<StorageFolder>();
         public ObservableCollection<MangaBook> MangaList { set; get; } = new ObservableCollection<MangaBook>();
 
-        public ListObserver ()
+        public CollectionObserver ()
         {
             Initialize();
         }
