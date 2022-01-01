@@ -38,7 +38,7 @@ namespace EroMangaManager.Pages
         {
             MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
             MangaBook eroManga = menuFlyout.DataContext as MangaBook;
-            await eroManga.RemoveFile();
+            await MainPage.current.collectionObserver.DeleteSingleMangaBook(eroManga);
         }
 
         private async void TranslateEachMangaName (object sender, Windows.UI.Xaml.RoutedEventArgs e)

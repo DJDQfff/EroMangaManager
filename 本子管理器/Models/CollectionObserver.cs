@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 using Windows.Storage;
-
+using EroMangaManager.Database.Entities;
+using EroMangaManager.Database.DatabaseOperation;
+using EroMangaManager.Database.Utility;
 using static Windows.Storage.AccessCache.StorageApplicationPermissions;
 
 namespace EroMangaManager.Models
@@ -53,12 +56,12 @@ namespace EroMangaManager.Models
             if (query == 0)
             {
                 FolderList.Add(folder);
-
+                await SaveTags(folder);
                 await PickMangas(folder);
             }
         }
 
-        public void RemoveFolder (StorageFolder folder)
+        public async Task RemoveFolder (StorageFolder folder)
         {
             FolderList.Remove(folder);
 
@@ -72,6 +75,7 @@ namespace EroMangaManager.Models
                     MangaList.Remove(MangaList[i]);
                 }
             }
+            await RemoveTags(folder);
         }
 
         private async Task PickMangas (StorageFolder storageFolder)
@@ -82,7 +86,8 @@ namespace EroMangaManager.Models
             // bug，普通的遍历添加反而不会出现 bug bug 名称：已为另一线程调用
             for (int i = 0; i < files.Count; i++)
             {
-                MangaBook manga = new MangaBook(files[i], storageFolder);
+                MangaTag mangaTag = TagOperation.QueryTag(files[i].Path);
+                MangaBook manga = new MangaBook(files[i], storageFolder, mangaTag);
 
                 MangaList.Add(manga);         // TODO：多线程下，对list进行写操作，会出bug
 
@@ -90,6 +95,32 @@ namespace EroMangaManager.Models
 
                 await manga.SetCover();
             }
+        }
+
+        private async Task SaveTags (StorageFolder storageFolder)
+        {
+            var files = await storageFolder.GetFilesAsync();
+
+            List<MangaTag> list = new List<MangaTag>();
+            foreach (var file in files)
+            {
+                MangaTag mangaTag = MangaTagFactory.Creat(file.Path);
+                list.Add(mangaTag);
+            }
+            await TagOperation.SaveTags(list);
+        }
+
+        private async Task RemoveTags (StorageFolder storageFolder)
+        {
+            var files = (await storageFolder.GetFilesAsync()).Select(n => n.Path).ToArray();
+            await TagOperation.RemoveTags(files);
+        }
+
+        public async Task DeleteSingleMangaBook (MangaBook mangaBook)
+        {
+            await mangaBook.StorageFile.DeleteAsync();
+            MangaList.Remove(mangaBook);
+            await TagOperation.RemoveTag(mangaBook.StorageFile.Path);
         }
     }
 }

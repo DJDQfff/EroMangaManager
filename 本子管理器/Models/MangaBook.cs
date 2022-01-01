@@ -63,11 +63,11 @@ namespace EroMangaManager.Models
 
         /// <summary> 实例化EroManga </summary>
         /// <param name="storageFile"> </param>
-        public MangaBook (StorageFile storageFile, StorageFolder storageFolder)
+        public MangaBook (StorageFile storageFile, StorageFolder storageFolder, MangaTag mangaTag)
         {
             StorageFolder = storageFolder;
             StorageFile = storageFile;
-            TagInfo = MangaTagFactory.Creat(StorageFile.Path);
+            TagInfo = mangaTag;
             _manganame = TagInfo.MangaName;
         }
 
@@ -90,10 +90,6 @@ namespace EroMangaManager.Models
         {
             this.MangaName = name;
         }
-
-        /// <summary> 删除文件 </summary>
-        /// <returns> </returns>
-        public async Task RemoveFile () => await this.StorageFile.DeleteAsync();
 
         private void NotifyPropertyChanged ([CallerMemberName] string propertyName = "")
         {

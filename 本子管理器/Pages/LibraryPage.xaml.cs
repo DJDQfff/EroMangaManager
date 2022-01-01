@@ -26,12 +26,12 @@ namespace EroMangaManager.Pages
             }
         }
 
-        private void removeButton_Click (object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void removeButton_Click (object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             Button button = sender as Button;
             StorageFolder storageFolder = button.DataContext as StorageFolder;
 
-            MainPage.current.collectionObserver.RemoveFolder(storageFolder);
+            await MainPage.current.collectionObserver.RemoveFolder(storageFolder);
         }
     }
 }
