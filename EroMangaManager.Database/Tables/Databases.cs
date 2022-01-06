@@ -6,9 +6,13 @@ namespace EroMangaManager.Database.Tables
 {
     public class Databases : DbContext
     {
+        public DbSet<DefaultTagFilter> TranslatorTagsFromUser { set; get; }
+        public DbSet<DefaultTagFilter> TranslatorTagsFromShared { set; get; }
+        public DbSet<DefaultTagFilter> AuthorTagsFromUser { set; get; }
+        public DbSet<DefaultTagFilter> AuthorTagsFromShared { set; get; }
         public DbSet<ImageFilter> ImageFilters { set; get; }
-        public DbSet<MangaTag> MangaTags { set; get; }
-        public DbSet<UserTagFilter> TagFilters { set; get; }
+        public DbSet<MangaTag> MangaTagDatas { set; get; }
+        public DbSet<UserDefinedTag> UserDefinedTags { set; get; }
         public DbSet<ReadingInfo> ReadingRecords { set; get; }
 
         private readonly string ConnectionString;

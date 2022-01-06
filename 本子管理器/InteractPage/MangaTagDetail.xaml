@@ -1,0 +1,26 @@
+﻿<ContentDialog
+    x:Class="EroMangaManager.InteractPage.MangaTagDetail"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:EroMangaManager.InteractPage"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:usercontrols="using:EroMangaManager.UserControls"
+    Title="{x:Bind mangaTag.MangaName}"
+    CloseButtonText="关闭"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    PrimaryButtonText="编辑"
+    mc:Ignorable="d">
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
+            <StackPanel Orientation="Vertical">
+                <usercontrols:TagInfo TagName="路径：" TagValue="{x:Bind mangaTag.AbsolutePath}" />
+                <usercontrols:TagInfo TagName="作者：" TagValue="{x:Bind ConvertTagValue( mangaTag.Author)}" />
+                <usercontrols:TagInfo TagName="译者：" TagValue="{x:Bind ConvertTagValue(mangaTag.Translator)}" />
+                <usercontrols:TagInfo TagName="全彩：" TagValue="{x:Bind ConvertTagValue(mangaTag.IsFullColor)}" />
+                <usercontrols:TagInfo TagName="无修：" TagValue="{x:Bind ConvertTagValue(mangaTag.NonMosaic)}" />
+                <usercontrols:TagInfo TagName="语言：" TagValue="{x:Bind ConvertTagValue( mangaTag.Language)}" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</ContentDialog>

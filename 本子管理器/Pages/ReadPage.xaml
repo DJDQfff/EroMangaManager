@@ -10,6 +10,32 @@
     NavigationCacheMode="Enabled"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <DataTemplate x:Key="Datatemplate_1" x:DataType="zip:ZipArchiveEntry">
+            <Grid x:Name="RootGrid">
+                <Grid.ContextFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem
+                            Click="FilteThisImage_Click"
+                            DataContext="{x:Bind}"
+                            Text="不显示" />
+                        <MenuFlyoutItem
+                            Click="SaveImageAs_Click"
+                            DataContext="{x:Bind}"
+                            Text="另存为" />
+                    </MenuFlyout>
+                </Grid.ContextFlyout>
+                <ScrollViewer
+                    HorizontalScrollBarVisibility="Disabled"
+                    HorizontalScrollMode="Disabled"
+                    VerticalScrollBarVisibility="Disabled"
+                    VerticalScrollMode="Disabled"
+                    ZoomMode="Enabled">
+                    <Image DataContext="{x:Bind}" />
+                </ScrollViewer>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
     <Grid>
         <ProgressRing
             x:Name="ReadPage_ProgressRing_0"
@@ -19,34 +45,8 @@
             Visibility="Collapsed" />
         <FlipView
             x:Name="FLIP"
+            ItemTemplate="{StaticResource Datatemplate_1}"
             ItemsSource="{x:Bind page:ReadPage.zipArchiveEntries, Mode=OneWay}"
-            SelectionChanged="FLIP_SelectionChanged">
-            <FlipView.ItemTemplate>
-                <DataTemplate x:DataType="zip:ZipArchiveEntry">
-                    <Grid x:Name="RootGrid">
-                        <Grid.ContextFlyout>
-                            <MenuFlyout>
-                                <MenuFlyoutItem
-                                    Click="FilteThisImage_Click"
-                                    DataContext="{x:Bind}"
-                                    Text="不显示" />
-                                <MenuFlyoutItem
-                                    Click="SaveImageAs_Click"
-                                    DataContext="{x:Bind}"
-                                    Text="另存为" />
-                            </MenuFlyout>
-                        </Grid.ContextFlyout>
-                        <ScrollViewer
-                            HorizontalScrollBarVisibility="Disabled"
-                            HorizontalScrollMode="Disabled"
-                            VerticalScrollBarVisibility="Disabled"
-                            VerticalScrollMode="Disabled"
-                            ZoomMode="Enabled">
-                            <Image DataContext="{x:Bind}" />
-                        </ScrollViewer>
-                    </Grid>
-                </DataTemplate>
-            </FlipView.ItemTemplate>
-        </FlipView>
+            SelectionChanged="FLIP_SelectionChanged" />
     </Grid>
 </Page>

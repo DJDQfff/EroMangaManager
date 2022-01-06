@@ -43,7 +43,7 @@ namespace EroMangaManager.Models
             }
             foreach (var folder in FolderList)
             {
-                await PickMangas(folder);
+                await PickMangasInFolder(folder);
             }
         }
 
@@ -56,40 +56,51 @@ namespace EroMangaManager.Models
             if (query == 0)
             {
                 FolderList.Add(folder);
-                await SaveTags(folder);
-                await PickMangas(folder);
+                await SaveTagsToDatabase(folder);
+                await PickMangasInFolder(folder);
             }
         }
 
         public async Task RemoveFolder (StorageFolder folder)
         {
-            FolderList.Remove(folder);
+            FolderList.Remove(folder);      // 从访问列表Model里移除
 
-            string token = FutureAccessList.Add(folder);
+            string token = FutureAccessList.Add(folder);        // 从系统存储api里移除
             FutureAccessList.Remove(token);
 
-            for (int i = MangaList.Count - 1; i >= 0; i--)
+            for (int i = MangaList.Count - 1; i >= 0; i--)      // 从Model中移除漫画
             {
                 if (MangaList[i].StorageFolder == folder)
                 {
                     MangaList.Remove(MangaList[i]);
                 }
             }
-            await RemoveTags(folder);
+            await RemoveTagsFromDatabase(folder);                           // 从数据库中移除
         }
 
-        private async Task PickMangas (StorageFolder storageFolder)
+        private async Task PickMangasInFolder (StorageFolder storageFolder)
         {
             var files = await storageFolder.GetFilesAsync();
+            MangaTag[] tags = TagOperation.QuertTags(storageFolder.Path);
 
-            // TODO：这里如果使用 list<task> 的话，反而会出
-            // bug，普通的遍历添加反而不会出现 bug bug 名称：已为另一线程调用
+            // TODO：这里如果使用 list<task> 的话，会出bug
+            // 普通的遍历添加反而不会出现bug
+            // bug 名称：已为另一线程调用
             for (int i = 0; i < files.Count; i++)
             {
-                MangaTag mangaTag = TagOperation.QueryTag(files[i].Path);
+                MangaTag mangaTag;
+                try
+                {   // 文件夹内容与数据库内容不同
+                    mangaTag = tags.Single(n => n.AbsolutePath == files[i].Path);
+                }
+                catch (InvalidOperationException)
+                {
+                    mangaTag = MangaTagFactory.Creat(files[i].Path);
+                    await TagOperation.SaveTag(mangaTag);
+                }
                 MangaBook manga = new MangaBook(files[i], storageFolder, mangaTag);
 
-                MangaList.Add(manga);         // TODO：多线程下，对list进行写操作，会出bug
+                MangaList.Add(manga);         // 多线程下，对list进行写操作，会出bug
 
                 await manga.EnsureCoverFile();
 
@@ -97,7 +108,7 @@ namespace EroMangaManager.Models
             }
         }
 
-        private async Task SaveTags (StorageFolder storageFolder)
+        private async Task SaveTagsToDatabase (StorageFolder storageFolder)
         {
             var files = await storageFolder.GetFilesAsync();
 
@@ -110,7 +121,10 @@ namespace EroMangaManager.Models
             await TagOperation.SaveTags(list);
         }
 
-        private async Task RemoveTags (StorageFolder storageFolder)
+        /// <summary> 从数据库中移除传入文件夹下的文件 </summary>
+        /// <param name="storageFolder"> </param>
+        /// <returns> </returns>
+        private async Task RemoveTagsFromDatabase (StorageFolder storageFolder)
         {
             var files = (await storageFolder.GetFilesAsync()).Select(n => n.Path).ToArray();
             await TagOperation.RemoveTags(files);

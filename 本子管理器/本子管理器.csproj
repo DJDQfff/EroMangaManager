@@ -126,8 +126,17 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="InteractPage\ConfirmDeleteMangaFile.xaml.cs">
+      <DependentUpon>ConfirmDeleteMangaFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InteractPage\MangaTagDetail.xaml.cs">
+      <DependentUpon>MangaTagDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\InfoRecorder.cs" />
     <Compile Include="Models\Reader.cs" />
+    <Compile Include="UserControls\TagInfo.xaml.cs">
+      <DependentUpon>TagInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
@@ -186,6 +195,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="InteractPage\ConfirmDeleteMangaFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InteractPage\MangaTagDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TagInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ReadPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

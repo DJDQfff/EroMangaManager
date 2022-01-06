@@ -29,18 +29,24 @@
                 <Grid.ContextFlyout>
                     <MenuFlyout>
                         <MenuFlyoutItem
-                            Click="FilteThisImage_Click"
+                            Click="ViewMangaTag"
                             DataContext="{x:Bind}"
-                            Text="{x:Bind MangaName}" />
-                        <MenuFlyoutItem Text="{x:Bind TagInfo.Language}" />
-                        <MenuFlyoutItem Text="{x:Bind TagInfo.DisplayName}" />
-                        <MenuFlyoutItem Text="{x:Bind TagInfo.NonMosaic}" />
+                            Text="查看信息" />
+
                         <MenuFlyoutSeparator />
                         <MenuFlyoutSubItem Text="文件操作">
                             <MenuFlyoutItem
-                                Click="DeleteEroManga"
+                                Click="DeleteEroMangaFile"
                                 DataContext="{x:Bind}"
-                                Text="删除" />
+                                Text="删除源文件" />
+                            <MenuFlyoutItem
+                                Click="LaunchFile"
+                                DataContext="{x:Bind}"
+                                Text="打开文件" />
+                            <MenuFlyoutItem
+                                Click="LaunchFolder"
+                                DataContext="{x:Bind}"
+                                Text="打开文件夹" />
                         </MenuFlyoutSubItem>
                     </MenuFlyout>
                 </Grid.ContextFlyout>
@@ -85,7 +91,7 @@
             Grid.Row="1"
             Margin="4"
             IsItemClickEnabled="True"
-            ItemClick="GridView_ItemClick"
+            ItemClick="GridView_ItemClick_ReadManga"
             ItemContainerStyle="{ThemeResource GridViewItemRevealStyle}"
             ItemTemplate="{StaticResource template_1}"
             ItemsSource="{x:Bind app:MainPage.current.collectionObserver.MangaList, Mode=OneWay}"

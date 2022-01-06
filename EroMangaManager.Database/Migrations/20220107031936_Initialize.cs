@@ -7,6 +7,19 @@ namespace EroMangaManager.Database.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "DefaultTagFilter",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Content = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DefaultTagFilter", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ImageFilters",
                 columns: table => new
                 {
@@ -21,7 +34,7 @@ namespace EroMangaManager.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MangaTags",
+                name: "MangaTagDatas",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -43,7 +56,7 @@ namespace EroMangaManager.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MangaTags", x => x.ID);
+                    table.PrimaryKey("PK_MangaTagDatas", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -61,33 +74,36 @@ namespace EroMangaManager.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TagFilters",
+                name: "UserDefinedTags",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    TagType = table.Column<string>(nullable: true),
-                    TagArray = table.Column<string>(nullable: true)
+                    TagName = table.Column<string>(nullable: true),
+                    TagPieces = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TagFilters", x => x.ID);
+                    table.PrimaryKey("PK_UserDefinedTags", x => x.ID);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "DefaultTagFilter");
+
+            migrationBuilder.DropTable(
                 name: "ImageFilters");
 
             migrationBuilder.DropTable(
-                name: "MangaTags");
+                name: "MangaTagDatas");
 
             migrationBuilder.DropTable(
                 name: "ReadingRecords");
 
             migrationBuilder.DropTable(
-                name: "TagFilters");
+                name: "UserDefinedTags");
         }
     }
 }

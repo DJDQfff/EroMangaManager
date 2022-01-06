@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Threading.Tasks;
-
+using System.Collections.Generic;
 using EroMangaManager.Helpers;
 
 using Windows.UI.Xaml.Media.Imaging;
@@ -43,20 +43,21 @@ namespace EroMangaManager.Models
             zipArchive = new ZipArchive(stream);
         }
 
-        /// <summary> 对自身的可观察集合添加项 </summary>
-        public void OpenEntries (ObservableCollection<ZipArchiveEntry> entries)
+        /// <summary> 从压缩文件的所有entry中，筛选出符合条件的 </summary>
+        public async Task SelectEntriesAsync (ObservableCollection<ZipArchiveEntry> entries)
         {
-            foreach (var entry in zipArchive.Entries)
+            for (int i = 0; i < zipArchive.Entries.Count; i++)
             {
-                bool cansue = entry.EntryFilter();
+                var entry = zipArchive.Entries[i];
+                bool cansue = await Task.Run(() => entry.EntryFilter()); // 放在这里可以
                 if (cansue)
                 {
-                    entries.Add(entry);
+                    entries.Add(entry);// 异步操作不能放在这里，会占用线程
                 }
             }
         }
 
-        public async Task OpenImages (ObservableCollection<BitmapImage> bitmapImages)
+        public async Task OpenImagesAsync (ObservableCollection<BitmapImage> bitmapImages)
         {
             foreach (var entry in zipArchiveEntries)
             {

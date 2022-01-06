@@ -15,6 +15,20 @@ namespace EroMangaManager.Database.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.21");
 
+            modelBuilder.Entity("EroMangaManager.Database.Entities.DefaultTagFilter", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("DefaultTagFilter");
+                });
+
             modelBuilder.Entity("EroMangaManager.Database.Entities.ImageFilter", b =>
                 {
                     b.Property<int>("ID")
@@ -82,7 +96,7 @@ namespace EroMangaManager.Database.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("MangaTags");
+                    b.ToTable("MangaTagDatas");
                 });
 
             modelBuilder.Entity("EroMangaManager.Database.Entities.ReadingInfo", b =>
@@ -102,21 +116,21 @@ namespace EroMangaManager.Database.Migrations
                     b.ToTable("ReadingRecords");
                 });
 
-            modelBuilder.Entity("EroMangaManager.Database.Entities.UserTagFilter", b =>
+            modelBuilder.Entity("EroMangaManager.Database.Entities.UserDefinedTag", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("TagArray")
+                    b.Property<string>("TagName")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("TagType")
+                    b.Property<string>("TagPieces")
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");
 
-                    b.ToTable("TagFilters");
+                    b.ToTable("UserDefinedTags");
                 });
 #pragma warning restore 612, 618
         }

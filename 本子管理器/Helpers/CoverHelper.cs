@@ -66,7 +66,7 @@ namespace EroMangaManager.Helpers
             StorageFolder coverfolder = await FoldersHelper.GetCoversFolder();
 
             // TODO：一个可能的bug，两个文件的displayname相同，但后缀不同（应该不会，文件选择器，只会挑选zip文件）
-            // TODO：解决了一个bug：原来是手动创建一个文件，然后写入流，再添加后缀名，来实现解压并创建文件功能
+            // 解决了一个bug：原来是手动创建一个文件，然后写入流，再添加后缀名，来实现解压并创建文件功能
             // 后来改进：通过system.io自带api直接解压文件，虽然原bug的解决方法没有找到，但此bug已解决
             //StorageFile coverfile = await coverfolder.CreateFileAsync(storageFile.DisplayName, CreationCollisionOption.ReplaceExisting);
             //Stream coverstream = await coverfile.OpenStreamForWriteAsync();

@@ -2,7 +2,7 @@
 
 using EroMangaManager.Helpers;
 using EroMangaManager.Models;
-
+using EroMangaManager.InteractPage;
 using Windows.UI.Xaml.Controls;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
@@ -19,7 +19,7 @@ namespace EroMangaManager.Pages
             Bookcase_GridView.ItemClick += ReadPage.TryChangeManga;
         }
 
-        private void GridView_ItemClick (object sender, ItemClickEventArgs e)
+        private void GridView_ItemClick_ReadManga (object sender, ItemClickEventArgs e)
         {
             //MainPage.current.MainFrame.Navigate(typeof(ReadPage), storageFile);
             //使用下面这个更好
@@ -27,18 +27,21 @@ namespace EroMangaManager.Pages
             MainPage.current.MainNavigationView.SelectedItem = MainPage.current.MainNavigationView.MenuItems[2];
         }
 
-        private async void FilteThisImage_Click (object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void DeleteEroMangaFile (object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
             MangaBook eroManga = menuFlyout.DataContext as MangaBook;
-            await new ContentDialog() { CloseButtonText = eroManga.MangaName }.ShowAsync();
-        }
+            ConfirmDeleteMangaFile confirm = new ConfirmDeleteMangaFile(eroManga);
+            var result = await confirm.ShowAsync();
+            switch (result)
+            {
+                case ContentDialogResult.Primary:
+                    await MainPage.current.collectionObserver.DeleteSingleMangaBook(eroManga);
+                    break;
 
-        private async void DeleteEroManga (object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
-            MangaBook eroManga = menuFlyout.DataContext as MangaBook;
-            await MainPage.current.collectionObserver.DeleteSingleMangaBook(eroManga);
+                case ContentDialogResult.Secondary:
+                    break;
+            }
         }
 
         private async void TranslateEachMangaName (object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -72,6 +75,26 @@ namespace EroMangaManager.Pages
             }
 
             button.IsEnabled = true;
+        }
+
+        private async void ViewMangaTag (object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            MenuFlyoutItem menuFlyoutItem = sender as MenuFlyoutItem;
+            MangaBook mangaBook = menuFlyoutItem.DataContext as MangaBook;
+            MangaTagDetail mangaTagDetail = new MangaTagDetail(mangaBook);
+            await mangaTagDetail.ShowAsync();
+        }
+
+        private async void LaunchFolder (object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var mangaBook = (sender as MenuFlyoutItem).DataContext as MangaBook;
+            await Windows.System.Launcher.LaunchFolderAsync(mangaBook.StorageFolder);
+        }
+
+        private async void LaunchFile (object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var mangaBook = (sender as MenuFlyoutItem).DataContext as MangaBook;
+            await Windows.System.Launcher.LaunchFileAsync(mangaBook.StorageFile);
         }
     }
 }

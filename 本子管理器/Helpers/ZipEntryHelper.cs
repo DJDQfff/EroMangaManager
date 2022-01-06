@@ -17,20 +17,22 @@ namespace EroMangaManager.Helpers
         /// <returns> </returns>
         public static bool EntryFilter (this ZipArchiveEntry entry)
         {
-            bool canuse = false;
-            if (HashManager.LengthFilter(entry.Length))              // 第一个条件：比较数据库，解压后大小
+            bool canuse = true;
+
+            if (HashManager.WhetherDatabaseMatchLength(entry.Length))              // 第一个条件：比较数据库，解压后大小
+                return false;
+
+            if (entry.FullName.EndsWith('/'))                      // 排除文件夹entry
+                return false;
+
+            using (Stream stream = entry.Open())               // 不能对stream设置position
             {
-                if (!entry.FullName.EndsWith('/'))                      // 排除文件夹entry
+                if (HashManager.StreamHashFilter(stream))      // 第二个条件：计算流hash，判断唯一性
                 {
-                    using (Stream stream = entry.Open())               // 不能对stream设置position
-                    {
-                        if (HashManager.StreamHashFilter(stream))      // 第二个条件：计算流hash，判断唯一性
-                        {
-                            canuse = true;                              // 符合以上条件，这个entry不会被过滤掉
-                        }
-                    }
+                    canuse = false;                              // 符合以上条件，这个entry不会被过滤掉
                 }
             }
+
             return canuse;
         }
 

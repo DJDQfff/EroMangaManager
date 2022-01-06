@@ -36,7 +36,7 @@ namespace EroMangaManager.Database.DatabaseOperation
             List<MangaTag> list = new List<MangaTag>();
             foreach (var path in absolutePathes)
             {
-                MangaTag mangaTag = databases.MangaTags.Where(n => n.AbsolutePath == path).Single();
+                MangaTag mangaTag = databases.MangaTagDatas.Single(n => n.AbsolutePath == path);
 
                 list.Add(mangaTag);
             }
@@ -47,22 +47,29 @@ namespace EroMangaManager.Database.DatabaseOperation
         public static async Task RemoveTag (string path)
         {
             Tables.Databases databases = new Tables.Databases();
-            MangaTag mangaTag = databases.MangaTags.Single(n => n.AbsolutePath == path);
+            MangaTag mangaTag = databases.MangaTagDatas.Single(n => n.AbsolutePath == path);
             databases.Remove(mangaTag);
             await databases.SaveChangesAsync();
+        }
+
+        public static MangaTag[] QuertTags (string folder)
+        {
+            Tables.Databases databases = new Tables.Databases();
+            var tags = databases.MangaTagDatas.Where(n => n.AbsolutePath.Contains(folder)).ToArray();
+            return tags;
         }
 
         public static MangaTag QueryTag (string absolutePath)
         {
             Tables.Databases databases = new Tables.Databases();
-            var tag = databases.MangaTags.Where(n => n.AbsolutePath == absolutePath).Single();
+            var tag = databases.MangaTagDatas.Single(n => n.AbsolutePath == absolutePath);
             return tag;
         }
 
         public static async Task UpdateTag (MangaTag mangaTag)
         {
             Tables.Databases databases = new Tables.Databases();
-            var tag = databases.MangaTags.Where(n => n.AbsolutePath == mangaTag.AbsolutePath).Single();
+            var tag = databases.MangaTagDatas.Single(n => n.AbsolutePath == mangaTag.AbsolutePath);
             databases.Remove(tag);
             databases.Add(mangaTag);
             await databases.SaveChangesAsync();

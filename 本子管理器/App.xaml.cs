@@ -47,7 +47,6 @@ namespace EroMangaManager
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
-                    //TODO: 从之前挂起的应用程序加载状态
                 }
 
                 // 将框架放在当前窗口中
@@ -86,7 +85,7 @@ namespace EroMangaManager
         private void OnSuspending (object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
-            //TODO: 保存应用程序状态并停止任何后台活动
+
             deferral.Complete();
         }
     }

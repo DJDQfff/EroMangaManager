@@ -53,8 +53,7 @@ namespace EroMangaManager.Pages
                 currentManga = manga;
                 zipArchiveEntries.Clear();
                 currentReader = await Reader.Create(manga);
-                Debug.WriteLine(currentReader.GetHashCode());
-                currentReader.OpenEntries(zipArchiveEntries);
+                await currentReader.SelectEntriesAsync(zipArchiveEntries);
             }
         }
 
@@ -65,6 +64,7 @@ namespace EroMangaManager.Pages
             MainPage.current.MainNavigationView.IsPaneOpen = false;
         }
 
+        //TODO 相机和还在持续增加时，切换项，会导致并行报错，
         /// <summary> 切换图 </summary>
         /// <param name="sender"> </param>
         /// <param name="e">      </param>
@@ -77,7 +77,7 @@ namespace EroMangaManager.Pages
 
             ZipArchiveEntry entry = e.AddedItems[0] as ZipArchiveEntry;
 
-            FlipViewItem item = FLIP.ContainerFromItem(entry) as FlipViewItem;      // TODO 一个稳定必现的bug，创建封面文件后，打开本子，这里会提示item为null
+            FlipViewItem item = FLIP.ContainerFromItem(entry) as FlipViewItem;
             var root = item.ContentTemplateRoot as Grid;
 
             //root.FindName("image");               // TODO 此方法有bug，应该是控件bug，有空翻文档细看
