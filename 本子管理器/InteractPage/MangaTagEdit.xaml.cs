@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
-
-using EroMangaManager.Database.Entities;
 
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -17,18 +16,13 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-using EroMangaManager.Models;
+// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“内容对话框”项模板
 
-//https://go.microsoft.com/fwlink/?LinkId=234236 上介绍了“用户控件”项模板
-
-namespace EroMangaManager.UserControls
+namespace EroMangaManager.InteractPage
 {
-    public sealed partial class TagInfo : UserControl
+    public sealed partial class MangaTagEdit : ContentDialog
     {
-        public string TagName { get; set; }
-        public string TagValue { get; set; }
-
-        public TagInfo ()
+        public MangaTagEdit ()
         {
             this.InitializeComponent();
         }

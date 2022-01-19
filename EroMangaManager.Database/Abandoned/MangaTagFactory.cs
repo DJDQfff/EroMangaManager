@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 using EroMangaManager.Database.Entities;
 
-namespace EroMangaManager.Database.Utility
+namespace Abandoned.EroMangaManager.Database.EntityFactory
 {
     public static class MangaTagFactory
     {

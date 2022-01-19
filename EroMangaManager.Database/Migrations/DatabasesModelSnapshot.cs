@@ -15,20 +15,6 @@ namespace EroMangaManager.Database.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.21");
 
-            modelBuilder.Entity("EroMangaManager.Database.Entities.DefaultTagFilter", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("DefaultTagFilter");
-                });
-
             modelBuilder.Entity("EroMangaManager.Database.Entities.ImageFilter", b =>
                 {
                     b.Property<int>("ID")
@@ -96,7 +82,7 @@ namespace EroMangaManager.Database.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("MangaTagDatas");
+                    b.ToTable("SpecificMangaTagDatas");
                 });
 
             modelBuilder.Entity("EroMangaManager.Database.Entities.ReadingInfo", b =>
@@ -105,32 +91,41 @@ namespace EroMangaManager.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("AbsolutePath")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MangaName")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("PageAmount")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("ReadingPosition")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("TranslatedMangaName")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("ID");
 
                     b.ToTable("ReadingRecords");
                 });
 
-            modelBuilder.Entity("EroMangaManager.Database.Entities.UserDefinedTag", b =>
+            modelBuilder.Entity("EroMangaManager.Database.Entities.TagKeywords", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("TagName")
+                    b.Property<string>("TagKeywordPieces")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("TagPieces")
+                    b.Property<string>("TagName")
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");
 
-                    b.ToTable("UserDefinedTags");
+                    b.ToTable("TagKeywords");
                 });
 #pragma warning restore 612, 618
         }

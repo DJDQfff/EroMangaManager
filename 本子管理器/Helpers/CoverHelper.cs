@@ -18,7 +18,7 @@ namespace EroMangaManager.Helpers
         /// <summary> 创建 缩略图 作为封面文件 </summary>
         /// <param name="storageFile"> </param>
         /// <returns> </returns>
-        public static async Task CreatCoverFile_Thumbnail (this StorageFile storageFile)
+        public static async Task CreatThumbnailCoverFile_UsingSkiaSharp (this StorageFile storageFile)
         {
             StorageFolder coverFolder = await FoldersHelper.GetCoversFolder();
             StorageFile coverFIle = await coverFolder.CreateFileAsync(storageFile.DisplayName + ".jpg");
@@ -43,10 +43,16 @@ namespace EroMangaManager.Helpers
 
                                     memoryStream.Position = 0;
 
+                                    // 存在bug，一些图片解码会返回null
+
+                                    SkiaSharp.SKBitmap sKBitmap = SkiaSharp.SKBitmap.Decode(memoryStream);
+                                    SKBitmap sKBitmap1 = sKBitmap.Resize(new SKImageInfo(sKBitmap.Width, sKBitmap.Height), SKFilterQuality.Low);
+
+                                    // SkiaSharp.SKImage sKImage = SkiaSharp.SKImage.FromEncodedData(memoryStream);
+                                    // SKBitmap sKBitmap1 = SkiaSharp.SKBitmap.FromImage(sKImage);
+
                                     using (Stream writestream = await coverFIle.OpenStreamForWriteAsync())
                                     {
-                                        SkiaSharp.SKBitmap sKBitmap = SkiaSharp.SKBitmap.Decode(memoryStream);
-                                        SKBitmap sKBitmap1 = sKBitmap.Resize(new SKImageInfo(sKBitmap.Width, sKBitmap.Height), SKFilterQuality.Low);
                                         sKBitmap1.Encode(writestream, SKEncodedImageFormat.Jpeg, 30);
                                     }
                                 }
@@ -61,7 +67,7 @@ namespace EroMangaManager.Helpers
         /// <summary> 创建 原图 作为封面文件 </summary>
         /// <param name="storageFile"> </param>
         /// <returns> </returns>
-        public static async Task CreatCoverFile_Origin (this StorageFile storageFile)
+        public static async Task CreatOriginCoverFile_UsingZipArchiveEntry (this StorageFile storageFile)
         {
             StorageFolder coverfolder = await FoldersHelper.GetCoversFolder();
 
@@ -113,7 +119,7 @@ namespace EroMangaManager.Helpers
         }
 
         /// <summary>
-        /// 系统缩率图存在更新迟缓的问题，还是得靠自己写缩率图 更新：原bug消除，此功能不再需要
+        /// 系统缩率图存在更新迟缓的问题，还是得靠自己写缩率图 ，此功能不再需要
         /// </summary>
         /// <param name="cover"> </param>
         /// <returns> </returns>

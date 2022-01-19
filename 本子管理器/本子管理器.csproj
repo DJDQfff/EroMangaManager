@@ -132,6 +132,9 @@
     <Compile Include="InteractPage\MangaTagDetail.xaml.cs">
       <DependentUpon>MangaTagDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InteractPage\MangaTagEdit.xaml.cs">
+      <DependentUpon>MangaTagEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\InfoRecorder.cs" />
     <Compile Include="Models\Reader.cs" />
     <Compile Include="UserControls\TagInfo.xaml.cs">
@@ -200,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="InteractPage\MangaTagDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InteractPage\MangaTagEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

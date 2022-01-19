@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 using EroMangaManager.Database.Entities;
-using EroMangaManager.Database.Utility;
+using EroMangaManager.Database.EntityFactory;
 
 /*
  * 简化版EroManga类
@@ -46,7 +46,7 @@ namespace EroMangaManager.Models
         /// <summary> 本子所属文件夹 </summary>
         public StorageFolder StorageFolder { set; get; }
 
-        public MangaTag TagInfo { set; get; }
+        public ReadingInfo ReadingInfo { set; get; }
 
         private string _manganame;
 
@@ -63,12 +63,12 @@ namespace EroMangaManager.Models
 
         /// <summary> 实例化EroManga </summary>
         /// <param name="storageFile"> </param>
-        public MangaBook (StorageFile storageFile, StorageFolder storageFolder, MangaTag mangaTag)
+        public MangaBook (StorageFile storageFile, StorageFolder storageFolder, ReadingInfo info)
         {
             StorageFolder = storageFolder;
             StorageFile = storageFile;
-            TagInfo = mangaTag;
-            _manganame = TagInfo.MangaName;
+            ReadingInfo = info;
+            _manganame = ReadingInfo.TranslatedMangaName ?? ReadingInfo.MangaName;
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace EroMangaManager.Models
             Cover = bitmapImage;
         }
 
-        public void SetTranslateName (string name)
+        public void TranslateMangaName (string name)
         {
             this.MangaName = name;
         }
@@ -106,10 +106,15 @@ namespace EroMangaManager.Models
             {
                 try
                 {
-                    await CoverHelper.CreatCoverFile_Thumbnail(this.StorageFile);
+                    await CoverHelper.CreatThumbnailCoverFile_UsingSkiaSharp(this.StorageFile);
                 }
-                catch
+                catch (Exception ex)
                 {
+                    // 上面使用的SkiaSharp库存在Bug，某些图片无法正常解码
+                    IStorageItem storageItem1 = await folder.TryGetItemAsync(this.StorageFile.DisplayName + ".jpg");
+                    await storageItem1?.DeleteAsync(StorageDeleteOption.PermanentDelete);
+
+                    await CoverHelper.CreatOriginCoverFile_UsingZipArchiveEntry(this.StorageFile);
                 }
             }
         }

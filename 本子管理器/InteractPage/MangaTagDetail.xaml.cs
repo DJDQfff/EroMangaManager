@@ -18,6 +18,8 @@ using Windows.UI.Xaml.Navigation;
 using EroMangaManager.Models;
 using EroMangaManager.UserControls;
 using EroMangaManager.Database.Entities;
+using EroMangaManager.Database.DatabaseOperation;
+using EroMangaManager.Database.EntityFactory;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“内容对话框”项模板
@@ -32,11 +34,7 @@ namespace EroMangaManager.InteractPage
         {
             this.InitializeComponent();
 
-            mangaTag = _mangaBook.TagInfo;
-        }
-
-        private void ContentDialog_PrimaryButtonClick (ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
+            mangaTag = MangaTagFactory.Creat(_mangaBook.StorageFile.Path);
         }
 
         private string ConvertTagValue (object tagvalue)
@@ -53,10 +51,13 @@ namespace EroMangaManager.InteractPage
                     return "英语";
 
                 case "Chinese":
-                    return "汉语";
+                    return "中文";
 
                 case "Japanese":
                     return "日语";
+
+                case string str:
+                    return str;
 
                 default:
                     return "未知";

@@ -8,7 +8,6 @@
     xmlns:usercontrols="using:EroMangaManager.UserControls"
     Title="{x:Bind mangaTag.MangaName}"
     CloseButtonText="关闭"
-    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     PrimaryButtonText="编辑"
     mc:Ignorable="d">
     <Grid>

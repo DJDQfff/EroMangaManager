@@ -82,7 +82,11 @@ namespace EroMangaManager.Pages
             MenuFlyoutItem menuFlyoutItem = sender as MenuFlyoutItem;
             MangaBook mangaBook = menuFlyoutItem.DataContext as MangaBook;
             MangaTagDetail mangaTagDetail = new MangaTagDetail(mangaBook);
-            await mangaTagDetail.ShowAsync();
+            var result = await mangaTagDetail.ShowAsync();
+            if (result is ContentDialogResult.Primary)
+            {
+                await new ContentDialog().ShowAsync();
+            }
         }
 
         private async void LaunchFolder (object sender, Windows.UI.Xaml.RoutedEventArgs e)

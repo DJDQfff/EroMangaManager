@@ -31,10 +31,9 @@ namespace EroMangaManager
         /// <param name="e"> 有关启动请求和过程的详细信息。 </param>
         protected override async void OnLaunched (LaunchActivatedEventArgs e)
         {
-            EroMangaManager.Database.Tables.Databases database = new Database.Tables.Databases();
-            database.Database.Migrate();
-
+            EroMangaManager.Database.DatabaseOperation.DatabaseInitialize.InitializeDefaultData();
             await FoldersHelper.EnsureFolders();
+
             Frame rootFrame = Window.Current.Content as Frame;
 
             // 不要在窗口已包含内容时重复应用程序初始化， 只需确保窗口处于活动状态

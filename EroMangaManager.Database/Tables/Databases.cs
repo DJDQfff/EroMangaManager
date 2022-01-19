@@ -6,13 +6,18 @@ namespace EroMangaManager.Database.Tables
 {
     public class Databases : DbContext
     {
-        public DbSet<DefaultTagFilter> TranslatorTagsFromUser { set; get; }
-        public DbSet<DefaultTagFilter> TranslatorTagsFromShared { set; get; }
-        public DbSet<DefaultTagFilter> AuthorTagsFromUser { set; get; }
-        public DbSet<DefaultTagFilter> AuthorTagsFromShared { set; get; }
+        /// <summary>
+        /// 存储用户添加的不显示的图片的数据库表
+        /// </summary>
         public DbSet<ImageFilter> ImageFilters { set; get; }
-        public DbSet<MangaTag> MangaTagDatas { set; get; }
-        public DbSet<UserDefinedTag> UserDefinedTags { set; get; }
+
+        /// <summary>
+        /// 存贮特定的本子Tag的表
+        /// </summary>
+        public DbSet<MangaTag> SpecificMangaTagDatas { set; get; }
+
+        public DbSet<TagKeywords> TagKeywords { set; get; }
+
         public DbSet<ReadingInfo> ReadingRecords { set; get; }
 
         private readonly string ConnectionString;

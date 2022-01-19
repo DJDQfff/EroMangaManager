@@ -3,7 +3,7 @@
     /// <summary>
     /// 数据库中，Hash 是唯一的（算法保证唯一），length 不唯一
     /// </summary>
-    public class ImageFilter
+    public class ImageFilter : IDatabaseID
     {
         /// <summary> 主键 </summary>
         public int ID { set; get; }

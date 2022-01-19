@@ -7,19 +7,6 @@ namespace EroMangaManager.Database.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "DefaultTagFilter",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Content = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DefaultTagFilter", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ImageFilters",
                 columns: table => new
                 {
@@ -34,7 +21,24 @@ namespace EroMangaManager.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MangaTagDatas",
+                name: "ReadingRecords",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    AbsolutePath = table.Column<string>(nullable: true),
+                    MangaName = table.Column<string>(nullable: true),
+                    TranslatedMangaName = table.Column<string>(nullable: true),
+                    PageAmount = table.Column<int>(nullable: false),
+                    ReadingPosition = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ReadingRecords", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SpecificMangaTagDatas",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -56,54 +60,37 @@ namespace EroMangaManager.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MangaTagDatas", x => x.ID);
+                    table.PrimaryKey("PK_SpecificMangaTagDatas", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ReadingRecords",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    PageAmount = table.Column<int>(nullable: false),
-                    ReadingPosition = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ReadingRecords", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserDefinedTags",
+                name: "TagKeywords",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     TagName = table.Column<string>(nullable: true),
-                    TagPieces = table.Column<string>(nullable: true)
+                    TagKeywordPieces = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserDefinedTags", x => x.ID);
+                    table.PrimaryKey("PK_TagKeywords", x => x.ID);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "DefaultTagFilter");
-
-            migrationBuilder.DropTable(
                 name: "ImageFilters");
-
-            migrationBuilder.DropTable(
-                name: "MangaTagDatas");
 
             migrationBuilder.DropTable(
                 name: "ReadingRecords");
 
             migrationBuilder.DropTable(
-                name: "UserDefinedTags");
+                name: "SpecificMangaTagDatas");
+
+            migrationBuilder.DropTable(
+                name: "TagKeywords");
         }
     }
 }

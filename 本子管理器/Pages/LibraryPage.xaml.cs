@@ -18,20 +18,24 @@ namespace EroMangaManager.Pages
 
         private async void addButton_Click (object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            Button button = sender as Button;
+            button.IsEnabled = false;
             StorageFolder folder = await PickHelper.PickFolder();
 
             if (folder != null)
             {
-                MainPage.current.collectionObserver.AddFolder(folder);
+                await MainPage.current.collectionObserver.AddFolder(folder);
             }
+
+            button.IsEnabled = true;
         }
 
-        private async void removeButton_Click (object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void removeButton_Click (object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             Button button = sender as Button;
             StorageFolder storageFolder = button.DataContext as StorageFolder;
 
-            await MainPage.current.collectionObserver.RemoveFolder(storageFolder);
+            MainPage.current.collectionObserver.RemoveFolder(storageFolder);
         }
     }
 }
