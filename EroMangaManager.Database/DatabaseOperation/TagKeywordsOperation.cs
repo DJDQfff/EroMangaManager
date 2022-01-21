@@ -20,6 +20,8 @@ namespace EroMangaTagDatabase.DatabaseOperation
             Database databases = new Database();
             string pieces = databases.TagKeywords.Where(n => n.TagName == tagname).Select(n => n.TagKeywordPieces).Single();
             string[] keywords = pieces.Split('\r');
+            databases.Dispose();
+
             return keywords;
         }
 
@@ -29,6 +31,7 @@ namespace EroMangaTagDatabase.DatabaseOperation
             Database databases = new Database();
             databases.TagKeywords.Add(tagKeywords);
             await databases.SaveChangesAsync();
+            databases.Dispose();
         }
 
         public static async Task UpdateSingle (string tagname, IEnumerable<string> keywords)
@@ -39,6 +42,7 @@ namespace EroMangaTagDatabase.DatabaseOperation
             tagKeywords.TagKeywordPieces = pieces;
             databases.Update(tagKeywords);
             await databases.SaveChangesAsync();
+            databases.Dispose();
         }
     }
 }

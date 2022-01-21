@@ -20,6 +20,8 @@ namespace EroMangaTagDatabase.DatabaseOperation
             Tables.Database databases = new Tables.Database();
             databases.AddRange(mangaTags);
             await databases.SaveChangesAsync();
+            databases.Dispose();
+
         }
 
         public static async Task AddSingleTag (MangaTag mangaTag)
@@ -27,6 +29,8 @@ namespace EroMangaTagDatabase.DatabaseOperation
             Tables.Database databases = new Tables.Database();
             databases.Add(mangaTag);
             await databases.SaveChangesAsync();
+            databases.Dispose();
+
         }
 
         public static async Task RemoveMultiTags (IEnumerable<string> absolutePathes)
@@ -42,6 +46,8 @@ namespace EroMangaTagDatabase.DatabaseOperation
             }
             databases.RemoveRange(list);
             await databases.SaveChangesAsync();
+            databases.Dispose();
+
         }
 
         /// <summary>
@@ -55,12 +61,16 @@ namespace EroMangaTagDatabase.DatabaseOperation
             MangaTag mangaTag = databases.SpecificMangaTagDatas.SingleOrDefault(n => n.AbsolutePath == path);
             databases?.Remove(mangaTag);
             await databases.SaveChangesAsync();
+            databases.Dispose();
+
         }
 
         public static MangaTag[] QueryMultiTags (string folder)
         {
             Tables.Database databases = new Tables.Database();
             var tags = databases.SpecificMangaTagDatas.Where(n => n.AbsolutePath.Contains(folder)).ToArray();
+            databases.Dispose();
+
             return tags;
         }
 
@@ -68,6 +78,8 @@ namespace EroMangaTagDatabase.DatabaseOperation
         {
             Tables.Database databases = new Tables.Database();
             var tag = databases.SpecificMangaTagDatas.Single(n => n.AbsolutePath == absolutePath);
+            databases.Dispose();
+
             return tag;
         }
 
@@ -78,6 +90,8 @@ namespace EroMangaTagDatabase.DatabaseOperation
             databases.Remove(tag);
             databases.Add(mangaTag);
             await databases.SaveChangesAsync();
+            databases.Dispose();
+
         }
     }
 }
