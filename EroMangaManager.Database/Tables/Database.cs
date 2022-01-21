@@ -1,10 +1,10 @@
-﻿using EroMangaManager.Database.Entities;
+﻿using EroMangaTagDatabase.Entities;
 
 using Microsoft.EntityFrameworkCore;
 
-namespace EroMangaManager.Database.Tables
+namespace EroMangaTagDatabase.Tables
 {
-    public class Databases : DbContext
+    public class Database : DbContext
     {
         /// <summary>
         /// 存储用户添加的不显示的图片的数据库表
@@ -22,7 +22,7 @@ namespace EroMangaManager.Database.Tables
 
         private readonly string ConnectionString;
 
-        public Databases () => ConnectionString = "Data Source=Database.db";
+        public Database () => ConnectionString = "Data Source=Database.db";
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
         {

@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 
-using EroMangaManager.Database.DatabaseOperation;
+using EroMangaTagDatabase.DatabaseOperation;
 using EroMangaManager.Helpers;
 
 namespace EroMangaManager.Models

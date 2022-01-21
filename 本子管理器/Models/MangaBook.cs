@@ -3,8 +3,8 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
-using EroMangaManager.Database.Entities;
-using EroMangaManager.Database.EntityFactory;
+using EroMangaTagDatabase.Entities;
+using EroMangaTagDatabase.EntityFactory;
 
 /*
  * 简化版EroManga类

@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using EroMangaManager.Database.Entities;
+using EroMangaTagDatabase.Entities;
 
-namespace EroMangaManager.Database.DatabaseOperation
+namespace EroMangaTagDatabase.DatabaseOperation
 {
     /// <summary>
     /// 没有保证Tag数据唯一性，因为在CollectionObserver类实际使用中，是能够保证唯一性的
@@ -17,21 +17,21 @@ namespace EroMangaManager.Database.DatabaseOperation
     {
         public static async Task AddMultiTags (IList<MangaTag> mangaTags)
         {
-            Tables.Databases databases = new Tables.Databases();
+            Tables.Database databases = new Tables.Database();
             databases.AddRange(mangaTags);
             await databases.SaveChangesAsync();
         }
 
         public static async Task AddSingleTag (MangaTag mangaTag)
         {
-            Tables.Databases databases = new Tables.Databases();
+            Tables.Database databases = new Tables.Database();
             databases.Add(mangaTag);
             await databases.SaveChangesAsync();
         }
 
         public static async Task RemoveMultiTags (IEnumerable<string> absolutePathes)
         {
-            Tables.Databases databases = new Tables.Databases();
+            Tables.Database databases = new Tables.Database();
 
             List<MangaTag> list = new List<MangaTag>();
             foreach (var path in absolutePathes)
@@ -51,7 +51,7 @@ namespace EroMangaManager.Database.DatabaseOperation
         /// <returns></returns>
         public static async Task RemoveSingleTag (string path)
         {
-            Tables.Databases databases = new Tables.Databases();
+            Tables.Database databases = new Tables.Database();
             MangaTag mangaTag = databases.SpecificMangaTagDatas.SingleOrDefault(n => n.AbsolutePath == path);
             databases?.Remove(mangaTag);
             await databases.SaveChangesAsync();
@@ -59,21 +59,21 @@ namespace EroMangaManager.Database.DatabaseOperation
 
         public static MangaTag[] QueryMultiTags (string folder)
         {
-            Tables.Databases databases = new Tables.Databases();
+            Tables.Database databases = new Tables.Database();
             var tags = databases.SpecificMangaTagDatas.Where(n => n.AbsolutePath.Contains(folder)).ToArray();
             return tags;
         }
 
         public static MangaTag QuerySingleTag (string absolutePath)
         {
-            Tables.Databases databases = new Tables.Databases();
+            Tables.Database databases = new Tables.Database();
             var tag = databases.SpecificMangaTagDatas.Single(n => n.AbsolutePath == absolutePath);
             return tag;
         }
 
         public static async Task UpdateSingleTag (MangaTag mangaTag)
         {
-            Tables.Databases databases = new Tables.Databases();
+            Tables.Database databases = new Tables.Database();
             var tag = databases.SpecificMangaTagDatas.Single(n => n.AbsolutePath == mangaTag.AbsolutePath);
             databases.Remove(tag);
             databases.Add(mangaTag);

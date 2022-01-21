@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace EroMangaManager.Database.Migrations
+namespace EroMangaTagDatabase.Migrations
 {
     public partial class Initialize : Migration
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
+        protected override void Up (MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
                 name: "ImageFilters",
@@ -78,7 +78,7 @@ namespace EroMangaManager.Database.Migrations
                 });
         }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
+        protected override void Down (MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "ImageFilters");

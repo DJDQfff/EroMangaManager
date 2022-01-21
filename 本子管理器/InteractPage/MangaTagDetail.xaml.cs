@@ -17,9 +17,9 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using EroMangaManager.Models;
 using EroMangaManager.UserControls;
-using EroMangaManager.Database.Entities;
-using EroMangaManager.Database.DatabaseOperation;
-using EroMangaManager.Database.EntityFactory;
+using EroMangaTagDatabase.Entities;
+using EroMangaTagDatabase.DatabaseOperation;
+using EroMangaTagDatabase.EntityFactory;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“内容对话框”项模板

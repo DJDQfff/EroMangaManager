@@ -1,4 +1,4 @@
-﻿namespace EroMangaManager.Database.Entities
+﻿namespace EroMangaTagDatabase.Entities
 {
     /// <summary>
     /// 数据库中，Hash 是唯一的（算法保证唯一），length 不唯一

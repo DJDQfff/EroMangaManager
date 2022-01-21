@@ -3,9 +3,9 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-using EroMangaManager.Database.Entities;
+using EroMangaTagDatabase.Entities;
 
-namespace Abandoned.EroMangaManager.Database.EntityFactory
+namespace Abandoned.EroMangaTagDatabase.EntityFactory
 {
     public static class MangaTagFactory
     {

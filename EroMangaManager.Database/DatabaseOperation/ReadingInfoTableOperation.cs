@@ -6,18 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using EroMangaManager.Database.Entities;
-using EroMangaManager.Database.Tables;
+using EroMangaTagDatabase.Entities;
+using EroMangaTagDatabase.Tables;
 
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace EroMangaManager.Database.DatabaseOperation
+namespace EroMangaTagDatabase.DatabaseOperation
 {
     public static class ReadingInfoTableOperation
     {
         public static async Task AddMulti (IEnumerable<ReadingInfo> ts)
         {
-            Databases databases = new Databases();
+            Database databases = new Database();
 
             await databases.AddRangeAsync(ts);
             await databases.SaveChangesAsync();
@@ -25,7 +25,7 @@ namespace EroMangaManager.Database.DatabaseOperation
 
         public static async Task RemoveSingle (string path)
         {
-            Databases databases = new Databases();
+            Database databases = new Database();
             var info = databases.ReadingRecords.SingleOrDefault(n => n.AbsolutePath == path);
             if (info != null)
             {
@@ -36,7 +36,7 @@ namespace EroMangaManager.Database.DatabaseOperation
 
         public static async Task UpdateSingle (ReadingInfo t)
         {
-            Databases databases = new Databases();
+            Database databases = new Database();
             var info = databases.ReadingRecords.SingleOrDefault(n => n.AbsolutePath == t.AbsolutePath);
             if (info != null)
             {
@@ -48,7 +48,7 @@ namespace EroMangaManager.Database.DatabaseOperation
 
         public static async Task MultiTranslateMangaName (IEnumerable<(string path, string translatedname)> tuples)
         {
-            Databases databases = new Databases();
+            Database databases = new Database();
             var info = databases.ReadingRecords.ToList();
             foreach (var tuple in tuples)
             {
@@ -61,7 +61,7 @@ namespace EroMangaManager.Database.DatabaseOperation
 
         public static async Task<ReadingInfo[]> QueryAll ()
         {
-            Databases databases = new Databases();
+            Database databases = new Database();
             var infos = databases.ReadingRecords.ToArray();
             return infos;
         }

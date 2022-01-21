@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EroMangaManager.Database", "EroMangaManager.Database\EroMangaManager.Database.csproj", "{9E3EC0BD-841E-41BD-A892-0031F1A19875}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EroMangaTagDatabase", "EroMangaManager.Database\EroMangaTagDatabase.csproj", "{9E3EC0BD-841E-41BD-A892-0031F1A19875}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseOperation", "DatabaseOperation\DatabaseOperation.csproj", "{4F70337C-F5DE-40BE-AF87-8E9BAFECF0DC}"
 EndProject

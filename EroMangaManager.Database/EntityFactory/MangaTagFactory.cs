@@ -4,10 +4,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-using EroMangaManager.Database.Helper;
-using EroMangaManager.Database.Entities;
-using EroMangaManager.Database.DatabaseOperation;
-namespace EroMangaManager.Database.EntityFactory
+using EroMangaTagDatabase.Helper;
+using EroMangaTagDatabase.Entities;
+using EroMangaTagDatabase.DatabaseOperation;
+namespace EroMangaTagDatabase.EntityFactory
 {
     public static class MangaTagFactory
     {

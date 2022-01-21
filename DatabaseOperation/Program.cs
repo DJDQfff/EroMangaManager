@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using EroMangaManager.Database.Entities;
-using EroMangaManager.Database.EntityFactory;
-using EroMangaManager.Database.Helper;
-using EroMangaManager.Database.Tables;
-using EroMangaManager.Database.DatabaseOperation;
+using EroMangaTagDatabase.Entities;
+using EroMangaTagDatabase.EntityFactory;
+using EroMangaTagDatabase.Helper;
+using EroMangaTagDatabase.Tables;
+using EroMangaTagDatabase.DatabaseOperation;
 using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseOperation
@@ -19,7 +19,7 @@ namespace DatabaseOperation
 
         private static async Task Test1 ()
         {
-            Databases databases = new Databases();
+            Database databases = new Database();
             databases.Database.Migrate();
             var readingInfo1 = ReadingInfoFactory.Creat(@"D:\桌面\新建文件夹\新建文件夹\[aki99] 彼女を起こさないで (Fatekaleid liner プリズマ☆イリヤ) [中国語] [無修正].zip");
             var readingInfo = ReadingInfoFactory.Creat(@"D:\桌面\新建文件夹\新建文件夹\(C95) [毛玉牛乳 (玉之けだま)] 甘リリス (オリジナル) [DL版][山樱汉化][全彩][无修正].zip");

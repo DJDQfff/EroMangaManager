@@ -5,9 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-using EroMangaManager.Database.Entities;
+using EroMangaTagDatabase.Entities;
 
-namespace EroMangaManager.Database.Helper
+namespace EroMangaTagDatabase.Helper
 {
     public static class TagArrayHelper
     {

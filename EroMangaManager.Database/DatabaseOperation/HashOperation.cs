@@ -2,15 +2,15 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-using EroMangaManager.Database.Entities;
+using EroMangaTagDatabase.Entities;
 
-namespace EroMangaManager.Database.DatabaseOperation
+namespace EroMangaTagDatabase.DatabaseOperation
 {
     public static class HashOperation
     {
         public static int LengthConditionCount (long length)
         {
-            Tables.Databases table = new Tables.Databases();
+            Tables.Database table = new Tables.Database();
 
             var query = table.ImageFilters.Where(n => n.ZipEntryLength == length).Count();
             return query;
@@ -18,7 +18,7 @@ namespace EroMangaManager.Database.DatabaseOperation
 
         public static int HashConditionCount (string hash)
         {
-            Tables.Databases table = new Tables.Databases();
+            Tables.Database table = new Tables.Database();
             var query = 6;
             query = table.ImageFilters.Where(n => n.Hash == hash).Count();
             return query;
@@ -26,7 +26,7 @@ namespace EroMangaManager.Database.DatabaseOperation
 
         public static async Task Add (string hash)
         {
-            Tables.Databases table = new Tables.Databases();
+            Tables.Database table = new Tables.Database();
             ImageFilter imageHash = new ImageFilter()
             {
                 Hash = hash,
@@ -37,7 +37,7 @@ namespace EroMangaManager.Database.DatabaseOperation
 
         public static async Task Remove (string[] hashes)
         {
-            Tables.Databases table = new Tables.Databases();
+            Tables.Database table = new Tables.Database();
             var h = table.ImageFilters.Where(n => hashes.Contains(n.Hash)).ToArray();
             table.RemoveRange(h);
             await table.SaveChangesAsync();

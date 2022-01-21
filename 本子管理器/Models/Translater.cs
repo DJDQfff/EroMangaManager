@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using BaiduTranslate;
-using EroMangaManager.Database.DatabaseOperation;
+using EroMangaTagDatabase.DatabaseOperation;
 
 namespace EroMangaManager.Models
 {

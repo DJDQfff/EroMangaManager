@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using EroMangaManager.Database.DatabaseOperation;
-using EroMangaManager.Database.Entities;
-using EroMangaManager.Database.Tables;
+using EroMangaTagDatabase.DatabaseOperation;
+using EroMangaTagDatabase.Entities;
+using EroMangaTagDatabase.Tables;
 
 using Microsoft.EntityFrameworkCore;
 
-namespace EroMangaManager.Database.DatabaseOperation
+namespace EroMangaTagDatabase.DatabaseOperation
 {
     public static class DatabaseInitialize
     {
@@ -21,7 +21,7 @@ namespace EroMangaManager.Database.DatabaseOperation
         /// </summary>
         public static async Task InitializeDefaultData ()
         {
-            using (Databases databases = new Databases())
+            using (Database databases = new Database())
             {
                 // 版本迁移
                 databases.Database.Migrate();

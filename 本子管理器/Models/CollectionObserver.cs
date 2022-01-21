@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Windows.Storage;
-using EroMangaManager.Database.Entities;
-using EroMangaManager.Database.DatabaseOperation;
-using EroMangaManager.Database.EntityFactory;
+using EroMangaTagDatabase.Entities;
+using EroMangaTagDatabase.DatabaseOperation;
+using EroMangaTagDatabase.EntityFactory;
 using static Windows.Storage.AccessCache.StorageApplicationPermissions;
 
 namespace EroMangaManager.Models

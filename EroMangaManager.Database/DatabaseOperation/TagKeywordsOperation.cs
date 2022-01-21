@@ -6,18 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using EroMangaManager.Database.Entities;
-using EroMangaManager.Database.EntityFactory;
-using EroMangaManager.Database.Helper;
-using EroMangaManager.Database.Tables;
+using EroMangaTagDatabase.Entities;
+using EroMangaTagDatabase.EntityFactory;
+using EroMangaTagDatabase.Helper;
+using EroMangaTagDatabase.Tables;
 
-namespace EroMangaManager.Database.DatabaseOperation
+namespace EroMangaTagDatabase.DatabaseOperation
 {
     public static class TagKeywordsOperation
     {
         public static string[] QueryTagKeywords (string tagname)
         {
-            Databases databases = new Databases();
+            Database databases = new Database();
             string pieces = databases.TagKeywords.Where(n => n.TagName == tagname).Select(n => n.TagKeywordPieces).Single();
             string[] keywords = pieces.Split('\r');
             return keywords;
@@ -26,14 +26,14 @@ namespace EroMangaManager.Database.DatabaseOperation
         public static async Task AddSingle (string tagname, IEnumerable<string> keywords)
         {
             TagKeywords tagKeywords = TagKeywordsFactory.Creat(tagname, keywords);
-            Databases databases = new Databases();
+            Database databases = new Database();
             databases.TagKeywords.Add(tagKeywords);
             await databases.SaveChangesAsync();
         }
 
         public static async Task UpdateSingle (string tagname, IEnumerable<string> keywords)
         {
-            Databases databases = new Databases();
+            Database databases = new Database();
             string pieces = string.Join("\r", keywords);
             TagKeywords tagKeywords = databases.TagKeywords.Single(n => n.TagName == tagname);
             tagKeywords.TagKeywordPieces = pieces;
