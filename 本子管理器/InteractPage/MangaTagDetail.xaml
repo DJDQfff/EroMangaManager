@@ -19,6 +19,7 @@
                 <usercontrols:TagInfo TagName="全彩：" TagValue="{x:Bind ConvertTagValue(mangaTag.IsFullColor)}" />
                 <usercontrols:TagInfo TagName="无修：" TagValue="{x:Bind ConvertTagValue(mangaTag.NonMosaic)}" />
                 <usercontrols:TagInfo TagName="语言：" TagValue="{x:Bind ConvertTagValue( mangaTag.Language)}" />
+                <usercontrols:TagInfo TagName="长篇：" TagValue="{x:Bind ConvertTagValue( mangaTag.LongShort)}" />
             </StackPanel>
         </ScrollViewer>
     </Grid>

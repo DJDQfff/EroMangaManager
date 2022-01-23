@@ -14,6 +14,12 @@ namespace DatabaseOperation
     {
         private static async Task Main ()
         {
+            Type type = typeof(MangaTag);
+            var infos = type.GetProperties();
+            foreach (var info in infos)
+            {
+            }
+
             System.Console.ReadKey();
         }
 
@@ -40,7 +46,7 @@ namespace DatabaseOperation
             //System.Console.WriteLine(tag2);
             //System.Console.WriteLine(tag1);
 
-            string[] a = tags.SplitAndParser();
+            var a = tags.SplitAndParser();
 
             foreach (var tag in a)
             {

@@ -62,11 +62,13 @@
                     Stretch="Uniform" />
                 <TextBlock
                     Grid.Row="1"
+                    Width="150"
                     Margin="1"
                     Padding="0,0,4,0"
                     HorizontalTextAlignment="Center"
-                    Text="{x:Bind MangaName, Mode=OneWay}"
-                    TextWrapping="Wrap" />
+                    MaxLines="1">
+                    <Run IsTextScaleFactorEnabled="True" Text="{x:Bind MangaName, Mode=OneWay}" />
+                </TextBlock>
             </Grid>
         </DataTemplate>
     </Page.Resources>

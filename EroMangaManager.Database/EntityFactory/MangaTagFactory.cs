@@ -7,18 +7,28 @@ using System.Text;
 using EroMangaTagDatabase.Helper;
 using EroMangaTagDatabase.Entities;
 using EroMangaTagDatabase.DatabaseOperation;
+
 namespace EroMangaTagDatabase.EntityFactory
 {
     public static class MangaTagFactory
     {
         public static MangaTag Creat (string absolutePath)
         {
-            MangaTag mangaTagInfo = new MangaTag() { IsFullColor = false, IsDL = false, Language = "Japanese", NonMosaic = false, PaisIsDouble = true };
+            MangaTag mangaTagInfo = new MangaTag()
+            {
+                IsFullColor = false,                    // 默认黑白
+                IsDL = false,                           // 默认非DL版
+                Language = "Japanese",                  // 默认日语
+                NonMosaic = false,                      // 默认有码
+                PaisIsDouble = true,                    // 默认括号成对
+                LongShort = false                       // 默认短篇
+            };
+
             mangaTagInfo.AbsolutePath = absolutePath;
 
             mangaTagInfo.DisplayName = Path.GetFileNameWithoutExtension(absolutePath);
 
-            string[] tags = mangaTagInfo.DisplayName.SplitAndParser();
+            var tags = mangaTagInfo.DisplayName.SplitAndParser();
 
             mangaTagInfo.MangaName = tags[0];
 
@@ -26,7 +36,8 @@ namespace EroMangaTagDatabase.EntityFactory
 
             return mangaTagInfo;
         }
-        private static void ParseTags (this MangaTag mangaTagInfo, string[] tags)
+
+        private static void ParseTags (this MangaTag mangaTagInfo, List<string> tags)
         {
             string[] fullColorTags = TagKeywordsOperation.QueryTagKeywords("fullColorTags");
             string[] nonMosaicTags = TagKeywordsOperation.QueryTagKeywords("nonMosaicTags");
@@ -36,15 +47,34 @@ namespace EroMangaTagDatabase.EntityFactory
             string[] translatorTags_Chinese = TagKeywordsOperation.QueryTagKeywords("translatorTags_Chinese");
             string[] translatorTags_English = TagKeywordsOperation.QueryTagKeywords("translatorTags_English");
             string[] authorTags = TagKeywordsOperation.QueryTagKeywords("authorTags");
-            for (int i = 1; i < tags.Length; i++)
+            string[] mangalongTags = TagKeywordsOperation.QueryTagKeywords("mangalongTags");
+            string[] mangashortTags = TagKeywordsOperation.QueryTagKeywords("mangashortTags");
+
+            for (int i = 1; i < tags.Count; i++)
             {
                 string tag = tags[i];
+
                 // 判断本子作者
                 if (tag.ParseInclude(authorTags))
                 {
                     mangaTagInfo.Author = tag;
                     continue;
                 }
+
+                // 判断是否长篇
+                if (tag.ParseInclude(mangalongTags))
+                {
+                    mangaTagInfo.LongShort = true;
+                    continue;
+                }
+
+                // 判断是否短篇
+                if (tag.ParseInclude(mangashortTags))
+                {
+                    mangaTagInfo.LongShort = false;
+                    continue;
+                }
+
                 // 判断本子是否全彩
                 if (tag.ParseInclude(fullColorTags))
                 {
@@ -66,25 +96,13 @@ namespace EroMangaTagDatabase.EntityFactory
                 // 判断是否是杂志
                 if (tag.ParseInclude(magazineTags))
                 {
-                    string magazine = tag;
-                    foreach (var t in magazineTags)
-                    {
-                        magazine = magazine.Replace(t, "");
-                    }
-
-                    mangaTagInfo.MagazinePublished = magazine;
+                    mangaTagInfo.MagazinePublished = tag;
                     continue;
                 }
                 //判断CM展会信息
                 if (tag.ParseInclude(comiketsessionTags))// 初步判断
                 {
-                    string cmVersion = tag;
-                    foreach (var t in comiketsessionTags)
-                    {
-                        cmVersion = cmVersion.Replace(t, "");
-                    }
-
-                    mangaTagInfo.MagazinePublished = cmVersion;
+                    mangaTagInfo.MagazinePublished = tag;
                     continue;
                 }
 

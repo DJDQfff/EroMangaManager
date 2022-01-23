@@ -85,7 +85,7 @@ namespace EroMangaManager.Pages
             var result = await mangaTagDetail.ShowAsync();
             if (result is ContentDialogResult.Primary)
             {
-                await new ContentDialog().ShowAsync();
+                await new MangaTagEdit(mangaBook).ShowAsync();
             }
         }
 

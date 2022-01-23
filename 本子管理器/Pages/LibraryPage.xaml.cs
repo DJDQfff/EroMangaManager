@@ -1,4 +1,6 @@
-﻿using EroMangaManager.Helpers;
+﻿using System;
+
+using EroMangaManager.Helpers;
 
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
@@ -24,7 +26,14 @@ namespace EroMangaManager.Pages
 
             if (folder != null)
             {
-                await MainPage.current.collectionObserver.AddFolder(folder);
+                try
+                {
+                    await MainPage.current.collectionObserver.AddFolder(folder);
+                }
+                catch (Exception)
+                {
+                    // 出错
+                }
             }
 
             button.IsEnabled = true;

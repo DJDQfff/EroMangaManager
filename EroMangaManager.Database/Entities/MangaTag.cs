@@ -46,5 +46,10 @@
 
         /// <summary> 未分类标签集 </summary>
         public string UnknownTags { set; get; }
+
+        /// <summary>
+        /// 长篇还是短篇，长篇为1
+        /// </summary>
+        public bool LongShort { set; get; }
     }
 }

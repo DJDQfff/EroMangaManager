@@ -29,14 +29,16 @@ namespace EroMangaTagDatabase.DatabaseOperation
                 // 初始化数据
                 List<string>[] vs = new List<string>[]
                 {
-                new List<string> { "fullColorTags", "全彩" },
-                new List<string>{ "nonMosaicTags","无修", "無修", "无码","無码" },
-                new List<string> { "downloadversionTags", "DL版" },
-                new List<string> { "magazineTags", "COMIC" },
-                new List<string> { "comiketsessionTags", "C" },
-                new List<string> { "translatorTags_Chinese", "漢化", "中国語", "汉化", "中国翻訳" },
-                new List<string> { "translatorTags_English", "英訳" },
-                new List<string>{"authorTags", "国崎蛍" }
+                new List<string> { TagType.fullColorTags.ToString(), "全彩" },
+                new List<string>{TagType.fullColorTags.ToString(),"无修", "無修", "无码","無码" },
+                new List<string> { TagType.downloadversionTags.ToString(), "DL版" },
+                new List<string> { TagType.magazineTags.ToString(), "COMIC" },
+                new List<string> { TagType.comiketsessionTags.ToString(), "C" },
+                new List<string> { TagType.translatorTags_Chinese.ToString(), "漢化", "中国語", "汉化", "中国翻訳" },
+                new List<string> { TagType.translatorTags_English.ToString(), "英訳" },
+                new List<string>{TagType.authorTags.ToString(), "国崎蛍" },
+                new   List<string>{TagType.mangalongTags.ToString(),"长篇","单行本"},
+                new List<string>{TagType.mangashortTags.ToString(),"短篇"},
                 };
                 foreach (var list in vs)
                 {

@@ -29,7 +29,7 @@ namespace EroMangaTagDatabase.Helper
             return true;
         }
 
-        public static string[] SplitAndParser (this string tagstring)
+        public static List<string> SplitAndParser (this string tagstring)
         {
             string left = "[【（({";// 左括号
             string right = "]】)）}";// 右括号
@@ -45,25 +45,32 @@ namespace EroMangaTagDatabase.Helper
                     tagslist.RemoveAt(i);
             }
 
+            bool flaghaveMangaName = false;
+
             foreach (var tag in tagslist)                           // 查找漫画名Tag
-            {                                                       // 查找方法：该Tag左边为无括号或者为右括号
-                int index = tagstring.IndexOf(tag);                 //          等价于：左边不是左括号
-                char c = tagstring[index - 1];
-                if (!left.Contains(c))
-                {
-                    tagslist.Remove(tag);                           // 调整位置，把漫画名Tag移到集合头部
+            {
+                int index = tagstring.IndexOf(tag);
+                char c = tagstring[index - 1];// 这里要改一下，不能直接用左边一位
+                if (!left.Contains(c))                              // 查找方法：该Tag左边为无括号或者为右括号
+                {                                                   //          等价于：左边不是左括号
+                    tagslist.Remove(tag);                           // 如果存在，则调整位置，把漫画名Tag移到集合头部
                     tagslist.Insert(0, tag);
+                    flaghaveMangaName = true;
                     break;
                 }
             }
 
-            for (int i = 0; i < tagslist.Count; i++)                // 移除所有Tag的首位空白
+            for (int i = 0; i < tagslist.Count; i++)                // 移除所有Tag的首尾空白
             {
                 tagslist[i] = tagslist[i].Trim();
             }
 
-            string[] finaltags = tagslist.ToArray();
-            return finaltags;
+            if (!flaghaveMangaName)
+            {
+                tagslist.Insert(0, null);                             // 如果不存在MangaName，则以空字符串为默认名
+            }
+
+            return tagslist;
         }
 
         public static bool ParseInclude (this string _unknownTag, IEnumerable<string> tags)

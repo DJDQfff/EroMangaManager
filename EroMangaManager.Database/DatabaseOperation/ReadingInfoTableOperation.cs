@@ -22,7 +22,6 @@ namespace EroMangaTagDatabase.DatabaseOperation
             await databases.AddRangeAsync(ts);
             await databases.SaveChangesAsync();
             databases.Dispose();
-
         }
 
         public static async Task RemoveSingle (string path)
@@ -35,7 +34,6 @@ namespace EroMangaTagDatabase.DatabaseOperation
                 await databases.SaveChangesAsync();
             }
             databases.Dispose();
-
         }
 
         public static async Task UpdateSingle (ReadingInfo t)
@@ -49,7 +47,16 @@ namespace EroMangaTagDatabase.DatabaseOperation
                 await databases.SaveChangesAsync();
             }
             databases.Dispose();
+        }
 
+        public static async Task UpdateMangaName (ReadingInfo readinginfo, string manganame)
+        {
+            Database databases = new Database();
+            var info = databases.ReadingRecords.SingleOrDefault(n => n.AbsolutePath == readinginfo.AbsolutePath);
+            info.MangaName = manganame;
+            databases.Update(info);
+            await databases.SaveChangesAsync();
+            databases.Dispose();
         }
 
         public static async Task MultiTranslateMangaName (IEnumerable<(string path, string translatedname)> tuples)
@@ -64,7 +71,6 @@ namespace EroMangaTagDatabase.DatabaseOperation
             databases.UpdateRange(info);
             await databases.SaveChangesAsync();
             databases.Dispose();
-
         }
 
         public static async Task<ReadingInfo[]> QueryAll ()

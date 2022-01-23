@@ -25,5 +25,10 @@
 
         /// <summary> 当前阅读位置（进度） </summary>
         public int ReadingPosition { get; set; }
+
+        /// <summary>
+        /// 以\r分割的各个标签（不包括本子名）
+        /// </summary>
+        public string TagPieces { set; get; }
     }
 }

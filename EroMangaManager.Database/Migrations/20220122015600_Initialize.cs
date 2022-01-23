@@ -4,7 +4,7 @@ namespace EroMangaTagDatabase.Migrations
 {
     public partial class Initialize : Migration
     {
-        protected override void Up (MigrationBuilder migrationBuilder)
+        protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
                 name: "ImageFilters",
@@ -30,7 +30,8 @@ namespace EroMangaTagDatabase.Migrations
                     MangaName = table.Column<string>(nullable: true),
                     TranslatedMangaName = table.Column<string>(nullable: true),
                     PageAmount = table.Column<int>(nullable: false),
-                    ReadingPosition = table.Column<int>(nullable: false)
+                    ReadingPosition = table.Column<int>(nullable: false),
+                    TagPieces = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -78,7 +79,7 @@ namespace EroMangaTagDatabase.Migrations
                 });
         }
 
-        protected override void Down (MigrationBuilder migrationBuilder)
+        protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "ImageFilters");

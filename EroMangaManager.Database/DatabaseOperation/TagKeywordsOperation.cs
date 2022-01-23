@@ -34,6 +34,16 @@ namespace EroMangaTagDatabase.DatabaseOperation
             databases.Dispose();
         }
 
+        public static async Task UpdateAppendSingle (string tagname, string piece)
+        {
+            Database databases = new Database();
+            TagKeywords tagKeywords = databases.TagKeywords.Single(n => n.TagName == tagname);
+            tagKeywords.TagKeywordPieces += "\r" + piece;
+            databases.Update(tagKeywords);
+            await databases.SaveChangesAsync();
+            databases.Dispose();
+        }
+
         public static async Task UpdateSingle (string tagname, IEnumerable<string> keywords)
         {
             Database databases = new Database();

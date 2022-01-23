@@ -15,9 +15,17 @@ namespace EroMangaTagDatabase.EntityFactory
         {
             string manganamewithTag = Path.GetFileNameWithoutExtension(absolutepath);
 
-            string[] tags = manganamewithTag.SplitAndParser();
+            var tags = manganamewithTag.SplitAndParser();
+            string manganame = tags[0] ?? manganamewithTag;
+            tags.RemoveAt(0);
 
-            ReadingInfo readingInfo = new ReadingInfo() { AbsolutePath = absolutepath, MangaName = tags[0], ReadingPosition = 0 };
+            ReadingInfo readingInfo = new ReadingInfo()
+            {
+                AbsolutePath = absolutepath,
+                MangaName = manganame, // 如果第一个元素为null，则以本子全名为名
+                TagPieces = string.Join("\r", tags),
+                ReadingPosition = 0
+            };
 
             return readingInfo;
         }

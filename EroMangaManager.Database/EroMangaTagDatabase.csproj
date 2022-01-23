@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>EroMangaTagDatabase</AssemblyName>
-    <RootNamespace>EroMangaManager.Database</RootNamespace>
+    <RootNamespace>EroMangaTagDatabase</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
