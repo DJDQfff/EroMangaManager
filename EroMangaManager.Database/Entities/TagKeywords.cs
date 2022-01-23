@@ -16,6 +16,7 @@ namespace EroMangaTagDatabase.Entities
 
         /// <summary>
         /// 自定义Tag的各个关键字，每个关键字以‘\r’分割，每个关键字都是该tag的识别标志之一
+        /// 第一个：对外显示的
         /// </summary>
         public string TagKeywordPieces { set; get; }
     }

@@ -1,22 +1,18 @@
-﻿<Page x:Class="EroMangaManager.Pages.SettingPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      NavigationCacheMode="Disabled"
-      mc:Ignorable="d">
+﻿<Page
+    x:Class="EroMangaManager.Pages.SettingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationCacheMode="Disabled"
+    mc:Ignorable="d">
     <Page.Resources>
         <Style TargetType="Button">
-            <Setter Property="Margin"
-                    Value="8,0,0,8" />
-            <Setter Property="Background"
-                    Value="Wheat" />
-            <Setter Property="HorizontalAlignment"
-                    Value="Center" />
-            <Setter Property="VerticalAlignment"
-                    Value="Bottom" />
-            <Setter Property="Width"
-                    Value="120" />
+            <Setter Property="Margin" Value="8,0,0,8" />
+            <Setter Property="Background" Value="#FFBEF6F6" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+            <Setter Property="Width" Value="120" />
         </Style>
     </Page.Resources>
     <Grid>
@@ -24,12 +20,10 @@
             <RowDefinition Height="100" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel VerticalAlignment="Bottom"
-                    Orientation="Horizontal">
-            <Button Click="Button_Click"
-                    Content="过滤" />
+        <StackPanel VerticalAlignment="Bottom" Orientation="Horizontal">
+            <Button Click="Click_Funtion_FiltedImageManage" Content="过滤图库" />
+            <Button Click="Button_Click_1" Content="标签管理" />
         </StackPanel>
-        <Frame x:Name="SettingFrame"
-               Grid.Row="1" />
+        <Frame x:Name="SettingFrame" Grid.Row="1" />
     </Grid>
 </Page>

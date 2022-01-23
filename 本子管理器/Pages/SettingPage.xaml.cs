@@ -21,15 +21,13 @@ namespace EroMangaManager.Pages
             //SettingFrame.Navigate(typeof(SettingSubPages.FiltedImagesPage));
         }
 
-        private async void RefreshMangaList_1 (object sender, RoutedEventArgs e)
-        {
-            StorageFolder storageFolder = await FoldersHelper.GetCoversFolder();
-            await Windows.System.Launcher.LaunchFolderAsync(storageFolder);
-        }
-
-        private void Button_Click (object sender, RoutedEventArgs e)
+        private void Click_Funtion_FiltedImageManage (object sender, RoutedEventArgs e)
         {
             SettingFrame.Navigate(typeof(SettingSubPages.FiltedImagesPage));
+        }
+
+        private void Button_Click_1 (object sender, RoutedEventArgs e)
+        {
         }
     }
 }
