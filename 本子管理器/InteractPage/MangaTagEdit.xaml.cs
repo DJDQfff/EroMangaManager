@@ -40,7 +40,7 @@ namespace EroMangaManager.InteractPage
             taglist.Add(_mangaBook.ReadingInfo.MangaName);
         }
 
-        private async Task ContentDialog_PrimaryButtonClick (ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        private async void ContentDialog_PrimaryButtonClick (ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             foreach (var item in taglist)
             {
@@ -50,41 +50,6 @@ namespace EroMangaManager.InteractPage
                 var tag = textblock.Text;
                 var combobox = relativepanel.FindName("combo") as ComboBox;
                 var index = combobox.SelectedIndex;
-
-                switch (index)
-                {
-                    case 0:
-                        await ReadingInfoTableOperation.UpdateMangaName(mangaBook.ReadingInfo, tag);
-                        break;
-
-                    case 1:
-                        await TagKeywordsOperation.UpdateAppendSingle(TagType.authorTags.ToString(), tag);
-                        break;
-
-                    case 2:
-                        await TagKeywordsOperation.UpdateAppendSingle(TagType.tra.ToString(), tag);
-                        break;
-
-                    case 3:
-                        await TagKeywordsOperation.UpdateAppendSingle(TagType.authorTags.ToString(), tag);
-                        break;
-
-                    case 4:
-                        await TagKeywordsOperation.UpdateAppendSingle(TagType.authorTags.ToString(), tag);
-                        break;
-
-                    case 5:
-                        await TagKeywordsOperation.UpdateAppendSingle(TagType.authorTags.ToString(), tag);
-                        break;
-
-                    case 6:
-                        await TagKeywordsOperation.UpdateAppendSingle(TagType.authorTags.ToString(), tag);
-                        break;
-
-                    case 7:
-                        await TagKeywordsOperation.UpdateAppendSingle(TagType.authorTags.ToString(), tag);
-                        break;
-                }
             }
         }
     }

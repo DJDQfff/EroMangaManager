@@ -28,17 +28,7 @@
                 <ComboBox
                     x:Name="combo"
                     HorizontalAlignment="Right"
-                    RelativePanel.AlignRightWithPanel="True">
-                    <ComboBoxItem>漫画名</ComboBoxItem>
-                    <ComboBoxItem>作者</ComboBoxItem>
-                    <ComboBoxItem>翻译组</ComboBoxItem>
-                    <ComboBoxItem>全彩</ComboBoxItem>
-                    <ComboBoxItem>无修</ComboBoxItem>
-                    <ComboBoxItem>单行本</ComboBoxItem>
-                    <ComboBoxItem>短篇</ComboBoxItem>
-                    <ComboBoxItem>Comiket展会</ComboBoxItem>
-                    <ComboBoxItem>忽略此标签</ComboBoxItem>
-                </ComboBox>
+                    RelativePanel.AlignRightWithPanel="True" />
             </RelativePanel>
         </DataTemplate>
     </ContentDialog.Resources>

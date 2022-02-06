@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using static EroMangaTagDatabase.DatabaseOperation.DatabaseController;
 using EroMangaTagDatabase.Entities;
 using EroMangaTagDatabase.EntityFactory;
 using EroMangaTagDatabase.Helper;
@@ -13,46 +13,52 @@ using EroMangaTagDatabase.Tables;
 
 namespace EroMangaTagDatabase.DatabaseOperation
 {
-    public static class TagKeywordsOperation
+    public partial class DatabaseController
     {
-        public static string[] QueryTagKeywords (string tagname)
+        public string[][] TagKeywords_QueryAll ()
         {
-            Database databases = new Database();
-            string pieces = databases.TagKeywords.Where(n => n.TagName == tagname).Select(n => n.TagKeywordPieces).Single();
+            var allpieces = database.TagKeywords.Select(n => n.TagKeywordPieces).ToArray();
+
+            List<string[]> vs = new List<string[]>();
+            foreach (var pieces in allpieces)
+            {
+                string[] vs1 = pieces.Split('\r');
+                vs.Add(vs1);
+            }
+            string[][] vs2 = vs.ToArray();
+            return vs2;
+        }
+
+        public string[] TagKeywords_QuerySingle (string tagname)
+        {
+            string pieces = database.TagKeywords.Where(n => n.TagName == tagname).Select(n => n.TagKeywordPieces).Single();
             string[] keywords = pieces.Split('\r');
-            databases.Dispose();
 
             return keywords;
         }
 
-        public static async Task AddSingle (string tagname, IEnumerable<string> keywords)
+        public async Task TagKeywords_AddSingle (string tagname, IEnumerable<string> keywords)
         {
             TagKeywords tagKeywords = TagKeywordsFactory.Creat(tagname, keywords);
-            Database databases = new Database();
-            databases.TagKeywords.Add(tagKeywords);
-            await databases.SaveChangesAsync();
-            databases.Dispose();
+            database.TagKeywords.Add(tagKeywords);
+            await database.SaveChangesAsync();
         }
 
-        public static async Task UpdateAppendSingle (string tagname, string piece)
+        public async Task TagKeywords_UpdateAppendSingle (string tagname, string piece)
         {
-            Database databases = new Database();
-            TagKeywords tagKeywords = databases.TagKeywords.Single(n => n.TagName == tagname);
+            TagKeywords tagKeywords = database.TagKeywords.Single(n => n.TagName == tagname);
             tagKeywords.TagKeywordPieces += "\r" + piece;
-            databases.Update(tagKeywords);
-            await databases.SaveChangesAsync();
-            databases.Dispose();
+            database.Update(tagKeywords);
+            await database.SaveChangesAsync();
         }
 
-        public static async Task UpdateSingle (string tagname, IEnumerable<string> keywords)
+        public async Task TagKeywords_UpdateSingle (string tagname, IEnumerable<string> keywords)
         {
-            Database databases = new Database();
             string pieces = string.Join("\r", keywords);
-            TagKeywords tagKeywords = databases.TagKeywords.Single(n => n.TagName == tagname);
+            TagKeywords tagKeywords = database.TagKeywords.Single(n => n.TagName == tagname);
             tagKeywords.TagKeywordPieces = pieces;
-            databases.Update(tagKeywords);
-            await databases.SaveChangesAsync();
-            databases.Dispose();
+            database.Update(tagKeywords);
+            await database.SaveChangesAsync();
         }
     }
 }

@@ -13,71 +13,58 @@ using Microsoft.EntityFrameworkCore.Design;
 
 namespace EroMangaTagDatabase.DatabaseOperation
 {
-    public static class ReadingInfoTableOperation
+    public partial class DatabaseController
     {
-        public static async Task AddMulti (IEnumerable<ReadingInfo> ts)
+        public async Task ReadingInfo_AddMulti (IEnumerable<ReadingInfo> ts)
         {
-            Database databases = new Database();
-
-            await databases.AddRangeAsync(ts);
-            await databases.SaveChangesAsync();
-            databases.Dispose();
+            await database.AddRangeAsync(ts);
+            await database.SaveChangesAsync();
         }
 
-        public static async Task RemoveSingle (string path)
+        public async Task ReadingInfo_RemoveSingle (string path)
         {
-            Database databases = new Database();
-            var info = databases.ReadingRecords.SingleOrDefault(n => n.AbsolutePath == path);
+            var info = database.ReadingInfos.SingleOrDefault(n => n.AbsolutePath == path);
             if (info != null)
             {
-                databases.Remove(info);
-                await databases.SaveChangesAsync();
+                database.Remove(info);
+                await database.SaveChangesAsync();
             }
-            databases.Dispose();
         }
 
-        public static async Task UpdateSingle (ReadingInfo t)
+        public async Task ReadingInfo_UpdateSingle (ReadingInfo t)
         {
-            Database databases = new Database();
-            var info = databases.ReadingRecords.SingleOrDefault(n => n.AbsolutePath == t.AbsolutePath);
+            var info = database.ReadingInfos.SingleOrDefault(n => n.AbsolutePath == t.AbsolutePath);
             if (info != null)
             {
-                databases.Remove(info);
-                databases.Add(info);
-                await databases.SaveChangesAsync();
+                database.Remove(info);
+                database.Add(info);
+                await database.SaveChangesAsync();
             }
-            databases.Dispose();
         }
 
-        public static async Task UpdateMangaName (ReadingInfo readinginfo, string manganame)
+        public async Task ReadingInfo_UpdateMangaName (ReadingInfo readinginfo, string manganame)
         {
-            Database databases = new Database();
-            var info = databases.ReadingRecords.SingleOrDefault(n => n.AbsolutePath == readinginfo.AbsolutePath);
+            var info = database.ReadingInfos.SingleOrDefault(n => n.AbsolutePath == readinginfo.AbsolutePath);
             info.MangaName = manganame;
-            databases.Update(info);
-            await databases.SaveChangesAsync();
-            databases.Dispose();
+            database.Update(info);
+            await database.SaveChangesAsync();
         }
 
-        public static async Task MultiTranslateMangaName (IEnumerable<(string path, string translatedname)> tuples)
+        public async Task ReadingInfo_MultiTranslateMangaName (IEnumerable<(string path, string translatedname)> tuples)
         {
-            Database databases = new Database();
-            var info = databases.ReadingRecords.ToList();
+            var info = database.ReadingInfos.ToList();
             foreach (var tuple in tuples)
             {
                 var a = info.SingleOrDefault(n => n.AbsolutePath == tuple.path);
-                a.TranslatedMangaName = tuple.translatedname;
+                a.MangaName_Translated = tuple.translatedname;
             }
-            databases.UpdateRange(info);
-            await databases.SaveChangesAsync();
-            databases.Dispose();
+            database.UpdateRange(info);
+            await database.SaveChangesAsync();
         }
 
-        public static async Task<ReadingInfo[]> QueryAll ()
+        public ReadingInfo[] ReadingInfo_QueryAll ()
         {
-            Database databases = new Database();
-            var infos = databases.ReadingRecords.ToArray();
-            await databases.DisposeAsync();
+            var infos = database.ReadingInfos.ToArray();
 
             return infos;
         }

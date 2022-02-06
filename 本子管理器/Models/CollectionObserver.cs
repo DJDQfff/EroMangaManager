@@ -1,13 +1,15 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Windows.Storage;
-using EroMangaTagDatabase.Entities;
 using EroMangaTagDatabase.DatabaseOperation;
+using EroMangaTagDatabase.Entities;
 using EroMangaTagDatabase.EntityFactory;
+using static EroMangaTagDatabase.DatabaseOperation.DatabaseController;
+using Windows.Storage;
+
 using static Windows.Storage.AccessCache.StorageApplicationPermissions;
 
 namespace EroMangaManager.Models
@@ -99,7 +101,8 @@ namespace EroMangaManager.Models
         private async Task PickMangasInFolder (StorageFolder storageFolder)
         {
             var files = await storageFolder.GetFilesAsync();
-            ReadingInfo[] tags = await ReadingInfoTableOperation.QueryAll();
+            ReadingInfo[] tags = databaseController.ReadingInfo_QueryAll();
+
             List<ReadingInfo> add = new List<ReadingInfo>();
             // TODO：这里如果使用 list<task> 的话，会出bug
             // 普通的遍历添加反而不会出现bug
@@ -125,27 +128,10 @@ namespace EroMangaManager.Models
                 await manga.SetCover();
             }
 
-            await ReadingInfoTableOperation.AddMulti(add);
+            await databaseController.ReadingInfo_AddMulti(add);
         }
 
-        /// <summary>
-        /// 存储指定文件下的所有漫画MangaTag到数据库
-        /// 不需要用了
-        /// </summary>
-        /// <param name="storageFolder"></param>
-        /// <returns></returns>
-        private async Task AddMultiTagsToDatabase (StorageFolder storageFolder)
-        {
-            var files = await storageFolder.GetFilesAsync();
-
-            List<MangaTag> list = new List<MangaTag>();
-            foreach (var file in files)
-            {
-                MangaTag mangaTag = MangaTagFactory.Creat(file.Path);
-                list.Add(mangaTag);
-            }
-            await MangaTagOperation.AddMultiTags(list);
-        }
+        #region 弃用
 
         /// <summary>
         /// 读取数据库，将指定文件夹下的 MangaTag 移除
@@ -155,7 +141,7 @@ namespace EroMangaManager.Models
         private async Task RemoveMultiTagsFromDatabase (StorageFolder storageFolder)
         {
             var files = (await storageFolder.GetFilesAsync()).Select(n => n.Path).ToArray();
-            await MangaTagOperation.RemoveMultiTags(files);
+            await databaseController.MangaTag_RemoveMulti(files);
         }
 
         /// <summary>
@@ -167,7 +153,9 @@ namespace EroMangaManager.Models
         {
             await mangaBook.StorageFile.DeleteAsync();
             MangaList.Remove(mangaBook);
-            await MangaTagOperation.RemoveSingleTag(mangaBook.StorageFile.Path);
+            await databaseController.MangaTag_RemoveSingle(mangaBook.StorageFile.Path);
         }
+
+        #endregion 弃用
     }
 }

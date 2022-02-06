@@ -6,21 +6,13 @@
     xmlns:local="using:EroMangaManager.InteractPage"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:usercontrols="using:EroMangaManager.UserControls"
-    Title="{x:Bind mangaTag.MangaName}"
+    Title="{x:Bind readingInfo.MangaName}"
     CloseButtonText="关闭"
     PrimaryButtonText="编辑"
     mc:Ignorable="d">
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
-            <StackPanel Orientation="Vertical">
-                <usercontrols:TagInfo TagName="路径：" TagValue="{x:Bind mangaTag.AbsolutePath}" />
-                <usercontrols:TagInfo TagName="作者：" TagValue="{x:Bind ConvertTagValue( mangaTag.Author)}" />
-                <usercontrols:TagInfo TagName="译者：" TagValue="{x:Bind ConvertTagValue(mangaTag.Translator)}" />
-                <usercontrols:TagInfo TagName="全彩：" TagValue="{x:Bind ConvertTagValue(mangaTag.IsFullColor)}" />
-                <usercontrols:TagInfo TagName="无修：" TagValue="{x:Bind ConvertTagValue(mangaTag.NonMosaic)}" />
-                <usercontrols:TagInfo TagName="语言：" TagValue="{x:Bind ConvertTagValue( mangaTag.Language)}" />
-                <usercontrols:TagInfo TagName="长篇：" TagValue="{x:Bind ConvertTagValue( mangaTag.LongShort)}" />
-            </StackPanel>
+            <StackPanel Orientation="Vertical" />
         </ScrollViewer>
     </Grid>
 </ContentDialog>

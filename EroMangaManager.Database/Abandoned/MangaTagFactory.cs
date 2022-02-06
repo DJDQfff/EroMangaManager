@@ -9,9 +9,9 @@ namespace Abandoned.EroMangaTagDatabase.EntityFactory
 {
     public static class MangaTagFactory
     {
-        public static MangaTag Creat (string absolutePath)
+        public static DefaultMangaTag Creat (string absolutePath)
         {
-            MangaTag mangaTagInfo = new MangaTag() { IsFullColor = false, IsDL = false, Language = "Janpanese", NonMosaic = false, PaisIsDouble = true };
+            DefaultMangaTag mangaTagInfo = new DefaultMangaTag() { IsFullColor = false, IsDL = false, Language = "Janpanese", NonMosaic = false, PaisIsDouble = true };
             mangaTagInfo.SetAbsolutePath(absolutePath);
             mangaTagInfo.SetDisplayName();
             mangaTagInfo.canbePair();
@@ -23,7 +23,7 @@ namespace Abandoned.EroMangaTagDatabase.EntityFactory
             return mangaTagInfo;
         }
 
-        private static void ParseTags (this MangaTag mangaTagInfo)
+        private static void ParseTags (this DefaultMangaTag mangaTagInfo)
         {
             string[] tags = mangaTagInfo.UnknownTags.Split('\r');
             string[] fullCollarTags = { "全彩" };
@@ -93,7 +93,7 @@ namespace Abandoned.EroMangaTagDatabase.EntityFactory
             }
         }
 
-        public static void canbePair (this MangaTag mangaTagInfo)
+        public static void canbePair (this DefaultMangaTag mangaTagInfo)
         {
             char[] chars1 = { '[', '【', '（', '(', '{' };// 左括号
             char[] chars2 = { ']', '】', '）', ')', '}' };// 右括号
@@ -112,7 +112,7 @@ namespace Abandoned.EroMangaTagDatabase.EntityFactory
             mangaTagInfo.PaisIsDouble = true;
         }
 
-        public static void SplitTags (this MangaTag mangaTagInfo, string tags)
+        public static void SplitTags (this DefaultMangaTag mangaTagInfo, string tags)
         {
             char[] chars1 = new char[] { '[', '【', '（', '(', '{' };// 左括号
             char[] chars2 = new char[] { ']', '】', ')', '）', '}' };// 右括号
@@ -166,7 +166,7 @@ namespace Abandoned.EroMangaTagDatabase.EntityFactory
             }
         }
 
-        public static void SetDisplayName (this MangaTag mangaTagInfo)
+        public static void SetDisplayName (this DefaultMangaTag mangaTagInfo)
         {
             string path = mangaTagInfo.AbsolutePath;
             string DisplayName = Path.GetFileNameWithoutExtension(path);
@@ -176,7 +176,7 @@ namespace Abandoned.EroMangaTagDatabase.EntityFactory
         /// <summary> 初始化 </summary>
         /// <param name="mangaTagInfo"> </param>
         /// <param name="absolutePath"> </param>
-        public static void SetAbsolutePath (this MangaTag mangaTagInfo, string absolutePath)
+        public static void SetAbsolutePath (this DefaultMangaTag mangaTagInfo, string absolutePath)
         {
             mangaTagInfo.AbsolutePath = absolutePath;
         }

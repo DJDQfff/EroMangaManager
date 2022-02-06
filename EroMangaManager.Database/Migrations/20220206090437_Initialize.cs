@@ -21,21 +21,22 @@ namespace EroMangaTagDatabase.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ReadingRecords",
+                name: "ReadingInfos",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     AbsolutePath = table.Column<string>(nullable: true),
                     MangaName = table.Column<string>(nullable: true),
-                    TranslatedMangaName = table.Column<string>(nullable: true),
+                    MangaName_Translated = table.Column<string>(nullable: true),
                     PageAmount = table.Column<int>(nullable: false),
                     ReadingPosition = table.Column<int>(nullable: false),
-                    TagPieces = table.Column<string>(nullable: true)
+                    TagPieces = table.Column<string>(nullable: true),
+                    IsContentTranslated = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ReadingRecords", x => x.ID);
+                    table.PrimaryKey("PK_ReadingInfos", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -57,7 +58,8 @@ namespace EroMangaTagDatabase.Migrations
                     MagazinePublished = table.Column<string>(nullable: true),
                     CM_session = table.Column<string>(nullable: true),
                     Relative_ACG = table.Column<string>(nullable: true),
-                    UnknownTags = table.Column<string>(nullable: true)
+                    UnknownTags = table.Column<string>(nullable: true),
+                    LongShort = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -85,7 +87,7 @@ namespace EroMangaTagDatabase.Migrations
                 name: "ImageFilters");
 
             migrationBuilder.DropTable(
-                name: "ReadingRecords");
+                name: "ReadingInfos");
 
             migrationBuilder.DropTable(
                 name: "SpecificMangaTagDatas");

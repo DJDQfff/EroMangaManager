@@ -6,6 +6,7 @@ using EroMangaTagDatabase.EntityFactory;
 using EroMangaTagDatabase.Helper;
 using EroMangaTagDatabase.Tables;
 using EroMangaTagDatabase.DatabaseOperation;
+using static EroMangaTagDatabase.DatabaseOperation.DatabaseController;
 using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseOperation
@@ -14,12 +15,14 @@ namespace DatabaseOperation
     {
         private static async Task Main ()
         {
-            Type type = typeof(MangaTag);
-            var infos = type.GetProperties();
-            foreach (var info in infos)
-            {
-            }
+            await databaseController.InitializeDefaultData();
+            var a = databaseController.TagKeywords_QueryAll();
 
+            await databaseController.TagKeywords_AddSingle("fjakjf", new string[] { "djfa", "jfds" });
+
+            var b = databaseController.TagKeywords_QueryAll();
+
+            databaseController.Dispose();
             System.Console.ReadKey();
         }
 
@@ -33,8 +36,6 @@ namespace DatabaseOperation
             List<ReadingInfo> list = new List<ReadingInfo>();
             list.Add(readingInfo);
             list.Add(readingInfo1);
-
-            await ReadingInfoTableOperation.AddMulti(list);
         }
 
         private static void TagTest ()
@@ -51,18 +52,6 @@ namespace DatabaseOperation
             foreach (var tag in a)
             {
                 System.Console.WriteLine(tag);
-            }
-        }
-
-        private static void TestUtility ()
-        {
-            string folderPath = @"D:\收藏\本子\无修";
-            string[] pathes = System.IO.Directory.GetFiles(folderPath);
-            foreach (var path in pathes)
-            {
-                MangaTag mangaTagInfo = MangaTagFactory.Creat(path);
-
-                Console.WriteLine(mangaTagInfo.MangaName);
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace EroMangaTagDatabase.Entities
 {
-    public class MangaTag : IDatabaseID
+    public class DefaultMangaTag : IDatabaseID
     {
         /// <summary> 主键 </summary>
         public int ID { set; get; }

@@ -13,7 +13,7 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="设置本子偏好语言：" />
                 <ComboBox x:Name="Combo" SelectionChanged="Combo_SelectionChanged">
-                    <ComboBoxItem>简体中文</ComboBoxItem>
+                    <ComboBoxItem>简中</ComboBoxItem>
                     <ComboBoxItem>日文</ComboBoxItem>
                     <ComboBoxItem>
                         <Button />

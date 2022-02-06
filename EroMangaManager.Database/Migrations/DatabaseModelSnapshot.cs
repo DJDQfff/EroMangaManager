@@ -15,24 +15,7 @@ namespace EroMangaTagDatabase.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.21");
 
-            modelBuilder.Entity("EroMangaTagDatabase.Entities.ImageFilter", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Hash")
-                        .HasColumnType("TEXT");
-
-                    b.Property<long>("ZipEntryLength")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("ImageFilters");
-                });
-
-            modelBuilder.Entity("EroMangaTagDatabase.Entities.MangaTag", b =>
+            modelBuilder.Entity("EroMangaTagDatabase.Entities.DefaultMangaTag", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -58,6 +41,9 @@ namespace EroMangaTagDatabase.Migrations
 
                     b.Property<string>("Language")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("LongShort")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("MagazinePublished")
                         .HasColumnType("TEXT");
@@ -85,6 +71,23 @@ namespace EroMangaTagDatabase.Migrations
                     b.ToTable("SpecificMangaTagDatas");
                 });
 
+            modelBuilder.Entity("EroMangaTagDatabase.Entities.ImageFilter", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Hash")
+                        .HasColumnType("TEXT");
+
+                    b.Property<long>("ZipEntryLength")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ImageFilters");
+                });
+
             modelBuilder.Entity("EroMangaTagDatabase.Entities.ReadingInfo", b =>
                 {
                     b.Property<int>("ID")
@@ -94,7 +97,13 @@ namespace EroMangaTagDatabase.Migrations
                     b.Property<string>("AbsolutePath")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("IsContentTranslated")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("MangaName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MangaName_Translated")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("PageAmount")
@@ -106,12 +115,9 @@ namespace EroMangaTagDatabase.Migrations
                     b.Property<string>("TagPieces")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("TranslatedMangaName")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("ID");
 
-                    b.ToTable("ReadingRecords");
+                    b.ToTable("ReadingInfos");
                 });
 
             modelBuilder.Entity("EroMangaTagDatabase.Entities.TagKeywords", b =>

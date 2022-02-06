@@ -28,13 +28,17 @@ namespace EroMangaManager.InteractPage
 {
     public sealed partial class MangaTagDetail : ContentDialog
     {
-        private MangaTag mangaTag;
+        private ReadingInfo readingInfo;
 
         public MangaTagDetail (MangaBook _mangaBook)
         {
             this.InitializeComponent();
+            readingInfo = _mangaBook.ReadingInfo;
 
-            mangaTag = MangaTagFactory.Creat(_mangaBook.StorageFile.Path);
+            List<TagInfo> tagInfos = new List<TagInfo>();
+            foreach (var tag in readingInfo.TagPieces)
+            {
+            }
         }
 
         private string ConvertTagValue (object tagvalue)

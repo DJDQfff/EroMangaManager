@@ -68,7 +68,7 @@ namespace EroMangaManager.Models
             StorageFolder = storageFolder;
             StorageFile = storageFile;
             ReadingInfo = info;
-            _manganame = ReadingInfo.TranslatedMangaName ?? ReadingInfo.MangaName;
+            _manganame = ReadingInfo.MangaName_Translated ?? ReadingInfo.MangaName;
         }
 
         /// <summary>

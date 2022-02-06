@@ -14,11 +14,11 @@ namespace EroMangaTagDatabase.Tables
         /// <summary>
         /// 存贮特定的本子Tag的表
         /// </summary>
-        public DbSet<MangaTag> SpecificMangaTagDatas { set; get; }
+        public DbSet<DefaultMangaTag> SpecificMangaTagDatas { set; get; }
 
         public DbSet<TagKeywords> TagKeywords { set; get; }
 
-        public DbSet<ReadingInfo> ReadingRecords { set; get; }
+        public DbSet<ReadingInfo> ReadingInfos { set; get; }
 
         private readonly string ConnectionString;
 

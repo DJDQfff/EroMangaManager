@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using BaiduTranslate;
-using EroMangaTagDatabase.DatabaseOperation;
+using static EroMangaTagDatabase.DatabaseOperation.DatabaseController;
 
 namespace EroMangaManager.Models
 {
@@ -26,8 +26,7 @@ namespace EroMangaManager.Models
                     tuples.Add((manga.StorageFile.Path, newname));
                 }
             }
-
-            await ReadingInfoTableOperation.MultiTranslateMangaName(tuples);
+            await databaseController.ReadingInfo_MultiTranslateMangaName(tuples);
         }
     }
 }

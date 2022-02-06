@@ -18,7 +18,7 @@
         /// <summary>
         /// 翻译过后的MangaName
         /// </summary>
-        public string TranslatedMangaName { set; get; }
+        public string MangaName_Translated { set; get; }
 
         /// <summary> 漫画总页数 </summary>
         public int PageAmount { get; set; }
@@ -30,5 +30,10 @@
         /// 以\r分割的各个标签（不包括本子名）
         /// </summary>
         public string TagPieces { set; get; }
+
+        /// <summary>
+        ///  内容是否被翻译过
+        /// </summary>
+        public bool IsContentTranslated { set; get; }
     }
 }
