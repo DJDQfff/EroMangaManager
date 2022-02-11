@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 using EroMangaTagDatabase.Entities;
 
-namespace EroMangaTagDatabase.DatabaseOperation
+namespace EroMangaTagDatabase
 {
     /// <summary>
     /// 没有保证Tag数据唯一性，因为在CollectionObserver类实际使用中，是能够保证唯一性的
     /// </summary>
-    public partial class DatabaseController
+    public partial class Controller
     {
         public async Task MangaTag_AddMulti (IList<DefaultMangaTag> mangaTags)
         {

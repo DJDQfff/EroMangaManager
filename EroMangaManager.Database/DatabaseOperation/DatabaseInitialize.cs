@@ -6,15 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using EroMangaTagDatabase.DatabaseOperation;
 using EroMangaTagDatabase.Entities;
 using EroMangaTagDatabase.Tables;
 
 using Microsoft.EntityFrameworkCore;
 
-namespace EroMangaTagDatabase.DatabaseOperation
+namespace EroMangaTagDatabase
 {
-    public partial class DatabaseController
+    public partial class Controller
     {
         /// <summary>
         /// 数据库迁移，并初始化默认数据
@@ -28,12 +27,12 @@ namespace EroMangaTagDatabase.DatabaseOperation
             List<string>[] vs = new List<string>[]
             {
                 new List<string> { DefaultTagType.全彩.ToString(), "全彩" },
-                new List<string>{DefaultTagType.无修.ToString(),"无修", "無修", "无码","無码" },
+                new List<string>{DefaultTagType.无修.ToString(),"无修","无修正","無修正", "無修", "无码","無码" },
                 new List<string> { DefaultTagType.DL版.ToString(), "DL版" },
                 new List<string> { DefaultTagType.刊登.ToString(), "COMIC" },
                 new List<string> { DefaultTagType.CM展.ToString(), "C99" },
-                new List<string> { DefaultTagType.简中.ToString(), "漢化", "中国語", "汉化", "中国翻訳" },
-                new List<string> { DefaultTagType.英语.ToString(), "英訳" },
+                new List<string> { DefaultTagType.中译.ToString(), "漢化", "中国語", "汉化", "中国翻訳" },
+                new List<string> { DefaultTagType.英译.ToString(), "英訳" },
                 new List<string>{DefaultTagType.作者.ToString(), "国崎蛍" },
                 new   List<string>{DefaultTagType.单行本.ToString(),"长篇","单行本"},
                 new List<string>{DefaultTagType.短篇.ToString(),"短篇"},

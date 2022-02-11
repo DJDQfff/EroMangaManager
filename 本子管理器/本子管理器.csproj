@@ -135,7 +135,6 @@
     <Compile Include="InteractPage\MangaTagEdit.xaml.cs">
       <DependentUpon>MangaTagEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\InfoRecorder.cs" />
     <Compile Include="Models\Reader.cs" />
     <Compile Include="Pages\SettingSubPages\TagKeywordsManagePage.xaml.cs">
       <DependentUpon>TagKeywordsManagePage.xaml</DependentUpon>

@@ -4,10 +4,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-using EroMangaTagDatabase.DatabaseOperation;
+using EroMangaTagDatabase;
 using EroMangaTagDatabase.Entities;
 using EroMangaTagDatabase.EntityFactory;
-using static EroMangaTagDatabase.DatabaseOperation.DatabaseController;
+using static EroMangaTagDatabase.Controller;
 using Windows.Storage;
 
 using static Windows.Storage.AccessCache.StorageApplicationPermissions;
@@ -101,7 +101,7 @@ namespace EroMangaManager.Models
         private async Task PickMangasInFolder (StorageFolder storageFolder)
         {
             var files = await storageFolder.GetFilesAsync();
-            ReadingInfo[] tags = databaseController.ReadingInfo_QueryAll();
+            ReadingInfo[] tags = DatabaseController.ReadingInfo_QueryAll();
 
             List<ReadingInfo> add = new List<ReadingInfo>();
             // TODO：这里如果使用 list<task> 的话，会出bug
@@ -128,7 +128,7 @@ namespace EroMangaManager.Models
                 await manga.SetCover();
             }
 
-            await databaseController.ReadingInfo_AddMulti(add);
+            await DatabaseController.ReadingInfo_AddMulti(add);
         }
 
         #region 弃用
@@ -141,7 +141,7 @@ namespace EroMangaManager.Models
         private async Task RemoveMultiTagsFromDatabase (StorageFolder storageFolder)
         {
             var files = (await storageFolder.GetFilesAsync()).Select(n => n.Path).ToArray();
-            await databaseController.MangaTag_RemoveMulti(files);
+            await DatabaseController.MangaTag_RemoveMulti(files);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace EroMangaManager.Models
         {
             await mangaBook.StorageFile.DeleteAsync();
             MangaList.Remove(mangaBook);
-            await databaseController.MangaTag_RemoveSingle(mangaBook.StorageFile.Path);
+            await DatabaseController.MangaTag_RemoveSingle(mangaBook.StorageFile.Path);
         }
 
         #endregion 弃用

@@ -73,7 +73,7 @@ namespace EroMangaTagDatabase.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     TagName = table.Column<string>(nullable: true),
-                    TagKeywordPieces = table.Column<string>(nullable: true)
+                    Keywords = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

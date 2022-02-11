@@ -1,8 +1,7 @@
 ﻿using System;
 
 using EroMangaManager.Helpers;
-using static EroMangaTagDatabase.DatabaseOperation.DatabaseController;
-using Microsoft.EntityFrameworkCore;
+using static EroMangaTagDatabase.Controller;
 
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -31,7 +30,7 @@ namespace EroMangaManager
         /// <param name="e"> 有关启动请求和过程的详细信息。 </param>
         protected override async void OnLaunched (LaunchActivatedEventArgs e)
         {
-            await databaseController.InitializeDefaultData();
+            await DatabaseController.InitializeDefaultData();
             await FoldersHelper.EnsureFolders();
 
             Frame rootFrame = Window.Current.Content as Frame;

@@ -7,12 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:usercontrols="using:EroMangaManager.UserControls"
     Title="{x:Bind readingInfo.MangaName}"
+    MinWidth="400"
     CloseButtonText="关闭"
     PrimaryButtonText="编辑"
     mc:Ignorable="d">
-    <Grid>
+    <Grid Width="400">
         <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
-            <StackPanel Orientation="Vertical" />
+            <StackPanel x:Name="Stack" Orientation="Vertical" />
         </ScrollViewer>
     </Grid>
 </ContentDialog>

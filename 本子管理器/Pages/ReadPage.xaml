@@ -31,7 +31,7 @@
                     VerticalScrollBarVisibility="Disabled"
                     VerticalScrollMode="Disabled"
                     ZoomMode="Enabled">
-                    <Image DataContext="{x:Bind}" />
+                    <Image x:Name="image" DataContext="{x:Bind}" />
                 </ScrollViewer>
             </Grid>
         </DataTemplate>

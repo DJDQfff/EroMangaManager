@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 
-using EroMangaTagDatabase.DatabaseOperation;
-using static EroMangaTagDatabase.DatabaseOperation.DatabaseController;
+using EroMangaTagDatabase;
+using static EroMangaTagDatabase.Controller;
 using EroMangaManager.Helpers;
 
 namespace EroMangaManager.Models
@@ -16,7 +16,7 @@ namespace EroMangaManager.Models
         /// <returns></returns>
         public static bool WhetherDatabaseMatchLength (long length)
         {
-            int count = databaseController.ImageFilter_LengthConditionCount(length);
+            int count = DatabaseController.ImageFilter_LengthConditionCount(length);
             return count != 0;
         }
 
@@ -28,18 +28,18 @@ namespace EroMangaManager.Models
         public static bool StreamHashFilter (Stream stream)
         {
             string hash = stream.ComputeHash();
-            int count = databaseController.ImageFilter_HashConditionCount(hash);
+            int count = DatabaseController.ImageFilter_HashConditionCount(hash);
             return count != 0;
         }
 
         public static async Task Add (string hash)
         {
-            await databaseController.ImageFilter_Add(hash);
+            await DatabaseController.ImageFilter_Add(hash);
         }
 
         public static async Task Remove (string[] hashes)
         {
-            await databaseController.ImageFilter_Remove(hashes);
+            await DatabaseController.ImageFilter_Remove(hashes);
         }
     }
 }

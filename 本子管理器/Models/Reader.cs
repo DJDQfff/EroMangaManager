@@ -17,7 +17,6 @@ namespace EroMangaManager.Models
         private MangaBook manga { set; get; }
         private Stream stream { set; get; }
         private ZipArchive zipArchive { set; get; }
-        private ObservableCollection<ZipArchiveEntry> zipArchiveEntries { set; get; } = new ObservableCollection<ZipArchiveEntry>();
 
         private Reader (MangaBook _manga)
         {
@@ -54,16 +53,6 @@ namespace EroMangaManager.Models
                 {
                     entries.Add(entry);// 异步操作不能放在这里，会占用线程
                 }
-            }
-        }
-
-        public async Task OpenImagesAsync (ObservableCollection<BitmapImage> bitmapImages)
-        {
-            foreach (var entry in zipArchiveEntries)
-            {
-                BitmapImage bitmapImage = await ShowEntryAsync(entry);
-
-                bitmapImages.Add(bitmapImage);
             }
         }
 

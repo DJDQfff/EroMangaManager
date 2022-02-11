@@ -11,9 +11,9 @@ using EroMangaTagDatabase.Tables;
 
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace EroMangaTagDatabase.DatabaseOperation
+namespace EroMangaTagDatabase
 {
-    public partial class DatabaseController
+    public partial class Controller
     {
         public async Task ReadingInfo_AddMulti (IEnumerable<ReadingInfo> ts)
         {

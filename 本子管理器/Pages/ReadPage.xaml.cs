@@ -80,10 +80,10 @@ namespace EroMangaManager.Pages
             FlipViewItem item = FLIP.ContainerFromItem(entry) as FlipViewItem;
             var root = item.ContentTemplateRoot as Grid;
 
-            //root.FindName("image");               // TODO 此方法有bug，应该是控件bug，有空翻文档细看
+            //var sc = root.Children[0] as ScrollViewer;
+            //var image = sc.Content as Image;
 
-            var sc = root.Children[0] as ScrollViewer;
-            var image = sc.Content as Image;
+            var image = root.FindName("image") as Image;
             image.Source = await ShowEntryAsync(entry);
         }
 

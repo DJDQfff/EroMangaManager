@@ -12,8 +12,8 @@ namespace EroMangaTagDatabase.EntityFactory
     {
         public static TagKeywords Creat (string tagname, IEnumerable<string> keywords)
         {
-            string pieces = string.Join("\r", keywords);
-            TagKeywords tagKeywords = new TagKeywords() { TagName = tagname, TagKeywordPieces = pieces };
+            string keywordsstring = string.Join("\r", keywords);
+            TagKeywords tagKeywords = new TagKeywords() { TagName = tagname, Keywords = keywordsstring };
             return tagKeywords;
         }
     }

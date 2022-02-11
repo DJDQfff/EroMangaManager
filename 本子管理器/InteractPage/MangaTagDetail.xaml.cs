@@ -18,8 +18,9 @@ using Windows.UI.Xaml.Navigation;
 using EroMangaManager.Models;
 using EroMangaManager.UserControls;
 using EroMangaTagDatabase.Entities;
-using EroMangaTagDatabase.DatabaseOperation;
+using EroMangaTagDatabase;
 using EroMangaTagDatabase.EntityFactory;
+using static EroMangaTagDatabase.Controller;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“内容对话框”项模板
@@ -34,10 +35,16 @@ namespace EroMangaManager.InteractPage
         {
             this.InitializeComponent();
             readingInfo = _mangaBook.ReadingInfo;
-
-            List<TagInfo> tagInfos = new List<TagInfo>();
-            foreach (var tag in readingInfo.TagPieces)
+            var tags = readingInfo.TagPieces.Split('\r');
+            var list = DatabaseController.MatchTag(tags);
+            foreach (var l in list)
             {
+                TagInfo tag = new TagInfo()
+                {
+                    TagName = l.Value ?? "未知标签",
+                    TagValue = l.Key
+                };
+                Stack.Children.Add(tag);
             }
         }
 

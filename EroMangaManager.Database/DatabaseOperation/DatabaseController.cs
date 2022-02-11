@@ -13,19 +13,19 @@ using EroMangaTagDatabase.Tables;
 
 using Microsoft.EntityFrameworkCore;
 
-namespace EroMangaTagDatabase.DatabaseOperation
+namespace EroMangaTagDatabase
 {
-    public partial class DatabaseController : IDisposable
+    public partial class Controller : IDisposable
     {
-        public static DatabaseController databaseController;
+        public static Controller DatabaseController;
         private Database database;
 
-        static DatabaseController ()
+        static Controller ()
         {
-            databaseController = new DatabaseController();
+            DatabaseController = new Controller();
         }
 
-        private DatabaseController ()
+        private Controller ()
         {
             database = new Database();
         }

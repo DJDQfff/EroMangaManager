@@ -5,8 +5,7 @@ using EroMangaTagDatabase.Entities;
 using EroMangaTagDatabase.EntityFactory;
 using EroMangaTagDatabase.Helper;
 using EroMangaTagDatabase.Tables;
-using EroMangaTagDatabase.DatabaseOperation;
-using static EroMangaTagDatabase.DatabaseOperation.DatabaseController;
+using static EroMangaTagDatabase.Controller;
 using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseOperation
@@ -15,14 +14,14 @@ namespace DatabaseOperation
     {
         private static async Task Main ()
         {
-            await databaseController.InitializeDefaultData();
-            var a = databaseController.TagKeywords_QueryAll();
+            await DatabaseController.InitializeDefaultData();
+            var a = DatabaseController.TagKeywords_QueryAll();
 
-            await databaseController.TagKeywords_AddSingle("fjakjf", new string[] { "djfa", "jfds" });
+            await DatabaseController.TagKeywords_AddTagSingle("fjakjf", new string[] { "djfa", "jfds" });
 
-            var b = databaseController.TagKeywords_QueryAll();
+            var b = DatabaseController.TagKeywords_QueryAll();
 
-            databaseController.Dispose();
+            DatabaseController.Dispose();
             System.Console.ReadKey();
         }
 

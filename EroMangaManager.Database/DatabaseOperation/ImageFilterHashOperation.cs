@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 using EroMangaTagDatabase.Entities;
 
-namespace EroMangaTagDatabase.DatabaseOperation
+namespace EroMangaTagDatabase
 {
-    public partial class DatabaseController
+    public partial class Controller
     {
         public int ImageFilter_LengthConditionCount (long length)
         {
