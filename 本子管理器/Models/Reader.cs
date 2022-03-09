@@ -49,6 +49,7 @@ namespace EroMangaManager.Models
             {
                 var entry = zipArchive.Entries[i];
                 bool cansue = await Task.Run(() => entry.EntryFilter()); // 放在这里可以
+
                 if (cansue)
                 {
                     entries.Add(entry);// 异步操作不能放在这里，会占用线程

@@ -19,10 +19,12 @@ namespace EroMangaManager.Helpers
         {
             bool canuse = true;
 
-            if (HashManager.WhetherDatabaseMatchLength(entry.Length))              // 第一个条件：比较数据库，解压后大小
+            if (entry.FullName.EndsWith('/'))                      // 排除文件夹entry
                 return false;
 
-            if (entry.FullName.EndsWith('/'))                      // 排除文件夹entry
+            return true; // TODO 临时关闭筛选功能
+
+            if (HashManager.WhetherDatabaseMatchLength(entry.Length))              // 第一个条件：比较数据库，解压后大小
                 return false;
 
             using (Stream stream = entry.Open())               // 不能对stream设置position
@@ -33,7 +35,7 @@ namespace EroMangaManager.Helpers
                 }
             }
 
-            return canuse;
+            return canuse;                                                  // 最后一定符合调教
         }
 
         public static async Task<BitmapImage> ShowEntryAsync (ZipArchiveEntry zipArchiveEntry)
