@@ -52,7 +52,7 @@ namespace EroMangaManager.Pages
             {
                 currentManga = manga;
                 zipArchiveEntries.Clear();
-                currentReader = await Reader.Create(manga);
+                currentReader = await Reader.FactoryCreat(manga);
                 await currentReader.SelectEntriesAsync(zipArchiveEntries);
             }
         }

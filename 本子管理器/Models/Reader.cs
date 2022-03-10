@@ -23,35 +23,27 @@ namespace EroMangaManager.Models
             this.manga = _manga;
         }
 
-        public static async Task<Reader> Create (MangaBook manga)
-        {
-            Reader reader = new Reader(manga);
-            await reader.OpenStream();
-            reader.OpenArchive();
-            Debug.WriteLine(reader.GetHashCode());
-            return reader;
-        }
-
-        private async Task OpenStream ()
+        private async Task Open ()
         {
             stream = await manga.StorageFile.OpenStreamForReadAsync();
-        }
-
-        private void OpenArchive ()
-        {
             zipArchive = new ZipArchive(stream);
         }
 
         /// <summary> 从压缩文件的所有entry中，筛选出符合条件的 </summary>
         public async Task SelectEntriesAsync (ObservableCollection<ZipArchiveEntry> entries)
         {
-            for (int i = 0; i < zipArchive.Entries.Count; i++)
+            Stream TempStream = await manga.StorageFile.OpenStreamForReadAsync();
+
+            ZipArchive TempZipArchive = new ZipArchive(TempStream);
+
+            for (int i = 0; i < TempZipArchive.Entries.Count; i++)
             {
-                var entry = zipArchive.Entries[i];
-                bool cansue = await Task.Run(() => entry.EntryFilter()); // 放在这里可以
+                var TempEntry = TempZipArchive.Entries[i];
+                bool cansue = await Task.Run(() => TempEntry.EntryFilter()); // 放在这里可以
 
                 if (cansue)
                 {
+                    var entry = zipArchive.Entries[i];
                     entries.Add(entry);// 异步操作不能放在这里，会占用线程
                 }
             }
@@ -65,6 +57,14 @@ namespace EroMangaManager.Models
             //zipArchive.Dispose();
             //stream.Dispose();
             //Debug.WriteLine("已释放");
+        }
+
+        public static async Task<Reader> FactoryCreat (MangaBook manga)
+        {
+            Reader reader = new Reader(manga);
+            await reader.Open();
+            Debug.WriteLine(reader.GetHashCode());
+            return reader;
         }
     }
 }
