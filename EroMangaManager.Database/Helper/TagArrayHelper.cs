@@ -47,17 +47,24 @@ namespace EroMangaTagDatabase.Helper
 
             bool flaghaveMangaName = false;
 
-            foreach (var tag in tagslist)                           // 查找漫画名Tag
+            try
             {
-                int index = tagstring.IndexOf(tag);
-                char c = tagstring[index - 1];// 这里要改一下，不能直接用左边一位
-                if (!left.Contains(c))                              // 查找方法：该Tag左边为无括号或者为右括号
-                {                                                   //          等价于：左边不是左括号
-                    tagslist.Remove(tag);                           // 如果存在，则调整位置，把漫画名Tag移到集合头部
-                    tagslist.Insert(0, tag);
-                    flaghaveMangaName = true;
-                    break;
+                foreach (var tag in tagslist)                           // 查找漫画名Tag
+                {
+                    int index = tagstring.IndexOf(tag);
+                    char c = tagstring[index - 1];// 这里要改一下，不能直接用左边一位
+                    if (!left.Contains(c))                              // 查找方法：该Tag左边为无括号或者为右括号
+                    {                                                   //          等价于：左边不是左括号
+                        tagslist.Remove(tag);                           // 如果存在，则调整位置，把漫画名Tag移到集合头部
+                        tagslist.Insert(0, tag);
+                        flaghaveMangaName = true;
+                        break;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                // TODO 漫画名不是由Tag组成的、或者组成形式不符合一般规律
             }
 
             for (int i = 0; i < tagslist.Count; i++)                // 移除所有Tag的首尾空白

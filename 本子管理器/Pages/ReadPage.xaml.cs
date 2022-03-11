@@ -67,7 +67,7 @@ namespace EroMangaManager.Pages
         //TODO 相机和还在持续增加时，切换项，会导致并行报错，
         /// <summary> 切换图 </summary>
         /// <param name="sender"> </param>
-        /// <param name="e">      </param>
+        /// <param name="e"> </param>
         private async void FLIP_SelectionChanged (object sender, SelectionChangedEventArgs e)
         {
             int c = e.AddedItems.Count;
@@ -89,7 +89,7 @@ namespace EroMangaManager.Pages
 
         /// <summary> 添加此图片到过滤图库 </summary>
         /// <param name="sender"> </param>
-        /// <param name="e">      </param>
+        /// <param name="e"> </param>
         private async void FilteThisImage_Click (object sender, RoutedEventArgs e)
         {
             ZipArchiveEntry entry = FLIP.SelectedItem as ZipArchiveEntry;
@@ -105,7 +105,7 @@ namespace EroMangaManager.Pages
 
         /// <summary> 此图片另存为 </summary>
         /// <param name="sender"> </param>
-        /// <param name="e">      </param>
+        /// <param name="e"> </param>
         private async void SaveImageAs_Click (object sender, RoutedEventArgs e)
         {
             ZipArchiveEntry entry = FLIP.SelectedItem as ZipArchiveEntry;
