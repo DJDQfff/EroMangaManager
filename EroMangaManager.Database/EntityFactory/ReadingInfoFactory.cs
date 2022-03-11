@@ -15,7 +15,7 @@ namespace EroMangaTagDatabase.EntityFactory
         {
             string manganamewithTag = Path.GetFileNameWithoutExtension(absolutepath);
 
-            var tags = manganamewithTag.SplitAndParser();
+            var tags = manganamewithTag.SplitAndParser();        // TODO 存在Bug，名称可能不是标准的由Tag组成的文件名
             string manganame = tags[0] ?? manganamewithTag;
             tags.RemoveAt(0);
 

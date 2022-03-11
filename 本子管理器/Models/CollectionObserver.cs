@@ -122,7 +122,7 @@ namespace EroMangaManager.Models
 
                     await manga.SetCover();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     //不是正常本子文件
                     // TODO 先不管，以后再专门做一个类来管理失败的文件
