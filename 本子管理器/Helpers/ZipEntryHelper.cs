@@ -2,7 +2,7 @@
 using System.IO;
 using System.IO.Compression;
 using System.Threading.Tasks;
-
+using System.Linq;
 using EroMangaManager.Models;
 
 using Windows.Storage.Streams;
@@ -22,6 +22,12 @@ namespace EroMangaManager.Helpers
             if (entry.FullName.EndsWith('/'))                      // 排除文件夹entry
                 return false;
 
+            string extension = Path.GetExtension(entry.Name).ToLower();
+
+            if (extension != ".jpg" && extension != ".png")
+            {
+                return false;
+            }
             //return true; // TODO 临时关闭筛选功能
 
             if (HashManager.WhetherDatabaseMatchLength(entry.Length))              // 第一个条件：比较数据库，解压后大小
