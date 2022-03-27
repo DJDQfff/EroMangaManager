@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 
 using EroMangaTagDatabase;
-using static EroMangaTagDatabase.Controller;
+using static EroMangaTagDatabase.BasicController;
 using EroMangaManager.Helpers;
 
 namespace EroMangaManager.Models

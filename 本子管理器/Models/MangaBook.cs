@@ -97,7 +97,7 @@ namespace EroMangaManager.Models
         /// <param name="storageFile"> </param>
         public MangaBook (StorageFile storageFile, StorageFolder storageFolder, ReadingInfo info)
         {
-            string path = StorageFile.Path;
+            string path = storageFile.Path;
             if (Path.GetExtension(path).ToLower() != ".zip")
             {
                 throw new Exception();

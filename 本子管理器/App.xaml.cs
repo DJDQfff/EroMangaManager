@@ -1,7 +1,7 @@
 ﻿using System;
 
 using EroMangaManager.Helpers;
-using static EroMangaTagDatabase.Controller;
+using static EroMangaTagDatabase.BasicController;
 
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;

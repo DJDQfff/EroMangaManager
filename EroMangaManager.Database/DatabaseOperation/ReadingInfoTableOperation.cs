@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore.Design;
 
 namespace EroMangaTagDatabase
 {
-    public partial class Controller
+    public partial class BasicController
     {
         public async Task ReadingInfo_AddMulti (IEnumerable<ReadingInfo> ts)
         {

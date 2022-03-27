@@ -5,7 +5,7 @@ using EroMangaTagDatabase.Entities;
 using EroMangaTagDatabase.EntityFactory;
 using EroMangaTagDatabase.Helper;
 using EroMangaTagDatabase.Tables;
-using static EroMangaTagDatabase.Controller;
+using static EroMangaTagDatabase.BasicController;
 using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseOperation

@@ -36,6 +36,9 @@ namespace EroMangaManager.Models
 
             ZipArchive TempZipArchive = new ZipArchive(TempStream);
 
+            //TODO 加一个排序
+            List<ZipArchiveEntry> sortedEntries = new List<ZipArchiveEntry>();
+
             for (int i = 0; i < TempZipArchive.Entries.Count; i++)
             {
                 var TempEntry = TempZipArchive.Entries[i];

@@ -11,7 +11,7 @@ using EroMangaTagDatabase.Helper;
 
 namespace EroMangaTagDatabase
 {
-    public partial class Controller
+    public partial class BasicController
     {
         /// <summary> </summary>
         /// <param name="tags"> </param>

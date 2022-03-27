@@ -6,7 +6,7 @@ using EroMangaTagDatabase.Entities;
 
 namespace EroMangaTagDatabase
 {
-    public partial class Controller
+    public partial class BasicController
     {
         public int ImageFilter_LengthConditionCount (long length)
         {

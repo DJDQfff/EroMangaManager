@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EroMangaTagDatabase
 {
-    public partial class Controller
+    public partial class BasicController
     {
         /// <summary>
         /// 数据库迁移，并初始化默认数据

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
 using EroMangaTagDatabase;
 using EroMangaTagDatabase.Entities;
 using EroMangaTagDatabase.EntityFactory;
-using static EroMangaTagDatabase.Controller;
+using static EroMangaTagDatabase.BasicController;
 using Windows.Storage;
 
 using static Windows.Storage.AccessCache.StorageApplicationPermissions;
@@ -104,6 +105,13 @@ namespace EroMangaManager.Models
             {
                 StorageFile storageFile = files[i];
 
+                string extension = Path.GetExtension(storageFile.Path).ToLower();
+
+                if (extension != ".zip")
+                {
+                    break;  // 如果不是zip文件，则跳过
+                }
+
                 ReadingInfo readingInfo;
                 try
                 {   //
@@ -114,6 +122,7 @@ namespace EroMangaManager.Models
                     readingInfo = ReadingInfoFactory.Creat(storageFile.Path);
                     add.Add(readingInfo);
                 }
+
                 try
                 {
                     MangaBook manga = new MangaBook(files[i], storageFolder, readingInfo);

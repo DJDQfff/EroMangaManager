@@ -56,6 +56,15 @@ namespace EroMangaManager.Pages
             catch
             {
             }
+            var items = Bookcase_GridView.Items;
+            foreach (var item in items)
+            {
+                var manga = item as MangaBook;
+                GridViewItem grid = Bookcase_GridView.ContainerFromItem(item) as GridViewItem;
+                var root = grid.ContentTemplateRoot as Grid;
+                var run = root.FindName("runtext") as Windows.UI.Xaml.Documents.Run;
+                run.Text = manga.TranslatedMangaName;
+            }
 
             button.IsEnabled = true;
         }

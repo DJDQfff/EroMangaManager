@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static EroMangaTagDatabase.Controller;
+using static EroMangaTagDatabase.BasicController;
 using EroMangaTagDatabase.Entities;
 using EroMangaTagDatabase.EntityFactory;
 using EroMangaTagDatabase.Helper;
@@ -13,7 +13,7 @@ using EroMangaTagDatabase.Tables;
 
 namespace EroMangaTagDatabase
 {
-    public partial class Controller
+    public partial class BasicController
     {
         /// <summary>
         /// 查询所有TagKeywords的所有识别关键词

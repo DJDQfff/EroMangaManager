@@ -15,17 +15,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EroMangaTagDatabase
 {
-    public partial class Controller : IDisposable
+    public partial class BasicController : IDisposable
     {
-        public static Controller DatabaseController;
+        public static BasicController DatabaseController;
         private Database database;
 
-        static Controller ()
+        static BasicController ()
         {
-            DatabaseController = new Controller();
+            DatabaseController = new BasicController();
         }
 
-        private Controller ()
+        private BasicController ()
         {
             database = new Database();
         }
