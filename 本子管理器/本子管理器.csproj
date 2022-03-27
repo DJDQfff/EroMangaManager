@@ -24,7 +24,7 @@
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
-    <AppxBundle>Never</AppxBundle>
+    <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <AppInstallerUri>file:///c</AppInstallerUri>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
@@ -153,7 +153,6 @@
     <Compile Include="Helpers\FoldersHelper.cs" />
     <Compile Include="Helpers\ZipEntryHelper.cs" />
     <Compile Include="Helpers\HashComputer.cs" />
-    <Compile Include="Helpers\PickHelper.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -306,19 +305,18 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\我的API库\MyUWPLibrary\MyUWPLibrary.csproj">
+      <Project>{0b1515f5-9a8c-404a-bd4a-1f2645e4c67d}</Project>
+      <Name>MyUWPLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\百度翻译\BaiduTranslate\BaiduTranslate.csproj">
+      <Project>{dd8b3916-8966-4a96-a63c-b75191f529e0}</Project>
+      <Name>BaiduTranslate</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EroMangaManager.Database\EroMangaTagDatabase.csproj">
       <Project>{9e3ec0bd-841e-41bd-a892-0031f1a19875}</Project>
       <Name>EroMangaTagDatabase</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="BaiduTranslate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\百度翻译\BaiduTranslate\bin\Debug\netstandard2.0\BaiduTranslate.dll</HintPath>
-    </Reference>
-    <Reference Include="ExtensionMethod">
-      <HintPath>..\..\ExtensionMethod\ExtensionMethod\bin\Debug\netstandard2.0\ExtensionMethod.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

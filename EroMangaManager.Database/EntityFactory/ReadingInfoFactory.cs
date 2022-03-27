@@ -23,6 +23,8 @@ namespace EroMangaTagDatabase.EntityFactory
             {
                 AbsolutePath = absolutepath,
                 MangaName = manganame, // 如果第一个元素为null，则以本子全名为名
+                MangaName_Translated = manganame,// 未翻译的情况下，直接以原名作为翻译名，省去了判断是否翻译的麻烦
+
                 TagPieces = string.Join("\r", tags),
                 ReadingPosition = 0
             };

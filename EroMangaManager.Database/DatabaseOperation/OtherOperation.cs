@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 using EroMangaTagDatabase.Entities;
 using EroMangaTagDatabase.Helper;
@@ -12,11 +13,10 @@ namespace EroMangaTagDatabase
 {
     public partial class Controller
     {
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="tags"></param>
-        /// <returns>一个字典，第一项为本子标签，第二项为对应的TagName（如没有则为空字符串）
+        /// <summary> </summary>
+        /// <param name="tags"> </param>
+        /// <returns>
+        /// 一个字典，第一项为本子标签，第二项为对应的TagName（如没有则为空字符串）
         /// </returns>
         public Dictionary<string, string> MatchTag (IEnumerable<string> tags)
         {
@@ -39,6 +39,13 @@ namespace EroMangaTagDatabase
                 keyValuePairs.Add(tag, key);
             }
             return keyValuePairs;
+        }
+
+        /// <summary> 保存数据库更改 </summary>
+        /// <returns> </returns>
+        public async Task SaveChanges ()
+        {
+            await database.SaveChangesAsync();
         }
     }
 }

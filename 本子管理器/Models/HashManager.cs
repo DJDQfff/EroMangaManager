@@ -12,8 +12,8 @@ namespace EroMangaManager.Models
         /// <summary>
         /// 查询数据库，是否含有对应长度的ZipArchiveEntry。含有则返回true
         /// </summary>
-        /// <param name="length"></param>
-        /// <returns></returns>
+        /// <param name="length"> </param>
+        /// <returns> </returns>
         public static bool WhetherDatabaseMatchLength (long length)
         {
             int count = DatabaseController.ImageFilter_LengthConditionCount(length);
@@ -23,8 +23,8 @@ namespace EroMangaManager.Models
         /// <summary>
         /// 查询数据库，是否含有对应Stream的Hash的ZipArchiveEntry。含有则返回true
         /// </summary>
-        /// <param name="stream"></param>
-        /// <returns></returns>
+        /// <param name="stream"> </param>
+        /// <returns> </returns>
         public static bool StreamHashFilter (Stream stream)
         {
             string hash = stream.ComputeHash();
@@ -32,9 +32,9 @@ namespace EroMangaManager.Models
             return count != 0;
         }
 
-        public static async Task Add (string hash)
+        public static async Task Add (string hash, long length)
         {
-            await DatabaseController.ImageFilter_Add(hash);
+            await DatabaseController.ImageFilter_Add(hash, length);
         }
 
         public static async Task Remove (string[] hashes)

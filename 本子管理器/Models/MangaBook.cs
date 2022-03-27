@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -40,6 +41,24 @@ namespace EroMangaManager.Models
             get => imagesource;
         }
 
+        /// <summary> 文件路径 </summary>
+        private string _filePath;
+
+        /// <summary> 获取文件的扩展名 </summary>
+        public string ExtensionName => Path.GetExtension(_filePath).ToLower();
+
+        /// <summary> 文件Display名（不带扩展名） </summary>
+        public string FileDisplayName => Path.GetFileNameWithoutExtension(_filePath);
+
+        /// <summary> 漫画文件路径 </summary>
+        public string FilePath => _filePath;
+
+        /// <summary> 漫画所在文件夹路径 </summary>
+        public string FolderPath => Path.GetDirectoryName(_filePath);
+
+        /// <summary> 漫画文件名（全名，带扩展名） </summary>
+        public string FileName => Path.GetFileName(_filePath);
+
         /// <summary> 本子对应具体文件 </summary>
         public StorageFile StorageFile { get; }
 
@@ -48,15 +67,28 @@ namespace EroMangaManager.Models
 
         public ReadingInfo ReadingInfo { set; get; }
 
-        private string _manganame;
-
         /// <summary> 本子名字 </summary>
-        public string MangaName
+        /// <summary> 漫画名称 </summary>
+        public virtual string MangaName
         {
-            get => _manganame;
+            get => ReadingInfo.MangaName;
             set
             {
-                _manganame = value;
+                ReadingInfo.MangaName = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        /// <summary> 本子Tag </summary>
+        public string[] MangaTags => ReadingInfo.TagPieces.Split('\r');
+
+        /// <summary> 漫画翻译后的断名称 </summary>
+        public string TranslatedMangaName
+        {
+            get => ReadingInfo.MangaName_Translated;
+            set
+            {
+                ReadingInfo.MangaName_Translated = value;
                 NotifyPropertyChanged();
             }
         }
@@ -65,10 +97,15 @@ namespace EroMangaManager.Models
         /// <param name="storageFile"> </param>
         public MangaBook (StorageFile storageFile, StorageFolder storageFolder, ReadingInfo info)
         {
+            string path = StorageFile.Path;
+            if (Path.GetExtension(path).ToLower() != ".zip")
+            {
+                throw new Exception();
+            }
+            _filePath = path;
             StorageFolder = storageFolder;
             StorageFile = storageFile;
             ReadingInfo = info;
-            _manganame = ReadingInfo.MangaName_Translated ?? ReadingInfo.MangaName;
         }
 
         /// <summary>
@@ -98,24 +135,30 @@ namespace EroMangaManager.Models
 
         /// <summary> 确保生成封面 </summary>
         /// <returns> </returns>
-        public async Task EnsureCoverFile ()
+        public async Task EnsureCoverFile (StorageFile storageFile)
         {
             StorageFolder folder = await FoldersHelper.GetCoversFolder();
-            IStorageItem storageItem = await folder.TryGetItemAsync(this.StorageFile.DisplayName + ".jpg");
+            IStorageItem storageItem = await folder.TryGetItemAsync(storageFile.DisplayName + ".jpg");
             if (storageItem is null)
             {
-                try
-                {
-                    await CoverHelper.CreatThumbnailCoverFile_UsingSkiaSharp(this.StorageFile);
-                }
-                catch (Exception ex)
-                {
-                    // 上面使用的SkiaSharp库存在Bug，某些图片无法正常解码
-                    IStorageItem storageItem1 = await folder.TryGetItemAsync(this.StorageFile.DisplayName + ".jpg");
-                    await storageItem1?.DeleteAsync(StorageDeleteOption.PermanentDelete);
+                await CoverHelper.CreatOriginCoverFile_UsingZipArchiveEntry(storageFile);
 
-                    await CoverHelper.CreatOriginCoverFile_UsingZipArchiveEntry(this.StorageFile);
-                }
+                // 这段代码有坑 在debug模式下，这个try -
+                // catch块可以正常运行，在release模式下无法运行
+                // SkiaSharp库存在Bug，某些正常图片无法解码
+
+                ////try
+                ////{
+                ////    await CoverHelper.CreatThumbnailCoverFile_UsingSkiaSharp(storageFile);
+                ////}
+                ////catch (Exception ex)
+                ////{
+                ////    IStorageItem storageItem1 = await folder.TryGetItemAsync(storageFile.DisplayName + ".jpg");
+
+                ////    await storageItem1?.DeleteAsync(StorageDeleteOption.PermanentDelete);
+
+                ////    await CoverHelper.CreatOriginCoverFile_UsingZipArchiveEntry(storageFile);
+                ////}
             }
         }
     }

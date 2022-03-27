@@ -9,10 +9,12 @@ using EroMangaManager.Helpers;
 using EroMangaManager.Models;
 
 using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
+using static MyUWPLibrary.StorageItemPicker;
 using static EroMangaManager.Helpers.ZipEntryHelper;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
@@ -96,7 +98,8 @@ namespace EroMangaManager.Pages
             zipArchiveEntries.Remove(entry);
 
             string hash = entry.ComputeHash();
-            await HashManager.Add(hash);
+            long length = entry.Length;
+            await HashManager.Add(hash, length);
 
             StorageFolder storageFolder = await FoldersHelper.GetFilterFolder();
             string path = Path.Combine(storageFolder.Path, hash + ".jpg");
@@ -109,7 +112,7 @@ namespace EroMangaManager.Pages
         private async void SaveImageAs_Click (object sender, RoutedEventArgs e)
         {
             ZipArchiveEntry entry = FLIP.SelectedItem as ZipArchiveEntry;
-            StorageFile storageFile = await PickHelper.SavePicture();
+            StorageFile storageFile = await SavePictureAsync(PickerLocationId.Desktop);
             if (storageFile != null)
             {
                 Stream stream = await storageFile.OpenStreamForWriteAsync();

@@ -3,30 +3,51 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using BaiduTranslate;
 using static EroMangaTagDatabase.Controller;
+using System;
 
 namespace EroMangaManager.Models
 {
     public class Translater
     {
+        // TODO 把这个提到MangaBookLibrary库里面去
+        /// <summary> 翻译多个本子名 </summary>
+        /// <returns> </returns>
         public static async Task TranslateAllMangaName ()
         {
             var names = MainPage.current.collectionObserver.MangaList.Select(n => n.MangaName).ToList();
 
-            Controller controller = new Controller();
-            var results = await controller.CommonTranslateAsync(names, "zh");
+            List<BaiduTranslate.Models.ResponseJSON.trans_result> results = null;
 
-            List<(string, string)> tuples = new List<(string, string)>();
-
-            foreach (var manga in MainPage.current.collectionObserver.MangaList)
+            using (BaiduTranslate.Translator controller = new BaiduTranslate.Translator())
             {
-                string newname = results.Where(n => n.src == manga.MangaName)?.FirstOrDefault()?.dst;
-                if (newname != null)
+                try
                 {
-                    manga.TranslateMangaName(newname);
-                    tuples.Add((manga.StorageFile.Path, newname));
+                    results = await controller.CommonTranslateAsync(names, "zh");
+                }
+                catch (Exception)
+                {
+                    // 翻译出错
                 }
             }
-            await DatabaseController.ReadingInfo_MultiTranslateMangaName(tuples);
+
+            if (results != null)
+            {
+                //List<(string, string)> translateTuples = new List<(string, string)>();
+
+                foreach (var manga in MainPage.current.collectionObserver.MangaList)
+                {
+                    string newname = results.Where(n => n.src == manga.MangaName)?.FirstOrDefault()?.dst;
+                    if (newname != null)
+                    {
+                        manga.TranslatedMangaName = newname;
+                        //translateTuples.Add((manga.FilePath, newname));
+                    }
+                }
+
+                // 找到了，在生成ReadingInfo时，就已经添加到datavase了，所以上面直接修改TranslatedMangaName会被EFCore跟踪修改
+                await DatabaseController.SaveChanges();
+                //await DatabaseController.ReadingInfo_MultiTranslateMangaName(translateTuples);
+            }
         }
     }
 }

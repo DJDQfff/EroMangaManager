@@ -22,11 +22,12 @@ namespace EroMangaTagDatabase
             return query;
         }
 
-        public async Task ImageFilter_Add (string hash)
+        public async Task ImageFilter_Add (string hash, long length)
         {
             ImageFilter imageHash = new ImageFilter()
             {
                 Hash = hash,
+                ZipEntryLength = length
             };
             database.Add(imageHash);
             await database.SaveChangesAsync();

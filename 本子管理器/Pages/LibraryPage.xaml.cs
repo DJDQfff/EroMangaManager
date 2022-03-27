@@ -1,8 +1,9 @@
 ﻿using System;
 
 using EroMangaManager.Helpers;
-
+using static MyUWPLibrary.StorageItemPicker;
 using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Controls;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
@@ -22,7 +23,7 @@ namespace EroMangaManager.Pages
         {
             Button button = sender as Button;
             button.IsEnabled = false;
-            StorageFolder folder = await PickHelper.PickFolder();
+            StorageFolder folder = await PickSingleFolderAsync(PickerLocationId.Desktop);
 
             if (folder != null)
             {

@@ -102,6 +102,8 @@ namespace EroMangaManager.Models
             // 普通的遍历添加反而不会出现bug bug 名称：已为另一线程调用
             for (int i = 0; i < files.Count; i++)
             {
+                StorageFile storageFile = files[i];
+
                 ReadingInfo readingInfo;
                 try
                 {   //
@@ -109,7 +111,7 @@ namespace EroMangaManager.Models
                 }
                 catch (InvalidOperationException)
                 {
-                    readingInfo = ReadingInfoFactory.Creat(files[i].Path);
+                    readingInfo = ReadingInfoFactory.Creat(storageFile.Path);
                     add.Add(readingInfo);
                 }
                 try
@@ -118,7 +120,7 @@ namespace EroMangaManager.Models
 
                     MangaList.Add(manga);
 
-                    await manga.EnsureCoverFile();
+                    await manga.EnsureCoverFile(files[i]);
 
                     await manga.SetCover();
                 }
