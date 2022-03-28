@@ -59,6 +59,7 @@ namespace EroMangaManager.Pages
             }
         }
 
+        // TODO 切换页面会闪烁
         protected override void OnNavigatedTo (NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -66,8 +67,21 @@ namespace EroMangaManager.Pages
             MainPage.current.MainNavigationView.IsPaneOpen = false;
         }
 
-        //TODO 相机和还在持续增加时，切换项，会导致并行报错，
-        /// <summary> 切换图 </summary>
+        private async void FLIP_SelectionChangedNew (object sender, SelectionChangedEventArgs e)
+        {
+            FlipView flipView = sender as FlipView;
+
+            var entry = flipView.SelectedItem as ZipArchiveEntry;
+
+            FlipViewItem item = FLIP.ContainerFromItem(entry) as FlipViewItem;
+
+            var root = item.ContentTemplateRoot as Grid;
+            var image = root.FindName("image") as Image;
+            image.Source = await ShowEntryAsync(entry);
+        }
+
+        // TODO 切换页面会闪烁
+        /// <summary> 切换图,这个不在使用 </summary>
         /// <param name="sender"> </param>
         /// <param name="e"> </param>
         private async void FLIP_SelectionChanged (object sender, SelectionChangedEventArgs e)
