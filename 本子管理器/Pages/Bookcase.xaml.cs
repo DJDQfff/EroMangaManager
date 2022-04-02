@@ -16,14 +16,17 @@ namespace EroMangaManager.Pages
         public Bookcase ()
         {
             this.InitializeComponent();
-            Bookcase_GridView.ItemClick += ReadPage.TryChangeManga;
         }
 
         private void GridView_ItemClick_ReadManga (object sender, ItemClickEventArgs e)
         {
             //MainPage.current.MainFrame.Navigate(typeof(ReadPage), storageFile);
             //使用下面这个更好
-            this.Frame.Navigate(typeof(EroMangaManager.Pages.ReadPage));
+
+            MangaBook mangaBook = e.ClickedItem as MangaBook;
+
+            this.Frame.Navigate(typeof(EroMangaManager.Pages.ReadPage), mangaBook);
+
             MainPage.current.MainNavigationView.SelectedItem = MainPage.current.MainNavigationView.MenuItems[2];
         }
 

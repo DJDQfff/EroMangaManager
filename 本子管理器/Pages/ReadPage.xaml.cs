@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Threading.Tasks;
-
+using System.Diagnostics;
 using EroMangaManager.Helpers;
 using EroMangaManager.Models;
 
@@ -14,8 +13,9 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-using static MyUWPLibrary.StorageItemPicker;
 using static EroMangaManager.Helpers.ZipEntryHelper;
+using static MyUWPLibrary.StorageItemPicker;
+using System.Reflection.PortableExecutable;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
@@ -25,59 +25,72 @@ namespace EroMangaManager.Pages
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class ReadPage : Page
     {
-        private static MangaBook currentManga;
-        public static ObservableCollection<ZipArchiveEntry> zipArchiveEntries = new ObservableCollection<ZipArchiveEntry>();
-        public static Reader currentReader;
-        public static ReadPage currentReadPage;
+        private MangaBook currentManga = null;
+        public ReaderViewModel currentReader = null;
 
         public ReadPage ()
         {
             this.InitializeComponent();
-            currentReadPage = this;
         }
 
-        public static async void TryChangeManga (object sender, ItemClickEventArgs e)
+        public async Task TryChangeManga (MangaBook manga)
         {
-            // 判断数据类型,这很重要
-            switch (e.ClickedItem)
+            if (manga != currentManga)                  // 传入新漫画，则设置新源
             {
-                case MangaBook manga when manga != currentManga:                 // 未打开漫画，传入一个新漫画
-                    currentReadPage.ReadPage_ProgressRing_0.Visibility = Visibility.Visible;
-                    await SetNewSource(manga);
-                    break;
-
-                case MangaBook manga when manga == currentManga:                // 传入的漫画和已打开漫画是同一本
-                    //Do Nothing
-                    break;
+                this.ReadPage_ProgressRing_0.Visibility = Visibility.Visible;
+                await SetNewSource(manga);
             }
-            async Task SetNewSource (MangaBook manga)
+            else                                       // 未传入新漫画
             {
-                currentManga = manga;
-                zipArchiveEntries.Clear();
-                currentReader = await Reader.FactoryCreat(manga);
-                await currentReader.SelectEntriesAsync(zipArchiveEntries);
+                //Do Nothing
+            }
+
+            async Task SetNewSource (MangaBook newmanga)
+            {
+                currentManga = newmanga;
+                currentReader?.Dispose();
+                currentReader = await ReaderViewModel.Creat(newmanga, null);
+
+                FLIP.ItemsSource = currentReader.zipArchiveEntries;
+                await currentReader.SelectEntriesAsync();
             }
         }
 
         // TODO 切换页面会闪烁
-        protected override void OnNavigatedTo (NavigationEventArgs e)
+        protected override async void OnNavigatedTo (NavigationEventArgs e)
         {
-            base.OnNavigatedTo(e);
-
+            Debug.WriteLine("OnNavigatedTo事件开始");
             MainPage.current.MainNavigationView.IsPaneOpen = false;
+
+            var mangaBook = e.Parameter as MangaBook;
+
+            await TryChangeManga(mangaBook);
+            Debug.WriteLine("睡眠开始");
+
+            //System.Threading.Thread.Sleep(10000);
+            //Debug.WriteLine("睡眠结束");
+            //Debug.WriteLine("OnNavigatedTo事件结束");
         }
 
         private async void FLIP_SelectionChangedNew (object sender, SelectionChangedEventArgs e)
         {
+            Debug.WriteLine($"SelectionChanged事件开始增加个数：{e.AddedItems.Count}移除个数：{e.RemovedItems.Count}");
+
             FlipView flipView = sender as FlipView;
 
             var entry = flipView.SelectedItem as ZipArchiveEntry;
 
-            FlipViewItem item = FLIP.ContainerFromItem(entry) as FlipViewItem;
+            FlipViewItem item = flipView.ContainerFromItem(entry) as FlipViewItem;
+            if (item is null)
+            {
+                return;
+            }
 
             var root = item.ContentTemplateRoot as Grid;
+
             var image = root.FindName("image") as Image;
             image.Source = await ShowEntryAsync(entry);
+            Debug.WriteLine("SelectionChanged事件结束");
         }
 
         // TODO 切换页面会闪烁
@@ -109,8 +122,8 @@ namespace EroMangaManager.Pages
         private async void FilteThisImage_Click (object sender, RoutedEventArgs e)
         {
             ZipArchiveEntry entry = FLIP.SelectedItem as ZipArchiveEntry;
-            zipArchiveEntries.Remove(entry);
 
+            currentReader.zipArchiveEntries.Remove(entry);
             string hash = entry.ComputeHash();
             long length = entry.Length;
             await HashManager.Add(hash, length);

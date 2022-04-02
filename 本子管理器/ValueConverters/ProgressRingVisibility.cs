@@ -11,7 +11,7 @@ namespace EroMangaManager.ValueConverters
     {
         public object Convert (object value, Type targetType, object parameter, string language)
         {
-            Reader reader = value as Reader;
+            ReaderViewModel reader = value as ReaderViewModel;
             if (reader is null)
             {
                 return Visibility.Collapsed;

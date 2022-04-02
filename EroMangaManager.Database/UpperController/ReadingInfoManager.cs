@@ -61,5 +61,13 @@ namespace EroMangaTagDatabase.UpperController
             NeedAddToDatabase.Clear();
             NeedAddToDatabase = null;
         }
+
+        // TODO 改用这个
+        public ReadingInfo this[string path]
+        {
+            set
+            {
+            }
+        }
     }
 }

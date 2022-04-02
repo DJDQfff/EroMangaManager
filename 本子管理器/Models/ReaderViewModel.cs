@@ -5,20 +5,31 @@ using System.IO.Compression;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using EroMangaManager.Helpers;
-
+using System;
 using Windows.UI.Xaml.Media.Imaging;
-
+using EroMangaTagDatabase.Entities;
 using static EroMangaManager.Helpers.ZipEntryHelper;
 
 namespace EroMangaManager.Models
 {
-    public class Reader
+    public class ReaderViewModel : IDisposable
     {
-        private MangaBook manga { set; get; }
+        /// <summary> </summary>
+        public MangaBook manga { set; get; }
+
+        /// <summary> 打开的文件流 </summary>
         private Stream stream { set; get; }
+
+        /// <summary> 压缩文件 </summary>
         private ZipArchive zipArchive { set; get; }
 
-        private Reader (MangaBook _manga)
+        /// <summary> 视图模型可以打开的压缩图片合集 </summary>
+        public ObservableCollection<ZipArchiveEntry> zipArchiveEntries { set; get; } = new ObservableCollection<ZipArchiveEntry>();
+
+        /// <summary> </summary>
+        /// <param name="_manga"> </param>
+        /// <param name="imageFilters"> </param>
+        private ReaderViewModel (MangaBook _manga)
         {
             this.manga = _manga;
         }
@@ -30,7 +41,7 @@ namespace EroMangaManager.Models
         }
 
         /// <summary> 从压缩文件的所有entry中，筛选出符合条件的 </summary>
-        public async Task SelectEntriesAsync (ObservableCollection<ZipArchiveEntry> entries)
+        public async Task SelectEntriesAsync ()
         {
             Stream TempStream = await manga.StorageFile.OpenStreamForReadAsync();
 
@@ -47,26 +58,27 @@ namespace EroMangaManager.Models
                 if (cansue)
                 {
                     var entry = zipArchive.Entries[i];
-                    entries.Add(entry);// 异步操作不能放在这里，会占用线程
+                    zipArchiveEntries.Add(entry);// 异步操作不能放在这里，会占用线程
                 }
             }
         }
 
-        /// <summary> 无法正常释放资源，以后再弄 </summary>
+        /// <summary> </summary>
         public void Dispose ()
         {
-            // TODO 释放文件
-            //zipArchiveEntries = null;
-            //zipArchive.Dispose();
-            //stream.Dispose();
-            //Debug.WriteLine("已释放");
+            zipArchiveEntries.Clear();
+            zipArchive.Dispose();
+            stream.Dispose();
         }
 
-        public static async Task<Reader> FactoryCreat (MangaBook manga)
+        /// <summary> 工厂模式创建Reader视图模型 </summary>
+        /// <param name="manga"> </param>
+        /// <param name="imageFilters"> 要过滤的图片数据库 </param>
+        /// <returns> </returns>
+        public static async Task<ReaderViewModel> Creat (MangaBook manga, IEnumerable<ImageFilter> imageFilters)
         {
-            Reader reader = new Reader(manga);
+            ReaderViewModel reader = new ReaderViewModel(manga);
             await reader.Open();
-            Debug.WriteLine(reader.GetHashCode());
             return reader;
         }
     }
