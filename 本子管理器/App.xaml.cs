@@ -1,6 +1,7 @@
 ﻿using System;
 
 using EroMangaManager.Helpers;
+using static EroMangaManager.Models.FolderEnum;
 using static EroMangaTagDatabase.BasicController;
 
 using Windows.ApplicationModel;
@@ -9,10 +10,11 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using static MyUWPLibrary.StorageFolderHelper;
+
 namespace EroMangaManager
 {
     /// <summary> 提供特定于应用程序的行为，以补充默认的应用程序类。 </summary>
-    sealed partial class App : Application
+    public sealed partial class App : Application
     {
         /// <summary>
         /// 初始化单一实例应用程序对象。这是执行的创作代码的第一行， 已执行，逻辑上等同于 main() 或
@@ -31,7 +33,7 @@ namespace EroMangaManager
         protected override async void OnLaunched (LaunchActivatedEventArgs e)
         {
             await DatabaseController.InitializeDefaultData();
-            await EnsureChildTemporaryFolders("Covers", "Filter");
+            await EnsureChildTemporaryFolders(nameof(Covers), nameof(Filter));
 
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -79,7 +81,7 @@ namespace EroMangaManager
         /// 并让内存内容保持不变。
         /// </summary>
         /// <param name="sender"> 挂起的请求的源。 </param>
-        /// <param name="e">      有关挂起请求的详细信息。 </param>
+        /// <param name="e"> 有关挂起请求的详细信息。 </param>
         private void OnSuspending (object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();

@@ -12,7 +12,7 @@ using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-
+using static EroMangaManager.Models.FolderEnum;
 using static EroMangaManager.Helpers.ZipEntryHelper;
 using static MyUWPLibrary.StorageItemPicker;
 using static MyUWPLibrary.StorageFolderHelper;
@@ -130,7 +130,7 @@ namespace EroMangaManager.Pages
             long length = entry.Length;
             await HashManager.Add(hash, length);
 
-            StorageFolder storageFolder = await GetChildTemporaryFolder("Filter");
+            StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filter));
             string path = Path.Combine(storageFolder.Path, hash + ".jpg");
             entry.ExtractToFile(path);
         }

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using EroMangaTagDatabase.Entities;
 using EroMangaTagDatabase.EntityFactory;
 using static MyUWPLibrary.StorageFolderHelper;
+using static EroMangaManager.Models.FolderEnum;
+
 /*
  * 简化版EroManga类
  * 只能获取本子名，是否无修，是否全彩、是否汉化、
@@ -114,7 +116,7 @@ namespace EroMangaManager.Models
         /// <returns> </returns>
         public async Task SetCover ()
         {
-            StorageFolder coverfolder = await GetChildTemporaryFolder("Covers");
+            StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
 
             StorageFile cover = await coverfolder.GetFileAsync(StorageFile.DisplayName + ".jpg");
 
@@ -133,11 +135,12 @@ namespace EroMangaManager.Models
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        //TODO 放到外面去
         /// <summary> 确保生成封面 </summary>
         /// <returns> </returns>
         public async Task EnsureCoverFile (StorageFile storageFile)
         {
-            StorageFolder folder = await GetChildTemporaryFolder("Covers");
+            StorageFolder folder = await GetChildTemporaryFolder(nameof(Covers));
             IStorageItem storageItem = await folder.TryGetItemAsync(storageFile.DisplayName + ".jpg");
             if (storageItem is null)
             {
