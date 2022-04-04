@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 
 using EroMangaTagDatabase;
 using static EroMangaTagDatabase.BasicController;
+using static MyStandard20Library.HashComputer;
 using EroMangaManager.Helpers;
 
 namespace EroMangaManager.Models

@@ -150,9 +150,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CoverHelper.cs" />
-    <Compile Include="Helpers\FoldersHelper.cs" />
     <Compile Include="Helpers\ZipEntryHelper.cs" />
-    <Compile Include="Helpers\HashComputer.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -305,6 +303,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\我的API库\MyStandard20Library\MyStandard20Library.csproj">
+      <Project>{5e80b947-fde4-4336-abb7-e57139b8fc2b}</Project>
+      <Name>MyStandard20Library</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\我的API库\MyUWPLibrary\MyUWPLibrary.csproj">
       <Project>{0b1515f5-9a8c-404a-bd4a-1f2645e4c67d}</Project>
       <Name>MyUWPLibrary</Name>

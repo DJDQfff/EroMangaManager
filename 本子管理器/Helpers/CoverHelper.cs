@@ -11,6 +11,8 @@ using Windows.Storage.FileProperties;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
 
+using static MyUWPLibrary.StorageFolderHelper;
+
 namespace EroMangaManager.Helpers
 {
     public static class CoverHelper
@@ -20,7 +22,7 @@ namespace EroMangaManager.Helpers
         /// <returns> </returns>
         public static async Task CreatThumbnailCoverFile_UsingSkiaSharp (this StorageFile storageFile)
         {
-            StorageFolder coverFolder = await FoldersHelper.GetCoversFolder();
+            StorageFolder coverFolder = await GetChildTemporaryFolder("Covers");
             StorageFile coverFIle = await coverFolder.CreateFileAsync(storageFile.DisplayName + ".jpg");
 
             using (Stream stream = await storageFile.OpenStreamForReadAsync())
@@ -48,8 +50,11 @@ namespace EroMangaManager.Helpers
                                     SkiaSharp.SKBitmap sKBitmap = SkiaSharp.SKBitmap.Decode(memoryStream);
                                     SKBitmap sKBitmap1 = sKBitmap.Resize(new SKImageInfo(sKBitmap.Width, sKBitmap.Height), SKFilterQuality.Low);
 
-                                    // SkiaSharp.SKImage sKImage = SkiaSharp.SKImage.FromEncodedData(memoryStream);
-                                    // SKBitmap sKBitmap1 = SkiaSharp.SKBitmap.FromImage(sKImage);
+                                    // SkiaSharp.SKImage
+                                    // sKImage =
+                                    // SkiaSharp.SKImage.FromEncodedData(memoryStream);
+                                    // SKBitmap sKBitmap1 =
+                                    // SkiaSharp.SKBitmap.FromImage(sKImage);
 
                                     using (Stream writestream = await coverFIle.OpenStreamForWriteAsync())
                                     {
@@ -69,7 +74,7 @@ namespace EroMangaManager.Helpers
         /// <returns> </returns>
         public static async Task CreatOriginCoverFile_UsingZipArchiveEntry (this StorageFile storageFile)
         {
-            StorageFolder coverfolder = await FoldersHelper.GetCoversFolder();
+            StorageFolder coverfolder = await GetChildTemporaryFolder("Covers");
 
             // TODO：一个可能的bug，两个文件的displayname相同，但后缀不同（应该不会，文件选择器，只会挑选zip文件）
             // 解决了一个bug：原来是手动创建一个文件，然后写入流，再添加后缀名，来实现解压并创建文件功能
@@ -140,7 +145,7 @@ namespace EroMangaManager.Helpers
 
         public static async Task ClearCovers ()
         {
-            StorageFolder storageFolder = await FoldersHelper.GetCoversFolder();
+            StorageFolder storageFolder = await GetChildTemporaryFolder("Covers");
             var files = await storageFolder.GetFilesAsync();
             List<Task> tasks = new List<Task>();
 

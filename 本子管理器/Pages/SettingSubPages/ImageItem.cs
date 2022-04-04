@@ -7,6 +7,7 @@ using EroMangaManager.Helpers;
 using Windows.Storage;
 using Windows.UI.Xaml.Media.Imaging;
 
+using static MyUWPLibrary.StorageFolderHelper;
 namespace EroMangaManager.Pages.SettingSubPages
 {
     public class ImageItem
@@ -27,7 +28,7 @@ namespace EroMangaManager.Pages.SettingSubPages
 
         public static async Task GetsAsync (ObservableCollection<ImageItem> items)
         {
-            StorageFolder storageFolder = await FoldersHelper.GetFilterFolder();
+            StorageFolder storageFolder = await GetChildTemporaryFolder("Filter");
             var files = await storageFolder.GetFilesAsync();
 
             foreach (var file in files)

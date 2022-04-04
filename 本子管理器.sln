@@ -18,6 +18,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaiduTranslate", "..\百度
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyUWPLibrary", "..\我的API库\MyUWPLibrary\MyUWPLibrary.csproj", "{0B1515F5-9A8C-404A-BD4A-1F2645E4C67D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyStandard20Library", "..\我的API库\MyStandard20Library\MyStandard20Library.csproj", "{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -142,6 +144,26 @@ Global
 		{0B1515F5-9A8C-404A-BD4A-1F2645E4C67D}.Release|x64.Build.0 = Release|x64
 		{0B1515F5-9A8C-404A-BD4A-1F2645E4C67D}.Release|x86.ActiveCfg = Release|x86
 		{0B1515F5-9A8C-404A-BD4A-1F2645E4C67D}.Release|x86.Build.0 = Release|x86
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Debug|ARM.Build.0 = Debug|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Debug|x64.Build.0 = Debug|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Debug|x86.Build.0 = Debug|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Release|ARM.ActiveCfg = Release|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Release|ARM.Build.0 = Release|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Release|ARM64.Build.0 = Release|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Release|x64.ActiveCfg = Release|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Release|x64.Build.0 = Release|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Release|x86.ActiveCfg = Release|Any CPU
+		{5E80B947-FDE4-4336-ABB7-E57139B8FC2B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

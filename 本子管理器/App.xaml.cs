@@ -8,7 +8,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-
+using static MyUWPLibrary.StorageFolderHelper;
 namespace EroMangaManager
 {
     /// <summary> 提供特定于应用程序的行为，以补充默认的应用程序类。 </summary>
@@ -31,7 +31,7 @@ namespace EroMangaManager
         protected override async void OnLaunched (LaunchActivatedEventArgs e)
         {
             await DatabaseController.InitializeDefaultData();
-            await FoldersHelper.EnsureFolders();
+            await EnsureChildTemporaryFolders("Covers", "Filter");
 
             Frame rootFrame = Window.Current.Content as Frame;
 
