@@ -21,16 +21,18 @@
             <NavigationView.MenuItems>
 
                 <NavigationViewItem Content="书架"
+                                    x:Uid="BookcaseItem"
                                     Icon="Library"
                                     Tag="bookcase"
                                     ToolTipService.ToolTip="所有漫画" />
                 <NavigationViewItem Content="书库"
+                                    x:Uid="ListItem"
                                     Icon="List"
                                     Tag="list"
                                     ToolTipService.ToolTip="已固定文件夹" />
 
                 <NavigationViewItem x:Name="read"
-                                    x:FieldModifier="public"
+                                    x:Uid="ReadItem"
                                     Content="正在阅读"
                                     Icon="Read"
                                     Tag="read"

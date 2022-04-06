@@ -1,17 +1,18 @@
-﻿<ContentDialog
-    x:Class="EroMangaManager.InteractPage.ConfirmDeleteMangaFile"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:EroMangaManager.InteractPage"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="你正在删除源文件。。。"
-    PrimaryButtonText="Yes"
-    SecondaryButtonText="No"
-    mc:Ignorable="d">
+﻿<ContentDialog x:Class="EroMangaManager.InteractPage.ConfirmDeleteMangaFile"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:local="using:EroMangaManager.InteractPage"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               x:Uid="DeleteFileConfirmPage"
+               Title="你正在删除源文件。。。"
+               PrimaryButtonText="Yes"
+               SecondaryButtonText="No"
+               mc:Ignorable="d">
     <ContentDialog.Resources>
         <Style TargetType="TextBlock">
-            <Setter Property="Margin" Value="4" />
+            <Setter Property="Margin"
+                    Value="4" />
         </Style>
     </ContentDialog.Resources>
     <Grid>
@@ -23,6 +24,7 @@
             <TextBlock Text="{x:Bind manga.MangaName}" />
             <TextBlock Text="{x:Bind manga.StorageFile.Path}" />
         </StackPanel>
-        <Image Grid.Row="1" Source="{x:Bind manga.Cover}" />
+        <Image Grid.Row="1"
+               Source="{x:Bind manga.Cover}" />
     </Grid>
 </ContentDialog>

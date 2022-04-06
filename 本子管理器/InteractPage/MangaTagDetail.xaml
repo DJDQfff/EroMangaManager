@@ -1,19 +1,21 @@
-﻿<ContentDialog
-    x:Class="EroMangaManager.InteractPage.MangaTagDetail"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:EroMangaManager.InteractPage"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:usercontrols="using:EroMangaManager.UserControls"
-    Title="{x:Bind readingInfo.MangaName}"
-    MinWidth="400"
-    CloseButtonText="关闭"
-    PrimaryButtonText="编辑"
-    mc:Ignorable="d">
+﻿<ContentDialog x:Class="EroMangaManager.InteractPage.MangaTagDetail"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+               xmlns:local="using:EroMangaManager.InteractPage"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:usercontrols="using:EroMangaManager.UserControls"
+               Title="{x:Bind readingInfo.MangaName}"
+               MinWidth="400"
+               x:Uid="MangaTagDetailPage"
+               CloseButtonText="关闭"
+               PrimaryButtonText="编辑"
+               mc:Ignorable="d">
     <Grid Width="400">
-        <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Auto">
-            <StackPanel x:Name="Stack" Orientation="Vertical" />
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      VerticalScrollMode="Auto">
+            <StackPanel x:Name="Stack"
+                        Orientation="Vertical" />
         </ScrollViewer>
     </Grid>
 </ContentDialog>

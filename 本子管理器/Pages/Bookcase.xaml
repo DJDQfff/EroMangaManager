@@ -30,18 +30,22 @@
                     <MenuFlyout>
                         <MenuFlyoutItem Click="ViewMangaTag"
                                         DataContext="{x:Bind}"
+                                        x:Uid="MenuItem1"
                                         Text="查看信息" />
 
                         <MenuFlyoutSeparator />
                         <MenuFlyoutSubItem Text="文件操作">
                             <MenuFlyoutItem Click="DeleteEroMangaFile"
                                             DataContext="{x:Bind}"
+                                            x:Uid="MenuItem2"
                                             Text="删除源文件" />
                             <MenuFlyoutItem Click="LaunchFile"
                                             DataContext="{x:Bind}"
+                                            x:Uid="MenuItem3"
                                             Text="打开文件" />
                             <MenuFlyoutItem Click="LaunchFolder"
                                             DataContext="{x:Bind}"
+                                            x:Uid="MenuItem4"
                                             Text="打开文件夹" />
                         </MenuFlyoutSubItem>
                     </MenuFlyout>
@@ -77,10 +81,12 @@
         <CommandBar Grid.Row="0"
                     Background="Transparent">
             <AppBarButton Click="TranslateEachMangaName"
+                          x:Uid="TranslateButton"
                           Icon="Font"
                           Label="翻译" />
             <AppBarButton Click="RefreshMangaList"
                           Icon="Refresh"
+                          x:Uid="RefreshButton"
                           Label="刷新" />
         </CommandBar>
         <GridView x:Name="Bookcase_GridView"

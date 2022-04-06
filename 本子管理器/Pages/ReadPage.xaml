@@ -17,9 +17,11 @@
                     <MenuFlyout>
                         <MenuFlyoutItem Click="FilteThisImage_Click"
                                         DataContext="{x:Bind}"
+                                        x:Uid="MenuItem5"
                                         Text="不显示" />
                         <MenuFlyoutItem Click="SaveImageAs_Click"
                                         DataContext="{x:Bind}"
+                                        x:Uid="MenuItem6"
                                         Text="另存为" />
                     </MenuFlyout>
                 </Grid.ContextFlyout>
