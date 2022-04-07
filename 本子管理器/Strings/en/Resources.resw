@@ -13,7 +13,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddFolderButton.Content" xml:space="preserve">
-    <value>AddFolder</value>
+    <value>Add Folder</value>
   </data>
   <data name="AppDisplayName" xml:space="preserve">
     <value>Yellow Book Reader</value>
@@ -22,7 +22,7 @@
     <value>Bookcase</value>
   </data>
   <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
-    <value>Confirm to delete source file?</value>
+    <value>Confirm to Delete the File?</value>
   </data>
   <data name="ListItem.Content" xml:space="preserve">
     <value>Pinned Folders</value>
@@ -40,19 +40,19 @@
     <value>Change it</value>
   </data>
   <data name="MangaTags.Text" xml:space="preserve">
-    <value>MangaTags</value>
+    <value>Manga Tags</value>
   </data>
   <data name="MangaTypes.Text" xml:space="preserve">
-    <value>TagTypes</value>
+    <value>Tag Types</value>
   </data>
   <data name="MenuItem1.Text" xml:space="preserve">
-    <value>CheckTags</value>
+    <value>Check Info</value>
   </data>
   <data name="MenuItem2.Text" xml:space="preserve">
     <value>Delete Source File</value>
   </data>
   <data name="MenuItem3.Text" xml:space="preserve">
-    <value>Open the File </value>
+    <value>Open File</value>
   </data>
   <data name="MenuItem4.Text" xml:space="preserve">
     <value>Open its Folder</value>
@@ -70,7 +70,7 @@
     <value>Refresh</value>
   </data>
   <data name="RemoveFolderButton.Content" xml:space="preserve">
-    <value>Remove the Folder</value>
+    <value>Remove this Folder</value>
   </data>
   <data name="SetBack.Text" xml:space="preserve">
     <value>Back</value>
@@ -79,9 +79,9 @@
     <value>No-Show Images</value>
   </data>
   <data name="SettingTagButton.Content" xml:space="preserve">
-    <value>Manage Manga Tags</value>
+    <value>Manage Tags</value>
   </data>
   <data name="TranslateButton.Label" xml:space="preserve">
-    <value>Translate </value>
+    <value>Translate</value>
   </data>
 </root>
