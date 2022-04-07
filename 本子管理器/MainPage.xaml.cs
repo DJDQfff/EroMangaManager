@@ -54,5 +54,26 @@ namespace EroMangaManager
                 MainFrame.Navigate(type);
             }
         }
+
+        public void ChangeSelectedItem (int index)
+        {
+            this.MainNavigationView.SelectedItem = index;
+
+            switch (index)
+            {
+                case 0:
+                    this.MainFrame.Navigate(typeof(Bookcase));
+                    break;
+
+                case 1:
+                    this.MainFrame.Navigate(typeof(LibraryPage));
+                    break;
+
+                case 2:
+
+                    this.MainFrame.Navigate(typeof(ReadPage));
+                    break;
+            }
+        }
     }
 }

@@ -38,8 +38,10 @@
                                     Tag="read"
                                     ToolTipService.ToolTip="正在阅读" />
             </NavigationView.MenuItems>
-            <Frame x:Name="MainFrame"
-                   x:FieldModifier="public" />
+            <NavigationView.Content>
+                <Frame x:Name="MainFrame"
+                       x:FieldModifier="public" />
+            </NavigationView.Content>
         </NavigationView>
     </Grid>
 </Page>
