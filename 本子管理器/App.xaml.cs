@@ -69,22 +69,28 @@ namespace EroMangaManager
             }
         }
 
+        /// <summary> </summary>
+        /// <remarks> 不能瞎改，里面一些奇葩问题 </remarks>
+        /// <param name="args"> </param>
         protected override void OnFileActivated (FileActivatedEventArgs args)
         {
             base.OnFileActivated(args);
 
             Frame rootFrame = Window.Current.Content as Frame;
 
-            // 不要在窗口已包含内容时重复应用程序初始化， 只需确保窗口处于活动状态
             if (rootFrame == null)
             {
-                // 创建要充当导航上下文的框架，并导航到第一页
                 rootFrame = new Frame();
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                // 将框架放在当前窗口中
                 Window.Current.Content = rootFrame;
+            }
+
+            // 这一步不能删，搞不懂为什么，删了就无法正常使用
+            if (rootFrame.Content == null)
+            {
+                rootFrame.Navigate(typeof(MainPage));
             }
 
             var file = args.Files[0] as Windows.Storage.StorageFile;
@@ -92,7 +98,6 @@ namespace EroMangaManager
 
             rootFrame.Navigate(typeof(Pages.ReadPage), mangaBook);
 
-            // 确保当前窗口处于活动状态
             Window.Current.Activate();
         }
 
