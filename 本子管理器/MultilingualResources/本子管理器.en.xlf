@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="zh-CN" target-language="en-US" original="本子管理器/STRINGS/ZH-CN/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+  <file datatype="xml" source-language="zh-CN" target-language="en" original="本子管理器/STRINGS/ZH-CN/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.0.6921.0" tool-company="Microsoft" />
     </header>
@@ -8,7 +8,7 @@
       <group id="本子管理器/STRINGS/ZH-CN/RESOURCES.RESW" datatype="resx">
         <trans-unit id="AddFolderButton.Content" translate="yes" xml:space="preserve">
           <source>添加文件夹</source>
-          <target state="translated">Add Folder</target>
+          <target state="translated">AddFolder</target>
         </trans-unit>
         <trans-unit id="AppDisplayName" translate="yes" xml:space="preserve">
           <source>小黄书</source>
@@ -20,11 +20,11 @@
         </trans-unit>
         <trans-unit id="DeleteFileConfirmPage.Title" translate="yes" xml:space="preserve">
           <source>确认删除文件？</source>
-          <target state="translated">Confirm to Delete the source File</target>
+          <target state="translated">Confirm to delete source file?</target>
         </trans-unit>
         <trans-unit id="ListItem.Content" translate="yes" xml:space="preserve">
           <source>已固定文件夹</source>
-          <target state="translated">Pinned Folder</target>
+          <target state="translated">Pinned Folders</target>
         </trans-unit>
         <trans-unit id="MangaTagDetailPage.CloseButtonText" translate="yes" xml:space="preserve">
           <source>关闭</source>
@@ -44,23 +44,23 @@
         </trans-unit>
         <trans-unit id="MangaTags.Text" translate="yes" xml:space="preserve">
           <source>本子标签</source>
-          <target state="translated">Manga Tags</target>
+          <target state="translated">MangaTags</target>
         </trans-unit>
         <trans-unit id="MangaTypes.Text" translate="yes" xml:space="preserve">
           <source>标签分类</source>
-          <target state="translated">Tag Types</target>
+          <target state="translated">TagTypes</target>
         </trans-unit>
         <trans-unit id="MenuItem1.Text" translate="yes" xml:space="preserve">
           <source>查看信息</source>
-          <target state="translated">Check Info</target>
+          <target state="translated">CheckTags</target>
         </trans-unit>
         <trans-unit id="MenuItem2.Text" translate="yes" xml:space="preserve">
           <source>删除源文件</source>
-          <target state="translated">Delete source File?</target>
+          <target state="translated">Delete Source File</target>
         </trans-unit>
         <trans-unit id="MenuItem3.Text" translate="yes" xml:space="preserve">
           <source>打开文件</source>
-          <target state="translated">Open File</target>
+          <target state="translated">Open the File </target>
         </trans-unit>
         <trans-unit id="MenuItem4.Text" translate="yes" xml:space="preserve">
           <source>打开所在文件夹</source>
@@ -68,7 +68,7 @@
         </trans-unit>
         <trans-unit id="MenuItem5.Text" translate="yes" xml:space="preserve">
           <source>不显示</source>
-          <target state="translated">Don't Show it</target>
+          <target state="translated">Don't Show</target>
         </trans-unit>
         <trans-unit id="MenuItem6.Text" translate="yes" xml:space="preserve">
           <source>另存为</source>
@@ -84,7 +84,7 @@
         </trans-unit>
         <trans-unit id="RemoveFolderButton.Content" translate="yes" xml:space="preserve">
           <source>移除文件夹</source>
-          <target state="translated">Remove Folder</target>
+          <target state="translated">Remove the Folder</target>
         </trans-unit>
         <trans-unit id="SetBack.Text" translate="yes" xml:space="preserve">
           <source>还原</source>
@@ -96,11 +96,11 @@
         </trans-unit>
         <trans-unit id="SettingTagButton.Content" translate="yes" xml:space="preserve">
           <source>标签管理</source>
-          <target state="translated">Manage Tags</target>
+          <target state="translated">Manage Manga Tags</target>
         </trans-unit>
         <trans-unit id="TranslateButton.Label" translate="yes" xml:space="preserve">
           <source>翻译</source>
-          <target state="translated">Translate</target>
+          <target state="translated">Translate </target>
         </trans-unit>
       </group>
     </body>
