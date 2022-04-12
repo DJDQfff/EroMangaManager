@@ -10,7 +10,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using static EroMangaManager.Models.FolderEnum;
 using static MyUWPLibrary.StorageFolderHelper;
 
-namespace EroMangaManager.Pages.SettingSubPages
+namespace EroMangaManager.Views.SettingSubPages
 {
     public class ImageItem
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 
 using EroMangaManager.Models;
-using EroMangaManager.Pages;
-
+using EroMangaManager.Views;
+using EroMangaManager.ViewModels;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 

@@ -1,6 +1,7 @@
 ﻿using System;
 
 using EroMangaManager.Models;
+using EroMangaManager.ViewModels;
 
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
@@ -11,7 +12,7 @@ namespace EroMangaManager.ValueConverters
     {
         public object Convert (object value, Type targetType, object parameter, string language)
         {
-            ReaderViewModel reader = value as ReaderViewModel;
+            Reader reader = value as Reader;
             if (reader is null)
             {
                 return Visibility.Collapsed;

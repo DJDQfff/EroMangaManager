@@ -143,14 +143,14 @@
       <DependentUpon>MangaTagEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\FolderEnum.cs" />
-    <Compile Include="Models\ReaderViewModel.cs" />
-    <Compile Include="Pages\SettingSubPages\TagKeywordsManagePage.xaml.cs">
+    <Compile Include="ViewModels\Reader.cs" />
+    <Compile Include="Views\SettingSubPages\TagKeywordsManagePage.xaml.cs">
       <DependentUpon>TagKeywordsManagePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\TagInfo.xaml.cs">
       <DependentUpon>TagInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ReadPage.xaml.cs">
+    <Compile Include="Views\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -163,21 +163,21 @@
     </Compile>
     <Compile Include="Models\HashManager.cs" />
     <Compile Include="Models\MangaBook.cs" />
-    <Compile Include="Models\CollectionObserver.cs" />
+    <Compile Include="ViewModels\CollectionObserver.cs" />
     <Compile Include="Models\Translater.cs" />
-    <Compile Include="Pages\LibraryPage.xaml.cs">
+    <Compile Include="Views\LibraryPage.xaml.cs">
       <DependentUpon>LibraryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Bookcase.xaml.cs">
+    <Compile Include="Views\Bookcase.xaml.cs">
       <DependentUpon>Bookcase.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SettingPage.xaml.cs">
+    <Compile Include="Views\SettingPage.xaml.cs">
       <DependentUpon>SettingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SettingSubPages\FiltedImagesPage.xaml.cs">
+    <Compile Include="Views\SettingSubPages\FiltedImagesPage.xaml.cs">
       <DependentUpon>FiltedImagesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SettingSubPages\ImageItem.cs" />
+    <Compile Include="Views\SettingSubPages\ImageItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValueConverters\ProgressRingVisibility.cs" />
   </ItemGroup>
@@ -263,7 +263,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\SettingSubPages\TagKeywordsManagePage.xaml">
+    <Page Include="Views\SettingSubPages\TagKeywordsManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -271,7 +271,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ReadPage.xaml">
+    <Page Include="Views\ReadPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -279,19 +279,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\LibraryPage.xaml">
+    <Page Include="Views\LibraryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Bookcase.xaml">
+    <Page Include="Views\Bookcase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\SettingPage.xaml">
+    <Page Include="Views\SettingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\SettingSubPages\FiltedImagesPage.xaml">
+    <Page Include="Views\SettingSubPages\FiltedImagesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -301,7 +301,7 @@
       <Version>3.1.21</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.11</Version>
+      <Version>6.2.13</Version>
     </PackageReference>
     <PackageReference Include="SkiaSharp">
       <Version>2.80.3</Version>

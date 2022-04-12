@@ -62,7 +62,7 @@ namespace EroMangaTagDatabase.Helper
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // TODO 漫画名不是由Tag组成的、或者组成形式不符合一般规律
             }

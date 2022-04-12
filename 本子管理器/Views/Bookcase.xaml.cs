@@ -8,7 +8,7 @@ using Windows.UI.Xaml.Controls;
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
 
-namespace EroMangaManager.Pages
+namespace EroMangaManager.Views
 {
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class Bookcase : Page
@@ -25,7 +25,7 @@ namespace EroMangaManager.Pages
 
             MangaBook mangaBook = e.ClickedItem as MangaBook;
 
-            this.Frame.Navigate(typeof(EroMangaManager.Pages.ReadPage), mangaBook);
+            this.Frame.Navigate(typeof(EroMangaManager.Views.ReadPage), mangaBook);
 
             MainPage.current.MainNavigationView.SelectedItem = MainPage.current.MainNavigationView.MenuItems[2];
         }

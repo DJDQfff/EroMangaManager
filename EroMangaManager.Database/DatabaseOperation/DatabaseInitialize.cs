@@ -15,9 +15,7 @@ namespace EroMangaTagDatabase
 {
     public partial class BasicController
     {
-        /// <summary>
-        /// 数据库迁移，并初始化默认数据
-        /// </summary>
+        /// <summary> 数据库迁移，并初始化默认数据 </summary>
         public async Task InitializeDefaultData ()
         {
             // 版本迁移
@@ -43,7 +41,7 @@ namespace EroMangaTagDatabase
                 {
                     var temp = database.TagKeywords.Single(n => n.TagName == list[0]);
                 }
-                catch (InvalidOperationException ex)
+                catch (InvalidOperationException)
                 {
                     string tagname = list[0];
                     list.RemoveAt(0);

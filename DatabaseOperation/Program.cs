@@ -25,7 +25,7 @@ namespace DatabaseOperation
             System.Console.ReadKey();
         }
 
-        private static async Task Test1 ()
+        private static void Test1 ()
         {
             Database databases = new Database();
             databases.Database.Migrate();

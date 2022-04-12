@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 using EroMangaTagDatabase;
 using EroMangaTagDatabase.Entities;
 using EroMangaTagDatabase.EntityFactory;
+using EroMangaManager.Models;
 using static EroMangaTagDatabase.BasicController;
 using Windows.Storage;
 
 using static Windows.Storage.AccessCache.StorageApplicationPermissions;
 
-namespace EroMangaManager.Models
+namespace EroMangaManager.ViewModels
 {
     public class CollectionObserver
     {
@@ -133,7 +134,7 @@ namespace EroMangaManager.Models
 
                     await manga.SetCover();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     //不是正常本子文件
                     // TODO 先不管，以后再专门做一个类来管理失败的文件

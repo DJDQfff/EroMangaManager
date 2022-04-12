@@ -11,7 +11,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using static MyUWPLibrary.StorageFolderHelper;
-using EroMangaManager.Pages;
+using EroMangaManager.Views;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace EroMangaManager
@@ -96,7 +96,7 @@ namespace EroMangaManager
             var file = args.Files[0] as Windows.Storage.StorageFile;
             MangaBook mangaBook = new MangaBook(file, null, null);
 
-            rootFrame.Navigate(typeof(Pages.ReadPage), mangaBook);
+            rootFrame.Navigate(typeof(Views.ReadPage), mangaBook);
 
             Window.Current.Activate();
         }

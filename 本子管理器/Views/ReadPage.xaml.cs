@@ -13,6 +13,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using static EroMangaManager.Models.FolderEnum;
+using EroMangaManager.ViewModels;
 using static EroMangaManager.Helpers.ZipEntryHelper;
 using static MyUWPLibrary.StorageItemPicker;
 using static MyUWPLibrary.StorageFolderHelper;
@@ -22,13 +23,13 @@ using System.Reflection.PortableExecutable;
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
 
-namespace EroMangaManager.Pages
+namespace EroMangaManager.Views
 {
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class ReadPage : Page
     {
         private MangaBook currentManga = null;
-        public ReaderViewModel currentReader = null;
+        public Reader currentReader = null;
 
         public ReadPage ()
         {
@@ -51,7 +52,7 @@ namespace EroMangaManager.Pages
             {
                 currentManga = newmanga;
                 currentReader?.Dispose();
-                currentReader = await ReaderViewModel.Creat(newmanga, null);
+                currentReader = await Reader.Creat(newmanga, null);
 
                 FLIP.ItemsSource = currentReader.zipArchiveEntries;
                 await currentReader.SelectEntriesAsync();

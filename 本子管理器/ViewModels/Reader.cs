@@ -8,11 +8,12 @@ using EroMangaManager.Helpers;
 using System;
 using Windows.UI.Xaml.Media.Imaging;
 using EroMangaTagDatabase.Entities;
+using EroMangaManager.Models;
 using static EroMangaManager.Helpers.ZipEntryHelper;
 
-namespace EroMangaManager.Models
+namespace EroMangaManager.ViewModels
 {
-    public class ReaderViewModel : IDisposable
+    public class Reader : IDisposable
     {
         /// <summary> </summary>
         public MangaBook manga { set; get; }
@@ -29,7 +30,7 @@ namespace EroMangaManager.Models
         /// <summary> </summary>
         /// <param name="_manga"> </param>
         /// <param name="imageFilters"> </param>
-        private ReaderViewModel (MangaBook _manga)
+        private Reader (MangaBook _manga)
         {
             this.manga = _manga;
         }
@@ -75,9 +76,9 @@ namespace EroMangaManager.Models
         /// <param name="manga"> </param>
         /// <param name="imageFilters"> 要过滤的图片数据库 </param>
         /// <returns> </returns>
-        public static async Task<ReaderViewModel> Creat (MangaBook manga, IEnumerable<ImageFilter> imageFilters)
+        public static async Task<Reader> Creat (MangaBook manga, IEnumerable<ImageFilter> imageFilters)
         {
-            ReaderViewModel reader = new ReaderViewModel(manga);
+            Reader reader = new Reader(manga);
             await reader.Open();
             return reader;
         }
