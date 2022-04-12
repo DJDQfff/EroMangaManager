@@ -48,17 +48,16 @@ namespace EroMangaManager.ViewModels
 
             ZipArchive TempZipArchive = new ZipArchive(TempStream);
 
-            //TODO 加一个排序
-            List<ZipArchiveEntry> sortedEntries = new List<ZipArchiveEntry>();
+            var names = TempZipArchive.SelectEntryName();
 
-            for (int i = 0; i < TempZipArchive.Entries.Count; i++)
+            foreach (var name in names)
             {
-                var TempEntry = TempZipArchive.Entries[i];
+                var TempEntry = TempZipArchive.GetEntry(name);
                 bool cansue = await Task.Run(() => TempEntry.EntryFilter()); // 放在这里可以
 
                 if (cansue)
                 {
-                    var entry = zipArchive.Entries[i];
+                    var entry = zipArchive.GetEntry(name);
                     zipArchiveEntries.Add(entry);// 异步操作不能放在这里，会占用线程
                 }
             }
