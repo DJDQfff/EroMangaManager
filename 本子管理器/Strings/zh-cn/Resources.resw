@@ -129,6 +129,9 @@
   <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
     <value>确认删除文件？</value>
   </data>
+  <data name="ErrorString1" xml:space="preserve">
+    <value>文件存在异常，无法打开</value>
+  </data>
   <data name="ListItem.Content" xml:space="preserve">
     <value>已固定文件夹</value>
   </data>

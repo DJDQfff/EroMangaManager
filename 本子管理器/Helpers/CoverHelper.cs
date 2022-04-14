@@ -83,25 +83,40 @@ namespace EroMangaManager.Helpers
             //StorageFile coverfile = await coverfolder.CreateFileAsync(storageFile.DisplayName, CreationCollisionOption.ReplaceExisting);
             //Stream coverstream = await coverfile.OpenStreamForWriteAsync();
 
-            using (Stream stream = await storageFile.OpenStreamForReadAsync())
+            // 不用复制流的话，如果文件正常，则正常使用；但如果文件不对，在new
+            // ZipArchive（）时，会一直卡顿很长时间
+
+            Stream stream = await storageFile.OpenStreamForReadAsync();
+
+            // System.IO.Compression.ZipArchive
+            // 实例化时，如果有异常，会出现卡死（只有在UWP有这个问题），所以用了SharpZipLib来测试一下文件的正确性
+            // 懒得把整个都换掉
+            try
             {
-                using (ZipArchive zipArchive = new ZipArchive(stream))
+                ICSharpCode.SharpZipLib.Zip.ZipFile zipFile = new ICSharpCode.SharpZipLib.Zip.ZipFile(stream);
+            }
+            catch (Exception ex)
+            {
+                throw ex;//Zip文件格式不正确
+            }
+
+            using (ZipArchive zipArchive = new ZipArchive(stream))
+            {
+                if (zipArchive.Entries.Count != 0)                                  // 非空压缩包
                 {
-                    if (zipArchive.Entries.Count != 0)                                  // 非空压缩包
+                    foreach (ZipArchiveEntry entry in zipArchive.Entries)
                     {
-                        foreach (ZipArchiveEntry entry in zipArchive.Entries)
+                        bool canuse = entry.EntryFilter();
+                        if (canuse)
                         {
-                            bool canuse = entry.EntryFilter();
-                            if (canuse)
-                            {
-                                string path = Path.Combine(coverfolder.Path, storageFile.DisplayName + ".jpg");
-                                entry.ExtractToFile(path);
-                                break;
-                            }
+                            string path = Path.Combine(coverfolder.Path, storageFile.DisplayName + ".jpg");
+                            entry.ExtractToFile(path);
+                            break;
                         }
                     }
                 }
             }
+
             //await coverfile.RenameAsync(storageFile.DisplayName + ".jpg");
         }
 

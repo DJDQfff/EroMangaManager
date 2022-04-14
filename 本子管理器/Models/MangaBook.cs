@@ -102,6 +102,7 @@ namespace EroMangaManager.Models
             string path = storageFile.Path;
             if (Path.GetExtension(path).ToLower() != ".zip")
             {
+                //TODO 这个可以删掉
                 throw new Exception();
             }
             _filePath = path;

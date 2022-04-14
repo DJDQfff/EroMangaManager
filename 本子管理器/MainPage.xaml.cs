@@ -5,6 +5,8 @@ using EroMangaManager.Views;
 using EroMangaManager.ViewModels;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.Toolkit.Uwp.Notifications;
+using Windows.ApplicationModel.Resources;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804
 // 上介绍了“空白页”项模板
@@ -16,11 +18,21 @@ namespace EroMangaManager
     {
         public CollectionObserver collectionObserver = new CollectionObserver();
 
+        public InvalidZipManager invalidZipManager = new InvalidZipManager();
+
         public static MainPage current;
+
+        private ResourceLoader resourceLoader = ResourceLoader.GetForCurrentView();
 
         public MainPage ()
         {
             this.InitializeComponent();
+            collectionObserver.ErrorZipEvent += (string str) =>
+              {
+                  new ToastContentBuilder()
+                    .AddText($"{str}\r{resourceLoader.GetString("ErrorString1")}")
+                    .Show();
+              };
             current = this;
         }
 

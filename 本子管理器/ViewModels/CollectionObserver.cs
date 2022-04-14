@@ -13,13 +13,19 @@ using static EroMangaTagDatabase.BasicController;
 using Windows.Storage;
 
 using static Windows.Storage.AccessCache.StorageApplicationPermissions;
-
 namespace EroMangaManager.ViewModels
 {
     public class CollectionObserver
     {
+        public event Action<string> ErrorZipEvent;
+        /// <summary> 存放zip文件的文件夹 </summary>
         public ObservableCollection<StorageFolder> FolderList { set; get; } = new ObservableCollection<StorageFolder>();
+
+        /// <summary> 各漫画zip </summary>
         public ObservableCollection<MangaBook> MangaList { set; get; } = new ObservableCollection<MangaBook>();
+
+        /// <summary> 流的内容不是 zip 存档格式。 </summary>
+        public ObservableCollection<MangaBook> ErrorZip { set; get; } = new ObservableCollection<MangaBook>();
 
         public CollectionObserver ()
         {
@@ -124,18 +130,21 @@ namespace EroMangaManager.ViewModels
                     add.Add(readingInfo);
                 }
 
+                MangaBook manga = null;
                 try
                 {
-                    MangaBook manga = new MangaBook(files[i], storageFolder, readingInfo);
-
-                    MangaList.Add(manga);
+                    manga = new MangaBook(files[i], storageFolder, readingInfo);
 
                     await manga.EnsureCoverFile(files[i]);
 
+                    MangaList.Add(manga);
+
                     await manga.SetCover();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    ErrorZip.Add(manga);
+                    ErrorZipEvent?.Invoke(manga.MangaName);
                     //不是正常本子文件
                     // TODO 先不管，以后再专门做一个类来管理失败的文件
                 }
