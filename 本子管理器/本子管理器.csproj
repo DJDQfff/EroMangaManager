@@ -143,7 +143,6 @@
       <DependentUpon>MangaTagEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\FolderEnum.cs" />
-    <Compile Include="ViewModels\InvalidZipManager.cs" />
     <Compile Include="ViewModels\Reader.cs" />
     <Compile Include="Views\SettingSubPages\TagKeywordsManagePage.xaml.cs">
       <DependentUpon>TagKeywordsManagePage.xaml</DependentUpon>

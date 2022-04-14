@@ -23,8 +23,8 @@
           <target state="translated">Confirm to Delete the File?</target>
         </trans-unit>
         <trans-unit id="ErrorString1" translate="yes" xml:space="preserve">
-          <source>文件存在异常，无法打开</source>
-          <target state="new">File is wrong,can't open it</target>
+          <source>出错啦，无法打开</source>
+          <target state="new">出错啦，无法打开</target>
         </trans-unit>
         <trans-unit id="ListItem.Content" translate="yes" xml:space="preserve">
           <source>已固定文件夹</source>

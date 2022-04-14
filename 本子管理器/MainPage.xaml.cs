@@ -18,8 +18,6 @@ namespace EroMangaManager
     {
         public CollectionObserver collectionObserver = new CollectionObserver();
 
-        public InvalidZipManager invalidZipManager = new InvalidZipManager();
-
         public static MainPage current;
 
         private ResourceLoader resourceLoader = ResourceLoader.GetForCurrentView();
