@@ -13,11 +13,13 @@ using static EroMangaTagDatabase.BasicController;
 using Windows.Storage;
 
 using static Windows.Storage.AccessCache.StorageApplicationPermissions;
+
 namespace EroMangaManager.ViewModels
 {
     public class CollectionObserver
     {
         public event Action<string> ErrorZipEvent;
+
         /// <summary> 存放zip文件的文件夹 </summary>
         public ObservableCollection<StorageFolder> FolderList { set; get; } = new ObservableCollection<StorageFolder>();
 
@@ -130,19 +132,19 @@ namespace EroMangaManager.ViewModels
                     add.Add(readingInfo);
                 }
 
-                MangaBook manga = null;
+                MangaBook manga = new MangaBook(files[i], storageFolder, readingInfo);
+
                 try
                 {
-                    manga = new MangaBook(files[i], storageFolder, readingInfo);
+                    MangaList.Add(manga);
 
                     await manga.EnsureCoverFile(files[i]);
-
-                    MangaList.Add(manga);
 
                     await manga.SetCover();
                 }
                 catch (Exception ex)
                 {
+                    MangaList.Remove(manga);
                     ErrorZip.Add(manga);
                     ErrorZipEvent?.Invoke(manga.MangaName);
                     //不是正常本子文件
