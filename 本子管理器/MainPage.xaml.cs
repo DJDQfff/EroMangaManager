@@ -16,11 +16,11 @@ namespace EroMangaManager
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class MainPage : Page
     {
-        public CollectionObserver collectionObserver = new CollectionObserver();
+        public CollectionObserver collectionObserver { get; } = new CollectionObserver();
 
-        public static MainPage current;
+        public static MainPage current { set; get; }
 
-        private ResourceLoader resourceLoader = ResourceLoader.GetForCurrentView();
+        private ResourceLoader resourceLoader { get; } = ResourceLoader.GetForCurrentView();
 
         public MainPage ()
         {
@@ -57,6 +57,10 @@ namespace EroMangaManager
 
                 case "read":
                     type = typeof(ReadPage);
+                    break;
+
+                case "ErrorZipItem":
+                    type = typeof(ErrorZipPage);
                     break;
             }
             if (!type.Equals(MainFrame.CurrentSourcePageType))

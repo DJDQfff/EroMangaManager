@@ -67,7 +67,6 @@ namespace EroMangaManager.Views
         protected override async void OnNavigatedTo (NavigationEventArgs e)
         {
             Debug.WriteLine("OnNavigatedTo事件开始");
-            MainPage.current.MainNavigationView.IsPaneOpen = false;
 
             var mangaBook = e.Parameter as MangaBook;
 

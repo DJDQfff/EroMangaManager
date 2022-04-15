@@ -144,6 +144,9 @@
     </Compile>
     <Compile Include="Models\FolderEnum.cs" />
     <Compile Include="ViewModels\Reader.cs" />
+    <Compile Include="Views\ErrorZipPage.xaml.cs">
+      <DependentUpon>ErrorZipPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SettingSubPages\TagKeywordsManagePage.xaml.cs">
       <DependentUpon>TagKeywordsManagePage.xaml</DependentUpon>
     </Compile>
@@ -260,6 +263,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="InteractPage\MangaTagEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ErrorZipPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

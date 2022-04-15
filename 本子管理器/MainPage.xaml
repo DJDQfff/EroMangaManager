@@ -30,7 +30,12 @@
                                     Icon="List"
                                     Tag="list"
                                     ToolTipService.ToolTip="已固定文件夹" />
-
+                <NavigationViewItem x:Name="errorzip"
+                                    x:Uid="ErrorZipItem"
+                                    Content="异常Zip"
+                                    Icon="Stop"
+                                    Tag="ErrorZipItem"
+                                    ToolTipService.ToolTip="异常Zip" />
                 <NavigationViewItem x:Name="read"
                                     x:Uid="ReadItem"
                                     Content="正在阅读"
