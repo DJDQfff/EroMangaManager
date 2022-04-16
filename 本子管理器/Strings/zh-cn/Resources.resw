@@ -132,6 +132,9 @@
   <data name="ErrorString1" xml:space="preserve">
     <value>出错啦，无法打开</value>
   </data>
+  <data name="ErrorZipPageButton" xml:space="preserve">
+    <value>异常Zip</value>
+  </data>
   <data name="ListItem.Content" xml:space="preserve">
     <value>已固定文件夹</value>
   </data>

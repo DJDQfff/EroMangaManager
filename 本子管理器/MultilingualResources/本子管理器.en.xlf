@@ -24,7 +24,7 @@
         </trans-unit>
         <trans-unit id="ErrorString1" translate="yes" xml:space="preserve">
           <source>出错啦，无法打开</source>
-          <target state="new">出错啦，无法打开</target>
+          <target state="translated">Something wrong,can' open it</target>
         </trans-unit>
         <trans-unit id="ListItem.Content" translate="yes" xml:space="preserve">
           <source>已固定文件夹</source>
@@ -105,6 +105,10 @@
         <trans-unit id="TranslateButton.Label" translate="yes" xml:space="preserve">
           <source>翻译</source>
           <target state="translated">Translate</target>
+        </trans-unit>
+        <trans-unit id="ErrorZipPageButton" translate="yes" xml:space="preserve">
+          <source>异常Zip</source>
+          <target state="translated">Wrong Zip</target>
         </trans-unit>
       </group>
     </body>

@@ -11,8 +11,7 @@
 
     <Grid>
         <ListView x:Name="ErrorZipVIewListView"
-                  ItemsSource="{x:Bind root:MainPage.current.collectionObserver.ErrorZip }"
-                  VerticalAlignment="Center">
+                  ItemsSource="{x:Bind root:MainPage.current.collectionObserver.ErrorZip }">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="manga:MangaBook">
                     <TextBlock Text="{x:Bind MangaName}" />
