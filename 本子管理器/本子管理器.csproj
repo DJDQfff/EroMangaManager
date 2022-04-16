@@ -144,7 +144,7 @@
     </Compile>
     <Compile Include="Models\FolderEnum.cs" />
     <Compile Include="ViewModels\Reader.cs" />
-    <Compile Include="Views\ErrorZipPage.xaml.cs">
+    <Compile Include="Views\SettingSubPages\ErrorZipPage.xaml.cs">
       <DependentUpon>ErrorZipPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingSubPages\TagKeywordsManagePage.xaml.cs">
@@ -266,7 +266,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ErrorZipPage.xaml">
+    <Page Include="Views\SettingSubPages\ErrorZipPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

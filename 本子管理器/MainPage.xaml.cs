@@ -58,10 +58,6 @@ namespace EroMangaManager
                 case "read":
                     type = typeof(ReadPage);
                     break;
-
-                case "ErrorZipItem":
-                    type = typeof(ErrorZipPage);
-                    break;
             }
             if (!type.Equals(MainFrame.CurrentSourcePageType))
             {

@@ -32,6 +32,9 @@
             <Button Click="Button_Click_1"
                     Content="标签管理"
                     x:Uid="SettingTagButton" />
+            <Button Content="异常Zip"
+                    x:Uid="ErrorZipPageButton"
+                    Click="Button_Click" />
         </StackPanel>
         <Frame x:Name="SettingFrame"
                Grid.Row="1" />

@@ -27,7 +27,7 @@ namespace EroMangaManager.Views
 
             this.Frame.Navigate(typeof(EroMangaManager.Views.ReadPage), mangaBook);
 
-            MainPage.current.MainNavigationView.SelectedItem = MainPage.current.MainNavigationView.MenuItems[3];
+            MainPage.current.MainNavigationView.SelectedItem = MainPage.current.MainNavigationView.MenuItems[2];
         }
 
         private async void DeleteEroMangaFile (object sender, Windows.UI.Xaml.RoutedEventArgs e)
