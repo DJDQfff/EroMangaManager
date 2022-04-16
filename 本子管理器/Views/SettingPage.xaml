@@ -26,13 +26,16 @@
         </Grid.RowDefinitions>
         <StackPanel VerticalAlignment="Bottom"
                     Orientation="Horizontal">
-            <Button Click="Click_Funtion_FiltedImageManage"
+            <Button Tag="SettingFilterImageButton"
+                    Click="Button_Click"
                     Content="过滤图库"
                     x:Uid="SettingFilterImageButton" />
-            <Button Click="Button_Click_1"
+            <Button Tag="SettingTagButton"
+                    Click="Button_Click"
                     Content="标签管理"
                     x:Uid="SettingTagButton" />
-            <Button Content="异常Zip"
+            <Button Tag="ErrorZipPageButton"
+                    Content="异常Zip"
                     x:Uid="ErrorZipPageButton"
                     Click="Button_Click" />
         </StackPanel>

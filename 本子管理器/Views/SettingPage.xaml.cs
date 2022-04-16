@@ -17,22 +17,31 @@ namespace EroMangaManager.Views
         public SettingPage ()
         {
             this.InitializeComponent();
-
-            //SettingFrame.Navigate(typeof(SettingSubPages.FiltedImagesPage));
-        }
-
-        private void Click_Funtion_FiltedImageManage (object sender, RoutedEventArgs e)
-        {
-            SettingFrame.Navigate(typeof(SettingSubPages.FiltedImagesPage));
-        }
-
-        private void Button_Click_1 (object sender, RoutedEventArgs e)
-        {
         }
 
         private void Button_Click (object sender, RoutedEventArgs e)
         {
-            SettingFrame.Navigate(typeof(ErrorZipPage));
+            Button button = sender as Button;
+            string tag = button.Tag as string;
+            switch (tag)
+            {
+                case "SettingFilterImageButton":
+                    SettingFrame.Navigate(typeof(SettingSubPages.FiltedImagesPage));
+
+                    break;
+
+                case "SettingTagButton":
+                    SettingFrame.Navigate(typeof(SettingSubPages.TagKeywordsManagePage));
+                    break;
+
+                case "ErrorZipPageButton":
+                    SettingFrame.Navigate(typeof(ErrorZipPage));
+
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }
