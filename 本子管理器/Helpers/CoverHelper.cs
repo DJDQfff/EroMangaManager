@@ -15,50 +15,12 @@ using Windows.UI.Xaml.Media.Imaging;
 
 using static EroMangaManager.Models.FolderEnum;
 using static MyUWPLibrary.StorageFolderHelper;
+using SharpCompress.Archives;
 
 namespace EroMangaManager.Helpers
 {
     public static class CoverHelper
     {
-        public static async Task CreatCoverFile_Origin_ISharpCodeSharpZipLib (this StorageFile storageFile)
-        {
-            StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
-            Stream stream = await storageFile.OpenStreamForReadAsync();
-
-            try
-            {
-                using (ICSharpCode.SharpZipLib.Zip.ZipFile zipFile = new ICSharpCode.SharpZipLib.Zip.ZipFile(stream))
-                {
-                    if (zipFile.Count != 0)                                  // 非空压缩包
-                    {
-                        foreach (ICSharpCode.SharpZipLib.Zip.ZipEntry entry in zipFile)
-                        {
-                            bool canuse = entry.EntryFilter();
-                            if (canuse)
-                            {
-                                string path = Path.Combine(coverfolder.Path, storageFile.DisplayName + ".jpg");
-                                File.Create(path);
-                                FileInfo fileInfo = new FileInfo(path);
-                                FileStream writestream = fileInfo.OpenWrite();
-
-                                using (MemoryStream ms = new MemoryStream(entry.ExtraData))
-                                {
-                                    ms.CopyTo(writestream);
-                                }
-                                writestream.Dispose();
-                                //entry.ExtractToFile(path);
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                return;
-            }
-        }
-
         /// <summary> 创建 原图 作为封面文件 </summary>
         /// <param name="storageFile"> </param>
         /// <returns> </returns>
@@ -120,6 +82,70 @@ namespace EroMangaManager.Helpers
             //await coverfile.RenameAsync(storageFile.DisplayName + ".jpg");
         }
 
+        public static async Task CreatCoverFile_Origin_ISharpCodeSharpZipLib (this StorageFile storageFile)
+        {
+            StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
+            Stream stream = await storageFile.OpenStreamForReadAsync();
+
+            try
+            {
+                using (ICSharpCode.SharpZipLib.Zip.ZipFile zipFile = new ICSharpCode.SharpZipLib.Zip.ZipFile(stream))
+                {
+                    if (zipFile.Count != 0)                                  // 非空压缩包
+                    {
+                        foreach (ICSharpCode.SharpZipLib.Zip.ZipEntry entry in zipFile)
+                        {
+                            bool canuse = entry.EntryFilter();
+                            if (canuse)
+                            {
+                                string path = Path.Combine(coverfolder.Path, storageFile.DisplayName + ".jpg");
+                                File.Create(path);
+                                FileInfo fileInfo = new FileInfo(path);
+                                FileStream writestream = fileInfo.OpenWrite();
+
+                                using (MemoryStream ms = new MemoryStream(entry.ExtraData))
+                                {
+                                    ms.CopyTo(writestream);
+                                }
+                                writestream.Dispose();
+                                //entry.ExtractToFile(path);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
+
+        }
+        public static async Task CreatCoverFile_Origin_SharpCompress (this StorageFile storageFile)
+        {
+            StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
+            Stream stream = await storageFile.OpenStreamForReadAsync();
+            try
+            {
+                using (var zipArchive = ArchiveFactory.Open(stream))
+                {
+                    foreach (var entry in zipArchive.Entries)
+                    {
+                        bool canuse = entry.EntryFilter();
+                        if (canuse)
+                        {
+                            string path = Path.Combine(coverfolder.Path, storageFile.DisplayName + ".jpg");
+                            entry.WriteToFile(path);
+                            break;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
         /// <summary> 创建 缩略图 作为封面文件 </summary>
         /// <param name="storageFile"> </param>
         /// <returns> </returns>

@@ -100,7 +100,35 @@ namespace EroMangaManager.Helpers
 
             return canuse;                                                  // 最后一定符合调教
         }
+        public static bool EntryFilter (this SharpCompress.Archives.IArchiveEntry entry)
+        {
+            bool canuse = true;
 
+            if (entry.IsDirectory)                      // 排除文件夹entry
+                return false;
+
+            string extension = Path.GetExtension(entry.Key).ToLower();
+
+            if (extension != ".jpg" && extension != ".png")
+            {
+                return false;
+            }
+            //return true; // TODO 临时关闭筛选功能
+
+            if (HashManager.WhetherDatabaseMatchLength(entry.Size))              // 第一个条件：比较数据库，解压后大小
+                return false;
+
+            using (Stream stream = entry.OpenEntryStream())               // 不能对stream设置position
+            {
+                if (HashManager.StreamHashFilter(stream))      // 第二个条件：计算流hash，判断唯一性
+                {
+                    canuse = false;                              // 符合以上条件，这个entry不会被过滤掉
+                }
+            }
+
+            return canuse;                                                  // 最后一定符合调教
+
+        }
         public static async Task<BitmapImage> ShowEntryAsync (ZipArchiveEntry zipArchiveEntry)
         {
             using (Stream stream1 = zipArchiveEntry.Open())
