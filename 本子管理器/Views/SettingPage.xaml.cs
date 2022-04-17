@@ -22,7 +22,7 @@ namespace EroMangaManager.Views
         private void Button_Click (object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            string tag = button.Tag as string;
+            string tag = button.Name;
             switch (tag)
             {
                 case "SettingFilterImageButton":
