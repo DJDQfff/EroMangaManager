@@ -20,7 +20,7 @@ namespace EroMangaManager
 
         public static MainPage current { set; get; }
 
-        private ResourceLoader resourceLoader { get; } = ResourceLoader.GetForCurrentView();
+        public ResourceLoader resourceLoader { get; } = ResourceLoader.GetForCurrentView();
 
         public MainPage ()
         {
@@ -45,7 +45,7 @@ namespace EroMangaManager
             Type type = null;
             if (args.IsSettingsInvoked)
                 type = typeof(SettingPage);
-            switch (args.InvokedItemContainer.Tag)
+            switch (args.InvokedItemContainer.Name)
             {
                 case "bookcase":
                     type = typeof(Bookcase);

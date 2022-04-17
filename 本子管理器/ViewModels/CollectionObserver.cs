@@ -39,6 +39,7 @@ namespace EroMangaManager.ViewModels
         {
             FolderList.Clear();
             MangaList.Clear();//初始化清零
+            ErrorZip.Clear();
 
             var folders = FutureAccessList.Entries;
             foreach (var item in folders)
