@@ -151,7 +151,14 @@ namespace EroMangaManager.Models
             IStorageItem storageItem = await folder.TryGetItemAsync(storageFile.DisplayName + ".jpg");
             if (storageItem is null)
             {
-                await CoverHelper.CreatCoverFile_Origin_SharpCompress(storageFile);
+                try
+                {
+                    await CoverHelper.CreatCoverFile_Origin_SharpCompress(storageFile);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
 
                 // 这段代码有坑 在debug模式下，这个try -
                 // catch块可以正常运行，在release模式下无法运行

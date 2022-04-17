@@ -74,9 +74,9 @@ namespace EroMangaManager.Helpers
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return;
+                throw ex;
             }
 
             //await coverfile.RenameAsync(storageFile.DisplayName + ".jpg");
@@ -115,9 +115,9 @@ namespace EroMangaManager.Helpers
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return;
+                throw ex;
             }
 
         }
@@ -141,9 +141,9 @@ namespace EroMangaManager.Helpers
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return;
+                throw ex;
             }
         }
         /// <summary> 创建 缩略图 作为封面文件 </summary>

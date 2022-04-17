@@ -135,12 +135,20 @@ namespace EroMangaManager.ViewModels
 
                 MangaBook manga = new MangaBook(storageFile, storageFolder, readingInfo);
 
-                MangaList.Add(manga);
+                try
+                {
+                    MangaList.Add(manga);
 
+                    await manga.TryCreatCoverFileAsync(storageFile);
 
-                await manga.TryCreatCoverFileAsync(storageFile);
-
-                await manga.SetCover();
+                    await manga.SetCover();
+                }
+                catch (Exception ex)
+                {
+                    MangaList.Remove(manga);
+                    ErrorZip.Add(manga);
+                    ErrorZipEvent?.Invoke(manga.MangaName);
+                }
             }
 
             await DatabaseController.ReadingInfo_AddMulti(add);
