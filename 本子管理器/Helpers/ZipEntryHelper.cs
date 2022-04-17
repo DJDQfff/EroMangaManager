@@ -46,7 +46,7 @@ namespace EroMangaManager.Helpers
         {
             bool canuse = true;
 
-            if (entry.Name.EndsWith('/'))                      // 排除文件夹entry
+            if (entry.IsDirectory)                      // 排除文件夹entry
                 return false;
 
             string extension = Path.GetExtension(entry.Name).ToLower();

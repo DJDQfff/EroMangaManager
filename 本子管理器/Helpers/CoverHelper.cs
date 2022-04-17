@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using SkiaSharp;
 
+using ICSharpCode.SharpZipLib.Zip;
+
 using Windows.Storage;
 using Windows.Storage.FileProperties;
 using Windows.Storage.Streams;
@@ -22,6 +24,7 @@ namespace EroMangaManager.Helpers
         {
             StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
             Stream stream = await storageFile.OpenStreamForReadAsync();
+
             try
             {
                 using (ICSharpCode.SharpZipLib.Zip.ZipFile zipFile = new ICSharpCode.SharpZipLib.Zip.ZipFile(stream))
@@ -34,6 +37,15 @@ namespace EroMangaManager.Helpers
                             if (canuse)
                             {
                                 string path = Path.Combine(coverfolder.Path, storageFile.DisplayName + ".jpg");
+                                File.Create(path);
+                                FileInfo fileInfo = new FileInfo(path);
+                                FileStream writestream = fileInfo.OpenWrite();
+
+                                using (MemoryStream ms = new MemoryStream(entry.ExtraData))
+                                {
+                                    ms.CopyTo(writestream);
+                                }
+                                writestream.Dispose();
                                 //entry.ExtractToFile(path);
                                 break;
                             }
@@ -68,34 +80,41 @@ namespace EroMangaManager.Helpers
             // System.IO.Compression.ZipArchive
             // 实例化时，如果有异常，会出现卡死（只有在UWP有这个问题），所以用了SharpZipLib来测试一下文件的正确性
             // 懒得把整个都换掉
-            ICSharpCode.SharpZipLib.Zip.ZipFile zipFile = null;
+            //ICSharpCode.SharpZipLib.Zip.ZipFile zipFile = null;
+            //try
+            //{
+            //    zipFile = new ICSharpCode.SharpZipLib.Zip.ZipFile(stream);
+            //}
+            //catch (Exception ex)
+            //{
+            //    return;         // 遇到问题直接退出
+            //}
+            //finally
+            //{
+            //    zipFile?.Close();
+            //}
             try
             {
-                zipFile = new ICSharpCode.SharpZipLib.Zip.ZipFile(stream);
-            }
-            catch (Exception ex)
-            {
-                return;         // 遇到问题直接退出
-            }
-            finally
-            {
-                zipFile?.Close();
-            }
-            using (ZipArchive zipArchive = new ZipArchive(stream))
-            {
-                if (zipArchive.Entries.Count != 0)                                  // 非空压缩包
+                using (ZipArchive zipArchive = new ZipArchive(stream))
                 {
-                    foreach (ZipArchiveEntry entry in zipArchive.Entries)
+                    if (zipArchive.Entries.Count != 0)                                  // 非空压缩包
                     {
-                        bool canuse = entry.EntryFilter();
-                        if (canuse)
+                        foreach (ZipArchiveEntry entry in zipArchive.Entries)
                         {
-                            string path = Path.Combine(coverfolder.Path, storageFile.DisplayName + ".jpg");
-                            entry.ExtractToFile(path);
-                            break;
+                            bool canuse = entry.EntryFilter();
+                            if (canuse)
+                            {
+                                string path = Path.Combine(coverfolder.Path, storageFile.DisplayName + ".jpg");
+                                entry.ExtractToFile(path);
+                                break;
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception)
+            {
+                return;
             }
 
             //await coverfile.RenameAsync(storageFile.DisplayName + ".jpg");
