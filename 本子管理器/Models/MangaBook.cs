@@ -121,9 +121,12 @@ namespace EroMangaManager.Models
 
             StorageFile cover = await coverfolder.GetFileAsync(StorageFile.DisplayName + ".jpg");
 
-            BitmapImage bitmapImage = await CoverHelper.GetCoverThumbnail_SystemAsync(cover);
+            if (cover != null)
+            {
+                BitmapImage bitmapImage = await CoverHelper.GetCoverThumbnail_SystemAsync(cover);
 
-            Cover = bitmapImage;
+                Cover = bitmapImage;
+            }
         }
 
         public void TranslateMangaName (string name)
@@ -137,9 +140,11 @@ namespace EroMangaManager.Models
         }
 
         //TODO 放到外面去
-        /// <summary> 确保生成封面 </summary>
+        /// <summary>
+        /// 尝试创建封面文件。前提：是正常zip，且内部包含图片entry
+        /// </summary>
         /// <returns> </returns>
-        public async Task EnsureCoverFile (StorageFile storageFile)
+        public async Task TryCreatCoverFileAsync (StorageFile storageFile)
         {
             StorageFolder folder = await GetChildTemporaryFolder(nameof(Covers));
             IStorageItem storageItem = await folder.TryGetItemAsync(storageFile.DisplayName + ".jpg");
