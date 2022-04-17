@@ -119,11 +119,12 @@ namespace EroMangaManager.Models
         {
             StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
 
-            StorageFile cover = await coverfolder.GetFileAsync(StorageFile.DisplayName + ".jpg");
+            var cover = await coverfolder.TryGetItemAsync(StorageFile.DisplayName + ".jpg");
 
             if (cover != null)
             {
-                BitmapImage bitmapImage = await CoverHelper.GetCoverThumbnail_SystemAsync(cover);
+                Windows.Storage.StorageFile storageFile = cover as Windows.Storage.StorageFile;
+                BitmapImage bitmapImage = await CoverHelper.GetCoverThumbnail_SystemAsync(storageFile);
 
                 Cover = bitmapImage;
             }
@@ -150,7 +151,7 @@ namespace EroMangaManager.Models
             IStorageItem storageItem = await folder.TryGetItemAsync(storageFile.DisplayName + ".jpg");
             if (storageItem is null)
             {
-                await CoverHelper.CreatOriginCoverFile_UsingZipArchiveEntry(storageFile);
+                await CoverHelper.CreatCoverFile_Origin_ISharpCodeSharpZipLib(storageFile);
 
                 // 这段代码有坑 在debug模式下，这个try -
                 // catch块可以正常运行，在release模式下无法运行

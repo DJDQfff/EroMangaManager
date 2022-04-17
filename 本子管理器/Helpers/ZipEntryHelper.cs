@@ -9,6 +9,8 @@ using EroMangaManager.Models;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
 
+using ICSharpCode.SharpZipLib.Zip;
+
 namespace EroMangaManager.Helpers
 {
     public static class ZipEntryHelper
@@ -38,6 +40,33 @@ namespace EroMangaManager.Helpers
             }
 
             return vs;
+        }
+
+        public static bool EntryFilter (this ZipEntry entry)
+        {
+            bool canuse = true;
+
+            if (entry.Name.EndsWith('/'))                      // 排除文件夹entry
+                return false;
+
+            string extension = Path.GetExtension(entry.Name).ToLower();
+
+            if (extension != ".jpg" && extension != ".png")
+            {
+                return false;
+            }
+            //return true; // TODO 临时关闭筛选功能
+            if (HashManager.WhetherDatabaseMatchLength(entry.Size))            // 第一个条件：比较数据库，解压后大小
+                return false;
+            using (MemoryStream stream = new MemoryStream(entry.ExtraData)) // 不能对stream设置position
+            {
+                if (HashManager.StreamHashFilter(stream))      // 第二个条件：计算流hash，判断唯一性
+                {
+                    canuse = false;                              // 符合以上条件，这个entry不会被过滤掉
+                }
+            }
+
+            return canuse;                                                  // 最后一定符合调教
         }
 
         /// <summary> 过滤掉不属于本子的内容，如：汉化组信息、付款码等 </summary>
