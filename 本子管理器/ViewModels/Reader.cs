@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
-using System.IO.Compression;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using EroMangaManager.Helpers;
@@ -9,7 +9,10 @@ using System;
 using Windows.UI.Xaml.Media.Imaging;
 using EroMangaTagDatabase.Entities;
 using EroMangaManager.Models;
+
 using static EroMangaManager.Helpers.ZipEntryHelper;
+
+using SharpCompress.Archives;
 
 namespace EroMangaManager.ViewModels
 {
@@ -22,10 +25,10 @@ namespace EroMangaManager.ViewModels
         private Stream stream { set; get; }
 
         /// <summary> 压缩文件 </summary>
-        private ZipArchive zipArchive { set; get; }
+        private IArchive zipArchive { set; get; }
 
         /// <summary> 视图模型可以打开的压缩图片合集 </summary>
-        public ObservableCollection<ZipArchiveEntry> zipArchiveEntries { set; get; } = new ObservableCollection<ZipArchiveEntry>();
+        public ObservableCollection<IArchiveEntry> zipArchiveEntries { set; get; } = new ObservableCollection<IArchiveEntry>();
 
         /// <summary> </summary>
         /// <param name="_manga"> </param>
@@ -38,7 +41,7 @@ namespace EroMangaManager.ViewModels
         private async Task Open ()
         {
             stream = await manga.StorageFile.OpenStreamForReadAsync();
-            zipArchive = new ZipArchive(stream);
+            zipArchive = ArchiveFactory.Open(stream);
         }
 
         /// <summary> 从压缩文件的所有entry中，筛选出符合条件的 </summary>
@@ -46,18 +49,18 @@ namespace EroMangaManager.ViewModels
         {
             Stream TempStream = await manga.StorageFile.OpenStreamForReadAsync();
 
-            ZipArchive TempZipArchive = new ZipArchive(TempStream);
+            var TempZipArchive = ArchiveFactory.Open(TempStream);
 
             var names = TempZipArchive.SelectEntryName();
 
             foreach (var name in names)
             {
-                var TempEntry = TempZipArchive.GetEntry(name);
+                var TempEntry = TempZipArchive.Entries.Single(n => n.Key == name);
                 bool cansue = await Task.Run(() => TempEntry.EntryFilter()); // 放在这里可以
 
                 if (cansue)
                 {
-                    var entry = zipArchive.GetEntry(name);
+                    var entry = zipArchive.Entries.Single(n => n.Key == name);
                     zipArchiveEntries.Add(entry);// 异步操作不能放在这里，会占用线程
                 }
             }

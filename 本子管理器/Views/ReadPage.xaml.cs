@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.IO.Compression;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using EroMangaManager.Helpers;
@@ -19,6 +18,8 @@ using static MyUWPLibrary.StorageItemPicker;
 using static MyUWPLibrary.StorageFolderHelper;
 using static MyStandard20Library.HashComputer;
 using System.Reflection.PortableExecutable;
+
+using SharpCompress.Archives;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
@@ -84,7 +85,7 @@ namespace EroMangaManager.Views
 
             FlipView flipView = sender as FlipView;
 
-            var entry = flipView.SelectedItem as ZipArchiveEntry;
+            var entry = flipView.SelectedItem as IArchiveEntry;
 
             FlipViewItem item = flipView.ContainerFromItem(entry) as FlipViewItem;
             if (item is null)
@@ -110,7 +111,7 @@ namespace EroMangaManager.Views
             if (c == 0)                 // 从集合中移出项，触发两次此事件，第一次additems个数为0，第二次additems不为0
                 return;
 
-            ZipArchiveEntry entry = e.AddedItems[0] as ZipArchiveEntry;
+            var entry = e.AddedItems[0] as IArchiveEntry;
 
             FlipViewItem item = FLIP.ContainerFromItem(entry) as FlipViewItem;
             var root = item.ContentTemplateRoot as Grid;
@@ -127,16 +128,16 @@ namespace EroMangaManager.Views
         /// <param name="e"> </param>
         private async void FilteThisImage_Click (object sender, RoutedEventArgs e)
         {
-            ZipArchiveEntry entry = FLIP.SelectedItem as ZipArchiveEntry;
+            var entry = FLIP.SelectedItem as IArchiveEntry;
 
             currentReader.zipArchiveEntries.Remove(entry);
             string hash = entry.ComputeHash();
-            long length = entry.Length;
+            long length = entry.Size;
             await HashManager.Add(hash, length);
 
             StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filter));
             string path = Path.Combine(storageFolder.Path, hash + ".jpg");
-            entry.ExtractToFile(path);
+            entry.WriteToFile(path);
         }
 
         /// <summary> 此图片另存为 </summary>
@@ -144,12 +145,12 @@ namespace EroMangaManager.Views
         /// <param name="e"> </param>
         private async void SaveImageAs_Click (object sender, RoutedEventArgs e)
         {
-            ZipArchiveEntry entry = FLIP.SelectedItem as ZipArchiveEntry;
+            var entry = FLIP.SelectedItem as IArchiveEntry;
             StorageFile storageFile = await SavePictureAsync(PickerLocationId.Desktop);
             if (storageFile != null)
             {
                 Stream stream = await storageFile.OpenStreamForWriteAsync();
-                Stream stream1 = entry.Open();
+                Stream stream1 = entry.OpenEntryStream();
                 await stream1.CopyToAsync(stream);
             }
         }

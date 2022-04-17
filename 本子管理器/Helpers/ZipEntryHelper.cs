@@ -10,18 +10,42 @@ using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
 
 using ICSharpCode.SharpZipLib.Zip;
+using SharpCompress.Archives;
+using SharpCompress.Archives.Zip;
+using SharpCompress.Archives.GZip;
 
 namespace EroMangaManager.Helpers
 {
     public static class ZipEntryHelper
     {
+        public static IEnumerable<string> SelectEntryName (this IArchive zipArchive, Action<IEnumerable<string>> sortFunc = null)
+        {
+            List<string> vs = new List<string>();
+            foreach (var zipEntry in zipArchive.Entries)
+            {
+                string entryName = zipEntry.Key;
+                vs.Add(entryName);
+            }
+
+            if (sortFunc != null)
+            {
+                sortFunc(vs);
+            }
+            else
+            {
+                vs.Sort();
+            }
+
+            return vs;
+        }
+
         /// <summary> 挑选所有entry的Name，并进行排序 </summary>
         /// <param name="zipArchive"> 要获取的压缩文件类 </param>
         /// <param name="sortFunc">
         /// 排序方法。传参，则按给定方法排序；不传，则按List.Sort()方法排序
         /// </param>
         /// <returns> </returns>
-        public static IEnumerable<string> SelectEntryName (this ZipArchive zipArchive, Action<IEnumerable<string>> sortFunc = null)
+        public static IEnumerable<string> SelectEntryName (this System.IO.Compression.ZipArchive zipArchive, Action<IEnumerable<string>> sortFunc = null)
         {
             List<string> vs = new List<string>();
             for (int i = 0; i < zipArchive.Entries.Count; i++)
@@ -72,7 +96,7 @@ namespace EroMangaManager.Helpers
         /// <summary> 过滤掉不属于本子的内容，如：汉化组信息、付款码等 </summary>
         /// <param name="entry"> </param>
         /// <returns> </returns>
-        public static bool EntryFilter (this ZipArchiveEntry entry)
+        public static bool EntryFilter (this System.IO.Compression.ZipArchiveEntry entry)
         {
             bool canuse = true;
 
@@ -100,6 +124,7 @@ namespace EroMangaManager.Helpers
 
             return canuse;                                                  // 最后一定符合调教
         }
+
         public static bool EntryFilter (this SharpCompress.Archives.IArchiveEntry entry)
         {
             bool canuse = true;
@@ -127,11 +152,33 @@ namespace EroMangaManager.Helpers
             }
 
             return canuse;                                                  // 最后一定符合调教
-
         }
-        public static async Task<BitmapImage> ShowEntryAsync (ZipArchiveEntry zipArchiveEntry)
+
+        public static async Task<BitmapImage> ShowEntryAsync (System.IO.Compression.ZipArchiveEntry zipArchiveEntry)
         {
             using (Stream stream1 = zipArchiveEntry.Open())
+            {
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    stream1.CopyTo(memoryStream);
+
+                    using (IRandomAccessStream randomAccessStream = memoryStream.AsRandomAccessStream())
+                    {
+                        randomAccessStream.Seek(0);//记得偏移量归零，
+
+                        BitmapImage bitmapImage = new BitmapImage();
+
+                        await bitmapImage.SetSourceAsync(randomAccessStream);
+
+                        return bitmapImage;
+                    }
+                }
+            }
+        }
+
+        public static async Task<BitmapImage> ShowEntryAsync (IArchiveEntry entry)
+        {
+            using (Stream stream1 = entry.OpenEntryStream())
             {
                 using (MemoryStream memoryStream = new MemoryStream())
                 {
