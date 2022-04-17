@@ -125,7 +125,7 @@ namespace EroMangaManager.ViewModels
                 ReadingInfo readingInfo;
                 try
                 {   //
-                    readingInfo = tags.Single(n => n.AbsolutePath == files[i].Path);
+                    readingInfo = tags.Single(n => n.AbsolutePath == storageFile.Path);
                 }
                 catch (InvalidOperationException)
                 {
@@ -133,14 +133,13 @@ namespace EroMangaManager.ViewModels
                     add.Add(readingInfo);
                 }
 
-                MangaBook manga = new MangaBook(files[i], storageFolder, readingInfo);
+                MangaBook manga = new MangaBook(storageFile, storageFolder, readingInfo);
 
                 MangaList.Add(manga);
 
-                await manga.TryCreatCoverFileAsync(files[i]);
+                await manga.TryCreatCoverFileAsync(storageFile);
 
                 await manga.SetCover();
-
             }
 
             await DatabaseController.ReadingInfo_AddMulti(add);

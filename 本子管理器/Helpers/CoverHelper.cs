@@ -91,13 +91,18 @@ namespace EroMangaManager.Helpers
             // System.IO.Compression.ZipArchive
             // 实例化时，如果有异常，会出现卡死（只有在UWP有这个问题），所以用了SharpZipLib来测试一下文件的正确性
             // 懒得把整个都换掉
+            ICSharpCode.SharpZipLib.Zip.ZipFile zipFile = null;
             try
             {
-                ICSharpCode.SharpZipLib.Zip.ZipFile zipFile = new ICSharpCode.SharpZipLib.Zip.ZipFile(stream);
+                zipFile = new ICSharpCode.SharpZipLib.Zip.ZipFile(stream);
             }
             catch (Exception ex)
             {
                 throw ex;//Zip文件格式不正确
+            }
+            finally
+            {
+                zipFile?.Close();
             }
 
             using (ZipArchive zipArchive = new ZipArchive(stream))
