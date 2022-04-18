@@ -59,7 +59,7 @@ namespace EroMangaManager.Views
                 currentReader?.Dispose();
                 currentReader = await Reader.Creat(newmanga, null);
 
-                FLIP.ItemsSource = currentReader.zipArchiveEntries;
+                FLIP.ItemsSource = currentReader.bitmapImages;
                 await currentReader.SelectEntriesAsync();
             }
         }
@@ -140,6 +140,22 @@ namespace EroMangaManager.Views
             entry.WriteToFile(path);
         }
 
+        private async void FilteThisImage2_Click (object sender, RoutedEventArgs e)
+        {
+            var bitmap = FLIP.SelectedItem as Windows.UI.Xaml.Media.Imaging.BitmapImage;
+            var index = currentReader.bitmapImages.IndexOf(bitmap);
+            var entry = currentReader.zipArchiveEntries[index];
+            currentReader.zipArchiveEntries.Remove(entry);
+            currentReader.bitmapImages.Remove(bitmap);
+            string hash = entry.ComputeHash();
+            long length = entry.Size;
+            await HashManager.Add(hash, length);
+
+            StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filter));
+            string path = Path.Combine(storageFolder.Path, hash + ".jpg");
+            entry.WriteToFile(path);
+        }
+
         /// <summary> 此图片另存为 </summary>
         /// <param name="sender"> </param>
         /// <param name="e"> </param>
@@ -152,6 +168,22 @@ namespace EroMangaManager.Views
                 Stream stream = await storageFile.OpenStreamForWriteAsync();
                 Stream stream1 = entry.OpenEntryStream();
                 await stream1.CopyToAsync(stream);
+            }
+        }
+
+        private async void SaveImageAs2_Click (object sender, RoutedEventArgs e)
+        {
+            var bitmap = FLIP.SelectedItem as Windows.UI.Xaml.Media.Imaging.BitmapImage;
+            var index = currentReader.bitmapImages.IndexOf(bitmap);
+            var entry = currentReader.zipArchiveEntries[index];
+            StorageFile storageFile = await SavePictureAsync(PickerLocationId.Desktop);
+            if (storageFile != null)
+            {
+                using (Stream stream = await storageFile.OpenStreamForWriteAsync())
+                {
+                    Stream stream1 = entry.OpenEntryStream();
+                    await stream1.CopyToAsync(stream);
+                }
             }
         }
     }

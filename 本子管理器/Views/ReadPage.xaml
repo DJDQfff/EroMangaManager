@@ -3,22 +3,23 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:zip="using:System.IO.Compression"
+      xmlns:zip="using:SharpCompress.Archives.Zip"
+      xmlns:iamge="using:Windows.UI.Xaml.Media.Imaging"
       Background="Transparent"
       NavigationCacheMode="Enabled"
       mc:Ignorable="d">
 
     <Page.Resources>
         <DataTemplate x:Key="Datatemplate_1"
-                      x:DataType="zip:ZipArchiveEntry">
+                      x:DataType="iamge:BitmapImage">
             <Grid x:Name="RootGrid">
                 <Grid.ContextFlyout>
                     <MenuFlyout>
-                        <MenuFlyoutItem Click="FilteThisImage_Click"
+                        <MenuFlyoutItem Click="FilteThisImage2_Click"
                                         DataContext="{x:Bind}"
                                         x:Uid="MenuItem5"
                                         Text="不显示" />
-                        <MenuFlyoutItem Click="SaveImageAs_Click"
+                        <MenuFlyoutItem Click="SaveImageAs2_Click"
                                         DataContext="{x:Bind}"
                                         x:Uid="MenuItem6"
                                         Text="另存为" />
@@ -29,7 +30,8 @@
                               VerticalScrollBarVisibility="Disabled"
                               VerticalScrollMode="Disabled"
                               ZoomMode="Enabled">
-                    <Image x:Name="image" />
+                    <Image x:Name="image"
+                           Source="{x:Bind}" />
                 </ScrollViewer>
             </Grid>
         </DataTemplate>
@@ -41,9 +43,7 @@
                       IsActive="True"
                       Visibility="Collapsed" />
         <FlipView x:Name="FLIP"
-                  ItemTemplate="{StaticResource Datatemplate_1}"
-                  ItemsSource="{x:Bind currentReader.zipArchiveEntries , Mode=OneWay}"
-                  SelectionChanged="FLIP_SelectionChangedNew">
+                  ItemTemplate="{StaticResource Datatemplate_1}">
         </FlipView>
     </Grid>
 </Page>

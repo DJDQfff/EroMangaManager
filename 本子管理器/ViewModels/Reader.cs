@@ -30,6 +30,8 @@ namespace EroMangaManager.ViewModels
         /// <summary> 视图模型可以打开的压缩图片合集 </summary>
         public ObservableCollection<IArchiveEntry> zipArchiveEntries { set; get; } = new ObservableCollection<IArchiveEntry>();
 
+        public ObservableCollection<BitmapImage> bitmapImages { set; get; } = new ObservableCollection<BitmapImage>();
+
         /// <summary> </summary>
         /// <param name="_manga"> </param>
         /// <param name="imageFilters"> </param>
@@ -51,7 +53,7 @@ namespace EroMangaManager.ViewModels
 
             var TempZipArchive = ArchiveFactory.Open(TempStream);
 
-            var names = TempZipArchive.SelectEntryName();
+            var names = TempZipArchive.SortEntriesByName();
 
             foreach (var name in names)
             {
@@ -62,6 +64,7 @@ namespace EroMangaManager.ViewModels
                 {
                     var entry = zipArchive.Entries.Single(n => n.Key == name);
                     zipArchiveEntries.Add(entry);// 异步操作不能放在这里，会占用线程
+                    bitmapImages.Add(await ShowEntryAsync(entry));
                 }
             }
         }
@@ -70,6 +73,7 @@ namespace EroMangaManager.ViewModels
         public void Dispose ()
         {
             zipArchiveEntries.Clear();
+            bitmapImages.Clear();
             zipArchive.Dispose();
             stream.Dispose();
         }

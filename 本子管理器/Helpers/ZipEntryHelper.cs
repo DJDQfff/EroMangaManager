@@ -18,7 +18,7 @@ namespace EroMangaManager.Helpers
 {
     public static class ZipEntryHelper
     {
-        public static IEnumerable<string> SelectEntryName (this IArchive zipArchive, Action<IEnumerable<string>> sortFunc = null)
+        public static IEnumerable<string> SortEntriesByName (this IArchive zipArchive, Action<IEnumerable<string>> sortFunc = null)
         {
             List<string> vs = new List<string>();
             foreach (var zipEntry in zipArchive.Entries)
@@ -45,7 +45,7 @@ namespace EroMangaManager.Helpers
         /// 排序方法。传参，则按给定方法排序；不传，则按List.Sort()方法排序
         /// </param>
         /// <returns> </returns>
-        public static IEnumerable<string> SelectEntryName (this System.IO.Compression.ZipArchive zipArchive, Action<IEnumerable<string>> sortFunc = null)
+        public static IEnumerable<string> SortEntriesByName (this System.IO.Compression.ZipArchive zipArchive, Action<IEnumerable<string>> sortFunc = null)
         {
             List<string> vs = new List<string>();
             for (int i = 0; i < zipArchive.Entries.Count; i++)
