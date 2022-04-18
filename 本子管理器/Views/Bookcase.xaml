@@ -52,7 +52,7 @@
                 </Grid.ContextFlyout>
                 <Image x:Name="image"
                        Grid.Row="0"
-                       Width="136"
+                       Width="166"
                        Height="192"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
