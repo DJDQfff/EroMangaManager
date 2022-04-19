@@ -100,6 +100,44 @@ namespace EroMangaManager.Views
             Debug.WriteLine("SelectionChanged事件结束");
         }
 
+        private async void FilteThisImage2_Click (object sender, RoutedEventArgs e)
+        {
+            var bitmap = FLIP.SelectedItem as Windows.UI.Xaml.Media.Imaging.BitmapImage;
+            var index = currentReader.bitmapImages.IndexOf(bitmap);
+            var entry = currentReader.zipArchiveEntries[index];
+            currentReader.zipArchiveEntries.Remove(entry);
+            currentReader.bitmapImages.Remove(bitmap);
+            string hash = entry.ComputeHash();
+            long length = entry.Size;
+            await HashManager.Add(hash, length);
+
+            StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filter));
+            string path = Path.Combine(storageFolder.Path, hash + ".jpg");
+            entry.WriteToFile(path);
+        }
+
+        /// <summary> 此图片另存为 </summary>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
+
+        private async void SaveImageAs2_Click (object sender, RoutedEventArgs e)
+        {
+            var bitmap = FLIP.SelectedItem as Windows.UI.Xaml.Media.Imaging.BitmapImage;
+            var index = currentReader.bitmapImages.IndexOf(bitmap);
+            var entry = currentReader.zipArchiveEntries[index];
+            StorageFile storageFile = await SavePictureAsync(PickerLocationId.Desktop);
+            if (storageFile != null)
+            {
+                using (Stream stream = await storageFile.OpenStreamForWriteAsync())
+                {
+                    Stream stream1 = entry.OpenEntryStream();
+                    await stream1.CopyToAsync(stream);
+                }
+            }
+        }
+
+        #region 不用了
+
         // TODO 切换页面会闪烁
         /// <summary> 切换图,这个不在使用 </summary>
         /// <param name="sender"> </param>
@@ -140,25 +178,6 @@ namespace EroMangaManager.Views
             entry.WriteToFile(path);
         }
 
-        private async void FilteThisImage2_Click (object sender, RoutedEventArgs e)
-        {
-            var bitmap = FLIP.SelectedItem as Windows.UI.Xaml.Media.Imaging.BitmapImage;
-            var index = currentReader.bitmapImages.IndexOf(bitmap);
-            var entry = currentReader.zipArchiveEntries[index];
-            currentReader.zipArchiveEntries.Remove(entry);
-            currentReader.bitmapImages.Remove(bitmap);
-            string hash = entry.ComputeHash();
-            long length = entry.Size;
-            await HashManager.Add(hash, length);
-
-            StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filter));
-            string path = Path.Combine(storageFolder.Path, hash + ".jpg");
-            entry.WriteToFile(path);
-        }
-
-        /// <summary> 此图片另存为 </summary>
-        /// <param name="sender"> </param>
-        /// <param name="e"> </param>
         private async void SaveImageAs_Click (object sender, RoutedEventArgs e)
         {
             var entry = FLIP.SelectedItem as IArchiveEntry;
@@ -171,20 +190,6 @@ namespace EroMangaManager.Views
             }
         }
 
-        private async void SaveImageAs2_Click (object sender, RoutedEventArgs e)
-        {
-            var bitmap = FLIP.SelectedItem as Windows.UI.Xaml.Media.Imaging.BitmapImage;
-            var index = currentReader.bitmapImages.IndexOf(bitmap);
-            var entry = currentReader.zipArchiveEntries[index];
-            StorageFile storageFile = await SavePictureAsync(PickerLocationId.Desktop);
-            if (storageFile != null)
-            {
-                using (Stream stream = await storageFile.OpenStreamForWriteAsync())
-                {
-                    Stream stream1 = entry.OpenEntryStream();
-                    await stream1.CopyToAsync(stream);
-                }
-            }
-        }
+        #endregion 不用了
     }
 }
