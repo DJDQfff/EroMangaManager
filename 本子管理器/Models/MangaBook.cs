@@ -115,7 +115,7 @@ namespace EroMangaManager.Models
         /// 返回BitmapImage，作为Image控件的source
         /// </summary>
         /// <returns> </returns>
-        public async Task SetCover ()
+        public async Task ChangeCover ()
         {
             StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
 
