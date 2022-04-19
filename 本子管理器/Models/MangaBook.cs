@@ -139,44 +139,5 @@ namespace EroMangaManager.Models
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        //TODO 放到外面去
-        /// <summary>
-        /// 尝试创建封面文件。前提：是正常zip，且内部包含图片entry
-        /// </summary>
-        /// <returns> </returns>
-        public async Task TryCreatCoverFileAsync (StorageFile storageFile)
-        {
-            StorageFolder folder = await GetChildTemporaryFolder(nameof(Covers));
-            IStorageItem storageItem = await folder.TryGetItemAsync(storageFile.DisplayName + ".jpg");
-            if (storageItem is null)
-            {
-                try
-                {
-                    await CoverHelper.CreatCoverFile_Origin_SharpCompress(storageFile);
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-
-                // 这段代码有坑 在debug模式下，这个try -
-                // catch块可以正常运行，在release模式下无法运行
-                // SkiaSharp库存在Bug，某些正常图片无法解码
-
-                ////try
-                ////{
-                ////    await CoverHelper.CreatThumbnailCoverFile_UsingSkiaSharp(storageFile);
-                ////}
-                ////catch (Exception ex)
-                ////{
-                ////    IStorageItem storageItem1 = await folder.TryGetItemAsync(storageFile.DisplayName + ".jpg");
-
-                ////    await storageItem1?.DeleteAsync(StorageDeleteOption.PermanentDelete);
-
-                ////    await CoverHelper.CreatOriginCoverFile_UsingZipArchiveEntry(storageFile);
-                ////}
-            }
-        }
     }
 }

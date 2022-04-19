@@ -119,8 +119,8 @@ namespace EroMangaManager.Helpers
             {
                 throw ex;
             }
-
         }
+
         public static async Task CreatCoverFile_Origin_SharpCompress (this StorageFile storageFile)
         {
             StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
@@ -146,6 +146,7 @@ namespace EroMangaManager.Helpers
                 throw ex;
             }
         }
+
         /// <summary> 创建 缩略图 作为封面文件 </summary>
         /// <param name="storageFile"> </param>
         /// <returns> </returns>
@@ -249,6 +250,42 @@ namespace EroMangaManager.Helpers
             }
 
             await Task.WhenAll(tasks);
+        }
+
+        /// <summary> 尝试创建封面文件。 </summary>
+        /// <returns> </returns>
+        public static async Task TryCreatCoverFileAsync (StorageFile storageFile)
+        {
+            StorageFolder folder = await GetChildTemporaryFolder(nameof(Covers));
+            IStorageItem storageItem = await folder.TryGetItemAsync(storageFile.DisplayName + ".jpg");
+            if (storageItem is null)
+            {
+                try
+                {
+                    await CoverHelper.CreatCoverFile_Origin_SharpCompress(storageFile);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+                // 这段代码有坑 在debug模式下，这个try -
+                // catch块可以正常运行，在release模式下无法运行
+                // SkiaSharp库存在Bug，某些正常图片无法解码
+
+                ////try
+                ////{
+                ////    await CoverHelper.CreatThumbnailCoverFile_UsingSkiaSharp(storageFile);
+                ////}
+                ////catch (Exception ex)
+                ////{
+                ////    IStorageItem storageItem1 = await folder.TryGetItemAsync(storageFile.DisplayName + ".jpg");
+
+                ////    await storageItem1?.DeleteAsync(StorageDeleteOption.PermanentDelete);
+
+                ////    await CoverHelper.CreatOriginCoverFile_UsingZipArchiveEntry(storageFile);
+                ////}
+            }
         }
     }
 }

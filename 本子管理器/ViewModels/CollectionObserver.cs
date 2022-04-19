@@ -139,7 +139,7 @@ namespace EroMangaManager.ViewModels
                 {
                     MangaList.Add(manga);
 
-                    await manga.TryCreatCoverFileAsync(storageFile);
+                    await Helpers.CoverHelper.TryCreatCoverFileAsync(storageFile);
 
                     await manga.SetCover();
                 }
