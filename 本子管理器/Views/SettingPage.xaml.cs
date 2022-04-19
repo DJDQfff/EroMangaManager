@@ -25,21 +25,16 @@ namespace EroMangaManager.Views
             string tag = button.Name;
             switch (tag)
             {
-                case "SettingFilterImageButton":
+                case nameof(SettingFilterImageButton):
                     SettingFrame.Navigate(typeof(SettingSubPages.FiltedImagesPage));
-
                     break;
 
-                case "SettingTagButton":
+                case nameof(SettingTagButton):
                     SettingFrame.Navigate(typeof(SettingSubPages.TagKeywordsManagePage));
                     break;
 
-                case "ErrorZipPageButton":
+                case nameof(ErrorZipPageButton):
                     SettingFrame.Navigate(typeof(ErrorZipPage));
-
-                    break;
-
-                default:
                     break;
             }
         }

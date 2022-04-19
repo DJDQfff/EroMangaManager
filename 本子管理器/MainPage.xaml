@@ -20,7 +20,7 @@
 
             <NavigationView.MenuItems>
 
-                <NavigationViewItem x:Name="bookcase"
+                <NavigationViewItem x:Name="BookcaseItem"
                                     Content="书架"
                                     x:Uid="BookcaseItem"
                                     Icon="Library"
@@ -28,9 +28,9 @@
                 <NavigationViewItem Content="书库"
                                     x:Uid="ListItem"
                                     Icon="List"
-                                    x:Name="list"
+                                    x:Name="ListItem"
                                     ToolTipService.ToolTip="已固定文件夹" />
-                <NavigationViewItem x:Name="read"
+                <NavigationViewItem x:Name="ReadItem"
                                     x:Uid="ReadItem"
                                     Content="正在阅读"
                                     Icon="Read"
