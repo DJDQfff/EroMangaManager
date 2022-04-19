@@ -109,8 +109,8 @@ namespace EroMangaManager.ViewModels
             ReadingInfo[] tags = DatabaseController.ReadingInfo_QueryAll();
 
             List<ReadingInfo> add = new List<ReadingInfo>();
-            // TODO：这里如果使用 list<task> 的话，会出bug
-            // 普通的遍历添加反而不会出现bug bug 名称：已为另一线程调用
+            // 这里如果使用 list<task> 的话，会出bug 普通的遍历添加反而不会出现bug
+            // bug 名称：已为另一线程调用
             for (int i = 0; i < files.Count; i++)
             {
                 StorageFile storageFile = files[i];

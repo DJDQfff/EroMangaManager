@@ -64,7 +64,6 @@ namespace EroMangaManager.Views
             }
         }
 
-        // TODO 切换页面会闪烁
         protected override async void OnNavigatedTo (NavigationEventArgs e)
         {
             Debug.WriteLine("OnNavigatedTo事件开始");
@@ -73,10 +72,6 @@ namespace EroMangaManager.Views
 
             await TryChangeManga(mangaBook);
             Debug.WriteLine("睡眠开始");
-
-            //System.Threading.Thread.Sleep(10000);
-            //Debug.WriteLine("睡眠结束");
-            //Debug.WriteLine("OnNavigatedTo事件结束");
         }
 
         private async void FLIP_SelectionChangedNew (object sender, SelectionChangedEventArgs e)
@@ -138,7 +133,6 @@ namespace EroMangaManager.Views
 
         #region 不用了
 
-        // TODO 切换页面会闪烁
         /// <summary> 切换图,这个不在使用 </summary>
         /// <param name="sender"> </param>
         /// <param name="e"> </param>

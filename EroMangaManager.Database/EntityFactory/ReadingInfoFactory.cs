@@ -15,14 +15,14 @@ namespace EroMangaTagDatabase.EntityFactory
         {
             string manganamewithTag = Path.GetFileNameWithoutExtension(absolutepath);
 
-            var tags = manganamewithTag.SplitAndParser();        // TODO 存在Bug，名称可能不是标准的由Tag组成的文件名
-            string manganame = tags[0] ?? manganamewithTag;
+            var tags = manganamewithTag.SplitAndParser();
+            string manganame = tags[0] ?? manganamewithTag;      // 如果第一个元素为null，则以本子全名为名
             tags.RemoveAt(0);
 
             ReadingInfo readingInfo = new ReadingInfo()
             {
                 AbsolutePath = absolutepath,
-                MangaName = manganame, // 如果第一个元素为null，则以本子全名为名
+                MangaName = manganame,
                 MangaName_Translated = manganame,// 未翻译的情况下，直接以原名作为翻译名，省去了判断是否翻译的麻烦
 
                 TagPieces = string.Join("\r", tags),

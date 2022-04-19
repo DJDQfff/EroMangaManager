@@ -9,7 +9,6 @@ namespace EroMangaManager.Models
 {
     public class Translater
     {
-        // TODO 把这个提到MangaBookLibrary库里面去
         /// <summary> 翻译多个本子名 </summary>
         /// <returns> </returns>
         public static async Task TranslateAllMangaName ()

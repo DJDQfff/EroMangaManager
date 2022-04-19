@@ -64,7 +64,7 @@ namespace EroMangaTagDatabase.Helper
             }
             catch (Exception)
             {
-                // TODO 漫画名不是由Tag组成的、或者组成形式不符合一般规律
+                // 出现异常说明： 漫画名不是由Tag组成的、或者组成形式不符合一般规律
             }
 
             for (int i = 0; i < tagslist.Count; i++)                // 移除所有Tag的首尾空白
