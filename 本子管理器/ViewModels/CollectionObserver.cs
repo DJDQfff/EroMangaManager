@@ -13,6 +13,7 @@ using static EroMangaTagDatabase.BasicController;
 using Windows.Storage;
 
 using static Windows.Storage.AccessCache.StorageApplicationPermissions;
+using Windows.UI.Xaml.Controls;
 
 namespace EroMangaManager.ViewModels
 {
@@ -32,6 +33,10 @@ namespace EroMangaManager.ViewModels
         public CollectionObserver ()
         {
             Initialize();
+        }
+
+        public CollectionObserver (StorageFolder storageFolder)
+        {
         }
 
         /// <summary> 初始化文件夹 </summary>
@@ -89,13 +94,22 @@ namespace EroMangaManager.ViewModels
             FolderList.Remove(folder);      // 从访问列表Model里移除
 
             string token = FutureAccessList.Add(folder);        // 从系统存储api里移除
-            FutureAccessList.Remove(token);
 
-            for (int i = MangaList.Count - 1; i >= 0; i--)      // 从Model中移除漫画
+            FutureAccessList.Remove(token); // 从未来访问列表里删除
+
+            RemoveMangaInFolder(folder.Path);   // 从MangaList里移除这个文件夹下的漫画
+        }
+
+        /// <summary> 从MangaList中移除特定文件夹下的漫画 </summary>
+        /// <param name="folderpath"> </param>
+        private void RemoveMangaInFolder (string folderpath)
+        {
+            for (int i = MangaList.Count - 1; i >= 0; i--)
             {
-                if (MangaList[i].StorageFolder == folder)
+                var manga = MangaList[i];
+                if (manga.FolderPath == folderpath)
                 {
-                    MangaList.Remove(MangaList[i]);
+                    MangaList.Remove(manga);
                 }
             }
         }
@@ -152,6 +166,11 @@ namespace EroMangaManager.ViewModels
             }
 
             await DatabaseController.ReadingInfo_AddMulti(add);
+        }
+
+        public void SelecSpecificFolder (int folderIndex)
+        {
+            StorageFolder folder = FolderList[folderIndex];
         }
 
         #region 弃用

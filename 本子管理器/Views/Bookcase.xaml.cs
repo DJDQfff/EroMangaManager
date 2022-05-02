@@ -112,5 +112,11 @@ namespace EroMangaManager.Views
             var mangaBook = (sender as MenuFlyoutItem).DataContext as MangaBook;
             await Windows.System.Launcher.LaunchFileAsync(mangaBook.StorageFile);
         }
+
+        private void SelecteFolderShowComboBox_SelectionChanged (object sender, SelectionChangedEventArgs e)
+        {
+            int index = (sender as ComboBox).SelectedIndex;
+            MainPage.current.collectionObserver.SelecSpecificFolder(index);
+        }
     }
 }

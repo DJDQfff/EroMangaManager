@@ -84,12 +84,14 @@
             <CommandBar.Content>
                 <StackPanel Orientation="Horizontal"
                             VerticalAlignment="Center">
-                    <ComboBox x:Name="ChangeFolder"
+                    <ComboBox x:Name="SelecteFolderShowComboBox"
+                              PlaceholderText="切换文件夹"
+                              SelectionChanged="SelecteFolderShowComboBox_SelectionChanged"
                               Width="500"
                               HorizontalAlignment="Left"
                               VerticalAlignment="Center"
                               ItemsSource="{x:Bind app:MainPage.current.collectionObserver.FolderList}"
-                              DisplayMemberPath="Path" />
+                              DisplayMemberPath="Name" />
                 </StackPanel>
             </CommandBar.Content>
             <AppBarButton Click="TranslateEachMangaName"
