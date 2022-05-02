@@ -30,33 +30,23 @@ namespace EroMangaManager.ViewModels
         /// <summary> 流的内容不是 zip 存档格式。 </summary>
         public ObservableCollection<MangaBook> ErrorZip { set; get; } = new ObservableCollection<MangaBook>();
 
-        public CollectionObserver ()
+        public CollectionObserver (params StorageFolder[] storageFolders)
         {
-            Initialize();
-        }
-
-        public CollectionObserver (StorageFolder storageFolder)
-        {
+            Initialize(storageFolders);
         }
 
         /// <summary> 初始化文件夹 </summary>
-        public async void Initialize ()
+        public async void Initialize (params StorageFolder[] storageFolders)
         {
             FolderList.Clear();
             MangaList.Clear();//初始化清零
             ErrorZip.Clear();
 
-            var folders = FutureAccessList.Entries;
-            foreach (var item in folders)
+            foreach (var item in storageFolders)
             {
-                try
+                if (item != null)
                 {
-                    StorageFolder storageFolder = await FutureAccessList.GetFolderAsync(item.Token);
-                    FolderList.Add(storageFolder);
-                }
-                catch (Exception)
-                {
-                    // 文件夹被移除，找不到，
+                    FolderList.Add(item);
                 }
             }
             foreach (var folder in FolderList)

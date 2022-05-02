@@ -16,7 +16,7 @@ namespace EroMangaManager
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class MainPage : Page
     {
-        public CollectionObserver collectionObserver { get; } = new CollectionObserver();
+        public CollectionObserver collectionObserver { get; }
 
         public static MainPage current { set; get; }
 
@@ -25,6 +25,10 @@ namespace EroMangaManager
         public MainPage ()
         {
             this.InitializeComponent();
+
+            var folder = MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder().Result.ToArray();
+            collectionObserver = new CollectionObserver(folder);
+
             collectionObserver.ErrorZipEvent += (string str) =>
               {
                   new ToastContentBuilder()
