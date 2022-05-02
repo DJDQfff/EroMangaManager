@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:models="using:EroMangaManager.Models"
+      xmlns:storage="using:Windows.Storage"
       Background="Transparent"
       NavigationCacheMode="Enabled"
       mc:Ignorable="d">
@@ -80,6 +81,17 @@
         </Grid.RowDefinitions>
         <CommandBar Grid.Row="0"
                     Background="Transparent">
+            <CommandBar.Content>
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Center">
+                    <ComboBox x:Name="ChangeFolder"
+                              Width="500"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              ItemsSource="{x:Bind app:MainPage.current.collectionObserver.FolderList}"
+                              DisplayMemberPath="Path" />
+                </StackPanel>
+            </CommandBar.Content>
             <AppBarButton Click="TranslateEachMangaName"
                           x:Uid="TranslateButton"
                           Icon="Font"
