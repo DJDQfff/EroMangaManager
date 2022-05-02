@@ -158,11 +158,6 @@ namespace EroMangaManager.ViewModels
             await DatabaseController.ReadingInfo_AddMulti(add);
         }
 
-        public void SelecSpecificFolder (int folderIndex)
-        {
-            StorageFolder folder = FolderList[folderIndex];
-        }
-
         #region 弃用
 
         /// <summary> 读取数据库，将指定文件夹下的 MangaTag 移除 </summary>

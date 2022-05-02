@@ -81,19 +81,18 @@
         </Grid.RowDefinitions>
         <CommandBar Grid.Row="0"
                     Background="Transparent">
-            <CommandBar.Content>
+            <!--<CommandBar.Content>
                 <StackPanel Orientation="Horizontal"
                             VerticalAlignment="Center">
                     <ComboBox x:Name="SelecteFolderShowComboBox"
-                              PlaceholderText="切换文件夹"
                               SelectionChanged="SelecteFolderShowComboBox_SelectionChanged"
                               Width="500"
                               HorizontalAlignment="Left"
                               VerticalAlignment="Center"
-                              ItemsSource="{x:Bind app:MainPage.current.collectionObserver.FolderList}"
+                              ItemsSource="{x:Bind app:MainPage.current.collectionObserver.FolderList,Mode=OneWay}"
                               DisplayMemberPath="Name" />
                 </StackPanel>
-            </CommandBar.Content>
+            </CommandBar.Content>-->
             <AppBarButton Click="TranslateEachMangaName"
                           x:Uid="TranslateButton"
                           Icon="Font"
