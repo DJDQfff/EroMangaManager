@@ -348,7 +348,7 @@
       <Name>BaiduTranslate</Name>
     </ProjectReference>
     <ProjectReference Include="..\EroMangaManager.Database\EroMangaTagDatabase.csproj">
-      <Project>{9e3ec0bd-841e-41bd-a892-0031f1a19875}</Project>
+      <Project>{20710f88-116d-485b-97a5-f16f68b58c2d}</Project>
       <Name>EroMangaTagDatabase</Name>
     </ProjectReference>
   </ItemGroup>
