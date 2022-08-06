@@ -6,6 +6,7 @@ using System.Text;
 
 namespace EroMangaTagDatabase.Entities
 {
+    /// <summary> 标签键值对，含有成员TagName，KeyWords </summary>
     public class TagKeywords : IDatabaseID
     {
         /// <summary> 主键 </summary>

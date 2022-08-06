@@ -13,16 +13,19 @@ namespace EroMangaTagDatabase
 {
     public partial class BasicController
     {
-        /// <summary> </summary>
+        /// <summary> 查询数据库，获取Tag键值对的信息 </summary>
         /// <param name="tags"> </param>
         /// <returns>
         /// 一个字典，第一项为本子标签，第二项为对应的TagName（如没有则为空字符串）
         /// </returns>
-        public Dictionary<string, string> MatchTag (IEnumerable<string> tags)
+        public Dictionary<string, string> MatchTag(IEnumerable<string> tags)
         {
             var dictionaries = DatabaseController.TagKeywords_QueryAll();
 
             Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
+
+            tags = tags.Distinct().ToArray();           // 去重
+
             foreach (var tag in tags)
             {
                 string b = null;
@@ -43,7 +46,7 @@ namespace EroMangaTagDatabase
 
         /// <summary> 保存数据库更改 </summary>
         /// <returns> </returns>
-        public async Task SaveChanges ()
+        public async Task SaveChanges()
         {
             await database.SaveChangesAsync();
         }

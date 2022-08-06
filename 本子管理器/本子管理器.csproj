@@ -144,6 +144,10 @@
     </Compile>
     <Compile Include="Models\FolderEnum.cs" />
     <Compile Include="ViewModels\Reader.cs" />
+    <Compile Include="ViewModels\RepeatSearcher.cs" />
+    <Compile Include="Views\SearchRepeatManga.xaml.cs">
+      <DependentUpon>SearchRepeatManga.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SettingSubPages\ErrorZipPage.xaml.cs">
       <DependentUpon>ErrorZipPage.xaml</DependentUpon>
     </Compile>
@@ -263,6 +267,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="InteractPage\MangaTagEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SearchRepeatManga.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
