@@ -22,7 +22,7 @@ namespace EroMangaManager
 
         public ResourceLoader resourceLoader { get; } = ResourceLoader.GetForCurrentView();
 
-        public MainPage ()
+        public MainPage()
         {
             this.InitializeComponent();
 
@@ -38,13 +38,13 @@ namespace EroMangaManager
             current = this;
         }
 
-        protected override void OnNavigatedTo (NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             MainFrame.Navigate(typeof(Bookcase));
         }
 
-        private void MainNavigationView_ItemInvoked (NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        private void MainNavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             Type type = null;
             if (args.IsSettingsInvoked)
@@ -61,6 +61,10 @@ namespace EroMangaManager
 
                 case nameof(ReadItem):
                     type = typeof(ReadPage);
+                    break;
+
+                case nameof(FunctionPage):
+                    type = typeof(FunctionPage);
                     break;
             }
             if (!type.Equals(MainFrame.CurrentSourcePageType))

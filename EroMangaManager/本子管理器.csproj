@@ -143,8 +143,14 @@
       <DependentUpon>MangaTagEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\FolderEnum.cs" />
+    <Compile Include="UserControls\FunctionButton.xaml.cs">
+      <DependentUpon>FunctionButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\Reader.cs" />
     <Compile Include="ViewModels\RepeatSearcher.cs" />
+    <Compile Include="Views\FunctionPage.xaml.cs">
+      <DependentUpon>FunctionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SearchRepeatManga.xaml.cs">
       <DependentUpon>SearchRepeatManga.xaml</DependentUpon>
     </Compile>
@@ -270,6 +276,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\FunctionButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FunctionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SearchRepeatManga.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -352,7 +366,9 @@
       <Name>EroMangaTagDatabase</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\FunctionSubPages\" />
+  </ItemGroup>
   <ItemGroup>
     <XliffResource Include="MultilingualResources\本子管理器.en.xlf" />
   </ItemGroup>

@@ -35,6 +35,7 @@
                                     Content="正在阅读"
                                     Icon="Read"
                                     ToolTipService.ToolTip="正在阅读" />
+                <NavigationViewItem x:Name="FunctionPage" Icon="Accept" />
             </NavigationView.MenuItems>
             <NavigationView.Content>
                 <Frame x:Name="MainFrame"
