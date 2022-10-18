@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EroMangaManager.Database\EroMangaTagDatabase.csproj" />
     <ProjectReference Include="..\EroMangaTagDatabase\EroMangaTagDatabase.csproj" />
   </ItemGroup>
 

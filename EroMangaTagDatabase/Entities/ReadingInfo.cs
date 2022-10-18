@@ -1,5 +1,8 @@
 ﻿namespace EroMangaTagDatabase.Entities
 {
+    /// <summary>
+    /// 阅读进度，用来存储对一本漫画的观看信息。
+    /// </summary>
     public class ReadingInfo : IDatabaseID
     {
         /// <summary> 主键 </summary>
