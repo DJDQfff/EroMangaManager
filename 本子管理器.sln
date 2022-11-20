@@ -5,11 +5,6 @@ VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseOperation", "DatabaseOperation\DatabaseOperation.csproj", "{4F70337C-F5DE-40BE-AF87-8E9BAFECF0DC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DDA24A8E-B83D-4667-A9BB-8D28704F6683}"
-	ProjectSection(SolutionItems) = preProject
-		Readme.md = Readme.md
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyStandard20Library", "..\我的API库\MyStandard20Library\MyStandard20Library.csproj", "{39ECAD7B-2A10-465F-99C3-93DB627040B5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyUWPLibrary", "..\我的API库\MyUWPLibrary\MyUWPLibrary.csproj", "{0B1515F5-9A8C-404A-BD4A-1F2645E4C67D}"
