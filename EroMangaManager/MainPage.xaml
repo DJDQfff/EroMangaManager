@@ -4,10 +4,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d">
-    <Page.Background>
-        <AcrylicBrush BackgroundSource="HostBackdrop"
-                      TintColor="#CC9AE7E5" />
-    </Page.Background>
     <Grid>
         <NavigationView x:Name="MainNavigationView"
                         x:FieldModifier="public"
