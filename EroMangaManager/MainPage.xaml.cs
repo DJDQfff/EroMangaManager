@@ -47,23 +47,25 @@ namespace EroMangaManager
         private void MainNavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             Type type = null;
+
             if (args.IsSettingsInvoked)
                 type = typeof(SettingPage);
-            switch (args.InvokedItemContainer.Name)
-            {
-                case nameof(BookcaseItem):
-                    type = typeof(Bookcase);
-                    break;
+            else 
+                switch (args.InvokedItemContainer.Name)
+                {
+                    case nameof(BookcaseItem):
+                        type = typeof(Bookcase);
+                        break;
 
-                case nameof(ListItem):
-                    type = typeof(LibraryPage);
-                    break;
+                    case nameof(ListItem):
+                        type = typeof(LibraryPage);
+                        break;
 
-                case nameof(ReadItem):
-                    type = typeof(ReadPage);
-                    break;
+                    case nameof(ReadItem):
+                        type = typeof(ReadPage);
+                        break;
+                }
 
-            }
             if (!type.Equals(MainFrame.CurrentSourcePageType))
             {
                 MainFrame.Navigate(type);
