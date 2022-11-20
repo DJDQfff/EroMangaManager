@@ -63,9 +63,6 @@ namespace EroMangaManager
                     type = typeof(ReadPage);
                     break;
 
-                case nameof(FunctionPage):
-                    type = typeof(FunctionPage);
-                    break;
             }
             if (!type.Equals(MainFrame.CurrentSourcePageType))
             {
