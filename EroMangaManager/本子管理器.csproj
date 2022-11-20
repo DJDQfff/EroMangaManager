@@ -144,9 +144,6 @@
     </Compile>
     <Compile Include="Models\FolderEnum.cs" />
     <Compile Include="ViewModels\Reader.cs" />
-    <Compile Include="Views\SearchRepeatManga.xaml.cs">
-      <DependentUpon>SearchRepeatManga.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\SettingSubPages\ErrorZipPage.xaml.cs">
       <DependentUpon>ErrorZipPage.xaml</DependentUpon>
     </Compile>
@@ -269,10 +266,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SearchRepeatManga.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\SettingSubPages\ErrorZipPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -351,9 +344,7 @@
       <Name>EroMangaTagDatabase</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\FunctionSubPages\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <XliffResource Include="MultilingualResources\本子管理器.en.xlf" />
   </ItemGroup>

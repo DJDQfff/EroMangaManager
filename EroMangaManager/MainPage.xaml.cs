@@ -35,6 +35,7 @@ namespace EroMangaManager
                     .AddText($"{str}\r{resourceLoader.GetString("ErrorString1")}")
                     .Show();
               };
+
             current = this;
         }
 
