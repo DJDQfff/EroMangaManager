@@ -32,17 +32,8 @@ namespace EroMangaManager.Views
 
         private void Button_Loaded(object sender, RoutedEventArgs e)
         {
-            Type type = typeof(Windows.UI.Colors);
-            var a = type.GetProperties();
-            Random random = new Random();
-            var b = random.Next(0, a.Length);
-            var c = a[b];
-            var d = (Windows.UI.Color)c.GetValue(b);
-
-            SolidColorBrush solidColorBrush = new SolidColorBrush(d);
-
             Button button = sender as Button;
-            button.Background = solidColorBrush;
+            button.Background = MyUWPLibrary.WindowsUIColorHelper.GetRandomSolidColorBrush();
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)

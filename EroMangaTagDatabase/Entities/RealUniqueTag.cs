@@ -7,11 +7,11 @@ using System.Text;
 namespace EroMangaTagDatabase.Entities
 {
     /// <summary> 
-    /// 唯一标签
+    /// 唯一标签。
     /// 为什么这么设计：
     /// 如：初音未来、MIKU这两个tag可能看起来是来个不同tsg，但，其实是同一个tag。
     /// 所以这两个都是tag都作为一个TagKeywords的两个TagKeywords，同时指定一个TagName作为唯一名</summary>
-    public class TagKeywords : IDatabaseID
+    public class RealUniqueTag : IDatabaseID
     {
         /// <summary> 主键 </summary>
         public int ID { set; get; }

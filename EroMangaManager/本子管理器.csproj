@@ -349,6 +349,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\MyInternetAPI\BaiduTranslateAPI\BaiduTranslate.csproj">
+      <Project>{94295f5e-a01c-43f1-947d-47d521f56e09}</Project>
+      <Name>BaiduTranslate</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\我的API库\MyStandard20Library\MyStandard20Library.csproj">
       <Project>{5e80b947-fde4-4336-abb7-e57139b8fc2b}</Project>
       <Name>MyStandard20Library</Name>
@@ -356,10 +360,6 @@
     <ProjectReference Include="..\..\我的API库\MyUWPLibrary\MyUWPLibrary.csproj">
       <Project>{0b1515f5-9a8c-404a-bd4a-1f2645e4c67d}</Project>
       <Name>MyUWPLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\百度翻译\BaiduTranslate\BaiduTranslate.csproj">
-      <Project>{dd8b3916-8966-4a96-a63c-b75191f529e0}</Project>
-      <Name>BaiduTranslate</Name>
     </ProjectReference>
     <ProjectReference Include="..\EroMangaTagDatabase\EroMangaTagDatabase.csproj">
       <Project>{08494729-640a-4d82-a53e-8718c85483b7}</Project>

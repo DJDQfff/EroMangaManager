@@ -1,7 +1,8 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using BaiduTranslate;
+using MyInternetAPI.BaiduTranslate;
+using MyInternetAPI.BaiduTranslate.Models.ResponseJSON;
 using static EroMangaTagDatabase.BasicController;
 using System;
 
@@ -15,9 +16,9 @@ namespace EroMangaManager.Models
         {
             var names = MainPage.current.collectionObserver.MangaList.Select(n => n.MangaName).ToList();
 
-            List<BaiduTranslate.Models.ResponseJSON.trans_result> results = null;
+            List<trans_result> results = null;
 
-            using (BaiduTranslate.Translator controller = new BaiduTranslate.Translator())
+            using (Translator controller = new Translator())
             {
                 try
                 {

@@ -16,7 +16,7 @@ namespace EroMangaTagDatabase.Tables
         /// </summary>
         public DbSet<DefaultMangaTag> SpecificMangaTagDatas { set; get; }
 
-        public DbSet<TagKeywords> TagKeywords { set; get; }
+        public DbSet<RealUniqueTag> TagKeywords { set; get; }
 
         public DbSet<ReadingInfo> ReadingInfos { set; get; }
 
