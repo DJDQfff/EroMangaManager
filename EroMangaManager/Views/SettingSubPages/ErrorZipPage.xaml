@@ -11,7 +11,7 @@
 
     <Grid>
         <ListView x:Name="ErrorZipVIewListView"
-                  ItemsSource="{x:Bind root:MainPage.current.collectionObserver.ErrorZip }">
+                  ItemsSource="{x:Bind root:MainPage.current.collectionObserver.NonZipList }">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="manga:MangaBook">
                     <TextBlock Text="{x:Bind MangaName}" />
