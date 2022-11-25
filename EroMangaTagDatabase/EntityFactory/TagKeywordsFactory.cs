@@ -10,10 +10,10 @@ namespace EroMangaDB.EntityFactory
 {
     public static class TagKeywordsFactory
     {
-        public static RealUniqueTag Creat (string tagname, IEnumerable<string> keywords)
+        public static UniqueTagInRelation Creat (string tagname, IEnumerable<string> keywords)
         {
             string keywordsstring = string.Join("\r", keywords);
-            RealUniqueTag tagKeywords = new RealUniqueTag() { TagName = tagname, Keywords = keywordsstring };
+            UniqueTagInRelation tagKeywords = new UniqueTagInRelation() { TagName = tagname, Keywords = keywordsstring };
             return tagKeywords;
         }
     }

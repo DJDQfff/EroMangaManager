@@ -57,7 +57,7 @@ namespace EroMangaDB
         /// <returns></returns>
         public async Task TagKeywords_AddTagSingle (string tagname, IEnumerable<string> keywords)
         {
-            RealUniqueTag tagKeywords = TagKeywordsFactory.Creat(tagname, keywords);
+            UniqueTagInRelation tagKeywords = TagKeywordsFactory.Creat(tagname, keywords);
             database.TagKeywords.Add(tagKeywords);
             await database.SaveChangesAsync();
         }
@@ -70,7 +70,7 @@ namespace EroMangaDB
         /// <returns></returns>
         public async Task TagKeywords_AppendKeywordSingle (string tagname, string keyword)
         {
-            RealUniqueTag tagKeywords = database.TagKeywords.Single(n => n.TagName == tagname);
+            UniqueTagInRelation tagKeywords = database.TagKeywords.Single(n => n.TagName == tagname);
             tagKeywords.Keywords += "\r" + keyword;
             await database.SaveChangesAsync();
         }
@@ -84,7 +84,7 @@ namespace EroMangaDB
         public async Task TagKeywords_UpdateTagSingle (string tagname, IEnumerable<string> keywords)
         {
             string keywordString = string.Join("\r", keywords);
-            RealUniqueTag tagKeywords = database.TagKeywords.Single(n => n.TagName == tagname);
+            UniqueTagInRelation tagKeywords = database.TagKeywords.Single(n => n.TagName == tagname);
             tagKeywords.Keywords = keywordString;
             database.Update(tagKeywords);
             await database.SaveChangesAsync();
@@ -98,7 +98,7 @@ namespace EroMangaDB
         /// <returns></returns>
         public async Task TagKeywords_DeleteKeywordsSingle (string tagname_UsedStorageTag, params string[] keywords_ToDelete)
         {
-            RealUniqueTag tagKeywords = database.TagKeywords.Single(n => n.TagName == tagname_UsedStorageTag);
+            UniqueTagInRelation tagKeywords = database.TagKeywords.Single(n => n.TagName == tagname_UsedStorageTag);
             var keywordsList = tagKeywords.Keywords.Split('\r').ToList();
             foreach (var word in keywords_ToDelete)
             {

@@ -7,11 +7,13 @@ using System.Text;
 namespace EroMangaDB.Entities
 {
     /// <summary> 
-    /// 唯一标签。
+    /// 众多有关联标签中的独一无二的标签。
     /// 为什么这么设计：
-    /// 如：初音未来、MIKU这两个tag可能看起来是来个不同tsg，但，其实是同一个tag。
-    /// 所以这两个都是tag都作为一个TagKeywords的两个TagKeywords，同时指定一个TagName作为唯一名</summary>
-    public class RealUniqueTag : IDatabaseID
+    /// 如：初音未来、MIKU、初音这三个tag可能看起来是几个不同tag。
+    /// 但二者本质上是同一个意思，即初音未来。
+    /// 所以这两个都是tag都作为一个TagKeywords的两个TagKeywords，同时指定一个TagName作为唯一名
+    /// </summary>
+    public class UniqueTagInRelation : IDatabaseID
     {
         /// <summary> 主键 </summary>
         public int ID { set; get; }
