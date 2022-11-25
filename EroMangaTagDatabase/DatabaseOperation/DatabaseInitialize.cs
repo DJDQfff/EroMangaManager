@@ -15,12 +15,9 @@ namespace EroMangaDB
 {
     public partial class BasicController
     {
-        /// <summary> 数据库迁移，并初始化默认数据 </summary>
+        /// <summary> 并初始化默认数据 </summary>
         public async Task InitializeDefaultData ()
         {
-            // 版本迁移
-            database.Database.Migrate();
-
             // 初始化数据
             List<string>[] vs = new List<string>[]
             {

@@ -15,18 +15,31 @@ namespace EroMangaDB
     /// </summary>
     public partial class BasicController
     {
+        /// <summary>
+        /// MangaTag表添加多行
+        /// </summary>
+        /// <param name="mangaTags"></param>
+        /// <returns></returns>
         public async Task MangaTag_AddMulti (IList<DefaultMangaTag> mangaTags)
         {
             database.AddRange(mangaTags);
             await database.SaveChangesAsync();
         }
-
+        /// <summary>
+        /// MangaTag表添加单个
+        /// </summary>
+        /// <param name="mangaTag"></param>
+        /// <returns></returns>
         public async Task MangaTag_AddSingle (DefaultMangaTag mangaTag)
         {
             database.Add(mangaTag);
             await database.SaveChangesAsync();
         }
-
+        /// <summary>
+        /// MangaTag表移除多行
+        /// </summary>
+        /// <param name="absolutePathes"></param>
+        /// <returns></returns>
         public async Task MangaTag_RemoveMulti (IEnumerable<string> absolutePathes)
         {
             List<DefaultMangaTag> list = new List<DefaultMangaTag>();
@@ -41,7 +54,7 @@ namespace EroMangaDB
         }
 
         /// <summary>
-        /// 数据库操作： 移除指定路径的MangaTag。如果存在，则执行；如果不存在，则无操作
+        ///  移除指定路径的MangaTag。如果存在，则执行；如果不存在，则无操作
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
@@ -52,7 +65,11 @@ namespace EroMangaDB
             await database.SaveChangesAsync();
             database.Dispose();
         }
-
+        /// <summary>
+        /// MangaTag表查询多个
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <returns></returns>
         public DefaultMangaTag[] MangaTag_QueryMulti (string folder)
         {
             Tables.DataBase_1 database = new Tables.DataBase_1();

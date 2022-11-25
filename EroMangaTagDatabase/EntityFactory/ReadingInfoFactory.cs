@@ -9,8 +9,16 @@ using EroMangaDB.Helper;
 
 namespace EroMangaDB.EntityFactory
 {
+    /// <summary>
+    /// 阅读信息类工厂方法
+    /// </summary>
     public static class ReadingInfoFactory
     {
+        /// <summary>
+        /// 创建一个新的阅读信息
+        /// </summary>
+        /// <param name="absolutepath"></param>
+        /// <returns></returns>
         public static ReadingInfo Creat (string absolutepath)
         {
             string manganamewithTag = Path.GetFileNameWithoutExtension(absolutepath);
