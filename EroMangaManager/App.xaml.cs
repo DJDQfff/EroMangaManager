@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Navigation;
 using static MyUWPLibrary.StorageFolderHelper;
 using EroMangaManager.Views;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Windows.Storage;
+using System.ComponentModel;
 
 namespace EroMangaManager
 {
@@ -35,8 +37,12 @@ namespace EroMangaManager
         /// <param name="e"> 有关启动请求和过程的详细信息。 </param>
         protected override async void OnLaunched (LaunchActivatedEventArgs e)
         {
-            await DatabaseController.InitializeDefaultData();
-            await EnsureChildTemporaryFolders(nameof(Covers), nameof(Filter));
+#if DEBUG 
+            await Windows.System.Launcher.LaunchFolderAsync(ApplicationData.Current.LocalFolder);
+#endif
+
+            DatabaseController.Migrate();
+            await EnsureChildTemporaryFolders(Covers.ToString(), Filters.ToString());
 
             Frame rootFrame = Window.Current.Content as Frame;
 

@@ -29,7 +29,10 @@ namespace EroMangaDB
         {
             database = new DataBase_1();
         }
-
+        public void Migrate ()
+        {
+            database.Database.Migrate();
+        }
         public void Dispose ()
         {
             database.Dispose();

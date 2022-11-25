@@ -24,16 +24,16 @@ namespace EroMangaDB
             // 初始化数据
             List<string>[] vs = new List<string>[]
             {
-                new List<string> { DefaultTagType.全彩.ToString(), "全彩" },
-                new List<string>{DefaultTagType.无修.ToString(),"无修","无修正","無修正", "無修", "无码","無码" },
-                new List<string> { DefaultTagType.DL版.ToString(), "DL版" },
-                new List<string> { DefaultTagType.刊登.ToString(), "COMIC" },
-                new List<string> { DefaultTagType.CM展.ToString(), "C99" },
-                new List<string> { DefaultTagType.中译.ToString(), "漢化", "中国語", "汉化", "中国翻訳" },
-                new List<string> { DefaultTagType.英译.ToString(), "英訳" },
-                new List<string>{DefaultTagType.作者.ToString(), "国崎蛍" },
-                new   List<string>{DefaultTagType.单行本.ToString(),"长篇","单行本"},
-                new List<string>{DefaultTagType.短篇.ToString(),"短篇"},
+                new List<string> { PresetTag.全彩.ToString(), "全彩" },
+                new List<string>{PresetTag.无修.ToString(),"无修","无修正","無修正", "無修", "无码","無码" },
+                new List<string> { PresetTag.DL版.ToString(), "DL版" },
+                new List<string> { PresetTag.刊登.ToString(), "COMIC" },
+                new List<string> { PresetTag.CM展.ToString(), "C99" },
+                new List<string> { PresetTag.中译.ToString(), "漢化", "中国語", "汉化", "中国翻訳" },
+                new List<string> { PresetTag.英译.ToString(), "英訳" },
+                new List<string>{PresetTag.作者.ToString(), "国崎蛍" },
+                new   List<string>{PresetTag.单行本.ToString(),"长篇","单行本"},
+                new List<string>{PresetTag.短篇.ToString(),"短篇"},
             };
             foreach (var list in vs)
             {

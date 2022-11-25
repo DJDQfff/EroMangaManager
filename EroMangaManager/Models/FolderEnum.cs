@@ -14,6 +14,6 @@ namespace EroMangaManager.Models
         Covers,
 
         /// <summary> 过滤图片文件夹 </summary>
-        Filter
+        Filters
     }
 }

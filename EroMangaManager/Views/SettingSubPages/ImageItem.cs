@@ -30,7 +30,7 @@ namespace EroMangaManager.Views.SettingSubPages
 
         public static async Task GetsAsync (ObservableCollection<ImageItem> items)
         {
-            StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filter));
+            StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filters));
             var files = await storageFolder.GetFilesAsync();
 
             foreach (var file in files)

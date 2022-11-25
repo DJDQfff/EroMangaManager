@@ -106,7 +106,7 @@ namespace EroMangaManager.Views
             long length = entry.Size;
             await HashManager.Add(hash, length);
 
-            StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filter));
+            StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filters));
             string path = Path.Combine(storageFolder.Path, hash + ".jpg");
             entry.WriteToFile(path);
         }
@@ -167,7 +167,7 @@ namespace EroMangaManager.Views
             long length = entry.Size;
             await HashManager.Add(hash, length);
 
-            StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filter));
+            StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filters));
             string path = Path.Combine(storageFolder.Path, hash + ".jpg");
             entry.WriteToFile(path);
         }
