@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 using EroMangaManager.Models;
 
-using EroMangaTagDatabase.Entities;
-using EroMangaTagDatabase.EntityFactory;
+using EroMangaDB.Entities;
+using EroMangaDB.EntityFactory;
 
 using MyUWPLibrary;
 
 using Windows.Storage;
 
-using static EroMangaTagDatabase.BasicController;
+using static EroMangaDB.BasicController;
 using static Windows.Storage.AccessCache.StorageApplicationPermissions;
 
 namespace EroMangaManager.ViewModels

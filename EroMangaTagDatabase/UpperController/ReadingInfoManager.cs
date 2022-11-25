@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using EroMangaTagDatabase.Entities;
-using EroMangaTagDatabase.EntityFactory;
-using EroMangaTagDatabase.Helper;
+using EroMangaDB.Entities;
+using EroMangaDB.EntityFactory;
+using EroMangaDB.Helper;
 
-using static EroMangaTagDatabase.BasicController;
+using static EroMangaDB.BasicController;
 
-namespace EroMangaTagDatabase.UpperController
+namespace EroMangaDB.UpperController
 {
     /// <summary> 封装了对ReadingInfo的上层操作 </summary>
     public class ReadingInfoManager : IDisposable

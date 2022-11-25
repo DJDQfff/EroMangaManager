@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using MyInternetAPI.BaiduTranslate;
 using MyInternetAPI.BaiduTranslate.Models.ResponseJSON;
-using static EroMangaTagDatabase.BasicController;
+using static EroMangaDB.BasicController;
 using System;
 
 namespace EroMangaManager.Models

@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-using EroMangaTagDatabase.Entities;
+using EroMangaDB.Entities;
 
-namespace EroMangaTagDatabase
+namespace EroMangaDB
 {
     public partial class BasicController
     {

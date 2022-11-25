@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using EroMangaTagDatabase.Entities;
+using EroMangaDB.Entities;
 
-namespace EroMangaTagDatabase
+namespace EroMangaDB
 {
     /// <summary>
     /// 没有保证Tag数据唯一性，因为在CollectionObserver类实际使用中，是能够保证唯一性的
@@ -55,7 +55,7 @@ namespace EroMangaTagDatabase
 
         public DefaultMangaTag[] MangaTag_QueryMulti (string folder)
         {
-            Tables.Database database = new Tables.Database();
+            Tables.DataBase_1 database = new Tables.DataBase_1();
             var tags = database.SpecificMangaTagDatas.Where(n => n.AbsolutePath.Contains(folder)).ToArray();
 
             return tags;

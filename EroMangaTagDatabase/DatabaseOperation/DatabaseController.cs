@@ -6,19 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using EroMangaTagDatabase.Entities;
-using EroMangaTagDatabase.EntityFactory;
-using EroMangaTagDatabase.Helper;
-using EroMangaTagDatabase.Tables;
+using EroMangaDB.Entities;
+using EroMangaDB.EntityFactory;
+using EroMangaDB.Helper;
+using EroMangaDB.Tables;
 
 using Microsoft.EntityFrameworkCore;
 
-namespace EroMangaTagDatabase
+namespace EroMangaDB
 {
     public partial class BasicController : IDisposable
     {
         public static BasicController DatabaseController;
-        private Database database;
+        private DataBase_1 database;
 
         static BasicController ()
         {
@@ -27,7 +27,7 @@ namespace EroMangaTagDatabase
 
         private BasicController ()
         {
-            database = new Database();
+            database = new DataBase_1();
         }
 
         public void Dispose ()

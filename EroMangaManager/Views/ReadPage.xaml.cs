@@ -120,7 +120,7 @@ namespace EroMangaManager.Views
             var bitmap = FLIP.SelectedItem as Windows.UI.Xaml.Media.Imaging.BitmapImage;
             var index = currentReader.bitmapImages.IndexOf(bitmap);
             var entry = currentReader.zipArchiveEntries[index];
-            StorageFile storageFile = await SavePictureAsync(PickerLocationId.Desktop);
+            StorageFile storageFile = await SavePictureAsync();
             if (storageFile != null)
             {
                 using (Stream stream = await storageFile.OpenStreamForWriteAsync())
@@ -175,7 +175,7 @@ namespace EroMangaManager.Views
         private async void SaveImageAs_Click (object sender, RoutedEventArgs e)
         {
             var entry = FLIP.SelectedItem as IArchiveEntry;
-            StorageFile storageFile = await SavePictureAsync(PickerLocationId.Desktop);
+            StorageFile storageFile = await SavePictureAsync();
             if (storageFile != null)
             {
                 Stream stream = await storageFile.OpenStreamForWriteAsync();

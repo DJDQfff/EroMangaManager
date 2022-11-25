@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 
-using EroMangaTagDatabase.Entities;
+using EroMangaDB.Entities;
 
 using Windows.Foundation;
 using Windows.Foundation.Collections;

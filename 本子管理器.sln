@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyUWPLibrary", "..\我的AP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "本子管理器", "EroMangaManager\本子管理器.csproj", "{79BF3F69-21E1-41F2-95B4-F60B65BDF2A9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EroMangaTagDatabase", "EroMangaTagDatabase\EroMangaTagDatabase.csproj", "{08494729-640A-4D82-A53E-8718C85483B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EroMangaDB", "EroMangaTagDatabase\EroMangaDB.csproj", "{08494729-640A-4D82-A53E-8718C85483B7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaiduTranslate", "..\MyInternetAPI\BaiduTranslateAPI\BaiduTranslate.csproj", "{94295F5E-A01C-43F1-947D-47D521F56E09}"
 EndProject

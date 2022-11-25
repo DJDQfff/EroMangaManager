@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace EroMangaTagDatabase.Entities
+namespace EroMangaDB.Entities
 {
     /// <summary> 默认漫画Tag </summary>
 

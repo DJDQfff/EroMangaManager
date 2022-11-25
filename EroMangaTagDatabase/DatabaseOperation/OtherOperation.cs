@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using EroMangaTagDatabase.Entities;
-using EroMangaTagDatabase.Helper;
+using EroMangaDB.Entities;
+using EroMangaDB.Helper;
 
-namespace EroMangaTagDatabase
+namespace EroMangaDB
 {
     public partial class BasicController
     {

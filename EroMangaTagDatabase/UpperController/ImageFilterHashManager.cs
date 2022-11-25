@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EroMangaTagDatabase.UpperController
+namespace EroMangaDB.UpperController
 {
     internal class ImageFilterHashManager
     {

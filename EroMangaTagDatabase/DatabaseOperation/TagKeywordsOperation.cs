@@ -5,13 +5,13 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static EroMangaTagDatabase.BasicController;
-using EroMangaTagDatabase.Entities;
-using EroMangaTagDatabase.EntityFactory;
-using EroMangaTagDatabase.Helper;
-using EroMangaTagDatabase.Tables;
+using static EroMangaDB.BasicController;
+using EroMangaDB.Entities;
+using EroMangaDB.EntityFactory;
+using EroMangaDB.Helper;
+using EroMangaDB.Tables;
 
-namespace EroMangaTagDatabase
+namespace EroMangaDB
 {
     public partial class BasicController
     {

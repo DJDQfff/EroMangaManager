@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-using EroMangaTagDatabase.Entities;
+using EroMangaDB.Entities;
 
-namespace EroMangaTagDatabase.EntityFactory
+namespace EroMangaDB.EntityFactory
 {
     public static class TagKeywordsFactory
     {

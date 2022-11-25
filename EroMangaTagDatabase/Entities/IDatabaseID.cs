@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace EroMangaTagDatabase.Entities
+namespace EroMangaDB.Entities
 {
     public interface IDatabaseID
     {

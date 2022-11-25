@@ -4,10 +4,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-using EroMangaTagDatabase.Entities;
-using EroMangaTagDatabase.Helper;
+using EroMangaDB.Entities;
+using EroMangaDB.Helper;
 
-namespace EroMangaTagDatabase.EntityFactory
+namespace EroMangaDB.EntityFactory
 {
     public static class ReadingInfoFactory
     {

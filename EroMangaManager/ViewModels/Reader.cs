@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using EroMangaManager.Helpers;
 using System;
 using Windows.UI.Xaml.Media.Imaging;
-using EroMangaTagDatabase.Entities;
+using EroMangaDB.Entities;
 using EroMangaManager.Models;
 
 using static EroMangaManager.Helpers.ZipEntryHelper;

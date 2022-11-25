@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 
-using EroMangaTagDatabase;
-using static EroMangaTagDatabase.BasicController;
+using EroMangaDB;
+using static EroMangaDB.BasicController;
 using static MyStandard20Library.HashComputer;
 using EroMangaManager.Helpers;
 

@@ -23,7 +23,7 @@ namespace EroMangaManager.Views
         {
             Button button = sender as Button;
             button.IsEnabled = false;
-            StorageFolder folder = await PickSingleFolderAsync(PickerLocationId.Desktop);
+            StorageFolder folder = await OpenSingleFolderAsync();
 
             if (folder != null)
             {

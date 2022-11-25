@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 using System.Linq;
 
-namespace EroMangaTagDatabase.Helper
+namespace EroMangaDB.Helper
 {
     public static class TagKeywordsDictionaryHelper
     {

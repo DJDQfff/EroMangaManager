@@ -1,4 +1,4 @@
-﻿namespace EroMangaTagDatabase.Entities
+﻿namespace EroMangaDB.Entities
 {
     /// <summary>
     /// 阅读进度，用来存储对一本漫画的观看信息。

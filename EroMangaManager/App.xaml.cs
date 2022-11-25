@@ -3,7 +3,7 @@
 using EroMangaManager.Helpers;
 using EroMangaManager.Models;
 using static EroMangaManager.Models.FolderEnum;
-using static EroMangaTagDatabase.BasicController;
+using static EroMangaDB.BasicController;
 
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;

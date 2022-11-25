@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-using EroMangaTagDatabase.Entities;
+using EroMangaDB.Entities;
 
 namespace Abandoned.EroMangaTagDatabase.EntityFactory
 {
