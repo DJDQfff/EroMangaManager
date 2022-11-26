@@ -30,7 +30,10 @@ namespace EroMangaManager.InteractPage
     public sealed partial class MangaTagDetail : ContentDialog
     {
         private ReadingInfo readingInfo;
-
+        /// <summary>
+        /// Tag细节对话框
+        /// </summary>
+        /// <param name="_mangaBook"></param>
         public MangaTagDetail (MangaBook _mangaBook)
         {
             this.InitializeComponent();

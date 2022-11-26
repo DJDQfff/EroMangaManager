@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EroMangaDB.Tables
 {
+    /// <summary>
+    /// 数据库类
+    /// </summary>
     public class DataBase_1 : DbContext
     {
         /// <summary>

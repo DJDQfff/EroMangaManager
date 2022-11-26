@@ -30,13 +30,22 @@ namespace EroMangaManager.Views
     public sealed partial class ReadPage : Page
     {
         private MangaBook currentManga = null;
+        /// <summary>
+        /// 当前ReaderViewModel
+        /// </summary>
         public Reader currentReader = null;
-
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public ReadPage ()
         {
             this.InitializeComponent();
         }
-
+        /// <summary>
+        /// 修改阅读漫画
+        /// </summary>
+        /// <param name="manga"></param>
+        /// <returns></returns>
         public async Task TryChangeManga (MangaBook manga)
         {
             if (manga == null)                          // 传入null，直接跳过
@@ -63,7 +72,10 @@ namespace EroMangaManager.Views
                 await currentReader.SelectEntriesAsync();
             }
         }
-
+        /// <summary>
+        /// 导航前
+        /// </summary>
+        /// <param name="e"></param>
         protected override async void OnNavigatedTo (NavigationEventArgs e)
         {
             Debug.WriteLine("OnNavigatedTo事件开始");

@@ -8,6 +8,9 @@ using EroMangaManager.Helpers;
 
 namespace EroMangaManager.Models
 {
+    /// <summary>
+    /// Hash帮助类
+    /// </summary>
     public static class HashManager
     {
         /// <summary>
@@ -32,12 +35,21 @@ namespace EroMangaManager.Models
             int count = DatabaseController.ImageFilter_HashConditionCount(hash);
             return count != 0;
         }
-
+        /// <summary>
+        /// 添加一个要筛除的hashlength
+        /// </summary>
+        /// <param name="hash"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
         public static async Task Add (string hash, long length)
         {
             await DatabaseController.ImageFilter_Add(hash, length);
         }
-
+        /// <summary>
+        /// 移除集合hash
+        /// </summary>
+        /// <param name="hashes"></param>
+        /// <returns></returns>
         public static async Task Remove (string[] hashes)
         {
             await DatabaseController.ImageFilter_Remove(hashes);

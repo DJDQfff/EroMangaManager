@@ -19,8 +19,14 @@ using static Windows.Storage.AccessCache.StorageApplicationPermissions;
 
 namespace EroMangaManager.ViewModels
 {
+    /// <summary>
+    /// 可观察集合ViewModel类
+    /// </summary>
     public class CollectionObserver
     {
+        /// <summary>
+        /// 出现无法解析的Manga时引发
+        /// </summary>
         public event Action<string> ErrorZipEvent;
 
         /// <summary>存放zip文件的文件夹</summary>
@@ -32,12 +38,16 @@ namespace EroMangaManager.ViewModels
         /// <summary>流的内容不是 zip 存档格式。</summary>
         public ObservableCollection<MangaBook> NonZipList { set; get; } = new ObservableCollection<MangaBook>();
 
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="storageFolders">添加的文件夹</param>
         public CollectionObserver (params StorageFolder[] storageFolders)
         {
             Initialize(storageFolders);
         }
 
-        /// <summary>初始化文件夹</summary>
+        /// <summary>ViewModel初始化</summary>
         public async void Initialize (params StorageFolder[] storageFolders)
         {
             FolderList.Clear();
@@ -153,7 +163,7 @@ namespace EroMangaManager.ViewModels
 
                     await manga.ChangeCover();
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
                     MangaList.Remove(manga);
                     NonZipList.Add(manga);

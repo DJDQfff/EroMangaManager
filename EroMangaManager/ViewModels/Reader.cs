@@ -16,6 +16,9 @@ using SharpCompress.Archives;
 
 namespace EroMangaManager.ViewModels
 {
+    /// <summary>
+    /// ReaderViewModel
+    /// </summary>
     public class Reader : IDisposable
     {
         /// <summary> </summary>
@@ -29,12 +32,13 @@ namespace EroMangaManager.ViewModels
 
         /// <summary> 视图模型可以打开的压缩图片合集 </summary>
         public ObservableCollection<IArchiveEntry> zipArchiveEntries { set; get; } = new ObservableCollection<IArchiveEntry>();
-
+        /// <summary>
+        /// 图源
+        /// </summary>
         public ObservableCollection<BitmapImage> bitmapImages { set; get; } = new ObservableCollection<BitmapImage>();
 
-        /// <summary> </summary>
+        /// <summary> 构造</summary>
         /// <param name="_manga"> </param>
-        /// <param name="imageFilters"> </param>
         private Reader (MangaBook _manga)
         {
             this.manga = _manga;

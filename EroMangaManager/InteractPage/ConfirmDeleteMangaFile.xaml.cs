@@ -27,6 +27,10 @@ namespace EroMangaManager.InteractPage
     {
         private MangaBook manga;
 
+        /// <summary>
+        /// 确认删除对话框
+        /// </summary>
+        /// <param name="_mangaBook"></param>
         public ConfirmDeleteMangaFile (MangaBook _mangaBook)
         {
             this.InitializeComponent();

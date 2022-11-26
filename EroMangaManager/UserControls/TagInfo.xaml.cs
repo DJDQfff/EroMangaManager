@@ -25,9 +25,18 @@ namespace EroMangaManager.UserControls
 {
     public sealed partial class TagInfo : UserControl
     {
+        /// <summary>
+        /// 标签名
+        /// </summary>
         public string TagName { get; set; }
+        /// <summary>
+        /// 标签值
+        /// </summary>
         public string TagValue { get; set; }
 
+        /// <summary>
+        /// 构造
+        /// </summary>
         public TagInfo ()
         {
             this.InitializeComponent();

@@ -19,8 +19,16 @@ using SharpCompress.Archives;
 
 namespace EroMangaManager.Helpers
 {
+    /// <summary>
+    /// 封面帮助类
+    /// </summary>
     public static class CoverHelper
     {
+        /// <summary>
+        /// 使用SharpCompress类库创建源图片设为封面
+        /// </summary>
+        /// <param name="storageFile"></param>
+        /// <returns></returns>
         public static async Task CreatCoverFile_Origin_SharpCompress (this StorageFile storageFile)
         {
             StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
@@ -64,7 +72,10 @@ namespace EroMangaManager.Helpers
 
             return bitmapImage;
         }
-
+        /// <summary>
+        /// 清除所有封面文件
+        /// </summary>
+        /// <returns></returns>
         public static async Task ClearCovers ()
         {
             StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Covers));
@@ -189,6 +200,11 @@ namespace EroMangaManager.Helpers
             }
         }
 
+        /// <summary>
+        /// 使用SharpZIpLib类库创建源封面文件
+        /// </summary>
+        /// <param name="storageFile"></param>
+        /// <returns></returns>
         public static async Task CreatCoverFile_Origin_ISharpCodeSharpZipLib (this StorageFile storageFile)
         {
             StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
@@ -228,7 +244,7 @@ namespace EroMangaManager.Helpers
             }
         }
 
-        /// <summary> 创建 原图 作为封面文件 </summary>
+        /// <summary> 使用.net类库创建 源图 作为封面文件 </summary>
         /// <param name="storageFile"> </param>
         /// <returns> </returns>
         public static async Task CreatCoverFile_Origin_SystemIOCompressionZipArchive (this StorageFile storageFile)

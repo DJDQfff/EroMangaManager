@@ -31,8 +31,15 @@ namespace EroMangaManager.InteractPage
     {
         private MangaBook mangaBook;
         private ObservableCollection<string> taglist;
+        /// <summary>
+        /// 组合框细节
+        /// </summary>
         public List<string> comboxitemlist { set; get; }
 
+        /// <summary>
+        /// tag编辑对话框
+        /// </summary>
+        /// <param name="_mangaBook"></param>
         public MangaTagEdit (MangaBook _mangaBook)
         {
             this.InitializeComponent();
@@ -89,8 +96,19 @@ namespace EroMangaManager.InteractPage
         }
     }
 
+    /// <summary>
+    /// 索引转换
+    /// </summary>
     public class IndexConverter : IValueConverter
     {
+        /// <summary>
+        /// 转出
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="targetType"></param>
+        /// <param name="parameter"></param>
+        /// <param name="language"></param>
+        /// <returns></returns>
         public object Convert (object value, Type targetType, object parameter, string language)
         {
             string str = value as string;
@@ -110,7 +128,15 @@ namespace EroMangaManager.InteractPage
             }
             return i;
         }
-
+        /// <summary>
+        /// 转回
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="targetType"></param>
+        /// <param name="parameter"></param>
+        /// <param name="language"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public object ConvertBack (object value, Type targetType, object parameter, string language)
         {
             throw new NotImplementedException();

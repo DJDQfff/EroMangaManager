@@ -77,14 +77,22 @@ namespace EroMangaDB
 
             return tags;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="absolutePath"></param>
+        /// <returns></returns>
         public DefaultMangaTag MangaTag_QuerySingle (string absolutePath)
         {
             var tag = database.SpecificMangaTagDatas.Single(n => n.AbsolutePath == absolutePath);
 
             return tag;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mangaTag"></param>
+        /// <returns></returns>
         public async Task MangaTag_UpdateSingle (DefaultMangaTag mangaTag)
         {
             var tag = database.SpecificMangaTagDatas.Single(n => n.AbsolutePath == mangaTag.AbsolutePath);

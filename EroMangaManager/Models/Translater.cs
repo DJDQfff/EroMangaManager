@@ -8,6 +8,9 @@ using System;
 
 namespace EroMangaManager.Models
 {
+    /// <summary>
+    /// 翻译器
+    /// </summary>
     public class Translater
     {
         /// <summary> 翻译多个本子名 </summary>

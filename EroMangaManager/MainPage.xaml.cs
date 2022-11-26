@@ -16,12 +16,21 @@ namespace EroMangaManager
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class MainPage : Page
     {
+        /// <summary>
+        /// CollectionObserver实例
+        /// </summary>
         public CollectionObserver collectionObserver { get; }
-
+        /// <summary>
+        /// MainPage的单一实例
+        /// </summary>
         public static MainPage current { set; get; }
-
+        /// <summary>
+        /// 系统resw解析实例
+        /// </summary>
         public ResourceLoader resourceLoader { get; } = ResourceLoader.GetForCurrentView();
-
+        /// <summary>
+        /// 
+        /// </summary>
         public MainPage()
         {
             this.InitializeComponent();
@@ -38,7 +47,10 @@ namespace EroMangaManager
 
             current = this;
         }
-
+        /// <summary>
+        /// 导航前
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);

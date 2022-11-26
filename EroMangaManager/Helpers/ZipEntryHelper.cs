@@ -16,10 +16,17 @@ using SharpCompress.Archives.GZip;
 
 namespace EroMangaManager.Helpers
 {
+    /// <summary>
+    /// 压缩文件帮助类
+    /// </summary>
     public static class ZipEntryHelper
     {
         #region SharpCompress
-
+        /// <summary>
+        /// 获取bitmapimage
+        /// </summary>
+        /// <param name="entry"></param>
+        /// <returns></returns>
         public static async Task<BitmapImage> ShowEntryAsync (IArchiveEntry entry)
         {
             using (Stream stream1 = entry.OpenEntryStream())
@@ -41,7 +48,11 @@ namespace EroMangaManager.Helpers
                 }
             }
         }
-
+        /// <summary>
+        /// 筛选zipentry
+        /// </summary>
+        /// <param name="entry"></param>
+        /// <returns></returns>
         public static bool EntryFilter (this SharpCompress.Archives.IArchiveEntry entry)
         {
             bool canuse = true;
@@ -70,7 +81,12 @@ namespace EroMangaManager.Helpers
 
             return canuse;                                                  // 最后一定符合调教
         }
-
+        /// <summary>
+        /// 排序zipentry
+        /// </summary>
+        /// <param name="zipArchive"></param>
+        /// <param name="sortFunc"></param>
+        /// <returns></returns>
         public static IEnumerable<string> SortEntriesByName (this IArchive zipArchive, Action<IEnumerable<string>> sortFunc = null)
         {
             List<string> vs = new List<string>();
@@ -95,7 +111,11 @@ namespace EroMangaManager.Helpers
         #endregion SharpCompress
 
         #region System.IO.Compression
-
+        /// <summary>
+        /// 解析zipentry获取bitmapimage
+        /// </summary>
+        /// <param name="zipArchiveEntry"></param>
+        /// <returns></returns>
         public static async Task<BitmapImage> ShowEntryAsync (System.IO.Compression.ZipArchiveEntry zipArchiveEntry)
         {
             using (Stream stream1 = zipArchiveEntry.Open())
@@ -180,7 +200,11 @@ namespace EroMangaManager.Helpers
         #endregion System.IO.Compression
 
         #region ISharpCode.SharpZipLib
-
+        /// <summary>
+        /// 筛选zipentry
+        /// </summary>
+        /// <param name="entry"></param>
+        /// <returns></returns>
         public static bool EntryFilter (this ZipEntry entry)
         {
             bool canuse = true;

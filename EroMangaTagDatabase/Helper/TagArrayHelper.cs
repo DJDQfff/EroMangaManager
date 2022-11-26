@@ -9,8 +9,16 @@ using EroMangaDB.Entities;
 
 namespace EroMangaDB.Helper
 {
+    /// <summary>
+    /// Tag数组帮助类
+    /// </summary>
     public static class TagArrayHelper
     {
+        /// <summary>
+        /// 是否左右括号成对
+        /// </summary>
+        /// <param name="tagstring"></param>
+        /// <returns></returns>
         public static bool canbePair (this string tagstring)
         {
             char[] chars1 = { '[', '【', '（', '(', '{' };// 左括号
@@ -28,7 +36,11 @@ namespace EroMangaDB.Helper
             }
             return true;
         }
-
+        /// <summary>
+        /// 按左右括号分离tag并解析
+        /// </summary>
+        /// <param name="tagstring"></param>
+        /// <returns></returns>
         public static List<string> SplitAndParser (this string tagstring)
         {
             string left = "[【（({";// 左括号
@@ -80,6 +92,12 @@ namespace EroMangaDB.Helper
             return tagslist;
         }
 
+        /// <summary>
+        /// 查询tags中是否包含指定tag
+        /// </summary>
+        /// <param name="_unknownTag"></param>
+        /// <param name="tags"></param>
+        /// <returns></returns>
         public static bool ParseInclude (this string _unknownTag, IEnumerable<string> tags)
         {
             foreach (var tag in tags)

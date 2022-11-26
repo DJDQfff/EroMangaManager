@@ -13,11 +13,18 @@ namespace EroMangaManager.Views
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class Bookcase : Page
     {
+        /// <summary>
+        /// 构造
+        /// </summary>
         public Bookcase ()
         {
             this.InitializeComponent();
         }
-
+        /// <summary>
+        /// 点击漫画是，跳转到Read页面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GridView_ItemClick_ReadManga (object sender, ItemClickEventArgs e)
         {
             //MainPage.current.MainFrame.Navigate(typeof(ReadPage), storageFile);

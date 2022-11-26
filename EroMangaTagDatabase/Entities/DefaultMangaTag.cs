@@ -1,5 +1,8 @@
 ﻿namespace EroMangaDB.Entities
 {
+    /// <summary>
+    /// 默认MangaTag
+    /// </summary>
     public class DefaultMangaTag : IDatabaseID
     {
         /// <summary> 主键 </summary>

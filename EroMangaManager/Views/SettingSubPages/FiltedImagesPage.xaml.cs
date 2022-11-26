@@ -17,11 +17,17 @@ namespace EroMangaManager.Views.SettingSubPages
     {
         private readonly ObservableCollection<ImageItem> items = new ObservableCollection<ImageItem>();
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public FiltedImagesPage ()
         {
             this.InitializeComponent();
         }
-
+        /// <summary>
+        /// 导航前
+        /// </summary>
+        /// <param name="e"></param>
         protected override async void OnNavigatedTo (NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);

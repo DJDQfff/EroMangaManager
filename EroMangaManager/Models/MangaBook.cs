@@ -33,6 +33,9 @@ namespace EroMangaManager.Models
 
         private ImageSource imagesource = new SvgImageSource(new Uri("ms-appx:///Assets/SVGs/书籍.svg"));
 
+        /// <summary>
+        /// 封面图像
+        /// </summary>
         public ImageSource Cover
         {
             set
@@ -67,6 +70,9 @@ namespace EroMangaManager.Models
         /// <summary> 本子所属文件夹 </summary>
         public StorageFolder StorageFolder { set; get; }
 
+        /// <summary>
+        /// 当前阅读信息
+        /// </summary>
         public ReadingInfo ReadingInfo { set; get; }
 
         /// <summary> 本子名字 </summary>
@@ -97,6 +103,8 @@ namespace EroMangaManager.Models
 
         /// <summary> 实例化EroManga </summary>
         /// <param name="storageFile"> </param>
+        /// <param name="storageFolder">所属文件夹</param>
+        /// <param name="info"></param>
         public MangaBook (StorageFile storageFile, StorageFolder storageFolder, ReadingInfo info)
         {
             string path = storageFile.Path;
@@ -124,7 +132,10 @@ namespace EroMangaManager.Models
                 Cover = bitmapImage;
             }
         }
-
+        /// <summary>
+        /// 翻译本子名
+        /// </summary>
+        /// <param name="name"></param>
         public void TranslateMangaName (string name)
         {
             this.MangaName = name;
