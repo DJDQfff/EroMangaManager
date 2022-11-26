@@ -19,7 +19,7 @@ namespace EroMangaManager
         /// <summary>
         /// CollectionObserver实例
         /// </summary>
-        public CollectionObserver collectionObserver { get; }
+        public ObservableCollectionVM collectionObserver { get; }
         /// <summary>
         /// MainPage的单一实例
         /// </summary>
@@ -36,7 +36,7 @@ namespace EroMangaManager
             this.InitializeComponent();
 
             var folder = MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder().Result.ToArray();
-            collectionObserver = new CollectionObserver(folder);
+            collectionObserver = new ObservableCollectionVM(folder);
 
             collectionObserver.ErrorZipEvent += (string str) =>
               {

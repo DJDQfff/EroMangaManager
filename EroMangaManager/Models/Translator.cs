@@ -11,7 +11,7 @@ namespace EroMangaManager.Models
     /// <summary>
     /// 翻译器
     /// </summary>
-    public class Translater
+    public class Translator
     {
         /// <summary> 翻译多个本子名 </summary>
         /// <returns> </returns>
@@ -21,11 +21,11 @@ namespace EroMangaManager.Models
 
             List<trans_result> results = null;
 
-            using (Translator controller = new Translator())
+            using (MyInternetAPI.BaiduTranslate.Translator controller = new MyInternetAPI.BaiduTranslate.Translator())
             {
                 try
                 {
-                    results = await controller.CommonTranslateAsync(names, "zh");
+                    results = await controller.CommonTranslateAsync(names , "zh");
                 }
                 catch (Exception)
                 {

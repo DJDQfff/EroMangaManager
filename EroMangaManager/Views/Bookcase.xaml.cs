@@ -61,7 +61,7 @@ namespace EroMangaManager.Views
 
             try
             {
-                await Translater.TranslateAllMangaName();
+                await Translator.TranslateAllMangaName();
             }
             catch
             {

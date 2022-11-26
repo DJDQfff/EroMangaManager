@@ -33,7 +33,7 @@ namespace EroMangaManager.Views
         /// <summary>
         /// 当前ReaderViewModel
         /// </summary>
-        public Reader currentReader = null;
+        public ReaderVM currentReader = null;
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -66,7 +66,7 @@ namespace EroMangaManager.Views
             {
                 currentManga = newmanga;
                 currentReader?.Dispose();
-                currentReader = await Reader.Creat(newmanga, null);
+                currentReader = await ReaderVM.Creat(newmanga, null);
 
                 FLIP.ItemsSource = currentReader.bitmapImages;
                 await currentReader.SelectEntriesAsync();

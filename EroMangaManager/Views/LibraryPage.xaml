@@ -27,7 +27,6 @@
                         Click="removeButton_Click"
                         x:Uid="RemoveFolderButton"
                         Content="移除"
-                        DataContext="{x:Bind}"
                         RelativePanel.AlignRightWithPanel="True" />
             </RelativePanel>
         </DataTemplate>

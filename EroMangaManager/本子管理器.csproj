@@ -144,7 +144,7 @@
       <DependentUpon>MangaTagEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\FolderEnum.cs" />
-    <Compile Include="ViewModels\Reader.cs" />
+    <Compile Include="ViewModels\ReaderVM.cs" />
     <Compile Include="Views\SettingSubPages\ErrorZipPage.xaml.cs">
       <DependentUpon>ErrorZipPage.xaml</DependentUpon>
     </Compile>
@@ -167,8 +167,8 @@
     </Compile>
     <Compile Include="Models\HashManager.cs" />
     <Compile Include="Models\MangaBook.cs" />
-    <Compile Include="ViewModels\CollectionObserver.cs" />
-    <Compile Include="Models\Translater.cs" />
+    <Compile Include="ViewModels\ObservableCollectionVM.cs" />
+    <Compile Include="Models\Translator.cs" />
     <Compile Include="Views\LibraryPage.xaml.cs">
       <DependentUpon>LibraryPage.xaml</DependentUpon>
     </Compile>

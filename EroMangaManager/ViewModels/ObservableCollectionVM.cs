@@ -20,9 +20,9 @@ using static Windows.Storage.AccessCache.StorageApplicationPermissions;
 namespace EroMangaManager.ViewModels
 {
     /// <summary>
-    /// 可观察集合ViewModel类
+    /// 所有需要持续观察的集合都放在这，ViewModel
     /// </summary>
-    public class CollectionObserver
+    public class ObservableCollectionVM
     {
         /// <summary>
         /// 出现无法解析的Manga时引发
@@ -42,7 +42,7 @@ namespace EroMangaManager.ViewModels
         /// 构造
         /// </summary>
         /// <param name="storageFolders">添加的文件夹</param>
-        public CollectionObserver (params StorageFolder[] storageFolders)
+        public ObservableCollectionVM (params StorageFolder[] storageFolders)
         {
             Initialize(storageFolders);
         }

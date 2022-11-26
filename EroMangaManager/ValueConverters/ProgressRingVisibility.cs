@@ -23,7 +23,7 @@ namespace EroMangaManager.ValueConverters
         /// <returns></returns>
         public object Convert (object value, Type targetType, object parameter, string language)
         {
-            Reader reader = value as Reader;
+            ReaderVM reader = value as ReaderVM;
             if (reader is null)
             {
                 return Visibility.Collapsed;

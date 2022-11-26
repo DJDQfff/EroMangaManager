@@ -92,23 +92,5 @@ namespace EroMangaDB.Helper
             return tagslist;
         }
 
-        /// <summary>
-        /// 查询tags中是否包含指定tag
-        /// </summary>
-        /// <param name="_unknownTag"></param>
-        /// <param name="tags"></param>
-        /// <returns></returns>
-        public static bool ParseInclude (this string _unknownTag, IEnumerable<string> tags)
-        {
-            foreach (var tag in tags)
-            {
-                if (_unknownTag.Contains(tag))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
     }
 }

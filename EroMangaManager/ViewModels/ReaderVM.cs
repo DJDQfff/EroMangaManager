@@ -17,9 +17,9 @@ using SharpCompress.Archives;
 namespace EroMangaManager.ViewModels
 {
     /// <summary>
-    /// ReaderViewModel
+    /// 阅读页面的ViewModel
     /// </summary>
-    public class Reader : IDisposable
+    public class ReaderVM : IDisposable
     {
         /// <summary> </summary>
         public MangaBook manga { set; get; }
@@ -39,7 +39,7 @@ namespace EroMangaManager.ViewModels
 
         /// <summary> 构造</summary>
         /// <param name="_manga"> </param>
-        private Reader (MangaBook _manga)
+        private ReaderVM (MangaBook _manga)
         {
             this.manga = _manga;
         }
@@ -86,9 +86,9 @@ namespace EroMangaManager.ViewModels
         /// <param name="manga"> </param>
         /// <param name="imageFilters"> 要过滤的图片数据库 </param>
         /// <returns> </returns>
-        public static async Task<Reader> Creat (MangaBook manga, IEnumerable<ImageFilter> imageFilters)
+        public static async Task<ReaderVM> Creat (MangaBook manga, IEnumerable<ImageFilter> imageFilters)
         {
-            Reader reader = new Reader(manga);
+            ReaderVM reader = new ReaderVM(manga);
             await reader.Open();
             return reader;
         }
