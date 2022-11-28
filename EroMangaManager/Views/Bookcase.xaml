@@ -77,18 +77,6 @@
         </Grid.RowDefinitions>
         <CommandBar Grid.Row="0"
                     Background="Transparent">
-            <!--<CommandBar.Content>
-                <StackPanel Orientation="Horizontal"
-                            VerticalAlignment="Center">
-                    <ComboBox x:Name="SelecteFolderShowComboBox"
-                              SelectionChanged="SelecteFolderShowComboBox_SelectionChanged"
-                              Width="500"
-                              HorizontalAlignment="Left"
-                              VerticalAlignment="Center"
-                              ItemsSource="{x:Bind app:MainPage.current.collectionObserver.FolderList,Mode=OneWay}"
-                              DisplayMemberPath="Name" />
-                </StackPanel>
-            </CommandBar.Content>-->
             <AppBarButton Click="TranslateEachMangaName"
                           x:Uid="TranslateButton"
                           Icon="Font"
@@ -98,6 +86,7 @@
                           x:Uid="RefreshButton"
                           Label="刷新" />
         </CommandBar>
+        
         <GridView x:Name="Bookcase_GridView"
                   x:FieldModifier="public"
                   Grid.Row="1"
@@ -106,7 +95,7 @@
                   ItemClick="GridView_ItemClick_ReadManga"
                   ItemContainerStyle="{ThemeResource GridViewItemRevealStyle}"
                   ItemTemplate="{StaticResource template_1}"
-                  ItemsSource="{x:Bind app:MainPage.current.collectionObserver.MangaList, Mode=OneWay}"
+                  ItemsSource="{x:Bind app:MainPage.current.collectionObserver.MangaFolders, Mode=OneWay}"
                   SelectionMode="None" />
     </Grid>
 </Page>

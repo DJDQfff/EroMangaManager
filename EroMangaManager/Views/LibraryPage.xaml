@@ -4,7 +4,8 @@
       xmlns:app="using:EroMangaManager"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:model="using:EroMangaManager.Models"
+      xmlns:models="using:EroMangaManager.Models"
+      xmlns:vm="using:EroMangaManager.ViewModels"
       Background="Transparent"
       NavigationCacheMode="Disabled"
       mc:Ignorable="d">
@@ -15,7 +16,7 @@
                     Value="Stretch" />
         </Style>
         <DataTemplate x:Key="template_1"
-                      x:DataType="model:MangasFolder"
+                      x:DataType="vm:MangasFolder"
                       x:DefaultBindMode="OneWay">
             <RelativePanel Margin="4">
                 <TextBlock x:Name="folderTextBlock"

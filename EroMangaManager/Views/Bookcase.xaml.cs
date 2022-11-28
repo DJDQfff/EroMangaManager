@@ -121,19 +121,6 @@ namespace EroMangaManager.Views
             await Windows.System.Launcher.LaunchFileAsync(mangaBook.StorageFile);
         }
 
-        /// <summary>
-        /// TODO 不知道为什么，ComboBox的SelectedIndex总是-1
-        /// </summary>
-        /// <param name="sender"> </param>
-        /// <param name="e"> </param>
-        private void SelecteFolderShowComboBox_SelectionChanged (object sender, SelectionChangedEventArgs e)
-        {
-            var combobox = sender as ComboBox;
-            int index = combobox.SelectedIndex;
-            var folder = MainPage.current.collectionObserver.FolderList[index];
-            MainPage.current.collectionObserver.Initialize(folder);
-        }
-
         private void Page_Loaded (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             MainPage.current.bookcase = this;

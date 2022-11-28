@@ -11,7 +11,8 @@ using EroMangaDB.Entities;
 using EroMangaDB.EntityFactory;
 using Windows.Storage;
 
-namespace EroMangaManager.Models
+using EroMangaManager.Models;
+namespace EroMangaManager.ViewModels
 {
     internal class MangasFolder
     {
