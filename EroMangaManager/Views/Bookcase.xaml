@@ -30,22 +30,18 @@
                 <Grid.ContextFlyout>
                     <MenuFlyout>
                         <MenuFlyoutItem Click="ViewMangaTag"
-                                        DataContext="{x:Bind}"
                                         x:Uid="MenuItem1"
-                                        Text="查看信息" />
+                                       d:Text="查看信息" />
 
                         <MenuFlyoutSeparator />
                         <MenuFlyoutSubItem Text="文件操作">
                             <MenuFlyoutItem Click="DeleteEroMangaFile"
-                                            DataContext="{x:Bind}"
                                             x:Uid="MenuItem2"
                                             Text="删除源文件" />
                             <MenuFlyoutItem Click="LaunchFile"
-                                            DataContext="{x:Bind}"
                                             x:Uid="MenuItem3"
                                             Text="打开文件" />
                             <MenuFlyoutItem Click="LaunchFolder"
-                                            DataContext="{x:Bind}"
                                             x:Uid="MenuItem4"
                                             Text="打开文件夹" />
                         </MenuFlyoutSubItem>
@@ -57,7 +53,6 @@
                        Height="192"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
-                       DataContext="{x:Bind}"
                        Source="{x:Bind Cover, Mode=OneWay}"
                        Stretch="Uniform" />
                 <TextBlock Grid.Row="1"
