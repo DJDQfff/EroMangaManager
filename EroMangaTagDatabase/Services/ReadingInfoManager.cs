@@ -12,7 +12,7 @@ using EroMangaDB.Helper;
 
 using static EroMangaDB.BasicController;
 
-namespace EroMangaDB.UpperController
+namespace EroMangaDB.Services
 {
     /// <summary> 封装了对ReadingInfo的上层操作 </summary>
     public class ReadingInfoManager : IDisposable
