@@ -5,6 +5,7 @@ using static MyUWPLibrary.StorageItemPicker;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Controls;
+using EroMangaManager.Models;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
@@ -46,7 +47,7 @@ namespace EroMangaManager.Views
         private void removeButton_Click (object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             Button button = sender as Button;
-            StorageFolder storageFolder = button.DataContext as StorageFolder;
+            var storageFolder = button.DataContext as MangasFolder;
 
             MainPage.current.collectionObserver.RemoveFolder(storageFolder);
         }

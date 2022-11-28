@@ -4,7 +4,7 @@
       xmlns:app="using:EroMangaManager"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:storage="using:Windows.Storage"
+      xmlns:model="using:EroMangaManager.Models"
       Background="Transparent"
       NavigationCacheMode="Disabled"
       mc:Ignorable="d">
@@ -15,13 +15,13 @@
                     Value="Stretch" />
         </Style>
         <DataTemplate x:Key="template_1"
-                      x:DataType="storage:StorageFolder"
+                      x:DataType="model:MangasFolder"
                       x:DefaultBindMode="OneWay">
             <RelativePanel Margin="4">
                 <TextBlock x:Name="folderTextBlock"
                            Padding="0,0,4,0"
                            RelativePanel.AlignLeftWithPanel="True"
-                           Text="{x:Bind Path}" />
+                           Text="{x:Bind FolderPath}" />
                 <Button x:Name="removeButton"
                         Margin="0,0,20,0"
                         Click="removeButton_Click"
@@ -51,7 +51,7 @@
                   Grid.Row="2"
                   ItemContainerStyle="{StaticResource style_1}"
                   ItemTemplate="{StaticResource template_1}"
-                  ItemsSource="{x:Bind app:MainPage.current.collectionObserver.FolderList, Mode=OneWay}"
+                  ItemsSource="{x:Bind app:MainPage.current.collectionObserver.MangaFolders, Mode=OneWay}"
                   SelectionMode="None" />
     </Grid>
 </Page>

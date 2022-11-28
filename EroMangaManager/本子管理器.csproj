@@ -144,6 +144,8 @@
       <DependentUpon>MangaTagEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\FolderEnum.cs" />
+    <Compile Include="Models\MangasFolder.cs" />
+    <Compile Include="ViewModels\MangaFolderVM.cs" />
     <Compile Include="ViewModels\ReaderVM.cs" />
     <Compile Include="Views\SettingSubPages\ErrorZipPage.xaml.cs">
       <DependentUpon>ErrorZipPage.xaml</DependentUpon>
