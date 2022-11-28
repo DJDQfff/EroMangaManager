@@ -6,7 +6,7 @@ using MyInternetAPI.BaiduTranslate.Models.ResponseJSON;
 using static EroMangaDB.BasicController;
 using System;
 
-namespace EroMangaManager.Models
+namespace EroMangaManager.Services
 {
     /// <summary>
     /// 翻译器

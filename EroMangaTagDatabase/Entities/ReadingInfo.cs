@@ -1,7 +1,7 @@
 ﻿namespace EroMangaDB.Entities
 {
     /// <summary>
-    /// 阅读进度，用来存储对一本漫画的观看信息。
+    /// 阅读状态信息，用来存储对一本漫画的观看信息。
     /// </summary>
     public class ReadingInfo : IDatabaseID
     {
@@ -30,7 +30,7 @@
         public int ReadingPosition { get; set; }
 
         /// <summary>
-        /// 以\r分割的各个标签（不包括本子名）
+        /// 以 \r 分割的各个标签（不包括本子名）
         /// </summary>
         public string TagPieces { set; get; }
 

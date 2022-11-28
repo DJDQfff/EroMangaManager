@@ -86,7 +86,7 @@ namespace EroMangaManager.ViewModels
         /// <param name="manga"> </param>
         /// <param name="imageFilters"> 要过滤的图片数据库 </param>
         /// <returns> </returns>
-        public static async Task<ReaderVM> Creat (MangaBook manga, IEnumerable<ImageFilter> imageFilters)
+        public static async Task<ReaderVM> Creat (MangaBook manga, IEnumerable<FilteredImage> imageFilters)
         {
             ReaderVM reader = new ReaderVM(manga);
             await reader.Open();

@@ -21,7 +21,7 @@ namespace EroMangaDB
         /// <returns>字典，第一项为TagName，第二项为Kwywords</returns>
         public Dictionary<string, string[]> TagKeywords_QueryAll ()
         {
-            var tags = database.TagKeywords.ToArray();
+            var tags = database.TagCategorys.ToArray();
 
             List<(string, string[])> vs = new List<(string, string[])>();
 
@@ -30,7 +30,7 @@ namespace EroMangaDB
             {
                 string[] vs1 = tag.Keywords.Split('\r');
 
-                keyValuePairs.Add(tag.TagName, vs1);
+                keyValuePairs.Add(tag.CategoryName, vs1);
             }
 
             return keyValuePairs;
@@ -43,7 +43,7 @@ namespace EroMangaDB
         /// <returns></returns>
         public string[] TagKeywords_QuerySingle (string tagname)
         {
-            string keywords = database.TagKeywords.Where(n => n.TagName == tagname).Select(n => n.Keywords).Single();
+            string keywords = database.TagCategorys.Where(n => n.CategoryName == tagname).Select(n => n.Keywords).Single();
             string[] keywordarray = keywords.Split('\r');
 
             return keywordarray;
@@ -57,8 +57,8 @@ namespace EroMangaDB
         /// <returns></returns>
         public async Task TagKeywords_AddTagSingle (string tagname, IEnumerable<string> keywords)
         {
-            UniqueTagInRelation tagKeywords = TagKeywordsFactory.Creat(tagname, keywords);
-            database.TagKeywords.Add(tagKeywords);
+            TatCategory tagKeywords = TagCategoryFactory.Creat(tagname, keywords);
+            database.TagCategorys.Add(tagKeywords);
             await database.SaveChangesAsync();
         }
 
@@ -70,7 +70,7 @@ namespace EroMangaDB
         /// <returns></returns>
         public async Task TagKeywords_AppendKeywordSingle (string tagname, string keyword)
         {
-            UniqueTagInRelation tagKeywords = database.TagKeywords.Single(n => n.TagName == tagname);
+            TatCategory tagKeywords = database.TagCategorys.Single(n => n.CategoryName == tagname);
             tagKeywords.Keywords += "\r" + keyword;
             await database.SaveChangesAsync();
         }
@@ -84,7 +84,7 @@ namespace EroMangaDB
         public async Task TagKeywords_UpdateTagSingle (string tagname, IEnumerable<string> keywords)
         {
             string keywordString = string.Join("\r", keywords);
-            UniqueTagInRelation tagKeywords = database.TagKeywords.Single(n => n.TagName == tagname);
+            TatCategory tagKeywords = database.TagCategorys.Single(n => n.CategoryName == tagname);
             tagKeywords.Keywords = keywordString;
             database.Update(tagKeywords);
             await database.SaveChangesAsync();
@@ -98,7 +98,7 @@ namespace EroMangaDB
         /// <returns></returns>
         public async Task TagKeywords_DeleteKeywordsSingle (string tagname_UsedStorageTag, params string[] keywords_ToDelete)
         {
-            UniqueTagInRelation tagKeywords = database.TagKeywords.Single(n => n.TagName == tagname_UsedStorageTag);
+            TatCategory tagKeywords = database.TagCategorys.Single(n => n.CategoryName == tagname_UsedStorageTag);
             var keywordsList = tagKeywords.Keywords.Split('\r').ToList();
             foreach (var word in keywords_ToDelete)
             {

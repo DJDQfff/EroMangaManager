@@ -6,9 +6,9 @@ using System.Text;
 
 namespace EroMangaDB.Entities
 {
-    /// <summary> 预设漫画Tag </summary>
+    /// <summary> 预设漫画Tag种类 </summary>
 
-    public enum PresetTag
+    public enum PresetTagCategory
     {
         /// <summary> 全彩Tag </summary>
         全彩,

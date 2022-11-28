@@ -3,7 +3,7 @@
     /// <summary>
     /// 默认MangaTag
     /// </summary>
-    public class DefaultMangaTag : IDatabaseID
+    public class MangaTagInfo : IDatabaseID
     {
         /// <summary> 主键 </summary>
         public int ID { set; get; }

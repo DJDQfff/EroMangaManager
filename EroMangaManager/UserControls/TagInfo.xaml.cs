@@ -23,6 +23,9 @@ using EroMangaManager.Models;
 
 namespace EroMangaManager.UserControls
 {
+    /// <summary>
+    /// 一堆Tag
+    /// </summary>
     public sealed partial class TagInfo : UserControl
     {
         /// <summary>

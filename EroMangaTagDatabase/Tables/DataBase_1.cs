@@ -12,16 +12,16 @@ namespace EroMangaDB.Tables
         /// <summary>
         /// 存储用户添加的不显示的图片的数据库表
         /// </summary>
-        public DbSet<ImageFilter> ImageFilters { set; get; }
+        public DbSet<FilteredImage> FilteredImages { set; get; }
 
         /// <summary>
         /// 存贮特定的本子Tag的表
         /// </summary>
-        public DbSet<DefaultMangaTag> SpecificMangaTagDatas { set; get; }
+        public DbSet<MangaTagInfo> ManTagInfos { set; get; }
         /// <summary>
         /// UniqueTagInRelation数据表
         /// </summary>
-        public DbSet<UniqueTagInRelation> TagKeywords { set; get; }
+        public DbSet<TatCategory> TagCategorys { set; get; }
         /// <summary>
         /// ReadingInfo数据表
         /// </summary>

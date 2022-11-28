@@ -20,7 +20,7 @@ namespace EroMangaDB
         /// </summary>
         /// <param name="mangaTags"></param>
         /// <returns></returns>
-        public async Task MangaTag_AddMulti (IList<DefaultMangaTag> mangaTags)
+        public async Task MangaTag_AddMulti (IList<MangaTagInfo> mangaTags)
         {
             database.AddRange(mangaTags);
             await database.SaveChangesAsync();
@@ -30,7 +30,7 @@ namespace EroMangaDB
         /// </summary>
         /// <param name="mangaTag"></param>
         /// <returns></returns>
-        public async Task MangaTag_AddSingle (DefaultMangaTag mangaTag)
+        public async Task MangaTag_AddSingle (MangaTagInfo mangaTag)
         {
             database.Add(mangaTag);
             await database.SaveChangesAsync();
@@ -42,10 +42,10 @@ namespace EroMangaDB
         /// <returns></returns>
         public async Task MangaTag_RemoveMulti (IEnumerable<string> absolutePathes)
         {
-            List<DefaultMangaTag> list = new List<DefaultMangaTag>();
+            List<MangaTagInfo> list = new List<MangaTagInfo>();
             foreach (var path in absolutePathes)
             {
-                DefaultMangaTag mangaTag = database.SpecificMangaTagDatas.Single(n => n.AbsolutePath == path);
+                MangaTagInfo mangaTag = database.ManTagInfos.Single(n => n.AbsolutePath == path);
 
                 list.Add(mangaTag);
             }
@@ -60,7 +60,7 @@ namespace EroMangaDB
         /// <returns></returns>
         public async Task MangaTag_RemoveSingle (string path)
         {
-            DefaultMangaTag mangaTag = database.SpecificMangaTagDatas.SingleOrDefault(n => n.AbsolutePath == path);
+            MangaTagInfo mangaTag = database.ManTagInfos.SingleOrDefault(n => n.AbsolutePath == path);
             database?.Remove(mangaTag);
             await database.SaveChangesAsync();
             database.Dispose();
@@ -70,10 +70,10 @@ namespace EroMangaDB
         /// </summary>
         /// <param name="folder"></param>
         /// <returns></returns>
-        public DefaultMangaTag[] MangaTag_QueryMulti (string folder)
+        public MangaTagInfo[] MangaTag_QueryMulti (string folder)
         {
             Tables.DataBase_1 database = new Tables.DataBase_1();
-            var tags = database.SpecificMangaTagDatas.Where(n => n.AbsolutePath.Contains(folder)).ToArray();
+            var tags = database.ManTagInfos.Where(n => n.AbsolutePath.Contains(folder)).ToArray();
 
             return tags;
         }
@@ -82,9 +82,9 @@ namespace EroMangaDB
         /// </summary>
         /// <param name="absolutePath"></param>
         /// <returns></returns>
-        public DefaultMangaTag MangaTag_QuerySingle (string absolutePath)
+        public MangaTagInfo MangaTag_QuerySingle (string absolutePath)
         {
-            var tag = database.SpecificMangaTagDatas.Single(n => n.AbsolutePath == absolutePath);
+            var tag = database.ManTagInfos.Single(n => n.AbsolutePath == absolutePath);
 
             return tag;
         }
@@ -93,9 +93,9 @@ namespace EroMangaDB
         /// </summary>
         /// <param name="mangaTag"></param>
         /// <returns></returns>
-        public async Task MangaTag_UpdateSingle (DefaultMangaTag mangaTag)
+        public async Task MangaTag_UpdateSingle (MangaTagInfo mangaTag)
         {
-            var tag = database.SpecificMangaTagDatas.Single(n => n.AbsolutePath == mangaTag.AbsolutePath);
+            var tag = database.ManTagInfos.Single(n => n.AbsolutePath == mangaTag.AbsolutePath);
             database.Remove(tag);
             database.Add(mangaTag);
             await database.SaveChangesAsync();

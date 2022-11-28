@@ -15,7 +15,7 @@ namespace EroMangaDB.EntityFactory
     public static class ReadingInfoFactory
     {
         /// <summary>
-        /// 创建一个新的阅读信息
+        /// 创建一个新的阅读状态信息
         /// </summary>
         /// <param name="absolutepath"></param>
         /// <returns></returns>

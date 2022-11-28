@@ -23,6 +23,9 @@ using Windows.UI.Xaml.Navigation;
 
 namespace EroMangaManager.InteractPage
 {
+    /// <summary>
+    /// 确认删除对话框
+    /// </summary>
     public sealed partial class ConfirmDeleteMangaFile : ContentDialog
     {
         private MangaBook manga;

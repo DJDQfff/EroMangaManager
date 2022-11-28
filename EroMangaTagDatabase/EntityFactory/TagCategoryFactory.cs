@@ -9,20 +9,20 @@ using EroMangaDB.Entities;
 namespace EroMangaDB.EntityFactory
 {
     /// <summary>
-    /// UniqueTagInRelation工厂
+    /// TagCategory工厂方法
     /// </summary>
-    public static class TagKeywordsFactory
+    public static class TagCategoryFactory
     {
         /// <summary>
-        /// 创建唯一关联tag
+        /// 创建
         /// </summary>
-        /// <param name="tagname"></param>
+        /// <param name="categoryname"></param>
         /// <param name="keywords"></param>
         /// <returns></returns>
-        public static UniqueTagInRelation Creat (string tagname, IEnumerable<string> keywords)
+        public static TatCategory Creat (string categoryname, IEnumerable<string> keywords)
         {
             string keywordsstring = string.Join("\r", keywords);
-            UniqueTagInRelation tagKeywords = new UniqueTagInRelation() { TagName = tagname, Keywords = keywordsstring };
+            TatCategory tagKeywords = new TatCategory() { CategoryName = categoryname, Keywords = keywordsstring };
             return tagKeywords;
         }
     }

@@ -168,7 +168,7 @@
     <Compile Include="Models\HashManager.cs" />
     <Compile Include="Models\MangaBook.cs" />
     <Compile Include="ViewModels\ObservableCollectionVM.cs" />
-    <Compile Include="Models\Translator.cs" />
+    <Compile Include="Services\Translator.cs" />
     <Compile Include="Views\LibraryPage.xaml.cs">
       <DependentUpon>LibraryPage.xaml</DependentUpon>
     </Compile>
