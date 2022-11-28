@@ -22,12 +22,17 @@
                            Padding="0,0,4,0"
                            RelativePanel.AlignLeftWithPanel="True"
                            Text="{x:Bind FolderPath}" />
-                <Button x:Name="removeButton"
+                <StackPanel Orientation="Horizontal" RelativePanel.AlignRightWithPanel="True">
+                    <AppBarButton Icon="OpenPane" d:Label="打开文件夹"
+                                  Click="ChangeData" />
+                    <AppBarButton x:Name="removeButton" Icon="Remove"
                         Margin="0,0,20,0"
                         Click="removeButton_Click"
                         x:Uid="RemoveFolderButton"
                         Content="移除"
-                        RelativePanel.AlignRightWithPanel="True" />
+                        />
+
+                </StackPanel>
             </RelativePanel>
         </DataTemplate>
     </Page.Resources>
@@ -37,7 +42,7 @@
             <RowDefinition Height="112*" />
             <RowDefinition Height="357*" />
         </Grid.RowDefinitions>
-        <Button x:Name="addButton"
+        <Button x:Name="addButton" 
                 Grid.Row="1"
                 Width="200"
                 Height="60"

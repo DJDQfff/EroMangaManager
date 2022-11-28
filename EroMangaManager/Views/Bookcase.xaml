@@ -7,7 +7,8 @@
       xmlns:models="using:EroMangaManager.Models"
       xmlns:storage="using:Windows.Storage"
       Background="Transparent"
-      NavigationCacheMode="Enabled"
+      NavigationCacheMode="Enabled" 
+      Loaded="Page_Loaded"
       mc:Ignorable="d">
     <Page.Resources>
         <Style x:Key="item1"
@@ -98,6 +99,7 @@
                           Label="刷新" />
         </CommandBar>
         <GridView x:Name="Bookcase_GridView"
+                  x:FieldModifier="public"
                   Grid.Row="1"
                   Margin="4"
                   IsItemClickEnabled="True"

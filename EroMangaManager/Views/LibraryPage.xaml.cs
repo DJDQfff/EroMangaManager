@@ -46,10 +46,18 @@ namespace EroMangaManager.Views
 
         private void removeButton_Click (object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            Button button = sender as Button;
+            var button = sender as AppBarButton;
             var storageFolder = button.DataContext as MangasFolder;
 
             MainPage.current.collectionObserver.RemoveFolder(storageFolder);
+        }
+
+        private void ChangeData (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var button=sender as AppBarButton;
+            var mf=button.DataContext as MangasFolder;
+
+            MainPage.current.bookcase.Bookcase_GridView.ItemsSource= mf; 
         }
     }
 }

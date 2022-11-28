@@ -133,5 +133,10 @@ namespace EroMangaManager.Views
             var folder = MainPage.current.collectionObserver.FolderList[index];
             MainPage.current.collectionObserver.Initialize(folder);
         }
+
+        private void Page_Loaded (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            MainPage.current.bookcase = this;
+        }
     }
 }
