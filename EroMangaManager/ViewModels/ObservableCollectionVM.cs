@@ -66,12 +66,15 @@ namespace EroMangaManager.ViewModels
                 }
             }
 
+            List<Task> tasks = new List<Task>();    
             foreach (var folder in FolderList)
             {
                 MangasFolder mangasFolder = new MangasFolder(folder);
                 MangaFolders.Add(mangasFolder);
-               await mangasFolder.Initial();
+              Task task=new Task(async ()=>await mangasFolder.Initial());
+                 tasks.Add(task);
             }
+            await Task.WhenAll(tasks);
         }
 
         /// <summary>
