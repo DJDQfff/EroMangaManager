@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:models="using:EroMangaManager.Models"
+      xmlns:vm="using:EroMangaManager.ViewModels"
       xmlns:storage="using:Windows.Storage"
       Background="Transparent"
       NavigationCacheMode="Enabled" 
@@ -95,7 +96,7 @@
                   ItemClick="GridView_ItemClick_ReadManga"
                   ItemContainerStyle="{ThemeResource GridViewItemRevealStyle}"
                   ItemTemplate="{StaticResource template_1}"
-                  ItemsSource="{x:Bind app:MainPage.current.collectionObserver.MangaFolders, Mode=OneWay}"
+                  ItemsSource="{x:Bind app:MainPage.current.collectionObserver.MangaFolders[0], Mode=OneWay}"
                   SelectionMode="None" />
     </Grid>
 </Page>

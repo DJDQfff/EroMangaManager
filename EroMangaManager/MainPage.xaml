@@ -3,9 +3,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      xmlns:vm="using:EroMangaManager.ViewModels"
       mc:Ignorable="d">
     <Grid>
-        <NavigationView x:Name="MainNavigationView"
+        <muxc:NavigationView x:Name="MainNavigationView"
                         x:FieldModifier="public"
                         OpenPaneLength="200"
                         FlowDirection="LeftToRight"
@@ -14,28 +16,35 @@
                         ItemInvoked="MainNavigationView_ItemInvoked"
                         PaneDisplayMode="Auto">
 
-            <NavigationView.MenuItems>
+            <muxc:NavigationView.MenuItems>
 
-                <NavigationViewItem x:Name="BookcaseItem"
+                <muxc:NavigationViewItem x:Name="BookcaseItem"
                                    d:Content="书架"
                                     x:Uid="BookcaseItem"
                                     Icon="Library"
                                     ToolTipService.ToolTip="所有漫画" />
-                <NavigationViewItem d:Content="书库"
-                                    x:Uid="ListItem"
-                                    Icon="List"
-                                    x:Name="ListItem"
-                                    ToolTipService.ToolTip="已固定文件夹" />
-                <NavigationViewItem x:Name="ReadItem"
+                <muxc:NavigationViewItem d:Content="书库"
+                                         x:Uid="ListItem"
+                                         Icon="List"
+                                         x:Name="ListItem"
+                                         MenuItemsSource="{x:Bind collectionObserver.MangaFolders}" 
+                                         ToolTipService.ToolTip="已固定文件夹">
+                    <!--<muxc:NavigationViewItem.ContentTemplate>
+                        <DataTemplate x:DataType="vm:MangasFolder">
+                            <TextBlock Text="{x:Bind FolderName}" />
+                        </DataTemplate>
+                    </muxc:NavigationViewItem.ContentTemplate>-->
+                </muxc:NavigationViewItem>
+                <muxc:NavigationViewItem x:Name="ReadItem"
                                     x:Uid="ReadItem"
                                     d:Content="正在阅读"
                                     Icon="Read"
                                     ToolTipService.ToolTip="正在阅读" />
-            </NavigationView.MenuItems>
-            <NavigationView.Content>
+            </muxc:NavigationView.MenuItems>
+            <muxc:NavigationView.Content>
                 <Frame x:Name="MainFrame"
                        x:FieldModifier="public" />
-            </NavigationView.Content>
-        </NavigationView>
+            </muxc:NavigationView.Content>
+        </muxc:NavigationView>
     </Grid>
 </Page>

@@ -6,6 +6,7 @@ using EroMangaManager.ViewModels;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.Toolkit.Uwp.Notifications;
+using Microsoft.UI.Xaml.Controls;
 using Windows.ApplicationModel.Resources;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804
@@ -55,10 +56,10 @@ namespace EroMangaManager
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            MainFrame.Navigate(typeof(Bookcase));
+            //MainFrame.Navigate(typeof(Bookcase));
         }
 
-        private void MainNavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        private void MainNavigationView_ItemInvoked(Microsoft.UI.Xaml.Controls. NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
         {
             Type type = null;
 
@@ -85,5 +86,6 @@ namespace EroMangaManager
                 MainFrame.Navigate(type);
             }
         }
+
     }
 }
