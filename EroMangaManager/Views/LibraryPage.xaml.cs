@@ -21,6 +21,7 @@ namespace EroMangaManager.Views
         public LibraryPage ()
         {
             this.InitializeComponent();
+           MainPage.pageInstancesManager.LibraryPage= this;
         }
 
         private async void addButton_Click (object sender, Windows.UI.Xaml.RoutedEventArgs e)

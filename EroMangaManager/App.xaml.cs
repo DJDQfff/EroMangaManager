@@ -15,6 +15,7 @@ using EroMangaManager.Views;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Windows.Storage;
 using System.ComponentModel;
+using EroMangaManager.ViewModels;
 
 namespace EroMangaManager
 {
@@ -40,7 +41,7 @@ namespace EroMangaManager
 #if DEBUG 
             await Windows.System.Launcher.LaunchFolderAsync(ApplicationData.Current.LocalFolder);
 #endif
-
+            
             DatabaseController.Migrate();
             await EnsureChildTemporaryFolders(Covers.ToString(), Filters.ToString());
 

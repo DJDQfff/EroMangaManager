@@ -26,7 +26,7 @@
 
                         <MenuFlyoutSeparator />
                         <MenuFlyoutSubItem Text="文件操作">
-                            <MenuFlyoutItem Click="DeleteEroMangaFile"
+                            <MenuFlyoutItem Click="DeleteSourceMangaFile"
                                             x:Uid="MenuItem2"
                                             Text="删除源文件" />
                             <MenuFlyoutItem Click="LaunchFile"
@@ -61,21 +61,7 @@
     </Page.Resources>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <CommandBar Grid.Row="0"
-                    Background="Transparent">
-            <AppBarButton Click="TranslateEachMangaName"
-                          x:Uid="TranslateButton"
-                          Icon="Font"
-                          Label="翻译" />
-            <AppBarButton Click="RefreshMangaList"
-                          Icon="Refresh"
-                          x:Uid="RefreshButton"
-                          Label="刷新" />
-        </CommandBar>
+
         
         <GridView x:Name="Bookcase_GridView"
                   x:FieldModifier="public"

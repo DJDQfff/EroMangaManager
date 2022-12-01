@@ -30,10 +30,21 @@ namespace EroMangaManager.ViewModels
         public event Action<string> ErrorZipEvent;
         internal ObservableCollection<MangasFolder> MangaFolders {  get; } = new ObservableCollection<MangasFolder>();
         /// <summary>存放zip文件的文件夹</summary>
-        internal ObservableCollection<StorageFolder> FolderList {  get; } = new ObservableCollection<StorageFolder>();
-
+        internal List<StorageFolder> StorageFolders => MangaFolders.Select(n => n.StorageFolder).ToList();
         /// <summary>各漫画zip</summary>
-        internal ObservableCollection<MangaBook> MangaList {  get; } = new ObservableCollection<MangaBook>();
+        /// 
+        internal List<MangaBook> MangaList
+        {
+            get
+            {
+                var list = new List<MangaBook>();
+                foreach (var folder in MangaFolders)
+                {
+                    list.AddRange(folder.MangaBooks);
+                }
+                return list;
+            }
+        }
 
         /// <summary>流的内容不是 zip 存档格式。</summary>
         internal ObservableCollection<MangaBook> NonZipList { get; } = new ObservableCollection<MangaBook>();
@@ -54,27 +65,17 @@ namespace EroMangaManager.ViewModels
         /// <summary>ViewModel初始化</summary>
         public async void Initialize (params StorageFolder[] storageFolders)
         {
-            FolderList.Clear();
-            MangaList.Clear();//初始化清零
+            MangaFolders.Clear();
+
             NonZipList.Clear();
 
-            foreach (var item in storageFolders)
-            {
-                if (item != null)
+                foreach (var folder in storageFolders)
                 {
-                    FolderList.Add(item);
-                }
-            }
-
-            List<Task> tasks = new List<Task>();    
-            foreach (var folder in FolderList)
-            {
-                MangasFolder mangasFolder = new MangasFolder(folder);
-                MangaFolders.Add(mangasFolder);
-              Task task=new Task(async ()=>await mangasFolder.Initial());
-                 tasks.Add(task);
-            }
-            await Task.WhenAll(tasks);
+                    MangasFolder mangasFolder = new MangasFolder(folder);
+                    MangaFolders.Add(mangasFolder);
+                    await mangasFolder.Initial();
+                };
+          
         }
 
         /// <summary>
@@ -89,10 +90,8 @@ namespace EroMangaManager.ViewModels
         {
             FutureAccessList.Add(folder);
 
-            if (! FolderList.Contain(folder))
+            if(MangaFolders.FirstOrDefault(x=>x.FolderPath==folder.Path) is null)
             {
-                FolderList.Add(folder);
-
                 MangasFolder mangasFolder = new MangasFolder(folder);
                 MangaFolders.Add(mangasFolder);
                 await mangasFolder.Initial();
@@ -105,34 +104,16 @@ namespace EroMangaManager.ViewModels
         /// 2.从FolderList里移除 
         /// 3.从MangaList里移除文件夹下属漫画
         /// </summary>
-        /// <param name="folder"></param>
         internal void RemoveFolder (MangasFolder mangasfolder)
-        {
-            var folder = mangasfolder.StorageFolder;
-            FolderList.Remove(folder);      // 从访问列表Model里移除
+        {     
+            MangaFolders.Remove(mangasfolder);
 
-            string token = FutureAccessList.Add(folder);        // 获取系统存储token
+            string token = FutureAccessList.Add(mangasfolder.StorageFolder);        // 获取系统存储token
 
             FutureAccessList.Remove(token); // 从系统未来访问列表里删除
-
-            MangaFolders.Remove(mangasfolder);
         }
 
         #region 弃用
-        [Obsolete]
-        /// <summary>从MangaList中移除特定文件夹下的漫画</summary>
-        /// <param name="folderpath"></param>
-        private void RemoveMangaInFolder (string folderpath)
-        {
-            for (int i = MangaList.Count - 1 ; i >= 0 ; i--)
-            {
-                var manga = MangaList[i];
-                if (manga.FolderPath == folderpath)
-                {
-                    MangaList.Remove(manga);
-                }
-            }
-        }
 
         /// <summary>读取数据库，将指定文件夹下的 MangaTag 移除</summary>
         /// <param name="storageFolder"></param>

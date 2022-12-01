@@ -20,19 +20,21 @@ namespace EroMangaManager
     public sealed partial class MainPage : Page
     {
 
-        public BookcaseContainer bookcaseContainer;
+        internal BookcaseContainer bookcaseContainer;
         /// <summary>
         /// CollectionObserver实例
         /// </summary>
-        public ObservableCollectionVM collectionObserver { get; }
+        internal ObservableCollectionVM collectionObserver { get; }
+
+        internal static PageInstancesManager pageInstancesManager = new PageInstancesManager();
         /// <summary>
         /// MainPage的单一实例
         /// </summary>
-        public static MainPage current { set; get; }
+        internal static MainPage current { set; get; }
         /// <summary>
         /// 系统resw解析实例
         /// </summary>
-        public ResourceLoader resourceLoader { get; } = ResourceLoader.GetForCurrentView();
+        public  ResourceLoader resourceLoader { get; } = ResourceLoader.GetForCurrentView();
         /// <summary>
         /// 
         /// </summary>
@@ -51,6 +53,7 @@ namespace EroMangaManager
               };
 
             current = this;
+            pageInstancesManager.MainPage = this;
         }
         /// <summary>
         /// 导航前

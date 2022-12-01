@@ -145,6 +145,7 @@
     </Compile>
     <Compile Include="Models\FolderEnum.cs" />
     <Compile Include="ViewModels\MangasFolder.cs" />
+    <Compile Include="ViewModels\PageInstancesManager.cs" />
     <Compile Include="ViewModels\ReaderVM.cs" />
     <Compile Include="Views\BookcaseContainer.xaml.cs">
       <DependentUpon>BookcaseContainer.xaml</DependentUpon>
@@ -172,7 +173,7 @@
     <Compile Include="Models\HashManager.cs" />
     <Compile Include="Models\MangaBook.cs" />
     <Compile Include="ViewModels\ObservableCollectionVM.cs" />
-    <Compile Include="Services\Translator.cs" />
+    <Compile Include="Helpers\Translator.cs" />
     <Compile Include="Views\LibraryPage.xaml.cs">
       <DependentUpon>LibraryPage.xaml</DependentUpon>
     </Compile>
@@ -363,7 +364,9 @@
       <Name>EroMangaDB</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
   <ItemGroup>
     <XliffResource Include="MultilingualResources\本子管理器.en.xlf" />
   </ItemGroup>

@@ -8,4 +8,25 @@
     mc:Ignorable="d"
     NavigationCacheMode="Enabled"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        
+    <Grid.RowDefinitions>
+        <RowDefinition Height="auto" />
+        <RowDefinition />
+    </Grid.RowDefinitions>
+    <CommandBar d:Background="Red" Grid.Row="0" x:Name="BookcaseCommandBar" VerticalAlignment="Stretch"
+                Background="Transparent">
+        <AppBarButton Click="TranslateEachMangaName"
+                      x:Uid="TranslateButton"
+                      Icon="Font"
+                      Label="翻译" />
+        <AppBarButton Click="RefreshMangaList"
+                      Icon="Refresh"
+                      x:Uid="RefreshButton"
+                      Label="刷新" />
+        </CommandBar>
+                    <Frame x:Name="ShowBookcase" Grid.Row="1"/>
+
+    </Grid>
+
 </Page>

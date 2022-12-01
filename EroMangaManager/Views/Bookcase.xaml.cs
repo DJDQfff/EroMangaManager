@@ -2,7 +2,6 @@
 
 using EroMangaManager.Helpers;
 using EroMangaManager.Models;
-using EroMangaManager.Services;
 using EroMangaManager.InteractPage;
 using Windows.UI.Xaml.Controls;
 using EroMangaManager.ViewModels;
@@ -34,17 +33,14 @@ namespace EroMangaManager.Views
         /// <param name="e"></param>
         private void GridView_ItemClick_ReadManga (object sender, ItemClickEventArgs e)
         {
-            //MainPage.current.MainFrame.Navigate(typeof(ReadPage), storageFile);
-            //使用下面这个更好
-
             MangaBook mangaBook = e.ClickedItem as MangaBook;
 
-            this.Frame.Navigate(typeof(EroMangaManager.Views.ReadPage), mangaBook);
+            MainPage.current.MainFrame.Navigate(typeof(EroMangaManager.Views.ReadPage), mangaBook);
 
             MainPage.current.MainNavigationView.SelectedItem = MainPage.current.MainNavigationView.MenuItems[2];
         }
 
-        private async void DeleteEroMangaFile (object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void DeleteSourceMangaFile (object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
             MangaBook eroManga = menuFlyout.DataContext as MangaBook;
@@ -61,47 +57,7 @@ namespace EroMangaManager.Views
             }
         }
 
-        private async void TranslateEachMangaName (object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            AppBarButton button = sender as AppBarButton;
-            button.IsEnabled = false;
 
-            try
-            {
-                await Translator.TranslateAllMangaName();
-            }
-            catch
-            {
-            }
-            var items = Bookcase_GridView.Items;
-            foreach (var item in items)
-            {
-                var manga = item as MangaBook;
-                GridViewItem grid = Bookcase_GridView.ContainerFromItem(item) as GridViewItem;
-                var root = grid.ContentTemplateRoot as Grid;
-                var run = root.FindName("runtext") as Windows.UI.Xaml.Documents.Run;
-                run.Text = manga.TranslatedMangaName;
-            }
-
-            button.IsEnabled = true;
-        }
-
-        private async void RefreshMangaList (object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            AppBarButton button = sender as AppBarButton;
-            button.IsEnabled = false;
-            try
-            {
-                await CoverHelper.ClearCovers();
-
-                MainPage.current.collectionObserver.Initialize();
-            }
-            finally
-            {
-            }
-
-            button.IsEnabled = true;
-        }
 
         private async void ViewMangaTag (object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {

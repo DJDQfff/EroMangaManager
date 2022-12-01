@@ -40,6 +40,7 @@ namespace EroMangaManager.Views
         public ReadPage ()
         {
             this.InitializeComponent();
+            MainPage.pageInstancesManager.ReadPage = this;
         }
         /// <summary>
         /// 修改阅读漫画
