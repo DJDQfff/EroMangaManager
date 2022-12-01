@@ -52,12 +52,20 @@ namespace EroMangaManager.Views
             MainPage.current.collectionObserver.RemoveFolder(storageFolder);
         }
 
-        private void ChangeData (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        private async void LauncherFolder (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             var button=sender as AppBarButton;
             var mf=button.DataContext as MangasFolder;
 
-            MainPage.current.bookcase.Bookcase_GridView.ItemsSource= mf; 
+            await Windows.System.Launcher.LaunchFolderAsync(mf.StorageFolder);
+        }
+
+        private void JumpToBookcase_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            var datacontext = button.DataContext as MangasFolder;
+
+            MainPage.current.bookcaseContainer.ChangeMangasFolder(datacontext);
         }
     }
 }

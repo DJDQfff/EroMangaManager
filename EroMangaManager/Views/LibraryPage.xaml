@@ -9,34 +9,6 @@
       Background="Transparent"
       NavigationCacheMode="Disabled"
       mc:Ignorable="d">
-    <Page.Resources>
-        <Style x:Key="style_1"
-               TargetType="ListViewItem">
-            <Setter Property="HorizontalContentAlignment"
-                    Value="Stretch" />
-        </Style>
-        <DataTemplate x:Key="template_1"
-                      x:DataType="vm:MangasFolder"
-                      x:DefaultBindMode="OneWay">
-            <RelativePanel Margin="4">
-                <TextBlock x:Name="folderTextBlock"
-                           Padding="0,0,4,0"
-                           RelativePanel.AlignLeftWithPanel="True"
-                           Text="{x:Bind FolderPath}" />
-                <StackPanel Orientation="Horizontal" RelativePanel.AlignRightWithPanel="True">
-                    <AppBarButton Icon="OpenPane" d:Label="打开文件夹"
-                                  Click="ChangeData" />
-                    <AppBarButton x:Name="removeButton" Icon="Remove"
-                        Margin="0,0,20,0"
-                        Click="removeButton_Click"
-                        x:Uid="RemoveFolderButton"
-                        Content="移除"
-                        />
-
-                </StackPanel>
-            </RelativePanel>
-        </DataTemplate>
-    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="71*" />
@@ -55,9 +27,42 @@
                 Content="添加文件夹" />
         <ListView x:Name="list"
                   Grid.Row="2"
-                  ItemContainerStyle="{StaticResource style_1}"
-                  ItemTemplate="{StaticResource template_1}"
+                  ItemContainerStyle="{StaticResource ListViewItemStyle_1}"
                   ItemsSource="{x:Bind app:MainPage.current.collectionObserver.MangaFolders, Mode=OneWay}"
-                  SelectionMode="None" />
+                  SelectionMode="None">
+            <ListView.ItemTemplate>
+                <DataTemplate 
+                              x:DataType="vm:MangasFolder"
+                              x:DefaultBindMode="OneWay">
+                    <RelativePanel Margin="4">
+                        <Button  x:Name="JumpToBookcase" Click="JumpToBookcase_Click"        BorderThickness="0"                              
+                            RelativePanel.AlignLeftWithPanel="True">
+                            <Button.Content>
+                                <TextBlock x:Name="folderTextBlock"
+                                           Padding="0,0,4,0"
+                                           Text="{x:Bind FolderPath}" />
+
+                            </Button.Content>
+                        </Button>
+                        <StackPanel Orientation="Horizontal"
+                                    RelativePanel.AlignRightWithPanel="True">
+
+                            <AppBarButton Icon="OpenPane"
+                                          d:Label="打开文件夹"
+                                          Click="LauncherFolder" />
+                            <AppBarButton x:Name="removeButton"
+                                          Icon="Remove"
+                                          Margin="0,0,20,0"
+                                          Click="removeButton_Click"
+                                          x:Uid="RemoveFolderButton"
+                                          Content="移除" />
+
+                        </StackPanel>
+                    </RelativePanel>
+                </DataTemplate>
+
+
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

@@ -15,10 +15,10 @@ using EroMangaManager.Models;
 namespace EroMangaManager.ViewModels
 {
     internal class MangasFolder
+
     {
         public StorageFolder StorageFolder {  get; }
         public string FolderPath => StorageFolder.Path;
-        public string   FolderName =>Path.GetDirectoryName(FolderPath);
 
         public ObservableCollection<MangaBook> MangaBooks { get; }=new ObservableCollection<MangaBook>();
         public ObservableCollection<MangaBook> ErrorBooks { get; }= new ObservableCollection<MangaBook>();

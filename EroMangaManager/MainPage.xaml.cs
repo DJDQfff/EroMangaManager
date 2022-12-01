@@ -14,10 +14,13 @@ using Windows.ApplicationModel.Resources;
 
 namespace EroMangaManager
 {
+
+   
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class MainPage : Page
     {
-        public Bookcase bookcase;
+
+        public BookcaseContainer bookcaseContainer;
         /// <summary>
         /// CollectionObserver实例
         /// </summary>
@@ -56,7 +59,7 @@ namespace EroMangaManager
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            //MainFrame.Navigate(typeof(Bookcase));
+            MainFrame.Navigate(typeof(BookcaseContainer));
         }
 
         private void MainNavigationView_ItemInvoked(Microsoft.UI.Xaml.Controls. NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
@@ -68,8 +71,8 @@ namespace EroMangaManager
             else 
                 switch (args.InvokedItemContainer.Name)
                 {
-                    case nameof(BookcaseItem):
-                        type = typeof(Bookcase);
+                    case nameof(BookcaseItemContainer):
+                        type = typeof(BookcaseContainer);
                         break;
 
                     case nameof(ListItem):

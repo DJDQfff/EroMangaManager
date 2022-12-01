@@ -5,6 +5,7 @@ using EroMangaManager.Models;
 using EroMangaManager.Services;
 using EroMangaManager.InteractPage;
 using Windows.UI.Xaml.Controls;
+using EroMangaManager.ViewModels;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
@@ -14,12 +15,17 @@ namespace EroMangaManager.Views
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class Bookcase : Page
     {
+        internal MangasFolder BindMangasFolder { get; }
         /// <summary>
         /// 构造
         /// </summary>
         public Bookcase ()
         {
             this.InitializeComponent();
+        }
+        internal Bookcase (MangasFolder mangasFolder) : this()
+        {
+            BindMangasFolder= mangasFolder;
         }
         /// <summary>
         /// 点击漫画是，跳转到Read页面
@@ -119,11 +125,6 @@ namespace EroMangaManager.Views
         {
             var mangaBook = (sender as MenuFlyoutItem).DataContext as MangaBook;
             await Windows.System.Launcher.LaunchFileAsync(mangaBook.StorageFile);
-        }
-
-        private void Page_Loaded (object sender , Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            MainPage.current.bookcase = this;
         }
     }
 }

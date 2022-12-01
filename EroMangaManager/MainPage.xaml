@@ -18,22 +18,16 @@ xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
 
             <muxc:NavigationView.MenuItems>
 
-                <muxc:NavigationViewItem x:Name="BookcaseItem"
-                                   d:Content="书架"
+                <muxc:NavigationViewItem x:Name="BookcaseItemContainer"
+                                         Content="书架"
                                     x:Uid="BookcaseItem"
                                     Icon="Library"
                                     ToolTipService.ToolTip="所有漫画" />
-                <muxc:NavigationViewItem d:Content="书库"
+                <muxc:NavigationViewItem Content="书库"
                                          x:Uid="ListItem"
                                          Icon="List"
                                          x:Name="ListItem"
-                                         MenuItemsSource="{x:Bind collectionObserver.MangaFolders}" 
                                          ToolTipService.ToolTip="已固定文件夹">
-                    <!--<muxc:NavigationViewItem.ContentTemplate>
-                        <DataTemplate x:DataType="vm:MangasFolder">
-                            <TextBlock Text="{x:Bind FolderName}" />
-                        </DataTemplate>
-                    </muxc:NavigationViewItem.ContentTemplate>-->
                 </muxc:NavigationViewItem>
                 <muxc:NavigationViewItem x:Name="ReadItem"
                                     x:Uid="ReadItem"
