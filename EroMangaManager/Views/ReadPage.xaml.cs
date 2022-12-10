@@ -86,27 +86,7 @@ namespace EroMangaManager.Views
             await TryChangeManga(mangaBook);
             Debug.WriteLine("睡眠开始");
         }
-
-        private async void FLIP_SelectionChangedNew (object sender, SelectionChangedEventArgs e)
-        {
-            Debug.WriteLine($"SelectionChanged事件开始增加个数：{e.AddedItems.Count}移除个数：{e.RemovedItems.Count}");
-
-            FlipView flipView = sender as FlipView;
-
-            var entry = flipView.SelectedItem as IArchiveEntry;
-
-            FlipViewItem item = flipView.ContainerFromItem(entry) as FlipViewItem;
-            if (item is null)
-            {
-                return;
-            }
-
-            var root = item.ContentTemplateRoot as Grid;
-
-            var image = root.FindName("image") as Image;
-            image.Source = await ShowEntryAsync(entry);
-            Debug.WriteLine("SelectionChanged事件结束");
-        }
+        #region 数据绑定到已解码的BitmapImage
 
         private async void FilteThisImage2_Click (object sender, RoutedEventArgs e)
         {
@@ -143,12 +123,35 @@ namespace EroMangaManager.Views
                 }
             }
         }
+        #endregion
+        #region 数据绑定到压缩文件类的每个压缩入口Entry
 
-        #region 不用了
+        [Obsolete]
+        private async void FLIP_SelectionChangedNew (object sender , SelectionChangedEventArgs e)
+        {
+            Debug.WriteLine($"SelectionChanged事件开始增加个数：{e.AddedItems.Count}移除个数：{e.RemovedItems.Count}");
+
+            FlipView flipView = sender as FlipView;
+
+            var entry = flipView.SelectedItem as IArchiveEntry;
+
+            FlipViewItem item = flipView.ContainerFromItem(entry) as FlipViewItem;
+            if (item is null)
+            {
+                return;
+            }
+
+            var root = item.ContentTemplateRoot as Grid;
+
+            var image = root.FindName("image") as Image;
+            image.Source = await ShowEntryAsync(entry);
+            Debug.WriteLine("SelectionChanged事件结束");
+        }
 
         /// <summary> 切换图,这个不在使用 </summary>
         /// <param name="sender"> </param>
         /// <param name="e"> </param>
+        [Obsolete]
         private async void FLIP_SelectionChanged (object sender, SelectionChangedEventArgs e)
         {
             int c = e.AddedItems.Count;
@@ -171,6 +174,7 @@ namespace EroMangaManager.Views
         /// <summary> 添加此图片到过滤图库 </summary>
         /// <param name="sender"> </param>
         /// <param name="e"> </param>
+        [Obsolete]
         private async void FilteThisImage_Click (object sender, RoutedEventArgs e)
         {
             var entry = FLIP.SelectedItem as IArchiveEntry;
@@ -184,8 +188,8 @@ namespace EroMangaManager.Views
             string path = Path.Combine(storageFolder.Path, hash + ".jpg");
             entry.WriteToFile(path);
         }
-
-        private async void SaveImageAs_Click (object sender, RoutedEventArgs e)
+        [Obsolete]
+        private async void SaveImageAs_Click (object sender , RoutedEventArgs e)
         {
             var entry = FLIP.SelectedItem as IArchiveEntry;
             StorageFile storageFile = await SavePictureAsync();
@@ -196,7 +200,6 @@ namespace EroMangaManager.Views
                 await stream1.CopyToAsync(stream);
             }
         }
-
         #endregion 不用了
     }
 }
