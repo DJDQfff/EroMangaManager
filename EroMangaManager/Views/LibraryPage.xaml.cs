@@ -1,12 +1,12 @@
 ﻿using System;
 
-using EroMangaManager.Helpers;
-using static MyUWPLibrary.StorageItemPicker;
-using Windows.Storage;
-using Windows.Storage.Pickers;
-using Windows.UI.Xaml.Controls;
-using EroMangaManager.Models;
 using EroMangaManager.ViewModels;
+
+using Windows.Storage;
+using Windows.UI.Xaml.Controls;
+
+using static MyUWPLibrary.StorageItemPicker;
+
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
 
@@ -21,10 +21,10 @@ namespace EroMangaManager.Views
         public LibraryPage ()
         {
             this.InitializeComponent();
-           MainPage.pageInstancesManager.LibraryPage= this;
+            MainPage.pageInstancesManager.LibraryPage = this;
         }
 
-        private async void addButton_Click (object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void addButton_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             Button button = sender as Button;
             button.IsEnabled = false;
@@ -45,9 +45,9 @@ namespace EroMangaManager.Views
             button.IsEnabled = true;
         }
 
-        private void removeButton_Click (object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void removeButton_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var button = sender as AppBarButton;
+            var button = sender as Button;
             var storageFolder = button.DataContext as MangasFolder;
 
             MainPage.current.collectionObserver.RemoveFolder(storageFolder);
@@ -55,8 +55,8 @@ namespace EroMangaManager.Views
 
         private async void LauncherFolder (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var button=sender as AppBarButton;
-            var mf=button.DataContext as MangasFolder;
+            var button = sender as Button;
+            var mf = button.DataContext as MangasFolder;
 
             await Windows.System.Launcher.LaunchFolderAsync(mf.StorageFolder);
         }

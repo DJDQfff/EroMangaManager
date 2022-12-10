@@ -60,7 +60,11 @@ namespace EroMangaManager.Views
 
             await CoverHelper.ClearCovers();
 
-            MainPage.current.collectionObserver.Initialize();
+            var folder = MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder().Result.ToArray();
+
+            MainPage.current.collectionObserver.Initialize(folder);
+
+
 
             button.IsEnabled = true;
         }
