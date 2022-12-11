@@ -13,6 +13,7 @@ using EroMangaManager.Models;
 using static EroMangaManager.Helpers.ZipEntryHelper;
 
 using SharpCompress.Archives;
+using Windows.Storage;
 
 namespace EroMangaManager.ViewModels
 {
@@ -51,7 +52,7 @@ namespace EroMangaManager.ViewModels
         }
 
         /// <summary> 从压缩文件的所有entry中，筛选出符合条件的 </summary>
-        public async Task SelectEntriesAsync ()
+        public async Task SelectEntriesAsync (bool IsFilterImageOn)
         {
             Stream TempStream = await manga.StorageFile.OpenStreamForReadAsync();
 
@@ -62,7 +63,7 @@ namespace EroMangaManager.ViewModels
             foreach (var name in names)
             {
                 var TempEntry = TempZipArchive.Entries.Single(n => n.Key == name);
-                bool cansue = await Task.Run(() => TempEntry.EntryFilter()); // 放在这里可以
+                bool cansue = await Task.Run(() => TempEntry.EntryFilter(IsFilterImageOn)); // 放在这里可以
 
                 if (cansue)
                 {

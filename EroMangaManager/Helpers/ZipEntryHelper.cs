@@ -53,7 +53,7 @@ namespace EroMangaManager.Helpers
         /// </summary>
         /// <param name="entry"></param>
         /// <returns></returns>
-        public static bool EntryFilter (this SharpCompress.Archives.IArchiveEntry entry)
+        public static bool EntryFilter (this SharpCompress.Archives.IArchiveEntry entry ,bool isfilterimageon)
         {
             bool canuse = true;
 
@@ -66,8 +66,10 @@ namespace EroMangaManager.Helpers
             {
                 return false;
             }
-            //return true; // TODO 临时关闭筛选功能
 
+            //return true; // TODO 临时关闭筛选功能
+            if (isfilterimageon)            // 是否检查图片过滤
+            {
             if (HashManager.WhetherDatabaseMatchLength(entry.Size))              // 第一个条件：比较数据库，解压后大小
                 return false;
 
@@ -77,6 +79,8 @@ namespace EroMangaManager.Helpers
                 {
                     canuse = false;                              // 符合以上条件，这个entry不会被过滤掉
                 }
+            }
+
             }
 
             return canuse;                                                  // 最后一定符合调教

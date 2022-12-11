@@ -70,7 +70,11 @@ namespace EroMangaManager.Views
                 currentReader = await ReaderVM.Creat(newmanga, null);
 
                 FLIP.ItemsSource = currentReader.bitmapImages;
-                await currentReader.SelectEntriesAsync();
+
+                var result = ApplicationData.Current.LocalSettings.Values["IsFilterImageOn"] ?? false;
+
+                var isfilterimage = (bool) result;
+                await currentReader.SelectEntriesAsync(isfilterimage);
             }
         }
         /// <summary>

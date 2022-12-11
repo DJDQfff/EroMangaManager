@@ -34,10 +34,10 @@
                               x:DefaultBindMode="OneWay">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                         <TextBlock Text="{x:Bind  MangaBooks.Count,Mode=OneWay}" VerticalAlignment="Stretch" TextAlignment="Center" />
-                        <Button  x:Name="JumpToBookcase"
+                        <Button  x:Name="JumpToBookcase" Background="Red"
                                  VerticalAlignment="Center"
                                  Click="JumpToBookcase_Click"
-                                 d:Content="打开路径"
+                                 d:Content="打开文件夹"
                                  BorderThickness="0">
                         </Button>
 

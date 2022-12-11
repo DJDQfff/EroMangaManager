@@ -24,7 +24,24 @@
             <RowDefinition Height="100" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel VerticalAlignment="Bottom"
+        <NavigationView  PaneDisplayMode="Top" ItemInvoked="NavigationView_ItemInvoked" IsSettingsVisible="False" IsBackButtonVisible="Collapsed">
+            <NavigationView.MenuItems>
+                <NavigationViewItem x:Name="SettingFilterImageButton"
+                                    Content="过滤图库"
+                                    x:Uid="SettingFilterImageButton" />
+                <NavigationViewItem x:Name="SettingTagButton"
+                        Content="标签管理"
+                        x:Uid="SettingTagButton" />
+                <NavigationViewItem x:Name="ErrorZipPageButton"
+                        Content="异常Zip"
+                        x:Uid="ErrorZipPageButton"/>
+
+            </NavigationView.MenuItems>
+            <NavigationView.Content>
+                <Frame x:Name="SettingFrame" />
+            </NavigationView.Content>
+        </NavigationView>
+        <!--<StackPanel VerticalAlignment="Bottom" x:Load="False"
                     Orientation="Horizontal">
             <Button x:Name="SettingFilterImageButton"
                     Click="Button_Click"
@@ -39,7 +56,8 @@
                     x:Uid="ErrorZipPageButton"
                     Click="Button_Click" />
         </StackPanel>
-        <Frame x:Name="SettingFrame"
-               Grid.Row="1" />
+        
+        <Frame x:Name="SettingFrame" x:Load="False"
+               Grid.Row="1" />-->
     </Grid>
 </Page>

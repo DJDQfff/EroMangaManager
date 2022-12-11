@@ -53,5 +53,11 @@ namespace EroMangaManager.Views.SettingSubPages
             await EroMangaManager.Models.HashManager.Remove(vs);
             button.IsEnabled = true;
         }
+
+        private void ToggleSwitch_Toggled (object sender , RoutedEventArgs e)
+        {
+            ToggleSwitch toggleSwitch = sender as ToggleSwitch;
+            ApplicationData.Current.LocalSettings.Values["IsFilterImageOn"]= toggleSwitch.IsOn;
+        }
     }
 }

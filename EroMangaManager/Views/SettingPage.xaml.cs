@@ -22,11 +22,30 @@ namespace EroMangaManager.Views
             this.InitializeComponent();
         }
 
-        private void Button_Click (object sender, RoutedEventArgs e)
+        //private void Button_Click (object sender, RoutedEventArgs e)
+        //{
+        //    Button button = sender as Button;
+        //    string tag = button.Name;
+        //    switch (tag)
+        //    {
+        //        case nameof(SettingFilterImageButton):
+        //            SettingFrame.Navigate(typeof(SettingSubPages.FiltedImagesPage));
+        //            break;
+
+        //        case nameof(SettingTagButton):
+        //            SettingFrame.Navigate(typeof(SettingSubPages.TagKeywordsManagePage));
+        //            break;
+
+        //        case nameof(ErrorZipPageButton):
+        //            SettingFrame.Navigate(typeof(ErrorZipPage));
+        //            break;
+        //    }
+        //}
+
+        private void NavigationView_ItemInvoked (NavigationView sender , NavigationViewItemInvokedEventArgs args)
         {
-            Button button = sender as Button;
-            string tag = button.Name;
-            switch (tag)
+
+            switch (args.InvokedItemContainer.Name)
             {
                 case nameof(SettingFilterImageButton):
                     SettingFrame.Navigate(typeof(SettingSubPages.FiltedImagesPage));
@@ -40,6 +59,7 @@ namespace EroMangaManager.Views
                     SettingFrame.Navigate(typeof(ErrorZipPage));
                     break;
             }
+
         }
     }
 }

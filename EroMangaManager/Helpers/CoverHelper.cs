@@ -39,7 +39,7 @@ namespace EroMangaManager.Helpers
                 {
                     foreach (var entry in zipArchive.Entries)
                     {
-                        bool canuse = entry.EntryFilter();
+                        bool canuse = entry.EntryFilter(true);
                         if (canuse)
                         {
                             string path = Path.Combine(coverfolder.Path, storageFile.DisplayName + ".jpg");
