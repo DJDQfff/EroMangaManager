@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Stretch">
-            <ToggleSwitch  HorizontalAlignment="Stretch"  HorizontalContentAlignment="Left" Toggled="ToggleSwitch_Toggled" Header="是否启用单页过滤功能（开启此功能将减慢漫画打开速度）" OnContent="已启用" OffContent="未启用" IsOn="True" />
+            <ToggleSwitch  HorizontalAlignment="Stretch"  HorizontalContentAlignment="Left" Toggled="ToggleSwitch_Toggled" Header="是否启用单页过滤功能（开启此功能将减慢漫画打开速度）" OnContent="已启用" OffContent="未启用" IsOn="False" />
         </StackPanel>
         <GridView x:Name="GridView" Grid.Row="1"
                   ItemsSource="{x:Bind items, Mode=OneWay}"
