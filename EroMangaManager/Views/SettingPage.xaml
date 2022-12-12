@@ -5,26 +5,12 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       NavigationCacheMode="Disabled"
       mc:Ignorable="d">
-    <Page.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Margin"
-                    Value="8,0,0,8" />
-            <Setter Property="Background"
-                    Value="#FFBEF6F6" />
-            <Setter Property="HorizontalAlignment"
-                    Value="Center" />
-            <Setter Property="VerticalAlignment"
-                    Value="Bottom" />
-            <Setter Property="Width"
-                    Value="120" />
-        </Style>
-    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <NavigationView  PaneDisplayMode="Top" ItemInvoked="NavigationView_ItemInvoked" IsSettingsVisible="False" IsBackButtonVisible="Collapsed">
+        <NavigationView PaneDisplayMode="Top" ItemInvoked="NavigationView_ItemInvoked" IsSettingsVisible="False" IsBackButtonVisible="Collapsed">
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="SettingFilterImageButton"
                                     Content="过滤图库"

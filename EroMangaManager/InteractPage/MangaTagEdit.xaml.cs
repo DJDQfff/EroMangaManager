@@ -1,25 +1,12 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
 
 using EroMangaManager.Models;
 
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Storage;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 using static EroMangaDB.BasicController;
 
@@ -31,6 +18,7 @@ namespace EroMangaManager.InteractPage
     {
         private MangaBook mangaBook;
         private ObservableCollection<string> taglist;
+
         /// <summary>
         /// 组合框细节
         /// </summary>
@@ -51,10 +39,10 @@ namespace EroMangaManager.InteractPage
             comboxitemlist.Add("忽略此标签");
         }
 
-        private async void ContentDialog_PrimaryButtonClick (ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        private async void ContentDialog_PrimaryButtonClick (ContentDialog sender , ContentDialogButtonClickEventArgs args)
         {
             var tags = List.Items;
-            Dictionary<string, string> moveWork = new Dictionary<string, string>();
+            Dictionary<string , string> moveWork = new Dictionary<string , string>();
             foreach (var tag in tags)
             {
                 var keyword = tag as string;
@@ -67,7 +55,7 @@ namespace EroMangaManager.InteractPage
 
                 var tagname = combobox.SelectedItem as string;
 
-                moveWork.Add(keyword, tagname);
+                moveWork.Add(keyword , tagname);
             }
             await DatabaseController.TagKeywords_MoveMulti(moveWork);
         }
@@ -77,7 +65,7 @@ namespace EroMangaManager.InteractPage
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void ComboBox_SelectionChanged (object sender, SelectionChangedEventArgs e)
+        private async void ComboBox_SelectionChanged (object sender , SelectionChangedEventArgs e)
         {
             if (e.RemovedItems.Count == 0)                  // 初始化
                 return;
@@ -91,7 +79,7 @@ namespace EroMangaManager.InteractPage
 
                 string keyword = comboBox.DataContext as string;
 
-                await DatabaseController.TagKeywords_AppendKeywordSingle(tagname, keyword);
+                await DatabaseController.TagKeywords_AppendKeywordSingle(tagname , keyword);
             }
         }
     }
@@ -109,13 +97,13 @@ namespace EroMangaManager.InteractPage
         /// <param name="parameter"></param>
         /// <param name="language"></param>
         /// <returns></returns>
-        public object Convert (object value, Type targetType, object parameter, string language)
+        public object Convert (object value , Type targetType , object parameter , string language)
         {
             string str = value as string;
             if (str is null)
                 return null;
 
-            Dictionary<string, string[]> keyValuePairs = DatabaseController.TagKeywords_QueryAll();
+            Dictionary<string , string[]> keyValuePairs = DatabaseController.TagKeywords_QueryAll();
 
             int i = 0;
             foreach (var pair in keyValuePairs)
@@ -128,6 +116,7 @@ namespace EroMangaManager.InteractPage
             }
             return i;
         }
+
         /// <summary>
         /// 转回
         /// </summary>
@@ -137,7 +126,7 @@ namespace EroMangaManager.InteractPage
         /// <param name="language"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public object ConvertBack (object value, Type targetType, object parameter, string language)
+        public object ConvertBack (object value , Type targetType , object parameter , string language)
         {
             throw new NotImplementedException();
         }

@@ -6,13 +6,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <muxc:XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                <ResourceDictionary Source="Themes/DefaultTheme.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <Style x:Key="ListViewItemStyle_1"
-                   TargetType="ListViewItem">
-                <Setter Property="HorizontalContentAlignment"
-                        Value="Stretch" />
-            </Style>
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>
