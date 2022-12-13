@@ -20,9 +20,10 @@
                 </Grid.RowDefinitions>
                 <Grid.ContextFlyout>
                     <MenuFlyout>
-                        <MenuFlyoutItem Click="ViewMangaTag"
+                        <!--TODO: 以后在恢复-->
+                        <!--<MenuFlyoutItem Click="ViewMangaTag"
                                         x:Uid="MenuItem1"
-                                       d:Text="查看信息" />
+                                       d:Text="查看信息" />-->
 
                         <MenuFlyoutSeparator />
                         <MenuFlyoutSubItem Text="文件操作">
