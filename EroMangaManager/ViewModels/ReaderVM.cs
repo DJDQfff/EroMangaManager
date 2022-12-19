@@ -53,7 +53,7 @@ namespace EroMangaManager.ViewModels
         //TODO 把selectentry和showentry分开
         //TODO 给selectentry添加一个参数，要过滤的数据库
         /// <summary> 从压缩文件的所有entry中，筛选出符合条件的 </summary>
-        public async Task SelectEntriesAsync (bool IsFilterImageOn)
+        public async Task SelectEntriesAsync (bool IsFilterImageOn,bool whetherShow=true)
         {
             Stream TempStream = await manga.StorageFile.OpenStreamForReadAsync();
 
@@ -70,14 +70,13 @@ namespace EroMangaManager.ViewModels
                 {
                     var entry = zipArchive.Entries.Single(n => n.Key == name);
                     zipArchiveEntries.Add(entry);// 异步操作不能放在这里，会占用线程
+                    if (whetherShow)
+                    {
+                                          bitmapImages.Add(await ShowEntryAsync(entry));
+
+                    }
+
                 }
-            }
-        }
-        public async Task ShowEntriesAsync ()
-        {
-            foreach(var entry in zipArchiveEntries)
-            {
-                bitmapImages.Add(await ShowEntryAsync(entry));
             }
         }
         /// <summary> </summary>

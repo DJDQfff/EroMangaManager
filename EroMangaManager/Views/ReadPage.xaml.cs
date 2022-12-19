@@ -77,7 +77,6 @@ namespace EroMangaManager.Views
 
                 var isfilterimage = (bool) result;
                 await currentReader.SelectEntriesAsync(isfilterimage);
-                await currentReader.ShowEntriesAsync();
             }
         }
         /// <summary>

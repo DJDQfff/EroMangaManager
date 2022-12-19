@@ -26,7 +26,7 @@ namespace EroMangaManager.Helpers
             using (ReaderVM reader = new ReaderVM(mangaBook))
             {
                 await reader.Open();
-              await  reader.SelectEntriesAsync(false);
+              await  reader.SelectEntriesAsync(false,false);
 
                 Stream stream1 = await target.OpenStreamForWriteAsync();
 
