@@ -40,12 +40,12 @@ namespace EroMangaManager.ViewModels
 
         /// <summary> 构造</summary>
         /// <param name="_manga"> </param>
-        private ReaderVM (MangaBook _manga)
+        public ReaderVM (MangaBook _manga)
         {
             this.manga = _manga;
         }
 
-        private async Task Open ()
+        public async Task Open ()
         {
             stream = await manga.StorageFile.OpenStreamForReadAsync();
             zipArchive = ArchiveFactory.Open(stream);
@@ -70,11 +70,16 @@ namespace EroMangaManager.ViewModels
                 {
                     var entry = zipArchive.Entries.Single(n => n.Key == name);
                     zipArchiveEntries.Add(entry);// 异步操作不能放在这里，会占用线程
-                    bitmapImages.Add(await ShowEntryAsync(entry));
                 }
             }
         }
-
+        public async Task ShowEntriesAsync ()
+        {
+            foreach(var entry in zipArchiveEntries)
+            {
+                bitmapImages.Add(await ShowEntryAsync(entry));
+            }
+        }
         /// <summary> </summary>
         public void Dispose ()
         {
@@ -84,15 +89,5 @@ namespace EroMangaManager.ViewModels
             stream.Dispose();
         }
 
-        /// <summary> 工厂模式创建Reader视图模型 </summary>
-        /// <param name="manga"> </param>
-        /// <param name="imageFilters"> 要过滤的图片数据库 </param>
-        /// <returns> </returns>
-        public static async Task<ReaderVM> Creat (MangaBook manga, IEnumerable<FilteredImage> imageFilters)
-        {
-            ReaderVM reader = new ReaderVM(manga);
-            await reader.Open();
-            return reader;
-        }
     }
 }

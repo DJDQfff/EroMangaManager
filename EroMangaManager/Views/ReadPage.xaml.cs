@@ -67,7 +67,9 @@ namespace EroMangaManager.Views
             {
                 currentManga = newmanga;
                 currentReader?.Dispose();
-                currentReader = await ReaderVM.Creat(newmanga, null);
+                ReaderVM reader = new ReaderVM(manga);
+                currentReader = reader;
+                await reader.Open();
 
                 FLIP.ItemsSource = currentReader.bitmapImages;
 
@@ -75,6 +77,7 @@ namespace EroMangaManager.Views
 
                 var isfilterimage = (bool) result;
                 await currentReader.SelectEntriesAsync(isfilterimage);
+                await currentReader.ShowEntriesAsync();
             }
         }
         /// <summary>

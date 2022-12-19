@@ -91,9 +91,9 @@ namespace EroMangaManager.Views
         {
             StorageFile storageFile = await MyUWPLibrary.StorageItemPicker.SaveFileAsync(".pdf");
             var mangaBook = (sender as MenuFlyoutItem).DataContext as MangaBook;
-            await Task.Run(() =>
+            await Task.Run(async () =>
             {
-                Exporter.ExportAsPDF(mangaBook , storageFile);
+              await  Exporter.ExportAsPDF(mangaBook , storageFile);
             });
             // TODO 存在线程bug
             new ToastContentBuilder()

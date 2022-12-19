@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 using EroMangaManager.Models;
 using EroMangaManager.ViewModels;
@@ -9,6 +10,7 @@ using iText.IO.Image;
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
+using iText.Layout.Font;
 
 using Windows.Storage;
 
@@ -16,12 +18,15 @@ namespace EroMangaManager.Helpers
 {
     internal class Exporter
     {
-        internal static async void ExportAsPDF (MangaBook mangaBook , StorageFile target)
+        internal static async Task ExportAsPDF (MangaBook mangaBook , StorageFile target)
         {
             List<byte[]> bytes = new List<byte[]>();
-            using (ReaderVM reader = await ReaderVM.Creat(mangaBook , null))
+
+
+            using (ReaderVM reader = new ReaderVM(mangaBook))
             {
-                reader.SelectEntriesAsync(false).Wait();
+                await reader.Open();
+              await  reader.SelectEntriesAsync(false);
 
                 Stream stream1 = await target.OpenStreamForWriteAsync();
 
