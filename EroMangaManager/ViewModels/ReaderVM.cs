@@ -50,7 +50,8 @@ namespace EroMangaManager.ViewModels
             stream = await manga.StorageFile.OpenStreamForReadAsync();
             zipArchive = ArchiveFactory.Open(stream);
         }
-
+        //TODO 把selectentry和showentry分开
+        //TODO 给selectentry添加一个参数，要过滤的数据库
         /// <summary> 从压缩文件的所有entry中，筛选出符合条件的 </summary>
         public async Task SelectEntriesAsync (bool IsFilterImageOn)
         {

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EroMangaDB.Migrations
 {
     [DbContext(typeof(DataBase_1))]
-    [Migration("20221128094803_initial")]
+    [Migration("20221219044300_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -36,6 +36,8 @@
                             <MenuFlyoutItem Click="LaunchFolder"
                                             x:Uid="MenuItem4"
                                             Text="打开文件夹" />
+                            <MenuFlyoutSeparator />
+                            <MenuFlyoutItem Click="ExportPDF" Text="导出为PDF" />
                         </MenuFlyoutSubItem>
                     </MenuFlyout>
                 </Grid.ContextFlyout>

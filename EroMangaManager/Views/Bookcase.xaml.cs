@@ -5,6 +5,10 @@ using EroMangaManager.Models;
 using EroMangaManager.InteractPage;
 using Windows.UI.Xaml.Controls;
 using EroMangaManager.ViewModels;
+using Windows.Storage;
+using System.Threading.Tasks;
+using Microsoft.Toolkit.Uwp.Notifications;
+using Windows.ApplicationModel.Resources;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
@@ -81,6 +85,21 @@ namespace EroMangaManager.Views
         {
             var mangaBook = (sender as MenuFlyoutItem).DataContext as MangaBook;
             await Windows.System.Launcher.LaunchFileAsync(mangaBook.StorageFile);
+        }
+
+        private async void ExportPDF (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            StorageFile storageFile = await MyUWPLibrary.StorageItemPicker.SaveFileAsync(".pdf");
+            var mangaBook = (sender as MenuFlyoutItem).DataContext as MangaBook;
+            await Task.Run(() =>
+            {
+                Exporter.ExportAsPDF(mangaBook , storageFile);
+            });
+            // TODO 存在线程bug
+            new ToastContentBuilder()
+  .AddText("已导出完成")
+  .Show();
+
         }
     }
 }
