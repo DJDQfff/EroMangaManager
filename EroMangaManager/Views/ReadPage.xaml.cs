@@ -69,7 +69,6 @@ namespace EroMangaManager.Views
                 currentReader?.Dispose();
                 ReaderVM reader = new ReaderVM(manga);
                 currentReader = reader;
-                await reader.Open();
 
                 FLIP.ItemsSource = currentReader.bitmapImages;
 

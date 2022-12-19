@@ -23,6 +23,9 @@ namespace EroMangaManager.Views
     /// </summary>
     public sealed partial class TestPage : Page
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public TestPage ()
         {
             this.InitializeComponent();

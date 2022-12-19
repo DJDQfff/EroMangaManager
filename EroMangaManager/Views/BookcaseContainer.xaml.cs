@@ -28,6 +28,9 @@ namespace EroMangaManager.Views
     public sealed partial class BookcaseContainer : Page
     {
         internal MangasFolder BindMangaFolder { set; get; }
+        /// <summary>
+        /// 
+        /// </summary>
         public BookcaseContainer ()
         {
             this.InitializeComponent();

@@ -52,6 +52,13 @@ namespace EroMangaManager
                     .Show();
               };
 
+            collectionObserver.WorkDoneEvent+= (string str) =>
+            {
+                new ToastContentBuilder()
+  .AddText(str)
+  .Show();
+
+            };
             current = this;
             pageInstancesManager.MainPage = this;
         }

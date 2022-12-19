@@ -38,18 +38,16 @@ namespace EroMangaManager.ViewModels
         /// </summary>
         public ObservableCollection<BitmapImage> bitmapImages { set; get; } = new ObservableCollection<BitmapImage>();
 
-        /// <summary> 构造</summary>
+        /// <summary> 初始化</summary>
         /// <param name="_manga"> </param>
         public ReaderVM (MangaBook _manga)
         {
             this.manga = _manga;
-        }
-
-        public async Task Open ()
-        {
-            stream = await manga.StorageFile.OpenStreamForReadAsync();
+            stream = manga.StorageFile.OpenStreamForReadAsync().Result;
             zipArchive = ArchiveFactory.Open(stream);
         }
+
+
         //TODO 把selectentry和showentry分开
         //TODO 给selectentry添加一个参数，要过滤的数据库
         /// <summary> 从压缩文件的所有entry中，筛选出符合条件的 </summary>

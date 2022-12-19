@@ -28,6 +28,11 @@ namespace EroMangaManager.ViewModels
         /// 出现无法解析的Manga时引发
         /// </summary>
         public event Action<string> ErrorZipEvent;
+
+        /// <summary>
+        /// 完成某项任务时引发
+        /// </summary>
+        public event Action<string> WorkDoneEvent;
         internal ObservableCollection<MangasFolder> MangaFolders {  get; } = new ObservableCollection<MangasFolder>();
         /// <summary>存放zip文件的文件夹</summary>
         internal List<StorageFolder> StorageFolders => MangaFolders.Select(n => n.StorageFolder).ToList();
@@ -58,10 +63,16 @@ namespace EroMangaManager.ViewModels
             Initialize(storageFolders);
         }
 
+        /// <summary>
+        /// 发现错误漫画时引发
+        /// </summary>
+        /// <param name="manganame"></param>
         public void ErrorMangaEvent (string manganame)
         {
             ErrorZipEvent?.Invoke(manganame);
         }
+
+        public void WorkDone(string message)=>WorkDoneEvent?.Invoke(message);
         /// <summary>ViewModel初始化</summary>
         public async void Initialize (params StorageFolder[] storageFolders)
         {

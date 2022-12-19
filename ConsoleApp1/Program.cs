@@ -12,7 +12,11 @@ namespace DatabaseOperation
 {
     internal class Program
     {
-        private static async Task Main ()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private static void  Main ()
         {
              DatabaseController.Migrate();
             //var a = DatabaseController.TagKeywords_QueryAll();
