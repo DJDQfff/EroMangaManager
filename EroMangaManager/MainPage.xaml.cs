@@ -6,7 +6,6 @@ using EroMangaManager.ViewModels;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.Toolkit.Uwp.Notifications;
-using Microsoft.UI.Xaml.Controls;
 using Windows.ApplicationModel.Resources;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804
@@ -14,31 +13,32 @@ using Windows.ApplicationModel.Resources;
 
 namespace EroMangaManager
 {
-
-   
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class MainPage : Page
     {
-
         internal BookcaseContainer bookcaseContainer;
+
         /// <summary>
         /// CollectionObserver实例
         /// </summary>
         internal ObservableCollectionVM collectionObserver { get; }
 
         internal static PageInstancesManager pageInstancesManager = new PageInstancesManager();
+
         /// <summary>
         /// MainPage的单一实例
         /// </summary>
         internal static MainPage current { set; get; }
+
         /// <summary>
         /// 系统resw解析实例
         /// </summary>
-        public  ResourceLoader resourceLoader { get; } = ResourceLoader.GetForCurrentView();
+        public ResourceLoader resourceLoader { get; } = ResourceLoader.GetForCurrentView();
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public MainPage()
+        public MainPage ()
         {
             this.InitializeComponent();
 
@@ -52,33 +52,33 @@ namespace EroMangaManager
                     .Show();
               };
 
-            collectionObserver.WorkDoneEvent+= (string str) =>
+            collectionObserver.WorkDoneEvent += (string str) =>
             {
                 new ToastContentBuilder()
   .AddText(str)
   .Show();
-
             };
             current = this;
             pageInstancesManager.MainPage = this;
         }
+
         /// <summary>
         /// 导航前
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo (NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             MainFrame.Navigate(typeof(BookcaseContainer));
         }
 
-        private void MainNavigationView_ItemInvoked(Microsoft.UI.Xaml.Controls. NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
+        private void MainNavigationView_ItemInvoked (NavigationView sender , NavigationViewItemInvokedEventArgs args)
         {
             Type type = null;
 
             if (args.IsSettingsInvoked)
                 type = typeof(SettingPage);
-            else 
+            else
                 switch (args.InvokedItemContainer.Name)
                 {
                     case nameof(BookcaseItemContainer):
@@ -99,6 +99,5 @@ namespace EroMangaManager
                 MainFrame.Navigate(type);
             }
         }
-
     }
 }

@@ -126,16 +126,43 @@
   <data name="BookcaseItem.Content" xml:space="preserve">
     <value>书架</value>
   </data>
+  <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>漫画书架</value>
+  </data>
   <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
     <value>确认删除文件？</value>
+  </data>
+  <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
+    <value>删除源文件</value>
   </data>
   <data name="ErrorString1" xml:space="preserve">
     <value>出错啦，无法打开</value>
   </data>
-  <data name="ErrorZipPageButton" xml:space="preserve">
+  <data name="ErrorZipPageButton.Content" xml:space="preserve">
     <value>异常Zip</value>
   </data>
+  <data name="ExportDone" xml:space="preserve">
+    <value>导出完成</value>
+  </data>
+  <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
+    <value>导出为PDF</value>
+  </data>
+  <data name="FilterThisImage.Text" xml:space="preserve">
+    <value>不显示此图</value>
+  </data>
+  <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
+    <value>打开文件</value>
+  </data>
+  <data name="LaunchFolderButton.Content" xml:space="preserve">
+    <value>打开文件夹</value>
+  </data>
+  <data name="LaunchFolderFlyoutItem.Text" xml:space="preserve">
+    <value>打开所在文件夹</value>
+  </data>
   <data name="ListItem.Content" xml:space="preserve">
+    <value>已固定文件夹</value>
+  </data>
+  <data name="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>已固定文件夹</value>
   </data>
   <data name="MangaTagDetailPage.CloseButtonText" xml:space="preserve">
@@ -159,22 +186,10 @@
   <data name="MenuItem1.Text" xml:space="preserve">
     <value>查看信息</value>
   </data>
-  <data name="MenuItem2.Text" xml:space="preserve">
-    <value>删除源文件</value>
-  </data>
-  <data name="MenuItem3.Text" xml:space="preserve">
-    <value>打开文件</value>
-  </data>
-  <data name="MenuItem4.Text" xml:space="preserve">
-    <value>打开所在文件夹</value>
-  </data>
-  <data name="MenuItem5.Text" xml:space="preserve">
-    <value>不显示</value>
-  </data>
-  <data name="MenuItem6.Text" xml:space="preserve">
-    <value>另存为</value>
-  </data>
   <data name="ReadItem.Content" xml:space="preserve">
+    <value>正在阅读</value>
+  </data>
+  <data name="ReadItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>正在阅读</value>
   </data>
   <data name="RefreshButton.Label" xml:space="preserve">
@@ -182,6 +197,9 @@
   </data>
   <data name="RemoveFolderButton.Content" xml:space="preserve">
     <value>移除文件夹</value>
+  </data>
+  <data name="SaveAs.Text" xml:space="preserve">
+    <value>另存为</value>
   </data>
   <data name="SetBack.Text" xml:space="preserve">
     <value>还原</value>
@@ -191,6 +209,9 @@
   </data>
   <data name="SettingTagButton.Content" xml:space="preserve">
     <value>标签管理</value>
+  </data>
+  <data name="ShowFolderBookcase.Content" xml:space="preserve">
+    <value>显示书架</value>
   </data>
   <data name="TranslateButton.Label" xml:space="preserve">
     <value>翻译</value>

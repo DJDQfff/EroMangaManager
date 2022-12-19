@@ -16,11 +16,11 @@
                 <Grid.ContextFlyout>
                     <MenuFlyout>
                         <MenuFlyoutItem Click="FilteThisImage2_Click"
-                                        x:Uid="MenuItem5"
-                                        Text="不显示" />
+                                        x:Uid="FilterThisImage"
+                                        d:Text="不显示" />
                         <MenuFlyoutItem Click="SaveImageAs2_Click"
-                                        x:Uid="MenuItem6"
-                                        Text="另存为" />
+                                        x:Uid="SaveAs"
+                                        d:Text="另存为" />
                     </MenuFlyout>
                 </Grid.ContextFlyout>
                 <ScrollViewer HorizontalScrollBarVisibility="Disabled"

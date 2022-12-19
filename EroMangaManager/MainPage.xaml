@@ -3,11 +3,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-      xmlns:vm="using:EroMangaManager.ViewModels"
       mc:Ignorable="d">
     <Grid>
-        <muxc:NavigationView x:Name="MainNavigationView"
+        <NavigationView x:Name="MainNavigationView"
                         x:FieldModifier="public"
                         OpenPaneLength="200"
                         FlowDirection="LeftToRight"
@@ -16,29 +14,26 @@ xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
                         ItemInvoked="MainNavigationView_ItemInvoked"
                         PaneDisplayMode="Auto">
 
-            <muxc:NavigationView.MenuItems>
+            <NavigationView.MenuItems>
 
-                <muxc:NavigationViewItem x:Name="BookcaseItemContainer"
-                                         Content="书架"
+                <NavigationViewItem x:Name="BookcaseItemContainer"
+                                    d:Content="书架"
                                     x:Uid="BookcaseItem"
-                                    Icon="Library"
-                                    ToolTipService.ToolTip="所有漫画" />
-                <muxc:NavigationViewItem Content="书库"
-                                         x:Uid="ListItem"
-                                         Icon="List"
-                                         x:Name="ListItem"
-                                         ToolTipService.ToolTip="已固定文件夹">
-                </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem x:Name="ReadItem"
+                                    Icon="Library" ToolTipService.ToolTip="jfdak" />
+                <NavigationViewItem d:Content="书库"
+                                    x:Uid="ListItem"
+                                    Icon="List"
+                                    x:Name="ListItem">
+                </NavigationViewItem>
+                <NavigationViewItem x:Name="ReadItem"
                                     x:Uid="ReadItem"
                                     d:Content="正在阅读"
-                                    Icon="Read"
-                                    ToolTipService.ToolTip="正在阅读" />
-            </muxc:NavigationView.MenuItems>
-            <muxc:NavigationView.Content>
+                                    Icon="Read" />
+            </NavigationView.MenuItems>
+            <NavigationView.Content>
                 <Frame x:Name="MainFrame"
                        x:FieldModifier="public" />
-            </muxc:NavigationView.Content>
-        </muxc:NavigationView>
+            </NavigationView.Content>
+        </NavigationView>
     </Grid>
 </Page>

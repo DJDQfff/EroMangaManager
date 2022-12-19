@@ -5,7 +5,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:app="using:EroMangaManager"
       xmlns:vm="using:EroMangaManager.ViewModels"
-      Background="Transparent"
       NavigationCacheMode="Disabled"
       mc:Ignorable="d">
     <Grid>
@@ -23,7 +22,7 @@
                 VerticalAlignment="Center"
                 Click="addButton_Click"
                 x:Uid="AddFolderButton"
-                Content="添加文件夹" />
+                d:Content="添加文件夹" />
         <ListView x:Name="list"
                   Grid.Row="2"
                   ItemContainerStyle="{StaticResource ListViewItemStyle_1}"
@@ -37,7 +36,8 @@
                         <Button  x:Name="JumpToBookcase" 
                                  VerticalAlignment="Center"
                                  Click="JumpToBookcase_Click"
-                                 Content="打开文件夹"
+                                 d:Content="显示书架"
+                                 x:Uid="ShowFolderBookcase"
                                  BorderThickness="0">
                         </Button>
 
@@ -49,13 +49,15 @@
                             <StackPanel Orientation="Horizontal"  VerticalAlignment="Center"
                                         RelativePanel.AlignRightWithPanel="True">
 
-                            <Button  Content="打开文件夹" VerticalAlignment="Center"
+                            <Button  d:Content="打开文件夹"
+                                     VerticalAlignment="Center"
+                                     x:Uid="LaunchFolderButton"
                                               Click="LauncherFolder" />
                                 <Button x:Name="removeButton" VerticalAlignment="Center"
                                               Margin="0,0,20,0"
                                               Click="removeButton_Click"
                                               x:Uid="RemoveFolderButton"
-                                              Content="移除" />
+                                              d:Content="移除" />
                             </StackPanel>
                     </StackPanel>
 

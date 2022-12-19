@@ -51,21 +51,6 @@
   <data name="MenuItem1.Text" xml:space="preserve">
     <value>Check Info</value>
   </data>
-  <data name="MenuItem2.Text" xml:space="preserve">
-    <value>Delete Source File</value>
-  </data>
-  <data name="MenuItem3.Text" xml:space="preserve">
-    <value>Open File</value>
-  </data>
-  <data name="MenuItem4.Text" xml:space="preserve">
-    <value>Open its Folder</value>
-  </data>
-  <data name="MenuItem5.Text" xml:space="preserve">
-    <value>Don't Show</value>
-  </data>
-  <data name="MenuItem6.Text" xml:space="preserve">
-    <value>Save As ...</value>
-  </data>
   <data name="ReadItem.Content" xml:space="preserve">
     <value>Reading</value>
   </data>
@@ -87,7 +72,40 @@
   <data name="TranslateButton.Label" xml:space="preserve">
     <value>Translate</value>
   </data>
-  <data name="ErrorZipPageButton" xml:space="preserve">
-    <value>Wrong Zip</value>
+  <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
+    <value>Delete the source file</value>
+  </data>
+  <data name="ExportDone" xml:space="preserve">
+    <value>The export is complete</value>
+  </data>
+  <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
+    <value>Export to PDF</value>
+  </data>
+  <data name="FilterThisImage.Text" xml:space="preserve">
+    <value>This figure is not displayed</value>
+  </data>
+  <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
+    <value>Open the file</value>
+  </data>
+  <data name="LaunchFolderFlyoutItem.Text" xml:space="preserve">
+    <value>Open the folder you are in</value>
+  </data>
+  <data name="SaveAs.Text" xml:space="preserve">
+    <value>Save As</value>
+  </data>
+  <data name="ShowFolderBookcase.Content" xml:space="preserve">
+    <value>Display the bookshelf</value>
+  </data>
+  <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Comic bookshelf</value>
+  </data>
+  <data name="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>The folder is pinned</value>
+  </data>
+  <data name="ReadItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Reading</value>
+  </data>
+  <data name="LaunchFolderButton.Content" xml:space="preserve">
+    <value>Open the folder</value>
   </data>
 </root>

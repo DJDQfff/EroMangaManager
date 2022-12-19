@@ -58,26 +58,6 @@
           <source>查看信息</source>
           <target state="translated">Check Info</target>
         </trans-unit>
-        <trans-unit id="MenuItem2.Text" translate="yes" xml:space="preserve">
-          <source>删除源文件</source>
-          <target state="translated">Delete Source File</target>
-        </trans-unit>
-        <trans-unit id="MenuItem3.Text" translate="yes" xml:space="preserve">
-          <source>打开文件</source>
-          <target state="translated">Open File</target>
-        </trans-unit>
-        <trans-unit id="MenuItem4.Text" translate="yes" xml:space="preserve">
-          <source>打开所在文件夹</source>
-          <target state="translated">Open its Folder</target>
-        </trans-unit>
-        <trans-unit id="MenuItem5.Text" translate="yes" xml:space="preserve">
-          <source>不显示</source>
-          <target state="translated">Don't Show</target>
-        </trans-unit>
-        <trans-unit id="MenuItem6.Text" translate="yes" xml:space="preserve">
-          <source>另存为</source>
-          <target state="translated">Save As ...</target>
-        </trans-unit>
         <trans-unit id="ReadItem.Content" translate="yes" xml:space="preserve">
           <source>正在阅读</source>
           <target state="translated">Reading</target>
@@ -106,9 +86,57 @@
           <source>翻译</source>
           <target state="translated">Translate</target>
         </trans-unit>
-        <trans-unit id="ErrorZipPageButton" translate="yes" xml:space="preserve">
+        <trans-unit id="DeleteSourceMangaFileFlyoutItem.Text" translate="yes" xml:space="preserve">
+          <source>删除源文件</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Delete the source file</target>
+        </trans-unit>
+        <trans-unit id="ExportDone" translate="yes" xml:space="preserve">
+          <source>导出完成</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">The export is complete</target>
+        </trans-unit>
+        <trans-unit id="ExportPDFFlyoutItem.Text" translate="yes" xml:space="preserve">
+          <source>导出为PDF</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Export to PDF</target>
+        </trans-unit>
+        <trans-unit id="FilterThisImage.Text" translate="yes" xml:space="preserve">
+          <source>不显示此图</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">This figure is not displayed</target>
+        </trans-unit>
+        <trans-unit id="LaunchFileFlyoutItem.Text" translate="yes" xml:space="preserve">
+          <source>打开文件</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Open the file</target>
+        </trans-unit>
+        <trans-unit id="LaunchFolderFlyoutItem.Text" translate="yes" xml:space="preserve">
+          <source>打开所在文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Open the folder you are in</target>
+        </trans-unit>
+        <trans-unit id="SaveAs.Text" translate="yes" xml:space="preserve">
+          <source>另存为</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Save As</target>
+        </trans-unit>
+        <trans-unit id="ShowFolderBookcase.Content" translate="yes" xml:space="preserve">
+          <source>显示书架</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Display the bookshelf</target>
+        </trans-unit>
+        <trans-unit id="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>漫画书架</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Comic bookshelf</target>
+        </trans-unit>
+        <trans-unit id="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>已固定文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">The folder is pinned</target>
+        </trans-unit>
+        <trans-unit id="ReadItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>正在阅读</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Reading</target>
+        </trans-unit>
+        <trans-unit id="LaunchFolderButton.Content" translate="yes" xml:space="preserve">
+          <source>打开文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Open the folder</target>
+        </trans-unit>
+        <trans-unit id="ErrorZipPageButton.Content" translate="yes" xml:space="preserve">
           <source>异常Zip</source>
-          <target state="translated">Wrong Zip</target>
+          <target state="new">异常Zip</target>
         </trans-unit>
       </group>
     </body>

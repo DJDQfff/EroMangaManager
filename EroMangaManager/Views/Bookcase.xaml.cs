@@ -96,7 +96,8 @@ namespace EroMangaManager.Views
 
             // TODO 存在线程bug
 
-            MainPage.current.collectionObserver.WorkDone("导出完成");
+            string done = MainPage.current.resourceLoader.GetString("ExportDone");
+            MainPage.current.collectionObserver.WorkDone(done);
 
         }
     }
