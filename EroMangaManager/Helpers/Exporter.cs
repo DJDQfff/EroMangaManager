@@ -20,9 +20,6 @@ namespace EroMangaManager.Helpers
     {
         internal static async Task ExportAsPDF (MangaBook mangaBook , StorageFile target)
         {
-            List<byte[]> bytes = new List<byte[]>();
-
-
             using (ReaderVM reader = new ReaderVM(mangaBook))
             {
                 await reader.Open();
@@ -38,10 +35,15 @@ namespace EroMangaManager.Helpers
                         {
                             foreach (var entry in reader.zipArchiveEntries)
                             {
-                                var stream = entry.OpenEntryStream();
-                                var b = new byte[stream.Length];
-                                stream.Read(b , 0 , b.Length);
-
+                                using (var stream = entry.OpenEntryStream())
+                                {
+                                    using (MemoryStream memoryStream = new MemoryStream())
+                                    {
+                                        stream.CopyTo(memoryStream);
+                                var b = new byte[memoryStream.Length];
+                                        memoryStream.Position = 0;
+                                memoryStream.Read(b , 0 , b.Length);
+                                       
                                 ImageData imageData = ImageDataFactory.Create(b);
 
                                 Image image = new Image(imageData);
@@ -49,6 +51,10 @@ namespace EroMangaManager.Helpers
                                 image.SetAutoScaleHeight(true);
 
                                 document.Add(image);
+
+                                    }
+
+                                }
 
                             }
                         }
