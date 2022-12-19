@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddFolderButton.Content" xml:space="preserve">
+    <value>เพิ่มโฟลเดอร์</value>
+  </data>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>สมุดปกเหลืองน้อย</value>
+  </data>
+  <data name="BookcaseItem.Content" xml:space="preserve">
+    <value>ชั้นวางหนังสือ</value>
+  </data>
+  <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>ชั้นวางหนังสือการ์ตูน</value>
+  </data>
+  <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
+    <value>ยืนยันการลบไฟล์?</value>
+  </data>
+  <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
+    <value>ลบไฟล์ต้นฉบับ</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>นี่คือผู้จัดการมังงะสําหรับจัดการและอ่านการ์ตูนที่บันทึกไว้ในรูปแบบซิป รูปภาพภายในต้องอยู่ในรูปแบบ JPG และ PNG</value>
+  </data>
+  <data name="ErrorString1" xml:space="preserve">
+    <value>เกิดข้อผิดพลาดและไม่สามารถเปิดได้</value>
+  </data>
+  <data name="ErrorZipPageButton.Content" xml:space="preserve">
+    <value>ข้อยกเว้นซิป</value>
+  </data>
+  <data name="ExportDone" xml:space="preserve">
+    <value>การส่งออกเสร็จสมบูรณ์</value>
+  </data>
+  <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
+    <value>ส่งออกเป็น PDF</value>
+  </data>
+  <data name="FilterThisImage.Text" xml:space="preserve">
+    <value>ตัวเลขนี้ไม่แสดงขึ้น</value>
+  </data>
+  <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
+    <value>เปิดไฟล์</value>
+  </data>
+  <data name="LaunchFolderButton.Content" xml:space="preserve">
+    <value>เปิดโฟลเดอร์</value>
+  </data>
+  <data name="LaunchFolderFlyoutItem.Text" xml:space="preserve">
+    <value>เปิดโฟลเดอร์ที่คุณอยู่</value>
+  </data>
+  <data name="ListItem.Content" xml:space="preserve">
+    <value>โฟลเดอร์ถูกตรึงไว้</value>
+  </data>
+  <data name="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>โฟลเดอร์ถูกตรึงไว้</value>
+  </data>
+  <data name="MangaTagDetailPage.CloseButtonText" xml:space="preserve">
+    <value>ปิดเครื่อง</value>
+  </data>
+  <data name="MangaTagDetailPage.PrimaryButtonText" xml:space="preserve">
+    <value>แก้ไข</value>
+  </data>
+  <data name="MangaTagEditPage.CloseButtonText" xml:space="preserve">
+    <value>ไม่มีการปรับ</value>
+  </data>
+  <data name="MangaTagEditPage.PrimaryButtonText" xml:space="preserve">
+    <value>ยืนยันการปรับ</value>
+  </data>
+  <data name="MangaTags.Text" xml:space="preserve">
+    <value>แท็บย่อยนี้</value>
+  </data>
+  <data name="MangaTypes.Text" xml:space="preserve">
+    <value>การจัดประเภทฉลาก</value>
+  </data>
+  <data name="MenuItem1.Text" xml:space="preserve">
+    <value>ดูข้อมูล</value>
+  </data>
+  <data name="ReadItem.Content" xml:space="preserve">
+    <value>การอ่าน</value>
+  </data>
+  <data name="ReadItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>การอ่าน</value>
+  </data>
+  <data name="RefreshButton.Label" xml:space="preserve">
+    <value>ล้างออก</value>
+  </data>
+  <data name="RemoveFolderButton.Content" xml:space="preserve">
+    <value>เอาโฟลเดอร์ออก</value>
+  </data>
+  <data name="SaveAs.Text" xml:space="preserve">
+    <value>บันทึกเป็น</value>
+  </data>
+  <data name="SetBack.Text" xml:space="preserve">
+    <value>ซ่อมแซม</value>
+  </data>
+  <data name="SettingFilterImageButton.Content" xml:space="preserve">
+    <value>กรองแกลเลอรี</value>
+  </data>
+  <data name="SettingTagButton.Content" xml:space="preserve">
+    <value>การจัดการฉลาก</value>
+  </data>
+  <data name="ShowFolderBookcase.Content" xml:space="preserve">
+    <value>แสดงชั้นวางหนังสือ</value>
+  </data>
+  <data name="TranslateButton.Label" xml:space="preserve">
+    <value>การแปล</value>
+  </data>
+</root>

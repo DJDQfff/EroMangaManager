@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddFolderButton.Content" xml:space="preserve">
+    <value>Magdagdag ng folder</value>
+  </data>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Maliit na Dilaw na Aklat</value>
+  </data>
+  <data name="BookcaseItem.Content" xml:space="preserve">
+    <value>istante ng libro</value>
+  </data>
+  <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Shelf ng mga libro ng komiks</value>
+  </data>
+  <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
+    <value>Kumpirmahin ang pagtanggal ng mga file?</value>
+  </data>
+  <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
+    <value>Tanggalin ang source file</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Ito ay isang manga manager para sa pamamahala at pagbabasa ng iyong mga naka save na komiks sa zip form. Ang mga panloob na imahe ay dapat na nasa mga format ng JPG at PNG</value>
+  </data>
+  <data name="ErrorString1" xml:space="preserve">
+    <value>May nangyaring error at hindi ito mabuksan</value>
+  </data>
+  <data name="ErrorZipPageButton.Content" xml:space="preserve">
+    <value>Exception Zip</value>
+  </data>
+  <data name="ExportDone" xml:space="preserve">
+    <value>Ang pag export ay kumpleto</value>
+  </data>
+  <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
+    <value>I-export sa PDF</value>
+  </data>
+  <data name="FilterThisImage.Text" xml:space="preserve">
+    <value>Hindi ipinapakita ang figure na ito</value>
+  </data>
+  <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
+    <value>Buksan ang file</value>
+  </data>
+  <data name="LaunchFolderButton.Content" xml:space="preserve">
+    <value>Buksan ang folder</value>
+  </data>
+  <data name="LaunchFolderFlyoutItem.Text" xml:space="preserve">
+    <value>Buksan ang folder na iyong kinaroroonan</value>
+  </data>
+  <data name="ListItem.Content" xml:space="preserve">
+    <value>Nakapin ang folder</value>
+  </data>
+  <data name="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Nakapin ang folder</value>
+  </data>
+  <data name="MangaTagDetailPage.CloseButtonText" xml:space="preserve">
+    <value>Magsara</value>
+  </data>
+  <data name="MangaTagDetailPage.PrimaryButtonText" xml:space="preserve">
+    <value>edit</value>
+  </data>
+  <data name="MangaTagEditPage.CloseButtonText" xml:space="preserve">
+    <value>Walang mga pagsasaayos</value>
+  </data>
+  <data name="MangaTagEditPage.PrimaryButtonText" xml:space="preserve">
+    <value>Kumpirmahin ang pagsasaayos</value>
+  </data>
+  <data name="MangaTags.Text" xml:space="preserve">
+    <value>Ang subtab na ito</value>
+  </data>
+  <data name="MangaTypes.Text" xml:space="preserve">
+    <value>Pag uuri ng label</value>
+  </data>
+  <data name="MenuItem1.Text" xml:space="preserve">
+    <value>Tingnan ang impormasyon</value>
+  </data>
+  <data name="ReadItem.Content" xml:space="preserve">
+    <value>Pagbasa</value>
+  </data>
+  <data name="ReadItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Pagbasa</value>
+  </data>
+  <data name="RefreshButton.Label" xml:space="preserve">
+    <value>flushed na nga ba</value>
+  </data>
+  <data name="RemoveFolderButton.Content" xml:space="preserve">
+    <value>Alisin ang folder</value>
+  </data>
+  <data name="SaveAs.Text" xml:space="preserve">
+    <value>I-save Bilang</value>
+  </data>
+  <data name="SetBack.Text" xml:space="preserve">
+    <value>ibalik ang</value>
+  </data>
+  <data name="SettingFilterImageButton.Content" xml:space="preserve">
+    <value>Salain ang gallery</value>
+  </data>
+  <data name="SettingTagButton.Content" xml:space="preserve">
+    <value>Pamamahala ng label</value>
+  </data>
+  <data name="ShowFolderBookcase.Content" xml:space="preserve">
+    <value>Idispley ang bookshelf</value>
+  </data>
+  <data name="TranslateButton.Label" xml:space="preserve">
+    <value>Pagsasalin</value>
+  </data>
+</root>

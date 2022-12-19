@@ -135,6 +135,9 @@
   <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
     <value>删除源文件</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</value>
+  </data>
   <data name="ErrorString1" xml:space="preserve">
     <value>出错啦，无法打开</value>
   </data>

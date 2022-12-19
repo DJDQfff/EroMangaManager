@@ -11,7 +11,7 @@
     <AssemblyName>EroMangaManager</AssemblyName>
     <DefaultLanguage>zh-cn</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.22621.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -256,6 +256,17 @@
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <PRIResource Include="Strings\zh-Hant\Resources.resw" />
+    <PRIResource Include="Strings\it\Resources.resw" />
+    <PRIResource Include="Strings\el\Resources.resw" />
+    <PRIResource Include="Strings\es\Resources.resw" />
+    <PRIResource Include="Strings\th\Resources.resw" />
+    <PRIResource Include="Strings\ja\Resources.resw" />
+    <PRIResource Include="Strings\fil\Resources.resw" />
+    <PRIResource Include="Strings\fr\Resources.resw" />
+    <PRIResource Include="Strings\ru\Resources.resw" />
+    <PRIResource Include="Strings\de\Resources.resw" />
+    <PRIResource Include="Strings\ko\Resources.resw" />
     <PRIResource Include="Strings\en\Resources.resw" />
     <PRIResource Include="Strings\zh-cn\Resources.resw" />
   </ItemGroup>
@@ -389,7 +400,18 @@
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
+    <XliffResource Include="MultilingualResources\本子管理器.de.xlf" />
+    <XliffResource Include="MultilingualResources\本子管理器.el.xlf" />
     <XliffResource Include="MultilingualResources\本子管理器.en.xlf" />
+    <XliffResource Include="MultilingualResources\本子管理器.es.xlf" />
+    <XliffResource Include="MultilingualResources\本子管理器.fil.xlf" />
+    <XliffResource Include="MultilingualResources\本子管理器.fr.xlf" />
+    <XliffResource Include="MultilingualResources\本子管理器.it.xlf" />
+    <XliffResource Include="MultilingualResources\本子管理器.ja.xlf" />
+    <XliffResource Include="MultilingualResources\本子管理器.ko.xlf" />
+    <XliffResource Include="MultilingualResources\本子管理器.ru.xlf" />
+    <XliffResource Include="MultilingualResources\本子管理器.th.xlf" />
+    <XliffResource Include="MultilingualResources\本子管理器.zh-Hant.xlf" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

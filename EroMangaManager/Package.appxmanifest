@@ -9,7 +9,7 @@
   <Identity
     Name="59570DJDQfff.121076A95F8D5"
     Publisher="CN=457EFD62-D91C-4992-872B-0F5CE97FDC67"
-    Version="2022.12.13.0" />
+    Version="2022.12.19.0" />
 
   <mp:PhoneIdentity PhoneProductId="0d93a9bc-1be7-4af7-8fb1-080589a742e1" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
@@ -35,7 +35,7 @@
         DisplayName="ms-resource:AppDisplayName"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="本子管理器"
+        Description="ms-resource:Description"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

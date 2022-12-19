@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddFolderButton.Content" xml:space="preserve">
+    <value>フォルダを追加します</value>
+  </data>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>小さな黄色の本</value>
+  </data>
+  <data name="BookcaseItem.Content" xml:space="preserve">
+    <value>本棚</value>
+  </data>
+  <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>漫画の本棚</value>
+  </data>
+  <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
+    <value>ファイルの削除を確認しますか?</value>
+  </data>
+  <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
+    <value>ソース ファイルを削除します</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>これは、zip形式で保存された漫画を管理し、読むための漫画マネージャです。 内部画像の要件はjpg、png形式です</value>
+  </data>
+  <data name="ErrorString1" xml:space="preserve">
+    <value>エラーが発生し、開くことができません</value>
+  </data>
+  <data name="ErrorZipPageButton.Content" xml:space="preserve">
+    <value>例外 Zip</value>
+  </data>
+  <data name="ExportDone" xml:space="preserve">
+    <value>エクスポートが完了しました</value>
+  </data>
+  <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
+    <value>PDF としてエクスポートします</value>
+  </data>
+  <data name="FilterThisImage.Text" xml:space="preserve">
+    <value>このグラフは表示されません</value>
+  </data>
+  <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
+    <value>ファイルを開きます</value>
+  </data>
+  <data name="LaunchFolderButton.Content" xml:space="preserve">
+    <value>フォルダを開きます</value>
+  </data>
+  <data name="LaunchFolderFlyoutItem.Text" xml:space="preserve">
+    <value>フォルダを開きます</value>
+  </data>
+  <data name="ListItem.Content" xml:space="preserve">
+    <value>固定フォルダ</value>
+  </data>
+  <data name="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>固定フォルダ</value>
+  </data>
+  <data name="MangaTagDetailPage.CloseButtonText" xml:space="preserve">
+    <value>閉じます</value>
+  </data>
+  <data name="MangaTagDetailPage.PrimaryButtonText" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="MangaTagEditPage.CloseButtonText" xml:space="preserve">
+    <value>調整なし</value>
+  </data>
+  <data name="MangaTagEditPage.PrimaryButtonText" xml:space="preserve">
+    <value>調整を確認します</value>
+  </data>
+  <data name="MangaTags.Text" xml:space="preserve">
+    <value>このサブラベル</value>
+  </data>
+  <data name="MangaTypes.Text" xml:space="preserve">
+    <value>ラベルの分類</value>
+  </data>
+  <data name="MenuItem1.Text" xml:space="preserve">
+    <value>情報を確認します</value>
+  </data>
+  <data name="ReadItem.Content" xml:space="preserve">
+    <value>読んでいます</value>
+  </data>
+  <data name="ReadItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>読んでいます</value>
+  </data>
+  <data name="RefreshButton.Label" xml:space="preserve">
+    <value>更新します</value>
+  </data>
+  <data name="RemoveFolderButton.Content" xml:space="preserve">
+    <value>フォルダを削除します</value>
+  </data>
+  <data name="SaveAs.Text" xml:space="preserve">
+    <value>名前を付けて保存します</value>
+  </data>
+  <data name="SetBack.Text" xml:space="preserve">
+    <value>復元します</value>
+  </data>
+  <data name="SettingFilterImageButton.Content" xml:space="preserve">
+    <value>ギャラリーをフィルタします</value>
+  </data>
+  <data name="SettingTagButton.Content" xml:space="preserve">
+    <value>ラベル管理</value>
+  </data>
+  <data name="ShowFolderBookcase.Content" xml:space="preserve">
+    <value>本棚を表示します</value>
+  </data>
+  <data name="TranslateButton.Label" xml:space="preserve">
+    <value>翻訳</value>
+  </data>
+</root>

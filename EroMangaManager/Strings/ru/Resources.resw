@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddFolderButton.Content" xml:space="preserve">
+    <value>Добавление папки</value>
+  </data>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Маленькая желтая книга</value>
+  </data>
+  <data name="BookcaseItem.Content" xml:space="preserve">
+    <value>книжная полка</value>
+  </data>
+  <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Полка для комиксов</value>
+  </data>
+  <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
+    <value>Подтвердите удаление файлов?</value>
+  </data>
+  <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
+    <value>Удаление исходного файла</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Это менеджер манги для управления и чтения сохраненных комиксов в zip-форме. Внутренние изображения должны быть в форматах JPG и PNG</value>
+  </data>
+  <data name="ErrorString1" xml:space="preserve">
+    <value>Произошла ошибка, и не удалось открыть</value>
+  </data>
+  <data name="ErrorZipPageButton.Content" xml:space="preserve">
+    <value>Исключение Zip</value>
+  </data>
+  <data name="ExportDone" xml:space="preserve">
+    <value>Экспорт завершен</value>
+  </data>
+  <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
+    <value>Экспорт в PDF</value>
+  </data>
+  <data name="FilterThisImage.Text" xml:space="preserve">
+    <value>Этот рисунок не отображается</value>
+  </data>
+  <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
+    <value>Открыть файл</value>
+  </data>
+  <data name="LaunchFolderButton.Content" xml:space="preserve">
+    <value>Откройте папку</value>
+  </data>
+  <data name="LaunchFolderFlyoutItem.Text" xml:space="preserve">
+    <value>Откройте папку, в которой вы находитесь</value>
+  </data>
+  <data name="ListItem.Content" xml:space="preserve">
+    <value>Папка закреплена</value>
+  </data>
+  <data name="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Папка закреплена</value>
+  </data>
+  <data name="MangaTagDetailPage.CloseButtonText" xml:space="preserve">
+    <value>Отключение</value>
+  </data>
+  <data name="MangaTagDetailPage.PrimaryButtonText" xml:space="preserve">
+    <value>редактировать</value>
+  </data>
+  <data name="MangaTagEditPage.CloseButtonText" xml:space="preserve">
+    <value>Без корректировок</value>
+  </data>
+  <data name="MangaTagEditPage.PrimaryButtonText" xml:space="preserve">
+    <value>Подтвердите корректировку</value>
+  </data>
+  <data name="MangaTags.Text" xml:space="preserve">
+    <value>Эта вложенная вкладка</value>
+  </data>
+  <data name="MangaTypes.Text" xml:space="preserve">
+    <value>Классификация этикеток</value>
+  </data>
+  <data name="MenuItem1.Text" xml:space="preserve">
+    <value>Посмотреть информацию</value>
+  </data>
+  <data name="ReadItem.Content" xml:space="preserve">
+    <value>Чтение</value>
+  </data>
+  <data name="ReadItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Чтение</value>
+  </data>
+  <data name="RefreshButton.Label" xml:space="preserve">
+    <value>Покраснел</value>
+  </data>
+  <data name="RemoveFolderButton.Content" xml:space="preserve">
+    <value>Удаление папки</value>
+  </data>
+  <data name="SaveAs.Text" xml:space="preserve">
+    <value>Сохранить как</value>
+  </data>
+  <data name="SetBack.Text" xml:space="preserve">
+    <value>восстанавливать</value>
+  </data>
+  <data name="SettingFilterImageButton.Content" xml:space="preserve">
+    <value>Фильтрация галереи</value>
+  </data>
+  <data name="SettingTagButton.Content" xml:space="preserve">
+    <value>Управление этикетками</value>
+  </data>
+  <data name="ShowFolderBookcase.Content" xml:space="preserve">
+    <value>Отображение книжной полки</value>
+  </data>
+  <data name="TranslateButton.Label" xml:space="preserve">
+    <value>Перевод</value>
+  </data>
+</root>

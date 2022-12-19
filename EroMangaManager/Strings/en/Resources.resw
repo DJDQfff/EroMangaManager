@@ -108,4 +108,10 @@
   <data name="LaunchFolderButton.Content" xml:space="preserve">
     <value>Open the folder</value>
   </data>
+  <data name="ErrorZipPageButton.Content" xml:space="preserve">
+    <value>Exception Zip</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>This is a manga manager for managing and reading your saved comics in zip form. Internal images must be in JPG and PNG formats</value>
+  </data>
 </root>

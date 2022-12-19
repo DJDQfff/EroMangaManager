@@ -136,7 +136,11 @@
         </trans-unit>
         <trans-unit id="ErrorZipPageButton.Content" translate="yes" xml:space="preserve">
           <source>异常Zip</source>
-          <target state="new">异常Zip</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Exception Zip</target>
+        </trans-unit>
+        <trans-unit id="Description" translate="yes" xml:space="preserve">
+          <source>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">This is a manga manager for managing and reading your saved comics in zip form. Internal images must be in JPG and PNG formats</target>
         </trans-unit>
       </group>
     </body>

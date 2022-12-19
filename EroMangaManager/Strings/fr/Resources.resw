@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddFolderButton.Content" xml:space="preserve">
+    <value>Ajouter un dossier</value>
+  </data>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Petit Livre Jaune</value>
+  </data>
+  <data name="BookcaseItem.Content" xml:space="preserve">
+    <value>étagère</value>
+  </data>
+  <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Bibliothèque de bandes dessinées</value>
+  </data>
+  <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
+    <value>Confirmer la suppression de fichiers ?</value>
+  </data>
+  <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
+    <value>Supprimer le fichier source</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Ceci est un gestionnaire de manga pour gérer et lire vos bandes dessinées enregistrées sous forme zip. Les images internes doivent être aux formats JPG et PNG</value>
+  </data>
+  <data name="ErrorString1" xml:space="preserve">
+    <value>Une erreur s’est produite et il n’a pas pu être ouvert</value>
+  </data>
+  <data name="ErrorZipPageButton.Content" xml:space="preserve">
+    <value>Exception Zip</value>
+  </data>
+  <data name="ExportDone" xml:space="preserve">
+    <value>L’exportation est terminée</value>
+  </data>
+  <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
+    <value>Exporter au format PDF</value>
+  </data>
+  <data name="FilterThisImage.Text" xml:space="preserve">
+    <value>Ce chiffre n’est pas affiché</value>
+  </data>
+  <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
+    <value>Ouvrir le fichier</value>
+  </data>
+  <data name="LaunchFolderButton.Content" xml:space="preserve">
+    <value>Ouvrir le dossier</value>
+  </data>
+  <data name="LaunchFolderFlyoutItem.Text" xml:space="preserve">
+    <value>Ouvrez le dossier dans lequel vous vous trouvez.</value>
+  </data>
+  <data name="ListItem.Content" xml:space="preserve">
+    <value>Le dossier est épinglé</value>
+  </data>
+  <data name="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Le dossier est épinglé</value>
+  </data>
+  <data name="MangaTagDetailPage.CloseButtonText" xml:space="preserve">
+    <value>Arrêter</value>
+  </data>
+  <data name="MangaTagDetailPage.PrimaryButtonText" xml:space="preserve">
+    <value>éditer</value>
+  </data>
+  <data name="MangaTagEditPage.CloseButtonText" xml:space="preserve">
+    <value>Aucun ajustement</value>
+  </data>
+  <data name="MangaTagEditPage.PrimaryButtonText" xml:space="preserve">
+    <value>Confirmer l’ajustement</value>
+  </data>
+  <data name="MangaTags.Text" xml:space="preserve">
+    <value>Ce sous-onglet</value>
+  </data>
+  <data name="MangaTypes.Text" xml:space="preserve">
+    <value>Classification des étiquettes</value>
+  </data>
+  <data name="MenuItem1.Text" xml:space="preserve">
+    <value>Voir les informations</value>
+  </data>
+  <data name="ReadItem.Content" xml:space="preserve">
+    <value>Lecture</value>
+  </data>
+  <data name="ReadItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Lecture</value>
+  </data>
+  <data name="RefreshButton.Label" xml:space="preserve">
+    <value>Rincé</value>
+  </data>
+  <data name="RemoveFolderButton.Content" xml:space="preserve">
+    <value>Supprimer le dossier</value>
+  </data>
+  <data name="SaveAs.Text" xml:space="preserve">
+    <value>Enregistrer sous</value>
+  </data>
+  <data name="SetBack.Text" xml:space="preserve">
+    <value>restaurer</value>
+  </data>
+  <data name="SettingFilterImageButton.Content" xml:space="preserve">
+    <value>Filtrer la galerie</value>
+  </data>
+  <data name="SettingTagButton.Content" xml:space="preserve">
+    <value>Gestion des étiquettes</value>
+  </data>
+  <data name="ShowFolderBookcase.Content" xml:space="preserve">
+    <value>Afficher l’étagère</value>
+  </data>
+  <data name="TranslateButton.Label" xml:space="preserve">
+    <value>Traduction</value>
+  </data>
+</root>

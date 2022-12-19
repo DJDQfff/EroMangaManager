@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="zh-CN" target-language="el" original="本子管理器/STRINGS/ZH-CN/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="本子管理器/STRINGS/ZH-CN/RESOURCES.RESW" datatype="resx">
+        <trans-unit id="AddFolderButton.Content" translate="yes" xml:space="preserve">
+          <source>添加文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Προσθήκη φακέλου</target>
+        </trans-unit>
+        <trans-unit id="AppDisplayName" translate="yes" xml:space="preserve">
+          <source>小黄书</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Μικρό Κίτρινο Βιβλίο</target>
+        </trans-unit>
+        <trans-unit id="BookcaseItem.Content" translate="yes" xml:space="preserve">
+          <source>书架</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">βιβλιοθήκη</target>
+        </trans-unit>
+        <trans-unit id="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>漫画书架</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Βιβλιοθήκη κόμικς</target>
+        </trans-unit>
+        <trans-unit id="DeleteFileConfirmPage.Title" translate="yes" xml:space="preserve">
+          <source>确认删除文件？</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Επιβεβαιώστε τη διαγραφή αρχείων;</target>
+        </trans-unit>
+        <trans-unit id="DeleteSourceMangaFileFlyoutItem.Text" translate="yes" xml:space="preserve">
+          <source>删除源文件</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Διαγραφή του αρχείου προέλευσης</target>
+        </trans-unit>
+        <trans-unit id="Description" translate="yes" xml:space="preserve">
+          <source>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Αυτός είναι ένας διαχειριστής manga για τη διαχείριση και την ανάγνωση των αποθηκευμένων κόμικς σας σε μορφή zip. Οι εσωτερικές εικόνες πρέπει να είναι σε μορφές JPG και PNG</target>
+        </trans-unit>
+        <trans-unit id="ErrorString1" translate="yes" xml:space="preserve">
+          <source>出错啦，无法打开</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Παρουσιάστηκε σφάλμα και δεν ήταν δυνατό το άνοιγμά του</target>
+        </trans-unit>
+        <trans-unit id="ErrorZipPageButton.Content" translate="yes" xml:space="preserve">
+          <source>异常Zip</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Φερμουάρ εξαίρεσης</target>
+        </trans-unit>
+        <trans-unit id="ExportDone" translate="yes" xml:space="preserve">
+          <source>导出完成</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Η εξαγωγή ολοκληρώθηκε</target>
+        </trans-unit>
+        <trans-unit id="ExportPDFFlyoutItem.Text" translate="yes" xml:space="preserve">
+          <source>导出为PDF</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Εξαγωγή σε PDF</target>
+        </trans-unit>
+        <trans-unit id="FilterThisImage.Text" translate="yes" xml:space="preserve">
+          <source>不显示此图</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Αυτός ο αριθμός δεν εμφανίζεται</target>
+        </trans-unit>
+        <trans-unit id="LaunchFileFlyoutItem.Text" translate="yes" xml:space="preserve">
+          <source>打开文件</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ανοίξτε το αρχείο</target>
+        </trans-unit>
+        <trans-unit id="LaunchFolderButton.Content" translate="yes" xml:space="preserve">
+          <source>打开文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Άνοιγμα του φακέλου</target>
+        </trans-unit>
+        <trans-unit id="LaunchFolderFlyoutItem.Text" translate="yes" xml:space="preserve">
+          <source>打开所在文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ανοίξτε το φάκελο στον οποίο βρίσκεστε</target>
+        </trans-unit>
+        <trans-unit id="ListItem.Content" translate="yes" xml:space="preserve">
+          <source>已固定文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ο φάκελος είναι καρφιτσωμένος</target>
+        </trans-unit>
+        <trans-unit id="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>已固定文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ο φάκελος είναι καρφιτσωμένος</target>
+        </trans-unit>
+        <trans-unit id="MangaTagDetailPage.CloseButtonText" translate="yes" xml:space="preserve">
+          <source>关闭</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Κλείσε</target>
+        </trans-unit>
+        <trans-unit id="MangaTagDetailPage.PrimaryButtonText" translate="yes" xml:space="preserve">
+          <source>编辑</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">επεξεργασία</target>
+        </trans-unit>
+        <trans-unit id="MangaTagEditPage.CloseButtonText" translate="yes" xml:space="preserve">
+          <source>不作调整</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Χωρίς προσαρμογές</target>
+        </trans-unit>
+        <trans-unit id="MangaTagEditPage.PrimaryButtonText" translate="yes" xml:space="preserve">
+          <source>确认调整</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Επιβεβαιώστε την προσαρμογή</target>
+        </trans-unit>
+        <trans-unit id="MangaTags.Text" translate="yes" xml:space="preserve">
+          <source>本子标签</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Αυτή η υποκαρτέλα</target>
+        </trans-unit>
+        <trans-unit id="MangaTypes.Text" translate="yes" xml:space="preserve">
+          <source>标签分类</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ταξινόμηση ετικέτας</target>
+        </trans-unit>
+        <trans-unit id="MenuItem1.Text" translate="yes" xml:space="preserve">
+          <source>查看信息</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Προβολή πληροφοριών</target>
+        </trans-unit>
+        <trans-unit id="ReadItem.Content" translate="yes" xml:space="preserve">
+          <source>正在阅读</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ανάγνωση</target>
+        </trans-unit>
+        <trans-unit id="ReadItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>正在阅读</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ανάγνωση</target>
+        </trans-unit>
+        <trans-unit id="RefreshButton.Label" translate="yes" xml:space="preserve">
+          <source>刷新</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ξεπλυθεί</target>
+        </trans-unit>
+        <trans-unit id="RemoveFolderButton.Content" translate="yes" xml:space="preserve">
+          <source>移除文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Κατάργηση του φακέλου</target>
+        </trans-unit>
+        <trans-unit id="SaveAs.Text" translate="yes" xml:space="preserve">
+          <source>另存为</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Αποθήκευση ως</target>
+        </trans-unit>
+        <trans-unit id="SetBack.Text" translate="yes" xml:space="preserve">
+          <source>还原</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">αποκαθιστώ</target>
+        </trans-unit>
+        <trans-unit id="SettingFilterImageButton.Content" translate="yes" xml:space="preserve">
+          <source>过滤图库</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Φιλτράρισμα της συλλογής</target>
+        </trans-unit>
+        <trans-unit id="SettingTagButton.Content" translate="yes" xml:space="preserve">
+          <source>标签管理</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Διαχείριση ετικετών</target>
+        </trans-unit>
+        <trans-unit id="ShowFolderBookcase.Content" translate="yes" xml:space="preserve">
+          <source>显示书架</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Προβολή της βιβλιοθήκης</target>
+        </trans-unit>
+        <trans-unit id="TranslateButton.Label" translate="yes" xml:space="preserve">
+          <source>翻译</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Μετάφραση</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

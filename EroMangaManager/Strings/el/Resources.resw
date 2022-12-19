@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddFolderButton.Content" xml:space="preserve">
+    <value>Προσθήκη φακέλου</value>
+  </data>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Μικρό Κίτρινο Βιβλίο</value>
+  </data>
+  <data name="BookcaseItem.Content" xml:space="preserve">
+    <value>βιβλιοθήκη</value>
+  </data>
+  <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Βιβλιοθήκη κόμικς</value>
+  </data>
+  <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
+    <value>Επιβεβαιώστε τη διαγραφή αρχείων;</value>
+  </data>
+  <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
+    <value>Διαγραφή του αρχείου προέλευσης</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Αυτός είναι ένας διαχειριστής manga για τη διαχείριση και την ανάγνωση των αποθηκευμένων κόμικς σας σε μορφή zip. Οι εσωτερικές εικόνες πρέπει να είναι σε μορφές JPG και PNG</value>
+  </data>
+  <data name="ErrorString1" xml:space="preserve">
+    <value>Παρουσιάστηκε σφάλμα και δεν ήταν δυνατό το άνοιγμά του</value>
+  </data>
+  <data name="ErrorZipPageButton.Content" xml:space="preserve">
+    <value>Φερμουάρ εξαίρεσης</value>
+  </data>
+  <data name="ExportDone" xml:space="preserve">
+    <value>Η εξαγωγή ολοκληρώθηκε</value>
+  </data>
+  <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
+    <value>Εξαγωγή σε PDF</value>
+  </data>
+  <data name="FilterThisImage.Text" xml:space="preserve">
+    <value>Αυτός ο αριθμός δεν εμφανίζεται</value>
+  </data>
+  <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
+    <value>Ανοίξτε το αρχείο</value>
+  </data>
+  <data name="LaunchFolderButton.Content" xml:space="preserve">
+    <value>Άνοιγμα του φακέλου</value>
+  </data>
+  <data name="LaunchFolderFlyoutItem.Text" xml:space="preserve">
+    <value>Ανοίξτε το φάκελο στον οποίο βρίσκεστε</value>
+  </data>
+  <data name="ListItem.Content" xml:space="preserve">
+    <value>Ο φάκελος είναι καρφιτσωμένος</value>
+  </data>
+  <data name="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Ο φάκελος είναι καρφιτσωμένος</value>
+  </data>
+  <data name="MangaTagDetailPage.CloseButtonText" xml:space="preserve">
+    <value>Κλείσε</value>
+  </data>
+  <data name="MangaTagDetailPage.PrimaryButtonText" xml:space="preserve">
+    <value>επεξεργασία</value>
+  </data>
+  <data name="MangaTagEditPage.CloseButtonText" xml:space="preserve">
+    <value>Χωρίς προσαρμογές</value>
+  </data>
+  <data name="MangaTagEditPage.PrimaryButtonText" xml:space="preserve">
+    <value>Επιβεβαιώστε την προσαρμογή</value>
+  </data>
+  <data name="MangaTags.Text" xml:space="preserve">
+    <value>Αυτή η υποκαρτέλα</value>
+  </data>
+  <data name="MangaTypes.Text" xml:space="preserve">
+    <value>Ταξινόμηση ετικέτας</value>
+  </data>
+  <data name="MenuItem1.Text" xml:space="preserve">
+    <value>Προβολή πληροφοριών</value>
+  </data>
+  <data name="ReadItem.Content" xml:space="preserve">
+    <value>Ανάγνωση</value>
+  </data>
+  <data name="ReadItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Ανάγνωση</value>
+  </data>
+  <data name="RefreshButton.Label" xml:space="preserve">
+    <value>Ξεπλυθεί</value>
+  </data>
+  <data name="RemoveFolderButton.Content" xml:space="preserve">
+    <value>Κατάργηση του φακέλου</value>
+  </data>
+  <data name="SaveAs.Text" xml:space="preserve">
+    <value>Αποθήκευση ως</value>
+  </data>
+  <data name="SetBack.Text" xml:space="preserve">
+    <value>αποκαθιστώ</value>
+  </data>
+  <data name="SettingFilterImageButton.Content" xml:space="preserve">
+    <value>Φιλτράρισμα της συλλογής</value>
+  </data>
+  <data name="SettingTagButton.Content" xml:space="preserve">
+    <value>Διαχείριση ετικετών</value>
+  </data>
+  <data name="ShowFolderBookcase.Content" xml:space="preserve">
+    <value>Προβολή της βιβλιοθήκης</value>
+  </data>
+  <data name="TranslateButton.Label" xml:space="preserve">
+    <value>Μετάφραση</value>
+  </data>
+</root>
