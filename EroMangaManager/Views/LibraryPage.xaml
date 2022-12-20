@@ -30,10 +30,17 @@
                   SelectionMode="None">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="vm:MangasFolder"
-                              x:DefaultBindMode="OneWay">     
-                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                        <TextBlock Text="{x:Bind  MangaBooks.Count,Mode=OneWay}" VerticalAlignment="Stretch" TextAlignment="Center" />
-                        <Button  x:Name="JumpToBookcase" 
+                              x:DefaultBindMode="OneWay">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Stretch" 
+                                PointerEntered="StackButton_PointerEntered"
+                                PointerExited="StackButton_PointerExited">
+                        <TextBlock Text="{x:Bind  MangaBooks.Count,Mode=OneWay}"
+                                   Width="60"
+                                   VerticalAlignment="Stretch"
+                                   TextAlignment="Center" />
+                        <Button  x:Name="JumpToBookcase"
+                                  Width="100"
                                  VerticalAlignment="Center"
                                  Click="JumpToBookcase_Click"
                                  d:Content="显示书架"
@@ -41,27 +48,28 @@
                                  BorderThickness="0">
                         </Button>
 
-                            <TextBlock x:Name="folderTextBlock" VerticalAlignment="Center"
-                                               Padding="0,0,4,0"
-                                               Text="{x:Bind FolderPath}" />
+                        <TextBlock x:Name="folderTextBlock"
+                                   VerticalAlignment="Center"
+                                   Padding="0,0,4,0"
+                                   Width="200"
+                                   Text="{x:Bind FolderPath}" />
 
-    
-                            <StackPanel Orientation="Horizontal"  VerticalAlignment="Center"
-                                        RelativePanel.AlignRightWithPanel="True">
+                        <StackPanel x:Name="StackButton" Orientation="Horizontal" Visibility="Collapsed"
+                                    VerticalAlignment="Center" 
+                                    RelativePanel.AlignRightWithPanel="True">
 
                             <Button  d:Content="打开文件夹"
                                      VerticalAlignment="Center"
                                      x:Uid="LaunchFolderButton"
-                                              Click="LauncherFolder" />
-                                <Button x:Name="removeButton" VerticalAlignment="Center"
-                                              Margin="0,0,20,0"
-                                              Click="removeButton_Click"
-                                              x:Uid="RemoveFolderButton"
-                                              d:Content="移除" />
-                            </StackPanel>
+                                     Click="LauncherFolder" />
+                            <Button x:Name="removeButton"
+                                    VerticalAlignment="Center"
+                                    Margin="0,0,20,0"
+                                    Click="removeButton_Click"
+                                    x:Uid="RemoveFolderButton"
+                                    d:Content="移除" />
+                        </StackPanel>
                     </StackPanel>
-
-
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

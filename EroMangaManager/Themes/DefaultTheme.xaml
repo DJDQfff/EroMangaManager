@@ -16,5 +16,9 @@
         <Setter Property="Width"
                 Value="120" />
     </Style>
+    <Style TargetType="TextBlock">
+        <Setter Property="Width"
+                Value="100" />
+    </Style>
 
 </ResourceDictionary>

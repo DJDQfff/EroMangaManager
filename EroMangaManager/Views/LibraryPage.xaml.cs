@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using EroMangaManager.ViewModels;
+
+using MyUWPLibrary;
 
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
@@ -32,13 +35,18 @@ namespace EroMangaManager.Views
 
             if (folder != null)
             {
-                try
+                List<StorageFolder> folders;
+                (folders, _) = await folder.GetAllStorageItems();
+                foreach (var f in folders)
                 {
-                    await MainPage.current.collectionObserver.AddFolder(folder);
-                }
-                catch (Exception)
-                {
-                    // 出错
+                    try
+                    {
+                        await MainPage.current.collectionObserver.AddFolder(f);
+                    }
+                    catch (Exception)
+                    {
+                        // 出错
+                    }
                 }
             }
 
@@ -67,6 +75,24 @@ namespace EroMangaManager.Views
             var datacontext = button.DataContext as MangasFolder;
 
             MainPage.current.bookcaseContainer.ChangeMangasFolder(datacontext);
+        }
+
+        // TODO 有bug
+        private void StackButton_PointerEntered (object sender , Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            var control = sender as StackPanel;
+            var stack=control.FindName("StackButton") as StackPanel;
+
+            stack.Visibility = Windows.UI.Xaml.Visibility.Visible;
+        }
+
+        private void StackButton_PointerExited (object sender , Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            var control = sender as StackPanel;
+            var stack = control.FindName("StackButton") as StackPanel;
+
+            stack.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+
         }
     }
 }
