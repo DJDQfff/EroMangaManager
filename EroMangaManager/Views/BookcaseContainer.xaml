@@ -6,15 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    NavigationCacheMode="Enabled"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    NavigationCacheMode="Enabled">
     <Grid>
         
     <Grid.RowDefinitions>
         <RowDefinition Height="auto" />
         <RowDefinition />
     </Grid.RowDefinitions>
-    <CommandBar d:Background="Red" Grid.Row="0" x:Name="BookcaseCommandBar" VerticalAlignment="Stretch">
+    <CommandBar Background="Transparent" Grid.Row="0" x:Name="BookcaseCommandBar" VerticalAlignment="Stretch">
         <AppBarButton Click="TranslateEachMangaName"
                       x:Uid="TranslateButton"
                       Icon="Font"

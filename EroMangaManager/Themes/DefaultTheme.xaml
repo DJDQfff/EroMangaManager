@@ -15,10 +15,20 @@
                 Value="Bottom" />
         <Setter Property="Width"
                 Value="120" />
+        <Setter Property="Background" Value="RoyalBlue" />
     </Style>
     <Style TargetType="TextBlock">
         <Setter Property="Width"
                 Value="100" />
     </Style>
-
+    <Style TargetType="Page">
+        <Setter Property="Background"
+                Value="Transparent" />
+    </Style>
+    <AcrylicBrush x:Key="acrylic1"
+                  BackgroundSource="HostBackdrop"
+                  FallbackColor="White"
+                  TintColor="Orange">
+        
+    </AcrylicBrush>
 </ResourceDictionary>
