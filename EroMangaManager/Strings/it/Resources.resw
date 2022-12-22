@@ -48,6 +48,12 @@
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>Questa cifra non viene visualizzata</value>
   </data>
+  <data name="FullScreenToggle.Content" xml:space="preserve">
+    <value>Schermo intero</value>
+  </data>
+  <data name="HintAddFirstFolder.Text" xml:space="preserve">
+    <value>Al momento non ci sono cartelle, aggiungi la tua prima cartella di scansione</value>
+  </data>
   <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
     <value>Apri il file</value>
   </data>

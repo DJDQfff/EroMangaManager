@@ -48,6 +48,12 @@
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>이 그림은 표시되지 않습니다</value>
   </data>
+  <data name="FullScreenToggle.Content" xml:space="preserve">
+    <value>전체 화면</value>
+  </data>
+  <data name="HintAddFirstFolder.Text" xml:space="preserve">
+    <value>현재 폴더가 없으므로 첫 번째 검색 폴더를 추가합니다</value>
+  </data>
   <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
     <value>파일을 엽니다</value>
   </data>

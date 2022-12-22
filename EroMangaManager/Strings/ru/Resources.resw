@@ -48,6 +48,12 @@
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>Этот рисунок не отображается</value>
   </data>
+  <data name="FullScreenToggle.Content" xml:space="preserve">
+    <value>Полноэкранный режим</value>
+  </data>
+  <data name="HintAddFirstFolder.Text" xml:space="preserve">
+    <value>В настоящее время нет папок, пожалуйста, добавьте свою первую папку сканирования</value>
+  </data>
   <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
     <value>Открыть файл</value>
   </data>

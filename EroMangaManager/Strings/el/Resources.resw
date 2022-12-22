@@ -48,6 +48,12 @@
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>Αυτός ο αριθμός δεν εμφανίζεται</value>
   </data>
+  <data name="FullScreenToggle.Content" xml:space="preserve">
+    <value>Πλήρης οθόνη</value>
+  </data>
+  <data name="HintAddFirstFolder.Text" xml:space="preserve">
+    <value>Προς το παρόν δεν υπάρχουν φάκελοι, προσθέστε τον πρώτο σας φάκελο σάρωσης</value>
+  </data>
   <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
     <value>Ανοίξτε το αρχείο</value>
   </data>

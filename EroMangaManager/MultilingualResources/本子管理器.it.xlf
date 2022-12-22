@@ -54,6 +54,14 @@
           <source>不显示此图</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Questa cifra non viene visualizzata</target>
         </trans-unit>
+        <trans-unit id="FullScreenToggle.Content" translate="yes" xml:space="preserve">
+          <source>全屏</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Schermo intero</target>
+        </trans-unit>
+        <trans-unit id="HintAddFirstFolder.Text" translate="yes" xml:space="preserve">
+          <source>目前没有文件夹，请添加你的第一个扫描文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Al momento non ci sono cartelle, aggiungi la tua prima cartella di scansione</target>
+        </trans-unit>
         <trans-unit id="LaunchFileFlyoutItem.Text" translate="yes" xml:space="preserve">
           <source>打开文件</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Apri il file</target>
@@ -141,14 +149,6 @@
         <trans-unit id="TranslateButton.Label" translate="yes" xml:space="preserve">
           <source>翻译</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Traduzione</target>
-        </trans-unit>
-        <trans-unit id="FullScreenToggle.Content" translate="yes" xml:space="preserve">
-          <source>全屏</source>
-          <target state="new">全屏</target>
-        </trans-unit>
-        <trans-unit id="HintAddFirstFolder.Text" translate="yes" xml:space="preserve">
-          <source>目前没有文件夹，请添加你的第一个扫描文件夹</source>
-          <target state="new">目前没有文件夹，请添加你的第一个扫描文件夹</target>
         </trans-unit>
       </group>
     </body>

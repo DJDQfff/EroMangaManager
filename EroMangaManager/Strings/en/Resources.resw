@@ -13,67 +13,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddFolderButton.Content" xml:space="preserve">
-    <value>Add Folder</value>
+    <value>Add a folder</value>
   </data>
   <data name="AppDisplayName" xml:space="preserve">
-    <value>Yellow Book Reader</value>
+    <value>Little Yellow Book</value>
   </data>
   <data name="BookcaseItem.Content" xml:space="preserve">
-    <value>Bookcase</value>
+    <value>bookshelf</value>
+  </data>
+  <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Comic bookshelf</value>
   </data>
   <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
-    <value>Confirm to Delete the File?</value>
-  </data>
-  <data name="ErrorString1" xml:space="preserve">
-    <value>Something wrong,can' open it</value>
-  </data>
-  <data name="ListItem.Content" xml:space="preserve">
-    <value>Pinned Folders</value>
-  </data>
-  <data name="MangaTagDetailPage.CloseButtonText" xml:space="preserve">
-    <value>Close</value>
-  </data>
-  <data name="MangaTagDetailPage.PrimaryButtonText" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="MangaTagEditPage.CloseButtonText" xml:space="preserve">
-    <value>No Changes</value>
-  </data>
-  <data name="MangaTagEditPage.PrimaryButtonText" xml:space="preserve">
-    <value>Change it</value>
-  </data>
-  <data name="MangaTags.Text" xml:space="preserve">
-    <value>Manga Tags</value>
-  </data>
-  <data name="MangaTypes.Text" xml:space="preserve">
-    <value>Tag Types</value>
-  </data>
-  <data name="MenuItem1.Text" xml:space="preserve">
-    <value>Check Info</value>
-  </data>
-  <data name="ReadItem.Content" xml:space="preserve">
-    <value>Reading</value>
-  </data>
-  <data name="RefreshButton.Label" xml:space="preserve">
-    <value>Refresh</value>
-  </data>
-  <data name="RemoveFolderButton.Content" xml:space="preserve">
-    <value>Remove this Folder</value>
-  </data>
-  <data name="SetBack.Text" xml:space="preserve">
-    <value>Back</value>
-  </data>
-  <data name="SettingFilterImageButton.Content" xml:space="preserve">
-    <value>No-Show Images</value>
-  </data>
-  <data name="SettingTagButton.Content" xml:space="preserve">
-    <value>Manage Tags</value>
-  </data>
-  <data name="TranslateButton.Label" xml:space="preserve">
-    <value>Translate</value>
+    <value>Confirm deleting files?</value>
   </data>
   <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
     <value>Delete the source file</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>This is a manga manager for managing and reading your saved comics in zip form. Internal images must be in JPG and PNG formats</value>
+  </data>
+  <data name="ErrorString1" xml:space="preserve">
+    <value>An error occurred and it could not be opened</value>
+  </data>
+  <data name="ErrorZipPageButton.Content" xml:space="preserve">
+    <value>Exception Zip</value>
   </data>
   <data name="ExportDone" xml:space="preserve">
     <value>The export is complete</value>
@@ -84,34 +48,76 @@
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>This figure is not displayed</value>
   </data>
+  <data name="FullScreenToggle.Content" xml:space="preserve">
+    <value>Full screen</value>
+  </data>
+  <data name="HintAddFirstFolder.Text" xml:space="preserve">
+    <value>There are currently no folders, please add your first scan folder</value>
+  </data>
   <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
     <value>Open the file</value>
-  </data>
-  <data name="LaunchFolderFlyoutItem.Text" xml:space="preserve">
-    <value>Open the folder you are in</value>
-  </data>
-  <data name="SaveAs.Text" xml:space="preserve">
-    <value>Save As</value>
-  </data>
-  <data name="ShowFolderBookcase.Content" xml:space="preserve">
-    <value>Display the bookshelf</value>
-  </data>
-  <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Comic bookshelf</value>
-  </data>
-  <data name="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>The folder is pinned</value>
-  </data>
-  <data name="ReadItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Reading</value>
   </data>
   <data name="LaunchFolderButton.Content" xml:space="preserve">
     <value>Open the folder</value>
   </data>
-  <data name="ErrorZipPageButton.Content" xml:space="preserve">
-    <value>Exception Zip</value>
+  <data name="LaunchFolderFlyoutItem.Text" xml:space="preserve">
+    <value>Open the folder you are in</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>This is a manga manager for managing and reading your saved comics in zip form. Internal images must be in JPG and PNG formats</value>
+  <data name="ListItem.Content" xml:space="preserve">
+    <value>The folder is pinned</value>
+  </data>
+  <data name="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>The folder is pinned</value>
+  </data>
+  <data name="MangaTagDetailPage.CloseButtonText" xml:space="preserve">
+    <value>Shut down</value>
+  </data>
+  <data name="MangaTagDetailPage.PrimaryButtonText" xml:space="preserve">
+    <value>edit</value>
+  </data>
+  <data name="MangaTagEditPage.CloseButtonText" xml:space="preserve">
+    <value>No adjustments</value>
+  </data>
+  <data name="MangaTagEditPage.PrimaryButtonText" xml:space="preserve">
+    <value>Confirm the adjustment</value>
+  </data>
+  <data name="MangaTags.Text" xml:space="preserve">
+    <value>This subtab</value>
+  </data>
+  <data name="MangaTypes.Text" xml:space="preserve">
+    <value>Label classification</value>
+  </data>
+  <data name="MenuItem1.Text" xml:space="preserve">
+    <value>View information</value>
+  </data>
+  <data name="ReadItem.Content" xml:space="preserve">
+    <value>Reading</value>
+  </data>
+  <data name="ReadItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Reading</value>
+  </data>
+  <data name="RefreshButton.Label" xml:space="preserve">
+    <value>flushed</value>
+  </data>
+  <data name="RemoveFolderButton.Content" xml:space="preserve">
+    <value>Remove the folder</value>
+  </data>
+  <data name="SaveAs.Text" xml:space="preserve">
+    <value>Save As</value>
+  </data>
+  <data name="SetBack.Text" xml:space="preserve">
+    <value>restore</value>
+  </data>
+  <data name="SettingFilterImageButton.Content" xml:space="preserve">
+    <value>Filter the gallery</value>
+  </data>
+  <data name="SettingTagButton.Content" xml:space="preserve">
+    <value>Label management</value>
+  </data>
+  <data name="ShowFolderBookcase.Content" xml:space="preserve">
+    <value>Display the bookshelf</value>
+  </data>
+  <data name="TranslateButton.Label" xml:space="preserve">
+    <value>Translation</value>
   </data>
 </root>

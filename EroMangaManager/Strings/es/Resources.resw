@@ -48,6 +48,12 @@
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>Esta figura no se muestra</value>
   </data>
+  <data name="FullScreenToggle.Content" xml:space="preserve">
+    <value>Pantalla completa</value>
+  </data>
+  <data name="HintAddFirstFolder.Text" xml:space="preserve">
+    <value>Actualmente no hay carpetas, agregue su primera carpeta de escaneo</value>
+  </data>
   <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
     <value>Abrir el archivo</value>
   </data>

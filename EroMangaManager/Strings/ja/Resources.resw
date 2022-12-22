@@ -48,6 +48,12 @@
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>このグラフは表示されません</value>
   </data>
+  <data name="FullScreenToggle.Content" xml:space="preserve">
+    <value>全画面表示</value>
+  </data>
+  <data name="HintAddFirstFolder.Text" xml:space="preserve">
+    <value>現在、フォルダはありませんので、最初のスキャンフォルダを追加してください</value>
+  </data>
   <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
     <value>ファイルを開きます</value>
   </data>

@@ -48,6 +48,12 @@
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>Hindi ipinapakita ang figure na ito</value>
   </data>
+  <data name="FullScreenToggle.Content" xml:space="preserve">
+    <value>Buong screen</value>
+  </data>
+  <data name="HintAddFirstFolder.Text" xml:space="preserve">
+    <value>Sa kasalukuyan ay walang mga folder, mangyaring idagdag ang iyong unang folder ng pag scan</value>
+  </data>
   <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
     <value>Buksan ang file</value>
   </data>

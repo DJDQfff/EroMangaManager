@@ -48,6 +48,12 @@
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>不顯示此圖</value>
   </data>
+  <data name="FullScreenToggle.Content" xml:space="preserve">
+    <value>全屏</value>
+  </data>
+  <data name="HintAddFirstFolder.Text" xml:space="preserve">
+    <value>目前沒有資料夾，請添加你的第一個掃描資料夾</value>
+  </data>
   <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
     <value>打開檔</value>
   </data>
