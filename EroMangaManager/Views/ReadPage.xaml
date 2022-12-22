@@ -35,13 +35,24 @@
         </DataTemplate>
     </Page.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <ProgressRing x:Name="ReadPage_ProgressRing_0"
                       Width="50"
                       Height="50"
                       IsActive="True"
                       Visibility="Collapsed" />
-        <FlipView x:Name="FLIP"
+        <FlipView x:Name="FLIP"   Grid.Row="0"  Grid.Column="0" Grid.RowSpan="3"
                   ItemTemplate="{StaticResource Datatemplate_1}">
         </FlipView>
+        <VariableSizedWrapGrid Grid.Row="0" x:Load="False" x:Name="ReadPageButtonGroup" FlowDirection="RightToLeft">
+            <ToggleButton x:Uid="FullScreenToggle" Margin="12" Content="全屏" Width="118" IsChecked="False"
+                    Height="89"
+                          Checked="ToggleButton_Checked"
+                          Unchecked="ToggleButton_Unchecked" />
+        </VariableSizedWrapGrid>
     </Grid>
 </Page>

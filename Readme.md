@@ -1,5 +1,7 @@
 # 要实现的目标
 
+* ReadPage提供全屏功能，但是目前存在bug，暂停
+
 * BookcaseContainer里面的页实例管理器清空所有页面时清理缓存
 
 * 就用单个tag作为基础，不使用多合一tag

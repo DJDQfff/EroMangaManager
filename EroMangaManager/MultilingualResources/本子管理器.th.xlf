@@ -142,6 +142,10 @@
           <source>翻译</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">การแปล</target>
         </trans-unit>
+        <trans-unit id="FullScreenToggle.Content" translate="yes" xml:space="preserve">
+          <source>全屏</source>
+          <target state="new">全屏</target>
+        </trans-unit>
       </group>
     </body>
   </file>

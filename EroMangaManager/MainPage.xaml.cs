@@ -7,6 +7,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Windows.ApplicationModel.Resources;
+using Org.BouncyCastle.Asn1.X509.Qualified;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804
 // 上介绍了“空白页”项模板
@@ -60,17 +61,9 @@ namespace EroMangaManager
             };
             current = this;
             pageInstancesManager.MainPage = this;
-        }
-
-        /// <summary>
-        /// 导航前
-        /// </summary>
-        /// <param name="e"></param>
-        protected override void OnNavigatedTo (NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
             MainFrame.Navigate(typeof(BookcaseContainer));
         }
+
 
         private void MainNavigationView_ItemInvoked (NavigationView sender , NavigationViewItemInvokedEventArgs args)
         {

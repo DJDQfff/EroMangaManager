@@ -153,6 +153,9 @@
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>不显示此图</value>
   </data>
+  <data name="FullScreenToggle.Content" xml:space="preserve">
+    <value>全屏</value>
+  </data>
   <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
     <value>打开文件</value>
   </data>

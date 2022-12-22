@@ -20,6 +20,9 @@ using static MyStandard20Library.HashComputer;
 using System.Reflection.PortableExecutable;
 
 using SharpCompress.Archives;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.ViewManagement;
+using iText.Layout.Renderer;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
@@ -206,5 +209,41 @@ namespace EroMangaManager.Views
             }
         }
         #endregion 不用了
+
+        private void FLIP_Tapped (object sender , Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            var a = ReadPageButtonGroup.Visibility;
+            if (a == Visibility.Collapsed)
+            {
+                ReadPageButtonGroup.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ReadPageButtonGroup.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void ToggleButton_Checked (object sender , RoutedEventArgs e)
+        {
+            var rootFrame = Window.Current.Content as Frame;
+            var button = sender as ToggleButton;
+var applicationView=ApplicationView.GetForCurrentView();
+
+            rootFrame.Navigate(typeof(ReadPage) , currentManga);
+            // TODO 存在问题，似乎每次导航的readpage不是同一个readpage
+            applicationView.TryEnterFullScreenMode();
+            button.IsChecked = true;
+        }
+
+        private void ToggleButton_Unchecked (object sender , RoutedEventArgs e)
+        {
+            var rootFrame = Window.Current.Content as Frame;
+            var button = sender as ToggleButton;
+            var applicationView = ApplicationView.GetForCurrentView();
+
+            rootFrame.Navigate(typeof(MainPage));
+            applicationView.ExitFullScreenMode();
+            button.IsChecked= false;
+        }
     }
 }
