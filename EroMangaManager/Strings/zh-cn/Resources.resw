@@ -156,6 +156,9 @@
   <data name="FullScreenToggle.Content" xml:space="preserve">
     <value>全屏</value>
   </data>
+  <data name="HintAddFirstFolder.Text" xml:space="preserve">
+    <value>目前没有文件夹，请添加你的第一个扫描文件夹</value>
+  </data>
   <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
     <value>打开文件</value>
   </data>

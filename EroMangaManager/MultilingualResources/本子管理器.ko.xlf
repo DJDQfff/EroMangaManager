@@ -146,6 +146,10 @@
           <source>全屏</source>
           <target state="new">全屏</target>
         </trans-unit>
+        <trans-unit id="HintAddFirstFolder.Text" translate="yes" xml:space="preserve">
+          <source>目前没有文件夹，请添加你的第一个扫描文件夹</source>
+          <target state="new">目前没有文件夹，请添加你的第一个扫描文件夹</target>
+        </trans-unit>
       </group>
     </body>
   </file>

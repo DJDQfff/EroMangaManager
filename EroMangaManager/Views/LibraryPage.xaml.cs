@@ -25,6 +25,10 @@ namespace EroMangaManager.Views
         {
             this.InitializeComponent();
             MainPage.pageInstancesManager.LibraryPage = this;
+            if (MainPage.current.collectionObserver.StorageFolders.Count ==0)
+            {
+                this.FindName(nameof(HintAddFolderTextBlock));
+            }
         }
 
         private async void addButton_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
@@ -37,6 +41,12 @@ namespace EroMangaManager.Views
             {
                 List<StorageFolder> folders;
                 (folders, _) = await folder.GetAllStorageItems();
+                folders.Add(folder);//得把文件夹自身也加入扫描类中
+                if (folders.Count != 0)
+                {
+                    HintAddFolderTextBlock.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+
+                }
                 foreach (var f in folders)
                 {
                     try

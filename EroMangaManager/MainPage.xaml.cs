@@ -62,6 +62,11 @@ namespace EroMangaManager
             current = this;
             pageInstancesManager.MainPage = this;
             MainFrame.Navigate(typeof(BookcaseContainer));
+
+           if(collectionObserver.StorageFolders.Count == 0 )
+            { 
+                MainFrame.Navigate(typeof(LibraryPage));
+            }
         }
 
 

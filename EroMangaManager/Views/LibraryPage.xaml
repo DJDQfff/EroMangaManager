@@ -23,6 +23,7 @@
                 Click="addButton_Click"
                 x:Uid="AddFolderButton"
                 d:Content="添加文件夹" />
+        <TextBlock d:Text="提示添加文件夹" x:Load="False" x:Name="HintAddFolderTextBlock" x:Uid="HintAddFirstFolder" Foreground="RoyalBlue" Grid.Row="2" FontSize="40" HorizontalAlignment="Center" />
         <ListView x:Name="list"
                   Grid.Row="2"
                   ItemContainerStyle="{StaticResource ListViewItemStyle_1}"

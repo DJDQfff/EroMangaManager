@@ -18,7 +18,7 @@
         <Setter Property="Background" Value="RoyalBlue" />
     </Style>
     <Style TargetType="TextBlock">
-        <Setter Property="Width"
+        <Setter Property="MinWidth"
                 Value="100" />
     </Style>
     <Style TargetType="Page">
