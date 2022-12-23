@@ -151,6 +151,12 @@
     <Compile Include="Views\BookcaseContainer.xaml.cs">
       <DependentUpon>BookcaseContainer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FunctionPage.xaml.cs">
+      <DependentUpon>FunctionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FunctionPages\RemoveTags.xaml.cs">
+      <DependentUpon>RemoveTags.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SettingSubPages\ErrorZipPage.xaml.cs">
       <DependentUpon>ErrorZipPage.xaml</DependentUpon>
     </Compile>
@@ -292,6 +298,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\BookcaseContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FunctionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FunctionPages\RemoveTags.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

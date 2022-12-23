@@ -150,6 +150,14 @@
           <source>翻译</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Pagsasalin</target>
         </trans-unit>
+        <trans-unit id="FunctionItem.Content" translate="yes" xml:space="preserve">
+          <source>工具箱</source>
+          <target state="new">工具箱</target>
+        </trans-unit>
+        <trans-unit id="Function_RemoveTag.Content" translate="yes" xml:space="preserve">
+          <source>移除重复本子标签</source>
+          <target state="new">移除重复本子标签</target>
+        </trans-unit>
       </group>
     </body>
   </file>

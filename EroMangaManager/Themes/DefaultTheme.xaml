@@ -8,13 +8,11 @@
     </Style>
     <Style TargetType="Button">
         <Setter Property="Margin"
-                Value="8,0,0,8" />
+                Value="12" />
         <Setter Property="HorizontalAlignment"
-                Value="Center" />
+                Value="Stretch" />
         <Setter Property="VerticalAlignment"
-                Value="Bottom" />
-        <Setter Property="Width"
-                Value="120" />
+                Value="Stretch" />
         <Setter Property="Background" Value="RoyalBlue" />
     </Style>
     <Style TargetType="TextBlock">

@@ -156,6 +156,12 @@
   <data name="FullScreenToggle.Content" xml:space="preserve">
     <value>全屏</value>
   </data>
+  <data name="FunctionItem.Content" xml:space="preserve">
+    <value>工具箱</value>
+  </data>
+  <data name="Function_RemoveTag.Content" xml:space="preserve">
+    <value>移除重复本子标签</value>
+  </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>目前没有文件夹，请添加你的第一个扫描文件夹</value>
   </data>
