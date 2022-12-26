@@ -158,6 +158,10 @@
           <source>移除重复本子标签</source>
           <target state="new">移除重复本子标签</target>
         </trans-unit>
+        <trans-unit id="UpdateRecordItem.Content" translate="yes" xml:space="preserve">
+          <source>更新记录</source>
+          <target state="new">更新记录</target>
+        </trans-unit>
       </group>
     </body>
   </file>

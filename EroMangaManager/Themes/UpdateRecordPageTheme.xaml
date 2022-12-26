@@ -1,0 +1,15 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="TextBlock"
+           x:Key="UpdateVersion">
+        <Setter Property="FontSize"
+                Value="54" />
+    </Style>
+    <Style TargetType="TextBlock"
+           x:Key="UpdateDescription">
+        <Setter Property="FontSize"
+                Value="32" />
+
+    </Style>
+</ResourceDictionary>

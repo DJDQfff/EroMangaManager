@@ -39,11 +39,15 @@ namespace EroMangaManager.Views
 
         private async void Button_Click (object sender , RoutedEventArgs e)
         {
+            var button = sender as Button;
+            var xuid = button.Name;
+
             CoreApplicationView newView = CoreApplication.CreateNewView();
             int newViewId = 0;
             await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal , () =>
             {
                 Frame frame = new Frame();
+
                 frame.Navigate(typeof(FunctionPages.RemoveTags) , null);
                 Window.Current.Content = frame;
                 // You have to activate the window in order to show it later.
@@ -52,6 +56,11 @@ namespace EroMangaManager.Views
                 newViewId = ApplicationView.GetForCurrentView().Id;
             });
             bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
+        }
+
+        private void VariableSizedWrapGrid_Loaded (object sender , RoutedEventArgs e)
+        {
+
         }
     }
 }

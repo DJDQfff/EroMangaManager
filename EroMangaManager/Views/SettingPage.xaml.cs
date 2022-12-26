@@ -41,5 +41,10 @@ namespace EroMangaManager.Views
             }
 
         }
+
+        private void UpdateRecordItem_Click (object sender , RoutedEventArgs e)
+        {
+            SettingFrame.Navigate(typeof(UpdateRecordsPage));
+        }
     }
 }

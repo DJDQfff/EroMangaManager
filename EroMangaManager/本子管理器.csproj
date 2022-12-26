@@ -145,6 +145,8 @@
       <DependentUpon>MangaTagEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\FolderEnum.cs" />
+    <Compile Include="Models\IFunctionPage.cs" />
+    <Compile Include="ViewModels\FunctionPagesManager.cs" />
     <Compile Include="ViewModels\MangasFolder.cs" />
     <Compile Include="ViewModels\PageInstancesManager.cs" />
     <Compile Include="ViewModels\ReaderVM.cs" />
@@ -198,6 +200,9 @@
     <Compile Include="ValueConverters\ProgressRingVisibility.cs" />
     <Compile Include="Views\TestPage.xaml.cs">
       <DependentUpon>TestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UpdateRecordsPage.xaml.cs">
+      <DependentUpon>UpdateRecordsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -297,6 +302,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\UpdateRecordPageTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\BookcaseContainer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -346,6 +355,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UpdateRecordsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

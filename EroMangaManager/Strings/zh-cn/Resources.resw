@@ -231,4 +231,7 @@
   <data name="TranslateButton.Label" xml:space="preserve">
     <value>翻译</value>
   </data>
+  <data name="UpdateRecordItem.Content" xml:space="preserve">
+    <value>更新记录</value>
+  </data>
 </root>

@@ -26,6 +26,9 @@
             <NavigationView.Content>
                 <Frame x:Name="SettingFrame" />
             </NavigationView.Content>
+            <NavigationView.PaneFooter>
+                <Button d:Content="更新日志" x:Uid="UpdateRecordItem" x:Name="UpdateRecordItem" Click="UpdateRecordItem_Click"/>
+            </NavigationView.PaneFooter>
         </NavigationView>
     </Grid>
 </Page>
