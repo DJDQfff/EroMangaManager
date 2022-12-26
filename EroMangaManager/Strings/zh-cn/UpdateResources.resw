@@ -117,22 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Description_2022.12.19.Test" xml:space="preserve">
+  <data name="Description_20221219.Text" xml:space="preserve">
     <value>添加导出PDF功能</value>
   </data>
-  <data name="Description_2022.12.26.Test" xml:space="preserve">
+  <data name="Description_20221226.Text" xml:space="preserve">
     <value>修复了一些bug;添加更新日志</value>
   </data>
-  <data name="Description_before.Test" xml:space="preserve">
+  <data name="Description_before.Text" xml:space="preserve">
     <value>更早的记录</value>
   </data>
-  <data name="Version_2022.12.19.Test" xml:space="preserve">
+  <data name="Version_20221219.Text" xml:space="preserve">
     <value>2022.12.19</value>
   </data>
-  <data name="Version_2022.12.26.Test" xml:space="preserve">
+  <data name="Version_20221226.Text" xml:space="preserve">
     <value>2022.12.26</value>
   </data>
-  <data name="Version_before.Test" xml:space="preserve">
+  <data name="Version_before.Text" xml:space="preserve">
     <value>更早的版本</value>
   </data>
 </root>

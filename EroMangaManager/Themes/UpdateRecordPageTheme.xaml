@@ -12,4 +12,10 @@
                 Value="32" />
 
     </Style>
+    <Style TargetType="StackPanel">
+        <Setter Property="Orientation"
+                Value="Vertical" />
+        <Setter Property="Margin"
+                Value="24" />
+    </Style>
 </ResourceDictionary>

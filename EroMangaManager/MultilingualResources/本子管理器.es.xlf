@@ -6,27 +6,27 @@
     </header>
     <body>
       <group id="本子管理器/STRINGS/ZH-CN/UPDATERESOURCES.RESW" datatype="resx">
-        <trans-unit id="Description_2022.12.19.Test" translate="yes" xml:space="preserve">
+        <trans-unit id="Description_20221219.Text" translate="yes" xml:space="preserve">
           <source>添加导出PDF功能</source>
           <target state="new">添加导出PDF功能</target>
         </trans-unit>
-        <trans-unit id="Description_2022.12.26.Test" translate="yes" xml:space="preserve">
+        <trans-unit id="Description_20221226.Text" translate="yes" xml:space="preserve">
           <source>修复了一些bug;添加更新日志</source>
           <target state="new">修复了一些bug;添加更新日志</target>
         </trans-unit>
-        <trans-unit id="Description_before.Test" translate="yes" xml:space="preserve">
+        <trans-unit id="Description_before.Text" translate="yes" xml:space="preserve">
           <source>更早的记录</source>
           <target state="new">更早的记录</target>
         </trans-unit>
-        <trans-unit id="Version_2022.12.19.Test" translate="yes" xml:space="preserve">
+        <trans-unit id="Version_20221219.Text" translate="yes" xml:space="preserve">
           <source>2022.12.19</source>
           <target state="new">2022.12.19</target>
         </trans-unit>
-        <trans-unit id="Version_2022.12.26.Test" translate="yes" xml:space="preserve">
+        <trans-unit id="Version_20221226.Text" translate="yes" xml:space="preserve">
           <source>2022.12.26</source>
           <target state="new">2022.12.26</target>
         </trans-unit>
-        <trans-unit id="Version_before.Test" translate="yes" xml:space="preserve">
+        <trans-unit id="Version_before.Text" translate="yes" xml:space="preserve">
           <source>更早的版本</source>
           <target state="new">更早的版本</target>
         </trans-unit>

@@ -6,11 +6,7 @@
       NavigationCacheMode="Disabled"
       mc:Ignorable="d">
     <Grid >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <NavigationView PaneDisplayMode="Top" ItemInvoked="NavigationView_ItemInvoked" IsSettingsVisible="False" IsBackButtonVisible="Collapsed">
+        <NavigationView  PaneDisplayMode="Top" ItemInvoked="NavigationView_ItemInvoked" IsSettingsVisible="False" IsBackButtonVisible="Collapsed">
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="SettingFilterImageButton"
                                     d:Content="过滤图库"

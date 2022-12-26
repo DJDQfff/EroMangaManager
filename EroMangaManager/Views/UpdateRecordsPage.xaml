@@ -14,14 +14,23 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <StackPanel  Orientation="Vertical">
-        <TextBlock x:Uid="/UpdateResources/Version_2022.12.26" Style="{StaticResource UpdateVersion}" />
-        <TextBlock x:Uid="/UpdateResources/Description_2022.12.26" Style="{StaticResource UpdateDescription}"/>
+    <ScrollViewer HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled">
+            <StackPanel >
+            <StackPanel >
+                                  <TextBlock  x:Uid="/UpdateResources/Version_20221226" Style="{StaticResource UpdateVersion}" />
+        <TextBlock x:Uid="/UpdateResources/Description_20221226" Style="{StaticResource UpdateDescription}"/>
+  
+            </StackPanel>
 
-        <TextBlock x:Uid="/UpdateResources/Version_2022.12.19"
+        <StackPanel >
+                    <TextBlock x:Uid="/UpdateResources/Version_20221219"
                    Style="{StaticResource UpdateVersion}" />
-        <TextBlock x:Uid="/UpdateResources/Description_2022.12.19"
+        <TextBlock x:Uid="/UpdateResources/Description_20221219"
                    Style="{StaticResource UpdateDescription}" />
 
+        </StackPanel>
+
     </StackPanel>
+
+    </ScrollViewer>
 </Page>
