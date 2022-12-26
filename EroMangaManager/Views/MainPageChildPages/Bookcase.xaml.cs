@@ -39,7 +39,7 @@ namespace EroMangaManager.Views.MainPageChildPages
         {
             MangaBook mangaBook = e.ClickedItem as MangaBook;
 
-            MainPage.current.MainFrame.Navigate(typeof(EroMangaManager.Views.ReadPage), mangaBook);
+            MainPage.current.MainFrame.Navigate(typeof(ReadPage), mangaBook);
 
             MainPage.current.MainNavigationView.SelectedItem = MainPage.current.MainNavigationView.MenuItems[2];
         }
