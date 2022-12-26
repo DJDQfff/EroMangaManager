@@ -135,13 +135,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Helpers\Exporter.cs" />
-    <Compile Include="Views\InteractPage\ConfirmDeleteMangaFile.xaml.cs">
+    <Compile Include="Views\InteractPages\ConfirmDeleteMangaFile.xaml.cs">
       <DependentUpon>ConfirmDeleteMangaFile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\InteractPage\MangaTagDetail.xaml.cs">
+    <Compile Include="Views\InteractPages\MangaTagDetail.xaml.cs">
       <DependentUpon>MangaTagDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\InteractPage\MangaTagEdit.xaml.cs">
+    <Compile Include="Views\InteractPages\MangaTagEdit.xaml.cs">
       <DependentUpon>MangaTagEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\FolderEnum.cs" />
@@ -150,25 +150,25 @@
     <Compile Include="ViewModels\MangasFolder.cs" />
     <Compile Include="ViewModels\PageInstancesManager.cs" />
     <Compile Include="ViewModels\ReaderVM.cs" />
-    <Compile Include="Views\BookcaseContainer.xaml.cs">
+    <Compile Include="Views\MainPageChildPages\BookcaseContainer.xaml.cs">
       <DependentUpon>BookcaseContainer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FunctionPageShower.xaml.cs">
+    <Compile Include="Views\MainPageChildPages\FunctionPageShower.xaml.cs">
       <DependentUpon>FunctionPageShower.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FunctionPages\RemoveTags.xaml.cs">
+    <Compile Include="Views\FunctionChildPages\RemoveTags.xaml.cs">
       <DependentUpon>RemoveTags.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SettingSubPages\ErrorZipPage.xaml.cs">
+    <Compile Include="Views\SettingPageChildPages\ErrorZipPage.xaml.cs">
       <DependentUpon>ErrorZipPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SettingSubPages\TagKeywordsManagePage.xaml.cs">
+    <Compile Include="Views\SettingPageChildPages\TagKeywordsManagePage.xaml.cs">
       <DependentUpon>TagKeywordsManagePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\TagInfo.xaml.cs">
       <DependentUpon>TagInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ReadPage.xaml.cs">
+    <Compile Include="Views\MainPageChildPages\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -183,22 +183,22 @@
     <Compile Include="Models\MangaBook.cs" />
     <Compile Include="ViewModels\ObservableCollectionVM.cs" />
     <Compile Include="Helpers\Translator.cs" />
-    <Compile Include="Views\LibraryPage.xaml.cs">
+    <Compile Include="Views\MainPageChildPages\LibraryPage.xaml.cs">
       <DependentUpon>LibraryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Bookcase.xaml.cs">
+    <Compile Include="Views\MainPageChildPages\Bookcase.xaml.cs">
       <DependentUpon>Bookcase.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SettingPage.xaml.cs">
+    <Compile Include="Views\MainPageChildPages\SettingPage.xaml.cs">
       <DependentUpon>SettingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SettingSubPages\FiltedImagesPage.xaml.cs">
+    <Compile Include="Views\SettingPageChildPages\FiltedImagesPage.xaml.cs">
       <DependentUpon>FiltedImagesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SettingSubPages\ImageItem.cs" />
+    <Compile Include="Views\SettingPageChildPages\ImageItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValueConverters\ProgressRingVisibility.cs" />
-    <Compile Include="Views\UpdateRecordsPage.xaml.cs">
+    <Compile Include="Views\MainPageChildPages\UpdateRecordsPage.xaml.cs">
       <DependentUpon>UpdateRecordsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -286,15 +286,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\InteractPage\ConfirmDeleteMangaFile.xaml">
+    <Page Include="Views\InteractPages\ConfirmDeleteMangaFile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\InteractPage\MangaTagDetail.xaml">
+    <Page Include="Views\InteractPages\MangaTagDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\InteractPage\MangaTagEdit.xaml">
+    <Page Include="Views\InteractPages\MangaTagEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -306,23 +306,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\BookcaseContainer.xaml">
+    <Page Include="Views\MainPageChildPages\BookcaseContainer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\FunctionPageShower.xaml">
+    <Page Include="Views\MainPageChildPages\FunctionPageShower.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\FunctionPages\RemoveTags.xaml">
+    <Page Include="Views\FunctionChildPages\RemoveTags.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SettingSubPages\ErrorZipPage.xaml">
+    <Page Include="Views\SettingPageChildPages\ErrorZipPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SettingSubPages\TagKeywordsManagePage.xaml">
+    <Page Include="Views\SettingPageChildPages\TagKeywordsManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -330,7 +330,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ReadPage.xaml">
+    <Page Include="Views\MainPageChildPages\ReadPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -338,23 +338,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\LibraryPage.xaml">
+    <Page Include="Views\MainPageChildPages\LibraryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Bookcase.xaml">
+    <Page Include="Views\MainPageChildPages\Bookcase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SettingPage.xaml">
+    <Page Include="Views\MainPageChildPages\SettingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SettingSubPages\FiltedImagesPage.xaml">
+    <Page Include="Views\SettingPageChildPages\FiltedImagesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UpdateRecordsPage.xaml">
+    <Page Include="Views\MainPageChildPages\UpdateRecordsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

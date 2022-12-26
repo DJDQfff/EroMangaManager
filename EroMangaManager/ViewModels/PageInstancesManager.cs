@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using EroMangaManager.Views;
+using EroMangaManager.Views.MainPageChildPages; 
 
 using Windows.UI.Xaml.Controls;
 
