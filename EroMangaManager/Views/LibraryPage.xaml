@@ -21,9 +21,12 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Click="addButton_Click"
-                x:Uid="AddFolderButton"
+                x:Uid="/UIResources/AddFolderButton"
                 d:Content="添加文件夹" />
-        <TextBlock d:Text="提示添加文件夹" x:Load="False" x:Name="HintAddFolderTextBlock" x:Uid="HintAddFirstFolder" Foreground="RoyalBlue" Grid.Row="2" FontSize="40" HorizontalAlignment="Center" />
+        <TextBlock d:Text="提示添加文件夹"
+                   x:Load="False"
+                   x:Name="HintAddFolderTextBlock"
+                   x:Uid="/UIResources/HintAddFirstFolder" Foreground="RoyalBlue" Grid.Row="2" FontSize="40" HorizontalAlignment="Center" />
         <ListView x:Name="list"
                   Grid.Row="2"
                   ItemContainerStyle="{StaticResource ListViewItemStyle_1}"
@@ -45,7 +48,7 @@
                                  VerticalAlignment="Center"
                                  Click="JumpToBookcase_Click"
                                  d:Content="显示书架"
-                                 x:Uid="ShowFolderBookcase"
+                                 x:Uid="/UIResources/ShowFolderBookcase"
                                  BorderThickness="0">
                         </Button>
 
@@ -61,13 +64,13 @@
 
                             <Button  d:Content="打开文件夹"
                                      VerticalAlignment="Center"
-                                     x:Uid="LaunchFolderButton"
+                                     x:Uid="/UIResources/LaunchFolderButton"
                                      Click="LauncherFolder" />
                             <Button x:Name="removeButton"
                                     VerticalAlignment="Center"
                                     Margin="0,0,20,0"
                                     Click="removeButton_Click"
-                                    x:Uid="RemoveFolderButton"
+                                    x:Uid="/UIResources/RemoveFolderButton"
                                     d:Content="移除" />
                         </StackPanel>
                     </StackPanel>

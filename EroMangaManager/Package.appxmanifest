@@ -14,7 +14,7 @@
   <mp:PhoneIdentity PhoneProductId="0d93a9bc-1be7-4af7-8fb1-080589a742e1" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>ms-resource:AppDisplayName</DisplayName>
+    <DisplayName>ms-resource:/AppxmanifestResources/AppDisplayName</DisplayName>
     <PublisherDisplayName>DJDQfff</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -32,10 +32,10 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="EroMangaManager.App">
       <uap:VisualElements
-        DisplayName="ms-resource:AppDisplayName"
+        DisplayName="ms-resource:/AppxmanifestResources/AppDisplayName"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="ms-resource:Description"
+        Description="ms-resource:/AppxmanifestResources/Description"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

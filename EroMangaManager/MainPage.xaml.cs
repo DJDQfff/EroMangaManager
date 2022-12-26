@@ -34,7 +34,7 @@ namespace EroMangaManager
         /// <summary>
         /// 系统resw解析实例
         /// </summary>
-        public ResourceLoader resourceLoader { get; } = ResourceLoader.GetForCurrentView();
+        public ResourceLoader stringsresourceLoader { get; } = ResourceLoader.GetForCurrentView("StringResources");
 
         /// <summary>
         ///
@@ -49,7 +49,7 @@ namespace EroMangaManager
             collectionObserver.ErrorZipEvent += (string str) =>
               {
                   new ToastContentBuilder()
-                    .AddText($"{str}\r{resourceLoader.GetString("ErrorString1")}")
+                    .AddText($"{str}\r{stringsresourceLoader.GetString("ErrorString1")}")
                     .Show();
               };
 

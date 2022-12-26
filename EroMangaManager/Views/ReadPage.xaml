@@ -16,10 +16,10 @@
                 <Grid.ContextFlyout>
                     <MenuFlyout>
                         <MenuFlyoutItem Click="FilteThisImage2_Click"
-                                        x:Uid="FilterThisImage"
+                                        x:Uid="/UIResources/FilterThisImage"
                                         d:Text="不显示" />
                         <MenuFlyoutItem Click="SaveImageAs2_Click"
-                                        x:Uid="SaveAs"
+                                        x:Uid="/UIResources/SaveAs"
                                         d:Text="另存为" />
                     </MenuFlyout>
                 </Grid.ContextFlyout>
@@ -49,7 +49,7 @@
                   ItemTemplate="{StaticResource Datatemplate_1}">
         </FlipView>
         <VariableSizedWrapGrid Grid.Row="0" x:Load="False" x:Name="ReadPageButtonGroup" FlowDirection="RightToLeft">
-            <ToggleButton x:Uid="FullScreenToggle" Margin="12" Content="全屏" Width="118" IsChecked="False"
+            <ToggleButton x:Uid="/UIResources/FullScreenToggle" Margin="12" Content="全屏" Width="118" IsChecked="False"
                     Height="89"
                           Checked="ToggleButton_Checked"
                           Unchecked="ToggleButton_Unchecked" />

@@ -6,11 +6,9 @@
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                x:Name="thePage"
                Title="{x:Bind mangaBook.MangaName}"
-               x:Uid="MangaTagEditPage"
-               CloseButtonText="不作调整"
+               x:Uid="/UIResources/MangaTagEditPage"
                DataContext="{x:Bind comboxitemlist}"
                PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-               PrimaryButtonText="确认调整"
                mc:Ignorable="d">
     <ContentDialog.Resources>
         <Style TargetType="ListViewItem">
@@ -29,11 +27,9 @@
         <RelativePanel Grid.Row="0"
                        HorizontalAlignment="Stretch">
             <TextBlock RelativePanel.AlignLeftWithPanel="True"
-                       Text="本子标签"
-                       x:Uid="MangaTags" />
+                       x:Uid="/UIResources/MangaTags" />
             <TextBlock RelativePanel.AlignRightWithPanel="True"
-                       Text="标签分类："
-                       x:Uid="MangaTypes" />
+                       x:Uid="/UIResources/MangaTypes" />
         </RelativePanel>
         <ListView x:Name="List"
                   Grid.Row="1"

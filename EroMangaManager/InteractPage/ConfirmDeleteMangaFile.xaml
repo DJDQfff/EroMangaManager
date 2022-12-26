@@ -4,10 +4,7 @@
                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                xmlns:local="using:EroMangaManager.InteractPage"
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-               x:Uid="DeleteFileConfirmPage"
-               Title="你正在删除源文件。。。"
-               PrimaryButtonText="Yes"
-               SecondaryButtonText="No"
+               x:Uid="/UIResources/DeleteFileConfirmPage"
                mc:Ignorable="d">
     <ContentDialog.Resources>
         <Style TargetType="TextBlock">

@@ -15,12 +15,12 @@
     </Grid.RowDefinitions>
     <CommandBar Background="Transparent" Grid.Row="0" x:Name="BookcaseCommandBar" VerticalAlignment="Stretch">
         <AppBarButton Click="TranslateEachMangaName"
-                      x:Uid="TranslateButton"
+                          x:Uid="/UIResources/TranslateButton"
                       Icon="Font"
                       d:Label="翻译" />
         <AppBarButton Click="RefreshMangaList"
                       Icon="Refresh"
-                      x:Uid="RefreshButton"
+                          x:Uid="/UIResources/RefreshButton"
                       d:Label="刷新" />
         </CommandBar>
                     <Frame x:Name="ShowBookcase" Grid.Row="1"/>

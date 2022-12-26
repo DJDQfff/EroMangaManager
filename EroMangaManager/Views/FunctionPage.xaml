@@ -11,8 +11,10 @@
 
     <Grid>
         <VariableSizedWrapGrid  Loaded="VariableSizedWrapGrid_Loaded">
-            <Button x:Name="Function_RemoveTag"  x:Uid="Function_RemoveTag" Loaded="Button_Loaded" Click="Button_Click" />
-            <Button x:Name="Function_FindSameMangaName" x:Uid="Function_FindSameMangaName"
+            <Button x:Name="Function_RemoveTag"
+                    x:Uid="/UIResources/Function_RemoveTag" Loaded="Button_Loaded" Click="Button_Click" />
+            <Button x:Name="Function_FindSameMangaName"
+                    x:Uid="/UIResources/Function_FindSameMangaName"
                     Loaded="Button_Loaded"
                     Click="Button_Click" />
         </VariableSizedWrapGrid>
