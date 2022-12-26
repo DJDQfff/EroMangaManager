@@ -90,8 +90,8 @@ namespace EroMangaManager
                     case nameof(ReadItem):
                         type = typeof(ReadPage);
                         break;
-                    case nameof(FunctionItem):
-                        type = typeof(FunctionPage);
+                    case nameof(FunctionPageShower):
+                        type = typeof(FunctionPageShower);
                         break;
 
                 }

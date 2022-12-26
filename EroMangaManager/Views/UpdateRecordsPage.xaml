@@ -14,8 +14,14 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <StackPanel Orientation="Vertical">
-        <TextBlock Style="{StaticResource UpdateVersion}" />
-        <TextBlock Style="{StaticResource UpdateDescription}"/>
+    <StackPanel  Orientation="Vertical">
+        <TextBlock x:Uid="/UpdateResources/Version_2022.12.26" Style="{StaticResource UpdateVersion}" />
+        <TextBlock x:Uid="/UpdateResources/Description_2022.12.26" Style="{StaticResource UpdateDescription}"/>
+
+        <TextBlock x:Uid="/UpdateResources/Version_2022.12.19"
+                   Style="{StaticResource UpdateVersion}" />
+        <TextBlock x:Uid="/UpdateResources/Description_2022.12.19"
+                   Style="{StaticResource UpdateDescription}" />
+
     </StackPanel>
 </Page>

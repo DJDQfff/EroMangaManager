@@ -29,14 +29,14 @@
                                     x:Uid="/UIResources/ReadItem"
                                     d:Content="正在阅读"
                                     Icon="Read" />
-                <NavigationViewItem x:Name="FunctionItem"
-                                    x:Uid="/UIResources/FunctionItem"
+                <!--<NavigationViewItem x:Name="FunctionPageShower"
+                                    x:Uid="/UIResources/FunctionPageShower"
                                     d:Content="功能页">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEC7A;"
                                   FontFamily="Segoe MDL2 Assets" />
                     </NavigationViewItem.Icon>
-                </NavigationViewItem>
+                </NavigationViewItem>-->
             </NavigationView.MenuItems>
             <NavigationView.Content>
                 <Frame x:Name="MainFrame"

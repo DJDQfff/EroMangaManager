@@ -5,7 +5,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       NavigationCacheMode="Disabled"
       mc:Ignorable="d">
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
             <RowDefinition Height="*" />
@@ -23,8 +23,9 @@
                                     x:Uid="/UIResources/ErrorZipPageButton"/>
 
             </NavigationView.MenuItems>
-            <NavigationView.Content>
-                <Frame x:Name="SettingFrame" />
+            <NavigationView.Content >
+                <Frame x:Name="SettingFrame"
+                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
             </NavigationView.Content>
             <NavigationView.PaneFooter>
                 <Button d:Content="更新日志"

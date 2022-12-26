@@ -159,10 +159,10 @@
   <data name="FullScreenToggle.Content" xml:space="preserve">
     <value>全屏</value>
   </data>
-  <data name="FunctionItem.Content" xml:space="preserve">
+  <data name="FunctionPageShower.Content" xml:space="preserve">
     <value>工具箱</value>
   </data>
-  <data name="FunctionItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+  <data name="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>工具箱</value>
   </data>
   <data name="Function_RemoveTag.Content" xml:space="preserve">

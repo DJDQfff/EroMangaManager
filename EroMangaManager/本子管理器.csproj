@@ -153,8 +153,8 @@
     <Compile Include="Views\BookcaseContainer.xaml.cs">
       <DependentUpon>BookcaseContainer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FunctionPage.xaml.cs">
-      <DependentUpon>FunctionPage.xaml</DependentUpon>
+    <Compile Include="Views\FunctionPageShower.xaml.cs">
+      <DependentUpon>FunctionPageShower.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FunctionPages\RemoveTags.xaml.cs">
       <DependentUpon>RemoveTags.xaml</DependentUpon>
@@ -198,9 +198,6 @@
     <Compile Include="Views\SettingSubPages\ImageItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValueConverters\ProgressRingVisibility.cs" />
-    <Compile Include="Views\TestPage.xaml.cs">
-      <DependentUpon>TestPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\UpdateRecordsPage.xaml.cs">
       <DependentUpon>UpdateRecordsPage.xaml</DependentUpon>
     </Compile>
@@ -313,7 +310,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\FunctionPage.xaml">
+    <Page Include="Views\FunctionPageShower.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -354,10 +351,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SettingSubPages\FiltedImagesPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\TestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

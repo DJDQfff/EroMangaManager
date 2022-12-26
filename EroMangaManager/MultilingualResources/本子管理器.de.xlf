@@ -5,7 +5,32 @@
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
     </header>
     <body>
-      <group id="本子管理器/STRINGS/ZH-CN/UPDATERESOURCES.RESW" datatype="resx" />
+      <group id="本子管理器/STRINGS/ZH-CN/UPDATERESOURCES.RESW" datatype="resx">
+        <trans-unit id="Description_2022.12.19.Test" translate="yes" xml:space="preserve">
+          <source>添加导出PDF功能</source>
+          <target state="new">添加导出PDF功能</target>
+        </trans-unit>
+        <trans-unit id="Description_2022.12.26.Test" translate="yes" xml:space="preserve">
+          <source>修复了一些bug;添加更新日志</source>
+          <target state="new">修复了一些bug;添加更新日志</target>
+        </trans-unit>
+        <trans-unit id="Description_before.Test" translate="yes" xml:space="preserve">
+          <source>更早的记录</source>
+          <target state="new">更早的记录</target>
+        </trans-unit>
+        <trans-unit id="Version_2022.12.19.Test" translate="yes" xml:space="preserve">
+          <source>2022.12.19</source>
+          <target state="new">2022.12.19</target>
+        </trans-unit>
+        <trans-unit id="Version_2022.12.26.Test" translate="yes" xml:space="preserve">
+          <source>2022.12.26</source>
+          <target state="new">2022.12.26</target>
+        </trans-unit>
+        <trans-unit id="Version_before.Test" translate="yes" xml:space="preserve">
+          <source>更早的版本</source>
+          <target state="new">更早的版本</target>
+        </trans-unit>
+      </group>
     </body>
   </file>
   <file datatype="xml" source-language="zh-CN" target-language="de" original="本子管理器/STRINGS/ZH-CN/UIRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
@@ -49,10 +74,6 @@
         <trans-unit id="FullScreenToggle.Content" translate="yes" xml:space="preserve">
           <source>全屏</source>
           <target state="new">全屏</target>
-        </trans-unit>
-        <trans-unit id="FunctionItem.Content" translate="yes" xml:space="preserve">
-          <source>工具箱</source>
-          <target state="new">工具箱</target>
         </trans-unit>
         <trans-unit id="Function_RemoveTag.Content" translate="yes" xml:space="preserve">
           <source>移除重复本子标签</source>
@@ -166,10 +187,6 @@
           <source>已启用</source>
           <target state="new">已启用</target>
         </trans-unit>
-        <trans-unit id="FunctionItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
-          <source>工具箱</source>
-          <target state="new">工具箱</target>
-        </trans-unit>
         <trans-unit id="DeleteFileConfirmPage.PrimaryButtonText" translate="yes" xml:space="preserve">
           <source>是</source>
           <target state="new">是</target>
@@ -177,6 +194,14 @@
         <trans-unit id="DeleteFileConfirmPage.SecondaryButtonText" translate="yes" xml:space="preserve">
           <source>否</source>
           <target state="new">否</target>
+        </trans-unit>
+        <trans-unit id="FunctionPageShower.Content" translate="yes" xml:space="preserve">
+          <source>工具箱</source>
+          <target state="new">工具箱</target>
+        </trans-unit>
+        <trans-unit id="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>工具箱</source>
+          <target state="new">工具箱</target>
         </trans-unit>
       </group>
     </body>

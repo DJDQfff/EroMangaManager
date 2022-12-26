@@ -24,9 +24,12 @@ namespace EroMangaManager.Views
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class FunctionPage : Page
+    public sealed partial class FunctionPageShower : Page
     {
-        public FunctionPage ()
+        /// <summary>
+        /// 所有工具也的集中展示页面
+        /// </summary>
+        public FunctionPageShower ()
         {
             this.InitializeComponent();
         }
