@@ -58,8 +58,8 @@ namespace EroMangaManager.Views
             }
             if (manga != currentManga)                  // 传入新漫画，则设置新源
             {
-                this.ReadPage_ProgressRing_0.Visibility = Visibility.Visible;
                 await SetNewSource(manga);
+
             }
             else                                       // 未传入新漫画，不作变动。这个其实不用写了
             {
