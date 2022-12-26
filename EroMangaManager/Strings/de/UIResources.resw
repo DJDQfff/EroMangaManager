@@ -15,14 +15,17 @@
   <data name="AddFolderButton.Content" xml:space="preserve">
     <value>Hinzufügen eines Ordners</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Kleines gelbes Buch</value>
-  </data>
   <data name="BookcaseItem.Content" xml:space="preserve">
     <value>Bücherbrett</value>
   </data>
   <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Comic-Bücherregal</value>
+  </data>
+  <data name="DeleteFileConfirmPage.PrimaryButtonText" xml:space="preserve">
+    <value>sein</value>
+  </data>
+  <data name="DeleteFileConfirmPage.SecondaryButtonText" xml:space="preserve">
+    <value>nicht</value>
   </data>
   <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
     <value>Bestätigen Sie das Löschen von Dateien?</value>
@@ -30,26 +33,35 @@
   <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
     <value>Löschen der Quelldatei</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>Dies ist ein Manga-Manager zum Verwalten und Lesen Ihrer gespeicherten Comics in Zip-Form. Interne Bilder müssen im JPG- und PNG-Format vorliegen</value>
-  </data>
-  <data name="ErrorString1" xml:space="preserve">
-    <value>Ein Fehler ist aufgetreten und konnte nicht geöffnet werden</value>
-  </data>
   <data name="ErrorZipPageButton.Content" xml:space="preserve">
     <value>Ausnahme Zip</value>
   </data>
-  <data name="ExportDone" xml:space="preserve">
-    <value>Der Export ist abgeschlossen</value>
-  </data>
   <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
     <value>Als PDF exportieren</value>
+  </data>
+  <data name="FilterImageONOFF.Header" xml:space="preserve">
+    <value>Ob die Einzelseitenfilterung aktiviert werden soll (das Aktivieren dieser Funktion verlangsamt das Öffnen von Comics)</value>
+  </data>
+  <data name="FilterImageONOFF.OffContent" xml:space="preserve">
+    <value>Arbeitsunfähig</value>
+  </data>
+  <data name="FilterImageONOFF.OnContent" xml:space="preserve">
+    <value>Ermöglichte</value>
   </data>
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>Diese Zahl wird nicht angezeigt</value>
   </data>
   <data name="FullScreenToggle.Content" xml:space="preserve">
     <value>Vollbild</value>
+  </data>
+  <data name="FunctionPageShower.Content" xml:space="preserve">
+    <value>Werkzeugkasten</value>
+  </data>
+  <data name="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Werkzeugkasten</value>
+  </data>
+  <data name="Function_RemoveTag.Content" xml:space="preserve">
+    <value>Entfernen der Unterregisterkarte "Buch duplizieren"</value>
   </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>Es gibt derzeit keine Ordner, bitte fügen Sie Ihren ersten Scanordner hinzu</value>
@@ -119,5 +131,8 @@
   </data>
   <data name="TranslateButton.Label" xml:space="preserve">
     <value>Übersetzung</value>
+  </data>
+  <data name="UpdateRecordItem.Content" xml:space="preserve">
+    <value>Datensätze aktualisieren</value>
   </data>
 </root>

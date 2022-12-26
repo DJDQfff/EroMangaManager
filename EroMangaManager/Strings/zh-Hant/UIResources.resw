@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddFolderButton.Content" xml:space="preserve">
+    <value>添加資料夾</value>
+  </data>
+  <data name="BookcaseItem.Content" xml:space="preserve">
+    <value>書架</value>
+  </data>
+  <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>漫畫書架</value>
+  </data>
+  <data name="DeleteFileConfirmPage.PrimaryButtonText" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="DeleteFileConfirmPage.SecondaryButtonText" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
+    <value>確認刪除檔案？</value>
+  </data>
+  <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
+    <value>刪除源檔</value>
+  </data>
+  <data name="ErrorZipPageButton.Content" xml:space="preserve">
+    <value>異常Zip</value>
+  </data>
+  <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
+    <value>匯出為PDF</value>
+  </data>
+  <data name="FilterImageONOFF.Header" xml:space="preserve">
+    <value>是否開啟單頁過濾功能（開啟此功能將減慢漫畫開啟速度）</value>
+  </data>
+  <data name="FilterImageONOFF.OffContent" xml:space="preserve">
+    <value>已禁用</value>
+  </data>
+  <data name="FilterImageONOFF.OnContent" xml:space="preserve">
+    <value>已啟用</value>
+  </data>
+  <data name="FilterThisImage.Text" xml:space="preserve">
+    <value>不顯示此圖</value>
+  </data>
+  <data name="FullScreenToggle.Content" xml:space="preserve">
+    <value>全屏</value>
+  </data>
+  <data name="FunctionPageShower.Content" xml:space="preserve">
+    <value>工具箱</value>
+  </data>
+  <data name="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>工具箱</value>
+  </data>
+  <data name="Function_RemoveTag.Content" xml:space="preserve">
+    <value>拿掉重複本子標籤</value>
+  </data>
+  <data name="HintAddFirstFolder.Text" xml:space="preserve">
+    <value>目前沒有資料夾，請添加你的第一個掃描資料夾</value>
+  </data>
+  <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
+    <value>打開檔</value>
+  </data>
+  <data name="LaunchFolderButton.Content" xml:space="preserve">
+    <value>打開資料夾</value>
+  </data>
+  <data name="LaunchFolderFlyoutItem.Text" xml:space="preserve">
+    <value>打開所在資料夾</value>
+  </data>
+  <data name="ListItem.Content" xml:space="preserve">
+    <value>已固定資料夾</value>
+  </data>
+  <data name="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>已固定資料夾</value>
+  </data>
+  <data name="MangaTagDetailPage.CloseButtonText" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="MangaTagDetailPage.PrimaryButtonText" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="MangaTagEditPage.CloseButtonText" xml:space="preserve">
+    <value>不作調整</value>
+  </data>
+  <data name="MangaTagEditPage.PrimaryButtonText" xml:space="preserve">
+    <value>確認調整</value>
+  </data>
+  <data name="MangaTags.Text" xml:space="preserve">
+    <value>本子標籤</value>
+  </data>
+  <data name="MangaTypes.Text" xml:space="preserve">
+    <value>標籤分類</value>
+  </data>
+  <data name="MenuItem1.Text" xml:space="preserve">
+    <value>查看資訊</value>
+  </data>
+  <data name="ReadItem.Content" xml:space="preserve">
+    <value>正在閱讀</value>
+  </data>
+  <data name="ReadItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>正在閱讀</value>
+  </data>
+  <data name="RefreshButton.Label" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="RemoveFolderButton.Content" xml:space="preserve">
+    <value>拿掉資料夾</value>
+  </data>
+  <data name="SaveAs.Text" xml:space="preserve">
+    <value>另存為</value>
+  </data>
+  <data name="SetBack.Text" xml:space="preserve">
+    <value>還原</value>
+  </data>
+  <data name="SettingFilterImageButton.Content" xml:space="preserve">
+    <value>過濾圖庫</value>
+  </data>
+  <data name="SettingTagButton.Content" xml:space="preserve">
+    <value>標籤管理</value>
+  </data>
+  <data name="ShowFolderBookcase.Content" xml:space="preserve">
+    <value>顯示書架</value>
+  </data>
+  <data name="TranslateButton.Label" xml:space="preserve">
+    <value>翻譯</value>
+  </data>
+  <data name="UpdateRecordItem.Content" xml:space="preserve">
+    <value>更新記錄</value>
+  </data>
+</root>
