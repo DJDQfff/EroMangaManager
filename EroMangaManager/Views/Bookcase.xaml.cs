@@ -2,7 +2,7 @@
 
 using EroMangaManager.Helpers;
 using EroMangaManager.Models;
-using EroMangaManager.InteractPage;
+using EroMangaManager.Views.InteractPage;
 using Windows.UI.Xaml.Controls;
 using EroMangaManager.ViewModels;
 using Windows.Storage;

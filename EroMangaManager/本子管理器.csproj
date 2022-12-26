@@ -135,13 +135,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Helpers\Exporter.cs" />
-    <Compile Include="InteractPage\ConfirmDeleteMangaFile.xaml.cs">
+    <Compile Include="Views\InteractPage\ConfirmDeleteMangaFile.xaml.cs">
       <DependentUpon>ConfirmDeleteMangaFile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InteractPage\MangaTagDetail.xaml.cs">
+    <Compile Include="Views\InteractPage\MangaTagDetail.xaml.cs">
       <DependentUpon>MangaTagDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InteractPage\MangaTagEdit.xaml.cs">
+    <Compile Include="Views\InteractPage\MangaTagEdit.xaml.cs">
       <DependentUpon>MangaTagEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\FolderEnum.cs" />
@@ -289,15 +289,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="InteractPage\ConfirmDeleteMangaFile.xaml">
+    <Page Include="Views\InteractPage\ConfirmDeleteMangaFile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="InteractPage\MangaTagDetail.xaml">
+    <Page Include="Views\InteractPage\MangaTagDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="InteractPage\MangaTagEdit.xaml">
+    <Page Include="Views\InteractPage\MangaTagEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
