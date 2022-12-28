@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EroMangaDB", "EroMangaTagDa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaiduTranslate", "..\MyInternetAPI\BaiduTranslateAPI\BaiduTranslate.csproj", "{94295F5E-A01C-43F1-947D-47D521F56E09}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -137,6 +139,26 @@ Global
 		{94295F5E-A01C-43F1-947D-47D521F56E09}.Release|x64.Build.0 = Release|Any CPU
 		{94295F5E-A01C-43F1-947D-47D521F56E09}.Release|x86.ActiveCfg = Release|Any CPU
 		{94295F5E-A01C-43F1-947D-47D521F56E09}.Release|x86.Build.0 = Release|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Debug|ARM.Build.0 = Debug|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Debug|x64.Build.0 = Debug|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Debug|x86.Build.0 = Debug|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Release|ARM.ActiveCfg = Release|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Release|ARM.Build.0 = Release|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Release|ARM64.Build.0 = Release|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Release|x64.ActiveCfg = Release|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Release|x64.Build.0 = Release|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Release|x86.ActiveCfg = Release|Any CPU
+		{DA3B5199-BA61-4A51-BCEA-E2D8F1085674}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -135,6 +135,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Helpers\Exporter.cs" />
+    <Compile Include="UserControls\TagsDisplayControl.xaml.cs">
+      <DependentUpon>TagsDisplayControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FunctionChildPages\RemoveRepeatTags.xaml.cs">
       <DependentUpon>RemoveRepeatTags.xaml</DependentUpon>
     </Compile>
@@ -200,6 +203,9 @@
     <Compile Include="ValueConverters\ProgressRingVisibility.cs" />
     <Compile Include="Views\MainPageChildPages\UpdateRecordsPage.xaml.cs">
       <DependentUpon>UpdateRecordsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TestPage.xaml.cs">
+      <DependentUpon>TestPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -326,6 +332,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\TagsDisplayControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\FunctionChildPages\RemoveRepeatTags.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -395,6 +405,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainPageChildPages\UpdateRecordsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
