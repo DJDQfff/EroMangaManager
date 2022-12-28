@@ -8,8 +8,7 @@
     mc:Ignorable="d"
     xmlns:app="using:EroMangaManager"
     xmlns:vm="using:EroMangaManager.ViewModels"
-    xmlns:model="using:EroMangaManager.Models"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    xmlns:model="using:EroMangaManager.Models">
 
     <Grid>
         <ListView ItemsSource="{x:Bind app:MainPage.current.collectionObserver.MangaFolders}">
@@ -18,10 +17,16 @@
                     <ListView ItemsSource="{x:Bind MangaBooks}">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="model:MangaBook">
-                                <TextBlock Text="{x:Bind MangaTags.Length}" />
+                                <GridView>
+
+                                    <GridView.ItemTemplate>
+                                        <DataTemplate x:DataType="x:String">
+                                            <TextBlock Text="{x:Bind }" />
+                                        </DataTemplate>
+                                    </GridView.ItemTemplate>
+                                </GridView>
                             </DataTemplate>
                         </ListView.ItemTemplate>
-                        
                     </ListView>
                 </DataTemplate>
             </ListView.ItemTemplate>
