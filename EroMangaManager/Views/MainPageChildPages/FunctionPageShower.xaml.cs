@@ -39,8 +39,14 @@ namespace EroMangaManager.Views.MainPageChildPages
             await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal , () =>
             {
                 Frame frame = new Frame();
-
-                frame.Navigate(typeof(FunctionChildPages.RemoveTags) , null);
+                Type type = null; 
+                switch (xuid)
+                {
+                    case nameof(Function_RemoveRepeatTags):
+                        type = typeof(FunctionChildPages.RemoveRepeatTags);
+                        break;
+                }
+                frame.Navigate( type, null);
                 Window.Current.Content = frame;
                 // You have to activate the window in order to show it later.
                 Window.Current.Activate();
@@ -48,10 +54,6 @@ namespace EroMangaManager.Views.MainPageChildPages
                 newViewId = ApplicationView.GetForCurrentView().Id;
             });
             bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
-        }
-
-        private void VariableSizedWrapGrid_Loaded (object sender , RoutedEventArgs e)
-        {
         }
     }
 }

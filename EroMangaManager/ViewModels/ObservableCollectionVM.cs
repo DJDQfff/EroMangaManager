@@ -69,6 +69,10 @@ namespace EroMangaManager.ViewModels
             ErrorZipEvent?.Invoke(manganame);
         }
 
+        /// <summary>
+        /// 事情完成时发生
+        /// </summary>
+        /// <param name="message"></param>
         public void WorkDone (string message) => WorkDoneEvent?.Invoke(message);
 
         /// <summary>ViewModel初始化</summary>

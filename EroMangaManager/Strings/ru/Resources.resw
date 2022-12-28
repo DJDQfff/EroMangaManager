@@ -63,9 +63,6 @@
   <data name="Function_FindSameMangaName.Content" xml:space="preserve">
     <value></value>
   </data>
-  <data name="Function_RemoveTag.Content" xml:space="preserve">
-    <value>Удаление вложенной вкладки "Дубликат книги"</value>
-  </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>В настоящее время нет папок, пожалуйста, добавьте свою первую папку сканирования</value>
   </data>

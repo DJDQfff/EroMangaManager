@@ -168,7 +168,7 @@
   <data name="Function_FindSameMangaName.Content" xml:space="preserve">
     <value />
   </data>
-  <data name="Function_RemoveTag.Content" xml:space="preserve">
+  <data name="Function_RemoveRepeatTags.Content" xml:space="preserve">
     <value>移除重复本子标签</value>
   </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">

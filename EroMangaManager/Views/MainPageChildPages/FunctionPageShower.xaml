@@ -5,15 +5,21 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d"
       NavigationCacheMode="Enabled">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/./Themes/FunctionShowerControl.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid>
-        <VariableSizedWrapGrid  Loaded="VariableSizedWrapGrid_Loaded">
-            <Button x:Name="Function_RemoveTag"
-                    x:Uid="/Resources/Function_RemoveTag"
+        <VariableSizedWrapGrid >
+            <Button x:Load="False" x:Name="Function_FindSameMangaName"
+                    x:Uid="/Resources/Function_FindSameMangaName"
                     Loaded="Button_Loaded"
                     Click="Button_Click" />
-            <Button x:Name="Function_FindSameMangaName"
-                    x:Uid="/Resources/Function_FindSameMangaName"
+            <Button x:Name="Function_RemoveRepeatTags"
+                    x:Uid="Function_RemoveRepeatTags"
                     Loaded="Button_Loaded"
                     Click="Button_Click" />
         </VariableSizedWrapGrid>

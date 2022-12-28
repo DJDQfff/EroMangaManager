@@ -9,6 +9,9 @@ namespace EroMangaManager.Views.MainPageChildPages
     /// </summary>
     public sealed partial class UpdateRecordsPage : Page
     {
+        /// <summary>
+        /// 更新日志展示界面
+        /// </summary>
         public UpdateRecordsPage ()
         {
             this.InitializeComponent();

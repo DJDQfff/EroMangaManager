@@ -63,9 +63,6 @@
   <data name="Function_FindSameMangaName.Content" xml:space="preserve">
     <value></value>
   </data>
-  <data name="Function_RemoveTag.Content" xml:space="preserve">
-    <value>중복 하위 탭을 제거합니다</value>
-  </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>현재 폴더가 없으므로 첫 번째 검색 폴더를 추가합니다</value>
   </data>

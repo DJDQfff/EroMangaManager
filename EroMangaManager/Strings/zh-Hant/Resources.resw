@@ -63,9 +63,6 @@
   <data name="Function_FindSameMangaName.Content" xml:space="preserve">
     <value></value>
   </data>
-  <data name="Function_RemoveTag.Content" xml:space="preserve">
-    <value>拿掉重複本子標籤</value>
-  </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>目前沒有資料夾，請添加你的第一個掃描資料夾</value>
   </data>

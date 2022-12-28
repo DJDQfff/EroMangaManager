@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="EroMangaManager.Views.FunctionChildPages.RemoveRepeatTags"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EroMangaManager.Views.FunctionChildPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:app="using:EroMangaManager"
+    xmlns:vm="using:EroMangaManager.ViewModels"
+    xmlns:model="using:EroMangaManager.Models"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <ListView ItemsSource="{x:Bind app:MainPage.current.collectionObserver.MangaFolders}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="vm:MangasFolder">
+                    <ListView ItemsSource="{x:Bind MangaBooks}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="model:MangaBook">
+                                <TextBlock Text="{x:Bind MangaTags.Length}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        
+                    </ListView>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

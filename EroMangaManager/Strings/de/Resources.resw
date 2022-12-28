@@ -63,9 +63,6 @@
   <data name="Function_FindSameMangaName.Content" xml:space="preserve">
     <value></value>
   </data>
-  <data name="Function_RemoveTag.Content" xml:space="preserve">
-    <value>Entfernen der Unterregisterkarte "Buch duplizieren"</value>
-  </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>Es gibt derzeit keine Ordner, bitte fügen Sie Ihren ersten Scanordner hinzu</value>
   </data>

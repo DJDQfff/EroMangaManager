@@ -141,10 +141,6 @@
           <source></source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion"></target>
         </trans-unit>
-        <trans-unit id="Function_RemoveTag.Content" translate="yes" xml:space="preserve">
-          <source>移除重复本子标签</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Entfernen der Unterregisterkarte "Buch duplizieren"</target>
-        </trans-unit>
         <trans-unit id="HintAddFirstFolder.Text" translate="yes" xml:space="preserve">
           <source>目前没有文件夹，请添加你的第一个扫描文件夹</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Es gibt derzeit keine Ordner, bitte fügen Sie Ihren ersten Scanordner hinzu</target>
@@ -240,6 +236,10 @@
         <trans-unit id="UpdateRecordItem.Content" translate="yes" xml:space="preserve">
           <source>更新记录</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Datensätze aktualisieren</target>
+        </trans-unit>
+        <trans-unit id="Function_RemoveRepeatTags.Content" translate="yes" xml:space="preserve">
+          <source>移除重复本子标签</source>
+          <target state="new">移除重复本子标签</target>
         </trans-unit>
       </group>
     </body>
