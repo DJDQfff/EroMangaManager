@@ -28,8 +28,9 @@ namespace EroMangaManager.Views.MainPageChildPages
     public sealed partial class BookcaseContainer : Page
     {
         internal MangasFolder BindMangaFolder { set; get; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public BookcaseContainer ()
         {
@@ -37,15 +38,15 @@ namespace EroMangaManager.Views.MainPageChildPages
             MainPage.current.bookcaseContainer = this;
         }
 
-        internal void ChangeMangasFolder(MangasFolder mangasFolder)
+        internal void ChangeMangasFolder (MangasFolder mangasFolder)
         {
             BindMangaFolder = mangasFolder;
 
             Bookcase bookcase;
-            if(! MainPage.pageInstancesManager.Bookcases.ContainsKey(mangasFolder))
+            if (!MainPage.pageInstancesManager.Bookcases.ContainsKey(mangasFolder))
             {
-               bookcase=new Bookcase( mangasFolder);
-                MainPage.pageInstancesManager.Bookcases.Add(mangasFolder, bookcase);
+                bookcase = new Bookcase(mangasFolder);
+                MainPage.pageInstancesManager.Bookcases.Add(mangasFolder , bookcase);
             }
             else
             {
@@ -53,7 +54,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             }
 
             var c = this.FindName("ShowBookcase") as Frame;
-            c.Content= bookcase;
+            c.Content = bookcase;
         }
 
         private async void RefreshMangaList (object sender , Windows.UI.Xaml.RoutedEventArgs e)
@@ -67,10 +68,9 @@ namespace EroMangaManager.Views.MainPageChildPages
 
             MainPage.current.collectionObserver.Initialize(folder);
 
-
-
             button.IsEnabled = true;
         }
+
         private async void TranslateEachMangaName (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             AppBarButton button = sender as AppBarButton;
@@ -97,6 +97,5 @@ namespace EroMangaManager.Views.MainPageChildPages
 
             button.IsEnabled = true;
         }
-
     }
 }

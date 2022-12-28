@@ -19,6 +19,7 @@ namespace EroMangaDB
 
             return query;
         }
+
         /// <summary>
         /// 统计符合Hash条件的个数
         /// </summary>
@@ -30,22 +31,24 @@ namespace EroMangaDB
 
             return query;
         }
+
         /// <summary>
         /// ImageFilter表添加新行
         /// </summary>
         /// <param name="hash"></param>
         /// <param name="length"></param>
         /// <returns></returns>
-        public async Task ImageFilter_Add (string hash, long length)
+        public async Task ImageFilter_Add (string hash , long length)
         {
             FilteredImage imageHash = new FilteredImage()
             {
-                Hash = hash,
+                Hash = hash ,
                 ZipEntryLength = length
             };
             database.Add(imageHash);
             await database.SaveChangesAsync();
         }
+
         /// <summary>
         /// ImageFIlter表移除行
         /// </summary>

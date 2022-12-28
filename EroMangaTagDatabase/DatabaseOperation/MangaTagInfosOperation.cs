@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using EroMangaDB.Entities;
@@ -25,6 +21,7 @@ namespace EroMangaDB
             database.AddRange(mangaTags);
             await database.SaveChangesAsync();
         }
+
         /// <summary>
         /// MangaTag表添加单个
         /// </summary>
@@ -35,6 +32,7 @@ namespace EroMangaDB
             database.Add(mangaTag);
             await database.SaveChangesAsync();
         }
+
         /// <summary>
         /// MangaTag表移除多行
         /// </summary>
@@ -65,6 +63,7 @@ namespace EroMangaDB
             await database.SaveChangesAsync();
             database.Dispose();
         }
+
         /// <summary>
         /// MangaTag表查询多个
         /// </summary>
@@ -77,8 +76,9 @@ namespace EroMangaDB
 
             return tags;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="absolutePath"></param>
         /// <returns></returns>
@@ -88,8 +88,9 @@ namespace EroMangaDB
 
             return tag;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="mangaTag"></param>
         /// <returns></returns>

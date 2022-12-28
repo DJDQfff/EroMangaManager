@@ -2,8 +2,6 @@
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
-using EroMangaManager.Helpers;
-
 using Windows.Storage;
 using Windows.UI.Xaml.Media.Imaging;
 
@@ -21,6 +19,7 @@ namespace EroMangaManager.Views.SettingPageChildPages
         /// 文件
         /// </summary>
         public StorageFile storageFile { set; get; }
+
         /// <summary>
         /// 图像
         /// </summary>
@@ -33,11 +32,12 @@ namespace EroMangaManager.Views.SettingPageChildPages
 
         private async Task InitializeImage ()
         {
-            var thumbnail = await storageFile.GetThumbnailAsync(Windows.Storage.FileProperties.ThumbnailMode.SingleItem, 80);
+            var thumbnail = await storageFile.GetThumbnailAsync(Windows.Storage.FileProperties.ThumbnailMode.SingleItem , 80);
             await bitmapImage.SetSourceAsync(thumbnail);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="items"></param>
         /// <returns></returns>

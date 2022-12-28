@@ -1,31 +1,39 @@
 ﻿<Page x:Class="EroMangaManager.Views.MainPageChildPages.SettingPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       NavigationCacheMode="Disabled"
       mc:Ignorable="d">
-    <Grid >
-        <NavigationView  PaneDisplayMode="Top" ItemInvoked="NavigationView_ItemInvoked" IsSettingsVisible="False" IsBackButtonVisible="Collapsed">
+    <Grid>
+        <NavigationView  PaneDisplayMode="Top"
+                         ItemInvoked="NavigationView_ItemInvoked"
+                         IsSettingsVisible="False"
+                         IsBackButtonVisible="Collapsed">
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="SettingFilterImageButton"
                                     d:Content="过滤图库"
                                     x:Uid="/Resources/SettingFilterImageButton" />
                 <NavigationViewItem x:Name="SettingTagButton"
-                        d:Content="标签管理"
+                                    d:Content="标签管理"
                                     x:Uid="/Resources/SettingTagButton" />
                 <NavigationViewItem x:Name="ErrorZipPageButton"
-                        d:Content="异常Zip"
-                                    x:Uid="/Resources/ErrorZipPageButton"/>
-
+                                    d:Content="异常Zip"
+                                    x:Uid="/Resources/ErrorZipPageButton" />
             </NavigationView.MenuItems>
-            <NavigationView.Content >
+            <NavigationView.Content>
                 <Frame x:Name="SettingFrame"
-                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Stretch"
+                       HorizontalContentAlignment="Stretch"
+                       VerticalContentAlignment="Stretch" />
             </NavigationView.Content>
             <NavigationView.PaneFooter>
-                <Button d:Content="更新日志" Margin="0"
-                        x:Uid="/Resources/UpdateRecordItem" x:Name="UpdateRecordItem" Click="UpdateRecordItem_Click"/>
+                <Button d:Content="更新日志"
+                        Margin="0"
+                        x:Uid="/Resources/UpdateRecordItem"
+                        x:Name="UpdateRecordItem"
+                        Click="UpdateRecordItem_Click" />
             </NavigationView.PaneFooter>
         </NavigationView>
     </Grid>

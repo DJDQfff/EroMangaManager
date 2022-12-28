@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Key="ListViewItemStyle_1"
            TargetType="ListViewItem">
         <Setter Property="HorizontalContentAlignment"
@@ -13,7 +13,8 @@
                 Value="Stretch" />
         <Setter Property="VerticalAlignment"
                 Value="Stretch" />
-        <Setter Property="Background" Value="RoyalBlue" />
+        <Setter Property="Background"
+                Value="RoyalBlue" />
     </Style>
     <Style TargetType="TextBlock">
         <Setter Property="MinWidth"
@@ -27,6 +28,5 @@
                   BackgroundSource="HostBackdrop"
                   FallbackColor="White"
                   TintColor="Orange">
-        
     </AcrylicBrush>
 </ResourceDictionary>

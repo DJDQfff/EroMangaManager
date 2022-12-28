@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
 using System.Linq;
 
 namespace EroMangaDB.Helper
@@ -18,7 +15,7 @@ namespace EroMangaDB.Helper
         /// <param name="keyValuePairs"></param>
         /// <param name="searchkeyword"></param>
         /// <returns>包含此项的key，没有则为null</returns>
-        public static string Searchkeyword (this Dictionary<string, string[]> keyValuePairs, string searchkeyword)
+        public static string Searchkeyword (this Dictionary<string , string[]> keyValuePairs , string searchkeyword)
         {
             foreach (var pair in keyValuePairs)
             {

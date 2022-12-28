@@ -1,28 +1,25 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
-using System.Diagnostics;
-using EroMangaManager.Helpers;
-using EroMangaManager.Models;
 
-using Windows.Storage;
-using Windows.Storage.Pickers;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
-using static EroMangaManager.Models.FolderEnum;
+using EroMangaManager.Models;
 using EroMangaManager.ViewModels;
-using static EroMangaManager.Helpers.ZipEntryHelper;
-using static MyUWPLibrary.StorageItemPicker;
-using static MyUWPLibrary.StorageFolderHelper;
-using static MyStandard20Library.HashComputer;
-using System.Reflection.PortableExecutable;
 
 using SharpCompress.Archives;
-using Windows.UI.Xaml.Controls.Primitives;
+
+using Windows.Storage;
 using Windows.UI.ViewManagement;
-using iText.Layout.Renderer;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Navigation;
+
+using static EroMangaManager.Helpers.ZipEntryHelper;
+using static EroMangaManager.Models.FolderEnum;
+using static MyStandard20Library.HashComputer;
+using static MyUWPLibrary.StorageFolderHelper;
+using static MyUWPLibrary.StorageItemPicker;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
@@ -33,10 +30,12 @@ namespace EroMangaManager.Views.MainPageChildPages
     public sealed partial class ReadPage : Page
     {
         private MangaBook currentManga = null;
+
         /// <summary>
         /// 当前ReaderViewModel
         /// </summary>
         public ReaderVM currentReader = null;
+
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -45,6 +44,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             this.InitializeComponent();
             MainPage.pageInstancesManager.ReadPage = this;
         }
+
         /// <summary>
         /// 修改阅读漫画
         /// </summary>
@@ -59,7 +59,6 @@ namespace EroMangaManager.Views.MainPageChildPages
             if (manga != currentManga)                  // 传入新漫画，则设置新源
             {
                 await SetNewSource(manga);
-
             }
             else                                       // 未传入新漫画，不作变动。这个其实不用写了
             {
@@ -81,6 +80,7 @@ namespace EroMangaManager.Views.MainPageChildPages
                 await currentReader.SelectEntriesAsync(isfilterimage);
             }
         }
+
         /// <summary>
         /// 导航前
         /// </summary>
@@ -94,9 +94,10 @@ namespace EroMangaManager.Views.MainPageChildPages
             await TryChangeManga(mangaBook);
             Debug.WriteLine("睡眠开始");
         }
+
         #region 数据绑定到已解码的BitmapImage
 
-        private async void FilteThisImage2_Click (object sender, RoutedEventArgs e)
+        private async void FilteThisImage2_Click (object sender , RoutedEventArgs e)
         {
             var bitmap = FLIP.SelectedItem as Windows.UI.Xaml.Media.Imaging.BitmapImage;
             var index = currentReader.bitmapImages.IndexOf(bitmap);
@@ -105,10 +106,10 @@ namespace EroMangaManager.Views.MainPageChildPages
             currentReader.bitmapImages.Remove(bitmap);
             string hash = entry.ComputeHash();
             long length = entry.Size;
-            await HashManager.Add(hash, length);
+            await HashManager.Add(hash , length);
 
             StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filters));
-            string path = Path.Combine(storageFolder.Path, hash + ".jpg");
+            string path = Path.Combine(storageFolder.Path , hash + ".jpg");
             entry.WriteToFile(path);
         }
 
@@ -116,7 +117,7 @@ namespace EroMangaManager.Views.MainPageChildPages
         /// <param name="sender"> </param>
         /// <param name="e"> </param>
 
-        private async void SaveImageAs2_Click (object sender, RoutedEventArgs e)
+        private async void SaveImageAs2_Click (object sender , RoutedEventArgs e)
         {
             var bitmap = FLIP.SelectedItem as Windows.UI.Xaml.Media.Imaging.BitmapImage;
             var index = currentReader.bitmapImages.IndexOf(bitmap);
@@ -131,7 +132,9 @@ namespace EroMangaManager.Views.MainPageChildPages
                 }
             }
         }
-        #endregion
+
+        #endregion 数据绑定到已解码的BitmapImage
+
         #region 数据绑定到压缩文件类的每个压缩入口Entry
 
         [Obsolete]
@@ -160,7 +163,7 @@ namespace EroMangaManager.Views.MainPageChildPages
         /// <param name="sender"> </param>
         /// <param name="e"> </param>
         [Obsolete]
-        private async void FLIP_SelectionChanged (object sender, SelectionChangedEventArgs e)
+        private async void FLIP_SelectionChanged (object sender , SelectionChangedEventArgs e)
         {
             int c = e.AddedItems.Count;
 
@@ -183,19 +186,20 @@ namespace EroMangaManager.Views.MainPageChildPages
         /// <param name="sender"> </param>
         /// <param name="e"> </param>
         [Obsolete]
-        private async void FilteThisImage_Click (object sender, RoutedEventArgs e)
+        private async void FilteThisImage_Click (object sender , RoutedEventArgs e)
         {
             var entry = FLIP.SelectedItem as IArchiveEntry;
 
             currentReader.zipArchiveEntries.Remove(entry);
             string hash = entry.ComputeHash();
             long length = entry.Size;
-            await HashManager.Add(hash, length);
+            await HashManager.Add(hash , length);
 
             StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filters));
-            string path = Path.Combine(storageFolder.Path, hash + ".jpg");
+            string path = Path.Combine(storageFolder.Path , hash + ".jpg");
             entry.WriteToFile(path);
         }
+
         [Obsolete]
         private async void SaveImageAs_Click (object sender , RoutedEventArgs e)
         {
@@ -208,7 +212,8 @@ namespace EroMangaManager.Views.MainPageChildPages
                 await stream1.CopyToAsync(stream);
             }
         }
-        #endregion 不用了
+
+        #endregion 数据绑定到压缩文件类的每个压缩入口Entry
 
         private void FLIP_Tapped (object sender , Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
@@ -227,7 +232,7 @@ namespace EroMangaManager.Views.MainPageChildPages
         {
             var rootFrame = Window.Current.Content as Frame;
             var button = sender as ToggleButton;
-var applicationView=ApplicationView.GetForCurrentView();
+            var applicationView = ApplicationView.GetForCurrentView();
 
             rootFrame.Navigate(typeof(ReadPage) , currentManga);
             // TODO 存在问题，似乎每次导航的readpage不是同一个readpage
@@ -243,7 +248,7 @@ var applicationView=ApplicationView.GetForCurrentView();
 
             rootFrame.Navigate(typeof(MainPage));
             applicationView.ExitFullScreenMode();
-            button.IsChecked= false;
+            button.IsChecked = false;
         }
     }
 }

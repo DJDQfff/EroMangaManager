@@ -1,13 +1,10 @@
 ﻿<Page x:Class="EroMangaManager.Views.MainPageChildPages.Bookcase"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:app="using:EroMangaManager"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:models="using:EroMangaManager.Models"
-      xmlns:vm="using:EroMangaManager.ViewModels"
-      xmlns:storage="using:Windows.Storage"
-      NavigationCacheMode="Enabled" 
+      NavigationCacheMode="Enabled"
       mc:Ignorable="d">
     <Page.Resources>
         <DataTemplate x:Key="template_1"
@@ -66,7 +63,6 @@
 
     <Grid>
 
-        
         <GridView x:Name="Bookcase_GridView"
                   x:FieldModifier="public"
                   Grid.Row="1"

@@ -1,6 +1,5 @@
 ﻿using System;
 
-using EroMangaManager.Models;
 using EroMangaManager.ViewModels;
 
 using Windows.UI.Xaml;
@@ -21,7 +20,7 @@ namespace EroMangaManager.ValueConverters
         /// <param name="parameter"></param>
         /// <param name="language"></param>
         /// <returns></returns>
-        public object Convert (object value, Type targetType, object parameter, string language)
+        public object Convert (object value , Type targetType , object parameter , string language)
         {
             ReaderVM reader = value as ReaderVM;
             if (reader is null)
@@ -33,6 +32,7 @@ namespace EroMangaManager.ValueConverters
                 return Visibility.Visible;
             }
         }
+
         /// <summary>
         /// 类型转回
         /// </summary>
@@ -42,7 +42,7 @@ namespace EroMangaManager.ValueConverters
         /// <param name="language"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public object ConvertBack (object value, Type targetType, object parameter, string language)
+        public object ConvertBack (object value , Type targetType , object parameter , string language)
         {
             throw new NotImplementedException();
         }

@@ -18,10 +18,12 @@ namespace EroMangaDB.Tables
         /// 存贮特定的本子Tag的表
         /// </summary>
         public DbSet<MangaTagInfo> ManTagInfos { set; get; }
+
         /// <summary>
         /// UniqueTagInRelation数据表
         /// </summary>
         public DbSet<TatCategory> TagCategorys { set; get; }
+
         /// <summary>
         /// ReadingInfo数据表
         /// </summary>
@@ -46,6 +48,5 @@ namespace EroMangaDB.Tables
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlite(ConnectionString);
         }
-
     }
 }

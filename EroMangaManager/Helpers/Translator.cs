@@ -1,10 +1,11 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
 using System.Collections.Generic;
-using MyInternetAPI.BaiduTranslate;
+using System.Linq;
+using System.Threading.Tasks;
+
 using MyInternetAPI.BaiduTranslate.Models.ResponseJSON;
+
 using static EroMangaDB.BasicController;
-using System;
 
 namespace EroMangaManager.Helpers
 {

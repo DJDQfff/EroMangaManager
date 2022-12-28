@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -10,7 +9,6 @@ using iText.IO.Image;
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
-using iText.Layout.Font;
 
 using Windows.Storage;
 
@@ -22,7 +20,7 @@ namespace EroMangaManager.Helpers
         {
             using (ReaderVM reader = new ReaderVM(mangaBook))
             {
-              await  reader.SelectEntriesAsync(false,false);
+                await reader.SelectEntriesAsync(false , false);
 
                 Stream stream1 = await target.OpenStreamForWriteAsync();
 
@@ -39,22 +37,19 @@ namespace EroMangaManager.Helpers
                                     using (MemoryStream memoryStream = new MemoryStream())
                                     {
                                         stream.CopyTo(memoryStream);
-                                var b = new byte[memoryStream.Length];
+                                        var b = new byte[memoryStream.Length];
                                         memoryStream.Position = 0;
-                                memoryStream.Read(b , 0 , b.Length);
-                                       
-                                ImageData imageData = ImageDataFactory.Create(b);
+                                        memoryStream.Read(b , 0 , b.Length);
 
-                                Image image = new Image(imageData);
-                                image.SetWidth(pdfDocument.GetDefaultPageSize().GetWidth());
-                                image.SetAutoScaleHeight(true);
+                                        ImageData imageData = ImageDataFactory.Create(b);
 
-                                document.Add(image);
+                                        Image image = new Image(imageData);
+                                        image.SetWidth(pdfDocument.GetDefaultPageSize().GetWidth());
+                                        image.SetAutoScaleHeight(true);
 
+                                        document.Add(image);
                                     }
-
                                 }
-
                             }
                         }
                     }

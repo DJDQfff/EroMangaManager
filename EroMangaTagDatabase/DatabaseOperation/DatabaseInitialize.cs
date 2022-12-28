@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using EroMangaDB.Entities;
-using EroMangaDB.Tables;
-
-using Microsoft.EntityFrameworkCore;
 
 namespace EroMangaDB
 {
@@ -42,7 +36,7 @@ namespace EroMangaDB
                 {
                     string tagname = list[0];
                     list.RemoveAt(0);
-                    var one = EntityFactory.TagCategoryFactory.Creat(tagname, list);
+                    var one = EntityFactory.TagCategoryFactory.Creat(tagname , list);
                     database.TagCategorys.Add(one);
                 }
             }

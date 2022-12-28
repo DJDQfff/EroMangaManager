@@ -4,9 +4,9 @@ using System.IO;
 using System.IO.Compression;
 using System.Threading.Tasks;
 
-using SkiaSharp;
+using SharpCompress.Archives;
 
-using ICSharpCode.SharpZipLib.Zip;
+using SkiaSharp;
 
 using Windows.Storage;
 using Windows.Storage.FileProperties;
@@ -15,7 +15,6 @@ using Windows.UI.Xaml.Media.Imaging;
 
 using static EroMangaManager.Models.FolderEnum;
 using static MyUWPLibrary.StorageFolderHelper;
-using SharpCompress.Archives;
 
 namespace EroMangaManager.Helpers
 {
@@ -42,7 +41,7 @@ namespace EroMangaManager.Helpers
                         bool canuse = entry.EntryFilter(true);
                         if (canuse)
                         {
-                            string path = Path.Combine(coverfolder.Path, storageFile.DisplayName + ".jpg");
+                            string path = Path.Combine(coverfolder.Path , storageFile.DisplayName + ".jpg");
                             entry.WriteToFile(path);
                             break;
                         }
@@ -64,7 +63,7 @@ namespace EroMangaManager.Helpers
             //thumbnailMode.picturemode有坑,缩略图不完整
             IRandomAccessStream randomAccessStream;
 
-            using (StorageItemThumbnail thumbnail = await cover.GetThumbnailAsync(ThumbnailMode.SingleItem, 80))
+            using (StorageItemThumbnail thumbnail = await cover.GetThumbnailAsync(ThumbnailMode.SingleItem , 80))
             {
                 randomAccessStream = thumbnail.CloneStream();
             }
@@ -72,6 +71,7 @@ namespace EroMangaManager.Helpers
 
             return bitmapImage;
         }
+
         /// <summary>
         /// 清除所有封面文件
         /// </summary>
@@ -179,7 +179,7 @@ namespace EroMangaManager.Helpers
                                     // 存在bug，一些图片解码会返回null
 
                                     SkiaSharp.SKBitmap sKBitmap = SkiaSharp.SKBitmap.Decode(memoryStream);
-                                    SKBitmap sKBitmap1 = sKBitmap.Resize(new SKImageInfo(sKBitmap.Width, sKBitmap.Height), SKFilterQuality.Low);
+                                    SKBitmap sKBitmap1 = sKBitmap.Resize(new SKImageInfo(sKBitmap.Width , sKBitmap.Height) , SKFilterQuality.Low);
 
                                     // SkiaSharp.SKImage
                                     // sKImage =
@@ -189,7 +189,7 @@ namespace EroMangaManager.Helpers
 
                                     using (Stream writestream = await coverFIle.OpenStreamForWriteAsync())
                                     {
-                                        sKBitmap1.Encode(writestream, SKEncodedImageFormat.Jpeg, 30);
+                                        sKBitmap1.Encode(writestream , SKEncodedImageFormat.Jpeg , 30);
                                     }
                                 }
                                 break;
@@ -221,7 +221,7 @@ namespace EroMangaManager.Helpers
                             bool canuse = entry.EntryFilter();
                             if (canuse)
                             {
-                                string path = Path.Combine(coverfolder.Path, storageFile.DisplayName + ".jpg");
+                                string path = Path.Combine(coverfolder.Path , storageFile.DisplayName + ".jpg");
                                 File.Create(path);
                                 FileInfo fileInfo = new FileInfo(path);
                                 FileStream writestream = fileInfo.OpenWrite();
@@ -288,7 +288,7 @@ namespace EroMangaManager.Helpers
                             bool canuse = entry.EntryFilter();
                             if (canuse)
                             {
-                                string path = Path.Combine(coverfolder.Path, storageFile.DisplayName + ".jpg");
+                                string path = Path.Combine(coverfolder.Path , storageFile.DisplayName + ".jpg");
                                 entry.ExtractToFile(path);
                                 break;
                             }

@@ -9,15 +9,20 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto" />
             <RowDefinition />
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Stretch">
-            <ToggleSwitch x:Uid="/Resources/FilterImageONOFF" HorizontalAlignment="Stretch"  HorizontalContentAlignment="Left" Toggled="ToggleSwitch_Toggled" IsOn="False" />
+            <ToggleSwitch x:Uid="/Resources/FilterImageONOFF"
+                          HorizontalAlignment="Stretch"
+                          HorizontalContentAlignment="Left"
+                          Toggled="ToggleSwitch_Toggled"
+                          IsOn="False" />
         </StackPanel>
-        <GridView x:Name="GridView" Grid.Row="1"
+        <GridView x:Name="GridView"
+                  Grid.Row="1"
                   ItemsSource="{x:Bind items, Mode=OneWay}"
                   SelectionMode="Multiple">
             <GridView.ItemTemplate>

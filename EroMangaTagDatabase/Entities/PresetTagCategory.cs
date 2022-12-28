@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
-
-namespace EroMangaDB.Entities
+﻿namespace EroMangaDB.Entities
 {
     /// <summary> 预设漫画Tag种类 </summary>
 

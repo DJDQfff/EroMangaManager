@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
+﻿using System.Collections.Generic;
 
 using EroMangaDB.Entities;
 
@@ -19,10 +15,10 @@ namespace EroMangaDB.EntityFactory
         /// <param name="categoryname"></param>
         /// <param name="keywords"></param>
         /// <returns></returns>
-        public static TatCategory Creat (string categoryname, IEnumerable<string> keywords)
+        public static TatCategory Creat (string categoryname , IEnumerable<string> keywords)
         {
-            string keywordsstring = string.Join("\r", keywords);
-            TatCategory tagKeywords = new TatCategory() { CategoryName = categoryname, Keywords = keywordsstring };
+            string keywordsstring = string.Join("\r" , keywords);
+            TatCategory tagKeywords = new TatCategory() { CategoryName = categoryname , Keywords = keywordsstring };
             return tagKeywords;
         }
     }

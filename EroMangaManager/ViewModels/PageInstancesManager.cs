@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-using EroMangaManager.Views.MainPageChildPages; 
+using EroMangaManager.Views.MainPageChildPages;
 
 using Windows.UI.Xaml.Controls;
 
@@ -27,7 +23,7 @@ namespace EroMangaManager.ViewModels
         internal void ClearBookcase ()
         {
             Bookcases.Clear();
-       foreach(var bookcase in Bookcases)
+            foreach (var bookcase in Bookcases)
             {
                 var page = bookcase.Value as Page;
                 page = null;

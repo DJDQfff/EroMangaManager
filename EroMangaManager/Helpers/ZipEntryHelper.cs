@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using System.Threading.Tasks;
-using System.Linq;
+
 using EroMangaManager.Models;
+
+using ICSharpCode.SharpZipLib.Zip;
+
+using SharpCompress.Archives;
 
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
-
-using ICSharpCode.SharpZipLib.Zip;
-using SharpCompress.Archives;
-using SharpCompress.Archives.Zip;
-using SharpCompress.Archives.GZip;
 
 namespace EroMangaManager.Helpers
 {
@@ -22,6 +20,7 @@ namespace EroMangaManager.Helpers
     public static class ZipEntryHelper
     {
         #region SharpCompress
+
         /// <summary>
         /// 获取bitmapimage
         /// </summary>
@@ -48,13 +47,14 @@ namespace EroMangaManager.Helpers
                 }
             }
         }
+
         /// <summary>
         /// 筛选zipentry
         /// </summary>
         /// <param name="entry"></param>
         /// <param name="isfilterimageon">TODO 是否过滤图片</param>
         /// <returns></returns>
-        public static bool EntryFilter (this SharpCompress.Archives.IArchiveEntry entry ,bool isfilterimageon)
+        public static bool EntryFilter (this SharpCompress.Archives.IArchiveEntry entry , bool isfilterimageon)
         {
             bool canuse = true;
 
@@ -71,28 +71,28 @@ namespace EroMangaManager.Helpers
             //return true; // TODO 临时关闭筛选功能
             if (isfilterimageon)            // 是否检查图片过滤
             {
-            if (HashManager.WhetherDatabaseMatchLength(entry.Size))              // 第一个条件：比较数据库，解压后大小
-                return false;
+                if (HashManager.WhetherDatabaseMatchLength(entry.Size))              // 第一个条件：比较数据库，解压后大小
+                    return false;
 
-            using (Stream stream = entry.OpenEntryStream())               // 不能对stream设置position
-            {
-                if (HashManager.StreamHashFilter(stream))      // 第二个条件：计算流hash，判断唯一性
+                using (Stream stream = entry.OpenEntryStream())               // 不能对stream设置position
                 {
-                    canuse = false;                              // 符合以上条件，这个entry不会被过滤掉
+                    if (HashManager.StreamHashFilter(stream))      // 第二个条件：计算流hash，判断唯一性
+                    {
+                        canuse = false;                              // 符合以上条件，这个entry不会被过滤掉
+                    }
                 }
-            }
-
             }
 
             return canuse;                                                  // 最后一定符合调教
         }
+
         /// <summary>
         /// 排序zipentry
         /// </summary>
         /// <param name="zipArchive"></param>
         /// <param name="sortFunc"></param>
         /// <returns></returns>
-        public static IEnumerable<string> SortEntriesByName (this IArchive zipArchive, Action<IEnumerable<string>> sortFunc = null)
+        public static IEnumerable<string> SortEntriesByName (this IArchive zipArchive , Action<IEnumerable<string>> sortFunc = null)
         {
             List<string> vs = new List<string>();
             foreach (var zipEntry in zipArchive.Entries)
@@ -116,6 +116,7 @@ namespace EroMangaManager.Helpers
         #endregion SharpCompress
 
         #region System.IO.Compression
+
         /// <summary>
         /// 解析zipentry获取bitmapimage
         /// </summary>
@@ -181,10 +182,10 @@ namespace EroMangaManager.Helpers
         /// 排序方法。传参，则按给定方法排序；不传，则按List.Sort()方法排序
         /// </param>
         /// <returns> </returns>
-        public static IEnumerable<string> SortEntriesByName (this System.IO.Compression.ZipArchive zipArchive, Action<IEnumerable<string>> sortFunc = null)
+        public static IEnumerable<string> SortEntriesByName (this System.IO.Compression.ZipArchive zipArchive , Action<IEnumerable<string>> sortFunc = null)
         {
             List<string> vs = new List<string>();
-            for (int i = 0; i < zipArchive.Entries.Count; i++)
+            for (int i = 0 ; i < zipArchive.Entries.Count ; i++)
             {
                 string entryName = zipArchive.Entries[i].FullName;
                 vs.Add(entryName);
@@ -205,6 +206,7 @@ namespace EroMangaManager.Helpers
         #endregion System.IO.Compression
 
         #region ISharpCode.SharpZipLib
+
         /// <summary>
         /// 筛选zipentry
         /// </summary>

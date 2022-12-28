@@ -3,28 +3,31 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-using static EroMangaDB.BasicController;
 using EroMangaDB.Entities;
 using EroMangaDB.EntityFactory;
-using Windows.Storage;
 
 using EroMangaManager.Models;
+
+using Windows.Storage;
+
+using static EroMangaDB.BasicController;
+
 namespace EroMangaManager.ViewModels
 {
     internal class MangasFolder
 
     {
-        public StorageFolder StorageFolder {  get; }
+        public StorageFolder StorageFolder { get; }
         public string FolderPath => StorageFolder.Path;
 
-        public ObservableCollection<MangaBook> MangaBooks { get; }=new ObservableCollection<MangaBook>();
-        public ObservableCollection<MangaBook> ErrorBooks { get; }= new ObservableCollection<MangaBook>();
-        public MangasFolder(StorageFolder storageFolder)
+        public ObservableCollection<MangaBook> MangaBooks { get; } = new ObservableCollection<MangaBook>();
+        public ObservableCollection<MangaBook> ErrorBooks { get; } = new ObservableCollection<MangaBook>();
+
+        public MangasFolder (StorageFolder storageFolder)
         {
-            StorageFolder= storageFolder;
+            StorageFolder = storageFolder;
         }
 
         public async Task Initial ()
@@ -77,7 +80,6 @@ namespace EroMangaManager.ViewModels
             }
 
             await DatabaseController.ReadingInfo_AddMulti(add);
-
         }
     }
 }

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
-
-namespace EroMangaDB.Entities
+﻿namespace EroMangaDB.Entities
 {
-    /// <summary> 
+    /// <summary>
     /// tag种类
     /// 设计目的：
     /// 如：初音未来、镜音双子这两个tag都是一个种类：V家

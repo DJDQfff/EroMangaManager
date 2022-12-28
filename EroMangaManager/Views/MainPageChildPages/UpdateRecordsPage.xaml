@@ -1,11 +1,10 @@
 ﻿<Page x:Class="EroMangaManager.Views.MainPageChildPages.UpdateRecordsPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:EroMangaManager.Views"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -13,23 +12,22 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <ScrollViewer HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled">
-            <StackPanel >
-            <StackPanel >
-                                  <TextBlock  x:Uid="/UpdateResources/Version_20221226" Style="{StaticResource UpdateVersion}" />
-        <TextBlock x:Uid="/UpdateResources/Description_20221226" Style="{StaticResource UpdateDescription}"/>
-  
+    <ScrollViewer HorizontalScrollMode="Disabled"
+                  HorizontalScrollBarVisibility="Disabled">
+        <StackPanel>
+            <StackPanel>
+                <TextBlock  x:Uid="/UpdateResources/Version_20221226"
+                            Style="{StaticResource UpdateVersion}" />
+                <TextBlock x:Uid="/UpdateResources/Description_20221226"
+                           Style="{StaticResource UpdateDescription}" />
             </StackPanel>
 
-        <StackPanel >
-                    <TextBlock x:Uid="/UpdateResources/Version_20221219"
-                   Style="{StaticResource UpdateVersion}" />
-        <TextBlock x:Uid="/UpdateResources/Description_20221219"
-                   Style="{StaticResource UpdateDescription}" />
-
+            <StackPanel>
+                <TextBlock x:Uid="/UpdateResources/Version_20221219"
+                           Style="{StaticResource UpdateVersion}" />
+                <TextBlock x:Uid="/UpdateResources/Description_20221219"
+                           Style="{StaticResource UpdateDescription}" />
+            </StackPanel>
         </StackPanel>
-
-    </StackPanel>
-
     </ScrollViewer>
 </Page>

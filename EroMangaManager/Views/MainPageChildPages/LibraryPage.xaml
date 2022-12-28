@@ -26,7 +26,11 @@
         <TextBlock d:Text="提示添加文件夹"
                    x:Load="False"
                    x:Name="HintAddFolderTextBlock"
-                   x:Uid="/Resources/HintAddFirstFolder" Foreground="RoyalBlue" Grid.Row="2" FontSize="40" HorizontalAlignment="Center" />
+                   x:Uid="/Resources/HintAddFirstFolder"
+                   Foreground="RoyalBlue"
+                   Grid.Row="2"
+                   FontSize="40"
+                   HorizontalAlignment="Center" />
         <ListView x:Name="list"
                   Grid.Row="2"
                   ItemContainerStyle="{StaticResource ListViewItemStyle_1}"
@@ -36,7 +40,7 @@
                 <DataTemplate x:DataType="vm:MangasFolder"
                               x:DefaultBindMode="OneWay">
                     <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Stretch" 
+                                HorizontalAlignment="Stretch"
                                 PointerEntered="StackButton_PointerEntered"
                                 PointerExited="StackButton_PointerExited">
                         <TextBlock Text="{x:Bind  MangaBooks.Count,Mode=OneWay}"
@@ -44,7 +48,7 @@
                                    VerticalAlignment="Stretch"
                                    TextAlignment="Center" />
                         <Button  x:Name="JumpToBookcase"
-                                  Width="100"
+                                 Width="100"
                                  VerticalAlignment="Center"
                                  Click="JumpToBookcase_Click"
                                  d:Content="显示书架"
@@ -58,8 +62,10 @@
                                    Width="200"
                                    Text="{x:Bind FolderPath}" />
 
-                        <StackPanel x:Name="StackButton" Orientation="Horizontal" Visibility="Collapsed"
-                                    VerticalAlignment="Center" 
+                        <StackPanel x:Name="StackButton"
+                                    Orientation="Horizontal"
+                                    Visibility="Collapsed"
+                                    VerticalAlignment="Center"
                                     RelativePanel.AlignRightWithPanel="True">
 
                             <Button  d:Content="打开文件夹"

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
+﻿using System.IO;
 
 using EroMangaDB.Entities;
 using EroMangaDB.Helper;
@@ -29,11 +25,11 @@ namespace EroMangaDB.EntityFactory
 
             ReadingInfo readingInfo = new ReadingInfo()
             {
-                AbsolutePath = absolutepath,
-                MangaName = manganame,
-                MangaName_Translated = manganame,// 未翻译的情况下，直接以原名作为翻译名，省去了判断是否翻译的麻烦
+                AbsolutePath = absolutepath ,
+                MangaName = manganame ,
+                MangaName_Translated = manganame ,// 未翻译的情况下，直接以原名作为翻译名，省去了判断是否翻译的麻烦
 
-                TagPieces = string.Join("\r", tags),
+                TagPieces = string.Join("\r" , tags) ,
                 ReadingPosition = 0
             };
 

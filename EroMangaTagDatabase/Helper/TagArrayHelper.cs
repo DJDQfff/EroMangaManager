@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Text;
-
-using EroMangaDB.Entities;
 
 namespace EroMangaDB.Helper
 {
@@ -21,11 +16,11 @@ namespace EroMangaDB.Helper
         /// <returns></returns>
         public static bool canbePair (this string tagstring)
         {
-            char[] chars1 = { '[', '【', '（', '(', '{' };// 左括号
-            char[] chars2 = { ']', '】', '）', ')', '}' };// 右括号
-            char[][] chars = { chars1, chars2 };
+            char[] chars1 = { '[' , '【' , '（' , '(' , '{' };// 左括号
+            char[] chars2 = { ']' , '】' , '）' , ')' , '}' };// 右括号
+            char[][] chars = { chars1 , chars2 };
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0 ; i < 5 ; i++)
             {
                 int count1 = tagstring.Count(n => n == chars[0][i]);
                 int count2 = tagstring.Count(n => n == chars[1][i]);
@@ -36,6 +31,7 @@ namespace EroMangaDB.Helper
             }
             return true;
         }
+
         /// <summary>
         /// 按左右括号分离tag并解析
         /// </summary>
@@ -51,7 +47,7 @@ namespace EroMangaDB.Helper
 
             List<string> tagslist = new List<string>(tagsarray);
 
-            for (int i = tagslist.Count - 1; i != -1; i--)          // 移除所有为空白的tag
+            for (int i = tagslist.Count - 1 ; i != -1 ; i--)          // 移除所有为空白的tag
             {
                 if (string.IsNullOrWhiteSpace(tagslist[i]))
                     tagslist.RemoveAt(i);
@@ -68,7 +64,7 @@ namespace EroMangaDB.Helper
                     if (!left.Contains(c))                              // 查找方法：该Tag左边为无括号或者为右括号
                     {                                                   //          等价于：左边不是左括号
                         tagslist.Remove(tag);                           // 如果存在，则调整位置，把漫画名Tag移到集合头部
-                        tagslist.Insert(0, tag);
+                        tagslist.Insert(0 , tag);
                         flaghaveMangaName = true;
                         break;
                     }
@@ -79,18 +75,17 @@ namespace EroMangaDB.Helper
                 // 出现异常说明： 漫画名不是由Tag组成的、或者组成形式不符合一般规律
             }
 
-            for (int i = 0; i < tagslist.Count; i++)                // 移除所有Tag的首尾空白
+            for (int i = 0 ; i < tagslist.Count ; i++)                // 移除所有Tag的首尾空白
             {
                 tagslist[i] = tagslist[i].Trim();
             }
 
             if (!flaghaveMangaName)
             {
-                tagslist.Insert(0, null);                             // 如果不存在MangaName，则以空字符串为默认名
+                tagslist.Insert(0 , null);                             // 如果不存在MangaName，则以空字符串为默认名
             }
 
             return tagslist;
         }
-
     }
 }

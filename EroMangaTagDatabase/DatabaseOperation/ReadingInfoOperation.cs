@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using EroMangaDB.Entities;
-using EroMangaDB.Tables;
-
-using Microsoft.EntityFrameworkCore.Design;
 
 namespace EroMangaDB
 {
@@ -25,6 +18,7 @@ namespace EroMangaDB
             await database.AddRangeAsync(ts);
             await database.SaveChangesAsync();
         }
+
         /// <summary>
         /// ReadingInfo移除单个
         /// </summary>
@@ -39,6 +33,7 @@ namespace EroMangaDB
                 await database.SaveChangesAsync();
             }
         }
+
         /// <summary>
         /// ReadingInfo更新单个
         /// </summary>
@@ -54,19 +49,21 @@ namespace EroMangaDB
                 await database.SaveChangesAsync();
             }
         }
+
         /// <summary>
         /// ReadingInfo表更新MangaName属性
         /// </summary>
         /// <param name="readinginfo"></param>
         /// <param name="manganame"></param>
         /// <returns></returns>
-        public async Task ReadingInfo_UpdateMangaName (ReadingInfo readinginfo, string manganame)
+        public async Task ReadingInfo_UpdateMangaName (ReadingInfo readinginfo , string manganame)
         {
             var info = database.ReadingInfos.SingleOrDefault(n => n.AbsolutePath == readinginfo.AbsolutePath);
             info.MangaName = manganame;
             database.Update(info);
             await database.SaveChangesAsync();
         }
+
         /// <summary>
         /// ReadingInfo表修改多个翻译本子名属性
         /// </summary>
@@ -83,6 +80,7 @@ namespace EroMangaDB
             database.UpdateRange(info);
             await database.SaveChangesAsync();
         }
+
         /// <summary>
         /// ReadingInfo表查询所有
         /// </summary>

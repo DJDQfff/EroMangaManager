@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
 using EroMangaManager.Models;
-
-using EroMangaDB.Entities;
-using EroMangaDB.EntityFactory;
-
-using MyUWPLibrary;
 
 using Windows.Storage;
 
@@ -33,11 +27,14 @@ namespace EroMangaManager.ViewModels
         /// 完成某项任务时引发
         /// </summary>
         public event Action<string> WorkDoneEvent;
-        internal ObservableCollection<MangasFolder> MangaFolders {  get; } = new ObservableCollection<MangasFolder>();
+
+        internal ObservableCollection<MangasFolder> MangaFolders { get; } = new ObservableCollection<MangasFolder>();
+
         /// <summary>存放zip文件的文件夹</summary>
         internal List<StorageFolder> StorageFolders => MangaFolders.Select(n => n.StorageFolder).ToList();
+
         /// <summary>各漫画zip</summary>
-        /// 
+        ///
         internal List<MangaBook> MangaList
         {
             get
@@ -72,7 +69,8 @@ namespace EroMangaManager.ViewModels
             ErrorZipEvent?.Invoke(manganame);
         }
 
-        public void WorkDone(string message)=>WorkDoneEvent?.Invoke(message);
+        public void WorkDone (string message) => WorkDoneEvent?.Invoke(message);
+
         /// <summary>ViewModel初始化</summary>
         public async void Initialize (params StorageFolder[] storageFolders)
         {
@@ -80,13 +78,12 @@ namespace EroMangaManager.ViewModels
 
             NonZipList.Clear();
 
-                foreach (var folder in storageFolders)
-                {
-                    MangasFolder mangasFolder = new MangasFolder(folder);
-                    MangaFolders.Add(mangasFolder);
-                    await mangasFolder.Initial();
-                };
-          
+            foreach (var folder in storageFolders)
+            {
+                MangasFolder mangasFolder = new MangasFolder(folder);
+                MangaFolders.Add(mangasFolder);
+                await mangasFolder.Initial();
+            };
         }
 
         /// <summary>
@@ -101,7 +98,7 @@ namespace EroMangaManager.ViewModels
         {
             FutureAccessList.Add(folder);
 
-            if(MangaFolders.FirstOrDefault(x=>x.FolderPath==folder.Path) is null)
+            if (MangaFolders.FirstOrDefault(x => x.FolderPath == folder.Path) is null)
             {
                 MangasFolder mangasFolder = new MangasFolder(folder);
                 MangaFolders.Add(mangasFolder);
@@ -111,12 +108,12 @@ namespace EroMangaManager.ViewModels
 
         /// <summary>
         /// 移除文件夹，并从集合中移除文件夹及下属漫画 （只移除，不删除）
-        /// 1.从系统API中移除 
-        /// 2.从FolderList里移除 
+        /// 1.从系统API中移除
+        /// 2.从FolderList里移除
         /// 3.从MangaList里移除文件夹下属漫画
         /// </summary>
         internal void RemoveFolder (MangasFolder mangasfolder)
-        {     
+        {
             MangaFolders.Remove(mangasfolder);
 
             string token = FutureAccessList.Add(mangasfolder.StorageFolder);        // 获取系统存储token

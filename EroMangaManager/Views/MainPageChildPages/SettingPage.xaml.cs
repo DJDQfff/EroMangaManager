@@ -1,9 +1,4 @@
-﻿using System;
-
-using EroMangaManager.Helpers;
-
-using Windows.Storage;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
@@ -24,7 +19,6 @@ namespace EroMangaManager.Views.MainPageChildPages
 
         private void NavigationView_ItemInvoked (NavigationView sender , NavigationViewItemInvokedEventArgs args)
         {
-
             switch (args.InvokedItemContainer.Name)
             {
                 case nameof(SettingFilterImageButton):
@@ -36,10 +30,9 @@ namespace EroMangaManager.Views.MainPageChildPages
                     break;
 
                 case nameof(ErrorZipPageButton):
-                    SettingFrame.Navigate(typeof(SettingPageChildPages. ErrorZipPage));
+                    SettingFrame.Navigate(typeof(SettingPageChildPages.ErrorZipPage));
                     break;
             }
-
         }
 
         private void UpdateRecordItem_Click (object sender , RoutedEventArgs e)

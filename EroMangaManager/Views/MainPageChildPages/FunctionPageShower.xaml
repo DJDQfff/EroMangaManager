@@ -1,16 +1,17 @@
 ﻿<Page x:Class="EroMangaManager.Views.MainPageChildPages.FunctionPageShower"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    NavigationCacheMode="Enabled"
-   >
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      NavigationCacheMode="Enabled">
 
     <Grid>
         <VariableSizedWrapGrid  Loaded="VariableSizedWrapGrid_Loaded">
             <Button x:Name="Function_RemoveTag"
-                    x:Uid="/Resources/Function_RemoveTag" Loaded="Button_Loaded" Click="Button_Click" />
+                    x:Uid="/Resources/Function_RemoveTag"
+                    Loaded="Button_Loaded"
+                    Click="Button_Click" />
             <Button x:Name="Function_FindSameMangaName"
                     x:Uid="/Resources/Function_FindSameMangaName"
                     Loaded="Button_Loaded"

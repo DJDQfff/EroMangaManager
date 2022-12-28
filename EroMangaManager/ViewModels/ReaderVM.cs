@@ -1,19 +1,17 @@
-﻿using System.Collections.ObjectModel;
-using System.Diagnostics;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Collections.Generic;
+
 using EroMangaManager.Helpers;
-using System;
-using Windows.UI.Xaml.Media.Imaging;
-using EroMangaDB.Entities;
 using EroMangaManager.Models;
 
-using static EroMangaManager.Helpers.ZipEntryHelper;
-
 using SharpCompress.Archives;
-using Windows.Storage;
+
+using Windows.UI.Xaml.Media.Imaging;
+
+using static EroMangaManager.Helpers.ZipEntryHelper;
 
 namespace EroMangaManager.ViewModels
 {
@@ -33,6 +31,7 @@ namespace EroMangaManager.ViewModels
 
         /// <summary> 视图模型可以打开的压缩图片合集 </summary>
         public ObservableCollection<IArchiveEntry> zipArchiveEntries { set; get; } = new ObservableCollection<IArchiveEntry>();
+
         /// <summary>
         /// 图源
         /// </summary>
@@ -47,11 +46,10 @@ namespace EroMangaManager.ViewModels
             zipArchive = ArchiveFactory.Open(stream);
         }
 
-
         //TODO 把selectentry和showentry分开
         //TODO 给selectentry添加一个参数，要过滤的数据库
         /// <summary> 从压缩文件的所有entry中，筛选出符合条件的 </summary>
-        public async Task SelectEntriesAsync (bool IsFilterImageOn,bool whetherShow=true)
+        public async Task SelectEntriesAsync (bool IsFilterImageOn , bool whetherShow = true)
         {
             Stream TempStream = await manga.StorageFile.OpenStreamForReadAsync();
 
@@ -70,13 +68,12 @@ namespace EroMangaManager.ViewModels
                     zipArchiveEntries.Add(entry);// 异步操作不能放在这里，会占用线程
                     if (whetherShow)
                     {
-                                          bitmapImages.Add(await ShowEntryAsync(entry));
-
+                        bitmapImages.Add(await ShowEntryAsync(entry));
                     }
-
                 }
             }
         }
+
         /// <summary> </summary>
         public void Dispose ()
         {
@@ -85,6 +82,5 @@ namespace EroMangaManager.ViewModels
             zipArchive.Dispose();
             stream.Dispose();
         }
-
     }
 }

@@ -1,10 +1,8 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 
-using EroMangaDB;
 using static EroMangaDB.BasicController;
 using static MyStandard20Library.HashComputer;
-using EroMangaManager.Helpers;
 
 namespace EroMangaManager.Models
 {
@@ -35,16 +33,18 @@ namespace EroMangaManager.Models
             int count = DatabaseController.ImageFilter_HashConditionCount(hash);
             return count != 0;
         }
+
         /// <summary>
         /// 添加一个要筛除的hashlength
         /// </summary>
         /// <param name="hash"></param>
         /// <param name="length"></param>
         /// <returns></returns>
-        public static async Task Add (string hash, long length)
+        public static async Task Add (string hash , long length)
         {
-            await DatabaseController.ImageFilter_Add(hash, length);
+            await DatabaseController.ImageFilter_Add(hash , length);
         }
+
         /// <summary>
         /// 移除集合hash
         /// </summary>

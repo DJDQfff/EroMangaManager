@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-
-namespace EroMangaDB.Entities
+﻿namespace EroMangaDB.Entities
 {
     /// <summary>
     /// 数据库主键ID接口

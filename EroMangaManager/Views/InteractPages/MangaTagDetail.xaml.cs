@@ -1,25 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using EroMangaDB.Entities;
 
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Storage;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using EroMangaManager.Models;
 using EroMangaManager.UserControls;
-using EroMangaDB.Entities;
-using EroMangaDB;
-using EroMangaDB.EntityFactory;
+
+using Windows.UI.Xaml.Controls;
+
 using static EroMangaDB.BasicController;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
@@ -30,6 +15,7 @@ namespace EroMangaManager.Views.InteractPages
     public sealed partial class MangaTagDetail : ContentDialog
     {
         private ReadingInfo readingInfo;
+
         /// <summary>
         /// Tag细节对话框
         /// </summary>
@@ -44,7 +30,7 @@ namespace EroMangaManager.Views.InteractPages
             {
                 TagInfo tag = new TagInfo()
                 {
-                    TagName = l.Value ?? "未知标签",
+                    TagName = l.Value ?? "未知标签" ,
                     TagValue = l.Key
                 };
                 Stack.Children.Add(tag);

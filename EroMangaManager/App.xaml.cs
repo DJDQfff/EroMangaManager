@@ -1,21 +1,18 @@
 ﻿using System;
 
-using EroMangaManager.Helpers;
 using EroMangaManager.Models;
-using static EroMangaManager.Models.FolderEnum;
-using static EroMangaDB.BasicController;
+using EroMangaManager.Views.MainPageChildPages;
 
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+
+using static EroMangaDB.BasicController;
+using static EroMangaManager.Models.FolderEnum;
 using static MyUWPLibrary.StorageFolderHelper;
-using EroMangaManager.Views.MainPageChildPages;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Windows.Storage;
-using System.ComponentModel;
-using EroMangaManager.ViewModels;
 
 namespace EroMangaManager
 {
@@ -38,12 +35,12 @@ namespace EroMangaManager
         /// <param name="e"> 有关启动请求和过程的详细信息。 </param>
         protected override async void OnLaunched (LaunchActivatedEventArgs e)
         {
-#if DEBUG 
+#if DEBUG
             await Windows.System.Launcher.LaunchFolderAsync(ApplicationData.Current.LocalFolder);
 #endif
-            
+
             DatabaseController.Migrate();
-            await EnsureChildTemporaryFolders(Covers.ToString(), Filters.ToString());
+            await EnsureChildTemporaryFolders(Covers.ToString() , Filters.ToString());
 
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -69,7 +66,7 @@ namespace EroMangaManager
                 {
                     // 当导航堆栈尚未还原时，导航到第一页，
                     // 并通过将所需信息作为导航参数传入来配置 参数
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    rootFrame.Navigate(typeof(MainPage) , e.Arguments);
                 }
                 // 确保当前窗口处于活动状态
                 Window.Current.Activate();
@@ -101,9 +98,9 @@ namespace EroMangaManager
             }
 
             var file = args.Files[0] as Windows.Storage.StorageFile;
-            MangaBook mangaBook = new MangaBook(file, null, null);
+            MangaBook mangaBook = new MangaBook(file , null , null);
 
-            rootFrame.Navigate(typeof(ReadPage), mangaBook);
+            rootFrame.Navigate(typeof(ReadPage) , mangaBook);
 
             Window.Current.Activate();
         }
@@ -113,7 +110,7 @@ namespace EroMangaManager
         /// </summary>
         ///<param name="sender">导航失败的框架</param>
         ///<param name="e">有关导航失败的详细信息</param>
-        private void OnNavigationFailed (object sender, NavigationFailedEventArgs e)
+        private void OnNavigationFailed (object sender , NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
@@ -124,7 +121,7 @@ namespace EroMangaManager
         /// </summary>
         /// <param name="sender"> 挂起的请求的源。 </param>
         /// <param name="e"> 有关挂起请求的详细信息。 </param>
-        private void OnSuspending (object sender, SuspendingEventArgs e)
+        private void OnSuspending (object sender , SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
 

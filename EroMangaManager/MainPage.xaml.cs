@@ -64,12 +64,11 @@ namespace EroMangaManager
             pageInstancesManager.MainPage = this;
             MainFrame.Navigate(typeof(BookcaseContainer));
 
-           if(collectionObserver.StorageFolders.Count == 0 )
-            { 
+            if (collectionObserver.StorageFolders.Count == 0)
+            {
                 MainFrame.Navigate(typeof(LibraryPage));
             }
         }
-
 
         private void MainNavigationView_ItemInvoked (NavigationView sender , NavigationViewItemInvokedEventArgs args)
         {
@@ -91,10 +90,10 @@ namespace EroMangaManager
                     case nameof(ReadItem):
                         type = typeof(ReadPage);
                         break;
+
                     case nameof(FunctionPageShower):
                         type = typeof(FunctionPageShower);
                         break;
-
                 }
 
             if (!type.Equals(MainFrame.CurrentSourcePageType))

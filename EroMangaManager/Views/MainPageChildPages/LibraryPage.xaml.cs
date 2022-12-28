@@ -25,7 +25,7 @@ namespace EroMangaManager.Views.MainPageChildPages
         {
             this.InitializeComponent();
             MainPage.pageInstancesManager.LibraryPage = this;
-            if (MainPage.current.collectionObserver.StorageFolders.Count ==0)
+            if (MainPage.current.collectionObserver.StorageFolders.Count == 0)
             {
                 this.FindName(nameof(HintAddFolderTextBlock));
             }
@@ -45,7 +45,6 @@ namespace EroMangaManager.Views.MainPageChildPages
                 if (folders.Count != 0)
                 {
                     HintAddFolderTextBlock.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-
                 }
                 foreach (var f in folders)
                 {
@@ -91,7 +90,7 @@ namespace EroMangaManager.Views.MainPageChildPages
         private void StackButton_PointerEntered (object sender , Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
         {
             var control = sender as StackPanel;
-            var stack=control.FindName("StackButton") as StackPanel;
+            var stack = control.FindName("StackButton") as StackPanel;
 
             stack.Visibility = Windows.UI.Xaml.Visibility.Visible;
         }
@@ -102,7 +101,6 @@ namespace EroMangaManager.Views.MainPageChildPages
             var stack = control.FindName("StackButton") as StackPanel;
 
             stack.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-
         }
     }
 }

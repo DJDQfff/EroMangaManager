@@ -20,7 +20,8 @@
                 <NavigationViewItem x:Name="BookcaseItemContainer"
                                     d:Content="书架"
                                     x:Uid="/Resources/BookcaseItem"
-                                    Icon="Library" ToolTipService.ToolTip="jfdak" />
+                                    Icon="Library"
+                                    ToolTipService.ToolTip="jfdak" />
                 <NavigationViewItem d:Content="书库"
                                     x:Uid="/Resources/ListItem"
                                     Icon="List"

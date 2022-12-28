@@ -1,13 +1,10 @@
 ﻿using System;
-using System.IO;
 using System.ComponentModel;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 using EroMangaDB.Entities;
-using EroMangaDB.EntityFactory;
-using static MyUWPLibrary.StorageFolderHelper;
-using static EroMangaManager.Models.FolderEnum;
 
 /*
  * 简化版EroManga类
@@ -20,6 +17,9 @@ using EroMangaManager.Helpers;
 using Windows.Storage;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
+
+using static EroMangaManager.Models.FolderEnum;
+using static MyUWPLibrary.StorageFolderHelper;
 
 namespace EroMangaManager.Models
 {
@@ -105,7 +105,7 @@ namespace EroMangaManager.Models
         /// <param name="storageFile"> </param>
         /// <param name="storageFolder">所属文件夹</param>
         /// <param name="info"></param>
-        public MangaBook (StorageFile storageFile, StorageFolder storageFolder, ReadingInfo info)
+        public MangaBook (StorageFile storageFile , StorageFolder storageFolder , ReadingInfo info)
         {
             string path = storageFile.Path;
             _filePath = path;
@@ -132,6 +132,7 @@ namespace EroMangaManager.Models
                 Cover = bitmapImage;
             }
         }
+
         /// <summary>
         /// 翻译本子名
         /// </summary>
@@ -143,7 +144,7 @@ namespace EroMangaManager.Models
 
         private void NotifyPropertyChanged ([CallerMemberName] string propertyName = "")
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(propertyName));
         }
     }
 }
