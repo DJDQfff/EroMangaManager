@@ -13,126 +13,129 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddFolderButton.Content" xml:space="preserve">
-    <value>เพิ่มโฟลเดอร์</value>
+    <value>Hinzufügen eines Ordners</value>
   </data>
   <data name="BookcaseItem.Content" xml:space="preserve">
-    <value>ชั้นวางหนังสือ</value>
+    <value>Bücherbrett</value>
   </data>
   <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>ชั้นวางหนังสือการ์ตูน</value>
+    <value>Comic-Bücherregal</value>
   </data>
   <data name="DeleteFileConfirmPage.PrimaryButtonText" xml:space="preserve">
-    <value>คือ</value>
+    <value>sein</value>
   </data>
   <data name="DeleteFileConfirmPage.SecondaryButtonText" xml:space="preserve">
-    <value>ไม่</value>
+    <value>nicht</value>
   </data>
   <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
-    <value>ยืนยันการลบไฟล์?</value>
+    <value>Bestätigen Sie das Löschen von Dateien?</value>
   </data>
   <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
-    <value>ลบไฟล์ต้นฉบับ</value>
+    <value>Löschen der Quelldatei</value>
   </data>
   <data name="ErrorZipPageButton.Content" xml:space="preserve">
-    <value>ข้อยกเว้นซิป</value>
+    <value>Ausnahme Zip</value>
   </data>
   <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
-    <value>ส่งออกเป็น PDF</value>
+    <value>Als PDF exportieren</value>
   </data>
   <data name="FilterImageONOFF.Header" xml:space="preserve">
-    <value>จะเปิดใช้งานการกรองแบบหน้าเดียวหรือไม่ (การเปิดคุณสมบัตินี้จะทําให้การเปิดการ์ตูนช้าลง)</value>
+    <value>Ob die Einzelseitenfilterung aktiviert werden soll (das Aktivieren dieser Funktion verlangsamt das Öffnen von Comics)</value>
   </data>
   <data name="FilterImageONOFF.OffContent" xml:space="preserve">
-    <value>พิการ</value>
+    <value>Arbeitsunfähig</value>
   </data>
   <data name="FilterImageONOFF.OnContent" xml:space="preserve">
-    <value>เปิด</value>
+    <value>Ermöglichte</value>
   </data>
   <data name="FilterThisImage.Text" xml:space="preserve">
-    <value>ตัวเลขนี้ไม่แสดงขึ้น</value>
+    <value>Diese Zahl wird nicht angezeigt</value>
   </data>
   <data name="FullScreenToggle.Content" xml:space="preserve">
-    <value>เต็มหน้าจอ</value>
+    <value>Vollbild</value>
   </data>
   <data name="FunctionPageShower.Content" xml:space="preserve">
-    <value>เครื่อง มือ</value>
+    <value>Werkzeugkasten</value>
   </data>
   <data name="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>เครื่อง มือ</value>
+    <value>Werkzeugkasten</value>
+  </data>
+  <data name="Function_FindSameMangaName.Content" xml:space="preserve">
+    <value></value>
   </data>
   <data name="Function_RemoveTag.Content" xml:space="preserve">
-    <value>นําแท็บย่อยหนังสือที่ซ้ํากันออก</value>
+    <value>Entfernen der Unterregisterkarte "Buch duplizieren"</value>
   </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
-    <value>ขณะนี้ยังไม่มีโฟลเดอร์โปรดเพิ่มโฟลเดอร์สแกนแรกของคุณ</value>
+    <value>Es gibt derzeit keine Ordner, bitte fügen Sie Ihren ersten Scanordner hinzu</value>
   </data>
   <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
-    <value>เปิดไฟล์</value>
+    <value>Öffnen Sie die Datei</value>
   </data>
   <data name="LaunchFolderButton.Content" xml:space="preserve">
-    <value>เปิดโฟลเดอร์</value>
+    <value>Öffnen Sie den Ordner</value>
   </data>
   <data name="LaunchFolderFlyoutItem.Text" xml:space="preserve">
-    <value>เปิดโฟลเดอร์ที่คุณอยู่</value>
+    <value>Öffnen Sie den Ordner, in dem Sie sich befinden</value>
   </data>
   <data name="ListItem.Content" xml:space="preserve">
-    <value>โฟลเดอร์ถูกตรึงไว้</value>
+    <value>Der Ordner ist angeheftet</value>
   </data>
   <data name="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>โฟลเดอร์ถูกตรึงไว้</value>
+    <value>Der Ordner ist angeheftet</value>
   </data>
   <data name="MangaTagDetailPage.CloseButtonText" xml:space="preserve">
-    <value>ปิดเครื่อง</value>
+    <value>Herunterfahren</value>
   </data>
   <data name="MangaTagDetailPage.PrimaryButtonText" xml:space="preserve">
-    <value>แก้ไข</value>
+    <value>redigieren</value>
   </data>
   <data name="MangaTagEditPage.CloseButtonText" xml:space="preserve">
-    <value>ไม่มีการปรับ</value>
+    <value>Keine Anpassungen</value>
   </data>
   <data name="MangaTagEditPage.PrimaryButtonText" xml:space="preserve">
-    <value>ยืนยันการปรับ</value>
+    <value>Bestätigen Sie die Anpassung</value>
   </data>
   <data name="MangaTags.Text" xml:space="preserve">
-    <value>แท็บย่อยนี้</value>
+    <value>Diese Unterregisterkarte</value>
   </data>
   <data name="MangaTypes.Text" xml:space="preserve">
-    <value>การจัดประเภทฉลาก</value>
+    <value>Klassifizierung von Etiketten</value>
   </data>
   <data name="MenuItem1.Text" xml:space="preserve">
-    <value>ดูข้อมูล</value>
+    <value>Informationen anzeigen</value>
   </data>
   <data name="ReadItem.Content" xml:space="preserve">
-    <value>การอ่าน</value>
+    <value>Lesen</value>
   </data>
   <data name="ReadItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>การอ่าน</value>
+    <value>Lesen</value>
   </data>
   <data name="RefreshButton.Label" xml:space="preserve">
-    <value>ล้างออก</value>
+    <value>gerötet</value>
   </data>
   <data name="RemoveFolderButton.Content" xml:space="preserve">
-    <value>เอาโฟลเดอร์ออก</value>
+    <value>Entfernen des Ordners</value>
   </data>
   <data name="SaveAs.Text" xml:space="preserve">
-    <value>บันทึกเป็น</value>
+    <value>Speichern unter</value>
   </data>
   <data name="SetBack.Text" xml:space="preserve">
-    <value>ซ่อมแซม</value>
+    <value>wiederherstellen</value>
   </data>
   <data name="SettingFilterImageButton.Content" xml:space="preserve">
-    <value>กรองแกลเลอรี</value>
+    <value>Filtern der Galerie</value>
   </data>
   <data name="SettingTagButton.Content" xml:space="preserve">
-    <value>การจัดการฉลาก</value>
+    <value>Etikettenmanagement</value>
   </data>
   <data name="ShowFolderBookcase.Content" xml:space="preserve">
-    <value>แสดงชั้นวางหนังสือ</value>
+    <value>Anzeigen des Bücherregals</value>
   </data>
   <data name="TranslateButton.Label" xml:space="preserve">
-    <value>การแปล</value>
+    <value>Übersetzung</value>
   </data>
   <data name="UpdateRecordItem.Content" xml:space="preserve">
-    <value>อัปเดตระเบียน</value>
+    <value>Datensätze aktualisieren</value>
   </data>
 </root>

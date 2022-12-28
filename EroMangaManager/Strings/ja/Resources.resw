@@ -15,14 +15,17 @@
   <data name="AddFolderButton.Content" xml:space="preserve">
     <value>フォルダを追加します</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>小さな黄色の本</value>
-  </data>
   <data name="BookcaseItem.Content" xml:space="preserve">
     <value>本棚</value>
   </data>
   <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>漫画の本棚</value>
+  </data>
+  <data name="DeleteFileConfirmPage.PrimaryButtonText" xml:space="preserve">
+    <value>はい</value>
+  </data>
+  <data name="DeleteFileConfirmPage.SecondaryButtonText" xml:space="preserve">
+    <value>いいえ</value>
   </data>
   <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
     <value>ファイルの削除を確認しますか?</value>
@@ -30,26 +33,38 @@
   <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
     <value>ソース ファイルを削除します</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>これは、zip形式で保存された漫画を管理し、読むための漫画マネージャです。 内部画像の要件はjpg、png形式です</value>
-  </data>
-  <data name="ErrorString1" xml:space="preserve">
-    <value>エラーが発生し、開くことができません</value>
-  </data>
   <data name="ErrorZipPageButton.Content" xml:space="preserve">
     <value>例外 Zip</value>
   </data>
-  <data name="ExportDone" xml:space="preserve">
-    <value>エクスポートが完了しました</value>
-  </data>
   <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
     <value>PDF としてエクスポートします</value>
+  </data>
+  <data name="FilterImageONOFF.Header" xml:space="preserve">
+    <value>単一ページフィルタリングを有効にするかどうか(この機能をオンにすると、コミックのオンが遅くなります)</value>
+  </data>
+  <data name="FilterImageONOFF.OffContent" xml:space="preserve">
+    <value>無効です</value>
+  </data>
+  <data name="FilterImageONOFF.OnContent" xml:space="preserve">
+    <value>有効になっています</value>
   </data>
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>このグラフは表示されません</value>
   </data>
   <data name="FullScreenToggle.Content" xml:space="preserve">
     <value>全画面表示</value>
+  </data>
+  <data name="FunctionPageShower.Content" xml:space="preserve">
+    <value>ツールボックス</value>
+  </data>
+  <data name="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>ツールボックス</value>
+  </data>
+  <data name="Function_FindSameMangaName.Content" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Function_RemoveTag.Content" xml:space="preserve">
+    <value>重複するサブラベルを削除します</value>
   </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>現在、フォルダはありませんので、最初のスキャンフォルダを追加してください</value>
@@ -119,5 +134,8 @@
   </data>
   <data name="TranslateButton.Label" xml:space="preserve">
     <value>翻訳</value>
+  </data>
+  <data name="UpdateRecordItem.Content" xml:space="preserve">
+    <value>レコードを更新します</value>
   </data>
 </root>

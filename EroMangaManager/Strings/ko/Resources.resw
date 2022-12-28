@@ -15,14 +15,17 @@
   <data name="AddFolderButton.Content" xml:space="preserve">
     <value>폴더를 추가합니다</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>작은 노란색 책</value>
-  </data>
   <data name="BookcaseItem.Content" xml:space="preserve">
     <value>책장</value>
   </data>
   <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>만화 책장</value>
+  </data>
+  <data name="DeleteFileConfirmPage.PrimaryButtonText" xml:space="preserve">
+    <value>네</value>
+  </data>
+  <data name="DeleteFileConfirmPage.SecondaryButtonText" xml:space="preserve">
+    <value>아니요, 그렇지 않습니다</value>
   </data>
   <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
     <value>파일 삭제를 확인하시겠습니까?</value>
@@ -30,26 +33,38 @@
   <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
     <value>소스 파일을 삭제합니다</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>이것은 관리하고 zip으로 저장된 만화를 읽는 데 사용되는 만화 관리자입니다. 내부 이미지에는 jpg, png 형식이 필요합니다</value>
-  </data>
-  <data name="ErrorString1" xml:space="preserve">
-    <value>오류가 발생하여 열 수 없습니다</value>
-  </data>
   <data name="ErrorZipPageButton.Content" xml:space="preserve">
     <value>예외 Zip</value>
   </data>
-  <data name="ExportDone" xml:space="preserve">
-    <value>내보내기가 완료되었습니다</value>
-  </data>
   <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
     <value>PDF로 내보냅니다</value>
+  </data>
+  <data name="FilterImageONOFF.Header" xml:space="preserve">
+    <value>단일 페이지 필터링을 사용하도록 설정하시겠습니까(이 기능을 켜면 만화가 느려집니다).</value>
+  </data>
+  <data name="FilterImageONOFF.OffContent" xml:space="preserve">
+    <value>비활성화되었습니다</value>
+  </data>
+  <data name="FilterImageONOFF.OnContent" xml:space="preserve">
+    <value>활성화됨</value>
   </data>
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>이 그림은 표시되지 않습니다</value>
   </data>
   <data name="FullScreenToggle.Content" xml:space="preserve">
     <value>전체 화면</value>
+  </data>
+  <data name="FunctionPageShower.Content" xml:space="preserve">
+    <value>도구 상자</value>
+  </data>
+  <data name="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>도구 상자</value>
+  </data>
+  <data name="Function_FindSameMangaName.Content" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Function_RemoveTag.Content" xml:space="preserve">
+    <value>중복 하위 탭을 제거합니다</value>
   </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>현재 폴더가 없으므로 첫 번째 검색 폴더를 추가합니다</value>
@@ -119,5 +134,8 @@
   </data>
   <data name="TranslateButton.Label" xml:space="preserve">
     <value>번역</value>
+  </data>
+  <data name="UpdateRecordItem.Content" xml:space="preserve">
+    <value>레코드를 업데이트합니다</value>
   </data>
 </root>

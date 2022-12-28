@@ -15,14 +15,17 @@
   <data name="AddFolderButton.Content" xml:space="preserve">
     <value>添加資料夾</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>小黃書</value>
-  </data>
   <data name="BookcaseItem.Content" xml:space="preserve">
     <value>書架</value>
   </data>
   <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>漫畫書架</value>
+  </data>
+  <data name="DeleteFileConfirmPage.PrimaryButtonText" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="DeleteFileConfirmPage.SecondaryButtonText" xml:space="preserve">
+    <value>否</value>
   </data>
   <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
     <value>確認刪除檔案？</value>
@@ -30,26 +33,38 @@
   <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
     <value>刪除源檔</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>這是一個漫畫管理員，用於管理及閱讀你的以zip形式保存的漫畫。 內部圖片要求為jpg、png格式</value>
-  </data>
-  <data name="ErrorString1" xml:space="preserve">
-    <value>出錯啦，無法打開</value>
-  </data>
   <data name="ErrorZipPageButton.Content" xml:space="preserve">
     <value>異常Zip</value>
   </data>
-  <data name="ExportDone" xml:space="preserve">
-    <value>匯出完成</value>
-  </data>
   <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
     <value>匯出為PDF</value>
+  </data>
+  <data name="FilterImageONOFF.Header" xml:space="preserve">
+    <value>是否開啟單頁過濾功能（開啟此功能將減慢漫畫開啟速度）</value>
+  </data>
+  <data name="FilterImageONOFF.OffContent" xml:space="preserve">
+    <value>已禁用</value>
+  </data>
+  <data name="FilterImageONOFF.OnContent" xml:space="preserve">
+    <value>已啟用</value>
   </data>
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>不顯示此圖</value>
   </data>
   <data name="FullScreenToggle.Content" xml:space="preserve">
     <value>全屏</value>
+  </data>
+  <data name="FunctionPageShower.Content" xml:space="preserve">
+    <value>工具箱</value>
+  </data>
+  <data name="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>工具箱</value>
+  </data>
+  <data name="Function_FindSameMangaName.Content" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Function_RemoveTag.Content" xml:space="preserve">
+    <value>拿掉重複本子標籤</value>
   </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>目前沒有資料夾，請添加你的第一個掃描資料夾</value>
@@ -119,5 +134,8 @@
   </data>
   <data name="TranslateButton.Label" xml:space="preserve">
     <value>翻譯</value>
+  </data>
+  <data name="UpdateRecordItem.Content" xml:space="preserve">
+    <value>更新記錄</value>
   </data>
 </root>

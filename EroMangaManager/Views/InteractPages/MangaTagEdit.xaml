@@ -6,7 +6,7 @@
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                x:Name="thePage"
                Title="{x:Bind mangaBook.MangaName}"
-               x:Uid="/UIResources/MangaTagEditPage"
+               x:Uid="/Resources/MangaTagEditPage"
                DataContext="{x:Bind comboxitemlist}"
                PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
                mc:Ignorable="d">
@@ -27,9 +27,9 @@
         <RelativePanel Grid.Row="0"
                        HorizontalAlignment="Stretch">
             <TextBlock RelativePanel.AlignLeftWithPanel="True"
-                       x:Uid="/UIResources/MangaTags" />
+                       x:Uid="/Resources/MangaTags" />
             <TextBlock RelativePanel.AlignRightWithPanel="True"
-                       x:Uid="/UIResources/MangaTypes" />
+                       x:Uid="/Resources/MangaTypes" />
         </RelativePanel>
         <ListView x:Name="List"
                   Grid.Row="1"

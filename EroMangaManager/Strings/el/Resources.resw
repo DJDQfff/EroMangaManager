@@ -15,14 +15,17 @@
   <data name="AddFolderButton.Content" xml:space="preserve">
     <value>Προσθήκη φακέλου</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Μικρό Κίτρινο Βιβλίο</value>
-  </data>
   <data name="BookcaseItem.Content" xml:space="preserve">
     <value>βιβλιοθήκη</value>
   </data>
   <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Βιβλιοθήκη κόμικς</value>
+  </data>
+  <data name="DeleteFileConfirmPage.PrimaryButtonText" xml:space="preserve">
+    <value>είμαι</value>
+  </data>
+  <data name="DeleteFileConfirmPage.SecondaryButtonText" xml:space="preserve">
+    <value>όχι</value>
   </data>
   <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
     <value>Επιβεβαιώστε τη διαγραφή αρχείων;</value>
@@ -30,26 +33,38 @@
   <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
     <value>Διαγραφή του αρχείου προέλευσης</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>Αυτός είναι ένας διαχειριστής manga για τη διαχείριση και την ανάγνωση των αποθηκευμένων κόμικς σας σε μορφή zip. Οι εσωτερικές εικόνες πρέπει να είναι σε μορφές JPG και PNG</value>
-  </data>
-  <data name="ErrorString1" xml:space="preserve">
-    <value>Παρουσιάστηκε σφάλμα και δεν ήταν δυνατό το άνοιγμά του</value>
-  </data>
   <data name="ErrorZipPageButton.Content" xml:space="preserve">
     <value>Φερμουάρ εξαίρεσης</value>
   </data>
-  <data name="ExportDone" xml:space="preserve">
-    <value>Η εξαγωγή ολοκληρώθηκε</value>
-  </data>
   <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
     <value>Εξαγωγή σε PDF</value>
+  </data>
+  <data name="FilterImageONOFF.Header" xml:space="preserve">
+    <value>Εάν θα ενεργοποιήσετε το φιλτράρισμα μίας σελίδας (η ενεργοποίηση αυτής της δυνατότητας θα επιβραδύνει το άνοιγμα των κόμικς)</value>
+  </data>
+  <data name="FilterImageONOFF.OffContent" xml:space="preserve">
+    <value>Ανάπηρος</value>
+  </data>
+  <data name="FilterImageONOFF.OnContent" xml:space="preserve">
+    <value>Ενεργοποιημένη</value>
   </data>
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>Αυτός ο αριθμός δεν εμφανίζεται</value>
   </data>
   <data name="FullScreenToggle.Content" xml:space="preserve">
     <value>Πλήρης οθόνη</value>
+  </data>
+  <data name="FunctionPageShower.Content" xml:space="preserve">
+    <value>εργαλειοθήκη</value>
+  </data>
+  <data name="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>εργαλειοθήκη</value>
+  </data>
+  <data name="Function_FindSameMangaName.Content" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Function_RemoveTag.Content" xml:space="preserve">
+    <value>Κατάργηση της υποκαρτέλας Διπλότυπο βιβλίο</value>
   </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>Προς το παρόν δεν υπάρχουν φάκελοι, προσθέστε τον πρώτο σας φάκελο σάρωσης</value>
@@ -119,5 +134,8 @@
   </data>
   <data name="TranslateButton.Label" xml:space="preserve">
     <value>Μετάφραση</value>
+  </data>
+  <data name="UpdateRecordItem.Content" xml:space="preserve">
+    <value>Ενημέρωση εγγραφών</value>
   </data>
 </root>

@@ -15,14 +15,17 @@
   <data name="AddFolderButton.Content" xml:space="preserve">
     <value>Добавление папки</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Маленькая желтая книга</value>
-  </data>
   <data name="BookcaseItem.Content" xml:space="preserve">
     <value>книжная полка</value>
   </data>
   <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Полка для комиксов</value>
+  </data>
+  <data name="DeleteFileConfirmPage.PrimaryButtonText" xml:space="preserve">
+    <value>быть</value>
+  </data>
+  <data name="DeleteFileConfirmPage.SecondaryButtonText" xml:space="preserve">
+    <value>не</value>
   </data>
   <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
     <value>Подтвердите удаление файлов?</value>
@@ -30,26 +33,38 @@
   <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
     <value>Удаление исходного файла</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>Это менеджер манги для управления и чтения сохраненных комиксов в zip-форме. Внутренние изображения должны быть в форматах JPG и PNG</value>
-  </data>
-  <data name="ErrorString1" xml:space="preserve">
-    <value>Произошла ошибка, и не удалось открыть</value>
-  </data>
   <data name="ErrorZipPageButton.Content" xml:space="preserve">
     <value>Исключение Zip</value>
   </data>
-  <data name="ExportDone" xml:space="preserve">
-    <value>Экспорт завершен</value>
-  </data>
   <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
     <value>Экспорт в PDF</value>
+  </data>
+  <data name="FilterImageONOFF.Header" xml:space="preserve">
+    <value>Стоит ли включать одностраничную фильтрацию (включение этой функции замедлит открытие комиксов)</value>
+  </data>
+  <data name="FilterImageONOFF.OffContent" xml:space="preserve">
+    <value>Нетрудоспособный</value>
+  </data>
+  <data name="FilterImageONOFF.OnContent" xml:space="preserve">
+    <value>Включен</value>
   </data>
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>Этот рисунок не отображается</value>
   </data>
   <data name="FullScreenToggle.Content" xml:space="preserve">
     <value>Полноэкранный режим</value>
+  </data>
+  <data name="FunctionPageShower.Content" xml:space="preserve">
+    <value>ящик для инструментов</value>
+  </data>
+  <data name="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>ящик для инструментов</value>
+  </data>
+  <data name="Function_FindSameMangaName.Content" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Function_RemoveTag.Content" xml:space="preserve">
+    <value>Удаление вложенной вкладки "Дубликат книги"</value>
   </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>В настоящее время нет папок, пожалуйста, добавьте свою первую папку сканирования</value>
@@ -119,5 +134,8 @@
   </data>
   <data name="TranslateButton.Label" xml:space="preserve">
     <value>Перевод</value>
+  </data>
+  <data name="UpdateRecordItem.Content" xml:space="preserve">
+    <value>Обновление записей</value>
   </data>
 </root>

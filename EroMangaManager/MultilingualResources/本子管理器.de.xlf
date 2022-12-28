@@ -1,5 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="zh-CN" target-language="de" original="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" datatype="resx">
+        <trans-unit id="AppDisplayName" translate="yes" xml:space="preserve">
+          <source>小黄书</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Kleines gelbes Buch</target>
+        </trans-unit>
+        <trans-unit id="Description" translate="yes" xml:space="preserve">
+          <source>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Dies ist ein Manga-Manager zum Verwalten und Lesen Ihrer gespeicherten Comics in Zip-Form. Interne Bilder müssen im JPG- und PNG-Format vorliegen</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
   <file datatype="xml" source-language="zh-CN" target-language="de" original="本子管理器/STRINGS/ZH-CN/UPDATERESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
@@ -33,12 +50,29 @@
       </group>
     </body>
   </file>
-  <file datatype="xml" source-language="zh-CN" target-language="de" original="本子管理器/STRINGS/ZH-CN/UIRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+  <file datatype="xml" source-language="zh-CN" target-language="de" original="本子管理器/STRINGS/ZH-CN/STRINGRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
     </header>
     <body>
-      <group id="本子管理器/STRINGS/ZH-CN/UIRESOURCES.RESW" datatype="resx">
+      <group id="本子管理器/STRINGS/ZH-CN/STRINGRESOURCES.RESW" datatype="resx">
+        <trans-unit id="ErrorString1" translate="yes" xml:space="preserve">
+          <source>出错啦，无法打开</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ein Fehler ist aufgetreten und konnte nicht geöffnet werden</target>
+        </trans-unit>
+        <trans-unit id="ExportDone" translate="yes" xml:space="preserve">
+          <source>导出完成</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Der Export ist abgeschlossen</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="zh-CN" target-language="de" original="本子管理器/STRINGS/ZH-CN/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="本子管理器/STRINGS/ZH-CN/RESOURCES.RESW" datatype="resx">
         <trans-unit id="AddFolderButton.Content" translate="yes" xml:space="preserve">
           <source>添加文件夹</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Hinzufügen eines Ordners</target>
@@ -102,6 +136,10 @@
         <trans-unit id="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
           <source>工具箱</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Werkzeugkasten</target>
+        </trans-unit>
+        <trans-unit id="Function_FindSameMangaName.Content" translate="yes" xml:space="preserve">
+          <source></source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion"></target>
         </trans-unit>
         <trans-unit id="Function_RemoveTag.Content" translate="yes" xml:space="preserve">
           <source>移除重复本子标签</source>
@@ -202,40 +240,6 @@
         <trans-unit id="UpdateRecordItem.Content" translate="yes" xml:space="preserve">
           <source>更新记录</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Datensätze aktualisieren</target>
-        </trans-unit>
-      </group>
-    </body>
-  </file>
-  <file datatype="xml" source-language="zh-CN" target-language="de" original="本子管理器/STRINGS/ZH-CN/STRINGRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
-    <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
-    </header>
-    <body>
-      <group id="本子管理器/STRINGS/ZH-CN/STRINGRESOURCES.RESW" datatype="resx">
-        <trans-unit id="ErrorString1" translate="yes" xml:space="preserve">
-          <source>出错啦，无法打开</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ein Fehler ist aufgetreten und konnte nicht geöffnet werden</target>
-        </trans-unit>
-        <trans-unit id="ExportDone" translate="yes" xml:space="preserve">
-          <source>导出完成</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Der Export ist abgeschlossen</target>
-        </trans-unit>
-      </group>
-    </body>
-  </file>
-  <file datatype="xml" source-language="zh-CN" target-language="de" original="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
-    <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
-    </header>
-    <body>
-      <group id="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" datatype="resx">
-        <trans-unit id="AppDisplayName" translate="yes" xml:space="preserve">
-          <source>小黄书</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Kleines gelbes Buch</target>
-        </trans-unit>
-        <trans-unit id="Description" translate="yes" xml:space="preserve">
-          <source>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Dies ist ein Manga-Manager zum Verwalten und Lesen Ihrer gespeicherten Comics in Zip-Form. Interne Bilder müssen im JPG- und PNG-Format vorliegen</target>
         </trans-unit>
       </group>
     </body>

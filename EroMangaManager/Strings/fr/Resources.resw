@@ -15,14 +15,17 @@
   <data name="AddFolderButton.Content" xml:space="preserve">
     <value>Ajouter un dossier</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Petit Livre Jaune</value>
-  </data>
   <data name="BookcaseItem.Content" xml:space="preserve">
     <value>étagère</value>
   </data>
   <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Bibliothèque de bandes dessinées</value>
+  </data>
+  <data name="DeleteFileConfirmPage.PrimaryButtonText" xml:space="preserve">
+    <value>être</value>
+  </data>
+  <data name="DeleteFileConfirmPage.SecondaryButtonText" xml:space="preserve">
+    <value>non</value>
   </data>
   <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
     <value>Confirmer la suppression de fichiers ?</value>
@@ -30,26 +33,38 @@
   <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
     <value>Supprimer le fichier source</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>Ceci est un gestionnaire de manga pour gérer et lire vos bandes dessinées enregistrées sous forme zip. Les images internes doivent être aux formats JPG et PNG</value>
-  </data>
-  <data name="ErrorString1" xml:space="preserve">
-    <value>Une erreur s’est produite et il n’a pas pu être ouvert</value>
-  </data>
   <data name="ErrorZipPageButton.Content" xml:space="preserve">
     <value>Exception Zip</value>
   </data>
-  <data name="ExportDone" xml:space="preserve">
-    <value>L’exportation est terminée</value>
-  </data>
   <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
     <value>Exporter au format PDF</value>
+  </data>
+  <data name="FilterImageONOFF.Header" xml:space="preserve">
+    <value>S’il faut activer le filtrage d’une seule page (l’activation de cette fonctionnalité ralentira l’ouverture des bandes dessinées)</value>
+  </data>
+  <data name="FilterImageONOFF.OffContent" xml:space="preserve">
+    <value>Handicapé</value>
+  </data>
+  <data name="FilterImageONOFF.OnContent" xml:space="preserve">
+    <value>Activé</value>
   </data>
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>Ce chiffre n’est pas affiché</value>
   </data>
   <data name="FullScreenToggle.Content" xml:space="preserve">
     <value>Plein écran</value>
+  </data>
+  <data name="FunctionPageShower.Content" xml:space="preserve">
+    <value>toolbox</value>
+  </data>
+  <data name="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>toolbox</value>
+  </data>
+  <data name="Function_FindSameMangaName.Content" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Function_RemoveTag.Content" xml:space="preserve">
+    <value>Supprimer le sous-onglet Livre en double</value>
   </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>Il n’y a actuellement aucun dossier, veuillez ajouter votre premier dossier d’analyse</value>
@@ -119,5 +134,8 @@
   </data>
   <data name="TranslateButton.Label" xml:space="preserve">
     <value>Traduction</value>
+  </data>
+  <data name="UpdateRecordItem.Content" xml:space="preserve">
+    <value>Mettre à jour les enregistrements</value>
   </data>
 </root>

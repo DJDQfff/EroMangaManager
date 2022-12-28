@@ -10,13 +10,13 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="SettingFilterImageButton"
                                     d:Content="过滤图库"
-                                    x:Uid="/UIResources/SettingFilterImageButton" />
+                                    x:Uid="/Resources/SettingFilterImageButton" />
                 <NavigationViewItem x:Name="SettingTagButton"
                         d:Content="标签管理"
-                                    x:Uid="/UIResources/SettingTagButton" />
+                                    x:Uid="/Resources/SettingTagButton" />
                 <NavigationViewItem x:Name="ErrorZipPageButton"
                         d:Content="异常Zip"
-                                    x:Uid="/UIResources/ErrorZipPageButton"/>
+                                    x:Uid="/Resources/ErrorZipPageButton"/>
 
             </NavigationView.MenuItems>
             <NavigationView.Content >
@@ -25,7 +25,7 @@
             </NavigationView.Content>
             <NavigationView.PaneFooter>
                 <Button d:Content="更新日志" Margin="0"
-                        x:Uid="/UIResources/UpdateRecordItem" x:Name="UpdateRecordItem" Click="UpdateRecordItem_Click"/>
+                        x:Uid="/Resources/UpdateRecordItem" x:Name="UpdateRecordItem" Click="UpdateRecordItem_Click"/>
             </NavigationView.PaneFooter>
         </NavigationView>
     </Grid>

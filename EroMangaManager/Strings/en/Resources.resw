@@ -15,14 +15,17 @@
   <data name="AddFolderButton.Content" xml:space="preserve">
     <value>Add a folder</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Little Yellow Book</value>
-  </data>
   <data name="BookcaseItem.Content" xml:space="preserve">
     <value>bookshelf</value>
   </data>
   <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Comic bookshelf</value>
+  </data>
+  <data name="DeleteFileConfirmPage.PrimaryButtonText" xml:space="preserve">
+    <value>be</value>
+  </data>
+  <data name="DeleteFileConfirmPage.SecondaryButtonText" xml:space="preserve">
+    <value>not</value>
   </data>
   <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
     <value>Confirm deleting files?</value>
@@ -30,26 +33,38 @@
   <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
     <value>Delete the source file</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>This is a manga manager for managing and reading your saved comics in zip form. Internal images must be in JPG and PNG formats</value>
-  </data>
-  <data name="ErrorString1" xml:space="preserve">
-    <value>An error occurred and it could not be opened</value>
-  </data>
   <data name="ErrorZipPageButton.Content" xml:space="preserve">
     <value>Exception Zip</value>
   </data>
-  <data name="ExportDone" xml:space="preserve">
-    <value>The export is complete</value>
-  </data>
   <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
     <value>Export to PDF</value>
+  </data>
+  <data name="FilterImageONOFF.Header" xml:space="preserve">
+    <value>Whether to enable single-page filtering (turning on this feature will slow down the opening of comics)</value>
+  </data>
+  <data name="FilterImageONOFF.OffContent" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="FilterImageONOFF.OnContent" xml:space="preserve">
+    <value>Enabled</value>
   </data>
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>This figure is not displayed</value>
   </data>
   <data name="FullScreenToggle.Content" xml:space="preserve">
     <value>Full screen</value>
+  </data>
+  <data name="FunctionPageShower.Content" xml:space="preserve">
+    <value>toolbox</value>
+  </data>
+  <data name="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>toolbox</value>
+  </data>
+  <data name="Function_FindSameMangaName.Content" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Function_RemoveTag.Content" xml:space="preserve">
+    <value>Remove the Duplicate Book subtab</value>
   </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>There are currently no folders, please add your first scan folder</value>
@@ -119,5 +134,8 @@
   </data>
   <data name="TranslateButton.Label" xml:space="preserve">
     <value>Translation</value>
+  </data>
+  <data name="UpdateRecordItem.Content" xml:space="preserve">
+    <value>Update records</value>
   </data>
 </root>

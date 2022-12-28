@@ -15,14 +15,17 @@
   <data name="AddFolderButton.Content" xml:space="preserve">
     <value>เพิ่มโฟลเดอร์</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>สมุดปกเหลืองน้อย</value>
-  </data>
   <data name="BookcaseItem.Content" xml:space="preserve">
     <value>ชั้นวางหนังสือ</value>
   </data>
   <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>ชั้นวางหนังสือการ์ตูน</value>
+  </data>
+  <data name="DeleteFileConfirmPage.PrimaryButtonText" xml:space="preserve">
+    <value>คือ</value>
+  </data>
+  <data name="DeleteFileConfirmPage.SecondaryButtonText" xml:space="preserve">
+    <value>ไม่</value>
   </data>
   <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
     <value>ยืนยันการลบไฟล์?</value>
@@ -30,26 +33,38 @@
   <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
     <value>ลบไฟล์ต้นฉบับ</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>นี่คือผู้จัดการมังงะสําหรับจัดการและอ่านการ์ตูนที่บันทึกไว้ในรูปแบบซิป รูปภาพภายในต้องอยู่ในรูปแบบ JPG และ PNG</value>
-  </data>
-  <data name="ErrorString1" xml:space="preserve">
-    <value>เกิดข้อผิดพลาดและไม่สามารถเปิดได้</value>
-  </data>
   <data name="ErrorZipPageButton.Content" xml:space="preserve">
     <value>ข้อยกเว้นซิป</value>
   </data>
-  <data name="ExportDone" xml:space="preserve">
-    <value>การส่งออกเสร็จสมบูรณ์</value>
-  </data>
   <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
     <value>ส่งออกเป็น PDF</value>
+  </data>
+  <data name="FilterImageONOFF.Header" xml:space="preserve">
+    <value>จะเปิดใช้งานการกรองแบบหน้าเดียวหรือไม่ (การเปิดคุณสมบัตินี้จะทําให้การเปิดการ์ตูนช้าลง)</value>
+  </data>
+  <data name="FilterImageONOFF.OffContent" xml:space="preserve">
+    <value>พิการ</value>
+  </data>
+  <data name="FilterImageONOFF.OnContent" xml:space="preserve">
+    <value>เปิด</value>
   </data>
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>ตัวเลขนี้ไม่แสดงขึ้น</value>
   </data>
   <data name="FullScreenToggle.Content" xml:space="preserve">
     <value>เต็มหน้าจอ</value>
+  </data>
+  <data name="FunctionPageShower.Content" xml:space="preserve">
+    <value>เครื่อง มือ</value>
+  </data>
+  <data name="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>เครื่อง มือ</value>
+  </data>
+  <data name="Function_FindSameMangaName.Content" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Function_RemoveTag.Content" xml:space="preserve">
+    <value>นําแท็บย่อยหนังสือที่ซ้ํากันออก</value>
   </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>ขณะนี้ยังไม่มีโฟลเดอร์โปรดเพิ่มโฟลเดอร์สแกนแรกของคุณ</value>
@@ -119,5 +134,8 @@
   </data>
   <data name="TranslateButton.Label" xml:space="preserve">
     <value>การแปล</value>
+  </data>
+  <data name="UpdateRecordItem.Content" xml:space="preserve">
+    <value>อัปเดตระเบียน</value>
   </data>
 </root>

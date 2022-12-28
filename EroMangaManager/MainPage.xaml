@@ -19,24 +19,24 @@
 
                 <NavigationViewItem x:Name="BookcaseItemContainer"
                                     d:Content="书架"
-                                    x:Uid="/UIResources/BookcaseItem"
+                                    x:Uid="/Resources/BookcaseItem"
                                     Icon="Library" ToolTipService.ToolTip="jfdak" />
                 <NavigationViewItem d:Content="书库"
-                                    x:Uid="/UIResources/ListItem"
+                                    x:Uid="/Resources/ListItem"
                                     Icon="List"
                                     x:Name="ListItem" />
                 <NavigationViewItem x:Name="ReadItem"
-                                    x:Uid="/UIResources/ReadItem"
+                                    x:Uid="/Resources/ReadItem"
                                     d:Content="正在阅读"
                                     Icon="Read" />
-                <!--<NavigationViewItem x:Name="FunctionPageShower"
-                                    x:Uid="/UIResources/FunctionPageShower"
+                <NavigationViewItem x:Name="FunctionPageShower"
+                                    x:Uid="/Resources/FunctionPageShower"
                                     d:Content="功能页">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEC7A;"
                                   FontFamily="Segoe MDL2 Assets" />
                     </NavigationViewItem.Icon>
-                </NavigationViewItem>-->
+                </NavigationViewItem>
             </NavigationView.MenuItems>
             <NavigationView.Content>
                 <Frame x:Name="MainFrame"

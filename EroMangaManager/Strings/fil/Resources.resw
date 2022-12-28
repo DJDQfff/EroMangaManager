@@ -15,14 +15,17 @@
   <data name="AddFolderButton.Content" xml:space="preserve">
     <value>Magdagdag ng folder</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Maliit na Dilaw na Aklat</value>
-  </data>
   <data name="BookcaseItem.Content" xml:space="preserve">
     <value>istante ng libro</value>
   </data>
   <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>Shelf ng mga libro ng komiks</value>
+  </data>
+  <data name="DeleteFileConfirmPage.PrimaryButtonText" xml:space="preserve">
+    <value>maging</value>
+  </data>
+  <data name="DeleteFileConfirmPage.SecondaryButtonText" xml:space="preserve">
+    <value>hindi naman</value>
   </data>
   <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
     <value>Kumpirmahin ang pagtanggal ng mga file?</value>
@@ -30,26 +33,38 @@
   <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
     <value>Tanggalin ang source file</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>Ito ay isang manga manager para sa pamamahala at pagbabasa ng iyong mga naka save na komiks sa zip form. Ang mga panloob na imahe ay dapat na nasa mga format ng JPG at PNG</value>
-  </data>
-  <data name="ErrorString1" xml:space="preserve">
-    <value>May nangyaring error at hindi ito mabuksan</value>
-  </data>
   <data name="ErrorZipPageButton.Content" xml:space="preserve">
     <value>Exception Zip</value>
   </data>
-  <data name="ExportDone" xml:space="preserve">
-    <value>Ang pag export ay kumpleto</value>
-  </data>
   <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
     <value>I-export sa PDF</value>
+  </data>
+  <data name="FilterImageONOFF.Header" xml:space="preserve">
+    <value>Kung paganahin ang pag filter ng isang pahina (ang pag on ng tampok na ito ay magpapabagal sa pagbubukas ng komiks)</value>
+  </data>
+  <data name="FilterImageONOFF.OffContent" xml:space="preserve">
+    <value>Hindi pinagana</value>
+  </data>
+  <data name="FilterImageONOFF.OnContent" xml:space="preserve">
+    <value>Pinagana</value>
   </data>
   <data name="FilterThisImage.Text" xml:space="preserve">
     <value>Hindi ipinapakita ang figure na ito</value>
   </data>
   <data name="FullScreenToggle.Content" xml:space="preserve">
     <value>Buong screen</value>
+  </data>
+  <data name="FunctionPageShower.Content" xml:space="preserve">
+    <value>toolbox</value>
+  </data>
+  <data name="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>toolbox</value>
+  </data>
+  <data name="Function_FindSameMangaName.Content" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Function_RemoveTag.Content" xml:space="preserve">
+    <value>Alisin ang Duplicate Book subtab</value>
   </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>Sa kasalukuyan ay walang mga folder, mangyaring idagdag ang iyong unang folder ng pag scan</value>
@@ -119,5 +134,8 @@
   </data>
   <data name="TranslateButton.Label" xml:space="preserve">
     <value>Pagsasalin</value>
+  </data>
+  <data name="UpdateRecordItem.Content" xml:space="preserve">
+    <value>I-update ang mga talaan</value>
   </data>
 </root>
