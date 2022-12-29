@@ -14,10 +14,6 @@ namespace EroMangaDB.Tables
         /// </summary>
         public DbSet<FilteredImage> FilteredImages { set; get; }
 
-        /// <summary>
-        /// 存贮特定的本子Tag的表
-        /// </summary>
-        public DbSet<MangaTagInfo> ManTagInfos { set; get; }
 
         /// <summary>
         /// UniqueTagInRelation数据表

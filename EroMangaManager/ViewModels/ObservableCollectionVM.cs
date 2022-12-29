@@ -125,29 +125,24 @@ namespace EroMangaManager.ViewModels
             FutureAccessList.Remove(token); // 从系统未来访问列表里删除
         }
 
-        #region 弃用
-
-        /// <summary>读取数据库，将指定文件夹下的 MangaTag 移除</summary>
-        /// <param name="storageFolder"></param>
-        /// <returns></returns>
-        [Obsolete]
-        private async Task RemoveMultiTagsFromDatabase (StorageFolder storageFolder)
-        {
-            var files = (await storageFolder.GetFilesAsync()).Select(n => n.Path).ToArray();
-            await DatabaseController.MangaTag_RemoveMulti(files);
-        }
 
         /// <summary>从数据库中移除指定漫画的 MangaTag</summary>
         /// <param name="mangaBook"></param>
         /// <returns></returns>
         public async Task DeleteSingleMangaBook (MangaBook mangaBook)
         {
-            MangaList.Remove(mangaBook);
-            await DatabaseController.MangaTag_RemoveSingle(mangaBook.StorageFile.Path);
+            var folder = mangaBook.StorageFolder;
+            foreach(var f in MangaFolders)
+            {
+                if (f.StorageFolder.Path == folder.Path)
+                {
+                    f.RemoveManga(mangaBook);
+                }
+            }
+            await DatabaseController.ReadingInfo_RemoveSingle(mangaBook.StorageFile.Path);
 
             await mangaBook.StorageFile.DeleteAsync();
         }
 
-        #endregion 弃用
     }
 }

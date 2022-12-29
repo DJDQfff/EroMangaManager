@@ -135,4 +135,7 @@
   <data name="UpdateRecordItem.Content" xml:space="preserve">
     <value>更新記錄</value>
   </data>
+  <data name="Function_RemoveRepeatTags.Content" xml:space="preserve">
+    <value>拿掉重複本子標籤</value>
+  </data>
 </root>

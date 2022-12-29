@@ -239,7 +239,7 @@
         </trans-unit>
         <trans-unit id="Function_RemoveRepeatTags.Content" translate="yes" xml:space="preserve">
           <source>移除重复本子标签</source>
-          <target state="new">移除重复本子标签</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">นําแท็บย่อยหนังสือที่ซ้ํากันออก</target>
         </trans-unit>
       </group>
     </body>

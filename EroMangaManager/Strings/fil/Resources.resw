@@ -135,4 +135,7 @@
   <data name="UpdateRecordItem.Content" xml:space="preserve">
     <value>I-update ang mga talaan</value>
   </data>
+  <data name="Function_RemoveRepeatTags.Content" xml:space="preserve">
+    <value>Alisin ang Duplicate Book subtab</value>
+  </data>
 </root>

@@ -135,4 +135,7 @@
   <data name="UpdateRecordItem.Content" xml:space="preserve">
     <value>Ενημέρωση εγγραφών</value>
   </data>
+  <data name="Function_RemoveRepeatTags.Content" xml:space="preserve">
+    <value>Κατάργηση της υποκαρτέλας Διπλότυπο βιβλίο</value>
+  </data>
 </root>

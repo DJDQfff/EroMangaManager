@@ -46,11 +46,12 @@
                                                 <TextBlock x:Name="folderTextBlock"
                                    VerticalAlignment="Center"
                                    Padding="0,0,4,0"
-                                   Width="200"
+                                   Width="500"
+                                   FontWeight="Black"
                                    Text="{x:Bind FolderPath}" />
 
                         <TextBlock Text="{x:Bind  MangaBooks.Count,Mode=OneWay}"
-                                   Width="60"
+                                   Width="60" 
                                    VerticalAlignment="Center"
                                    TextAlignment="Center" />
 

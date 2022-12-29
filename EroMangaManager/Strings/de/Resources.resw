@@ -135,4 +135,7 @@
   <data name="UpdateRecordItem.Content" xml:space="preserve">
     <value>Datensätze aktualisieren</value>
   </data>
+  <data name="Function_RemoveRepeatTags.Content" xml:space="preserve">
+    <value>Entfernen der Unterregisterkarte "Buch duplizieren"</value>
+  </data>
 </root>

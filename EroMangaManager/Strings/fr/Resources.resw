@@ -135,4 +135,7 @@
   <data name="UpdateRecordItem.Content" xml:space="preserve">
     <value>Mettre à jour les enregistrements</value>
   </data>
+  <data name="Function_RemoveRepeatTags.Content" xml:space="preserve">
+    <value>Supprimer le sous-onglet Livre en double</value>
+  </data>
 </root>
