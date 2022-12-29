@@ -20,7 +20,10 @@
         <GridView ItemsSource="{x:Bind tags}">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="x:String">
-                    <TextBlock Text="{x:Bind }" />
+                    <Border Loaded="Border_Loaded">
+                                            <TextBlock Text="{x:Bind }" />
+
+                    </Border>
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>

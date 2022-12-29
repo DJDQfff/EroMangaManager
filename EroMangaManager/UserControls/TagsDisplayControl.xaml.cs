@@ -15,6 +15,9 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using MyStandard20Library;
+using MyUWPLibrary;
+
+using EroMangaDB.Helper;
 //https://go.microsoft.com/fwlink/?LinkId=234236 上介绍了“用户控件”项模板
 
 namespace EroMangaManager.UserControls
@@ -26,7 +29,7 @@ namespace EroMangaManager.UserControls
         {
             set
             {
-                var temp = value.Split('\r');
+                var temp = value.SplitAndParser();
                 tags.Clear();
                 tags.AddRange(temp);
             }
@@ -38,5 +41,10 @@ namespace EroMangaManager.UserControls
         }
 
 
+        private void Border_Loaded (object sender , RoutedEventArgs e)
+        {
+            Border border = sender as Border;
+            border.Background = MyUWPLibrary.WindowsUIColorHelper.GetRandomSolidColorBrush();
+        }
     }
 }
