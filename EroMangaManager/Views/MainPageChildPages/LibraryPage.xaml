@@ -43,10 +43,23 @@
                                 HorizontalAlignment="Stretch"
                                 PointerEntered="StackButton_PointerEntered"
                                 PointerExited="StackButton_PointerExited">
+                                                <TextBlock x:Name="folderTextBlock"
+                                   VerticalAlignment="Center"
+                                   Padding="0,0,4,0"
+                                   Width="200"
+                                   Text="{x:Bind FolderPath}" />
+
                         <TextBlock Text="{x:Bind  MangaBooks.Count,Mode=OneWay}"
                                    Width="60"
-                                   VerticalAlignment="Stretch"
+                                   VerticalAlignment="Center"
                                    TextAlignment="Center" />
+
+
+                        <StackPanel x:Name="StackButton"
+                                    Orientation="Horizontal"
+                                    Visibility="Collapsed"
+                                    VerticalAlignment="Center"
+                                    RelativePanel.AlignRightWithPanel="True">
                         <Button  x:Name="JumpToBookcase"
                                  Width="100"
                                  VerticalAlignment="Center"
@@ -55,18 +68,6 @@
                                  x:Uid="/Resources/ShowFolderBookcase"
                                  BorderThickness="0">
                         </Button>
-
-                        <TextBlock x:Name="folderTextBlock"
-                                   VerticalAlignment="Center"
-                                   Padding="0,0,4,0"
-                                   Width="200"
-                                   Text="{x:Bind FolderPath}" />
-
-                        <StackPanel x:Name="StackButton"
-                                    Orientation="Horizontal"
-                                    Visibility="Collapsed"
-                                    VerticalAlignment="Center"
-                                    RelativePanel.AlignRightWithPanel="True">
 
                             <Button  d:Content="打开文件夹"
                                      VerticalAlignment="Center"

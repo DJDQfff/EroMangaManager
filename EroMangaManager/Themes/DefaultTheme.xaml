@@ -5,6 +5,8 @@
            TargetType="ListViewItem">
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
     </Style>
     <Style TargetType="Button">
         <Setter Property="Margin"
