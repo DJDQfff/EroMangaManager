@@ -39,7 +39,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="vm:MangasFolder"
                               x:DefaultBindMode="OneWay">
-                    <StackPanel Orientation="Horizontal"
+                    <StackPanel Orientation="Horizontal" Background="Transparent"
                                 HorizontalAlignment="Stretch"
                                 PointerEntered="StackButton_PointerEntered"
                                 PointerExited="StackButton_PointerExited">
