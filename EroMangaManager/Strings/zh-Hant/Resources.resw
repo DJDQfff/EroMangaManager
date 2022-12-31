@@ -61,7 +61,7 @@
     <value>工具箱</value>
   </data>
   <data name="Function_FindSameMangaName.Content" xml:space="preserve">
-    <value></value>
+    <value>查找相同漫畫</value>
   </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>目前沒有資料夾，請添加你的第一個掃描資料夾</value>

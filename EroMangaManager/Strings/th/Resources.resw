@@ -61,7 +61,7 @@
     <value>เครื่อง มือ</value>
   </data>
   <data name="Function_FindSameMangaName.Content" xml:space="preserve">
-    <value></value>
+    <value>ค้นหาการ์ตูนเรื่องเดียวกัน</value>
   </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>ขณะนี้ยังไม่มีโฟลเดอร์โปรดเพิ่มโฟลเดอร์สแกนแรกของคุณ</value>

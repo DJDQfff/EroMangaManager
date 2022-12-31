@@ -61,7 +61,7 @@
     <value>cassetta degli attrezzi</value>
   </data>
   <data name="Function_FindSameMangaName.Content" xml:space="preserve">
-    <value></value>
+    <value>Trova gli stessi fumetti</value>
   </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>Al momento non ci sono cartelle, aggiungi la tua prima cartella di scansione</value>

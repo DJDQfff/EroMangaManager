@@ -61,7 +61,7 @@
     <value>toolbox</value>
   </data>
   <data name="Function_FindSameMangaName.Content" xml:space="preserve">
-    <value></value>
+    <value>Find the same comics</value>
   </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>There are currently no folders, please add your first scan folder</value>

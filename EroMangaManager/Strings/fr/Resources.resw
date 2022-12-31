@@ -61,7 +61,7 @@
     <value>toolbox</value>
   </data>
   <data name="Function_FindSameMangaName.Content" xml:space="preserve">
-    <value></value>
+    <value>Trouver les mêmes bandes dessinées</value>
   </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>Il n’y a actuellement aucun dossier, veuillez ajouter votre premier dossier d’analyse</value>

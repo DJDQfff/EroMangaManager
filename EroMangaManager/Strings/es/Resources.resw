@@ -61,7 +61,7 @@
     <value>caja de herramientas</value>
   </data>
   <data name="Function_FindSameMangaName.Content" xml:space="preserve">
-    <value></value>
+    <value>Encuentra los mismos cómics</value>
   </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>Actualmente no hay carpetas, agregue su primera carpeta de escaneo</value>
