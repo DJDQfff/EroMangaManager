@@ -137,6 +137,7 @@ namespace EroMangaManager.ViewModels
                 if (f.StorageFolder.Path == folder.Path)
                 {
                     f.RemoveManga(mangaBook);
+                    return;
                 }
             }
             await DatabaseController.ReadingInfo_RemoveSingle(mangaBook.StorageFile.Path);
