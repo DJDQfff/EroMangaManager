@@ -12,12 +12,14 @@
         <RowDefinition Height="auto" />
         <RowDefinition />
     </Grid.RowDefinitions>
-    <CommandBar Background="Transparent" Grid.Row="0" x:Name="BookcaseCommandBar" VerticalAlignment="Stretch">
-        <AppBarButton Click="TranslateEachMangaName"
+    <CommandBar x:Load="False" Background="Transparent" Grid.Row="0" x:Name="BookcaseCommandBar" VerticalAlignment="Stretch">
+            <AppBarButton Click="TranslateEachMangaName"
+                          x:Name="TranslateButton" 
                           x:Uid="/Resources/TranslateButton"
                       Icon="Font"
                       d:Label="翻译" />
-        <AppBarButton Click="RefreshMangaList"
+            <AppBarButton Click="RefreshMangaList"
+                          x:Name="RefreshButton" 
                       Icon="Refresh"
                           x:Uid="/Resources/RefreshButton"
                       d:Label="刷新" />

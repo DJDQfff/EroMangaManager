@@ -38,6 +38,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             App.Current.bookcaseContainer = this;
         }
 
+
         internal void ChangeMangasFolder (MangasFolder mangasFolder)
         {
             BindMangaFolder = mangasFolder;
@@ -57,6 +58,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             c.Content = bookcase;
         }
 
+        //TODO 存在bug
         private async void RefreshMangaList (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             AppBarButton button = sender as AppBarButton;
@@ -70,7 +72,7 @@ namespace EroMangaManager.Views.MainPageChildPages
 
             button.IsEnabled = true;
         }
-
+        //TODO 有bug
         private async void TranslateEachMangaName (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             AppBarButton button = sender as AppBarButton;
