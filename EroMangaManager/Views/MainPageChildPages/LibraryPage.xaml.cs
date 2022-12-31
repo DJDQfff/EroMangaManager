@@ -86,21 +86,6 @@ namespace EroMangaManager.Views.MainPageChildPages
             App.Current.bookcaseContainer.ChangeMangasFolder(datacontext);
         }
 
-        // TODO 有bug
-        private void StackButton_PointerEntered (object sender , Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
-        {
-            var control = sender as StackPanel;
-            var stack = control.FindName("StackButton") as StackPanel;
 
-            stack.Visibility = Windows.UI.Xaml.Visibility.Visible;
-        }
-
-        private void StackButton_PointerExited (object sender , Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
-        {
-            var control = sender as StackPanel;
-            var stack = control.FindName("StackButton") as StackPanel;
-
-            stack.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-        }
     }
 }

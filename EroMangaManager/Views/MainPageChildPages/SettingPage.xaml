@@ -11,6 +11,9 @@
                          IsSettingsVisible="False"
                          IsBackButtonVisible="Collapsed">
             <NavigationView.MenuItems>
+                <NavigationViewItem x:Name="CommonSettingNavigationViewItem"
+                                    d:Content="一般设置"
+                                    x:Uid="CommonSettingNavigationViewItem" />
                 <NavigationViewItem x:Name="SettingFilterImageButton"
                                     d:Content="过滤图库"
                                     x:Uid="/Resources/SettingFilterImageButton" />

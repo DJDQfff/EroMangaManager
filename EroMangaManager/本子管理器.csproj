@@ -135,6 +135,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Helpers\Exporter.cs" />
+    <Compile Include="Models\ApplicationSettingItemName.cs" />
     <Compile Include="UserControls\TagsDisplayControl.xaml.cs">
       <DependentUpon>TagsDisplayControl.xaml</DependentUpon>
     </Compile>
@@ -161,6 +162,9 @@
     </Compile>
     <Compile Include="Views\MainPageChildPages\FunctionPageShower.xaml.cs">
       <DependentUpon>FunctionPageShower.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingPageChildPages\CommonSettingPage.xaml.cs">
+      <DependentUpon>CommonSettingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingPageChildPages\ErrorZipPage.xaml.cs">
       <DependentUpon>ErrorZipPage.xaml</DependentUpon>
@@ -365,6 +369,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainPageChildPages\FunctionPageShower.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingPageChildPages\CommonSettingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

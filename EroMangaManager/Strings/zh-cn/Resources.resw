@@ -126,6 +126,9 @@
   <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>漫画书架</value>
   </data>
+  <data name="CommonSettingNavigationViewItem.Content" xml:space="preserve">
+    <value>一般设置</value>
+  </data>
   <data name="DeleteFileConfirmPage.PrimaryButtonText" xml:space="preserve">
     <value>是</value>
   </data>
@@ -166,7 +169,7 @@
     <value>工具箱</value>
   </data>
   <data name="Function_FindSameMangaName.Content" xml:space="preserve">
-    <value />
+    <value>查找相同漫画</value>
   </data>
   <data name="Function_RemoveRepeatTags.Content" xml:space="preserve">
     <value>移除重复本子标签</value>
@@ -237,10 +240,28 @@
   <data name="ShowFolderBookcase.Content" xml:space="preserve">
     <value>显示书架</value>
   </data>
+  <data name="StorageDeleteOption.Header" xml:space="preserve">
+    <value>删除模式</value>
+  </data>
+  <data name="StorageDeleteOption.OffContent" xml:space="preserve">
+    <value>移动到回收站</value>
+  </data>
+  <data name="StorageDeleteOption.OnContent" xml:space="preserve">
+    <value>从磁盘删除</value>
+  </data>
   <data name="TranslateButton.Label" xml:space="preserve">
     <value>翻译</value>
   </data>
   <data name="UpdateRecordItem.Content" xml:space="preserve">
     <value>更新记录</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.Header" xml:space="preserve">
+    <value>是否直接删除</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.OffContent" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.OnContent" xml:space="preserve">
+    <value>是</value>
   </data>
 </root>

@@ -59,22 +59,6 @@ namespace EroMangaManager.ViewModels
         {
             Initialize(storageFolders);
         }
-
-        /// <summary>
-        /// 发现错误漫画时引发
-        /// </summary>
-        /// <param name="manganame"></param>
-        public void ErrorMangaEvent (string manganame)
-        {
-            ErrorZipEvent?.Invoke(manganame);
-        }
-
-        /// <summary>
-        /// 事情完成时发生
-        /// </summary>
-        /// <param name="message"></param>
-        public void WorkDone (string message) => WorkDoneEvent?.Invoke(message);
-
         /// <summary>ViewModel初始化</summary>
         public async void Initialize (params StorageFolder[] storageFolders)
         {
@@ -82,6 +66,7 @@ namespace EroMangaManager.ViewModels
 
             NonZipList.Clear();
 
+            //TODO 优化性能
             foreach (var folder in storageFolders)
             {
                 MangasFolder mangasFolder = new MangasFolder(folder);
@@ -128,8 +113,9 @@ namespace EroMangaManager.ViewModels
 
         /// <summary>从数据库中移除指定漫画的 MangaTag</summary>
         /// <param name="mangaBook"></param>
+        /// <param name="deleteOption">删除模式</param>
         /// <returns></returns>
-        public async Task DeleteSingleMangaBook (MangaBook mangaBook)
+        public async Task DeleteSingleMangaBook (MangaBook mangaBook,StorageDeleteOption deleteOption)
         {
             var folder = mangaBook.StorageFolder;
             foreach(var f in MangaFolders)
@@ -137,12 +123,27 @@ namespace EroMangaManager.ViewModels
                 if (f.StorageFolder.Path == folder.Path)
                 {
                     f.RemoveManga(mangaBook);
-                    return;
+                    break  ;
                 }
             }
             await DatabaseController.ReadingInfo_RemoveSingle(mangaBook.StorageFile.Path);
 
-            await mangaBook.StorageFile.DeleteAsync();
+            await mangaBook.StorageFile.DeleteAsync(deleteOption);
+        }
+
+        /// <summary>
+        /// 事情完成时发生
+        /// </summary>
+        /// <param name="message"></param>
+        public void WorkDone (string message) => WorkDoneEvent?.Invoke(message);
+
+        /// <summary>
+        /// 发现错误漫画时引发
+        /// </summary>
+        /// <param name="manganame"></param>
+        public void ErrorMangaEvent (string manganame)
+        {
+            ErrorZipEvent?.Invoke(manganame);
         }
 
     }

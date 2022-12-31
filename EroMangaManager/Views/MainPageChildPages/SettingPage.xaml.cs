@@ -21,6 +21,9 @@ namespace EroMangaManager.Views.MainPageChildPages
         {
             switch (args.InvokedItemContainer.Name)
             {
+                case nameof(CommonSettingNavigationViewItem):
+                    SettingFrame.Navigate(typeof(SettingPageChildPages.CommonSettingPage));
+                    break;
                 case nameof(SettingFilterImageButton):
                     SettingFrame.Navigate(typeof(SettingPageChildPages.FiltedImagesPage));
                     break;

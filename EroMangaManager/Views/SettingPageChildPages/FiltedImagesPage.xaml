@@ -19,7 +19,7 @@
                           HorizontalAlignment="Stretch"
                           HorizontalContentAlignment="Left"
                           Toggled="ToggleSwitch_Toggled"
-                          IsOn="False" />
+                           Loaded="ToggleSwitch_Loaded"/>
         </StackPanel>
         <GridView x:Name="GridView"
                   Grid.Row="1"
