@@ -2,7 +2,6 @@
 
 using EroMangaManager.Models;
 using EroMangaManager.ViewModels;
-using EroMangaManager.Views;
 using EroMangaManager.Views.MainPageChildPages;
 
 using Microsoft.Toolkit.Uwp.Notifications;
@@ -24,11 +23,10 @@ namespace EroMangaManager
     /// <summary> 提供特定于应用程序的行为，以补充默认的应用程序类。 </summary>
     public sealed partial class App : Application
     {
-
-
         internal BookcaseContainer bookcaseContainer;
 
-        internal static new App Current;
+        internal new static App Current;
+
         /// <summary>
         /// CollectionObserver实例
         /// </summary>
@@ -54,7 +52,6 @@ namespace EroMangaManager
   .AddText(str)
   .Show();
             };
-
         }
 
         /// <summary>

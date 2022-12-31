@@ -1,22 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-
-using EroMangaManager.Helpers;
+﻿using EroMangaManager.Helpers;
 using EroMangaManager.Models;
 using EroMangaManager.ViewModels;
 
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -37,7 +23,6 @@ namespace EroMangaManager.Views.MainPageChildPages
             this.InitializeComponent();
             App.Current.bookcaseContainer = this;
         }
-
 
         internal void ChangeMangasFolder (MangasFolder mangasFolder)
         {
@@ -72,6 +57,7 @@ namespace EroMangaManager.Views.MainPageChildPages
 
             button.IsEnabled = true;
         }
+
         //TODO 有bug
         private async void TranslateEachMangaName (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {

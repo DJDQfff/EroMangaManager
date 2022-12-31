@@ -59,6 +59,7 @@ namespace EroMangaManager.ViewModels
         {
             Initialize(storageFolders);
         }
+
         /// <summary>ViewModel初始化</summary>
         public async void Initialize (params StorageFolder[] storageFolders)
         {
@@ -110,20 +111,19 @@ namespace EroMangaManager.ViewModels
             FutureAccessList.Remove(token); // 从系统未来访问列表里删除
         }
 
-
         /// <summary>从数据库中移除指定漫画的 MangaTag</summary>
         /// <param name="mangaBook"></param>
         /// <param name="deleteOption">删除模式</param>
         /// <returns></returns>
-        public async Task DeleteSingleMangaBook (MangaBook mangaBook,StorageDeleteOption deleteOption)
+        public async Task DeleteSingleMangaBook (MangaBook mangaBook , StorageDeleteOption deleteOption)
         {
             var folder = mangaBook.StorageFolder;
-            foreach(var f in MangaFolders)
+            foreach (var f in MangaFolders)
             {
                 if (f.StorageFolder.Path == folder.Path)
                 {
                     f.RemoveManga(mangaBook);
-                    break  ;
+                    break;
                 }
             }
             await DatabaseController.ReadingInfo_RemoveSingle(mangaBook.StorageFile.Path);
@@ -145,6 +145,5 @@ namespace EroMangaManager.ViewModels
         {
             ErrorZipEvent?.Invoke(manganame);
         }
-
     }
 }

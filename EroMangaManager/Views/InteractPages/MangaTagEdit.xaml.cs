@@ -15,7 +15,7 @@ using static EroMangaDB.BasicController;
 namespace EroMangaManager.Views.InteractPages
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class MangaTagEdit : ContentDialog
     {

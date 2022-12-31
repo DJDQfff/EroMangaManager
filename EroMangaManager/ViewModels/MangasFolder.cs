@@ -82,7 +82,7 @@ namespace EroMangaManager.ViewModels
             await DatabaseController.ReadingInfo_AddMulti(add);
         }
 
-        public void RemoveManga(MangaBook mangaBook)
+        public void RemoveManga (MangaBook mangaBook)
         {
             MangaBooks.Remove(mangaBook);
         }

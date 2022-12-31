@@ -22,7 +22,6 @@
                 <DataTemplate x:DataType="x:String">
                     <Border Loaded="Border_Loaded">
                                             <TextBlock Text="{x:Bind }" />
-
                     </Border>
                 </DataTemplate>
             </GridView.ItemTemplate>

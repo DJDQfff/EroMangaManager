@@ -23,19 +23,19 @@
 
                         <MenuFlyoutSeparator />
                         <!--<MenuFlyoutSubItem Text="文件操作">-->
-                            <MenuFlyoutItem Click="DeleteSourceMangaFile"
-                                            x:Uid="/Resources/DeleteSourceMangaFileFlyoutItem"
-                                            d:Text="删除源文件" />
-                            <MenuFlyoutItem Click="LaunchFile"
-                                            x:Uid="/Resources/LaunchFileFlyoutItem"
-                                            d:Text="打开文件" />
-                            <MenuFlyoutItem Click="LaunchFolder"
-                                            x:Uid="/Resources/LaunchFolderFlyoutItem"
-                                            Text="打开文件夹" />
-                            <MenuFlyoutSeparator />
-                            <MenuFlyoutItem Click="ExportPDF"
-                                            d:Text="导出为PDF"
-                                            x:Uid="/Resources/ExportPDFFlyoutItem" />
+                        <MenuFlyoutItem Click="DeleteSourceMangaFile"
+                                        x:Uid="/Resources/DeleteSourceMangaFileFlyoutItem"
+                                        d:Text="删除源文件" />
+                        <MenuFlyoutItem Click="LaunchFile"
+                                        x:Uid="/Resources/LaunchFileFlyoutItem"
+                                        d:Text="打开文件" />
+                        <MenuFlyoutItem Click="LaunchFolder"
+                                        x:Uid="/Resources/LaunchFolderFlyoutItem"
+                                        Text="打开文件夹" />
+                        <MenuFlyoutSeparator />
+                        <MenuFlyoutItem Click="ExportPDF"
+                                        d:Text="导出为PDF"
+                                        x:Uid="/Resources/ExportPDFFlyoutItem" />
                         <!--</MenuFlyoutSubItem>-->
                     </MenuFlyout>
                 </Grid.ContextFlyout>

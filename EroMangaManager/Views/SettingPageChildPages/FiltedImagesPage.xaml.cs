@@ -68,7 +68,6 @@ namespace EroMangaManager.Views.SettingPageChildPages
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
             var a = (bool) (ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.IsFilterImageOn.ToString()] ?? false);
             toggleSwitch.IsOn = a;
-
         }
     }
 }

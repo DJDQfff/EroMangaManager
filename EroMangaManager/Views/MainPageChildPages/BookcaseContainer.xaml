@@ -1,29 +1,33 @@
 ﻿<Page x:Class="EroMangaManager.Views.MainPageChildPages.BookcaseContainer"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:EroMangaManager.Views"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    NavigationCacheMode="Enabled">
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      NavigationCacheMode="Enabled">
     <Grid>
 
-    <Grid.RowDefinitions>
-        <RowDefinition Height="auto" />
-        <RowDefinition />
-    </Grid.RowDefinitions>
-    <CommandBar x:Load="False" Background="Transparent" Grid.Row="0" x:Name="BookcaseCommandBar" VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <CommandBar x:Load="False"
+                    Background="Transparent"
+                    Grid.Row="0"
+                    x:Name="BookcaseCommandBar"
+                    VerticalAlignment="Stretch">
             <AppBarButton Click="TranslateEachMangaName"
-                          x:Name="TranslateButton" 
+                          x:Name="TranslateButton"
                           x:Uid="/Resources/TranslateButton"
-                      Icon="Font"
-                      d:Label="翻译" />
+                          Icon="Font"
+                          d:Label="翻译" />
             <AppBarButton Click="RefreshMangaList"
-                          x:Name="RefreshButton" 
-                      Icon="Refresh"
+                          x:Name="RefreshButton"
+                          Icon="Refresh"
                           x:Uid="/Resources/RefreshButton"
-                      d:Label="刷新" />
+                          d:Label="刷新" />
         </CommandBar>
-                    <Frame x:Name="ShowBookcase" Grid.Row="1" />
+        <Frame x:Name="ShowBookcase"
+               Grid.Row="1" />
     </Grid>
 </Page>

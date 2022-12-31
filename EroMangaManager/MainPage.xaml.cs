@@ -1,15 +1,8 @@
 ﻿using System;
 
-using EroMangaManager.Models;
 using EroMangaManager.Views.MainPageChildPages;
 
-using EroMangaManager.ViewModels;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
-using Microsoft.Toolkit.Uwp.Notifications;
-using Windows.ApplicationModel.Resources;
-using Org.BouncyCastle.Asn1.X509.Qualified;
-using Windows.UI.Xaml;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804
 // 上介绍了“空白页”项模板
@@ -19,12 +12,10 @@ namespace EroMangaManager
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class MainPage : Page
     {
-
         /// <summary>
         /// MainPage的单一实例
         /// </summary>
         internal static MainPage current { set; get; }
-
 
         /// <summary>
         ///
@@ -34,10 +25,10 @@ namespace EroMangaManager
             this.InitializeComponent();
 
             current = this;
-         App.Current.pageInstancesManager.MainPage = this;
+            App.Current.pageInstancesManager.MainPage = this;
             MainFrame.Navigate(typeof(BookcaseContainer));
 
-            if (App.Current. collectionObserver.StorageFolders.Count == 0)
+            if (App.Current.collectionObserver.StorageFolders.Count == 0)
             {
                 MainFrame.Navigate(typeof(LibraryPage));
             }

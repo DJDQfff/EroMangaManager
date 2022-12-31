@@ -13,8 +13,9 @@
         </ResourceDictionary>
     </Page.Resources>
     <Grid>
-        <VariableSizedWrapGrid >
-            <Button x:Load="False" x:Name="Function_FindSameMangaName"
+        <VariableSizedWrapGrid>
+            <Button x:Load="False"
+                    x:Name="Function_FindSameMangaName"
                     x:Uid="/Resources/Function_FindSameMangaName"
                     Loaded="Button_Loaded"
                     Click="Button_Click" />

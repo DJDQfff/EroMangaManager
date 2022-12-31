@@ -39,9 +39,10 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="vm:MangasFolder"
                               x:DefaultBindMode="OneWay">
-                    <StackPanel Orientation="Horizontal" Background="Transparent"
+                    <StackPanel Orientation="Horizontal"
+                                Background="Transparent"
                                 HorizontalAlignment="Stretch">
-                                                <TextBlock x:Name="folderTextBlock"
+                        <TextBlock x:Name="folderTextBlock"
                                    VerticalAlignment="Center"
                                    Padding="0,0,4,0"
                                    Width="500"
@@ -49,24 +50,23 @@
                                    Text="{x:Bind FolderPath,Mode=OneTime}" />
 
                         <TextBlock Text="{x:Bind  MangaBooks.Count,Mode=OneWay}"
-                                   Width="60" 
+                                   Width="60"
                                    VerticalAlignment="Center"
                                    TextAlignment="Center" />
-
 
                         <StackPanel x:Name="StackButton"
                                     Orientation="Horizontal"
                                     Visibility="Visible"
                                     VerticalAlignment="Center"
                                     RelativePanel.AlignRightWithPanel="True">
-                        <Button  x:Name="JumpToBookcase"
-                                 Width="100"
-                                 VerticalAlignment="Center"
-                                 Click="JumpToBookcase_Click"
-                                 d:Content="显示书架"
-                                 x:Uid="/Resources/ShowFolderBookcase"
-                                 BorderThickness="0">
-                        </Button>
+                            <Button  x:Name="JumpToBookcase"
+                                     Width="100"
+                                     VerticalAlignment="Center"
+                                     Click="JumpToBookcase_Click"
+                                     d:Content="显示书架"
+                                     x:Uid="/Resources/ShowFolderBookcase"
+                                     BorderThickness="0">
+                            </Button>
 
                             <Button  d:Content="打开文件夹"
                                      VerticalAlignment="Center"
