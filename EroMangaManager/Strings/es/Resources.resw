@@ -138,4 +138,25 @@
   <data name="Function_RemoveRepeatTags.Content" xml:space="preserve">
     <value>Quitar la subpestaña Libro duplicado</value>
   </data>
+  <data name="CommonSettingNavigationViewItem.Content" xml:space="preserve">
+    <value>Configuración general</value>
+  </data>
+  <data name="StorageDeleteOption.Header" xml:space="preserve">
+    <value>Eliminar el patrón</value>
+  </data>
+  <data name="StorageDeleteOption.OffContent" xml:space="preserve">
+    <value>Mover a la papelera de reciclaje</value>
+  </data>
+  <data name="StorageDeleteOption.OnContent" xml:space="preserve">
+    <value>Eliminar del disco</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.Header" xml:space="preserve">
+    <value>Si se va a eliminar directamente</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.OffContent" xml:space="preserve">
+    <value>no</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.OnContent" xml:space="preserve">
+    <value>ser</value>
+  </data>
 </root>

@@ -138,4 +138,25 @@
   <data name="Function_RemoveRepeatTags.Content" xml:space="preserve">
     <value>นําแท็บย่อยหนังสือที่ซ้ํากันออก</value>
   </data>
+  <data name="CommonSettingNavigationViewItem.Content" xml:space="preserve">
+    <value>การตั้งค่าทั่วไป</value>
+  </data>
+  <data name="StorageDeleteOption.Header" xml:space="preserve">
+    <value>ลบรูปแบบ</value>
+  </data>
+  <data name="StorageDeleteOption.OffContent" xml:space="preserve">
+    <value>ย้ายไปยังถังรีไซเคิล</value>
+  </data>
+  <data name="StorageDeleteOption.OnContent" xml:space="preserve">
+    <value>ลบออกจากดิสก์</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.Header" xml:space="preserve">
+    <value>จะลบโดยตรงหรือไม่</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.OffContent" xml:space="preserve">
+    <value>ไม่</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.OnContent" xml:space="preserve">
+    <value>คือ</value>
+  </data>
 </root>

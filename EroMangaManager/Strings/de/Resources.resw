@@ -138,4 +138,25 @@
   <data name="Function_RemoveRepeatTags.Content" xml:space="preserve">
     <value>Entfernen der Unterregisterkarte "Buch duplizieren"</value>
   </data>
+  <data name="CommonSettingNavigationViewItem.Content" xml:space="preserve">
+    <value>Allgemeine Einstellungen</value>
+  </data>
+  <data name="StorageDeleteOption.Header" xml:space="preserve">
+    <value>Löschen des Musters</value>
+  </data>
+  <data name="StorageDeleteOption.OffContent" xml:space="preserve">
+    <value>In den Papierkorb verschieben</value>
+  </data>
+  <data name="StorageDeleteOption.OnContent" xml:space="preserve">
+    <value>Von Festplatte löschen</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.Header" xml:space="preserve">
+    <value>Ob direkt gelöscht werden soll</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.OffContent" xml:space="preserve">
+    <value>nicht</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.OnContent" xml:space="preserve">
+    <value>sein</value>
+  </data>
 </root>

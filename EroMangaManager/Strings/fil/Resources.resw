@@ -138,4 +138,25 @@
   <data name="Function_RemoveRepeatTags.Content" xml:space="preserve">
     <value>Alisin ang Duplicate Book subtab</value>
   </data>
+  <data name="CommonSettingNavigationViewItem.Content" xml:space="preserve">
+    <value>Pangkalahatang mga setting</value>
+  </data>
+  <data name="StorageDeleteOption.Header" xml:space="preserve">
+    <value>Tanggalin ang pattern</value>
+  </data>
+  <data name="StorageDeleteOption.OffContent" xml:space="preserve">
+    <value>Lumipat sa Recycle Bin</value>
+  </data>
+  <data name="StorageDeleteOption.OnContent" xml:space="preserve">
+    <value>Tanggalin mula sa disk</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.Header" xml:space="preserve">
+    <value>Kung direktang tanggalin</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.OffContent" xml:space="preserve">
+    <value>hindi naman</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.OnContent" xml:space="preserve">
+    <value>maging</value>
+  </data>
 </root>

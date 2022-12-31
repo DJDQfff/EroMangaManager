@@ -138,4 +138,25 @@
   <data name="Function_RemoveRepeatTags.Content" xml:space="preserve">
     <value>중복 하위 탭을 제거합니다</value>
   </data>
+  <data name="CommonSettingNavigationViewItem.Content" xml:space="preserve">
+    <value>일반 설정</value>
+  </data>
+  <data name="StorageDeleteOption.Header" xml:space="preserve">
+    <value>모드를 삭제합니다</value>
+  </data>
+  <data name="StorageDeleteOption.OffContent" xml:space="preserve">
+    <value>휴지통으로 이동합니다</value>
+  </data>
+  <data name="StorageDeleteOption.OnContent" xml:space="preserve">
+    <value>디스크에서 제거합니다</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.Header" xml:space="preserve">
+    <value>직접 삭제할지 여부입니다</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.OffContent" xml:space="preserve">
+    <value>아니요, 그렇지 않습니다</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.OnContent" xml:space="preserve">
+    <value>네</value>
+  </data>
 </root>
