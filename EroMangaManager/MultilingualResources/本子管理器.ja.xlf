@@ -244,31 +244,31 @@
         </trans-unit>
         <trans-unit id="CommonSettingNavigationViewItem.Content" translate="yes" xml:space="preserve">
           <source>一般设置</source>
-          <target state="new">一般设置</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">一般的な設定</target>
         </trans-unit>
         <trans-unit id="StorageDeleteOption.Header" translate="yes" xml:space="preserve">
           <source>删除模式</source>
-          <target state="new">删除模式</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">削除モード</target>
         </trans-unit>
         <trans-unit id="StorageDeleteOption.OffContent" translate="yes" xml:space="preserve">
           <source>移动到回收站</source>
-          <target state="new">移动到回收站</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">ごみ箱に移動します</target>
         </trans-unit>
         <trans-unit id="StorageDeleteOption.OnContent" translate="yes" xml:space="preserve">
           <source>从磁盘删除</source>
-          <target state="new">从磁盘删除</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">ディスクから削除します</target>
         </trans-unit>
         <trans-unit id="WhetherShowDialogBeforeDelete.Header" translate="yes" xml:space="preserve">
           <source>是否直接删除</source>
-          <target state="new">是否直接删除</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">直接削除するかどうか</target>
         </trans-unit>
         <trans-unit id="WhetherShowDialogBeforeDelete.OffContent" translate="yes" xml:space="preserve">
           <source>否</source>
-          <target state="new">否</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">いいえ</target>
         </trans-unit>
         <trans-unit id="WhetherShowDialogBeforeDelete.OnContent" translate="yes" xml:space="preserve">
           <source>是</source>
-          <target state="new">是</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">はい</target>
         </trans-unit>
       </group>
     </body>
