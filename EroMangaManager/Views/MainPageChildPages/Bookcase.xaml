@@ -22,7 +22,7 @@
                                        d:Text="查看信息" />-->
 
                         <MenuFlyoutSeparator />
-                        <MenuFlyoutSubItem Text="文件操作">
+                        <!--<MenuFlyoutSubItem Text="文件操作">-->
                             <MenuFlyoutItem Click="DeleteSourceMangaFile"
                                             x:Uid="/Resources/DeleteSourceMangaFileFlyoutItem"
                                             d:Text="删除源文件" />
@@ -36,7 +36,7 @@
                             <MenuFlyoutItem Click="ExportPDF"
                                             d:Text="导出为PDF"
                                             x:Uid="/Resources/ExportPDFFlyoutItem" />
-                        </MenuFlyoutSubItem>
+                        <!--</MenuFlyoutSubItem>-->
                     </MenuFlyout>
                 </Grid.ContextFlyout>
                 <Image x:Name="image"
