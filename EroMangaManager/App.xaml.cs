@@ -1,11 +1,15 @@
 ﻿using System;
 
 using EroMangaManager.Models;
+using EroMangaManager.ViewModels;
 using EroMangaManager.Views;
 using EroMangaManager.Views.MainPageChildPages;
 
+using Microsoft.Toolkit.Uwp.Notifications;
+
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Resources;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -20,6 +24,39 @@ namespace EroMangaManager
     /// <summary> 提供特定于应用程序的行为，以补充默认的应用程序类。 </summary>
     public sealed partial class App : Application
     {
+
+
+        internal BookcaseContainer bookcaseContainer;
+
+        internal static new App Current;
+        /// <summary>
+        /// CollectionObserver实例
+        /// </summary>
+        internal ObservableCollectionVM collectionObserver { get; private set; }
+
+        internal PageInstancesManager pageInstancesManager = new PageInstancesManager();
+
+        private void Initial ()
+        {
+            var folder = MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder().Result.ToArray();
+            collectionObserver = new ObservableCollectionVM(folder);
+
+            collectionObserver.ErrorZipEvent += (string str) =>
+            {
+                new ToastContentBuilder()
+                  .AddText($"{str}\r{ResourceLoader.GetForCurrentView("StringResources").GetString("ErrorString1")}")
+                  .Show();
+            };
+
+            collectionObserver.WorkDoneEvent += (string str) =>
+            {
+                new ToastContentBuilder()
+  .AddText(str)
+  .Show();
+            };
+
+        }
+
         /// <summary>
         /// 初始化单一实例应用程序对象。这是执行的创作代码的第一行， 已执行，逻辑上等同于 main() 或
         /// WinMain()。
@@ -27,7 +64,9 @@ namespace EroMangaManager
         public App ()
         {
             this.InitializeComponent();
+            Current = this;
             this.Suspending += OnSuspending;
+            Initial();
         }
 
         /// <summary>

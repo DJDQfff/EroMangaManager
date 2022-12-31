@@ -5,6 +5,7 @@ using EroMangaManager.Models;
 using EroMangaManager.ViewModels;
 using EroMangaManager.Views.InteractPages;
 
+using Windows.ApplicationModel.Resources;
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 
@@ -54,7 +55,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             switch (result)
             {
                 case ContentDialogResult.Primary:
-                    await MainPage.current.collectionObserver.DeleteSingleMangaBook(eroManga);
+                    await App.Current.collectionObserver.DeleteSingleMangaBook(eroManga);
                     break;
 
                 case ContentDialogResult.Secondary:
@@ -95,8 +96,8 @@ namespace EroMangaManager.Views.MainPageChildPages
 
             // TODO 存在线程bug
 
-            string done = MainPage.current.stringsresourceLoader.GetString("ExportDone");
-            MainPage.current.collectionObserver.WorkDone(done);
+            string done = ResourceLoader.GetForCurrentView("StringResources").GetString("ExportDone");
+            App.Current.collectionObserver.WorkDone(done);
         }
     }
 }

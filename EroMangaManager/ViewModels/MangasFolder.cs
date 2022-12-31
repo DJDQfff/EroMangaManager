@@ -75,7 +75,7 @@ namespace EroMangaManager.ViewModels
                 {
                     MangaBooks.Remove(manga);
                     ErrorBooks.Add(manga);
-                    MainPage.current.collectionObserver.ErrorMangaEvent(manga.MangaName);
+                    App.Current.collectionObserver.ErrorMangaEvent(manga.MangaName);
                 }
             }
 

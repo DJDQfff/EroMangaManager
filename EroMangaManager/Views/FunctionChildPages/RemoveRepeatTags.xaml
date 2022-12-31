@@ -12,7 +12,7 @@
     xmlns:model="using:EroMangaManager.Models">
 
     <Grid>
-        <ListView  ItemsSource="{x:Bind app:MainPage.current.collectionObserver.MangaFolders}">
+        <ListView  ItemsSource="{x:Bind app:App.Current.collectionObserver.MangaFolders}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="vm:MangasFolder">
                     <ListView  ItemsSource="{x:Bind MangaBooks}">

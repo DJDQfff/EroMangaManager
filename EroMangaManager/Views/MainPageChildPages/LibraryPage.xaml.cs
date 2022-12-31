@@ -24,8 +24,8 @@ namespace EroMangaManager.Views.MainPageChildPages
         public LibraryPage ()
         {
             this.InitializeComponent();
-            MainPage.pageInstancesManager.LibraryPage = this;
-            if (MainPage.current.collectionObserver.StorageFolders.Count == 0)
+            App.Current.pageInstancesManager.LibraryPage = this;
+            if (App.Current.collectionObserver.StorageFolders.Count == 0)
             {
                 this.FindName(nameof(HintAddFolderTextBlock));
             }
@@ -50,7 +50,7 @@ namespace EroMangaManager.Views.MainPageChildPages
                 {
                     try
                     {
-                        await MainPage.current.collectionObserver.AddFolder(f);
+                        await App.Current.collectionObserver.AddFolder(f);
                     }
                     catch (Exception)
                     {
@@ -67,7 +67,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             var button = sender as Button;
             var storageFolder = button.DataContext as MangasFolder;
 
-            MainPage.current.collectionObserver.RemoveFolder(storageFolder);
+            App.Current.collectionObserver.RemoveFolder(storageFolder);
         }
 
         private async void LauncherFolder (object sender , Windows.UI.Xaml.RoutedEventArgs e)
@@ -83,7 +83,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             var button = sender as Button;
             var datacontext = button.DataContext as MangasFolder;
 
-            MainPage.current.bookcaseContainer.ChangeMangasFolder(datacontext);
+            App.Current.bookcaseContainer.ChangeMangasFolder(datacontext);
         }
 
         // TODO 有bug

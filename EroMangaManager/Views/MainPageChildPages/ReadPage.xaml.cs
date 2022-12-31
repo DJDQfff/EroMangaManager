@@ -42,7 +42,7 @@ namespace EroMangaManager.Views.MainPageChildPages
         public ReadPage ()
         {
             this.InitializeComponent();
-            MainPage.pageInstancesManager.ReadPage = this;
+            App.Current.pageInstancesManager.ReadPage = this;
         }
 
         /// <summary>

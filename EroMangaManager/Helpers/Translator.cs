@@ -18,7 +18,7 @@ namespace EroMangaManager.Helpers
         /// <returns> </returns>
         public static async Task TranslateAllMangaName ()
         {
-            var names = MainPage.current.collectionObserver.MangaList.Select(n => n.MangaName).ToList();
+            var names = App.Current.collectionObserver.MangaList.Select(n => n.MangaName).ToList();
 
             List<trans_result> results = null;
 
@@ -38,7 +38,7 @@ namespace EroMangaManager.Helpers
             {
                 //List<(string, string)> translateTuples = new List<(string, string)>();
 
-                foreach (var manga in MainPage.current.collectionObserver.MangaList)
+                foreach (var manga in App.Current.collectionObserver.MangaList)
                 {
                     string newname = results.Where(n => n.src == manga.MangaName)?.FirstOrDefault()?.dst;
                     if (newname != null)

@@ -25,6 +25,9 @@ namespace EroMangaManager.UserControls
     public sealed partial class TagsDisplayControl : UserControl
     {
         ObservableCollection<string> tags=new ObservableCollection<string>();
+        /// <summary>
+        /// 
+        /// </summary>
         public string TagArray
         {
             set
@@ -34,6 +37,9 @@ namespace EroMangaManager.UserControls
                 tags.AddRange(temp);
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public TagsDisplayControl ()
         {
             this.InitializeComponent();

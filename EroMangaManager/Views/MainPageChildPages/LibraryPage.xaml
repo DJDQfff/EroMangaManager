@@ -34,7 +34,7 @@
         <ListView x:Name="list"
                   Grid.Row="2"
                   ItemContainerStyle="{StaticResource ListViewItemStyle_1}"
-                  ItemsSource="{x:Bind app:MainPage.current.collectionObserver.MangaFolders, Mode=OneWay}"
+                  ItemsSource="{x:Bind app:App.Current.collectionObserver.MangaFolders, Mode=OneWay}"
                   SelectionMode="None">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="vm:MangasFolder"
@@ -48,7 +48,7 @@
                                    Padding="0,0,4,0"
                                    Width="500"
                                    FontWeight="Black"
-                                   Text="{x:Bind FolderPath}" />
+                                   Text="{x:Bind FolderPath,Mode=OneTime}" />
 
                         <TextBlock Text="{x:Bind  MangaBooks.Count,Mode=OneWay}"
                                    Width="60" 

@@ -35,7 +35,7 @@ namespace EroMangaManager.Views.MainPageChildPages
         public BookcaseContainer ()
         {
             this.InitializeComponent();
-            MainPage.current.bookcaseContainer = this;
+            App.Current.bookcaseContainer = this;
         }
 
         internal void ChangeMangasFolder (MangasFolder mangasFolder)
@@ -43,14 +43,14 @@ namespace EroMangaManager.Views.MainPageChildPages
             BindMangaFolder = mangasFolder;
 
             Bookcase bookcase;
-            if (!MainPage.pageInstancesManager.Bookcases.ContainsKey(mangasFolder))
+            if (!App.Current.pageInstancesManager.Bookcases.ContainsKey(mangasFolder))
             {
                 bookcase = new Bookcase(mangasFolder);
-                MainPage.pageInstancesManager.Bookcases.Add(mangasFolder , bookcase);
+                App.Current.pageInstancesManager.Bookcases.Add(mangasFolder , bookcase);
             }
             else
             {
-                bookcase = MainPage.pageInstancesManager.Bookcases[mangasFolder];
+                bookcase = App.Current.pageInstancesManager.Bookcases[mangasFolder];
             }
 
             var c = this.FindName("ShowBookcase") as Frame;
@@ -66,7 +66,7 @@ namespace EroMangaManager.Views.MainPageChildPages
 
             var folder = MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder().Result.ToArray();
 
-            MainPage.current.collectionObserver.Initialize(folder);
+            App.Current.collectionObserver.Initialize(folder);
 
             button.IsEnabled = true;
         }
