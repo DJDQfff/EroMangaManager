@@ -42,11 +42,14 @@ namespace EroMangaManager.Views.MainPageChildPages
                 Type type = null;
                 switch (xuid)
                 {
-                    case nameof(Function_RemoveRepeatTags):
-                        type = typeof(FunctionChildPages.RemoveRepeatTags);
+                    case nameof(Function_FindSameMangaName):
+                        type = typeof(FunctionChildPages.FindSameManga);
                         break;
+                    //case nameof(Function_RemoveRepeatTags):
+                    //    type = typeof(FunctionChildPages.RemoveRepeatTags);
+                    //    break;
                 }
-                frame.Navigate(type , null);
+                frame.Navigate(type , App.Current.collectionObserver.MangaList);
                 Window.Current.Content = frame;
                 // You have to activate the window in order to show it later.
                 Window.Current.Activate();

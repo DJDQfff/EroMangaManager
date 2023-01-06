@@ -14,15 +14,14 @@
     </Page.Resources>
     <Grid>
         <VariableSizedWrapGrid>
-            <Button x:Load="False"
-                    x:Name="Function_FindSameMangaName"
-                    x:Uid="/Resources/Function_FindSameMangaName"
+            <Button  x:Name="Function_FindSameMangaName"
+                    x:Uid="Function_FindSameMangaName"
                     Loaded="Button_Loaded"
                     Click="Button_Click" />
-            <Button x:Name="Function_RemoveRepeatTags"
+            <!--<Button x:Name="Function_RemoveRepeatTags"
                     x:Uid="Function_RemoveRepeatTags"
                     Loaded="Button_Loaded"
-                    Click="Button_Click" />
+                    Click="Button_Click" />-->
         </VariableSizedWrapGrid>
     </Grid>
 </Page>

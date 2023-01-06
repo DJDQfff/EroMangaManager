@@ -1,0 +1,39 @@
+﻿<Page
+    x:Class="EroMangaManager.Views.FunctionChildPages.FindSameManga"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EroMangaManager.Views.FunctionChildPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:model="using:EroMangaManager.Models"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*" />
+            <ColumnDefinition Width="41*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Button x:Name="button"
+                    Content="Button"
+                    Click="button_Click" />
+        </StackPanel>
+        <ListView x:Name="listView"
+                  ItemsSource="{x:Bind repeat,Mode=OneWay}"
+                  Grid.Column="1">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:MangaBookRepeatGroup">
+                    <ListView ItemsSource="{x:Bind }">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="model:MangaBook">
+                                <TextBlock Text="{x:Bind FilePath}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</Page>
