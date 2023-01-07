@@ -11,6 +11,9 @@ using Windows.UI.Xaml.Controls;
 
 namespace EroMangaManager.UserControls
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public sealed partial class TagsDisplayControl : UserControl
     {
         private ObservableCollection<string> tags = new ObservableCollection<string>();

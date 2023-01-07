@@ -29,11 +29,17 @@ namespace EroMangaManager.Views.FunctionChildPages
         ObservableCollection<MangaBookRepeatGroup> repeat = new ObservableCollection<MangaBookRepeatGroup>();
 
         List<MangaBook> mangaBooks;
+        /// <summary>
+        /// 
+        /// </summary>
         public FindSameManga ()
         {
             this.InitializeComponent();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnNavigatedTo (NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
