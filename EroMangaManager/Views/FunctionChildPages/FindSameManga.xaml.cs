@@ -39,26 +39,21 @@ namespace EroMangaManager.Views.FunctionChildPages
             base.OnNavigatedTo(e);
 
             mangaBooks = e.Parameter as List<MangaBook>;
-        }
-
-        private void button_Click (object sender , RoutedEventArgs e)
-        {
-            var button = sender as Button;
 
             var groups1 = mangaBooks.GroupBy(n => n.MangaName);
 
-            foreach(var group in groups1)
+            foreach (var group in groups1)
             {
                 if (group.Count() > 1)
                 {
-              var repeatgroup = new MangaBookRepeatGroup(group);
-                repeat.Add(repeatgroup);
+                    var repeatgroup = new MangaBookRepeatGroup(group);
+                    repeat.Add(repeatgroup);
 
                 }
             }
-            
-           
+
         }
+
 
         private void ListView_Loaded (object sender , RoutedEventArgs e)
         {

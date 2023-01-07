@@ -10,15 +10,6 @@ xmlns:model="using:EroMangaManager.Models"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="7*" />
-            <ColumnDefinition Width="41*" />
-        </Grid.ColumnDefinitions>
-        <StackPanel>
-            <Button x:Name="button"
-                    Content="Button"
-                    Click="button_Click" />
-        </StackPanel>
         <ListView x:Name="listView"
                   ItemsSource="{x:Bind repeat,Mode=OneWay}"
                   Grid.Column="1">

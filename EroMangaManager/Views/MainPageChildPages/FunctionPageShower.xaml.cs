@@ -32,23 +32,30 @@ namespace EroMangaManager.Views.MainPageChildPages
         private async void Button_Click (object sender , RoutedEventArgs e)
         {
             var button = sender as Button;
-            var xuid = button.Name;
+            var name = button.Name;
+
+            Type type = null;
+
+            switch (name)
+            {
+                case nameof(Function_FindSameMangaName):
+                    type = typeof(FunctionChildPages.FindSameManga);
+                    break;
+                    //case nameof(Function_RemoveRepeatTags):
+                    //    type = typeof(FunctionChildPages.RemoveRepeatTags);
+                    //    break;
+            }
+
+
+            MainPage.current.MainFrame.Navigate(type , App.Current.collectionObserver.MangaList);
+
+            return;
 
             CoreApplicationView newView = CoreApplication.CreateNewView();
             int newViewId = 0;
             await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal , () =>
             {
                 Frame frame = new Frame();
-                Type type = null;
-                switch (xuid)
-                {
-                    case nameof(Function_FindSameMangaName):
-                        type = typeof(FunctionChildPages.FindSameManga);
-                        break;
-                    //case nameof(Function_RemoveRepeatTags):
-                    //    type = typeof(FunctionChildPages.RemoveRepeatTags);
-                    //    break;
-                }
                 frame.Navigate(type , App.Current.collectionObserver.MangaList);
                 Window.Current.Content = frame;
                 // You have to activate the window in order to show it later.
