@@ -55,10 +55,11 @@ namespace EroMangaManager.Views.FunctionChildPages
         }
 
 
-        private void ListView_Loaded (object sender , RoutedEventArgs e)
+        private void StackPanel_Loaded (object sender , RoutedEventArgs e)
         {
-            var a = sender as ListView;
+            var a = sender as StackPanel;
             a.Background = MyUWPLibrary.WindowsUIColorHelper.GetRandomSolidColorBrush();
+
         }
     }
 }

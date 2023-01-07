@@ -14,25 +14,25 @@ namespace EroMangaManager.Models
     {
         private IGrouping<TKey , TElment> files;
 
-        public ObservableCollection<TElment> StorageFiles;
+        public ObservableCollection<TElment> Collections;
 
         public RepeatGroup (IGrouping<TKey , TElment> _files)
         {
             files = _files;
-            StorageFiles = new ObservableCollection<TElment>(files.ToArray());
+            Collections = new ObservableCollection<TElment>(files.ToArray());
         }
 
         public int TryRemoveItem (TElment storageFile)
         {
-            if (StorageFiles.Contains(storageFile))
+            if (Collections.Contains(storageFile))
             {
-                StorageFiles.Remove(storageFile);
+                Collections.Remove(storageFile);
             }
 
-            return StorageFiles.Count;
+            return Collections.Count;
         }
 
-        TKey IGrouping<TKey , TElment>.Key => throw new NotImplementedException();
+        public TKey Key => files.Key;
 
         public IEnumerator<TElment> GetEnumerator () => files.GetEnumerator();
 
