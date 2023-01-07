@@ -159,4 +159,7 @@
   <data name="WhetherShowDialogBeforeDelete.OnContent" xml:space="preserve">
     <value>คือ</value>
   </data>
+  <data name="DeleteButton.Content" xml:space="preserve">
+    <value>ลบ</value>
+  </data>
 </root>

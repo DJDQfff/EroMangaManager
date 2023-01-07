@@ -159,4 +159,7 @@
   <data name="WhetherShowDialogBeforeDelete.OnContent" xml:space="preserve">
     <value>sein</value>
   </data>
+  <data name="DeleteButton.Content" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
 </root>

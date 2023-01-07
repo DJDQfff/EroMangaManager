@@ -279,6 +279,10 @@
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <PRIResource Include="Strings\en-US\UpdateResources.resw" />
+    <PRIResource Include="Strings\en-US\StringResources.resw" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+    <PRIResource Include="Strings\en-US\AppxmanifestResources.resw" />
     <PRIResource Include="Strings\zh-Hant\UpdateResources.resw" />
     <PRIResource Include="Strings\zh-Hant\StringResources.resw" />
     <PRIResource Include="Strings\zh-Hant\Resources.resw" />
@@ -496,6 +500,7 @@
   <ItemGroup>
     <XliffResource Include="MultilingualResources\本子管理器.de.xlf" />
     <XliffResource Include="MultilingualResources\本子管理器.el.xlf" />
+    <XliffResource Include="MultilingualResources\本子管理器.en-US.xlf" />
     <XliffResource Include="MultilingualResources\本子管理器.en.xlf" />
     <XliffResource Include="MultilingualResources\本子管理器.es.xlf" />
     <XliffResource Include="MultilingualResources\本子管理器.fil.xlf" />

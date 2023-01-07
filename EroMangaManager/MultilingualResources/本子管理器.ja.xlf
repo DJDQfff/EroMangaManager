@@ -272,7 +272,7 @@
         </trans-unit>
         <trans-unit id="DeleteButton.Content" translate="yes" xml:space="preserve">
           <source>删除</source>
-          <target state="new">删除</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">削除します</target>
         </trans-unit>
       </group>
     </body>
