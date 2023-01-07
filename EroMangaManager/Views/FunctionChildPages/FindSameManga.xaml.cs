@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 using EroMangaManager.Models;
 
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
@@ -26,18 +17,20 @@ namespace EroMangaManager.Views.FunctionChildPages
     /// </summary>
     public sealed partial class FindSameManga : Page
     {
-        ObservableCollection<MangaBookRepeatGroup> repeat = new ObservableCollection<MangaBookRepeatGroup>();
+        private ObservableCollection<MangaBookRepeatGroup> repeat = new ObservableCollection<MangaBookRepeatGroup>();
 
-        List<MangaBook> mangaBooks;
+        private List<MangaBook> mangaBooks;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FindSameManga ()
         {
             this.InitializeComponent();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnNavigatedTo (NavigationEventArgs e)
@@ -54,17 +47,23 @@ namespace EroMangaManager.Views.FunctionChildPages
                 {
                     var repeatgroup = new MangaBookRepeatGroup(group);
                     repeat.Add(repeatgroup);
-
                 }
             }
-
         }
-
 
         private void StackPanel_Loaded (object sender , RoutedEventArgs e)
         {
             var a = sender as StackPanel;
             a.Background = MyUWPLibrary.WindowsUIColorHelper.GetRandomSolidColorBrush();
+        }
+
+        private async void Button_Click (object sender , RoutedEventArgs e)
+        {
+            var button = sender as Button;
+
+            MangaBook eroManga = button.DataContext as MangaBook;
+
+            await Helpers.StorageHelper.DeleteSourceFile(eroManga);
 
         }
     }

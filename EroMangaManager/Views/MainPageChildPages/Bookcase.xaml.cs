@@ -51,29 +51,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
             MangaBook eroManga = menuFlyout.DataContext as MangaBook;
 
-            var temp1 = (bool) (ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.WhetherShowDialogBeforeDelete.ToString()] ?? false);
-            var temp2 = (bool) (ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.StorageDeleteOption.ToString()] ?? false);
-
-            var option = temp2 ? StorageDeleteOption.PermanentDelete : StorageDeleteOption.Default;
-
-            if (!temp1)
-            {
-                ConfirmDeleteMangaFile confirm = new ConfirmDeleteMangaFile(eroManga);
-                var result = await confirm.ShowAsync();
-                switch (result)
-                {
-                    case ContentDialogResult.Primary:
-                        await App.Current.collectionObserver.DeleteSingleMangaBook(eroManga , option);
-                        break;
-
-                    case ContentDialogResult.Secondary:
-                        break;
-                }
-            }
-            else
-            {
-                await App.Current.collectionObserver.DeleteSingleMangaBook(eroManga , option);
-            }
+            await Helpers.StorageHelper.DeleteSourceFile(eroManga);
         }
 
         private async void ViewMangaTag (object sender , Windows.UI.Xaml.RoutedEventArgs e)

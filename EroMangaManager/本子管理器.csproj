@@ -135,6 +135,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Helpers\Exporter.cs" />
+    <Compile Include="Helpers\StorageHelper.cs" />
     <Compile Include="Models\ApplicationSettingItemName.cs" />
     <Compile Include="Models\RepeatGroup.cs" />
     <Compile Include="UserControls\TagsDisplayControl.xaml.cs">
