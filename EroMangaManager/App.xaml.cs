@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 using EroMangaManager.Models;
 using EroMangaManager.ViewModels;
@@ -34,8 +35,17 @@ namespace EroMangaManager
 
         internal PageInstancesManager pageInstancesManager = new PageInstancesManager();
 
-        private void Initial ()
+        private async Task Initial ()
         {
+
+#if DEBUG
+            await Windows.System.Launcher.LaunchFolderAsync(ApplicationData.Current.LocalFolder);
+#endif
+
+            DatabaseController.Migrate();
+            await EnsureChildTemporaryFolders(Covers.ToString() , Filters.ToString());
+
+
             var folder = MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder().Result.ToArray();
             collectionObserver = new ObservableCollectionVM(folder);
 
@@ -63,7 +73,6 @@ namespace EroMangaManager
             this.InitializeComponent();
             Current = this;
             this.Suspending += OnSuspending;
-            Initial();
         }
 
         /// <summary>
@@ -72,12 +81,9 @@ namespace EroMangaManager
         /// <param name="e"> 有关启动请求和过程的详细信息。 </param>
         protected override async void OnLaunched (LaunchActivatedEventArgs e)
         {
-#if DEBUG
-            await Windows.System.Launcher.LaunchFolderAsync(ApplicationData.Current.LocalFolder);
-#endif
 
-            DatabaseController.Migrate();
-            await EnsureChildTemporaryFolders(Covers.ToString() , Filters.ToString());
+            await Initial();
+
 
             Frame rootFrame = Window.Current.Content as Frame;
 

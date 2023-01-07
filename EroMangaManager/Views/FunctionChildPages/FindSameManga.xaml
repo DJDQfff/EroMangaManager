@@ -24,10 +24,10 @@ xmlns:model="using:EroMangaManager.Models"
                   Grid.Column="1">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:MangaBookRepeatGroup">
-                    <ListView ItemsSource="{x:Bind }">
+                    <ListView ItemsSource="{x:Bind }" Loaded="ListView_Loaded">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="model:MangaBook">
-                                <TextBlock Text="{x:Bind FilePath}" />
+                                <TextBlock Text="{x:Bind MangaName}" />
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

@@ -42,4 +42,12 @@ namespace EroMangaManager.Models
         }
 
     }
+
+    internal class MangaBookRepeatGroup : RepeatGroup<string , MangaBook>
+    {
+        public MangaBookRepeatGroup (IGrouping<string , MangaBook> _files) : base(_files)
+        {
+        }
+    }
+
 }

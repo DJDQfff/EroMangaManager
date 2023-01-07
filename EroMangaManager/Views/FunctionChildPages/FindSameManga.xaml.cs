@@ -49,11 +49,21 @@ namespace EroMangaManager.Views.FunctionChildPages
 
             foreach(var group in groups1)
             {
+                if (group.Count() > 1)
+                {
               var repeatgroup = new MangaBookRepeatGroup(group);
                 repeat.Add(repeatgroup);
+
+                }
             }
             
            
+        }
+
+        private void ListView_Loaded (object sender , RoutedEventArgs e)
+        {
+            var a = sender as ListView;
+            a.Background = MyUWPLibrary.WindowsUIColorHelper.GetRandomSolidColorBrush();
         }
     }
 }

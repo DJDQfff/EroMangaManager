@@ -21,6 +21,8 @@
     <Style TargetType="TextBlock">
         <Setter Property="MinWidth"
                 Value="100" />
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
     </Style>
     <Style TargetType="Page">
         <Setter Property="Background"
