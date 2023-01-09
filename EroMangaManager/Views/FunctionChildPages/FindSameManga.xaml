@@ -19,7 +19,7 @@
                         <TextBlock Margin="4"
                                    Text="{x:Bind  Key}"
                                    FontSize="24" />
-                        <ListView ItemsSource="{x:Bind }"
+                        <ListView ItemsSource="{x:Bind }" ItemContainerStyle="{StaticResource ListViewItemStyle_1}"
                                   SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="model:MangaBook">
