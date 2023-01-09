@@ -264,6 +264,10 @@
           <source>是</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">be</target>
         </trans-unit>
+        <trans-unit id="OpenButton.Content" translate="yes" xml:space="preserve">
+          <source>打开</source>
+          <target state="new">打开</target>
+        </trans-unit>
       </group>
     </body>
   </file>

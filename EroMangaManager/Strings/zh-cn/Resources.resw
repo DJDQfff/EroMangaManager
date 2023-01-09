@@ -216,6 +216,9 @@
   <data name="MenuItem1.Text" xml:space="preserve">
     <value>查看信息</value>
   </data>
+  <data name="OpenButton.Content" xml:space="preserve">
+    <value>打开</value>
+  </data>
   <data name="ReadItem.Content" xml:space="preserve">
     <value>正在阅读</value>
   </data>

@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 
 using EroMangaManager.Models;
+using EroMangaManager.Views.MainPageChildPages;
 
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -64,6 +65,18 @@ namespace EroMangaManager.Views.FunctionChildPages
             MangaBook eroManga = button.DataContext as MangaBook;
 
             await Helpers.StorageHelper.DeleteSourceFile(eroManga);
+
+        }
+
+        private void Button_Click_1 (object sender , RoutedEventArgs e)
+        {
+           var button=sender as Button;
+
+            var mangaBook=button.DataContext as MangaBook;
+
+            MainPage.current.MainFrame.Navigate(typeof(ReadPage) , mangaBook);
+
+            MainPage.current.MainNavigationView.SelectedItem = MainPage.current.MainNavigationView.MenuItems[2];
 
         }
     }

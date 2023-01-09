@@ -29,13 +29,23 @@
                                             <ColumnDefinition  Width="5*" />
                                             <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
-                                        <Image Grid.Column="0"
-                                               Source="{x:Bind Cover}" />
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Image Grid.Column="0" 
+                                               Source="{x:Bind Cover}"
+                                               Grid.RowSpan="2" />
                                             <TextBlock Grid.Column="1" Text="{x:Bind FilePath}" VerticalAlignment="Center"
                                                        FontSize="20"
-                                                       TextWrapping="Wrap" />
-                                            <Button x:Uid="DeleteButton" Grid.Column="2"
-                                                    Click="Button_Click" />
+                                                       TextWrapping="Wrap"
+                                                   Grid.RowSpan="2" />
+                                        <Button x:Uid="OpenButton"
+                                                Click="Button_Click_1"
+                                                Grid.Column="2" />
+                                        <Button x:Uid="DeleteButton" Grid.Column="2"
+                                                    Click="Button_Click"
+                                                Grid.Row="1" />
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
