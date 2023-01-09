@@ -27,20 +27,15 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition  Width="*" />
                                             <ColumnDefinition  Width="5*" />
+                                            <ColumnDefinition />
                                         </Grid.ColumnDefinitions>
                                         <Image Grid.Column="0"
                                                Source="{x:Bind Cover}" />
-                                        <Grid  Grid.Column="1">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition />
-                                                <ColumnDefinition Width="80" />
-                                            </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0" Text="{x:Bind FilePath}" VerticalAlignment="Center"
-                                                       FontSize="16"
+                                            <TextBlock Grid.Column="1" Text="{x:Bind FilePath}" VerticalAlignment="Center"
+                                                       FontSize="20"
                                                        TextWrapping="Wrap" />
-                                            <Button x:Uid="DeleteButton" Grid.Column="1"
+                                            <Button x:Uid="DeleteButton" Grid.Column="2"
                                                     Click="Button_Click" />
-                                        </Grid>
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
