@@ -92,7 +92,6 @@ namespace EroMangaManager.Views.MainPageChildPages
             var mangaBook = e.Parameter as MangaBook;
 
             await TryChangeManga(mangaBook);
-            Debug.WriteLine("睡眠开始");
         }
 
         #region 数据绑定到已解码的BitmapImage
@@ -228,14 +227,16 @@ namespace EroMangaManager.Views.MainPageChildPages
             }
         }
 
-      // TODO 存在问题，似乎每次导航的readpage不是同一个readpage，可能是因为页面没看导航缓存模式
+      // TODO 存在问题，
+      // 猜测1：似乎每次导航的readpage不是同一个readpage，可能是因为页面没看导航缓存模式。导航模式启用了
         private void ToggleButton_Checked (object sender , RoutedEventArgs e)
         {
             var rootFrame = Window.Current.Content as Frame;
-            var button = sender as ToggleButton;
             var applicationView = ApplicationView.GetForCurrentView();
 
-            rootFrame.Navigate(typeof(ReadPage) , currentManga);
+            rootFrame.Navigate(typeof(ReadPage));
+            // UNDONE 不知道为什么，这里会出错
+            //rootFrame.Content = App.Current.pageInstancesManager.ReadPage; 
 
             applicationView.TryEnterFullScreenMode();
         }
@@ -243,7 +244,6 @@ namespace EroMangaManager.Views.MainPageChildPages
         private void ToggleButton_Unchecked (object sender , RoutedEventArgs e)
         {
             var rootFrame = Window.Current.Content as Frame;
-            var button = sender as ToggleButton;
             var applicationView = ApplicationView.GetForCurrentView();
 
             applicationView.ExitFullScreenMode();
