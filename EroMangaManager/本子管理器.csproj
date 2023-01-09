@@ -210,7 +210,7 @@
     <Compile Include="Views\SettingPageChildPages\ImageItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValueConverters\ProgressRingVisibility.cs" />
-    <Compile Include="Views\MainPageChildPages\UpdateRecordsPage.xaml.cs">
+    <Compile Include="Views\SettingPageChildPages\UpdateRecordsPage.xaml.cs">
       <DependentUpon>UpdateRecordsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TestPage.xaml.cs">
@@ -425,7 +425,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainPageChildPages\UpdateRecordsPage.xaml">
+    <Page Include="Views\SettingPageChildPages\UpdateRecordsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
