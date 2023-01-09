@@ -30,4 +30,10 @@
   <data name="Version_before.Text" xml:space="preserve">
     <value>Более ранняя версия</value>
   </data>
+  <data name="Version_20230109.Text" xml:space="preserve">
+    <value>2023.01.09</value>
+  </data>
+  <data name="Description_20230109.Text" xml:space="preserve">
+    <value>Добавлена функция поиска дубликатов книг</value>
+  </data>
 </root>

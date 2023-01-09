@@ -30,4 +30,10 @@
   <data name="Version_before.Text" xml:space="preserve">
     <value>更早的版本</value>
   </data>
+  <data name="Version_20230109.Text" xml:space="preserve">
+    <value>2023.01.09</value>
+  </data>
+  <data name="Description_20230109.Text" xml:space="preserve">
+    <value>添加重複本子查找功能</value>
+  </data>
 </root>
