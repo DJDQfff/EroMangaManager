@@ -228,6 +228,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             }
         }
 
+      // TODO 存在问题，似乎每次导航的readpage不是同一个readpage，可能是因为页面没看导航缓存模式
         private void ToggleButton_Checked (object sender , RoutedEventArgs e)
         {
             var rootFrame = Window.Current.Content as Frame;
@@ -235,9 +236,8 @@ namespace EroMangaManager.Views.MainPageChildPages
             var applicationView = ApplicationView.GetForCurrentView();
 
             rootFrame.Navigate(typeof(ReadPage) , currentManga);
-            // TODO 存在问题，似乎每次导航的readpage不是同一个readpage
+
             applicationView.TryEnterFullScreenMode();
-            button.IsChecked = true;
         }
 
         private void ToggleButton_Unchecked (object sender , RoutedEventArgs e)
@@ -246,9 +246,10 @@ namespace EroMangaManager.Views.MainPageChildPages
             var button = sender as ToggleButton;
             var applicationView = ApplicationView.GetForCurrentView();
 
-            rootFrame.Navigate(typeof(MainPage));
             applicationView.ExitFullScreenMode();
-            button.IsChecked = false;
+            rootFrame.Navigate(typeof(MainPage));
+
         }
+
     }
 }

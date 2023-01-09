@@ -8,54 +8,57 @@
       NavigationCacheMode="Enabled"
       mc:Ignorable="d">
 
-    <Page.Resources>
-        <DataTemplate x:Key="Datatemplate_1"
-                      x:DataType="iamge:BitmapImage">
-            <Grid x:Name="RootGrid">
-                <Grid.ContextFlyout>
-                    <MenuFlyout>
-                        <MenuFlyoutItem Click="FilteThisImage2_Click"
-                                        x:Uid="/Resources/FilterThisImage"
-                                        d:Text="不显示" />
-                        <MenuFlyoutItem Click="SaveImageAs2_Click"
-                                        x:Uid="/Resources/SaveAs"
-                                        d:Text="另存为" />
-                    </MenuFlyout>
-                </Grid.ContextFlyout>
-                <ScrollViewer HorizontalScrollBarVisibility="Disabled"
-                              HorizontalScrollMode="Disabled"
-                              VerticalScrollBarVisibility="Disabled"
-                              VerticalScrollMode="Disabled"
-                              ZoomMode="Enabled">
-                    <Image x:Name="image"
-                           Source="{x:Bind}" />
-                </ScrollViewer>
-            </Grid>
-        </DataTemplate>
-    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <FlipView x:Name="FLIP"
+        <FlipView x:Name="FLIP" Tapped="FLIP_Tapped"
                   Grid.Row="0"
                   Grid.Column="0"
-                  Grid.RowSpan="3"
-                  ItemTemplate="{StaticResource Datatemplate_1}">
+                  Grid.RowSpan="3">
+            <FlipView.ItemTemplate>
+            <DataTemplate  x:DataType="iamge:BitmapImage">
+                <Grid x:Name="RootGrid">
+                    <Grid.ContextFlyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Click="FilteThisImage2_Click"
+                                            x:Uid="/Resources/FilterThisImage"
+                                            d:Text="不显示" />
+                            <MenuFlyoutItem Click="SaveImageAs2_Click"
+                                            x:Uid="/Resources/SaveAs"
+                                            d:Text="另存为" />
+                        </MenuFlyout>
+                    </Grid.ContextFlyout>
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                                  HorizontalScrollMode="Disabled"
+                                  VerticalScrollBarVisibility="Disabled"
+                                  VerticalScrollMode="Disabled"
+                                  ZoomMode="Enabled">
+                        <Image x:Name="image"
+                               Source="{x:Bind}" />
+                    </ScrollViewer>
+                </Grid>
+            </DataTemplate>
+
+            </FlipView.ItemTemplate>
         </FlipView>
         <VariableSizedWrapGrid Grid.Row="0"
-                               x:Load="False"
+                               x:Load="True"
                                x:Name="ReadPageButtonGroup"
                                FlowDirection="RightToLeft">
-            <ToggleButton x:Uid="/Resources/FullScreenToggle"
+            <ToggleButton 
                           Margin="12"
                           Width="118"
                           IsChecked="False"
                           Height="89"
                           Checked="ToggleButton_Checked"
-                          Unchecked="ToggleButton_Unchecked" />
+                          Unchecked="ToggleButton_Unchecked">
+                
+                <SymbolIcon Symbol="FullScreen" />
+            </ToggleButton>
+            
         </VariableSizedWrapGrid>
     </Grid>
 </Page>
