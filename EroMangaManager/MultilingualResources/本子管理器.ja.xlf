@@ -47,6 +47,14 @@
           <source>更早的版本</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">以前のバージョン</target>
         </trans-unit>
+        <trans-unit id="Description_2023.01.09.Text" translate="yes" xml:space="preserve">
+          <source>添加重复本子查找功能</source>
+          <target state="new">添加重复本子查找功能</target>
+        </trans-unit>
+        <trans-unit id="Version_20230109.Text" translate="yes" xml:space="preserve">
+          <source>2023.01.09</source>
+          <target state="new">2023.01.09</target>
+        </trans-unit>
       </group>
     </body>
   </file>

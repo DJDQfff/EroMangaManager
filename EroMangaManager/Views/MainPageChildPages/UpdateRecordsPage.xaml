@@ -15,6 +15,14 @@
     <ScrollViewer HorizontalScrollMode="Disabled"
                   HorizontalScrollBarVisibility="Disabled">
         <StackPanel>
+
+            <StackPanel>
+                <TextBlock  x:Uid="/UpdateResources/Version_20230109"
+                            Style="{StaticResource UpdateVersion}" />
+                <TextBlock x:Uid="/UpdateResources/Description_20230109"
+                           Style="{StaticResource UpdateDescription}" />
+            </StackPanel>
+
             <StackPanel>
                 <TextBlock  x:Uid="/UpdateResources/Version_20221226"
                             Style="{StaticResource UpdateVersion}" />
