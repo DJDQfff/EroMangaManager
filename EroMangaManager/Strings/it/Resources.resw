@@ -162,4 +162,7 @@
   <data name="DeleteButton.Content" xml:space="preserve">
     <value>Cancellare</value>
   </data>
+  <data name="OpenButton.Content" xml:space="preserve">
+    <value>Aprilo</value>
+  </data>
 </root>

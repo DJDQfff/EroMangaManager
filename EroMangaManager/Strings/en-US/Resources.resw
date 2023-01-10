@@ -162,4 +162,7 @@
   <data name="WhetherShowDialogBeforeDelete.OnContent" xml:space="preserve">
     <value>be</value>
   </data>
+  <data name="OpenButton.Content" xml:space="preserve">
+    <value>Open it</value>
+  </data>
 </root>

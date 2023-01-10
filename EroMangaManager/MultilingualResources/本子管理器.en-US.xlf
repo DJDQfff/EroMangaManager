@@ -266,7 +266,7 @@
         </trans-unit>
         <trans-unit id="OpenButton.Content" translate="yes" xml:space="preserve">
           <source>打开</source>
-          <target state="new">打开</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Open it</target>
         </trans-unit>
       </group>
     </body>

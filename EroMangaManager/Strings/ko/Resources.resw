@@ -162,4 +162,7 @@
   <data name="DeleteButton.Content" xml:space="preserve">
     <value>삭제합니다</value>
   </data>
+  <data name="OpenButton.Content" xml:space="preserve">
+    <value>켭니다</value>
+  </data>
 </root>
