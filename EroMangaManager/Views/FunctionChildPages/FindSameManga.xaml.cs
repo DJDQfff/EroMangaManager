@@ -66,6 +66,18 @@ namespace EroMangaManager.Views.FunctionChildPages
 
             await Helpers.StorageHelper.DeleteSourceFile(eroManga);
 
+            foreach(var re in repeat)
+            {
+                var count = re.TryRemoveItem(eroManga);
+
+                if (count == 1)
+                {
+                    repeat.Remove(re);
+                    break;
+                }
+            }
+           
+
         }
 
         private void Button_Click_1 (object sender , RoutedEventArgs e)

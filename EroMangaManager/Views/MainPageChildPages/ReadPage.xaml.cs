@@ -44,6 +44,18 @@ namespace EroMangaManager.Views.MainPageChildPages
             this.InitializeComponent();
             App.Current.pageInstancesManager.ReadPage = this;
         }
+        /// <summary>
+        /// 导航前
+        /// </summary>
+        /// <param name="e"></param>
+        protected override async void OnNavigatedTo (NavigationEventArgs e)
+        {
+            Debug.WriteLine("OnNavigatedTo事件开始");
+
+            var mangaBook = e.Parameter as MangaBook;
+
+            await TryChangeManga(mangaBook);
+        }
 
         /// <summary>
         /// 修改阅读漫画
@@ -79,19 +91,6 @@ namespace EroMangaManager.Views.MainPageChildPages
                 var isfilterimage = (bool) result;
                 await currentReader.SelectEntriesAsync(isfilterimage);
             }
-        }
-
-        /// <summary>
-        /// 导航前
-        /// </summary>
-        /// <param name="e"></param>
-        protected override async void OnNavigatedTo (NavigationEventArgs e)
-        {
-            Debug.WriteLine("OnNavigatedTo事件开始");
-
-            var mangaBook = e.Parameter as MangaBook;
-
-            await TryChangeManga(mangaBook);
         }
 
         #region 数据绑定到已解码的BitmapImage
