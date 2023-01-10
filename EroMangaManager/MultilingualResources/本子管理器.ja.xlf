@@ -286,6 +286,10 @@
           <source>打开</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">開けろ</target>
         </trans-unit>
+        <trans-unit id="NavigateUriButton.Content" translate="yes" xml:space="preserve">
+          <source>商店中打开</source>
+          <target state="new">商店中打开</target>
+        </trans-unit>
       </group>
     </body>
   </file>

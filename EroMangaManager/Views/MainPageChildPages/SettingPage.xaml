@@ -25,7 +25,7 @@
                                     x:Uid="/Resources/ErrorZipPageButton" />
             </NavigationView.MenuItems>
             <NavigationView.Content>
-                <Frame x:Name="SettingFrame"
+                <Frame x:Name="SettingFrame" Loaded="SettingFrame_Loaded"
                        HorizontalAlignment="Stretch"
                        VerticalAlignment="Stretch"
                        HorizontalContentAlignment="Stretch"
