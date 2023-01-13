@@ -18,7 +18,7 @@ namespace EroMangaManager.Views.FunctionChildPages
     /// </summary>
     public sealed partial class FindSameManga : Page
     {
-        private ObservableCollection<MangaBookRepeatGroup> repeat = new ObservableCollection<MangaBookRepeatGroup>();
+        private ObservableCollection<RepeatMangaBookGroup> repeat = new ObservableCollection<RepeatMangaBookGroup>();
 
         private List<MangaBook> mangaBooks;
 
@@ -46,7 +46,7 @@ namespace EroMangaManager.Views.FunctionChildPages
             {
                 if (group.Count() > 1)
                 {
-                    var repeatgroup = new MangaBookRepeatGroup(group);
+                    var repeatgroup = new RepeatMangaBookGroup(group);
                     repeat.Add(repeatgroup);
                 }
             }

@@ -13,7 +13,7 @@
                   ItemsSource="{x:Bind repeat,Mode=OneWay}"
                   Grid.Column="1">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="model:MangaBookRepeatGroup">
+                <DataTemplate x:DataType="model:RepeatMangaBookGroup">
                     <StackPanel  Orientation="Vertical"
                                  Loaded="StackPanel_Loaded">
                         <TextBlock Margin="4"
