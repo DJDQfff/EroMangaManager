@@ -3,7 +3,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:converter="using:EroMangaManager.ValueConverters"
       mc:Ignorable="d"
+      
       NavigationCacheMode="Enabled">
     <Page.Resources>
         <ResourceDictionary>
@@ -16,8 +18,8 @@
         <VariableSizedWrapGrid>
             <Button  x:Name="Function_FindSameMangaName"
                     x:Uid="Function_FindSameMangaName"
-                    Loaded="Button_Loaded"
-                    Click="Button_Click" />
+                     Background="{x:Bind Converter={StaticResource randomcolor },Mode=OneTime}" 
+            Click="Button_Click" />
             <!--<Button x:Name="Function_RemoveRepeatTags"
                     x:Uid="Function_RemoveRepeatTags"
                     Loaded="Button_Loaded"

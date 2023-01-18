@@ -23,12 +23,6 @@ namespace EroMangaManager.Views.MainPageChildPages
             this.InitializeComponent();
         }
 
-        private void Button_Loaded (object sender , RoutedEventArgs e)
-        {
-            var button = sender as Button;
-            button.Background = MyUWPLibrary.WindowsUIColorHelper.GetRandomSolidColorBrush();
-        }
-
         private async void Button_Click (object sender , RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -51,6 +45,7 @@ namespace EroMangaManager.Views.MainPageChildPages
 
             return;
 
+            // 下面的部分原本是设计来弹出个新窗口的，改为页面跳转
             CoreApplicationView newView = CoreApplication.CreateNewView();
             int newViewId = 0;
             await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal , () =>

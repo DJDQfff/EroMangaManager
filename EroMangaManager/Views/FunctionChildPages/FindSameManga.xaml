@@ -4,6 +4,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:model="using:EroMangaManager.Models"
+      xmlns:converter="using:EroMangaManager.ValueConverters"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Grid>
@@ -15,7 +16,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:RepeatMangaBookGroup">
                     <StackPanel  Orientation="Vertical"
-                                 Loaded="StackPanel_Loaded">
+                                 Background="{x:Bind Converter={StaticResource  randomcolor},Mode=OneTime}">
                         <TextBlock Margin="4"
                                    Text="{x:Bind  Key}"
                                    FontSize="24" />

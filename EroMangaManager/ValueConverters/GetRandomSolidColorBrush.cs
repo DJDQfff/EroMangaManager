@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EroMangaManager.ValueConverters
 {
-    internal class GetRandomSolidColorBrush:Windows.UI.Xaml.Data.IValueConverter
+    public class GetRandomSolidColorBrush:Windows.UI.Xaml.Data.IValueConverter
     {
         public object Convert (object value , Type targetType , object parameter , string language)
         {

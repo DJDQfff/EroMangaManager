@@ -52,11 +52,6 @@ namespace EroMangaManager.Views.FunctionChildPages
             }
         }
 
-        private void StackPanel_Loaded (object sender , RoutedEventArgs e)
-        {
-            var a = sender as StackPanel;
-            a.Background = MyUWPLibrary.WindowsUIColorHelper.GetRandomSolidColorBrush();
-        }
 
         private async void Button_Click (object sender , RoutedEventArgs e)
         {
