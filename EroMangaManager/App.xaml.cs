@@ -37,14 +37,12 @@ namespace EroMangaManager
 
         private async Task Initial ()
         {
-
 #if DEBUG
             await Windows.System.Launcher.LaunchFolderAsync(ApplicationData.Current.LocalFolder);
 #endif
 
             DatabaseController.Migrate();
             await EnsureChildTemporaryFolders(Covers.ToString() , Filters.ToString());
-
 
             var folder = MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder().Result.ToArray();
             collectionObserver = new ObservableCollectionVM(folder);
@@ -81,9 +79,7 @@ namespace EroMangaManager
         /// <param name="e"> 有关启动请求和过程的详细信息。 </param>
         protected override async void OnLaunched (LaunchActivatedEventArgs e)
         {
-
             await Initial();
-
 
             Frame rootFrame = Window.Current.Content as Frame;
 

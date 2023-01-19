@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EroMangaManager.ValueConverters
 {
     /// <summary>
     /// 返回随机SolidSolorBrtush
     /// </summary>
-    public class GetRandomSolidColorBrush:Windows.UI.Xaml.Data.IValueConverter
+    public class GetRandomSolidColorBrush : Windows.UI.Xaml.Data.IValueConverter
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="value"></param>
         /// <param name="targetType"></param>
@@ -24,8 +20,9 @@ namespace EroMangaManager.ValueConverters
             var brush = MyUWPLibrary.WindowsUIColorHelper.GetRandomSolidColorBrush();
             return brush;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="value"></param>
         /// <param name="targetType"></param>

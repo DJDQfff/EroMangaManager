@@ -12,7 +12,6 @@ using Windows.Storage;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Navigation;
 
 using static EroMangaManager.Helpers.ZipEntryHelper;
@@ -44,6 +43,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             this.InitializeComponent();
             App.Current.pageInstancesManager.ReadPage = this;
         }
+
         /// <summary>
         /// 导航前
         /// </summary>
@@ -226,8 +226,8 @@ namespace EroMangaManager.Views.MainPageChildPages
             }
         }
 
-      // TODO 存在问题，
-      // 猜测1：似乎每次导航的readpage不是同一个readpage，可能是因为页面没看导航缓存模式。导航模式启用了
+        // TODO 存在问题，
+        // 猜测1：似乎每次导航的readpage不是同一个readpage，可能是因为页面没看导航缓存模式。导航模式启用了
         private void ToggleButton_Checked (object sender , RoutedEventArgs e)
         {
             var rootFrame = Window.Current.Content as Frame;
@@ -235,7 +235,7 @@ namespace EroMangaManager.Views.MainPageChildPages
 
             rootFrame.Navigate(typeof(ReadPage));
             // UNDONE 不知道为什么，这里会出错
-            //rootFrame.Content = App.Current.pageInstancesManager.ReadPage; 
+            //rootFrame.Content = App.Current.pageInstancesManager.ReadPage;
 
             applicationView.TryEnterFullScreenMode();
         }
@@ -247,8 +247,6 @@ namespace EroMangaManager.Views.MainPageChildPages
 
             applicationView.ExitFullScreenMode();
             rootFrame.Navigate(typeof(MainPage));
-
         }
-
     }
 }

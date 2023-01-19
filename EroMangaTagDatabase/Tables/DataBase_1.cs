@@ -14,7 +14,6 @@ namespace EroMangaDB.Tables
         /// </summary>
         public DbSet<FilteredImage> FilteredImages { set; get; }
 
-
         /// <summary>
         /// UniqueTagInRelation数据表
         /// </summary>

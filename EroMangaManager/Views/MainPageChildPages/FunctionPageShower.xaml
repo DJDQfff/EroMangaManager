@@ -5,7 +5,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:converter="using:EroMangaManager.ValueConverters"
       mc:Ignorable="d"
-      
+
       NavigationCacheMode="Enabled">
     <Page.Resources>
         <ResourceDictionary>
@@ -18,7 +18,7 @@
         <VariableSizedWrapGrid>
             <Button  x:Name="Function_FindSameMangaName"
                     x:Uid="Function_FindSameMangaName"
-                     Background="{x:Bind Converter={StaticResource randomcolor },Mode=OneTime}" 
+                     Background="{x:Bind Converter={StaticResource randomcolor },Mode=OneTime}"
             Click="Button_Click" />
             <!--<Button x:Name="Function_RemoveRepeatTags"
                     x:Uid="Function_RemoveRepeatTags"

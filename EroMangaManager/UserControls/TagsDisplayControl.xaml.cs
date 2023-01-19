@@ -12,7 +12,7 @@ using Windows.UI.Xaml.Controls;
 namespace EroMangaManager.UserControls
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class TagsDisplayControl : UserControl
     {

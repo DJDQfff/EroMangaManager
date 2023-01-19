@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 
 using EroMangaManager.Models;
 using EroMangaManager.Views.MainPageChildPages;
+
+using RepeatItems;
 
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -18,7 +18,7 @@ namespace EroMangaManager.Views.FunctionChildPages
     /// </summary>
     public sealed partial class FindSameManga : Page
     {
-        private ObservableCollection<RepeatMangaBookGroup> repeat = new ObservableCollection<RepeatMangaBookGroup>();
+        private RepeatItemGroupViewModel<string , MangaBook , RepeatMangaBookGroup> mangaBookViewModel;
 
         private List<MangaBook> mangaBooks;
 
@@ -39,19 +39,9 @@ namespace EroMangaManager.Views.FunctionChildPages
             base.OnNavigatedTo(e);
 
             mangaBooks = e.Parameter as List<MangaBook>;
-
-            var groups1 = mangaBooks.GroupBy(n => n.MangaName);
-
-            foreach (var group in groups1)
-            {
-                if (group.Count() > 1)
-                {
-                    var repeatgroup = new RepeatMangaBookGroup(group);
-                    repeat.Add(repeatgroup);
-                }
-            }
+            mangaBookViewModel = new RepeatItemGroupViewModel<string , MangaBook , RepeatMangaBookGroup>(mangaBooks , n => n.MangaName);
+            listView.ItemsSource = mangaBookViewModel.RepeatPairs;
         }
-
 
         private async void Button_Click (object sender , RoutedEventArgs e)
         {
@@ -61,30 +51,18 @@ namespace EroMangaManager.Views.FunctionChildPages
 
             await Helpers.StorageHelper.DeleteSourceFile(eroManga);
 
-            foreach(var re in repeat)
-            {
-                var count = re.TryRemoveItem(eroManga);
-
-                if (count == 1)
-                {
-                    repeat.Remove(re);
-                    break;
-                }
-            }
-           
-
+            mangaBookViewModel.DeleteStorageFileInRootObservable(eroManga);
         }
 
         private void Button_Click_1 (object sender , RoutedEventArgs e)
         {
-           var button=sender as Button;
+            var button = sender as Button;
 
-            var mangaBook=button.DataContext as MangaBook;
+            var mangaBook = button.DataContext as MangaBook;
 
             MainPage.current.MainFrame.Navigate(typeof(ReadPage) , mangaBook);
 
             MainPage.current.MainNavigationView.SelectedItem = MainPage.current.MainNavigationView.MenuItems[2];
-
         }
     }
 }

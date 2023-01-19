@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using EroMangaManager.Models;
@@ -24,7 +21,7 @@ namespace EroMangaManager.Helpers
         /// </summary>
         /// <param name="eroManga"></param>
         /// <returns></returns>
-        public static async Task DeleteSourceFile(MangaBook eroManga)
+        public static async Task DeleteSourceFile (MangaBook eroManga)
         {
             var temp1 = (bool) (ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.WhetherShowDialogBeforeDelete.ToString()] ?? false);
             var temp2 = (bool) (ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.StorageDeleteOption.ToString()] ?? false);
@@ -49,7 +46,6 @@ namespace EroMangaManager.Helpers
             {
                 await App.Current.collectionObserver.DeleteSingleMangaBook(eroManga , option);
             }
-
         }
     }
 }

@@ -4,14 +4,12 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:model="using:EroMangaManager.Models"
-      xmlns:converter="using:EroMangaManager.ValueConverters"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Grid>
         <ListView x:Name="listView"
                   SelectionMode="None"
                   ItemContainerStyle="{StaticResource ListViewItemStyle_1}"
-                  ItemsSource="{x:Bind repeat,Mode=OneWay}"
                   Grid.Column="1">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:RepeatMangaBookGroup">
@@ -20,7 +18,8 @@
                         <TextBlock Margin="4"
                                    Text="{x:Bind  Key}"
                                    FontSize="24" />
-                        <ListView ItemsSource="{x:Bind }" ItemContainerStyle="{StaticResource ListViewItemStyle_1}"
+                        <ListView ItemsSource="{x:Bind }"
+                                  ItemContainerStyle="{StaticResource ListViewItemStyle_1}"
                                   SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="model:MangaBook">
@@ -34,18 +33,21 @@
                                             <RowDefinition />
                                             <RowDefinition />
                                         </Grid.RowDefinitions>
-                                        <Image Grid.Column="0" 
+                                        <Image Grid.Column="0"
                                                Source="{x:Bind Cover}"
                                                Grid.RowSpan="2" />
-                                            <TextBlock Grid.Column="1" Text="{x:Bind FilePath}" VerticalAlignment="Center"
-                                                       FontSize="20"
-                                                       TextWrapping="Wrap"
+                                        <TextBlock Grid.Column="1"
+                                                   Text="{x:Bind FilePath}"
+                                                   VerticalAlignment="Center"
+                                                   FontSize="20"
+                                                   TextWrapping="Wrap"
                                                    Grid.RowSpan="2" />
                                         <Button x:Uid="OpenButton"
                                                 Click="Button_Click_1"
                                                 Grid.Column="2" />
-                                        <Button x:Uid="DeleteButton" Grid.Column="2"
-                                                    Click="Button_Click"
+                                        <Button x:Uid="DeleteButton"
+                                                Grid.Column="2"
+                                                Click="Button_Click"
                                                 Grid.Row="1" />
                                     </Grid>
                                 </DataTemplate>

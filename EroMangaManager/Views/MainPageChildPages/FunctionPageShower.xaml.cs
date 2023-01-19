@@ -1,8 +1,5 @@
 ﻿using System;
 
-using Windows.ApplicationModel.Core;
-using Windows.UI.Core;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -23,7 +20,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             this.InitializeComponent();
         }
 
-        private  void Button_Click (object sender , RoutedEventArgs e)
+        private void Button_Click (object sender , RoutedEventArgs e)
         {
             var button = sender as Button;
             var name = button.Name;
@@ -39,7 +36,6 @@ namespace EroMangaManager.Views.MainPageChildPages
                     //    type = typeof(FunctionChildPages.RemoveRepeatTags);
                     //    break;
             }
-
 
             MainPage.current.MainFrame.Navigate(type , App.Current.collectionObserver.MangaList);
 
