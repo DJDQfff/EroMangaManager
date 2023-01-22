@@ -165,4 +165,7 @@
   <data name="OpenButton.Content" xml:space="preserve">
     <value>Ανοίξτε το</value>
   </data>
+  <data name="NavigateUriButton.Content" xml:space="preserve">
+    <value>Άνοιγμα στο κατάστημα</value>
+  </data>
 </root>

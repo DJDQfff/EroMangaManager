@@ -270,7 +270,7 @@
         </trans-unit>
         <trans-unit id="NavigateUriButton.Content" translate="yes" xml:space="preserve">
           <source>商店中打开</source>
-          <target state="new">商店中打开</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Open in the store</target>
         </trans-unit>
       </group>
     </body>

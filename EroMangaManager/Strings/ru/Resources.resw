@@ -165,4 +165,7 @@
   <data name="OpenButton.Content" xml:space="preserve">
     <value>Откройте</value>
   </data>
+  <data name="NavigateUriButton.Content" xml:space="preserve">
+    <value>Открыть в магазине</value>
+  </data>
 </root>

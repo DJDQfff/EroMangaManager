@@ -165,4 +165,7 @@
   <data name="OpenButton.Content" xml:space="preserve">
     <value>켭니다</value>
   </data>
+  <data name="NavigateUriButton.Content" xml:space="preserve">
+    <value>스토어가 열립니다</value>
+  </data>
 </root>

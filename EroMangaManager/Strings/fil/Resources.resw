@@ -165,4 +165,7 @@
   <data name="OpenButton.Content" xml:space="preserve">
     <value>Buksan mo na</value>
   </data>
+  <data name="NavigateUriButton.Content" xml:space="preserve">
+    <value>Buksan sa tindahan</value>
+  </data>
 </root>

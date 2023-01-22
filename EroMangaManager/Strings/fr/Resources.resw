@@ -165,4 +165,7 @@
   <data name="OpenButton.Content" xml:space="preserve">
     <value>Ouvre-le</value>
   </data>
+  <data name="NavigateUriButton.Content" xml:space="preserve">
+    <value>Ouvrir dans le magasin</value>
+  </data>
 </root>
