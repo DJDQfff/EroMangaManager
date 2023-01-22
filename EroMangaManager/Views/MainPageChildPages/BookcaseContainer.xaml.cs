@@ -43,7 +43,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             c.Content = bookcase;
         }
 
-        //TODO 存在bug
+        //TODO 因为原来的Bookcase被拆分为Bookcase和BookcaseContainer两个类，所以这个方法现在有bug
         private async void RefreshMangaList (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             AppBarButton button = sender as AppBarButton;
@@ -58,7 +58,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             button.IsEnabled = true;
         }
 
-        //TODO 有bug
+        //TODO 因为原来的Bookcase被拆分为Bookcase和BookcaseContainer两个类，所以这个方法现在有bug
         private async void TranslateEachMangaName (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             AppBarButton button = sender as AppBarButton;

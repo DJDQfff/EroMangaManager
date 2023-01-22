@@ -17,8 +17,7 @@ namespace EroMangaManager.ViewModels
         internal ReadPage ReadPage { set; get; }
 
         /// <summary>
-        /// 清除所有页面缓存
-        /// TODO
+        /// TODO 清除所有页面缓存
         /// </summary>
         internal void ClearBookcase ()
         {

@@ -227,13 +227,14 @@ namespace EroMangaManager.Views.MainPageChildPages
         }
 
         // TODO 存在问题，
-        // 猜测1：似乎每次导航的readpage不是同一个readpage，可能是因为页面没看导航缓存模式。导航模式启用了
+        // 猜测1：似乎每次导航的readpage不是同一个readpage，可能是因为页面没看导航缓存模式。导航模式启用了，required模式也出问题
         private void ToggleButton_Checked (object sender , RoutedEventArgs e)
         {
             var rootFrame = Window.Current.Content as Frame;
             var applicationView = ApplicationView.GetForCurrentView();
 
-            rootFrame.Navigate(typeof(ReadPage));
+            rootFrame.Navigate(typeof(ReadPage),currentManga);
+
             // UNDONE 不知道为什么，这里会出错
             //rootFrame.Content = App.Current.pageInstancesManager.ReadPage;
 

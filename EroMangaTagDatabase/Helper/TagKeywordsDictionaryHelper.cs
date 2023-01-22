@@ -5,7 +5,7 @@ using System.Linq;
 namespace EroMangaDB.Helper
 {
     /// <summary>
-    /// TODO
+    /// TagKeyWords帮助类
     /// </summary>
     public static class TagKeywordsDictionaryHelper
     {

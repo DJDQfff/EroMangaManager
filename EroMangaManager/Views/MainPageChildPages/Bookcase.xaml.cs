@@ -85,8 +85,6 @@ namespace EroMangaManager.Views.MainPageChildPages
 
             await Exporter.ExportAsPDF(mangaBook , storageFile);
 
-            // TODO 存在线程bug
-
             string done = ResourceLoader.GetForCurrentView("StringResources").GetString("ExportDone");
             App.Current.collectionObserver.WorkDone(done);
         }

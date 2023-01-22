@@ -67,7 +67,7 @@ namespace EroMangaManager.ViewModels
 
             NonZipList.Clear();
 
-            //TODO 优化性能
+            //TODO 现在这个是顺序执行，试试多线程方法，加快速度
             foreach (var folder in storageFolders)
             {
                 MangasFolder mangasFolder = new MangasFolder(folder);
