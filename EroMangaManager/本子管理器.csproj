@@ -202,9 +202,6 @@
     <Compile Include="Views\MainPageChildPages\LibraryPage.xaml.cs">
       <DependentUpon>LibraryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainPageChildPages\Bookcase.xaml.cs">
-      <DependentUpon>Bookcase.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\MainPageChildPages\SettingPage.xaml.cs">
       <DependentUpon>SettingPage.xaml</DependentUpon>
     </Compile>
@@ -418,10 +415,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MainPageChildPages\LibraryPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MainPageChildPages\Bookcase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

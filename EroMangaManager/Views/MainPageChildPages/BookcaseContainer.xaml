@@ -3,6 +3,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:models="using:EroMangaManager.Models"
       mc:Ignorable="d"
       NavigationCacheMode="Enabled">
     <Grid>
@@ -27,7 +28,69 @@
                           x:Uid="/Resources/RefreshButton"
                           d:Label="刷新" />
         </CommandBar>
-        <Frame x:Name="ShowBookcase"
-               Grid.Row="1" />
+
+        <GridView x:Name="Bookcase_GridView"
+                  x:FieldModifier="public"
+                  Grid.Row="1"
+                  Margin="4"
+                  IsItemClickEnabled="True"
+                  ItemClick="GridView_ItemClick_ReadManga"
+                  ItemContainerStyle="{ThemeResource GridViewItemRevealStyle}"
+                  SelectionMode="None">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="models:MangaBook">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ContextFlyout>
+                            <MenuFlyout>
+                                <!--TODO: 以后在恢复-->
+                                <!--<MenuFlyoutItem Click="ViewMangaTag"
+                                        x:Uid="/Resources/MenuItem1"
+                                       d:Text="查看信息" />-->
+
+                                <MenuFlyoutSeparator />
+                                <!--<MenuFlyoutSubItem Text="文件操作">-->
+                                <MenuFlyoutItem Click="DeleteSourceMangaFile"
+                                                x:Uid="/Resources/DeleteSourceMangaFileFlyoutItem"
+                                                d:Text="删除源文件" />
+                                <MenuFlyoutItem Click="LaunchFile"
+                                                x:Uid="/Resources/LaunchFileFlyoutItem"
+                                                d:Text="打开文件" />
+                                <MenuFlyoutItem Click="LaunchFolder"
+                                                x:Uid="/Resources/LaunchFolderFlyoutItem"
+                                                Text="打开文件夹" />
+                                <MenuFlyoutSeparator />
+                                <MenuFlyoutItem Click="ExportPDF"
+                                                d:Text="导出为PDF"
+                                                x:Uid="/Resources/ExportPDFFlyoutItem" />
+                                <!--</MenuFlyoutSubItem>-->
+                            </MenuFlyout>
+                        </Grid.ContextFlyout>
+                        <Image x:Name="image"
+                               Grid.Row="0"
+                               Width="166"
+                               Height="192"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Source="{x:Bind Cover, Mode=OneWay}"
+                               Stretch="Uniform" />
+                        <TextBlock Grid.Row="1"
+                                   Width="150"
+                                   Margin="1"
+                                   Padding="0,0,4,0"
+                                   HorizontalTextAlignment="Center"
+                                   MaxLines="1">
+                    <Run x:Name="runtext"
+                            IsTextScaleFactorEnabled="True"
+                            Text="{x:Bind MangaName, Mode=OneWay}" />
+                        </TextBlock>
+                    </Grid>
+                </DataTemplate>
+
+            </GridView.ItemTemplate>
+        </GridView>
     </Grid>
 </Page>
