@@ -41,7 +41,6 @@ namespace EroMangaManager.Views.MainPageChildPages
         public ReadPage ()
         {
             this.InitializeComponent();
-            App.Current.pageInstancesManager.ReadPage = this;
         }
 
         /// <summary>

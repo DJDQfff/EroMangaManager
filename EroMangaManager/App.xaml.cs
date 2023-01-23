@@ -33,8 +33,6 @@ namespace EroMangaManager
         /// </summary>
         internal ObservableCollectionVM collectionObserver { get; private set; }
 
-        internal PageInstancesManager pageInstancesManager = new PageInstancesManager();
-
         private async Task Initial ()
         {
 #if DEBUG

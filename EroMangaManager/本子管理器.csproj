@@ -161,7 +161,6 @@
     <Compile Include="Models\IFunctionPage.cs" />
     <Compile Include="ViewModels\FunctionPagesManager.cs" />
     <Compile Include="ViewModels\MangasFolder.cs" />
-    <Compile Include="ViewModels\PageInstancesManager.cs" />
     <Compile Include="ViewModels\ReaderVM.cs" />
     <Compile Include="Views\MainPageChildPages\BookcaseContainer.xaml.cs">
       <DependentUpon>BookcaseContainer.xaml</DependentUpon>

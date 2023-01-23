@@ -24,7 +24,6 @@ namespace EroMangaManager.Views.MainPageChildPages
         public LibraryPage ()
         {
             this.InitializeComponent();
-            App.Current.pageInstancesManager.LibraryPage = this;
             if (App.Current.collectionObserver.StorageFolders.Count == 0)
             {
                 this.FindName(nameof(HintAddFolderTextBlock));
