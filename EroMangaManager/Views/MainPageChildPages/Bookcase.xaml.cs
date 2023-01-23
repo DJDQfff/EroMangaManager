@@ -16,14 +16,14 @@ namespace EroMangaManager.Views.MainPageChildPages
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class BookcaseContainer : Page
+    public sealed partial class Bookcase : Page
     {
         internal MangasFolder BindMangaFolder { set; get; }
 
         /// <summary>
         ///
         /// </summary>
-        public BookcaseContainer ()
+        public Bookcase ()
         {
             this.InitializeComponent();
             App.Current.bookcaseContainer = this;
@@ -35,7 +35,7 @@ namespace EroMangaManager.Views.MainPageChildPages
 
         }
 
-        //TODO 因为原来的Bookcase被拆分为Bookcase和BookcaseContainer两个类，所以这个方法现在有bug
+        //TODO 因为原来的Bookcase被拆分为Bookcase和Bookcase两个类，所以这个方法现在有bug
         private async void RefreshMangaList (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             AppBarButton button = sender as AppBarButton;
@@ -50,7 +50,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             button.IsEnabled = true;
         }
 
-        //TODO 因为原来的Bookcase被拆分为Bookcase和BookcaseContainer两个类，所以这个方法现在有bug
+        //TODO 因为原来的Bookcase被拆分为Bookcase和Bookcase两个类，所以这个方法现在有bug
         private async void TranslateEachMangaName (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             AppBarButton button = sender as AppBarButton;

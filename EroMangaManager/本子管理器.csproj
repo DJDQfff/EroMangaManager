@@ -162,8 +162,8 @@
     <Compile Include="ViewModels\FunctionPagesManager.cs" />
     <Compile Include="ViewModels\MangasFolder.cs" />
     <Compile Include="ViewModels\ReaderVM.cs" />
-    <Compile Include="Views\MainPageChildPages\BookcaseContainer.xaml.cs">
-      <DependentUpon>BookcaseContainer.xaml</DependentUpon>
+    <Compile Include="Views\MainPageChildPages\Bookcase.xaml.cs">
+      <DependentUpon>Bookcase.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPageChildPages\FunctionPageShower.xaml.cs">
       <DependentUpon>FunctionPageShower.xaml</DependentUpon>
@@ -377,7 +377,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainPageChildPages\BookcaseContainer.xaml">
+    <Page Include="Views\MainPageChildPages\Bookcase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

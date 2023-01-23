@@ -25,7 +25,7 @@ namespace EroMangaManager
             this.InitializeComponent();
 
             current = this;
-            MainFrame.Navigate(typeof(BookcaseContainer));
+            MainFrame.Navigate(typeof(Bookcase));
 
             if (App.Current.collectionObserver.StorageFolders.Count == 0)
             {
@@ -42,8 +42,8 @@ namespace EroMangaManager
             else
                 switch (args.InvokedItemContainer.Name)
                 {
-                    case nameof(BookcaseItemContainer):
-                        type = typeof(BookcaseContainer);
+                    case nameof(BookcaseItem):
+                        type = typeof(Bookcase);
                         break;
 
                     case nameof(ListItem):

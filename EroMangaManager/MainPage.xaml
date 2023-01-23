@@ -17,7 +17,7 @@
 
             <NavigationView.MenuItems>
 
-                <NavigationViewItem x:Name="BookcaseItemContainer"
+                <NavigationViewItem x:Name="BookcaseItem"
                                     d:Content="书架"
                                     x:Uid="/Resources/BookcaseItem"
                                     Icon="Library"/>
