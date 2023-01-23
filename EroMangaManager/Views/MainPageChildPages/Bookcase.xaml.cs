@@ -8,6 +8,7 @@ using EroMangaManager.Views.InteractPages;
 using Windows.ApplicationModel.Resources;
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -29,10 +30,24 @@ namespace EroMangaManager.Views.MainPageChildPages
             App.Current.bookcaseContainer = this;
         }
 
-        internal void ChangeMangasFolder (MangasFolder mangasFolder)
+        /// <summary>
+        /// 导航时，传入要绑定的数据
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnNavigatedTo (NavigationEventArgs e)
         {
-            Bookcase_GridView.ItemsSource = mangasFolder.MangaBooks;
+            base.OnNavigatedTo(e);
 
+
+            switch(e.Parameter)
+            {
+                case MangasFolder mangasFolder:
+                    Bookcase_GridView.ItemsSource = mangasFolder.MangaBooks;
+                    break;
+
+
+
+            }
         }
 
         //TODO 因为原来的Bookcase被拆分为Bookcase和Bookcase两个类，所以这个方法现在有bug

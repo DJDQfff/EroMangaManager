@@ -82,7 +82,8 @@ namespace EroMangaManager.Views.MainPageChildPages
             var button = sender as Button;
             var datacontext = button.DataContext as MangasFolder;
 
-            App.Current.bookcaseContainer.ChangeMangasFolder(datacontext);
+           MainPage.current. MainFrame.Navigate(typeof(Bookcase),datacontext);
+
         }
     }
 }
