@@ -58,7 +58,7 @@ namespace EroMangaManager.Views.MainPageChildPages
 
             await CoverHelper.ClearCovers();
 
-            var folder = MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder().Result.ToArray();
+            var folder =(await MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder()).ToArray();
 
             App.Current.collectionObserver.Initialize(folder);
 
