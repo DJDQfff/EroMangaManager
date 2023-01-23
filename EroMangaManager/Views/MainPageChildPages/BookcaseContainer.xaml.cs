@@ -31,21 +31,8 @@ namespace EroMangaManager.Views.MainPageChildPages
 
         internal void ChangeMangasFolder (MangasFolder mangasFolder)
         {
-            BindMangaFolder = mangasFolder;
+            Bookcase_GridView.ItemsSource = mangasFolder.MangaBooks;
 
-            Bookcase bookcase;
-            if (!App.Current.pageInstancesManager.Bookcases.ContainsKey(mangasFolder))
-            {
-                bookcase = new Bookcase(mangasFolder);
-                App.Current.pageInstancesManager.Bookcases.Add(mangasFolder , bookcase);
-            }
-            else
-            {
-                bookcase = App.Current.pageInstancesManager.Bookcases[mangasFolder];
-            }
-
-            var c = this.FindName("ShowBookcase") as Frame;
-            c.Content = bookcase;
         }
 
         //TODO 因为原来的Bookcase被拆分为Bookcase和BookcaseContainer两个类，所以这个方法现在有bug
@@ -76,13 +63,12 @@ namespace EroMangaManager.Views.MainPageChildPages
             catch
             {
             }
-            var bookcase = this.ShowBookcase.Content as Bookcase;
-            var gridView = bookcase.FindName("Bookcase_GridView") as GridView;
-            var items = gridView.Items;
+
+            var items = Bookcase_GridView.Items;
             foreach (var item in items)
             {
                 var manga = item as MangaBook;
-                GridViewItem grid = gridView.ContainerFromItem(item) as GridViewItem;
+                GridViewItem grid = Bookcase_GridView.ContainerFromItem(item) as GridViewItem;
                 var root = grid.ContentTemplateRoot as Grid;
                 var run = root.FindName("runtext") as Windows.UI.Xaml.Documents.Run;
                 run.Text = manga.TranslatedMangaName;

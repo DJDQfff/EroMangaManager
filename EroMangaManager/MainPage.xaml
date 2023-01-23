@@ -3,7 +3,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      NavigationCacheMode="Enabled"
+      NavigationCacheMode="Required"
       mc:Ignorable="d">
     <Grid>
         <NavigationView x:Name="MainNavigationView"
@@ -20,8 +20,7 @@
                 <NavigationViewItem x:Name="BookcaseItemContainer"
                                     d:Content="书架"
                                     x:Uid="/Resources/BookcaseItem"
-                                    Icon="Library"
-                                    ToolTipService.ToolTip="jfdak" />
+                                    Icon="Library"/>
                 <NavigationViewItem d:Content="书库"
                                     x:Uid="/Resources/ListItem"
                                     Icon="List"

@@ -11,22 +11,9 @@ namespace EroMangaManager.ViewModels
     /// </summary>
     internal class PageInstancesManager
     {
-        internal Dictionary<MangasFolder , Bookcase> Bookcases { get; } = new Dictionary<MangasFolder , Bookcase>();
         internal MainPage MainPage { get; set; }
         internal LibraryPage LibraryPage { set; get; }
         internal ReadPage ReadPage { set; get; }
 
-        /// <summary>
-        /// TODO 清除所有页面缓存
-        /// </summary>
-        internal void ClearBookcase ()
-        {
-            Bookcases.Clear();
-            foreach (var bookcase in Bookcases)
-            {
-                var page = bookcase.Value as Page;
-                page = null;
-            }
-        }
     }
 }
