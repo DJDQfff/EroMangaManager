@@ -38,8 +38,9 @@ namespace EroMangaManager.Views.MainPageChildPages
         {
             base.OnNavigatedTo(e);
 
+            MainPage.current.MainNavigationView.SelectedItem = MainPage.current.MainNavigationView.MenuItems[0];
 
-            switch(e.Parameter)
+            switch (e.Parameter)
             {
                 case MangasFolder mangasFolder:
                     Bookcase_GridView.ItemsSource = mangasFolder.MangaBooks;
@@ -50,7 +51,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             }
         }
 
-        //TODO 因为原来的Bookcase被拆分为Bookcase和Bookcase两个类，所以这个方法现在有bug
+        //TODO 改变了数据绑定源，还要修改
         private async void RefreshMangaList (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             AppBarButton button = sender as AppBarButton;

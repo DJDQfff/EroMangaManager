@@ -12,7 +12,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <CommandBar x:Load="False"
+        <CommandBar x:Load="True"
                     Background="Transparent"
                     Grid.Row="0"
                     x:Name="BookcaseCommandBar"
@@ -24,6 +24,7 @@
                           d:Label="翻译" />
             <AppBarButton Click="RefreshMangaList"
                           x:Name="RefreshButton"
+                          x:Load="False"
                           Icon="Refresh"
                           x:Uid="/Resources/RefreshButton"
                           d:Label="刷新" />
