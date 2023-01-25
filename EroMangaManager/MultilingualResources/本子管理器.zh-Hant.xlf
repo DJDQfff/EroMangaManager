@@ -55,6 +55,14 @@
           <source>添加重复本子查找功能</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">添加重複本子查找功能</target>
         </trans-unit>
+        <trans-unit id="Description_20230125.Text" translate="yes" xml:space="preserve">
+          <source>阅读页面全屏功能；默认书架</source>
+          <target state="new">阅读页面全屏功能；默认书架</target>
+        </trans-unit>
+        <trans-unit id="Version_20230125.Text" translate="yes" xml:space="preserve">
+          <source>2023.01.25</source>
+          <target state="new">2023.01.25</target>
+        </trans-unit>
       </group>
     </body>
   </file>
