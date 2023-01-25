@@ -14,7 +14,7 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <FlipView x:Name="FLIP"
+        <FlipView x:Name="FLIP" Tapped="FLIP_Tapped"
                   Grid.Row="0"
                   Grid.Column="0"
                   Grid.RowSpan="3">
@@ -43,8 +43,8 @@
                 </DataTemplate>
             </FlipView.ItemTemplate>
         </FlipView>
-        <VariableSizedWrapGrid Grid.Row="0"
-                               x:Load="False"
+        <VariableSizedWrapGrid Grid.Row="0" 
+                               x:Load="True"
                                x:Name="ReadPageButtonGroup"
                                FlowDirection="RightToLeft">
             <ToggleButton Margin="12"

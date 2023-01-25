@@ -241,6 +241,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             //rootFrame.Navigate(typeof(ReadPage),currentManga);
 
             applicationView.TryEnterFullScreenMode();
+            MainPage.current.MainNavigationView.IsPaneToggleButtonVisible = false;
         }
 
         private void ToggleButton_Unchecked (object sender , RoutedEventArgs e)
@@ -249,7 +250,14 @@ namespace EroMangaManager.Views.MainPageChildPages
             var applicationView = ApplicationView.GetForCurrentView();
 
             applicationView.ExitFullScreenMode();
+            MainPage.current.MainNavigationView.IsPaneToggleButtonVisible = true;
+
             //rootFrame.Navigate(typeof(MainPage));
+        }
+
+        private void FLIP_Tapped_1 (object sender , Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+
         }
     }
 }
