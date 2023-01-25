@@ -168,4 +168,7 @@
   <data name="NavigateUriButton.Content" xml:space="preserve">
     <value>Abrir en la tienda</value>
   </data>
+  <data name="SetAsDefaultBookcaseFolder.Content" xml:space="preserve">
+    <value>Establecer como carpeta de presentación predeterminada</value>
+  </data>
 </root>

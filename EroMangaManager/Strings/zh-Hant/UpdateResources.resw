@@ -36,4 +36,10 @@
   <data name="Description_20230109.Text" xml:space="preserve">
     <value>添加重複本子查找功能</value>
   </data>
+  <data name="Description_20230125.Text" xml:space="preserve">
+    <value>閱讀頁面全屏功能; 默認書架</value>
+  </data>
+  <data name="Version_20230125.Text" xml:space="preserve">
+    <value>2023.01.25</value>
+  </data>
 </root>

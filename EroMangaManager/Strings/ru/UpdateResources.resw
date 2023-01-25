@@ -36,4 +36,10 @@
   <data name="Description_20230109.Text" xml:space="preserve">
     <value>Добавлена функция поиска дубликатов книг</value>
   </data>
+  <data name="Description_20230125.Text" xml:space="preserve">
+    <value>Полноэкранная функция чтения страницы; Книжная полка по умолчанию</value>
+  </data>
+  <data name="Version_20230125.Text" xml:space="preserve">
+    <value>2023.01.25</value>
+  </data>
 </root>

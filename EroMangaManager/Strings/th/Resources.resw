@@ -168,4 +168,7 @@
   <data name="NavigateUriButton.Content" xml:space="preserve">
     <value>เปิดในร้าน</value>
   </data>
+  <data name="SetAsDefaultBookcaseFolder.Content" xml:space="preserve">
+    <value>ตั้งค่าเป็นโฟลเดอร์งานนําเสนอเริ่มต้น</value>
+  </data>
 </root>

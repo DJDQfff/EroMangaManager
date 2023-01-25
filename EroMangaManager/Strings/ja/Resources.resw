@@ -168,4 +168,7 @@
   <data name="NavigateUriButton.Content" xml:space="preserve">
     <value>店頭で開きます</value>
   </data>
+  <data name="SetAsDefaultBookcaseFolder.Content" xml:space="preserve">
+    <value>既定の表示フォルダとして設定します</value>
+  </data>
 </root>

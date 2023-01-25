@@ -36,4 +36,10 @@
   <data name="Description_20230109.Text" xml:space="preserve">
     <value>重複したこのサブルックアップ機能を追加します</value>
   </data>
+  <data name="Description_20230125.Text" xml:space="preserve">
+    <value>ページの全画面表示機能を読む。 既定の本棚</value>
+  </data>
+  <data name="Version_20230125.Text" xml:space="preserve">
+    <value>2023.01.25</value>
+  </data>
 </root>

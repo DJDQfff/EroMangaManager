@@ -36,4 +36,10 @@
   <data name="Description_20230109.Text" xml:space="preserve">
     <value>Aggiunta la funzione di ricerca di libri duplicati</value>
   </data>
+  <data name="Description_20230125.Text" xml:space="preserve">
+    <value>Funzione a schermo intero della pagina di lettura; Libreria predefinita</value>
+  </data>
+  <data name="Version_20230125.Text" xml:space="preserve">
+    <value>2023.01.25</value>
+  </data>
 </root>

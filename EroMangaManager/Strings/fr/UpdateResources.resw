@@ -36,4 +36,10 @@
   <data name="Description_20230109.Text" xml:space="preserve">
     <value>Ajout de la fonction de recherche de livres en double</value>
   </data>
+  <data name="Description_20230125.Text" xml:space="preserve">
+    <value>Fonction plein écran de la page de lecture; Bibliothèque par défaut</value>
+  </data>
+  <data name="Version_20230125.Text" xml:space="preserve">
+    <value>2023.01.25</value>
+  </data>
 </root>

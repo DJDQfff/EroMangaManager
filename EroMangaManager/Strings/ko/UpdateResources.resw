@@ -36,4 +36,10 @@
   <data name="Description_20230109.Text" xml:space="preserve">
     <value>중복 책 찾기 기능을 추가합니다</value>
   </data>
+  <data name="Description_20230125.Text" xml:space="preserve">
+    <value>읽기 페이지 전체 화면 기능; 기본 책장입니다</value>
+  </data>
+  <data name="Version_20230125.Text" xml:space="preserve">
+    <value>2023.01.25</value>
+  </data>
 </root>

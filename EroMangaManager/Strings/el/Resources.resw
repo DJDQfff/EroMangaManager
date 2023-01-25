@@ -168,4 +168,7 @@
   <data name="NavigateUriButton.Content" xml:space="preserve">
     <value>Άνοιγμα στο κατάστημα</value>
   </data>
+  <data name="SetAsDefaultBookcaseFolder.Content" xml:space="preserve">
+    <value>Ορισμός ως προεπιλεγμένου φακέλου παρουσίασης</value>
+  </data>
 </root>

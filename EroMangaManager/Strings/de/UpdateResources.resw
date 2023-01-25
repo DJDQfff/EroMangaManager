@@ -36,4 +36,10 @@
   <data name="Description_20230109.Text" xml:space="preserve">
     <value>Die Suchfunktion für doppelte Bücher wurde hinzugefügt</value>
   </data>
+  <data name="Description_20230125.Text" xml:space="preserve">
+    <value>Vollbildfunktion der Leseseite; Standard-Bücherregal</value>
+  </data>
+  <data name="Version_20230125.Text" xml:space="preserve">
+    <value>2023.01.25</value>
+  </data>
 </root>

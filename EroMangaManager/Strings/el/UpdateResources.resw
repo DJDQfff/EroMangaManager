@@ -36,4 +36,10 @@
   <data name="Description_20230109.Text" xml:space="preserve">
     <value>Προστέθηκε η λειτουργία αναζήτησης διπλότυπων βιβλίων</value>
   </data>
+  <data name="Description_20230125.Text" xml:space="preserve">
+    <value>Λειτουργία πλήρους οθόνης της σελίδας ανάγνωσης. Προεπιλεγμένο ράφι βιβλίων</value>
+  </data>
+  <data name="Version_20230125.Text" xml:space="preserve">
+    <value>2023.01.25</value>
+  </data>
 </root>

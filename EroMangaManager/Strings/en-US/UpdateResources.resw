@@ -36,4 +36,10 @@
   <data name="Description_20230109.Text" xml:space="preserve">
     <value>Added the duplicate book search function</value>
   </data>
+  <data name="Description_20230125.Text" xml:space="preserve">
+    <value>Full screen function of reading page; Default bookshelf</value>
+  </data>
+  <data name="Version_20230125.Text" xml:space="preserve">
+    <value>2023.01.25</value>
+  </data>
 </root>

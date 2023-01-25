@@ -36,4 +36,10 @@
   <data name="Description_20230109.Text" xml:space="preserve">
     <value>เพิ่มฟังก์ชันการค้นหาหนังสือที่ซ้ํากัน</value>
   </data>
+  <data name="Description_20230125.Text" xml:space="preserve">
+    <value>ฟังก์ชั่นเต็มหน้าจอของการอ่านหน้า; ชั้นวางหนังสือเริ่มต้น</value>
+  </data>
+  <data name="Version_20230125.Text" xml:space="preserve">
+    <value>2023.01.25</value>
+  </data>
 </root>

@@ -36,4 +36,10 @@
   <data name="Description_20230109.Text" xml:space="preserve">
     <value>Idinagdag ang duplicate na function ng paghahanap ng libro</value>
   </data>
+  <data name="Description_20230125.Text" xml:space="preserve">
+    <value>Full screen function ng pahina ng pagbabasa; Default na shelf ng libro</value>
+  </data>
+  <data name="Version_20230125.Text" xml:space="preserve">
+    <value>2023.01.25</value>
+  </data>
 </root>

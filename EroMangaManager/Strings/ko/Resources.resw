@@ -168,4 +168,7 @@
   <data name="NavigateUriButton.Content" xml:space="preserve">
     <value>스토어가 열립니다</value>
   </data>
+  <data name="SetAsDefaultBookcaseFolder.Content" xml:space="preserve">
+    <value>기본 프레젠테이션 폴더로 설정합니다</value>
+  </data>
 </root>
