@@ -5,7 +5,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:app="using:EroMangaManager"
       xmlns:vm="using:EroMangaManager.ViewModels"
-      NavigationCacheMode="Disabled"
+      NavigationCacheMode="Disabled" 
       mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>

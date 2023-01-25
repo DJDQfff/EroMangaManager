@@ -4,6 +4,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       NavigationCacheMode="Required"
+      Background="Transparent"
       mc:Ignorable="d">
     <Grid>
         <NavigationView x:Name="MainNavigationView"
@@ -13,7 +14,7 @@
                         IsBackButtonVisible="Collapsed"
                         IsSettingsVisible="True"
                         ItemInvoked="MainNavigationView_ItemInvoked"
-                        PaneDisplayMode="Auto">
+                        PaneDisplayMode="LeftMinimal">
 
             <NavigationView.MenuItems>
 

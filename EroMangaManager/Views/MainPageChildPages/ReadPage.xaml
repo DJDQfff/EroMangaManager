@@ -44,7 +44,7 @@
             </FlipView.ItemTemplate>
         </FlipView>
         <VariableSizedWrapGrid Grid.Row="0"
-                               x:Load="True"
+                               x:Load="False"
                                x:Name="ReadPageButtonGroup"
                                FlowDirection="RightToLeft">
             <ToggleButton Margin="12"
