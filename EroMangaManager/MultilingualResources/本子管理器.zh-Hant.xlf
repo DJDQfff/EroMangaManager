@@ -57,11 +57,11 @@
         </trans-unit>
         <trans-unit id="Description_20230125.Text" translate="yes" xml:space="preserve">
           <source>阅读页面全屏功能；默认书架</source>
-          <target state="new">阅读页面全屏功能；默认书架</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">閱讀頁面全屏功能; 默認書架</target>
         </trans-unit>
         <trans-unit id="Version_20230125.Text" translate="yes" xml:space="preserve">
           <source>2023.01.25</source>
-          <target state="new">2023.01.25</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">2023.01.25</target>
         </trans-unit>
       </group>
     </body>
@@ -300,7 +300,7 @@
         </trans-unit>
         <trans-unit id="SetAsDefaultBookcaseFolder.Content" translate="yes" xml:space="preserve">
           <source>设置为默认展示文件夹</source>
-          <target state="new">设置为默认展示文件夹</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">設置為預設展示資料夾</target>
         </trans-unit>
       </group>
     </body>
