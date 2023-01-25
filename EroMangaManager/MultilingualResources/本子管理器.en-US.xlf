@@ -272,6 +272,10 @@
           <source>商店中打开</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Open in the store</target>
         </trans-unit>
+        <trans-unit id="SetAsDefaultBookcaseFolder.Content" translate="yes" xml:space="preserve">
+          <source>设置为默认展示文件夹</source>
+          <target state="new">设置为默认展示文件夹</target>
+        </trans-unit>
       </group>
     </body>
   </file>

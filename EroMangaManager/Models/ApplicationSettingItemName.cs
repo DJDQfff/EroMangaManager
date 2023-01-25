@@ -18,6 +18,10 @@
         /// <summary>
         /// 删除模式，是移动到回收站还是直接磁盘删除
         /// </summary>
-        StorageDeleteOption
+        StorageDeleteOption,
+        /// <summary>
+        /// 默认的Bookcase展示的页面
+        /// </summary>
+        DefaultBookcaseFolder
     }
 }

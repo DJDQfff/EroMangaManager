@@ -237,6 +237,9 @@
   <data name="SaveAs.Text" xml:space="preserve">
     <value>另存为</value>
   </data>
+  <data name="SetAsDefaultBookcaseFolder.Content" xml:space="preserve">
+    <value>设置为默认展示文件夹</value>
+  </data>
   <data name="SetBack.Text" xml:space="preserve">
     <value>还原</value>
   </data>

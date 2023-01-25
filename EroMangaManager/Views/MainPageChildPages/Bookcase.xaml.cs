@@ -104,6 +104,8 @@ namespace EroMangaManager.Views.MainPageChildPages
 
             MainPage.current.MainFrame.Navigate(typeof(ReadPage) , mangaBook);
 
+            MainPage.current.ReadItem.Visibility = Windows.UI.Xaml.Visibility.Visible;
+
             MainPage.current.MainNavigationView.SelectedItem = MainPage.current.MainNavigationView.MenuItems[2];
         }
 

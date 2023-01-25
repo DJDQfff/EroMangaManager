@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 using EroMangaManager.ViewModels;
-
+using EroMangaManager.Models;
 using MyUWPLibrary;
 
 using Windows.Storage;
@@ -84,6 +84,14 @@ namespace EroMangaManager.Views.MainPageChildPages
 
            MainPage.current. MainFrame.Navigate(typeof(Bookcase),datacontext);
 
+        }
+
+        private void SetAsDefaultBookcaseFolder_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            var datacontext = button.DataContext as MangasFolder;
+
+            ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.DefaultBookcaseFolder.ToString()] = datacontext.FolderPath;
         }
     }
 }

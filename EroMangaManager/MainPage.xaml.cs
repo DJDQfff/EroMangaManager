@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Linq;
 
+using EroMangaManager.Models;
 using EroMangaManager.Views.MainPageChildPages;
 
+using Windows.Storage;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804
 // 上介绍了“空白页”项模板
@@ -25,12 +29,29 @@ namespace EroMangaManager
             this.InitializeComponent();
 
             current = this;
-            MainFrame.Navigate(typeof(Bookcase));
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnNavigatedTo (NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
 
-            if (App.Current.collectionObserver.StorageFolders.Count == 0)
+            var defaultfolder = ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.DefaultBookcaseFolder.ToString()] as string;
+            var folder = App.Current.collectionObserver.MangaFolders.SingleOrDefault(x=>x.FolderPath== defaultfolder);
+
+            if (App.Current.collectionObserver.StorageFolders.Count == 0 || folder==null)
             {
                 MainFrame.Navigate(typeof(LibraryPage));
             }
+            else
+            {
+
+                MainFrame.Navigate(typeof(Bookcase),folder);
+                
+            }
+
         }
 
         private void MainNavigationView_ItemInvoked (NavigationView sender , NavigationViewItemInvokedEventArgs args)
