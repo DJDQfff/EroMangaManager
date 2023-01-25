@@ -30,6 +30,10 @@ namespace EroMangaManager.ViewModels
             StorageFolder = storageFolder;
         }
 
+        /// <summary>
+        /// TODO 把readinginfo分离出来
+        /// </summary>
+        /// <returns></returns>
         public async Task Initial ()
         {
             var files = await StorageFolder.GetFilesAsync();

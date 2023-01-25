@@ -78,6 +78,8 @@ namespace EroMangaManager.ViewModels
         public void Dispose ()
         {
             zipArchiveEntries.Clear();
+
+           
             bitmapImages.Clear();
             zipArchive.Dispose();
             stream.Dispose();

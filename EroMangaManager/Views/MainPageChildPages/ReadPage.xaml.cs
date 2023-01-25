@@ -51,6 +51,7 @@ namespace EroMangaManager.Views.MainPageChildPages
         {
             Debug.WriteLine("OnNavigatedTo事件开始");
 
+            
             var mangaBook = e.Parameter as MangaBook;
 
             await TryChangeManga(mangaBook);
@@ -63,6 +64,10 @@ namespace EroMangaManager.Views.MainPageChildPages
         /// <returns></returns>
         public async Task TryChangeManga (MangaBook manga)
         {
+            
+
+
+
             if (manga == null)                          // 传入null，直接跳过
             {
                 return;
@@ -70,6 +75,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             if (manga != currentManga)                  // 传入新漫画，则设置新源
             {
                 await SetNewSource(manga);
+                Debug.WriteLine(this.GetHashCode());
             }
             else                                       // 未传入新漫画，不作变动。这个其实不用写了
             {
@@ -80,8 +86,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             {
                 currentManga = newmanga;
                 currentReader?.Dispose();
-                ReaderVM reader = new ReaderVM(manga);
-                currentReader = reader;
+                currentReader = new ReaderVM(manga);             
 
                 FLIP.ItemsSource = currentReader.bitmapImages;
 
@@ -227,26 +232,24 @@ namespace EroMangaManager.Views.MainPageChildPages
 
         // TODO 存在问题，
         // 猜测1：似乎每次导航的readpage不是同一个readpage，可能是因为页面没看导航缓存模式。导航模式启用了，required模式也出问题
+        // 进一步测试，发现，推测：不同frame，导航向同一个page，即便开了导航缓存模式，也是导航向不同的page实例
         private void ToggleButton_Checked (object sender , RoutedEventArgs e)
         {
-            var rootFrame = Window.Current.Content as Frame;
+            //var rootFrame = Window.Current.Content as Frame;
             var applicationView = ApplicationView.GetForCurrentView();
 
-            rootFrame.Navigate(typeof(ReadPage),currentManga);
-
-            // UNDONE 不知道为什么，这里会出错
-            //rootFrame.Content = App.Current.pageInstancesManager.ReadPage;
+            //rootFrame.Navigate(typeof(ReadPage),currentManga);
 
             applicationView.TryEnterFullScreenMode();
         }
 
         private void ToggleButton_Unchecked (object sender , RoutedEventArgs e)
         {
-            var rootFrame = Window.Current.Content as Frame;
+            //var rootFrame = Window.Current.Content as Frame;
             var applicationView = ApplicationView.GetForCurrentView();
 
             applicationView.ExitFullScreenMode();
-            rootFrame.Navigate(typeof(MainPage));
+            //rootFrame.Navigate(typeof(MainPage));
         }
     }
 }

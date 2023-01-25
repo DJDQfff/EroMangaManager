@@ -47,10 +47,12 @@
       </uap:VisualElements>
       <Extensions>
         <uap:Extension Category="windows.fileTypeAssociation">
-          <uap:FileTypeAssociation Name="mangazip">
+          <uap:FileTypeAssociation Name="mangabook">
             <uap:SupportedFileTypes>
               <uap:FileType>.zip</uap:FileType>
             </uap:SupportedFileTypes>
+            <uap:InfoTip>作为漫画打开</uap:InfoTip>
+            <uap:DisplayName>zip漫画</uap:DisplayName>
           </uap:FileTypeAssociation>
         </uap:Extension>
       </Extensions>

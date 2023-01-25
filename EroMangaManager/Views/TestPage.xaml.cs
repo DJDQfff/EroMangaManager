@@ -1,5 +1,8 @@
 ﻿using EroMangaManager.UserControls;
 
+using Org.BouncyCastle.Crypto.Modes.Gcm;
+
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
