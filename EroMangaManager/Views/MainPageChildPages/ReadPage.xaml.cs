@@ -230,34 +230,24 @@ namespace EroMangaManager.Views.MainPageChildPages
             }
         }
 
-        // TODO 存在问题，
-        // 猜测1：似乎每次导航的readpage不是同一个readpage，可能是因为页面没看导航缓存模式。导航模式启用了，required模式也出问题
-        // 进一步测试，发现，推测：不同frame，导航向同一个page，即便开了导航缓存模式，也是导航向不同的page实例
         private void ToggleButton_Checked (object sender , RoutedEventArgs e)
         {
-            //var rootFrame = Window.Current.Content as Frame;
             var applicationView = ApplicationView.GetForCurrentView();
-
-            //rootFrame.Navigate(typeof(ReadPage),currentManga);
 
             applicationView.TryEnterFullScreenMode();
             MainPage.current.MainNavigationView.IsPaneToggleButtonVisible = false;
+
+            ReadPageButtonGroup.Visibility = Visibility.Collapsed;
+
         }
 
         private void ToggleButton_Unchecked (object sender , RoutedEventArgs e)
         {
-            //var rootFrame = Window.Current.Content as Frame;
             var applicationView = ApplicationView.GetForCurrentView();
 
             applicationView.ExitFullScreenMode();
             MainPage.current.MainNavigationView.IsPaneToggleButtonVisible = true;
-
-            //rootFrame.Navigate(typeof(MainPage));
         }
 
-        private void FLIP_Tapped_1 (object sender , Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
-        {
-
-        }
     }
 }
