@@ -42,10 +42,10 @@
                                                    FontSize="20"
                                                    TextWrapping="Wrap"
                                                    Grid.RowSpan="2" />
-                                        <Button x:Uid="OpenButton"
+                                        <Button x:Uid="/Resources/OpenButton"
                                                 Click="Button_Click_1"
                                                 Grid.Column="2" />
-                                        <Button x:Uid="DeleteButton"
+                                        <Button x:Uid="/Resources/DeleteButton"
                                                 Grid.Column="2"
                                                 Click="Button_Click"
                                                 Grid.Row="1" />

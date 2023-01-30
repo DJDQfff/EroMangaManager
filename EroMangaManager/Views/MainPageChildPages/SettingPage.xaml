@@ -12,7 +12,7 @@
                          IsBackButtonVisible="Collapsed">
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="CommonSettingNavigationViewItem"
-                                    x:Uid="CommonSettingNavigationViewItem" />
+                                    x:Uid="/Resources/CommonSettingNavigationViewItem" />
                 <NavigationViewItem x:Name="SettingFilterImageButton"
                                     x:Uid="/Resources/SettingFilterImageButton" />
                 <NavigationViewItem x:Name="SettingTagButton"

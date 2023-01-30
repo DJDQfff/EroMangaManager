@@ -15,11 +15,11 @@
     <Grid Margin="36,0,0,0">
         <VariableSizedWrapGrid>
             <Button  x:Name="Function_FindSameMangaName"
-                    x:Uid="Function_FindSameMangaName"
+                     x:Uid="/Resources/Function_FindSameMangaName"
                      Background="{x:Bind Converter={StaticResource randomcolor },Mode=OneTime}"
             Click="Button_Click" />
             <!--<Button x:Name="Function_RemoveRepeatTags"
-                    x:Uid="Function_RemoveRepeatTags"
+                    x:Uid="/Resources/Function_RemoveRepeatTags"
                     Loaded="Button_Loaded"
                     Click="Button_Click" />-->
         </VariableSizedWrapGrid>

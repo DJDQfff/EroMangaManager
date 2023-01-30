@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
         <HyperlinkButton x:Name="hyperlinkButton"
                          Grid.Column="1"
-                         x:Uid="NavigateUriButton"
+                         x:Uid="/Resources/NavigateUriButton"
                          NavigateUri="https://www.microsoft.com/store/apps/9N7C8ZDQ1TJ8"
                          Grid.Row="1"
                          VerticalAlignment="Center" />

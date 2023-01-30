@@ -17,7 +17,9 @@
                     Grid.Row="0"
                     x:Name="BookcaseCommandBar"
                     VerticalAlignment="Stretch">
-            <AppBarButton Click="Order" Icon="Sort" x:Uid="OrderButton" />
+            <AppBarButton Click="Order"
+                          Icon="Sort"
+                          x:Uid="/Resources/OrderButton" />
             <AppBarButton Click="TranslateEachMangaName"
                           x:Name="TranslateButton"
                           x:Uid="/Resources/TranslateButton"

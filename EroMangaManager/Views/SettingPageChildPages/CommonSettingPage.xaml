@@ -9,12 +9,12 @@
     <Grid>
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Stretch">
-            <ToggleSwitch x:Uid="WhetherShowDialogBeforeDelete"
+            <ToggleSwitch x:Uid="/Resources/WhetherShowDialogBeforeDelete"
                           HorizontalAlignment="Stretch"
                           HorizontalContentAlignment="Left"
                           Toggled="DirectDeleteOption"
                           Loaded="ToggleSwitch_Loaded" />
-            <ToggleSwitch x:Uid="StorageDeleteOption"
+            <ToggleSwitch x:Uid="/Resources/StorageDeleteOption"
                           HorizontalAlignment="Stretch"
                           HorizontalContentAlignment="Left"
                           Toggled="DeleteOption"
