@@ -17,6 +17,7 @@
                     Grid.Row="0"
                     x:Name="BookcaseCommandBar"
                     VerticalAlignment="Stretch">
+            <AppBarButton Click="Order" Icon="Sort" />
             <AppBarButton Click="TranslateEachMangaName"
                           x:Name="TranslateButton"
                           x:Uid="/Resources/TranslateButton"
@@ -44,7 +45,8 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="*" />
-                            
+                            <RowDefinition Height="*" />
+
                         </Grid.RowDefinitions>
                         <Grid.ContextFlyout>
                             <MenuFlyout>
@@ -85,10 +87,12 @@
                                    Padding="0,0,4,0"
                                    HorizontalTextAlignment="Center"
                                    MaxLines="1">
-                    <Run x:Name="runtext"
-                            IsTextScaleFactorEnabled="True"
-                            Text="{x:Bind MangaName, Mode=OneWay}" />
+                                <Run x:Name="runtext"
+                                        IsTextScaleFactorEnabled="True"
+                                        Text="{x:Bind MangaName, Mode=OneWay}" />
                         </TextBlock>
+                        <TextBlock Grid.Row="2"
+                                   Text="{x:Bind FileSize,Mode=OneTime,Converter={StaticResource filesizeConverter}}" />
                     </Grid>
                 </DataTemplate>
 

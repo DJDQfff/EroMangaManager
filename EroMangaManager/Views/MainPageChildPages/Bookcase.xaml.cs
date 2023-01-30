@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 using EroMangaManager.Helpers;
 using EroMangaManager.Models;
@@ -19,8 +20,18 @@ namespace EroMangaManager.Views.MainPageChildPages
     /// </summary>
     public sealed partial class Bookcase : Page
     {
-        internal MangasFolder BindMangaFolder { set; get; }
-
+        private MangasFolder _data;
+        internal MangasFolder BindMangasFolder { 
+            set
+            {
+                _data = value;
+                Bookcase_GridView.ItemsSource = value.MangaBooks;
+            }
+            get
+            {
+                return _data;
+            }
+        }
         /// <summary>
         ///
         /// </summary>
@@ -43,7 +54,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             switch (e.Parameter)
             {
                 case MangasFolder mangasFolder:
-                    Bookcase_GridView.ItemsSource = mangasFolder.MangaBooks;
+                    BindMangasFolder = mangasFolder;
                     break;
 
 
@@ -152,5 +163,9 @@ namespace EroMangaManager.Views.MainPageChildPages
             App.Current.collectionObserver.WorkDone(done);
         }
 
+        private void Order (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            BindMangasFolder.SortMangaBooks(x => x.FileSize);
+        }
     }
 }

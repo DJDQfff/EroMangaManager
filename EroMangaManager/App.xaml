@@ -5,7 +5,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <converter:GetRandomSolidColorBrush x:Key="randomcolor" />
-
+            <converter:FileSizeConverter x:Key="filesizeConverter" />
             <!--<Color x:Key="SystemAccentColor">#FFA500</Color>-->
 
             <ResourceDictionary.MergedDictionaries>
