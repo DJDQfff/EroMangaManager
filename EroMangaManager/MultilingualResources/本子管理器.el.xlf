@@ -302,6 +302,10 @@
           <source>设置为默认展示文件夹</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Ορισμός ως προεπιλεγμένου φακέλου παρουσίασης</target>
         </trans-unit>
+        <trans-unit id="OrderButton.Label" translate="yes" xml:space="preserve">
+          <source>切换排序</source>
+          <target state="new">切换排序</target>
+        </trans-unit>
       </group>
     </body>
   </file>

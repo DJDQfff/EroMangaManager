@@ -222,6 +222,9 @@
   <data name="OpenButton.Content" xml:space="preserve">
     <value>打开</value>
   </data>
+  <data name="OrderButton.Label" xml:space="preserve">
+    <value>切换排序</value>
+  </data>
   <data name="ReadItem.Content" xml:space="preserve">
     <value>正在阅读</value>
   </data>

@@ -12,16 +12,12 @@
                          IsBackButtonVisible="Collapsed">
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="CommonSettingNavigationViewItem"
-                                    d:Content="一般设置"
                                     x:Uid="CommonSettingNavigationViewItem" />
                 <NavigationViewItem x:Name="SettingFilterImageButton"
-                                    d:Content="过滤图库"
                                     x:Uid="/Resources/SettingFilterImageButton" />
                 <NavigationViewItem x:Name="SettingTagButton"
-                                    d:Content="标签管理"
                                     x:Uid="/Resources/SettingTagButton" />
                 <NavigationViewItem x:Name="ErrorZipPageButton"
-                                    d:Content="异常Zip"
                                     x:Uid="/Resources/ErrorZipPageButton" />
             </NavigationView.MenuItems>
             <NavigationView.Content>
@@ -33,8 +29,7 @@
                        VerticalContentAlignment="Stretch" />
             </NavigationView.Content>
             <NavigationView.PaneFooter>
-                <Button d:Content="更新日志"
-                        Margin="0"
+                <Button Margin="0"
                         x:Uid="/Resources/UpdateRecordItem"
                         x:Name="UpdateRecordItem"
                         Click="UpdateRecordItem_Click" />

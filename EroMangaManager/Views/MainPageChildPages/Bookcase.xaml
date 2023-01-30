@@ -17,18 +17,16 @@
                     Grid.Row="0"
                     x:Name="BookcaseCommandBar"
                     VerticalAlignment="Stretch">
-            <AppBarButton Click="Order" Icon="Sort" />
+            <AppBarButton Click="Order" Icon="Sort" x:Uid="OrderButton" />
             <AppBarButton Click="TranslateEachMangaName"
                           x:Name="TranslateButton"
                           x:Uid="/Resources/TranslateButton"
-                          Icon="Font"
-                          d:Label="翻译" />
+                          Icon="Font"/>
             <AppBarButton Click="RefreshMangaList"
                           x:Name="RefreshButton"
                           x:Load="False"
                           Icon="Refresh"
-                          x:Uid="/Resources/RefreshButton"
-                          d:Label="刷新" />
+                          x:Uid="/Resources/RefreshButton" />
         </CommandBar>
 
         <GridView x:Name="Bookcase_GridView"
@@ -52,23 +50,19 @@
                             <MenuFlyout>
                                 <!--TODO: 以后在恢复-->
                                 <!--<MenuFlyoutItem Click="ViewMangaTag"
-                                        x:Uid="/Resources/MenuItem1"
-                                       d:Text="查看信息" />-->
+                                        x:Uid="/Resources/MenuItem1" />-->
 
                                 <MenuFlyoutSeparator />
                                 <!--<MenuFlyoutSubItem Text="文件操作">-->
                                 <MenuFlyoutItem Click="DeleteSourceMangaFile"
-                                                x:Uid="/Resources/DeleteSourceMangaFileFlyoutItem"
-                                                d:Text="删除源文件" />
+                                                x:Uid="/Resources/DeleteSourceMangaFileFlyoutItem" />
                                 <MenuFlyoutItem Click="LaunchFile"
-                                                x:Uid="/Resources/LaunchFileFlyoutItem"
-                                                d:Text="打开文件" />
+                                                x:Uid="/Resources/LaunchFileFlyoutItem"/>
                                 <MenuFlyoutItem Click="LaunchFolder"
                                                 x:Uid="/Resources/LaunchFolderFlyoutItem"
                                                 Text="打开文件夹" />
                                 <MenuFlyoutSeparator />
                                 <MenuFlyoutItem Click="ExportPDF"
-                                                d:Text="导出为PDF"
                                                 x:Uid="/Resources/ExportPDFFlyoutItem" />
                                 <!--</MenuFlyoutSubItem>-->
                             </MenuFlyout>

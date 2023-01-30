@@ -21,10 +21,8 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Click="addButton_Click"
-                x:Uid="/Resources/AddFolderButton"
-                d:Content="添加文件夹" />
-        <TextBlock d:Text="提示添加文件夹"
-                   x:Load="False"
+                x:Uid="/Resources/AddFolderButton"/>
+        <TextBlock x:Load="False"
                    x:Name="HintAddFolderTextBlock"
                    x:Uid="/Resources/HintAddFirstFolder"
                    Foreground="RoyalBlue"
@@ -65,7 +63,6 @@
                                      Width="160"
                                      VerticalAlignment="Center"
                                      Click="SetAsDefaultBookcaseFolder_Click"
-                                     d:Content="设为默认"
                                      x:Uid="/Resources/SetAsDefaultBookcaseFolder"
                                      BorderThickness="0" />
 
@@ -73,20 +70,17 @@
                                      Width="100"
                                      VerticalAlignment="Center"
                                      Click="JumpToBookcase_Click"
-                                     d:Content="显示书架"
                                      x:Uid="/Resources/ShowFolderBookcase"
                                      BorderThickness="0" />
 
-                            <Button  d:Content="打开文件夹"
-                                     VerticalAlignment="Center"
+                            <Button  VerticalAlignment="Center"
                                      x:Uid="/Resources/LaunchFolderButton"
                                      Click="LauncherFolder" />
                             <Button x:Name="removeButton"
                                     VerticalAlignment="Center"
                                     Margin="0,0,20,0"
                                     Click="removeButton_Click"
-                                    x:Uid="/Resources/RemoveFolderButton"
-                                    d:Content="移除" />
+                                    x:Uid="/Resources/RemoveFolderButton" />
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>
