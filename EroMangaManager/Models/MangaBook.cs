@@ -58,6 +58,10 @@ namespace EroMangaManager.Models
         /// <summary> 漫画文件路径 </summary>
         public string FilePath => _filePath;
 
+        /// <summary>
+        /// 获取漫画文件大小。单位：字节
+        /// </summary>
+        public ulong FileSize => StorageFile.GetBasicPropertiesAsync().AsTask().Result.Size;
         /// <summary> 漫画所在文件夹路径 </summary>
         public string FolderPath => Path.GetDirectoryName(_filePath);
 
