@@ -286,7 +286,7 @@
         </trans-unit>
         <trans-unit id="OrderButton.Label" translate="yes" xml:space="preserve">
           <source>切换排序</source>
-          <target state="new">切换排序</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Toggle sorting</target>
         </trans-unit>
       </group>
     </body>

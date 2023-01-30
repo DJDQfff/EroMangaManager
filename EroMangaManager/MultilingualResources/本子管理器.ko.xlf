@@ -304,7 +304,7 @@
         </trans-unit>
         <trans-unit id="OrderButton.Label" translate="yes" xml:space="preserve">
           <source>切换排序</source>
-          <target state="new">切换排序</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">정렬을 토글합니다</target>
         </trans-unit>
       </group>
     </body>
