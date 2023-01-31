@@ -50,7 +50,7 @@ namespace EroMangaManager.ViewModels
 
                 string extension = Path.GetExtension(storageFile.Path).ToLower();
 
-                if (extension != ".zip")
+                if (extension != ".zip"/*&& extension!=".rar"*/)
                 {
                     break;  // 如果不是zip文件，则跳过
                 }
