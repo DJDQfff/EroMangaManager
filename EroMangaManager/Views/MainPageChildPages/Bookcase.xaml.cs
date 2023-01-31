@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 using EroMangaManager.Helpers;
 using EroMangaManager.Models;
@@ -49,7 +50,7 @@ namespace EroMangaManager.Views.MainPageChildPages
         {
             base.OnNavigatedTo(e);
 
-            MainPage.current.MainNavigationView.SelectedItem = MainPage.current.MainNavigationView.MenuItems[0];
+            MainPage.Current.MainNavigationView.SelectedItem = MainPage.Current.MainNavigationView.MenuItems[0];
 
             switch (e.Parameter)
             {
@@ -72,7 +73,7 @@ namespace EroMangaManager.Views.MainPageChildPages
 
             var folder =(await MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder()).ToArray();
 
-            App.Current.collectionObserver.Initialize(folder);
+           await  App.Current.collectionObserver.Initialize(folder);
 
             button.IsEnabled = true;
         }
@@ -113,11 +114,11 @@ namespace EroMangaManager.Views.MainPageChildPages
         {
             MangaBook mangaBook = e.ClickedItem as MangaBook;
 
-            MainPage.current.MainFrame.Navigate(typeof(ReadPage) , mangaBook);
+            MainPage.Current.MainFrame.Navigate(typeof(ReadPage) , mangaBook);
 
-            MainPage.current.ReadItem.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            MainPage.Current.ReadItem.Visibility = Windows.UI.Xaml.Visibility.Visible;
 
-            MainPage.current.MainNavigationView.SelectedItem = MainPage.current.MainNavigationView.MenuItems[2];
+            MainPage.Current.MainNavigationView.SelectedItem = MainPage.Current.MainNavigationView.MenuItems[2];
         }
 
         private async void DeleteSourceMangaFile (object sender , Windows.UI.Xaml.RoutedEventArgs e)

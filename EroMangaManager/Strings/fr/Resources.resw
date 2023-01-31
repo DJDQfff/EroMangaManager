@@ -171,4 +171,7 @@
   <data name="SetAsDefaultBookcaseFolder.Content" xml:space="preserve">
     <value>Définir comme dossier de présentation par défaut</value>
   </data>
+  <data name="OrderButton.Label" xml:space="preserve">
+    <value>Tri bascule</value>
+  </data>
 </root>

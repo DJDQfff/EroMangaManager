@@ -60,9 +60,9 @@ namespace EroMangaManager.Views.FunctionChildPages
 
             var mangaBook = button.DataContext as MangaBook;
 
-            MainPage.current.MainFrame.Navigate(typeof(ReadPage) , mangaBook);
+            MainPage.Current.MainFrame.Navigate(typeof(ReadPage) , mangaBook);
 
-            MainPage.current.MainNavigationView.SelectedItem = MainPage.current.MainNavigationView.MenuItems[2];
+            MainPage.Current.MainNavigationView.SelectedItem = MainPage.Current.MainNavigationView.MenuItems[2];
         }
     }
 }

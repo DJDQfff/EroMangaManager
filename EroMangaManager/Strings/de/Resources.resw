@@ -171,4 +171,7 @@
   <data name="SetAsDefaultBookcaseFolder.Content" xml:space="preserve">
     <value>Als Standardpräsentationsordner festlegen</value>
   </data>
+  <data name="OrderButton.Label" xml:space="preserve">
+    <value>Sortierung ein-/ausblenden</value>
+  </data>
 </root>

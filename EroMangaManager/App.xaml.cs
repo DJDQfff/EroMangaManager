@@ -38,12 +38,15 @@ namespace EroMangaManager
 #if DEBUG
             await Windows.System.Launcher.LaunchFolderAsync(ApplicationData.Current.LocalFolder);
 #endif
-
             DatabaseController.Migrate();
+
             await EnsureChildTemporaryFolders(Covers.ToString() , Filters.ToString());
 
             var folder = MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder().Result.ToArray();
-            collectionObserver = new ObservableCollectionVM(folder);
+            collectionObserver = new ObservableCollectionVM();
+
+           await  collectionObserver.Initialize(folder);
+
 
             collectionObserver.ErrorZipEvent += (string str) =>
             {
@@ -75,9 +78,9 @@ namespace EroMangaManager
         /// 在应用程序由最终用户正常启动时进行调用。 将在启动应用程序以打开特定文件等情况下使用。
         /// </summary>
         /// <param name="e"> 有关启动请求和过程的详细信息。 </param>
-        protected override async void OnLaunched (LaunchActivatedEventArgs e)
+        protected override void OnLaunched (LaunchActivatedEventArgs e)
         {
-            await Initial();
+             Initial().Wait();
 
             Frame rootFrame = Window.Current.Content as Frame;
 

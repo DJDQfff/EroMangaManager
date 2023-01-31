@@ -171,4 +171,7 @@
   <data name="SetAsDefaultBookcaseFolder.Content" xml:space="preserve">
     <value>ตั้งค่าเป็นโฟลเดอร์งานนําเสนอเริ่มต้น</value>
   </data>
+  <data name="OrderButton.Label" xml:space="preserve">
+    <value>สลับการเรียงลําดับ</value>
+  </data>
 </root>

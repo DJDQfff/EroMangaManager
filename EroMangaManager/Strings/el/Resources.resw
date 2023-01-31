@@ -171,4 +171,7 @@
   <data name="SetAsDefaultBookcaseFolder.Content" xml:space="preserve">
     <value>Ορισμός ως προεπιλεγμένου φακέλου παρουσίασης</value>
   </data>
+  <data name="OrderButton.Label" xml:space="preserve">
+    <value>Εναλλαγή ταξινόμησης</value>
+  </data>
 </root>

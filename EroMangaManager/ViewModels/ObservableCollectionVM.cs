@@ -51,17 +51,9 @@ namespace EroMangaManager.ViewModels
         /// <summary>流的内容不是 zip 存档格式。</summary>
         internal ObservableCollection<MangaBook> NonZipList { get; } = new ObservableCollection<MangaBook>();
 
-        /// <summary>
-        /// 构造
-        /// </summary>
-        /// <param name="storageFolders">添加的文件夹</param>
-        public ObservableCollectionVM (params StorageFolder[] storageFolders)
-        {
-            Initialize(storageFolders);
-        }
 
         /// <summary>ViewModel初始化</summary>
-        public async void Initialize (params StorageFolder[] storageFolders)
+        public async Task Initialize (params StorageFolder[] storageFolders)
         {
             MangaFolders.Clear();
 

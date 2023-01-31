@@ -171,4 +171,7 @@
   <data name="SetAsDefaultBookcaseFolder.Content" xml:space="preserve">
     <value>Установка в качестве папки презентации по умолчанию</value>
   </data>
+  <data name="OrderButton.Label" xml:space="preserve">
+    <value>Переключение сортировки</value>
+  </data>
 </root>

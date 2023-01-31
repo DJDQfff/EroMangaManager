@@ -235,7 +235,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             var applicationView = ApplicationView.GetForCurrentView();
 
             applicationView.TryEnterFullScreenMode();
-            MainPage.current.MainNavigationView.IsPaneToggleButtonVisible = false;
+            MainPage.Current.MainNavigationView.IsPaneToggleButtonVisible = false;
 
             ReadPageButtonGroup.Visibility = Visibility.Collapsed;
 
@@ -246,7 +246,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             var applicationView = ApplicationView.GetForCurrentView();
 
             applicationView.ExitFullScreenMode();
-            MainPage.current.MainNavigationView.IsPaneToggleButtonVisible = true;
+            MainPage.Current.MainNavigationView.IsPaneToggleButtonVisible = true;
         }
 
     }

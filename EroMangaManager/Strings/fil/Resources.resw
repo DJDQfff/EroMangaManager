@@ -171,4 +171,7 @@
   <data name="SetAsDefaultBookcaseFolder.Content" xml:space="preserve">
     <value>Itakda bilang default na folder ng pagtatanghal</value>
   </data>
+  <data name="OrderButton.Label" xml:space="preserve">
+    <value>Toggle pag aayos</value>
+  </data>
 </root>

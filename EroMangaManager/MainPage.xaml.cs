@@ -19,7 +19,7 @@ namespace EroMangaManager
         /// <summary>
         /// MainPage的单一实例
         /// </summary>
-        internal static MainPage current { set; get; }
+        internal static MainPage Current { set; get; }
 
         /// <summary>
         ///
@@ -28,7 +28,7 @@ namespace EroMangaManager
         {
             this.InitializeComponent();
 
-            current = this;
+            Current = this;
         }
         /// <summary>
         /// 

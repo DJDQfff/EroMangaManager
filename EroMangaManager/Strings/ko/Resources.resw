@@ -171,4 +171,7 @@
   <data name="SetAsDefaultBookcaseFolder.Content" xml:space="preserve">
     <value>기본 프레젠테이션 폴더로 설정합니다</value>
   </data>
+  <data name="OrderButton.Label" xml:space="preserve">
+    <value>정렬을 토글합니다</value>
+  </data>
 </root>

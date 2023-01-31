@@ -37,7 +37,7 @@ namespace EroMangaManager.Views.MainPageChildPages
                     //    break;
             }
 
-            MainPage.current.MainFrame.Navigate(type , App.Current.collectionObserver.MangaList);
+            MainPage.Current.MainFrame.Navigate(type , App.Current.collectionObserver.MangaList);
 
             return;
 

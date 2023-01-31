@@ -171,4 +171,7 @@
   <data name="SetAsDefaultBookcaseFolder.Content" xml:space="preserve">
     <value>既定の表示フォルダとして設定します</value>
   </data>
+  <data name="OrderButton.Label" xml:space="preserve">
+    <value>並べ替えを切り替えます</value>
+  </data>
 </root>
