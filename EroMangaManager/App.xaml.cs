@@ -42,25 +42,25 @@ namespace EroMangaManager
 
             await EnsureChildTemporaryFolders(Covers.ToString() , Filters.ToString());
 
-            var folder = MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder().Result.ToArray();
-            collectionObserver = new ObservableCollectionVM();
-
-           await  collectionObserver.Initialize(folder);
-
 
             collectionObserver.ErrorZipEvent += (string str) =>
             {
                 new ToastContentBuilder()
-                  .AddText($"{str}\r{ResourceLoader.GetForCurrentView("StringResources").GetString("ErrorString1")}")
-                  .Show();
+                      .AddText($"{str}\r{ResourceLoader.GetForCurrentView("StringResources").GetString("ErrorString1")}")
+                      .Show();
             };
 
             collectionObserver.WorkDoneEvent += (string str) =>
             {
                 new ToastContentBuilder()
-  .AddText(str)
-  .Show();
-            };
+                    .AddText(str)
+                    .Show();
+            };      
+
+            var folder = MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder().Result.ToArray();
+
+            await   collectionObserver.Initialize(folder);
+
         }
 
         /// <summary>
@@ -70,6 +70,8 @@ namespace EroMangaManager
         public App ()
         {
             this.InitializeComponent();
+            collectionObserver = new ObservableCollectionVM();
+
             Current = this;
             this.Suspending += OnSuspending;
         }
@@ -78,9 +80,9 @@ namespace EroMangaManager
         /// 在应用程序由最终用户正常启动时进行调用。 将在启动应用程序以打开特定文件等情况下使用。
         /// </summary>
         /// <param name="e"> 有关启动请求和过程的详细信息。 </param>
-        protected override void OnLaunched (LaunchActivatedEventArgs e)
+        protected override async void OnLaunched (LaunchActivatedEventArgs e)
         {
-             Initial().Wait();
+          await  Initial();
 
             Frame rootFrame = Window.Current.Content as Frame;
 
