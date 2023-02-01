@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using EroMangaDB.Entities;
 using EroMangaDB.EntityFactory;
 
+using EroMangaManager.Helpers;
 using EroMangaManager.Models;
 
 using Windows.Storage;
@@ -67,14 +68,14 @@ namespace EroMangaManager.ViewModels
                 }
 
                 MangaBook manga = new MangaBook(storageFile , StorageFolder , readingInfo);
-
+                manga.Cover = CoverHelper.DefaultCover;
                 try
                 {
                     MangaBooks.Add(manga);
 
                     await Helpers.CoverHelper.TryCreatCoverFileAsync(storageFile);
 
-                    await manga.ChangeCover();
+                    await manga.ChangeCoverFromTempFolder();
                 }
                 catch (Exception)
                 {

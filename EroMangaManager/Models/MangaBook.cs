@@ -26,12 +26,9 @@ namespace EroMangaManager.Models
     /// <summary> 本子 </summary>
     public class MangaBook : INotifyPropertyChanged
     {
-        /// <summary> 封面缩略图 </summary>
-        //public BitmapImage CoverImage { private set; get; } = new BitmapImage();
-
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private ImageSource imagesource = new SvgImageSource(new Uri("ms-appx:///Assets/SVGs/书籍.svg"));
+        private ImageSource imagesource;
 
         /// <summary>
         /// 封面图像
@@ -118,24 +115,6 @@ namespace EroMangaManager.Models
             ReadingInfo = info;
         }
 
-        /// <summary>
-        /// 返回BitmapImage，作为Image控件的source
-        /// </summary>
-        /// <returns> </returns>
-        public async Task ChangeCover ()
-        {
-            StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
-
-            var cover = await coverfolder.TryGetItemAsync(StorageFile.DisplayName + ".jpg");
-
-            if (cover != null)
-            {
-                Windows.Storage.StorageFile storageFile = cover as Windows.Storage.StorageFile;
-                BitmapImage bitmapImage = await CoverHelper.GetCoverThumbnail_SystemAsync(storageFile);
-
-                Cover = bitmapImage;
-            }
-        }
 
         /// <summary>
         /// 翻译本子名

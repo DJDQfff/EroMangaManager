@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+
+using EroMangaManager.Models;
 
 using SharpCompress.Archives;
 
@@ -23,6 +27,38 @@ namespace EroMangaManager.Helpers
     /// </summary>
     public static class CoverHelper
     {
+        /// <summary>
+        /// 读取TemporaryFolder中的本子封面文件，作为封面源
+        /// </summary>
+        /// <returns> </returns>
+        public static async Task ChangeCoverFromTempFolder ( this MangaBook mangaBook )
+        {
+            StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
+
+            var cover = await coverfolder.TryGetItemAsync( mangaBook.StorageFile.DisplayName + ".jpg");
+
+            if (cover != null)
+            {
+                Windows.Storage.StorageFile storageFile = cover as Windows.Storage.StorageFile;
+                BitmapImage bitmapImage = await CoverHelper.GetCoverThumbnail_SystemAsync(storageFile);
+
+                mangaBook. Cover = bitmapImage;
+            }
+        }
+
+        private static SvgImageSource _imageSource;
+
+        /// <summary>
+        /// 初始化默认漫画封面
+        /// </summary>
+        public static void InitialDefaultCover ()
+        {
+            _imageSource= new SvgImageSource (new Uri("ms-appx:///Assets/SVGs/书籍.svg"));
+        }
+        /// <summary>
+        /// 获取默认封面
+        /// </summary>
+        public static SvgImageSource DefaultCover => _imageSource;
         /// <summary>
         /// 使用SharpCompress类库创建源图片设为封面
         /// </summary>

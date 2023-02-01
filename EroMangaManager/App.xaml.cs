@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
+using EroMangaManager.Helpers;
 using EroMangaManager.Models;
 using EroMangaManager.ViewModels;
 using EroMangaManager.Views.MainPageChildPages;
@@ -42,6 +43,7 @@ namespace EroMangaManager
 
             await EnsureChildTemporaryFolders(Covers.ToString() , Filters.ToString());
 
+            Helpers.CoverHelper.InitialDefaultCover();
 
             collectionObserver.ErrorZipEvent += (string str) =>
             {
@@ -141,7 +143,7 @@ namespace EroMangaManager
 
             var file = args.Files[0] as Windows.Storage.StorageFile;
             MangaBook mangaBook = new MangaBook(file , null , null);
-
+            mangaBook.Cover = CoverHelper.DefaultCover;
             rootFrame.Navigate(typeof(ReadPage) , mangaBook);
 
             Window.Current.Activate();
