@@ -114,17 +114,6 @@ namespace EroMangaManager.Models
             StorageFile = storageFile;
             ReadingInfo = info;
         }
-
-
-        /// <summary>
-        /// 翻译本子名
-        /// </summary>
-        /// <param name="name"></param>
-        public void TranslateMangaName (string name)
-        {
-            this.MangaName = name;
-        }
-
         private void NotifyPropertyChanged ([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(propertyName));
