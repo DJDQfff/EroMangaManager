@@ -75,7 +75,7 @@ namespace EroMangaManager.ViewModels
 
                     await Helpers.CoverHelper.TryCreatCoverFileAsync(storageFile);
 
-                    await manga.ChangeCoverFromTempFolder();
+                    //await manga.ChangeCoverFromTempFolder();
                 }
                 catch (Exception)
                 {

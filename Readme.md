@@ -63,6 +63,12 @@
 
 # 更新日志
 
+## 2023.2.2
+
+* 所有MangaBook类不再在内部默认初始化默认封面，把封面缓存放到CoverHelper静态类里面作为一个属性，所有Mangabook类实例共享同一个封面图片缓存
+
+* 把MangaBook类的ChangeCover方法提出来，放到CoverHelper助手类里面，作为一个扩展方法存在
+
 ## 2023.1.30
 
 * 给MangaBook类添加文件大小属性，在Bookcase页面进行显示
