@@ -143,6 +143,7 @@
     </Compile>
     <Compile Include="ValueConverters\FileSizeConverter.cs" />
     <Compile Include="ValueConverters\GetRandomSolidColorBrush.cs" />
+    <Compile Include="ValueConverters\HintTextBlockVisibility.cs" />
     <Compile Include="Views\FunctionChildPages\FindSameManga.xaml.cs">
       <DependentUpon>FindSameManga.xaml</DependentUpon>
     </Compile>

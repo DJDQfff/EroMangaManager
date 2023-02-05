@@ -69,13 +69,14 @@ namespace EroMangaManager.ViewModels
 
                 MangaBook manga = new MangaBook(storageFile , StorageFolder , readingInfo);
                 manga.Cover = CoverHelper.DefaultCover;
+
+                MangaBooks.Add(manga);
+
                 try
                 {
-                    MangaBooks.Add(manga);
-
                     await Helpers.CoverHelper.TryCreatCoverFileAsync(storageFile);
 
-                    //await manga.ChangeCoverFromTempFolder();
+                    await manga.ChangeCoverFromTempFolder();
                 }
                 catch (Exception)
                 {

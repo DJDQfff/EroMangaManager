@@ -23,6 +23,7 @@
                 Click="addButton_Click"
                 x:Uid="/Resources/AddFolderButton"/>
         <TextBlock x:Load="False"
+                   Visibility="{x:Bind app:App.Current.collectionObserver.MangaFolders.Count,Converter={StaticResource  countvisibilityconverter},Mode=OneWay}"
                    x:Name="HintAddFolderTextBlock"
                    x:Uid="/Resources/HintAddFirstFolder"
                    Foreground="RoyalBlue"

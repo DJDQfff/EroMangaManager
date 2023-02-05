@@ -41,10 +41,6 @@ namespace EroMangaManager.Views.MainPageChildPages
                 List<StorageFolder> folders;
                 (folders, _) = await folder.GetAllStorageItems();
                 folders.Add(folder);//得把文件夹自身也加入扫描类中
-                if (folders.Count != 0 && HintAddFolderTextBlock != null)
-                {
-                    HintAddFolderTextBlock.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-                }
                 foreach (var f in folders)
                 {
                     try
