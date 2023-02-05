@@ -14,7 +14,7 @@
     </Page.Resources>
     <ScrollViewer HorizontalScrollMode="Disabled"
                   HorizontalScrollBarVisibility="Disabled">
-        <StackPanel>
+        <StackPanel x:Name="UpdateRecordStackPanel">
             
             <StackPanel>
                 <TextBlock  x:Uid="/UpdateResources/Version_20230125"
