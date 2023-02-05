@@ -129,6 +129,9 @@
   <data name="Description_20230125.Text" xml:space="preserve">
     <value>阅读页面全屏功能；默认书架</value>
   </data>
+  <data name="Description_20230205.Text" xml:space="preserve">
+    <value>优化启动速度</value>
+  </data>
   <data name="Description_before.Text" xml:space="preserve">
     <value>更早的记录</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="Version_20230125.Text" xml:space="preserve">
     <value>2023.01.25</value>
+  </data>
+  <data name="Version_20230205.Text" xml:space="preserve">
+    <value>2023.2.5</value>
   </data>
   <data name="Version_before.Text" xml:space="preserve">
     <value>更早的版本</value>

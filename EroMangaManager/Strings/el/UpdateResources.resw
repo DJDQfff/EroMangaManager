@@ -42,4 +42,10 @@
   <data name="Version_20230125.Text" xml:space="preserve">
     <value>2023.01.25</value>
   </data>
+  <data name="Description_20230205.Text" xml:space="preserve">
+    <value>Βελτιστοποιήστε την ταχύτητα εκκίνησης</value>
+  </data>
+  <data name="Version_20230205.Text" xml:space="preserve">
+    <value>2023.2.5</value>
+  </data>
 </root>

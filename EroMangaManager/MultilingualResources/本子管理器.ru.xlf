@@ -63,6 +63,14 @@
           <source>2023.01.25</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">2023.01.25</target>
         </trans-unit>
+        <trans-unit id="Description_20230205.Text" translate="yes" xml:space="preserve">
+          <source>优化启动速度</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Оптимизация скорости запуска</target>
+        </trans-unit>
+        <trans-unit id="Version_20230205.Text" translate="yes" xml:space="preserve">
+          <source>2023.2.5</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">2023.2.5</target>
+        </trans-unit>
       </group>
     </body>
   </file>
