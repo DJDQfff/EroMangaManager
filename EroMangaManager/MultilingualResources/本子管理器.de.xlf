@@ -222,6 +222,10 @@
           <source>是</source>
           <target state="new">是</target>
         </trans-unit>
+        <trans-unit id="MailFeedback.Content" translate="yes" xml:space="preserve">
+          <source>邮件反馈</source>
+          <target state="new">邮件反馈</target>
+        </trans-unit>
       </group>
     </body>
   </file>
