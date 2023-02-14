@@ -1,12 +1,10 @@
-﻿<Page
-    x:Class="EroMangaManager.Views.SettingPageChildPages.AboutPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:EroMangaManager.Views.SettingPageChildPages"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+﻿<Page x:Class="EroMangaManager.Views.SettingPageChildPages.AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -17,15 +15,15 @@
             <ColumnDefinition Width="787*" />
             <ColumnDefinition Width="173*" />
         </Grid.ColumnDefinitions>
-        <StackPanel   Grid.Row="1"   Grid.Column="1"
- Orientation="Vertical">
-                    <HyperlinkButton x:Name="hyperlinkButton"
-                         x:Uid="/Resources/NavigateUriButton"
-                         NavigateUri="https://www.microsoft.com/store/apps/9N7C8ZDQ1TJ8"
-                         VerticalAlignment="Center" />
-        <HyperlinkButton x:Uid="/Resources/MailFeedback"
-                         Click="HyperlinkButton_Click" />
-
+        <StackPanel   Grid.Row="1"
+                      Grid.Column="1"
+                      Orientation="Vertical">
+            <HyperlinkButton x:Name="hyperlinkButton"
+                             x:Uid="/Resources/NavigateUriButton"
+                             NavigateUri="https://www.microsoft.com/store/apps/9N7C8ZDQ1TJ8"
+                             VerticalAlignment="Center" />
+            <HyperlinkButton x:Uid="/Resources/MailFeedback"
+                             Click="HyperlinkButton_Click" />
         </StackPanel>
     </Grid>
 </Page>
