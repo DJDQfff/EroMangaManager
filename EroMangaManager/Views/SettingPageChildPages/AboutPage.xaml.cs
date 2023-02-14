@@ -1,4 +1,7 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using System;
+
+using Windows.System;
+using Windows.UI.Xaml.Controls;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -17,9 +20,10 @@ namespace EroMangaManager.Views.SettingPageChildPages
             this.InitializeComponent();
         }
 
-        private void HyperlinkButton_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        private async void HyperlinkButton_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             var mail=new System.Uri("mailto:djdqfff@qq.com");
+            await Launcher.LaunchUriAsync(mail);
         }
     }
 }
