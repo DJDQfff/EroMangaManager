@@ -17,8 +17,7 @@
             <ColumnDefinition Width="787*" />
             <ColumnDefinition Width="173*" />
         </Grid.ColumnDefinitions>
-        <StackPanel                                     Grid.Row="1"
-                                                        Grid.Column="1"
+        <StackPanel   Grid.Row="1"   Grid.Column="1"
  Orientation="Vertical">
                     <HyperlinkButton x:Name="hyperlinkButton"
                          x:Uid="/Resources/NavigateUriButton"

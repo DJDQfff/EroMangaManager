@@ -22,7 +22,7 @@ namespace EroMangaManager.Views.SettingPageChildPages
 
         private async void HyperlinkButton_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var mail=new System.Uri("mailto:djdqfff@qq.com");
+            var mail = new System.Uri("mailto:djdqfff@qq.com");
             await Launcher.LaunchUriAsync(mail);
         }
     }
