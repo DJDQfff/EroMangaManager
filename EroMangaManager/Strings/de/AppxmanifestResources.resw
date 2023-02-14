@@ -12,10 +12,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Kleines gelbes Buch</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>Dies ist ein Manga-Manager zum Verwalten und Lesen Ihrer gespeicherten Comics in Zip-Form. Interne Bilder müssen im JPG- und PNG-Format vorliegen</value>
-  </data>
 </root>

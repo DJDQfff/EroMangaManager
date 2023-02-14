@@ -1,318 +1,317 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="zh-CN" target-language="es" original="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+  <file datatype="xml" source-language="en" target-language="es" original="本子管理器/STRINGS/ZH-CN/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
-    </header>
-    <body>
-      <group id="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" datatype="resx">
-        <trans-unit id="AppDisplayName" translate="yes" xml:space="preserve">
-          <source>小黄书</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Pequeño libro amarillo</target>
-        </trans-unit>
-        <trans-unit id="Description" translate="yes" xml:space="preserve">
-          <source>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Este es un administrador de manga para administrar y leer sus cómics guardados en forma de cremallera. Las imágenes internas deben estar en formatos JPG y PNG</target>
-        </trans-unit>
-      </group>
-    </body>
-  </file>
-  <file datatype="xml" source-language="zh-CN" target-language="es" original="本子管理器/STRINGS/ZH-CN/UPDATERESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
-    <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
-    </header>
-    <body>
-      <group id="本子管理器/STRINGS/ZH-CN/UPDATERESOURCES.RESW" datatype="resx">
-        <trans-unit id="Description_20221219.Text" translate="yes" xml:space="preserve">
-          <source>添加导出PDF功能</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Agregar la capacidad de exportar PDF</target>
-        </trans-unit>
-        <trans-unit id="Description_20221226.Text" translate="yes" xml:space="preserve">
-          <source>修复了一些bug;添加更新日志</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Corregidos algunos errores; Agregar un registro de cambios</target>
-        </trans-unit>
-        <trans-unit id="Description_before.Text" translate="yes" xml:space="preserve">
-          <source>更早的记录</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Registros anteriores</target>
-        </trans-unit>
-        <trans-unit id="Version_20221219.Text" translate="yes" xml:space="preserve">
-          <source>2022.12.19</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">2022.12.19</target>
-        </trans-unit>
-        <trans-unit id="Version_20221226.Text" translate="yes" xml:space="preserve">
-          <source>2022.12.26</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">2022.12.26</target>
-        </trans-unit>
-        <trans-unit id="Version_before.Text" translate="yes" xml:space="preserve">
-          <source>更早的版本</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Versión anterior</target>
-        </trans-unit>
-        <trans-unit id="Version_20230109.Text" translate="yes" xml:space="preserve">
-          <source>2023.01.09</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">2023.01.09</target>
-        </trans-unit>
-        <trans-unit id="Description_20230109.Text" translate="yes" xml:space="preserve">
-          <source>添加重复本子查找功能</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Añadida la función de búsqueda de libros duplicados</target>
-        </trans-unit>
-        <trans-unit id="Description_20230125.Text" translate="yes" xml:space="preserve">
-          <source>阅读页面全屏功能；默认书架</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Función de pantalla completa de la página de lectura; Estantería predeterminada</target>
-        </trans-unit>
-        <trans-unit id="Version_20230125.Text" translate="yes" xml:space="preserve">
-          <source>2023.01.25</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">2023.01.25</target>
-        </trans-unit>
-        <trans-unit id="Description_20230205.Text" translate="yes" xml:space="preserve">
-          <source>优化启动速度</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Optimice la velocidad de inicio</target>
-        </trans-unit>
-        <trans-unit id="Version_20230205.Text" translate="yes" xml:space="preserve">
-          <source>2023.2.5</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">2023.2.5</target>
-        </trans-unit>
-      </group>
-    </body>
-  </file>
-  <file datatype="xml" source-language="zh-CN" target-language="es" original="本子管理器/STRINGS/ZH-CN/STRINGRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
-    <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
-    </header>
-    <body>
-      <group id="本子管理器/STRINGS/ZH-CN/STRINGRESOURCES.RESW" datatype="resx">
-        <trans-unit id="ErrorString1" translate="yes" xml:space="preserve">
-          <source>出错啦，无法打开</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Se ha producido un error y no se pudo abrir</target>
-        </trans-unit>
-        <trans-unit id="ExportDone" translate="yes" xml:space="preserve">
-          <source>导出完成</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">La exportación se ha completado</target>
-        </trans-unit>
-      </group>
-    </body>
-  </file>
-  <file datatype="xml" source-language="zh-CN" target-language="es" original="本子管理器/STRINGS/ZH-CN/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
-    <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="1.0.0.0" tool-company="Microsoft" />
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
     </header>
     <body>
       <group id="本子管理器/STRINGS/ZH-CN/RESOURCES.RESW" datatype="resx">
         <trans-unit id="AddFolderButton.Content" translate="yes" xml:space="preserve">
           <source>添加文件夹</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Agregar una carpeta</target>
+          <target state="new">添加文件夹</target>
         </trans-unit>
         <trans-unit id="BookcaseItem.Content" translate="yes" xml:space="preserve">
           <source>书架</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">estante</target>
+          <target state="new">书架</target>
         </trans-unit>
         <trans-unit id="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
           <source>漫画书架</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Estantería de cómics</target>
-        </trans-unit>
-        <trans-unit id="DeleteFileConfirmPage.PrimaryButtonText" translate="yes" xml:space="preserve">
-          <source>是</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">ser</target>
-        </trans-unit>
-        <trans-unit id="DeleteFileConfirmPage.SecondaryButtonText" translate="yes" xml:space="preserve">
-          <source>否</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">no</target>
-        </trans-unit>
-        <trans-unit id="DeleteFileConfirmPage.Title" translate="yes" xml:space="preserve">
-          <source>确认删除文件？</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">¿Confirmar la eliminación de archivos?</target>
-        </trans-unit>
-        <trans-unit id="DeleteSourceMangaFileFlyoutItem.Text" translate="yes" xml:space="preserve">
-          <source>删除源文件</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Eliminar el archivo de origen</target>
-        </trans-unit>
-        <trans-unit id="ErrorZipPageButton.Content" translate="yes" xml:space="preserve">
-          <source>异常Zip</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Excepción Zip</target>
-        </trans-unit>
-        <trans-unit id="ExportPDFFlyoutItem.Text" translate="yes" xml:space="preserve">
-          <source>导出为PDF</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Exportar a PDF</target>
-        </trans-unit>
-        <trans-unit id="FilterImageONOFF.Header" translate="yes" xml:space="preserve">
-          <source>是否启用单页过滤功能（开启此功能将减慢漫画打开速度）</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Si se habilita el filtrado de una sola página (activar esta función ralentizará la apertura de cómics)</target>
-        </trans-unit>
-        <trans-unit id="FilterImageONOFF.OffContent" translate="yes" xml:space="preserve">
-          <source>已禁用</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Deshabilitado</target>
-        </trans-unit>
-        <trans-unit id="FilterImageONOFF.OnContent" translate="yes" xml:space="preserve">
-          <source>已启用</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Habilitado</target>
-        </trans-unit>
-        <trans-unit id="FilterThisImage.Text" translate="yes" xml:space="preserve">
-          <source>不显示此图</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Esta figura no se muestra</target>
-        </trans-unit>
-        <trans-unit id="FullScreenToggle.Content" translate="yes" xml:space="preserve">
-          <source>全屏</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Pantalla completa</target>
-        </trans-unit>
-        <trans-unit id="FunctionPageShower.Content" translate="yes" xml:space="preserve">
-          <source>工具箱</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">caja de herramientas</target>
-        </trans-unit>
-        <trans-unit id="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
-          <source>工具箱</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">caja de herramientas</target>
-        </trans-unit>
-        <trans-unit id="Function_FindSameMangaName.Content" translate="yes" xml:space="preserve">
-          <source>查找相同漫画</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Encuentra los mismos cómics</target>
-          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
-        </trans-unit>
-        <trans-unit id="HintAddFirstFolder.Text" translate="yes" xml:space="preserve">
-          <source>目前没有文件夹，请添加你的第一个扫描文件夹</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Actualmente no hay carpetas, agregue su primera carpeta de escaneo</target>
-        </trans-unit>
-        <trans-unit id="LaunchFileFlyoutItem.Text" translate="yes" xml:space="preserve">
-          <source>打开文件</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Abrir el archivo</target>
-        </trans-unit>
-        <trans-unit id="LaunchFolderButton.Content" translate="yes" xml:space="preserve">
-          <source>打开文件夹</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Abrir la carpeta</target>
-        </trans-unit>
-        <trans-unit id="LaunchFolderFlyoutItem.Text" translate="yes" xml:space="preserve">
-          <source>打开所在文件夹</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Abra la carpeta en la que se encuentra</target>
-        </trans-unit>
-        <trans-unit id="ListItem.Content" translate="yes" xml:space="preserve">
-          <source>已固定文件夹</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">La carpeta está anclada</target>
-        </trans-unit>
-        <trans-unit id="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
-          <source>已固定文件夹</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">La carpeta está anclada</target>
-        </trans-unit>
-        <trans-unit id="MangaTagDetailPage.CloseButtonText" translate="yes" xml:space="preserve">
-          <source>关闭</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Apaga</target>
-        </trans-unit>
-        <trans-unit id="MangaTagDetailPage.PrimaryButtonText" translate="yes" xml:space="preserve">
-          <source>编辑</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">editar</target>
-        </trans-unit>
-        <trans-unit id="MangaTagEditPage.CloseButtonText" translate="yes" xml:space="preserve">
-          <source>不作调整</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Sin ajustes</target>
-        </trans-unit>
-        <trans-unit id="MangaTagEditPage.PrimaryButtonText" translate="yes" xml:space="preserve">
-          <source>确认调整</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Confirmar el ajuste</target>
-        </trans-unit>
-        <trans-unit id="MangaTags.Text" translate="yes" xml:space="preserve">
-          <source>本子标签</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Esta subpestaña</target>
-        </trans-unit>
-        <trans-unit id="MangaTypes.Text" translate="yes" xml:space="preserve">
-          <source>标签分类</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Clasificación de etiquetas</target>
-        </trans-unit>
-        <trans-unit id="MenuItem1.Text" translate="yes" xml:space="preserve">
-          <source>查看信息</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ver información</target>
-        </trans-unit>
-        <trans-unit id="ReadItem.Content" translate="yes" xml:space="preserve">
-          <source>正在阅读</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Lectura</target>
-        </trans-unit>
-        <trans-unit id="ReadItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
-          <source>正在阅读</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Lectura</target>
-        </trans-unit>
-        <trans-unit id="RefreshButton.Label" translate="yes" xml:space="preserve">
-          <source>刷新</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Enrojecida</target>
-        </trans-unit>
-        <trans-unit id="RemoveFolderButton.Content" translate="yes" xml:space="preserve">
-          <source>移除文件夹</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Quitar la carpeta</target>
-        </trans-unit>
-        <trans-unit id="SaveAs.Text" translate="yes" xml:space="preserve">
-          <source>另存为</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Guardar como</target>
-        </trans-unit>
-        <trans-unit id="SetBack.Text" translate="yes" xml:space="preserve">
-          <source>还原</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">restaurar</target>
-        </trans-unit>
-        <trans-unit id="SettingFilterImageButton.Content" translate="yes" xml:space="preserve">
-          <source>过滤图库</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Filtrar la galería</target>
-        </trans-unit>
-        <trans-unit id="SettingTagButton.Content" translate="yes" xml:space="preserve">
-          <source>标签管理</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Gestión de etiquetas</target>
-        </trans-unit>
-        <trans-unit id="ShowFolderBookcase.Content" translate="yes" xml:space="preserve">
-          <source>显示书架</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Mostrar la estantería</target>
-        </trans-unit>
-        <trans-unit id="TranslateButton.Label" translate="yes" xml:space="preserve">
-          <source>翻译</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Traducción</target>
-        </trans-unit>
-        <trans-unit id="UpdateRecordItem.Content" translate="yes" xml:space="preserve">
-          <source>更新记录</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Actualizar registros</target>
-        </trans-unit>
-        <trans-unit id="Function_RemoveRepeatTags.Content" translate="yes" xml:space="preserve">
-          <source>移除重复本子标签</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Quitar la subpestaña Libro duplicado</target>
+          <target state="new">漫画书架</target>
         </trans-unit>
         <trans-unit id="CommonSettingNavigationViewItem.Content" translate="yes" xml:space="preserve">
           <source>一般设置</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Configuración general</target>
-        </trans-unit>
-        <trans-unit id="StorageDeleteOption.Header" translate="yes" xml:space="preserve">
-          <source>删除模式</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Eliminar el patrón</target>
-        </trans-unit>
-        <trans-unit id="StorageDeleteOption.OffContent" translate="yes" xml:space="preserve">
-          <source>移动到回收站</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Mover a la papelera de reciclaje</target>
-        </trans-unit>
-        <trans-unit id="StorageDeleteOption.OnContent" translate="yes" xml:space="preserve">
-          <source>从磁盘删除</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Eliminar del disco</target>
-        </trans-unit>
-        <trans-unit id="WhetherShowDialogBeforeDelete.Header" translate="yes" xml:space="preserve">
-          <source>是否直接删除</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Si se va a eliminar directamente</target>
-        </trans-unit>
-        <trans-unit id="WhetherShowDialogBeforeDelete.OffContent" translate="yes" xml:space="preserve">
-          <source>否</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">no</target>
-        </trans-unit>
-        <trans-unit id="WhetherShowDialogBeforeDelete.OnContent" translate="yes" xml:space="preserve">
-          <source>是</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">ser</target>
+          <target state="new">一般设置</target>
         </trans-unit>
         <trans-unit id="DeleteButton.Content" translate="yes" xml:space="preserve">
           <source>删除</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Borrar</target>
+          <target state="new">删除</target>
         </trans-unit>
-        <trans-unit id="OpenButton.Content" translate="yes" xml:space="preserve">
-          <source>打开</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ábrela</target>
+        <trans-unit id="DeleteFileConfirmPage.PrimaryButtonText" translate="yes" xml:space="preserve">
+          <source>是</source>
+          <target state="new">是</target>
+        </trans-unit>
+        <trans-unit id="DeleteFileConfirmPage.SecondaryButtonText" translate="yes" xml:space="preserve">
+          <source>否</source>
+          <target state="new">否</target>
+        </trans-unit>
+        <trans-unit id="DeleteFileConfirmPage.Title" translate="yes" xml:space="preserve">
+          <source>确认删除文件？</source>
+          <target state="new">确认删除文件？</target>
+        </trans-unit>
+        <trans-unit id="DeleteSourceMangaFileFlyoutItem.Text" translate="yes" xml:space="preserve">
+          <source>删除源文件</source>
+          <target state="new">删除源文件</target>
+        </trans-unit>
+        <trans-unit id="ErrorZipPageButton.Content" translate="yes" xml:space="preserve">
+          <source>异常Zip</source>
+          <target state="new">异常Zip</target>
+        </trans-unit>
+        <trans-unit id="ExportPDFFlyoutItem.Text" translate="yes" xml:space="preserve">
+          <source>导出为PDF</source>
+          <target state="new">导出为PDF</target>
+        </trans-unit>
+        <trans-unit id="FilterImageONOFF.Header" translate="yes" xml:space="preserve">
+          <source>是否启用单页过滤功能（开启此功能将减慢漫画打开速度）</source>
+          <target state="new">是否启用单页过滤功能（开启此功能将减慢漫画打开速度）</target>
+        </trans-unit>
+        <trans-unit id="FilterImageONOFF.OffContent" translate="yes" xml:space="preserve">
+          <source>已禁用</source>
+          <target state="new">已禁用</target>
+        </trans-unit>
+        <trans-unit id="FilterImageONOFF.OnContent" translate="yes" xml:space="preserve">
+          <source>已启用</source>
+          <target state="new">已启用</target>
+        </trans-unit>
+        <trans-unit id="FilterThisImage.Text" translate="yes" xml:space="preserve">
+          <source>不显示此图</source>
+          <target state="new">不显示此图</target>
+        </trans-unit>
+        <trans-unit id="FullScreenToggle.Content" translate="yes" xml:space="preserve">
+          <source>全屏</source>
+          <target state="new">全屏</target>
+        </trans-unit>
+        <trans-unit id="FunctionPageShower.Content" translate="yes" xml:space="preserve">
+          <source>工具箱</source>
+          <target state="new">工具箱</target>
+        </trans-unit>
+        <trans-unit id="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>工具箱</source>
+          <target state="new">工具箱</target>
+        </trans-unit>
+        <trans-unit id="Function_FindSameMangaName.Content" translate="yes" xml:space="preserve">
+          <source>查找相同漫画</source>
+          <target state="new">查找相同漫画</target>
+        </trans-unit>
+        <trans-unit id="Function_RemoveRepeatTags.Content" translate="yes" xml:space="preserve">
+          <source>移除重复本子标签</source>
+          <target state="new">移除重复本子标签</target>
+        </trans-unit>
+        <trans-unit id="HintAddFirstFolder.Text" translate="yes" xml:space="preserve">
+          <source>目前没有文件夹，请添加你的第一个扫描文件夹</source>
+          <target state="new">目前没有文件夹，请添加你的第一个扫描文件夹</target>
+        </trans-unit>
+        <trans-unit id="LaunchFileFlyoutItem.Text" translate="yes" xml:space="preserve">
+          <source>打开文件</source>
+          <target state="new">打开文件</target>
+        </trans-unit>
+        <trans-unit id="LaunchFolderButton.Content" translate="yes" xml:space="preserve">
+          <source>打开文件夹</source>
+          <target state="new">打开文件夹</target>
+        </trans-unit>
+        <trans-unit id="LaunchFolderFlyoutItem.Text" translate="yes" xml:space="preserve">
+          <source>打开所在文件夹</source>
+          <target state="new">打开所在文件夹</target>
+        </trans-unit>
+        <trans-unit id="ListItem.Content" translate="yes" xml:space="preserve">
+          <source>已固定文件夹</source>
+          <target state="new">已固定文件夹</target>
+        </trans-unit>
+        <trans-unit id="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>已固定文件夹</source>
+          <target state="new">已固定文件夹</target>
+        </trans-unit>
+        <trans-unit id="MangaTagDetailPage.CloseButtonText" translate="yes" xml:space="preserve">
+          <source>关闭</source>
+          <target state="new">关闭</target>
+        </trans-unit>
+        <trans-unit id="MangaTagDetailPage.PrimaryButtonText" translate="yes" xml:space="preserve">
+          <source>编辑</source>
+          <target state="new">编辑</target>
+        </trans-unit>
+        <trans-unit id="MangaTagEditPage.CloseButtonText" translate="yes" xml:space="preserve">
+          <source>不作调整</source>
+          <target state="new">不作调整</target>
+        </trans-unit>
+        <trans-unit id="MangaTagEditPage.PrimaryButtonText" translate="yes" xml:space="preserve">
+          <source>确认调整</source>
+          <target state="new">确认调整</target>
+        </trans-unit>
+        <trans-unit id="MangaTags.Text" translate="yes" xml:space="preserve">
+          <source>本子标签</source>
+          <target state="new">本子标签</target>
+        </trans-unit>
+        <trans-unit id="MangaTypes.Text" translate="yes" xml:space="preserve">
+          <source>标签分类</source>
+          <target state="new">标签分类</target>
+        </trans-unit>
+        <trans-unit id="MenuItem1.Text" translate="yes" xml:space="preserve">
+          <source>查看信息</source>
+          <target state="new">查看信息</target>
         </trans-unit>
         <trans-unit id="NavigateUriButton.Content" translate="yes" xml:space="preserve">
           <source>商店中打开</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Abrir en la tienda</target>
+          <target state="new">商店中打开</target>
         </trans-unit>
-        <trans-unit id="SetAsDefaultBookcaseFolder.Content" translate="yes" xml:space="preserve">
-          <source>设置为默认展示文件夹</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Establecer como carpeta de presentación predeterminada</target>
+        <trans-unit id="OpenButton.Content" translate="yes" xml:space="preserve">
+          <source>打开</source>
+          <target state="new">打开</target>
         </trans-unit>
         <trans-unit id="OrderButton.Label" translate="yes" xml:space="preserve">
           <source>切换排序</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Alternar clasificación</target>
+          <target state="new">切换排序</target>
+        </trans-unit>
+        <trans-unit id="ReadItem.Content" translate="yes" xml:space="preserve">
+          <source>正在阅读</source>
+          <target state="new">正在阅读</target>
+        </trans-unit>
+        <trans-unit id="ReadItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>正在阅读</source>
+          <target state="new">正在阅读</target>
+        </trans-unit>
+        <trans-unit id="RefreshButton.Label" translate="yes" xml:space="preserve">
+          <source>刷新</source>
+          <target state="new">刷新</target>
+        </trans-unit>
+        <trans-unit id="RemoveFolderButton.Content" translate="yes" xml:space="preserve">
+          <source>移除文件夹</source>
+          <target state="new">移除文件夹</target>
+        </trans-unit>
+        <trans-unit id="SaveAs.Text" translate="yes" xml:space="preserve">
+          <source>另存为</source>
+          <target state="new">另存为</target>
+        </trans-unit>
+        <trans-unit id="SetAsDefaultBookcaseFolder.Content" translate="yes" xml:space="preserve">
+          <source>设置为默认展示文件夹</source>
+          <target state="new">设置为默认展示文件夹</target>
+        </trans-unit>
+        <trans-unit id="SetBack.Text" translate="yes" xml:space="preserve">
+          <source>还原</source>
+          <target state="new">还原</target>
+        </trans-unit>
+        <trans-unit id="SettingFilterImageButton.Content" translate="yes" xml:space="preserve">
+          <source>过滤图库</source>
+          <target state="new">过滤图库</target>
+        </trans-unit>
+        <trans-unit id="SettingTagButton.Content" translate="yes" xml:space="preserve">
+          <source>标签管理</source>
+          <target state="new">标签管理</target>
+        </trans-unit>
+        <trans-unit id="ShowFolderBookcase.Content" translate="yes" xml:space="preserve">
+          <source>显示书架</source>
+          <target state="new">显示书架</target>
+        </trans-unit>
+        <trans-unit id="StorageDeleteOption.Header" translate="yes" xml:space="preserve">
+          <source>删除模式</source>
+          <target state="new">删除模式</target>
+        </trans-unit>
+        <trans-unit id="StorageDeleteOption.OffContent" translate="yes" xml:space="preserve">
+          <source>移动到回收站</source>
+          <target state="new">移动到回收站</target>
+        </trans-unit>
+        <trans-unit id="StorageDeleteOption.OnContent" translate="yes" xml:space="preserve">
+          <source>从磁盘删除</source>
+          <target state="new">从磁盘删除</target>
+        </trans-unit>
+        <trans-unit id="TranslateButton.Label" translate="yes" xml:space="preserve">
+          <source>翻译</source>
+          <target state="new">翻译</target>
+        </trans-unit>
+        <trans-unit id="UpdateRecordItem.Content" translate="yes" xml:space="preserve">
+          <source>更新记录</source>
+          <target state="new">更新记录</target>
+        </trans-unit>
+        <trans-unit id="WhetherShowDialogBeforeDelete.Header" translate="yes" xml:space="preserve">
+          <source>是否直接删除</source>
+          <target state="new">是否直接删除</target>
+        </trans-unit>
+        <trans-unit id="WhetherShowDialogBeforeDelete.OffContent" translate="yes" xml:space="preserve">
+          <source>否</source>
+          <target state="new">否</target>
+        </trans-unit>
+        <trans-unit id="WhetherShowDialogBeforeDelete.OnContent" translate="yes" xml:space="preserve">
+          <source>是</source>
+          <target state="new">是</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="en" target-language="es" original="本子管理器/STRINGS/ZH-CN/STRINGRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="本子管理器/STRINGS/ZH-CN/STRINGRESOURCES.RESW" datatype="resx">
+        <trans-unit id="ErrorString1" translate="yes" xml:space="preserve">
+          <source>出错啦，无法打开</source>
+          <target state="new">出错啦，无法打开</target>
+        </trans-unit>
+        <trans-unit id="ExportDone" translate="yes" xml:space="preserve">
+          <source>导出完成</source>
+          <target state="new">导出完成</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="en" target-language="es" original="本子管理器/STRINGS/ZH-CN/UPDATERESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="本子管理器/STRINGS/ZH-CN/UPDATERESOURCES.RESW" datatype="resx">
+        <trans-unit id="Description_20221219.Text" translate="yes" xml:space="preserve">
+          <source>添加导出PDF功能</source>
+          <target state="new">添加导出PDF功能</target>
+        </trans-unit>
+        <trans-unit id="Description_20221226.Text" translate="yes" xml:space="preserve">
+          <source>修复了一些bug;添加更新日志</source>
+          <target state="new">修复了一些bug;添加更新日志</target>
+        </trans-unit>
+        <trans-unit id="Description_20230109.Text" translate="yes" xml:space="preserve">
+          <source>添加重复本子查找功能</source>
+          <target state="new">添加重复本子查找功能</target>
+        </trans-unit>
+        <trans-unit id="Description_20230125.Text" translate="yes" xml:space="preserve">
+          <source>阅读页面全屏功能；默认书架</source>
+          <target state="new">阅读页面全屏功能；默认书架</target>
+        </trans-unit>
+        <trans-unit id="Description_20230205.Text" translate="yes" xml:space="preserve">
+          <source>优化启动速度</source>
+          <target state="new">优化启动速度</target>
+        </trans-unit>
+        <trans-unit id="Description_before.Text" translate="yes" xml:space="preserve">
+          <source>更早的记录</source>
+          <target state="new">更早的记录</target>
+        </trans-unit>
+        <trans-unit id="Version_20221219.Text" translate="yes" xml:space="preserve">
+          <source>2022.12.19</source>
+          <target state="new">2022.12.19</target>
+        </trans-unit>
+        <trans-unit id="Version_20221226.Text" translate="yes" xml:space="preserve">
+          <source>2022.12.26</source>
+          <target state="new">2022.12.26</target>
+        </trans-unit>
+        <trans-unit id="Version_20230109.Text" translate="yes" xml:space="preserve">
+          <source>2023.01.09</source>
+          <target state="new">2023.01.09</target>
+        </trans-unit>
+        <trans-unit id="Version_20230125.Text" translate="yes" xml:space="preserve">
+          <source>2023.01.25</source>
+          <target state="new">2023.01.25</target>
+        </trans-unit>
+        <trans-unit id="Version_20230205.Text" translate="yes" xml:space="preserve">
+          <source>2023.2.5</source>
+          <target state="new">2023.2.5</target>
+        </trans-unit>
+        <trans-unit id="Version_before.Text" translate="yes" xml:space="preserve">
+          <source>更早的版本</source>
+          <target state="new">更早的版本</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="en" target-language="es" original="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" datatype="resx">
+        <trans-unit id="AppDisplayName" translate="yes" xml:space="preserve">
+          <source>小黄书</source>
+          <target state="new">小黄书</target>
+        </trans-unit>
+        <trans-unit id="Description" translate="yes" xml:space="preserve">
+          <source>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</source>
+          <target state="new">这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</target>
         </trans-unit>
       </group>
     </body>

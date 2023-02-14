@@ -23,5 +23,7 @@
                          NavigateUri="https://www.microsoft.com/store/apps/9N7C8ZDQ1TJ8"
                          Grid.Row="1"
                          VerticalAlignment="Center" />
+        <!--<HyperlinkButton Content="/Resources/MailFeedback"
+                         Click="HyperlinkButton_Click" />-->
     </Grid>
 </Page>

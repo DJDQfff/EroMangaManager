@@ -12,10 +12,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>小黃書</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>這是一個漫畫管理員，用於管理及閱讀你的以zip形式保存的漫畫。 內部圖片要求為jpg、png格式</value>
-  </data>
 </root>

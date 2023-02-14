@@ -16,5 +16,10 @@ namespace EroMangaManager.Views.SettingPageChildPages
         {
             this.InitializeComponent();
         }
+
+        private void HyperlinkButton_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var mail=new System.Uri("mailto:2743109998@qq.com?subject=jflaj?body=djflkajdkfjaj");
+        }
     }
 }

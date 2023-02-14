@@ -26,6 +26,9 @@ namespace EroMangaManager.Models
     /// <summary> 本子 </summary>
     public class MangaBook : INotifyPropertyChanged
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         private ImageSource imagesource;
