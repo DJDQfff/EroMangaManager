@@ -103,12 +103,16 @@
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Buksan ang folder na iyong kinaroroonan</target>
         </trans-unit>
         <trans-unit id="ListItem.Content" translate="yes" xml:space="preserve">
-          <source>已固定文件夹</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Nakapin ang folder</target>
+          <source>文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">folder</target>
         </trans-unit>
         <trans-unit id="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
           <source>已固定文件夹</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Nakapin ang folder</target>
+        </trans-unit>
+        <trans-unit id="MailFeedback.Content" translate="yes" xml:space="preserve">
+          <source>邮件反馈</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Feedback sa email</target>
         </trans-unit>
         <trans-unit id="MangaTagDetailPage.CloseButtonText" translate="yes" xml:space="preserve">
           <source>关闭</source>
@@ -222,10 +226,6 @@
           <source>是</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">maging</target>
         </trans-unit>
-        <trans-unit id="MailFeedback.Content" translate="yes" xml:space="preserve">
-          <source>邮件反馈</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Feedback sa email</target>
-        </trans-unit>
       </group>
     </body>
   </file>
@@ -242,6 +242,23 @@
         <trans-unit id="ExportDone" translate="yes" xml:space="preserve">
           <source>导出完成</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Ang pag export ay kumpleto</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="zh-CN" target-language="fil" original="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" datatype="resx">
+        <trans-unit id="AppDisplayName" translate="yes" xml:space="preserve">
+          <source>小黄书</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Maliit na Dilaw na Aklat</target>
+        </trans-unit>
+        <trans-unit id="Description" translate="yes" xml:space="preserve">
+          <source>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ito ay isang manga manager para sa pamamahala at pagbabasa ng iyong mga naka save na komiks sa zip form. Ang mga panloob na imahe ay dapat na nasa mga format ng JPG at PNG</target>
         </trans-unit>
       </group>
     </body>
@@ -299,23 +316,6 @@
         <trans-unit id="Version_before.Text" translate="yes" xml:space="preserve">
           <source>更早的版本</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Mas maaga na bersyon</target>
-        </trans-unit>
-      </group>
-    </body>
-  </file>
-  <file datatype="xml" source-language="zh-CN" target-language="fil" original="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
-    <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
-    </header>
-    <body>
-      <group id="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" datatype="resx">
-        <trans-unit id="AppDisplayName" translate="yes" xml:space="preserve">
-          <source>小黄书</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Maliit na Dilaw na Aklat</target>
-        </trans-unit>
-        <trans-unit id="Description" translate="yes" xml:space="preserve">
-          <source>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ito ay isang manga manager para sa pamamahala at pagbabasa ng iyong mga naka save na komiks sa zip form. Ang mga panloob na imahe ay dapat na nasa mga format ng JPG at PNG</target>
         </trans-unit>
       </group>
     </body>

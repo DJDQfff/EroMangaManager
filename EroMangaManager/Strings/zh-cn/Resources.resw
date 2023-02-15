@@ -190,7 +190,7 @@
     <value>打开所在文件夹</value>
   </data>
   <data name="ListItem.Content" xml:space="preserve">
-    <value>已固定文件夹</value>
+    <value>文件夹</value>
   </data>
   <data name="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
     <value>已固定文件夹</value>

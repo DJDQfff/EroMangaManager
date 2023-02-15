@@ -25,7 +25,7 @@
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>arm64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <AppInstallerUri>file:///c</AppInstallerUri>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
@@ -279,58 +279,54 @@
     <Content Include="Assets\SVGs\副本.svg" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
-    <PRIResource Include="Strings\en-us\UpdateResources.resw" />
-    <PRIResource Include="Strings\en-us\StringResources.resw" />
-    <PRIResource Include="Strings\en-us\Resources.resw" />
-    <PRIResource Include="Strings\en-us\AppxmanifestResources.resw" />
+    <PRIResource Include="Strings\zh-Hant\AppxmanifestResources.resw" />
+    <PRIResource Include="Strings\en\AppxmanifestResources.resw" />
+    <PRIResource Include="Strings\it\AppxmanifestResources.resw" />
+    <PRIResource Include="Strings\el\AppxmanifestResources.resw" />
+    <PRIResource Include="Strings\es\AppxmanifestResources.resw" />
+    <PRIResource Include="Strings\th\AppxmanifestResources.resw" />
+    <PRIResource Include="Strings\ja\AppxmanifestResources.resw" />
+    <PRIResource Include="Strings\fil\AppxmanifestResources.resw" />
+    <PRIResource Include="Strings\fr\AppxmanifestResources.resw" />
+    <PRIResource Include="Strings\ru\AppxmanifestResources.resw" />
+    <PRIResource Include="Strings\de\AppxmanifestResources.resw" />
+    <PRIResource Include="Strings\ko\AppxmanifestResources.resw" />
     <PRIResource Include="Strings\zh-Hant\UpdateResources.resw" />
     <PRIResource Include="Strings\zh-Hant\StringResources.resw" />
     <PRIResource Include="Strings\zh-Hant\Resources.resw" />
-    <PRIResource Include="Strings\zh-Hant\AppxmanifestResources.resw" />
     <PRIResource Include="Strings\en\UpdateResources.resw" />
     <PRIResource Include="Strings\en\StringResources.resw" />
     <PRIResource Include="Strings\en\Resources.resw" />
-    <PRIResource Include="Strings\en\AppxmanifestResources.resw" />
     <PRIResource Include="Strings\it\UpdateResources.resw" />
     <PRIResource Include="Strings\it\StringResources.resw" />
     <PRIResource Include="Strings\it\Resources.resw" />
-    <PRIResource Include="Strings\it\AppxmanifestResources.resw" />
     <PRIResource Include="Strings\el\UpdateResources.resw" />
     <PRIResource Include="Strings\el\StringResources.resw" />
     <PRIResource Include="Strings\el\Resources.resw" />
-    <PRIResource Include="Strings\el\AppxmanifestResources.resw" />
     <PRIResource Include="Strings\es\UpdateResources.resw" />
     <PRIResource Include="Strings\es\StringResources.resw" />
     <PRIResource Include="Strings\es\Resources.resw" />
-    <PRIResource Include="Strings\es\AppxmanifestResources.resw" />
     <PRIResource Include="Strings\th\UpdateResources.resw" />
     <PRIResource Include="Strings\th\StringResources.resw" />
     <PRIResource Include="Strings\th\Resources.resw" />
-    <PRIResource Include="Strings\th\AppxmanifestResources.resw" />
     <PRIResource Include="Strings\ja\UpdateResources.resw" />
     <PRIResource Include="Strings\ja\StringResources.resw" />
     <PRIResource Include="Strings\ja\Resources.resw" />
-    <PRIResource Include="Strings\ja\AppxmanifestResources.resw" />
     <PRIResource Include="Strings\fil\UpdateResources.resw" />
     <PRIResource Include="Strings\fil\StringResources.resw" />
     <PRIResource Include="Strings\fil\Resources.resw" />
-    <PRIResource Include="Strings\fil\AppxmanifestResources.resw" />
     <PRIResource Include="Strings\fr\UpdateResources.resw" />
     <PRIResource Include="Strings\fr\StringResources.resw" />
     <PRIResource Include="Strings\fr\Resources.resw" />
-    <PRIResource Include="Strings\fr\AppxmanifestResources.resw" />
     <PRIResource Include="Strings\ru\UpdateResources.resw" />
     <PRIResource Include="Strings\ru\StringResources.resw" />
     <PRIResource Include="Strings\ru\Resources.resw" />
-    <PRIResource Include="Strings\ru\AppxmanifestResources.resw" />
     <PRIResource Include="Strings\de\UpdateResources.resw" />
     <PRIResource Include="Strings\de\StringResources.resw" />
     <PRIResource Include="Strings\de\Resources.resw" />
-    <PRIResource Include="Strings\de\AppxmanifestResources.resw" />
     <PRIResource Include="Strings\ko\UpdateResources.resw" />
     <PRIResource Include="Strings\ko\StringResources.resw" />
     <PRIResource Include="Strings\ko\Resources.resw" />
-    <PRIResource Include="Strings\ko\AppxmanifestResources.resw" />
     <PRIResource Include="Strings\zh-cn\AppxmanifestResources.resw" />
     <PRIResource Include="Strings\zh-cn\StringResources.resw" />
     <PRIResource Include="Strings\zh-cn\UpdateResources.resw" />
@@ -504,7 +500,6 @@
   <ItemGroup>
     <XliffResource Include="MultilingualResources\本子管理器.de.xlf" />
     <XliffResource Include="MultilingualResources\本子管理器.el.xlf" />
-    <XliffResource Include="MultilingualResources\本子管理器.en-us.xlf" />
     <XliffResource Include="MultilingualResources\本子管理器.en.xlf" />
     <XliffResource Include="MultilingualResources\本子管理器.es.xlf" />
     <XliffResource Include="MultilingualResources\本子管理器.fil.xlf" />

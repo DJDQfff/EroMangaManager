@@ -15,6 +15,7 @@
                         IsBackButtonVisible="Collapsed"
                         IsSettingsVisible="True"
                         ItemInvoked="MainNavigationView_ItemInvoked"
+                        d:PaneDisplayMode="Left"
                         PaneDisplayMode="LeftMinimal">
 
             <NavigationView.MenuItems>

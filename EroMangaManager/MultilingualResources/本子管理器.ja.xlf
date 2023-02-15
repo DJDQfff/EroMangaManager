@@ -103,12 +103,16 @@
           <target state="needs-review-translation" state-qualifier="mt-suggestion">フォルダを開きます</target>
         </trans-unit>
         <trans-unit id="ListItem.Content" translate="yes" xml:space="preserve">
-          <source>已固定文件夹</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">固定フォルダ</target>
+          <source>文件夹</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">フォルダ</target>
         </trans-unit>
         <trans-unit id="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
           <source>已固定文件夹</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">固定フォルダ</target>
+        </trans-unit>
+        <trans-unit id="MailFeedback.Content" translate="yes" xml:space="preserve">
+          <source>邮件反馈</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">メールのフィードバック</target>
         </trans-unit>
         <trans-unit id="MangaTagDetailPage.CloseButtonText" translate="yes" xml:space="preserve">
           <source>关闭</source>
@@ -222,10 +226,6 @@
           <source>是</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">はい</target>
         </trans-unit>
-        <trans-unit id="MailFeedback.Content" translate="yes" xml:space="preserve">
-          <source>邮件反馈</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">メールのフィードバック</target>
-        </trans-unit>
       </group>
     </body>
   </file>
@@ -242,6 +242,23 @@
         <trans-unit id="ExportDone" translate="yes" xml:space="preserve">
           <source>导出完成</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">エクスポートが完了しました</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="zh-CN" target-language="ja" original="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" datatype="resx">
+        <trans-unit id="AppDisplayName" translate="yes" xml:space="preserve">
+          <source>小黄书</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">小さな黄色の本</target>
+        </trans-unit>
+        <trans-unit id="Description" translate="yes" xml:space="preserve">
+          <source>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">これは、zip形式で保存された漫画を管理し、読むための漫画マネージャです。 内部画像の要件はjpg、png形式です</target>
         </trans-unit>
       </group>
     </body>
@@ -299,23 +316,6 @@
         <trans-unit id="Version_before.Text" translate="yes" xml:space="preserve">
           <source>更早的版本</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">以前のバージョン</target>
-        </trans-unit>
-      </group>
-    </body>
-  </file>
-  <file datatype="xml" source-language="zh-CN" target-language="ja" original="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
-    <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
-    </header>
-    <body>
-      <group id="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" datatype="resx">
-        <trans-unit id="AppDisplayName" translate="yes" xml:space="preserve">
-          <source>小黄书</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">小さな黄色の本</target>
-        </trans-unit>
-        <trans-unit id="Description" translate="yes" xml:space="preserve">
-          <source>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">これは、zip形式で保存された漫画を管理し、読むための漫画マネージャです。 内部画像の要件はjpg、png形式です</target>
         </trans-unit>
       </group>
     </body>
