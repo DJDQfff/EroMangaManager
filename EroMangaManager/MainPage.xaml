@@ -29,6 +29,9 @@
                 <NavigationViewItem x:Name="ReadItem" Visibility="Collapsed" x:FieldModifier="public"
                                     x:Uid="/Resources/ReadItem"
                                     Icon="Read" />
+                <NavigationViewItem x:Name="TagsOfMangaItem"
+                                    Icon="Tag"
+                                    x:Uid="/Resources/Tags" />
                 <NavigationViewItem  x:Name="FunctionPageShower"
                                      x:Uid="/Resources/FunctionPageShower">
                     <NavigationViewItem.Icon>

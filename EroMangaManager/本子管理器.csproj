@@ -170,6 +170,9 @@
     <Compile Include="Views\MainPageChildPages\FunctionPageShower.xaml.cs">
       <DependentUpon>FunctionPageShower.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MainPageChildPages\TagsOfManga.xaml.cs">
+      <DependentUpon>TagsOfManga.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SettingPageChildPages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
@@ -378,6 +381,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainPageChildPages\FunctionPageShower.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainPageChildPages\TagsOfManga.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

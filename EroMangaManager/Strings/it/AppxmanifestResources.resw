@@ -12,10 +12,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Piccolo libro giallo</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>Questo è un gestore di manga per la gestione e la lettura dei fumetti salvati in forma zip. Le immagini interne devono essere in formato JPG e PNG</value>
-  </data>
 </root>

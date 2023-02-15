@@ -12,10 +12,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>小さな黄色の本</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>これは、zip形式で保存された漫画を管理し、読むための漫画マネージャです。 内部画像の要件はjpg、png形式です</value>
-  </data>
 </root>

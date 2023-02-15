@@ -267,6 +267,9 @@
   <data name="StorageDeleteOption.OnContent" xml:space="preserve">
     <value>从磁盘删除</value>
   </data>
+  <data name="Tags.Content" xml:space="preserve">
+    <value>标签</value>
+  </data>
   <data name="TranslateButton.Label" xml:space="preserve">
     <value>翻译</value>
   </data>
