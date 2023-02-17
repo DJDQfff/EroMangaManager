@@ -27,6 +27,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             {
                 _data = value;
                 Bookcase_GridView.ItemsSource = value.MangaBooks;
+                Bookcase_HintTextBlock.Visibility=Windows.UI.Xaml.Visibility.Collapsed;
             }
             get
             {

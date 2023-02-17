@@ -8,13 +8,12 @@ using Windows.UI.Xaml;
 
 namespace EroMangaManager.ValueConverters
 {
-    internal class ControlVisibilityDataBindFromCount:Windows.UI.Xaml.Data.IValueConverter
+    internal class ControlVisibilityFromNull:Windows.UI.Xaml.Data.IValueConverter
     {
         public object Convert (object value , Type targetType , object parameter , string language)
         {
-           var count=(int)value;
-           
-            if (count == 0)
+
+            if (value is null)
             {
                 return Visibility.Visible;
             }
@@ -22,6 +21,7 @@ namespace EroMangaManager.ValueConverters
             {
                 return Visibility.Collapsed;
             }
+
         }
 
         public object ConvertBack (object value , Type targetType , object parameter , string language)

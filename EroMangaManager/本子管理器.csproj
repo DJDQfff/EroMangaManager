@@ -141,9 +141,10 @@
     <Compile Include="UserControls\TagsDisplayControl.xaml.cs">
       <DependentUpon>TagsDisplayControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ValueConverters\ControlVisibilityFromNull.cs" />
     <Compile Include="ValueConverters\FileSizeConverter.cs" />
     <Compile Include="ValueConverters\GetRandomSolidColorBrush.cs" />
-    <Compile Include="ValueConverters\ControlVisibilityDataBindFromCount.cs" />
+    <Compile Include="ValueConverters\ControlVisibilityFromCount.cs" />
     <Compile Include="ViewModels\TagsViewModel.cs" />
     <Compile Include="Views\FunctionChildPages\FindSameManga.xaml.cs">
       <DependentUpon>FindSameManga.xaml</DependentUpon>

@@ -12,13 +12,14 @@
             <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0"
+        <TextBlock x:Name="Bookcase_HintTextBlock" Grid.Row="0"
                    Grid.RowSpan="2"
                    FontSize="40"
+                   Foreground="RoyalBlue"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    x:Uid="/Resources/NoChosenFolder"
-                   Visibility="{x:Bind Bookcase_GridView.Items.Count,Mode=OneWay,Converter={StaticResource countvisibilityconverter}}" />
+                   Visibility="Visible" />
         <CommandBar x:Load="True"
                     Background="Transparent"
                     Grid.Row="0"
