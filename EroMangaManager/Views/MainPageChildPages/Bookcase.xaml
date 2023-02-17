@@ -12,7 +12,13 @@
             <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBlock x:Uid="/Resources/NoChosenFolder" />
+        <TextBlock Grid.Row="0"
+                   Grid.RowSpan="2"
+                   FontSize="40"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   x:Uid="/Resources/NoChosenFolder"
+                   Visibility="{x:Bind Bookcase_GridView.Items.Count,Mode=OneWay,Converter={StaticResource countvisibilityconverter}}" />
         <CommandBar x:Load="True"
                     Background="Transparent"
                     Grid.Row="0"
@@ -24,7 +30,7 @@
             <AppBarButton Click="TranslateEachMangaName"
                           x:Name="TranslateButton"
                           x:Uid="/Resources/TranslateButton"
-                          Icon="Font"/>
+                          Icon="Font" />
             <AppBarButton Click="RefreshMangaList"
                           x:Name="RefreshButton"
                           x:Load="False"
@@ -47,7 +53,6 @@
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
-
                         </Grid.RowDefinitions>
                         <Grid.ContextFlyout>
                             <MenuFlyout>
@@ -60,7 +65,7 @@
                                 <MenuFlyoutItem Click="DeleteSourceMangaFile"
                                                 x:Uid="/Resources/DeleteSourceMangaFileFlyoutItem" />
                                 <MenuFlyoutItem Click="LaunchFile"
-                                                x:Uid="/Resources/LaunchFileFlyoutItem"/>
+                                                x:Uid="/Resources/LaunchFileFlyoutItem" />
                                 <MenuFlyoutItem Click="LaunchFolder"
                                                 x:Uid="/Resources/LaunchFolderFlyoutItem"
                                                 Text="打开文件夹" />
@@ -85,14 +90,13 @@
                                    HorizontalTextAlignment="Center"
                                    MaxLines="1">
                                 <Run x:Name="runtext"
-                                        IsTextScaleFactorEnabled="True"
-                                        Text="{x:Bind MangaName, Mode=OneWay}" />
+                                     IsTextScaleFactorEnabled="True"
+                                     Text="{x:Bind MangaName, Mode=OneWay}" />
                         </TextBlock>
                         <TextBlock Grid.Row="2"
                                    Text="{x:Bind FileSize,Mode=OneTime,Converter={StaticResource filesizeConverter}}" />
                     </Grid>
                 </DataTemplate>
-
             </GridView.ItemTemplate>
         </GridView>
     </Grid>

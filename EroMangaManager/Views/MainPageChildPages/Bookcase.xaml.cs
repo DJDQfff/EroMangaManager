@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 using EroMangaManager.Helpers;
 using EroMangaManager.Models;
@@ -22,7 +20,9 @@ namespace EroMangaManager.Views.MainPageChildPages
     public sealed partial class Bookcase : Page
     {
         private MangasFolder _data;
-        internal MangasFolder BindMangasFolder { 
+
+        internal MangasFolder BindMangasFolder
+        {
             set
             {
                 _data = value;
@@ -33,6 +33,7 @@ namespace EroMangaManager.Views.MainPageChildPages
                 return _data;
             }
         }
+
         /// <summary>
         ///
         /// </summary>
@@ -57,9 +58,6 @@ namespace EroMangaManager.Views.MainPageChildPages
                 case MangasFolder mangasFolder:
                     BindMangasFolder = mangasFolder;
                     break;
-
-
-
             }
         }
 
@@ -71,9 +69,9 @@ namespace EroMangaManager.Views.MainPageChildPages
 
             await CoverHelper.ClearCovers();
 
-            var folder =(await MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder()).ToArray();
+            var folder = (await MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder()).ToArray();
 
-           await  App.Current.collectionObserver.Initialize(folder);
+            await App.Current.collectionObserver.Initialize(folder);
 
             button.IsEnabled = true;
         }
