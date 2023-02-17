@@ -8,7 +8,7 @@ using Windows.UI.Xaml;
 
 namespace EroMangaManager.ValueConverters
 {
-    internal class HintTextBlockVisibility:Windows.UI.Xaml.Data.IValueConverter
+    internal class ControlVisibilityDataBindFromCount:Windows.UI.Xaml.Data.IValueConverter
     {
         public object Convert (object value , Type targetType , object parameter , string language)
         {

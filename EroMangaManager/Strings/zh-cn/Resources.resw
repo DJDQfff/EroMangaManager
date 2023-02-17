@@ -222,6 +222,9 @@
   <data name="NavigateUriButton.Content" xml:space="preserve">
     <value>商店中打开</value>
   </data>
+  <data name="NoChosenFolder.Text" xml:space="preserve">
+    <value>未选择文件夹</value>
+  </data>
   <data name="OpenButton.Content" xml:space="preserve">
     <value>打开</value>
   </data>

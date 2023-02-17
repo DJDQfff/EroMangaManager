@@ -321,6 +321,10 @@
           <source>是</source>
           <target state="new">是</target>
         </trans-unit>
+        <trans-unit id="NoChosenFolder.Text" translate="yes" xml:space="preserve">
+          <source>未选择文件夹</source>
+          <target state="new">未选择文件夹</target>
+        </trans-unit>
       </group>
     </body>
   </file>

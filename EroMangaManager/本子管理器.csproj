@@ -143,7 +143,8 @@
     </Compile>
     <Compile Include="ValueConverters\FileSizeConverter.cs" />
     <Compile Include="ValueConverters\GetRandomSolidColorBrush.cs" />
-    <Compile Include="ValueConverters\HintTextBlockVisibility.cs" />
+    <Compile Include="ValueConverters\ControlVisibilityDataBindFromCount.cs" />
+    <Compile Include="ViewModels\TagsViewModel.cs" />
     <Compile Include="Views\FunctionChildPages\FindSameManga.xaml.cs">
       <DependentUpon>FindSameManga.xaml</DependentUpon>
     </Compile>
@@ -170,8 +171,8 @@
     <Compile Include="Views\MainPageChildPages\FunctionPageShower.xaml.cs">
       <DependentUpon>FunctionPageShower.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainPageChildPages\TagsOfManga.xaml.cs">
-      <DependentUpon>TagsOfManga.xaml</DependentUpon>
+    <Compile Include="Views\MainPageChildPages\TagsManagePage.xaml.cs">
+      <DependentUpon>TagsManagePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingPageChildPages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
@@ -384,7 +385,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainPageChildPages\TagsOfManga.xaml">
+    <Page Include="Views\MainPageChildPages\TagsManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

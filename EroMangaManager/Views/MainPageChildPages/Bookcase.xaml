@@ -6,12 +6,13 @@
       xmlns:models="using:EroMangaManager.Models"
       mc:Ignorable="d"
       NavigationCacheMode="Required">
-    <Grid>
 
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
+        <TextBlock x:Uid="/Resources/NoChosenFolder" />
         <CommandBar x:Load="True"
                     Background="Transparent"
                     Grid.Row="0"

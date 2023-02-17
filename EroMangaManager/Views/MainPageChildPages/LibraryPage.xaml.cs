@@ -24,10 +24,6 @@ namespace EroMangaManager.Views.MainPageChildPages
         public LibraryPage ()
         {
             this.InitializeComponent();
-            if (App.Current.collectionObserver.StorageFolders.Count == 0)
-            {
-                this.FindName(nameof(HintAddFolderTextBlock));
-            }
         }
 
         private async void addButton_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
