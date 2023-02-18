@@ -19,7 +19,8 @@
                         MinWidth="396"
                         TextChanged="autoSuggestBox_TextChanged"
                         QuerySubmitted="autoSuggestBox_QuerySubmitted" />
-        <VariableSizedWrapGrid Grid.Row="1" VerticalAlignment="Stretch" Loaded="VariableSizedWrapGrid_Loaded"
+        <VariableSizedWrapGrid x:Name="temp"
+                               x:Load="False" Grid.Row="1" VerticalAlignment="Stretch" Loaded="VariableSizedWrapGrid_Loaded"
                                HorizontalAlignment="Stretch" />
     </Grid>
 </Page>

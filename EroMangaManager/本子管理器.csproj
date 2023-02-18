@@ -145,7 +145,6 @@
     <Compile Include="ValueConverters\FileSizeConverter.cs" />
     <Compile Include="ValueConverters\GetRandomSolidColorBrush.cs" />
     <Compile Include="ValueConverters\ControlVisibilityFromCount.cs" />
-    <Compile Include="ViewModels\SearchMangaViewModel.cs" />
     <Compile Include="ViewModels\TagManagerViewModel.cs" />
     <Compile Include="Views\FunctionChildPages\FindSameManga.xaml.cs">
       <DependentUpon>FindSameManga.xaml</DependentUpon>

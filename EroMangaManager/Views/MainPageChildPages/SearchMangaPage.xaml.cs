@@ -25,10 +25,12 @@ namespace EroMangaManager.Views.MainPageChildPages
     /// </summary>
     public sealed partial class SearchMangaPage : Page
     {
-        SearchMangaViewModel searchMangaViewModel = new SearchMangaViewModel();
+        TagManagerViewModel searchMangaViewModel;
         public SearchMangaPage ()
         {
             this.InitializeComponent();
+            var mangas = App.Current.collectionObserver.MangaList;
+            searchMangaViewModel = new TagManagerViewModel(mangas.Select(x => x.MangaTags));
         }
 
         private void autoSuggestBox_TextChanged (AutoSuggestBox sender , AutoSuggestBoxTextChangedEventArgs args)
@@ -48,7 +50,7 @@ namespace EroMangaManager.Views.MainPageChildPages
 
         private void VariableSizedWrapGrid_Loaded (object sender , RoutedEventArgs e)
         {
-            foreach (var x in searchMangaViewModel.alltags)
+            foreach (var x in searchMangaViewModel.AllTags)
             {
                 TextBlock textBlock = new TextBlock()
                 {
