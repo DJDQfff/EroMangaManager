@@ -38,7 +38,7 @@ namespace EroMangaManager.Views.InteractPages
             var tags = _mangaBook.ReadingInfo.TagPieces.Split('\r');
             taglist = new ObservableCollection<string>(tags);
 
-            comboxitemlist = DatabaseController.TagKeywords_QueryAll().Keys.ToList();
+            comboxitemlist = DatabaseController.TagCategory_QueryAll().Keys.ToList();
             comboxitemlist.Add("忽略此标签");
         }
 
@@ -60,7 +60,7 @@ namespace EroMangaManager.Views.InteractPages
 
                 moveWork.Add(keyword , tagname);
             }
-            await DatabaseController.TagKeywords_MoveMulti(moveWork);
+            await DatabaseController.TagCategory_MoveMulti(moveWork);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace EroMangaManager.Views.InteractPages
 
                 string keyword = comboBox.DataContext as string;
 
-                await DatabaseController.TagKeywords_AppendKeywordSingle(tagname , keyword);
+                await DatabaseController.TagCategory_AppendKeywordSingle(tagname , keyword);
             }
         }
     }
@@ -106,7 +106,7 @@ namespace EroMangaManager.Views.InteractPages
             if (str is null)
                 return null;
 
-            Dictionary<string , string[]> keyValuePairs = DatabaseController.TagKeywords_QueryAll();
+            Dictionary<string , string[]> keyValuePairs = DatabaseController.TagCategory_QueryAll();
 
             int i = 0;
             foreach (var pair in keyValuePairs)

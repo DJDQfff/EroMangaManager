@@ -14,7 +14,7 @@ namespace EroMangaDB
         /// 查询所有TagKeywords的所有识别关键词
         /// </summary>
         /// <returns>字典，第一项为TagName，第二项为Kwywords</returns>
-        public Dictionary<string , string[]> TagKeywords_QueryAll ()
+        public Dictionary<string , string[]> TagCategory_QueryAll ()
         {
             var tags = database.TagCategorys.ToArray();
 
@@ -36,7 +36,7 @@ namespace EroMangaDB
         /// </summary>
         /// <param name="tagname">TagKeywords的名称</param>
         /// <returns></returns>
-        public string[] TagKeywords_QuerySingle (string tagname)
+        public string[] TagCategory_QuerySingle (string tagname)
         {
             string keywords = database.TagCategorys.Where(n => n.CategoryName == tagname).Select(n => n.Keywords).Single();
             string[] keywordarray = keywords.Split('\r');
@@ -50,9 +50,9 @@ namespace EroMangaDB
         /// <param name="tagname">TagKeywords名称</param>
         /// <param name="keywords">TagKeywords识别关键词</param>
         /// <returns></returns>
-        public async Task TagKeywords_AddTagSingle (string tagname , IEnumerable<string> keywords)
+        public async Task TagCategory_AddTagSingle (string tagname , IEnumerable<string> keywords)
         {
-            TatCategory tagKeywords = TagCategoryFactory.Creat(tagname , keywords);
+            TagCategory tagKeywords = TagCategoryFactory.Creat(tagname , keywords);
             database.TagCategorys.Add(tagKeywords);
             await database.SaveChangesAsync();
         }
@@ -63,9 +63,9 @@ namespace EroMangaDB
         /// <param name="tagname">TagKeywords的名称</param>
         /// <param name="keyword"></param>
         /// <returns></returns>
-        public async Task TagKeywords_AppendKeywordSingle (string tagname , string keyword)
+        public async Task TagCategory_AppendKeywordSingle (string tagname , string keyword)
         {
-            TatCategory tagKeywords = database.TagCategorys.Single(n => n.CategoryName == tagname);
+            TagCategory tagKeywords = database.TagCategorys.Single(n => n.CategoryName == tagname);
             tagKeywords.Keywords += "\r" + keyword;
             await database.SaveChangesAsync();
         }
@@ -76,10 +76,10 @@ namespace EroMangaDB
         /// <param name="tagname"></param>
         /// <param name="keywords">更新后的关键词序列</param>
         /// <returns></returns>
-        public async Task TagKeywords_UpdateTagSingle (string tagname , IEnumerable<string> keywords)
+        public async Task TagCategory_UpdateTagSingle (string tagname , IEnumerable<string> keywords)
         {
             string keywordString = string.Join("\r" , keywords);
-            TatCategory tagKeywords = database.TagCategorys.Single(n => n.CategoryName == tagname);
+            TagCategory tagKeywords = database.TagCategorys.Single(n => n.CategoryName == tagname);
             tagKeywords.Keywords = keywordString;
             database.Update(tagKeywords);
             await database.SaveChangesAsync();
@@ -91,9 +91,9 @@ namespace EroMangaDB
         /// <param name="tagname_UsedStorageTag">要修改的TagKeywords</param>
         /// <param name="keywords_ToDelete">要从中移除的关键词序列</param>
         /// <returns></returns>
-        public async Task TagKeywords_DeleteKeywordsSingle (string tagname_UsedStorageTag , params string[] keywords_ToDelete)
+        public async Task TagCategory_DeleteKeywordsSingle (string tagname_UsedStorageTag , params string[] keywords_ToDelete)
         {
-            TatCategory tagKeywords = database.TagCategorys.Single(n => n.CategoryName == tagname_UsedStorageTag);
+            TagCategory tagKeywords = database.TagCategorys.Single(n => n.CategoryName == tagname_UsedStorageTag);
             var keywordsList = tagKeywords.Keywords.Split('\r').ToList();
             foreach (var word in keywords_ToDelete)
             {
@@ -108,9 +108,9 @@ namespace EroMangaDB
         /// </summary>
         /// <param name="targetpairs">要移动的项集合。第一项为识别关键词，第二项为要移动到的目标的TagName。</param>
         /// <returns></returns>
-        public async Task TagKeywords_MoveMulti (IDictionary<string , string> targetpairs)
+        public async Task TagCategory_MoveMulti (IDictionary<string , string> targetpairs)
         {
-            var keywordContainInfo = TagKeywords_SearchiKeywordsMulti(targetpairs.Keys.ToArray());
+            var keywordContainInfo = TagCategory_SearchiKeywordsMulti(targetpairs.Keys.ToArray());
 
             foreach (var target in targetpairs)
             {
@@ -120,10 +120,10 @@ namespace EroMangaDB
 
                 if (keywordContainInfo[target.Key] != null)                             // 若这个关键词已包含在数据库中，则从中移除
                 {
-                    await TagKeywords_DeleteKeywordsSingle(oldTagName , keyword);
+                    await TagCategory_DeleteKeywordsSingle(oldTagName , keyword);
                 }
 
-                await TagKeywords_AppendKeywordSingle(newTagName , keyword);               // 添加的目标Tag
+                await TagCategory_AppendKeywordSingle(newTagName , keyword);               // 添加的目标Tag
             }
         }
 
@@ -132,9 +132,9 @@ namespace EroMangaDB
         /// </summary>
         /// <param name="keywords">要查询的关键词</param>
         /// <returns>字典。第一项为关键词，第二项为其所属的Tag（为null则无所属）</returns>
-        public Dictionary<string , string> TagKeywords_SearchiKeywordsMulti (IEnumerable<string> keywords)
+        public Dictionary<string , string> TagCategory_SearchiKeywordsMulti (IEnumerable<string> keywords)
         {
-            var all = TagKeywords_QueryAll();
+            var all = TagCategory_QueryAll();
             Dictionary<string , string> keyValuePairs = new Dictionary<string , string>();
             foreach (var k in keywords)
             {
@@ -150,9 +150,9 @@ namespace EroMangaDB
         ///
         /// <param name="keyword">要查找的识别关键词</param>
         /// <returns>TagName,如果没有，则为null</returns>
-        public string TagKeywords_SearchKeywordSingle (string keyword)
+        public string TagCategory_SearchKeywordSingle (string keyword)
         {
-            var all = TagKeywords_QueryAll();
+            var all = TagCategory_QueryAll();
             var str = all.Searchkeyword(keyword);
             return str;
         }

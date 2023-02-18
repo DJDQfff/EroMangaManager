@@ -81,6 +81,10 @@ namespace EroMangaManager
                     case nameof(TagsManagePage):
                         type= typeof(TagsManagePage);
                         break;
+                    case nameof(SearchMangaPage):
+                        type = typeof(SearchMangaPage);
+                        break;
+
                 }
 
             if (!type.Equals(MainFrame.CurrentSourcePageType))

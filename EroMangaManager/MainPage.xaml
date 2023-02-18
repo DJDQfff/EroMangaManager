@@ -29,6 +29,10 @@
                 <NavigationViewItem x:Name="ReadItem" Visibility="Collapsed" x:FieldModifier="public"
                                     x:Uid="/Resources/ReadItem"
                                     Icon="Read" />
+                <NavigationViewItem x:Name="SearchMangaPage"
+                                    Icon="Find"
+                                    x:Uid="/Resources/FindNavItem" />
+<!-- TODO 弄这个的话要搞数据库，还得先把MangaTagEdit的页面调好-->
                 <NavigationViewItem x:Name="TagsManagePage"
                                     Icon="Tag"
                                     x:Uid="/Resources/Tags" />

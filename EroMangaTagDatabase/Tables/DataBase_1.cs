@@ -17,7 +17,7 @@ namespace EroMangaDB.Tables
         /// <summary>
         /// UniqueTagInRelation数据表
         /// </summary>
-        public DbSet<TatCategory> TagCategorys { set; get; }
+        public DbSet<TagCategory> TagCategorys { set; get; }
 
         /// <summary>
         /// ReadingInfo数据表

@@ -14,7 +14,7 @@ namespace EroMangaDB
         /// </returns>
         public Dictionary<string , string> MatchTag (IEnumerable<string> tags)
         {
-            var dictionaries = DatabaseController.TagKeywords_QueryAll();
+            var dictionaries = DatabaseController.TagCategory_QueryAll();
 
             Dictionary<string , string> keyValuePairs = new Dictionary<string , string>();
 

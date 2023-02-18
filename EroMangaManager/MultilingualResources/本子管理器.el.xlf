@@ -325,6 +325,10 @@
           <source>未选择文件夹</source>
           <target state="new">未选择文件夹</target>
         </trans-unit>
+        <trans-unit id="FindNavItem.Content" translate="yes" xml:space="preserve">
+          <source>查找</source>
+          <target state="new">查找</target>
+        </trans-unit>
       </group>
     </body>
   </file>

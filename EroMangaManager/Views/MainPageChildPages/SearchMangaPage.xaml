@@ -1,0 +1,25 @@
+﻿<Page x:Class="EroMangaManager.Views.MainPageChildPages.SearchMangaPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:EroMangaManager.Views.MainPageChildPages"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="122*" />
+            <RowDefinition Height="221*" />
+            <RowDefinition Height="737*" />
+        </Grid.RowDefinitions>
+        <AutoSuggestBox x:Name="autoSuggestBox"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        MinWidth="396"
+                        TextChanged="autoSuggestBox_TextChanged"
+                        QuerySubmitted="autoSuggestBox_QuerySubmitted" />
+        <VariableSizedWrapGrid Grid.Row="1" VerticalAlignment="Stretch" Loaded="VariableSizedWrapGrid_Loaded"
+                               HorizontalAlignment="Stretch" />
+    </Grid>
+</Page>

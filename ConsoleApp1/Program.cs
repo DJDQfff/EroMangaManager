@@ -11,11 +11,11 @@ namespace DatabaseOperation
         private static void Main ()
         {
             DatabaseController.Migrate();
-            //var a = DatabaseController.TagKeywords_QueryAll();
+            //var a = DatabaseController.TagCategory_QueryAll();
 
-            //await DatabaseController.TagKeywords_AddTagSingle("fjakjf", new string[] { "djfa", "jfds" });
+            //await DatabaseController.TagCategory_AddTagSingle("fjakjf", new string[] { "djfa", "jfds" });
 
-            //var b = DatabaseController.TagKeywords_QueryAll();
+            //var b = DatabaseController.TagCategory_QueryAll();
 
             //DatabaseController.Dispose();
             //System.Console.ReadKey();
