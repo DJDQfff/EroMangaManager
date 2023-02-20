@@ -162,8 +162,6 @@
       <DependentUpon>MangaTagEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\FolderEnum.cs" />
-    <Compile Include="Models\IFunctionPage.cs" />
-    <Compile Include="ViewModels\FunctionPagesManager.cs" />
     <Compile Include="ViewModels\MangasFolder.cs" />
     <Compile Include="ViewModels\ReaderVM.cs" />
     <Compile Include="Views\MainPageChildPages\Bookcase.xaml.cs">
