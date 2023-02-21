@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-
+﻿using System.Linq;
+using System;
 using EroMangaManager.ViewModels;
 
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using System.Collections.Generic;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -25,7 +15,8 @@ namespace EroMangaManager.Views.MainPageChildPages
     /// </summary>
     public sealed partial class SearchMangaPage : Page
     {
-        TagManagerViewModel searchMangaViewModel;
+        private TagManagerViewModel searchMangaViewModel;
+
         public SearchMangaPage ()
         {
             this.InitializeComponent();
@@ -33,35 +24,25 @@ namespace EroMangaManager.Views.MainPageChildPages
             searchMangaViewModel = new TagManagerViewModel(mangas.Select(x => x.MangaTags));
         }
 
-        private void autoSuggestBox_TextChanged (AutoSuggestBox sender , AutoSuggestBoxTextChangedEventArgs args)
+        private void TokenizingTextBox_TextChanged (AutoSuggestBox sender , AutoSuggestBoxTextChangedEventArgs args)
         {
-            if(args.Reason is AutoSuggestionBoxTextChangeReason.UserInput)
+            var a = sender.Text;
+            tokenbox.SuggestedItemsSource = searchMangaViewModel.Search(a);
+
+        }
+
+        private void tokenbox_QuerySubmitted (AutoSuggestBox sender , AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+            var a = tokenbox.Items;
+            var list = new List<string>();
+            foreach(var item in a)
             {
-                var text = sender.Text;
-               var a=  searchMangaViewModel.Search(text);
-                sender.ItemsSource= a;
+                var b = item as string;
+                list.Add(b);
             }
-        }
 
-        private void autoSuggestBox_QuerySubmitted (AutoSuggestBox sender , AutoSuggestBoxQuerySubmittedEventArgs args)
-        {
+
 
         }
-
-        private void VariableSizedWrapGrid_Loaded (object sender , RoutedEventArgs e)
-        {
-            foreach (var x in searchMangaViewModel.AllTags)
-            {
-                TextBlock textBlock = new TextBlock()
-                {
-                    Text = x
-                };
-
-
-                var control = sender as VariableSizedWrapGrid;
-                 control.Children.Add(textBlock);
-            }
-        }
-
     }
 }
