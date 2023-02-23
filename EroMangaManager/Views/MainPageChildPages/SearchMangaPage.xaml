@@ -10,20 +10,18 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="122*" />
-            <RowDefinition Height="221*" />
-            <RowDefinition Height="737*" />
+            <RowDefinition Height="61*" />
+            <RowDefinition Height="203*" />
+            <RowDefinition Height="276*" />
         </Grid.RowDefinitions>
-        <toolkit:TokenizingTextBox Visibility="Collapsed" x:Name="tokenbox"
-                                   SuggestedItemsSource="{Binding searchMangaViewModel.AllTags}"
+        <toolkit:TokenizingTextBox x:Name="tokenbox"
                                    HorizontalAlignment="Stretch"
                                    VerticalAlignment="Stretch"
                                    TextChanged="TokenizingTextBox_TextChanged"
-                                  
                                    QuerySubmitted="tokenbox_QuerySubmitted">
             <toolkit:TokenizingTextBox.QueryIcon>
-                <FontIconSource  Glyph="&#xE11A;" 
-                          FontFamily="Segoe MDL2 Assets" />
+                <FontIconSource  Glyph="&#xE11A;"
+                                 FontFamily="Segoe MDL2 Assets" />
             </toolkit:TokenizingTextBox.QueryIcon>
 
             <toolkit:TokenizingTextBox.SuggestedItemTemplate>
