@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -56,16 +57,19 @@ namespace EroMangaManager.ViewModels
         public async Task Initialize (params StorageFolder[] storageFolders)
         {
             MangaFolders.Clear();
-
             NonZipList.Clear();
-
+            
             //TODO 现在这个是顺序执行，试试多线程方法，加快速度
             foreach (var folder in storageFolders)
             {
                 MangasFolder mangasFolder = new MangasFolder(folder);
                 MangaFolders.Add(mangasFolder);
-                await mangasFolder.Initial();
             };
+
+            foreach(var folder in MangaFolders)
+            {
+                await folder.Initial();
+            }
         }
 
         /// <summary>

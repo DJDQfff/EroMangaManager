@@ -36,6 +36,14 @@
 
 * 完善异常捕获、日志功能
 
+* 把MangaBook类，Model和ViewModel放到standard2.0库里面，为以后可能的跨平台做准备
+  
+  * 移除Cover，同时把显示BangaBook的封面的控件打包为一个控件，有控件来获取MangaBook的Cover
+  
+  * 不使用StorageFile属性，改为使用文件路径属性，再创建一个UWP的文件权限操作类
+  
+  * 创建一个CoverManager类，非静态的Helper类，MangaBook的封面文件由这个类来负责创建，读取，返回封面缓存到控件。一次性执行大量任务，会导致内存爆炸，改为使用队列。这个standard2.0库执行对应方法时，会涉及到平台api，所以对应的操作使用委托传入该CoverManager类，
+
 # 潜在bug
 
 * 生成mangasfoldervm时，readinginfo服务存在线程冲突的bug  
@@ -168,14 +176,4 @@
 
 * ReadingInfo单独作为一个数据库，不和tag数据库放在一起，二者不具有相关性，不应该放在一个数据库里面
 
-> 没必要，ReadingInfo、tag、filteredImage这三个数据库无论哪一个发生更新，程序都必须兼顾更新。简而言之，无论分散和集中，这三个都是同时使用的
-
-# 以后再弄
-
-* 把MangaBook类，Model和ViewModel放到standard2.0库里面，为以后可能的跨平台做准备
-  
-  * 移除Cover，同时把显示BangaBook的封面的控件打包为一个控件，有控件来获取MangaBook的Cover
-  
-  * 不使用StorageFile属性，改为使用文件路径属性，再创建一个UWP的文件权限操作类
-  
-  * 创建一个CoverManager类，非静态的Helper类，MangaBook的封面文件由这个类来负责创建，读取，返回封面缓存到控件。一次性执行大量任务，会导致内存爆炸，改为使用队列。这个standard2.0库执行对应方法时，会涉及到平台api，所以对应的操作使用委托传入该CoverManager类，
+> 没必要，ReadingInfo、tag、filteredImage这三个数据库无论哪一个发生更新，程序都必须兼顾更新。简而言之，无论分散和集中，这三个都是同时使用

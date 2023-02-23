@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,16 +12,32 @@ using EroMangaDB.EntityFactory;
 using EroMangaManager.Helpers;
 using EroMangaManager.Models;
 
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
 using Windows.Storage;
 
 using static EroMangaDB.BasicController;
 
 namespace EroMangaManager.ViewModels
 {
-    internal class MangasFolder
+    internal class MangasFolder:INotifyPropertyChanged
 
     {
         public StorageFolder StorageFolder { get; }
+
+        private bool _IsInitialiing=false;
+        /// <summary>
+        /// 是否在更新数据
+        /// </summary>
+        public bool IsInitialing 
+        { 
+            set
+            {
+                _IsInitialiing = value;
+                PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(""));
+            }
+            get => _IsInitialiing;
+        } 
         public string FolderPath => StorageFolder.Path;
 
         public ObservableCollection<MangaBook> MangaBooks { get; } = new ObservableCollection<MangaBook>();
@@ -28,16 +45,17 @@ namespace EroMangaManager.ViewModels
 
         public MangasFolder (StorageFolder storageFolder)
         {
-
             StorageFolder = storageFolder;
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
-        /// TODO 把readinginfo分离出来
         /// </summary>
         /// <returns></returns>
         public async Task Initial ()
         {
+            IsInitialing = true;
             var files = await StorageFolder.GetFilesAsync();
             ReadingInfo[] tags = DatabaseController.ReadingInfo_QueryAll();
 
@@ -87,6 +105,7 @@ namespace EroMangaManager.ViewModels
             }
 
             await DatabaseController.ReadingInfo_AddMulti(add);
+            IsInitialing = false;
         }
         /// <summary>
         /// 对内部漫画进行排序

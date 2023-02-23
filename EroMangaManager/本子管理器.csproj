@@ -138,13 +138,13 @@
     <Compile Include="Helpers\StorageHelper.cs" />
     <Compile Include="Models\ApplicationSettingItemName.cs" />
     <Compile Include="Models\RepeatMangaBookGroup.cs" />
+    <Compile Include="Services\CoverManager.cs" />
     <Compile Include="UserControls\TagsDisplayControl.xaml.cs">
       <DependentUpon>TagsDisplayControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ValueConverters\ControlVisibilityFromNull.cs" />
     <Compile Include="ValueConverters\FileSizeConverter.cs" />
     <Compile Include="ValueConverters\GetRandomSolidColorBrush.cs" />
-    <Compile Include="ValueConverters\ControlVisibilityFromCount.cs" />
+    <Compile Include="ValueConverters\ControlVisibility.cs" />
     <Compile Include="ViewModels\TagManagerViewModel.cs" />
     <Compile Include="Views\FunctionChildPages\FindSameManga.xaml.cs">
       <DependentUpon>FindSameManga.xaml</DependentUpon>
@@ -511,9 +511,7 @@
       <Name>EroMangaDB</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <XliffResource Include="MultilingualResources\本子管理器.de.xlf" />
     <XliffResource Include="MultilingualResources\本子管理器.el.xlf" />

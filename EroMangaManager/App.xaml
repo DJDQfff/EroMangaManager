@@ -4,9 +4,7 @@
              xmlns:converter="using:EroMangaManager.ValueConverters">
     <Application.Resources>
         <ResourceDictionary>
-            <converter:ControlVisibilityFromNull x:Key="nullvisibilityconverter" />
-
-            <converter:ControlVisibilityFromCount x:Key="countvisibilityconverter" />
+            <converter:ControlVisibility x:Key="controlvisibilityconverter" />
             <converter:GetRandomSolidColorBrush x:Key="randomcolor" />
             <converter:FileSizeConverter x:Key="filesizeConverter" />
             <!--<Color x:Key="SystemAccentColor">#FFA500</Color>-->

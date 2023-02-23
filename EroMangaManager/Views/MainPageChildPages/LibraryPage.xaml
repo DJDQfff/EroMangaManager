@@ -22,7 +22,7 @@
                 VerticalAlignment="Center"
                 Click="addButton_Click"
                 x:Uid="/Resources/AddFolderButton"/>
-        <TextBlock  Visibility="{x:Bind app:App.Current.collectionObserver.MangaFolders.Count,Converter={StaticResource  countvisibilityconverter},Mode=OneWay}"
+        <TextBlock  Visibility="{x:Bind app:App.Current.collectionObserver.MangaFolders.Count,Converter={StaticResource  controlvisibilityconverter},Mode=OneWay}"
                    x:Name="HintAddFolderTextBlock"
                    x:Uid="/Resources/HintAddFirstFolder"
                    Foreground="RoyalBlue"
@@ -36,11 +36,12 @@
                   ItemsSource="{x:Bind app:App.Current.collectionObserver.MangaFolders, Mode=OneWay}"
                   SelectionMode="None">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="vm:MangasFolder"
-                              x:DefaultBindMode="OneWay">
+                <DataTemplate x:DataType="vm:MangasFolder">
                     <StackPanel Orientation="Horizontal"
                                 Background="Transparent"
                                 HorizontalAlignment="Stretch">
+                        <ProgressRing IsActive="True"
+                                      Visibility="{x:Bind IsInitialing,Mode=OneWay,Converter={StaticResource  controlvisibilityconverter}}" />
                         <TextBlock x:Name="folderTextBlock"
                                    VerticalAlignment="Center"
                                    Padding="0,0,4,0"
