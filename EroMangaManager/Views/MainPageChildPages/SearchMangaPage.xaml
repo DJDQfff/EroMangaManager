@@ -4,7 +4,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
-      xmlns:ui="using:Microsoft.Toolkit.Uwp.UI"
+      xmlns:winui="using:Microsoft.UI.Xaml.Controls"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -15,7 +15,6 @@
             <RowDefinition Height="737*" />
         </Grid.RowDefinitions>
         <toolkit:TokenizingTextBox Visibility="Collapsed" x:Name="tokenbox"
-                                   SuggestedItemsSource="{Binding searchMangaViewModel.AllTags}"
                                    HorizontalAlignment="Stretch"
                                    VerticalAlignment="Stretch"
                                    TextChanged="TokenizingTextBox_TextChanged"
@@ -26,11 +25,16 @@
                           FontFamily="Segoe MDL2 Assets" />
             </toolkit:TokenizingTextBox.QueryIcon>
 
-            <toolkit:TokenizingTextBox.SuggestedItemTemplate>
-                <DataTemplate x:DataType="x:String">
-                    <TextBlock Text="{x:Bind Mode=OneTime}" />
-                </DataTemplate>
-            </toolkit:TokenizingTextBox.SuggestedItemTemplate>
         </toolkit:TokenizingTextBox>
+
+        <!--<winui:ItemsRepeater Grid.Row="1" >
+            <winui:ItemsRepeater.Layout>
+                <toolkit:WrapLayout Orientation="Vertical"
+                                     VerticalSpacing="10"
+                                     HorizontalSpacing="10" />
+            </winui:ItemsRepeater.Layout>
+
+        </winui:ItemsRepeater>-->
+        
     </Grid>
 </Page>

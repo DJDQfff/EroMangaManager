@@ -1,9 +1,15 @@
 ﻿<Application x:Class="EroMangaManager.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:winui="using:Microsoft.UI.Xaml.Controls"
              xmlns:converter="using:EroMangaManager.ValueConverters">
     <Application.Resources>
-        <ResourceDictionary>
+        <winui:XamlControlsResources>    
+            
+            <winui:XamlControlsResources.MergedDictionaries>
+                <ResourceDictionary Source="Themes/DefaultTheme.xaml" />
+            </winui:XamlControlsResources.MergedDictionaries>      
+            
             <converter:ControlVisibilityFromNull x:Key="nullvisibilityconverter" />
 
             <converter:ControlVisibilityFromCount x:Key="countvisibilityconverter" />
@@ -11,9 +17,8 @@
             <converter:FileSizeConverter x:Key="filesizeConverter" />
             <!--<Color x:Key="SystemAccentColor">#FFA500</Color>-->
 
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Themes/DefaultTheme.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+        </winui:XamlControlsResources>
+
+
     </Application.Resources>
 </Application>
