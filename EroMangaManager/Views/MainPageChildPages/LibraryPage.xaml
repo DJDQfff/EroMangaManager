@@ -42,17 +42,26 @@
                                 HorizontalAlignment="Stretch">
                         <ProgressRing IsActive="True"
                                       Visibility="{x:Bind IsInitialing,Mode=OneWay,Converter={StaticResource  controlvisibilityconverter}}" />
-                        <TextBlock x:Name="folderTextBlock"
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <ProgressBar Grid.Column="0"
+                                         Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                         IsIndeterminate="True" Foreground="CornflowerBlue" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" />
+                            <TextBlock Text="{x:Bind  MangaBooks.Count,Mode=OneWay}"  MinWidth="50" VerticalAlignment="Center" 
+                                   TextAlignment="Center" />
+
+                                  <TextBlock x:Name="folderTextBlock" Grid.Column="1"
                                    VerticalAlignment="Center"
                                    Padding="0,0,4,0"
                                    Width="500"
                                    FontWeight="Black"
                                    Text="{x:Bind FolderPath,Mode=OneTime}" />
 
-                        <TextBlock Text="{x:Bind  MangaBooks.Count,Mode=OneWay}"
-                                   Width="60"
-                                   VerticalAlignment="Center"
-                                   TextAlignment="Center" />
+
+                        </Grid>
 
                         <StackPanel x:Name="StackButton"
                                     Orientation="Horizontal"
