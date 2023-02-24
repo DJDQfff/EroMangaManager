@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="WhatISTheAppContent.Text" xml:space="preserve">
+    <value>Il s’agit d’un logiciel de gestion des archives manga dans des formats compressés locaux</value>
+  </data>
+  <data name="WhatISTheAppTitle.Text" xml:space="preserve">
+    <value>Qu’est-ce que ce logiciel ?</value>
+  </data>
+  <data name="SupportedTypeContent.Text" xml:space="preserve">
+    <value>Fermeture éclair. Zip est un bon choix pour enregistrer des archives de bandes dessinées. D’autres formats sont certainement bien, mais pas nécessaires. Windows a un support intégré pour zip, et zip est gratuit et open source, ce qui est un compromis en termes de vitesse de décompression et de taux de compression.</value>
+  </data>
+  <data name="SupportedTypeTitle.Text" xml:space="preserve">
+    <value>Types pris en charge</value>
+  </data>
+  <data name="WhyZipRatherFolderContent.Text" xml:space="preserve">
+    <value>Si vous utilisez des dossiers, il y aura beaucoup de fichiers image individuels dispersés. Lors de l’exécution d’opérations de fichiers sur ces fichiers, cela sera très gênant et cela ne correspond pas au concept de conservation de la collection.</value>
+  </data>
+  <data name="WhyZipRatherFolderTitle.Text" xml:space="preserve">
+    <value>Pourquoi utiliser un format compressé au lieu d’un dossier</value>
+  </data>
+</root>

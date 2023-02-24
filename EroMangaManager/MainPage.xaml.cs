@@ -3,7 +3,7 @@ using System.Linq;
 
 using EroMangaManager.Models;
 using EroMangaManager.Views.MainPageChildPages;
-
+using EroMangaManager.Views;
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -91,6 +91,18 @@ namespace EroMangaManager
             {
                 MainFrame.Navigate(type);
             }
+        }
+
+        private void UpdateRecordItem_Tapped (object sender , Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(Views.SettingPageChildPages.UpdateRecordsPage));
+
+        }
+
+        private void UsageButton_Tapped (object sender , Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(Views.SettingPageChildPages.UsageDocumentPage));
+
         }
     }
 }

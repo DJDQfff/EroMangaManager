@@ -39,14 +39,10 @@ namespace EroMangaManager.Views.MainPageChildPages
             }
         }
 
-        private void UpdateRecordItem_Click (object sender , RoutedEventArgs e)
-        {
-            SettingFrame.Navigate(typeof(SettingPageChildPages.UpdateRecordsPage));
-        }
-
         private void SettingFrame_Loaded (object sender , RoutedEventArgs e)
         {
             SettingFrame.Navigate(typeof(SettingPageChildPages.AboutPage));
         }
+
     }
 }

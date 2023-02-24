@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="WhatISTheAppContent.Text" xml:space="preserve">
+    <value>Ito ay isang software para sa pamamahala ng mga archive ng manga sa mga lokal na naka compress na format</value>
+  </data>
+  <data name="WhatISTheAppTitle.Text" xml:space="preserve">
+    <value>Ano po ba ang software na ito</value>
+  </data>
+  <data name="SupportedTypeContent.Text" xml:space="preserve">
+    <value>Zip。 Ang zip ay isang magandang pagpipilian para sa pag save ng mga archive ng komiks. Ang iba pang mga format ay tiyak na maayos, ngunit hindi kinakailangan. Ang Windows ay may built in na suporta para sa zip, at ang zip ay libre at bukas na mapagkukunan, na isang kompromiso sa mga tuntunin ng bilis ng decompression at rate ng compression.</value>
+  </data>
+  <data name="SupportedTypeTitle.Text" xml:space="preserve">
+    <value>Mga suportado na uri</value>
+  </data>
+  <data name="WhyZipRatherFolderContent.Text" xml:space="preserve">
+    <value>Kung gumagamit ka ng mga folder, magkakaroon ng maraming mga nagkalat na indibidwal na mga file ng imahe. Kapag nagsasagawa ng mga operasyon ng file sa mga file na ito, ito ay magiging napaka hindi maginhawa, at hindi ito naaayon sa konsepto ng pag iingat ng koleksyon.</value>
+  </data>
+  <data name="WhyZipRatherFolderTitle.Text" xml:space="preserve">
+    <value>Bakit gumamit ng naka compress na format sa halip na isang folder</value>
+  </data>
+</root>

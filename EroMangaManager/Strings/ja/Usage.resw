@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="WhatISTheAppContent.Text" xml:space="preserve">
+    <value>これは、ローカル圧縮形式でマンガアーカイブを管理するためのソフトウェアです</value>
+  </data>
+  <data name="WhatISTheAppTitle.Text" xml:space="preserve">
+    <value>このソフトウェアは何ですか?</value>
+  </data>
+  <data name="SupportedTypeContent.Text" xml:space="preserve">
+    <value>ジップ。 Zipは、コミックアーカイブを保存するのに適しています。 他の形式は確かに問題ありませんが、必須ではありません。 Windowsにはzipのサポートが組み込まれており、zipは無料でオープンソースであり、解凍速度と圧縮率の点で妥協点です。</value>
+  </data>
+  <data name="SupportedTypeTitle.Text" xml:space="preserve">
+    <value>サポートされている型</value>
+  </data>
+  <data name="WhyZipRatherFolderContent.Text" xml:space="preserve">
+    <value>フォルダを使用すると、散在する個々の画像ファイルがたくさんなります。 これらのファイルに対してファイル操作を実行する場合、非常に不便であり、コレクション保存の概念に沿っていません。</value>
+  </data>
+  <data name="WhyZipRatherFolderTitle.Text" xml:space="preserve">
+    <value>フォルダーの代わりに圧縮形式を使用する理由</value>
+  </data>
+</root>

@@ -221,6 +221,9 @@
     <Compile Include="Views\SettingPageChildPages\UpdateRecordsPage.xaml.cs">
       <DependentUpon>UpdateRecordsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SettingPageChildPages\UsageDocumentPage.xaml.cs">
+      <DependentUpon>UsageDocumentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TestPage.xaml.cs">
       <DependentUpon>TestPage.xaml</DependentUpon>
     </Compile>
@@ -285,6 +288,19 @@
     <Content Include="Assets\SVGs\副本.svg" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
+    <PRIResource Include="Strings\zh-Hant\Usage.resw" />
+    <PRIResource Include="Strings\en\Usage.resw" />
+    <PRIResource Include="Strings\it\Usage.resw" />
+    <PRIResource Include="Strings\el\Usage.resw" />
+    <PRIResource Include="Strings\es\Usage.resw" />
+    <PRIResource Include="Strings\th\Usage.resw" />
+    <PRIResource Include="Strings\ja\Usage.resw" />
+    <PRIResource Include="Strings\fil\Usage.resw" />
+    <PRIResource Include="Strings\fr\Usage.resw" />
+    <PRIResource Include="Strings\ru\Usage.resw" />
+    <PRIResource Include="Strings\de\Usage.resw" />
+    <PRIResource Include="Strings\ko\Usage.resw" />
+    <PRIResource Include="Strings\zh-cn\Usage.resw" />
     <PRIResource Include="Strings\zh-Hant\AppxmanifestResources.resw" />
     <PRIResource Include="Strings\en\AppxmanifestResources.resw" />
     <PRIResource Include="Strings\it\AppxmanifestResources.resw" />
@@ -347,6 +363,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\TitleContentPairTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\TagsDisplayControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -372,10 +392,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\DefaultTheme.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\UpdateRecordPageTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -436,6 +452,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SettingPageChildPages\UpdateRecordsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingPageChildPages\UsageDocumentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

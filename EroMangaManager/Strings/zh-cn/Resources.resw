@@ -282,6 +282,9 @@
   <data name="UpdateRecordItem.Content" xml:space="preserve">
     <value>更新记录</value>
   </data>
+  <data name="UsageButton.Content" xml:space="preserve">
+    <value>使用说明</value>
+  </data>
   <data name="WhetherShowDialogBeforeDelete.Header" xml:space="preserve">
     <value>是否直接删除</value>
   </data>

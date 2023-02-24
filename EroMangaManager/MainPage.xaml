@@ -48,6 +48,20 @@
                 <Frame x:Name="MainFrame"
                        x:FieldModifier="public" />
             </NavigationView.Content>
+
+            <NavigationView.PaneFooter>
+                <StackPanel Orientation="Vertical" Margin="0"
+                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <NavigationViewItem Icon="Help"
+                            x:Uid="/Resources/UsageButton"
+                            x:Name="UsageButton" Tapped="UsageButton_Tapped" />
+                    <NavigationViewItem Icon="ShowResults"
+                            x:Uid="/Resources/UpdateRecordItem"
+                            x:Name="UpdateRecordItem" Tapped="UpdateRecordItem_Tapped" />
+
+                </StackPanel>
+
+            </NavigationView.PaneFooter>
         </NavigationView>
     </Grid>
 </Page>

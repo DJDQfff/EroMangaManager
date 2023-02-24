@@ -12,4 +12,181 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddFolderButton.Content" xml:space="preserve">
+    <value>Magdagdag ng folder</value>
+  </data>
+  <data name="BookcaseItem.Content" xml:space="preserve">
+    <value>istante ng libro</value>
+  </data>
+  <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Shelf ng mga libro ng komiks</value>
+  </data>
+  <data name="CommonSettingNavigationViewItem.Content" xml:space="preserve">
+    <value>Pangkalahatang mga setting</value>
+  </data>
+  <data name="DeleteButton.Content" xml:space="preserve">
+    <value>Tanggalin ang</value>
+  </data>
+  <data name="DeleteFileConfirmPage.PrimaryButtonText" xml:space="preserve">
+    <value>maging</value>
+  </data>
+  <data name="DeleteFileConfirmPage.SecondaryButtonText" xml:space="preserve">
+    <value>hindi naman</value>
+  </data>
+  <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
+    <value>Kumpirmahin ang pagtanggal ng mga file?</value>
+  </data>
+  <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
+    <value>Tanggalin ang source file</value>
+  </data>
+  <data name="ErrorZipPageButton.Content" xml:space="preserve">
+    <value>Exception Zip</value>
+  </data>
+  <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
+    <value>I-export sa PDF</value>
+  </data>
+  <data name="FilterImageONOFF.Header" xml:space="preserve">
+    <value>Kung paganahin ang pag filter ng isang pahina (ang pag on ng tampok na ito ay magpapabagal sa pagbubukas ng komiks)</value>
+  </data>
+  <data name="FilterImageONOFF.OffContent" xml:space="preserve">
+    <value>Hindi pinagana</value>
+  </data>
+  <data name="FilterImageONOFF.OnContent" xml:space="preserve">
+    <value>Pinagana</value>
+  </data>
+  <data name="FilterThisImage.Text" xml:space="preserve">
+    <value>Hindi ipinapakita ang figure na ito</value>
+  </data>
+  <data name="FullScreenToggle.Content" xml:space="preserve">
+    <value>Buong screen</value>
+  </data>
+  <data name="FunctionPageShower.Content" xml:space="preserve">
+    <value>toolbox</value>
+  </data>
+  <data name="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>toolbox</value>
+  </data>
+  <data name="Function_FindSameMangaName.Content" xml:space="preserve">
+    <value>Hanapin ang parehong mga komiks</value>
+  </data>
+  <data name="Function_RemoveRepeatTags.Content" xml:space="preserve">
+    <value>Alisin ang Duplicate Book subtab</value>
+  </data>
+  <data name="HintAddFirstFolder.Text" xml:space="preserve">
+    <value>Sa kasalukuyan ay walang mga folder, mangyaring idagdag ang iyong unang folder ng pag scan</value>
+  </data>
+  <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
+    <value>Buksan ang file</value>
+  </data>
+  <data name="LaunchFolderButton.Content" xml:space="preserve">
+    <value>Buksan ang folder</value>
+  </data>
+  <data name="LaunchFolderFlyoutItem.Text" xml:space="preserve">
+    <value>Buksan ang folder na iyong kinaroroonan</value>
+  </data>
+  <data name="ListItem.Content" xml:space="preserve">
+    <value>folder</value>
+  </data>
+  <data name="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Nakapin ang folder</value>
+  </data>
+  <data name="MailFeedback.Content" xml:space="preserve">
+    <value>Feedback sa email</value>
+  </data>
+  <data name="MangaTagDetailPage.CloseButtonText" xml:space="preserve">
+    <value>Magsara</value>
+  </data>
+  <data name="MangaTagDetailPage.PrimaryButtonText" xml:space="preserve">
+    <value>edit</value>
+  </data>
+  <data name="MangaTagEditPage.CloseButtonText" xml:space="preserve">
+    <value>Walang mga pagsasaayos</value>
+  </data>
+  <data name="MangaTagEditPage.PrimaryButtonText" xml:space="preserve">
+    <value>Kumpirmahin ang pagsasaayos</value>
+  </data>
+  <data name="MangaTags.Text" xml:space="preserve">
+    <value>Ang subtab na ito</value>
+  </data>
+  <data name="MangaTypes.Text" xml:space="preserve">
+    <value>Pag uuri ng label</value>
+  </data>
+  <data name="MenuItem1.Text" xml:space="preserve">
+    <value>Tingnan ang impormasyon</value>
+  </data>
+  <data name="NavigateUriButton.Content" xml:space="preserve">
+    <value>Buksan sa tindahan</value>
+  </data>
+  <data name="OpenButton.Content" xml:space="preserve">
+    <value>Buksan mo na</value>
+  </data>
+  <data name="OrderButton.Label" xml:space="preserve">
+    <value>Toggle pag aayos</value>
+  </data>
+  <data name="ReadItem.Content" xml:space="preserve">
+    <value>Pagbasa</value>
+  </data>
+  <data name="ReadItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Pagbasa</value>
+  </data>
+  <data name="RefreshButton.Label" xml:space="preserve">
+    <value>flushed na nga ba</value>
+  </data>
+  <data name="RemoveFolderButton.Content" xml:space="preserve">
+    <value>Alisin ang folder</value>
+  </data>
+  <data name="SaveAs.Text" xml:space="preserve">
+    <value>I-save Bilang</value>
+  </data>
+  <data name="SetAsDefaultBookcaseFolder.Content" xml:space="preserve">
+    <value>Itakda bilang default na folder ng pagtatanghal</value>
+  </data>
+  <data name="SetBack.Text" xml:space="preserve">
+    <value>ibalik ang</value>
+  </data>
+  <data name="SettingFilterImageButton.Content" xml:space="preserve">
+    <value>Salain ang gallery</value>
+  </data>
+  <data name="SettingTagButton.Content" xml:space="preserve">
+    <value>Pamamahala ng label</value>
+  </data>
+  <data name="ShowFolderBookcase.Content" xml:space="preserve">
+    <value>Idispley ang bookshelf</value>
+  </data>
+  <data name="StorageDeleteOption.Header" xml:space="preserve">
+    <value>Tanggalin ang pattern</value>
+  </data>
+  <data name="StorageDeleteOption.OffContent" xml:space="preserve">
+    <value>Lumipat sa Recycle Bin</value>
+  </data>
+  <data name="StorageDeleteOption.OnContent" xml:space="preserve">
+    <value>Tanggalin mula sa disk</value>
+  </data>
+  <data name="Tags.Content" xml:space="preserve">
+    <value>label</value>
+  </data>
+  <data name="TranslateButton.Label" xml:space="preserve">
+    <value>Pagsasalin</value>
+  </data>
+  <data name="UpdateRecordItem.Content" xml:space="preserve">
+    <value>I-update ang mga talaan</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.Header" xml:space="preserve">
+    <value>Kung direktang tanggalin</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.OffContent" xml:space="preserve">
+    <value>hindi naman</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete.OnContent" xml:space="preserve">
+    <value>maging</value>
+  </data>
+  <data name="NoChosenFolder.Text" xml:space="preserve">
+    <value>Walang napiling folder</value>
+  </data>
+  <data name="FindNavItem.Content" xml:space="preserve">
+    <value>Hanapin ang</value>
+  </data>
+  <data name="UsageButton.Content" xml:space="preserve">
+    <value>Mga tagubilin para sa paggamit</value>
+  </data>
 </root>

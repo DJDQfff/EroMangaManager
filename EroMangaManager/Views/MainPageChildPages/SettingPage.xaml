@@ -28,12 +28,6 @@
                        HorizontalContentAlignment="Stretch"
                        VerticalContentAlignment="Stretch" />
             </NavigationView.Content>
-            <NavigationView.PaneFooter>
-                <Button Margin="0"
-                        x:Uid="/Resources/UpdateRecordItem"
-                        x:Name="UpdateRecordItem"
-                        Click="UpdateRecordItem_Click" />
-            </NavigationView.PaneFooter>
         </NavigationView>
     </Grid>
 </Page>
