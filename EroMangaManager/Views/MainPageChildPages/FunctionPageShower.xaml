@@ -4,6 +4,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:converter="using:EroMangaManager.ValueConverters"
+xmlns:app="using:EroMangaManager"
       mc:Ignorable="d">
     <Page.Resources>
         <ResourceDictionary>
@@ -13,7 +14,15 @@
         </ResourceDictionary>
     </Page.Resources>
     <Grid Margin="36,0,0,0">
-        <VariableSizedWrapGrid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock x:Uid="/Resources/GollectionVMInitialingHint"
+                   Style="{StaticResource HintTextBlockStyle}"
+                   Visibility="{x:Bind app:App.Current.collectionObserver.IsContentInitializing,Mode=OneTime,Converter={StaticResource  controlvisibilityconverter}}" />
+        
+        <VariableSizedWrapGrid Grid.Row="1">
             <Button  x:Name="Function_FindSameMangaName"
                      x:Uid="/Resources/Function_FindSameMangaName"
                      Background="{x:Bind Converter={StaticResource randomcolor },Mode=OneTime}"

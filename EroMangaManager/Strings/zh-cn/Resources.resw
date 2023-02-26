@@ -180,6 +180,9 @@
   <data name="Function_RemoveRepeatTags.Content" xml:space="preserve">
     <value>移除重复本子标签</value>
   </data>
+  <data name="GollectionVMInitialingHint.Text" xml:space="preserve">
+    <value>正在初始化文件夹，现在使用工具功能可能出错</value>
+  </data>
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>目前没有文件夹，请添加你的第一个扫描文件夹</value>
   </data>

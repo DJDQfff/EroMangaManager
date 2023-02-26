@@ -14,8 +14,7 @@
         </Grid.RowDefinitions>
         <TextBlock x:Name="Bookcase_HintTextBlock" Grid.Row="0"
                    Grid.RowSpan="2"
-                   FontSize="40"
-                   Foreground="RoyalBlue"
+                   Style="{StaticResource HintTextBlockStyle}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    x:Uid="/Resources/NoChosenFolder"

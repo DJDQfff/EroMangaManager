@@ -25,9 +25,8 @@
         <TextBlock  Visibility="{x:Bind app:App.Current.collectionObserver.MangaFolders.Count,Converter={StaticResource  controlvisibilityconverter},Mode=OneWay}"
                     x:Name="HintAddFolderTextBlock"
                     x:Uid="/Resources/HintAddFirstFolder"
-                    Foreground="RoyalBlue"
                     Grid.Row="2"
-                    FontSize="40"
+                    Style="{StaticResource HintTextBlockStyle}"
                     HorizontalAlignment="Center" />
         <ListView x:Name="list"
                   HorizontalAlignment="Center"

@@ -333,6 +333,10 @@
           <source>使用说明</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Instructions for use</target>
         </trans-unit>
+        <trans-unit id="GollectionVMInitialingHint.Text" translate="yes" xml:space="preserve">
+          <source>正在初始化，现在使用工具功能可能出错</source>
+          <target state="new">正在初始化，现在使用工具功能可能出错</target>
+        </trans-unit>
       </group>
     </body>
   </file>
