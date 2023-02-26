@@ -23,6 +23,9 @@ namespace EroMangaManager.Views.SettingPageChildPages
     /// </summary>
     public sealed partial class UsageDocumentPage : Page
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public UsageDocumentPage ()
         {
             this.InitializeComponent();

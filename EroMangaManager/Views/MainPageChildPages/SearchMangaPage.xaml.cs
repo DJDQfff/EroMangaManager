@@ -17,6 +17,9 @@ namespace EroMangaManager.Views.MainPageChildPages
     {
         private TagManagerViewModel searchMangaViewModel;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public SearchMangaPage ()
         {
             this.InitializeComponent();

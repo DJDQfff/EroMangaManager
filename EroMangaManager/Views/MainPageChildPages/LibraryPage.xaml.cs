@@ -36,7 +36,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             if (folder != null)
             {
                 List<StorageFolder> folders;
-                (folders, _) = await folder.GetAllStorageItems();
+                folders=await folder.GetAllStorageFolder();
                 folders.Add(folder);//得把文件夹自身也加入扫描类中
                 foreach (var f in folders)
                 {

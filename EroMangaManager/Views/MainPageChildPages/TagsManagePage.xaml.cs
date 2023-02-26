@@ -23,6 +23,9 @@ namespace EroMangaManager.Views.MainPageChildPages
     /// </summary>
     public sealed partial class TagsManagePage : Page
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public TagsManagePage ()
         {
             this.InitializeComponent();
