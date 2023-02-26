@@ -5,6 +5,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:model="using:EroMangaManager.Models"
       mc:Ignorable="d"
+      Margin="28,0,0,0"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Grid>
         <ListView x:Name="listView"

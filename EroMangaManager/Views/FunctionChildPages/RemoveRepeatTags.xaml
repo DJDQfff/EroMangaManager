@@ -11,7 +11,7 @@
     xmlns:control="using:EroMangaManager.UserControls"
     xmlns:model="using:EroMangaManager.Models">
 
-    <Grid>
+    <Grid      >
         <ListView  ItemsSource="{x:Bind app:App.Current.collectionObserver.MangaFolders}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="vm:MangasFolder">
