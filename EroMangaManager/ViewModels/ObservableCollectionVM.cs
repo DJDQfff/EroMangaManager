@@ -48,7 +48,10 @@ namespace EroMangaManager.ViewModels
                 return list;
             }
         }
-
+        /// <summary>
+        /// MangasFolder是否正在更新，有任意一个是则返回true
+        /// </summary>
+        public bool IsContentInitializing=> MangaFolders.Any((x)=>x.IsInitialing==true);
         /// <summary>流的内容不是 zip 存档格式。</summary>
         internal ObservableCollection<MangaBook> NonZipList { get; } = new ObservableCollection<MangaBook>();
 
