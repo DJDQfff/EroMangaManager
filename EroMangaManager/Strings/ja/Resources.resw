@@ -189,4 +189,7 @@
   <data name="UsageButton.Content" xml:space="preserve">
     <value>使用説明書</value>
   </data>
+  <data name="GollectionVMInitialingHint.Text" xml:space="preserve">
+    <value>フォルダを初期化し、ツール機能を使用するとエラーが発生する場合があります</value>
+  </data>
 </root>

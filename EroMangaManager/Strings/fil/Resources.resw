@@ -189,4 +189,7 @@
   <data name="UsageButton.Content" xml:space="preserve">
     <value>Mga tagubilin para sa paggamit</value>
   </data>
+  <data name="GollectionVMInitialingHint.Text" xml:space="preserve">
+    <value>Initializing folder, ngayon gamit ang tampok na tool ay maaaring magkaroon ng isang error</value>
+  </data>
 </root>

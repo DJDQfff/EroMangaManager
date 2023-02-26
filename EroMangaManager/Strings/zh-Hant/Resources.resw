@@ -189,4 +189,7 @@
   <data name="UsageButton.Content" xml:space="preserve">
     <value>使用說明</value>
   </data>
+  <data name="GollectionVMInitialingHint.Text" xml:space="preserve">
+    <value>正在初始化資料夾，現在使用工具功能可能出錯</value>
+  </data>
 </root>

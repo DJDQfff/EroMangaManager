@@ -189,4 +189,7 @@
   <data name="UsageButton.Content" xml:space="preserve">
     <value>Οδηγίες χρήσης</value>
   </data>
+  <data name="GollectionVMInitialingHint.Text" xml:space="preserve">
+    <value>Προετοιμασία φακέλου, τώρα χρησιμοποιώντας τη δυνατότητα εργαλείου ενδέχεται να έχει σφάλμα</value>
+  </data>
 </root>

@@ -334,8 +334,8 @@
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Instrucciones de uso</target>
         </trans-unit>
         <trans-unit id="GollectionVMInitialingHint.Text" translate="yes" xml:space="preserve">
-          <source>正在初始化，现在使用工具功能可能出错</source>
-          <target state="new">正在初始化，现在使用工具功能可能出错</target>
+          <source>正在初始化文件夹，现在使用工具功能可能出错</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">La inicialización de la carpeta, ahora usando la función de herramienta puede tener un error</target>
         </trans-unit>
       </group>
     </body>

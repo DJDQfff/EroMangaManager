@@ -1,7 +1,5 @@
 # 要实现的目标
 
-* 给ObservableCollectionVM也添加一个IsInitialize属性，并显示出来（比如FunctionPage
-
 * 写一个标签搜索控件
 
 * Tag管理页面：用于管理所有Tag，
@@ -59,6 +57,7 @@
 ## 2023.2.26
 
 * 给libraryPage添加一个丑不拉几的本子加载中进度条
+* 给ObservableCollectionVM也添加一个IsContentInitializing属性，并在FunctionPage上显示一个控件，提示正在初始化
 
 ## 2023.2.24
 

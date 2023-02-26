@@ -189,4 +189,7 @@
   <data name="UsageButton.Content" xml:space="preserve">
     <value>Mode d’emploi</value>
   </data>
+  <data name="GollectionVMInitialingHint.Text" xml:space="preserve">
+    <value>L’initialisation du dossier, maintenant à l’aide de la fonctionnalité de l’outil peut avoir une erreur</value>
+  </data>
 </root>
