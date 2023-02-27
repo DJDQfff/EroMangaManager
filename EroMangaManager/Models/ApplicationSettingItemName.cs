@@ -22,6 +22,10 @@
         /// <summary>
         /// 默认的Bookcase展示的页面
         /// </summary>
-        DefaultBookcaseFolder
+        DefaultBookcaseFolder,
+        /// <summary>
+        /// 是否在LibraryPage显示空漫画的文件夹
+        /// </summary>
+        IsEmptyFolderShow
     }
 }

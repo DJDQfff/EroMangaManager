@@ -36,7 +36,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             if (folder != null)
             {
                 List<StorageFolder> folders;
-                folders=await folder.GetAllStorageFolder();
+                folders = await folder.GetAllStorageFolder();
                 folders.Add(folder);//得把文件夹自身也加入扫描类中
                 foreach (var f in folders)
                 {
@@ -84,6 +84,21 @@ namespace EroMangaManager.Views.MainPageChildPages
             var datacontext = button.DataContext as MangasFolder;
 
             ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.DefaultBookcaseFolder.ToString()] = datacontext.FolderPath;
+        }
+
+        private void ToggleSwitch_Toggled (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            ToggleSwitch toggleSwitch = sender as ToggleSwitch;
+            ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.IsEmptyFolderShow.ToString()] = toggleSwitch.IsOn;
+
+        }
+
+        private void ToggleSwitch_Loaded (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            ToggleSwitch toggleSwitch = sender as ToggleSwitch;
+            var a = (bool) (ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.IsEmptyFolderShow.ToString()] ?? false);
+            toggleSwitch.IsOn = a;
+
         }
     }
 }

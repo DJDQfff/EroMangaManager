@@ -73,6 +73,14 @@ namespace EroMangaManager.ViewModels
             {
                 await folder.Initial();
             }
+            // TODO 用这样的话，所有的都卡着不动，这是不是线程死锁？
+           // List<Task> tasks = new List<Task>();
+           // foreach(var folder in MangaFolders)
+           // {
+           //     Task task = new Task( async() => await folder.Initial());
+           //     tasks.Add(task);
+           // }
+           //await  Task.WhenAll(tasks);
         }
 
         /// <summary>

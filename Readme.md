@@ -1,5 +1,11 @@
 # 要实现的目标
 
+* 在初始化OCvM时，可以添加新文件夹，两个文件夹一起初始化，这说明这可以多线程的，研究研究
+
+* 修改FunctionRepeatManagaPage，修改RepeatManager项目，变得通用
+
+* 修改FunctionRepeatMangaPage 的UI，改为使用CommandBar，不要再用那么多打开，删除
+
 * 写一个标签搜索控件
 
 * Tag管理页面：用于管理所有Tag，
@@ -13,6 +19,8 @@
 * 添加更多排序方式，把排序方式添加到设置
 
 * 在LibraryPage中添加一个开关，是否显示本子数为0 的文件夹
+  
+  > 发现有点麻烦，以后再弄
 
 * MangaBook类各个功能打散
 

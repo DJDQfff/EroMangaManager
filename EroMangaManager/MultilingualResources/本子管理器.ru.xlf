@@ -337,6 +337,18 @@
           <source>正在初始化文件夹，现在使用工具功能可能出错</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Инициализация папки, теперь с помощью функции инструмента может возникнуть ошибка</target>
         </trans-unit>
+        <trans-unit id="IsEmptyFolderShow.Header" translate="yes" xml:space="preserve">
+          <source>是否显示空文件夹</source>
+          <target state="new">是否显示空文件夹</target>
+        </trans-unit>
+        <trans-unit id="IsEmptyFolderShow.OffContent" translate="yes" xml:space="preserve">
+          <source>否</source>
+          <target state="new">否</target>
+        </trans-unit>
+        <trans-unit id="IsEmptyFolderShow.OnContent" translate="yes" xml:space="preserve">
+          <source>是</source>
+          <target state="new">是</target>
+        </trans-unit>
       </group>
     </body>
   </file>

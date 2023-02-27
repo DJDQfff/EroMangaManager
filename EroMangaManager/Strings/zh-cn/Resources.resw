@@ -186,6 +186,15 @@
   <data name="HintAddFirstFolder.Text" xml:space="preserve">
     <value>目前没有文件夹，请添加你的第一个扫描文件夹</value>
   </data>
+  <data name="IsEmptyFolderShow.Header" xml:space="preserve">
+    <value>是否显示空文件夹</value>
+  </data>
+  <data name="IsEmptyFolderShow.OffContent" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="IsEmptyFolderShow.OnContent" xml:space="preserve">
+    <value>是</value>
+  </data>
   <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
     <value>打开文件</value>
   </data>
