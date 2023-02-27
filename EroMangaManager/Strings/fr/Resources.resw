@@ -192,4 +192,13 @@
   <data name="GollectionVMInitialingHint.Text" xml:space="preserve">
     <value>L’initialisation du dossier, maintenant à l’aide de la fonctionnalité de l’outil peut avoir une erreur</value>
   </data>
+  <data name="IsEmptyFolderShow.Header" xml:space="preserve">
+    <value>Si les dossiers vides sont affichés</value>
+  </data>
+  <data name="IsEmptyFolderShow.OffContent" xml:space="preserve">
+    <value>non</value>
+  </data>
+  <data name="IsEmptyFolderShow.OnContent" xml:space="preserve">
+    <value>être</value>
+  </data>
 </root>

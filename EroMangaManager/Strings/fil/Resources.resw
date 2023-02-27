@@ -192,4 +192,13 @@
   <data name="GollectionVMInitialingHint.Text" xml:space="preserve">
     <value>Initializing folder, ngayon gamit ang tampok na tool ay maaaring magkaroon ng isang error</value>
   </data>
+  <data name="IsEmptyFolderShow.Header" xml:space="preserve">
+    <value>Kung ang mga walang laman na folder ay ipinapakita</value>
+  </data>
+  <data name="IsEmptyFolderShow.OffContent" xml:space="preserve">
+    <value>hindi naman</value>
+  </data>
+  <data name="IsEmptyFolderShow.OnContent" xml:space="preserve">
+    <value>maging</value>
+  </data>
 </root>

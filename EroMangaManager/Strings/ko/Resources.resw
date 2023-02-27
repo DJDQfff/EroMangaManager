@@ -192,4 +192,13 @@
   <data name="GollectionVMInitialingHint.Text" xml:space="preserve">
     <value>폴더 초기화, 이제 도구 기능을 사용하면 오류가 발생할 수 있습니다.</value>
   </data>
+  <data name="IsEmptyFolderShow.Header" xml:space="preserve">
+    <value>빈 폴더의 표시 여부</value>
+  </data>
+  <data name="IsEmptyFolderShow.OffContent" xml:space="preserve">
+    <value>안</value>
+  </data>
+  <data name="IsEmptyFolderShow.OnContent" xml:space="preserve">
+    <value>있다</value>
+  </data>
 </root>

@@ -339,15 +339,15 @@
         </trans-unit>
         <trans-unit id="IsEmptyFolderShow.Header" translate="yes" xml:space="preserve">
           <source>是否显示空文件夹</source>
-          <target state="new">是否显示空文件夹</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">빈 폴더의 표시 여부</target>
         </trans-unit>
         <trans-unit id="IsEmptyFolderShow.OffContent" translate="yes" xml:space="preserve">
           <source>否</source>
-          <target state="new">否</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">안</target>
         </trans-unit>
         <trans-unit id="IsEmptyFolderShow.OnContent" translate="yes" xml:space="preserve">
           <source>是</source>
-          <target state="new">是</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">있다</target>
         </trans-unit>
       </group>
     </body>

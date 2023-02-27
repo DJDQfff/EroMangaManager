@@ -192,4 +192,13 @@
   <data name="GollectionVMInitialingHint.Text" xml:space="preserve">
     <value>L'inizializzazione della cartella, ora utilizzando la funzione strumento potrebbe avere un errore</value>
   </data>
+  <data name="IsEmptyFolderShow.Header" xml:space="preserve">
+    <value>Se vengono visualizzate cartelle vuote</value>
+  </data>
+  <data name="IsEmptyFolderShow.OffContent" xml:space="preserve">
+    <value>non</value>
+  </data>
+  <data name="IsEmptyFolderShow.OnContent" xml:space="preserve">
+    <value>essere</value>
+  </data>
 </root>

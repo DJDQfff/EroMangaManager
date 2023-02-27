@@ -192,4 +192,13 @@
   <data name="GollectionVMInitialingHint.Text" xml:space="preserve">
     <value>การเริ่มต้นโฟลเดอร์ตอนนี้ใช้คุณสมบัติเครื่องมืออาจมีข้อผิดพลาด</value>
   </data>
+  <data name="IsEmptyFolderShow.Header" xml:space="preserve">
+    <value>โฟลเดอร์ว่างจะแสดงขึ้นหรือไม่</value>
+  </data>
+  <data name="IsEmptyFolderShow.OffContent" xml:space="preserve">
+    <value>ไม่</value>
+  </data>
+  <data name="IsEmptyFolderShow.OnContent" xml:space="preserve">
+    <value>คือ</value>
+  </data>
 </root>

@@ -514,9 +514,9 @@
       <Project>{94295f5e-a01c-43f1-947d-47d521f56e09}</Project>
       <Name>BaiduTranslate</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\RepeatItemChecker\RepeatItemGroup\RepeatItems.csproj">
-      <Project>{b039a356-3dec-4107-88f0-c06cefa40358}</Project>
-      <Name>RepeatItems</Name>
+    <ProjectReference Include="..\..\RepeatItemChecker\RepeatItemsChecker.Core\RepeatItemsChecker.Core.csproj">
+      <Project>{65481f91-552b-45b2-9ffa-09dea94dc910}</Project>
+      <Name>RepeatItemsChecker.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\我的API库\MyStandard20Library\MyStandard20Library.csproj">
       <Project>{5e80b947-fde4-4336-abb7-e57139b8fc2b}</Project>

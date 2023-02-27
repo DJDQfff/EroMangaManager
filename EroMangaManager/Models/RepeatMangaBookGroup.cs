@@ -1,6 +1,6 @@
 ﻿namespace EroMangaManager.Models
 {
-    internal class RepeatMangaBookGroup : RepeatItems.RepeatItemGroup<string , MangaBook>
+    internal class RepeatMangaBookGroup : RepeatItemsChecker.Core.Models .RepeatItemGroup<string , MangaBook>
     {
     }
 }

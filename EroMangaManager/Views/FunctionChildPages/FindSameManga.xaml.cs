@@ -3,7 +3,8 @@
 using EroMangaManager.Models;
 using EroMangaManager.Views.MainPageChildPages;
 
-using RepeatItems;
+using RepeatItemsChecker.Core.Models;
+using RepeatItemsChecker.Core.ViewModels;
 
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;

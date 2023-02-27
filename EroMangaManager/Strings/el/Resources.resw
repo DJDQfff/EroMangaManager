@@ -192,4 +192,13 @@
   <data name="GollectionVMInitialingHint.Text" xml:space="preserve">
     <value>Προετοιμασία φακέλου, τώρα χρησιμοποιώντας τη δυνατότητα εργαλείου ενδέχεται να έχει σφάλμα</value>
   </data>
+  <data name="IsEmptyFolderShow.Header" xml:space="preserve">
+    <value>Εάν εμφανίζονται οι άδειοι φάκελοι</value>
+  </data>
+  <data name="IsEmptyFolderShow.OffContent" xml:space="preserve">
+    <value>όχι</value>
+  </data>
+  <data name="IsEmptyFolderShow.OnContent" xml:space="preserve">
+    <value>είμαι</value>
+  </data>
 </root>
