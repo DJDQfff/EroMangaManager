@@ -37,15 +37,15 @@ namespace EroMangaDB.Helper
         /// <summary>
         /// 按左右括号分离tag并解析
         /// </summary>
-        /// <param name="tagstring"></param>
+        /// <param name="_MangaFileName">传入漫画文件名（不带后缀）</param>
         /// <returns></returns>
-        public static List<string> SplitAndParser (this string tagstring)
+        public static List<string> SplitAndParser (this string _MangaFileName)
         {
             string left = "[【（({";// 左括号
             string right = "]】)）}";// 右括号
             string lr = left + right;// 所有括号
 
-            string[] tagsarray = tagstring.Split(lr.ToCharArray());              // 初步分解
+            string[] tagsarray = _MangaFileName.Split(lr.ToCharArray());              // 初步分解
 
             List<string> tagslist = new List<string>(tagsarray);
 
@@ -61,8 +61,8 @@ namespace EroMangaDB.Helper
             {
                 foreach (var tag in tagslist)                           // 查找漫画名Tag
                 {
-                    int index = tagstring.IndexOf(tag);
-                    char c = tagstring[index - 1];// 这里要改一下，不能直接用左边一位
+                    int index = _MangaFileName.IndexOf(tag);
+                    char c = _MangaFileName[index - 1];// 这里要改一下，不能直接用左边一位
                     if (!left.Contains(c))                              // 查找方法：该Tag左边为无括号或者为右括号
                     {                                                   //          等价于：左边不是左括号
                         tagslist.Remove(tag);                           // 如果存在，则调整位置，把漫画名Tag移到集合头部
@@ -84,7 +84,7 @@ namespace EroMangaDB.Helper
 
             if (!flaghaveMangaName)
             {
-                tagslist.Insert(0 , null);                             // 如果不存在MangaName，则以空字符串为默认名
+                tagslist.Insert(0 , _MangaFileName);          // 如果不存在MangaName，则以文件名为本子名
             }
 
             return tagslist;
