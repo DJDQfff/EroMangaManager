@@ -9,6 +9,11 @@ namespace EroMangaDB.Helper
     /// </summary>
     public static class TagArrayHelper
     {
+       const  string left = "[【（({";// 左括号
+        const string right = "]】)）}";// 右括号
+       const  string lr = left + right;// 所有括号
+
+
         /// <summary>
         /// 是否左右括号成对
         /// </summary>
@@ -16,14 +21,11 @@ namespace EroMangaDB.Helper
         /// <returns></returns>
         public static bool canbePair (this string tagstring)
         {
-            char[] chars1 = { '[' , '【' , '（' , '(' , '{' };// 左括号
-            char[] chars2 = { ']' , '】' , '）' , ')' , '}' };// 右括号
-            char[][] chars = { chars1 , chars2 };
 
             for (int i = 0 ; i < 5 ; i++)
             {
-                int count1 = tagstring.Count(n => n == chars[0][i]);
-                int count2 = tagstring.Count(n => n == chars[1][i]);
+                int count1 = tagstring.Count(n => n == left[i]);
+                int count2 = tagstring.Count(n => n == right[i]);
                 if (count1 != count2)
                 {
                     return false;
@@ -41,9 +43,6 @@ namespace EroMangaDB.Helper
         /// <returns></returns>
         public static List<string> SplitAndParser (this string _MangaFileName)
         {
-            string left = "[【（({";// 左括号
-            string right = "]】)）}";// 右括号
-            string lr = left + right;// 所有括号
 
             string[] tagsarray = _MangaFileName.Split(lr.ToCharArray());              // 初步分解
 
