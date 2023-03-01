@@ -40,27 +40,25 @@ namespace EroMangaManager.Models
             get => imagesource;
         }
 
-        /// <summary> 文件路径 </summary>
-        private string _filePath;
+        /// <summary> 漫画文件路径 </summary>
+        public string FilePath { get; }
 
         /// <summary> 获取文件的扩展名 </summary>
-        public string ExtensionName => Path.GetExtension(_filePath).ToLower();
+        public string FileExtension => Path.GetExtension(FilePath).ToLower();
 
         /// <summary> 文件Display名（不带扩展名） </summary>
-        public string FileDisplayName => Path.GetFileNameWithoutExtension(_filePath);
+        public string FileDisplayName => Path.GetFileNameWithoutExtension(FilePath);
 
-        /// <summary> 漫画文件路径 </summary>
-        public string FilePath => _filePath;
 
         /// <summary>
         /// 获取漫画文件大小。单位：字节
         /// </summary>
         public ulong FileSize => StorageFile.GetBasicPropertiesAsync().AsTask().Result.Size;
         /// <summary> 漫画所在文件夹路径 </summary>
-        public string FolderPath => Path.GetDirectoryName(_filePath);
+        public string FolderPath => Path.GetDirectoryName(FilePath);
 
-        /// <summary> 漫画文件名（全名，带扩展名） </summary>
-        public string FileName => Path.GetFileName(_filePath);
+        /// <summary> 漫画文件名（全名，带扩展名，不包含文件夹名） </summary>
+        public string FileFullName => Path.GetFileName(FilePath);
 
         /// <summary> 本子对应具体文件 </summary>
         public StorageFile StorageFile { get; }
@@ -93,7 +91,7 @@ namespace EroMangaManager.Models
         public MangaBook (StorageFile storageFile , StorageFolder storageFolder )
         {
             string path = storageFile.Path;
-            _filePath = path;
+            FilePath = path;
             StorageFolder = storageFolder;
             StorageFile = storageFile;
         }
