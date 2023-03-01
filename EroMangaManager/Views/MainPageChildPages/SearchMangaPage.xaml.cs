@@ -24,7 +24,7 @@ namespace EroMangaManager.Views.MainPageChildPages
         {
             this.InitializeComponent();
             var mangas = App.Current.collectionObserver.MangaList;
-            searchMangaViewModel = new TagManagerViewModel(mangas.Select(x => x.MangaTags));
+            searchMangaViewModel = new TagManagerViewModel(mangas.Select(x => x.MangaTagsIncludedInFileName));
         }
 
         private void TokenizingTextBox_TextChanged (AutoSuggestBox sender , AutoSuggestBoxTextChangedEventArgs args)

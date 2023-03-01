@@ -70,8 +70,8 @@ namespace EroMangaManager.Models
         /// <summary> 本子名字 </summary>
         public virtual string MangaName{  get; }
 
-        /// <summary> 本子Tag </summary>
-        public string[] MangaTags { get; }
+        /// <summary> 包含在文件名中的本子Tag </summary>
+        public string[] MangaTagsIncludedInFileName { get; }
 
         /// <summary> 漫画翻译后的断名称 </summary>
         public string TranslatedMangaName { set; get; }
@@ -88,7 +88,7 @@ namespace EroMangaManager.Models
             StorageFile = storageFile;
             var tags=FileDisplayName.SplitAndParser();
             MangaName= tags[0];
-            MangaTags = tags.Skip(1).ToArray();
+            MangaTagsIncludedInFileName = tags.Skip(1).ToArray();
         }
         private void NotifyPropertyChanged ([CallerMemberName] string propertyName = "")
         {
