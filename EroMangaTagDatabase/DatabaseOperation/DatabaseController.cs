@@ -16,7 +16,7 @@ namespace EroMangaDB
         /// </summary>
         public static BasicController DatabaseController;
 
-        private DataBase_1 database;
+        private DataBase_Version2 database;
 
         static BasicController ()
         {
@@ -28,7 +28,7 @@ namespace EroMangaDB
         /// </summary>
         private BasicController ()
         {
-            database = new DataBase_1();
+            database = new DataBase_Version2();
         }
 
         /// <summary>

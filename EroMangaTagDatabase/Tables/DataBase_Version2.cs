@@ -7,7 +7,7 @@ namespace EroMangaDB.Tables
     /// <summary>
     /// 数据库类
     /// </summary>
-    public class DataBase_1 : DbContext
+    public class DataBase_Version2 : DbContext
     {
         /// <summary>
         /// 存储用户添加的不显示的图片的数据库表
@@ -29,9 +29,9 @@ namespace EroMangaDB.Tables
         /// <summary>
         /// 构造函数
         /// </summary>
-        public DataBase_1 ()
+        public DataBase_Version2 ()
         {
-            ConnectionString = "Data Source=DataBase_1.db";
+            ConnectionString = "Data Source=DataBase_Version2.db";
         }
 
         /// <summary>

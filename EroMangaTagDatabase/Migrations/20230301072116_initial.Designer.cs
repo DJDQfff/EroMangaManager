@@ -2,14 +2,16 @@
 using EroMangaDB.Tables;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EroMangaDB.Migrations
 {
-    [DbContext(typeof(DataBase_1))]
-    partial class DataBase_1ModelSnapshot : ModelSnapshot
+    [DbContext(typeof(DataBase_Version2))]
+    [Migration("20230301072116_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,62 +32,6 @@ namespace EroMangaDB.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("FilteredImages");
-                });
-
-            modelBuilder.Entity("EroMangaDB.Entities.MangaTagInfo", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("AbsolutePath")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Author")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("CM_session")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("DisplayName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsDL")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("IsFullColor")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Language")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("LongShort")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("MagazinePublished")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("MangaName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("NonMosaic")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("PaisIsDouble")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Relative_ACG")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Translator")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UnknownTags")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("ManTagInfos");
                 });
 
             modelBuilder.Entity("EroMangaDB.Entities.ReadingInfo", b =>
@@ -120,7 +66,7 @@ namespace EroMangaDB.Migrations
                     b.ToTable("ReadingInfos");
                 });
 
-            modelBuilder.Entity("EroMangaDB.Entities.TatCategory", b =>
+            modelBuilder.Entity("EroMangaDB.Entities.TagCategory", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
