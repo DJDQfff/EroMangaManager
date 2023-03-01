@@ -12,28 +12,6 @@ namespace EroMangaDB.Helper
        const  string left = "[【（({";// 左括号
         const string right = "]】)）}";// 右括号
        const  string lr = left + right;// 所有括号
-
-
-        /// <summary>
-        /// 是否左右括号成对
-        /// </summary>
-        /// <param name="tagstring"></param>
-        /// <returns></returns>
-        public static bool canbePair (this string tagstring)
-        {
-
-            for (int i = 0 ; i < 5 ; i++)
-            {
-                int count1 = tagstring.Count(n => n == left[i]);
-                int count2 = tagstring.Count(n => n == right[i]);
-                if (count1 != count2)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
         // TODO  把Split分解为两个方法，一个获取没有包含在对称括号中的tag（一般而言都是MangaName），一个获取包含在对称括号中的tag
 
         /// <summary>
@@ -87,6 +65,26 @@ namespace EroMangaDB.Helper
             }
 
             return tagslist;
+        }
+
+        /// <summary>
+        /// 是否左右括号成对
+        /// </summary>
+        /// <param name="tagstring"></param>
+        /// <returns></returns>
+        public static bool canbePair (this string tagstring)
+        {
+
+            for (int i = 0 ; i < 5 ; i++)
+            {
+                int count1 = tagstring.Count(n => n == left[i]);
+                int count2 = tagstring.Count(n => n == right[i]);
+                if (count1 != count2)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

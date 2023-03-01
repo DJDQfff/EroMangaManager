@@ -31,11 +31,6 @@
                           x:Name="TranslateButton"
                           x:Uid="/Resources/TranslateButton"
                           Icon="Font" />
-            <AppBarButton Click="RefreshMangaList"
-                          x:Name="RefreshButton"
-                          x:Load="False"
-                          Icon="Refresh"
-                          x:Uid="/Resources/RefreshButton" />
         </CommandBar>
 
         <GridView x:Name="Bookcase_GridView"

@@ -62,21 +62,6 @@ namespace EroMangaManager.Views.MainPageChildPages
             }
         }
 
-        //TODO 改变了数据绑定源，还要修改
-        private async void RefreshMangaList (object sender , Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            AppBarButton button = sender as AppBarButton;
-            button.IsEnabled = false;
-
-            await CoverHelper.ClearCovers();
-
-            var folder = (await MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder()).ToArray();
-
-            await App.Current.collectionObserver.Initialize(folder);
-
-            button.IsEnabled = true;
-        }
-
         //TODO 因为原来的Bookcase被拆分为Bookcase和Bookcase两个类，所以这个方法现在有bug
         private async void TranslateEachMangaName (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {

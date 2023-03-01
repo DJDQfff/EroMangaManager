@@ -79,11 +79,10 @@ namespace EroMangaManager.Models
                 return a.ToArray();
     }
      }
-        // TODO
 
         /// <summary> 漫画翻译后的断名称 </summary>
         public string TranslatedMangaName { set; get; }
-        //TODO
+        //TODO 翻译漫画名的功能
          
         /// <summary> 实例化EroManga </summary>
         /// <param name="storageFile"> </param>
