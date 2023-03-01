@@ -74,48 +74,28 @@ namespace EroMangaManager.Models
         /// <summary> 本子所属文件夹 </summary>
         public StorageFolder StorageFolder { set; get; }
 
-        /// <summary>
-        /// 当前阅读信息
-        /// </summary>
-        public ReadingInfo ReadingInfo { set; get; }
-
         /// <summary> 本子名字 </summary>
         /// <summary> 漫画名称 </summary>
-        public virtual string MangaName
-        {
-            get => ReadingInfo.MangaName;
-            set
-            {
-                ReadingInfo.MangaName = value;
-                NotifyPropertyChanged();
-            }
-        }
+        public virtual string MangaName { set; get; }
 
         /// <summary> 本子Tag </summary>
-        public string[] MangaTags => ReadingInfo.TagPieces.Split('\r');
+        public string[] MangaTags;
+        // TODO
 
         /// <summary> 漫画翻译后的断名称 </summary>
-        public string TranslatedMangaName
-        {
-            get => ReadingInfo.MangaName_Translated;
-            set
-            {
-                ReadingInfo.MangaName_Translated = value;
-                NotifyPropertyChanged();
-            }
-        }
-
+        public string TranslatedMangaName { set; get; }
+        //TODO
+         
         /// <summary> 实例化EroManga </summary>
         /// <param name="storageFile"> </param>
         /// <param name="storageFolder">所属文件夹</param>
         /// <param name="info"></param>
-        public MangaBook (StorageFile storageFile , StorageFolder storageFolder , ReadingInfo info)
+        public MangaBook (StorageFile storageFile , StorageFolder storageFolder )
         {
             string path = storageFile.Path;
             _filePath = path;
             StorageFolder = storageFolder;
             StorageFile = storageFile;
-            ReadingInfo = info;
         }
         private void NotifyPropertyChanged ([CallerMemberName] string propertyName = "")
         {

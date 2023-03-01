@@ -35,8 +35,6 @@ namespace EroMangaManager.Views.InteractPages
         {
             this.InitializeComponent();
             mangaBook = _mangaBook;
-            var tags = _mangaBook.ReadingInfo.TagPieces.Split('\r');
-            taglist = new ObservableCollection<string>(tags);
 
             comboxitemlist = DatabaseController.TagCategory_QueryAll().Keys.ToList();
             comboxitemlist.Add("忽略此标签");

@@ -143,7 +143,7 @@ namespace EroMangaManager
             }
 
             var file = args.Files[0] as Windows.Storage.StorageFile;
-            MangaBook mangaBook = new MangaBook(file , null , null);
+            MangaBook mangaBook = new MangaBook(file , null );
             mangaBook.Cover = CoverHelper.DefaultCover;
             rootFrame.Navigate(typeof(ReadPage) , mangaBook);
 

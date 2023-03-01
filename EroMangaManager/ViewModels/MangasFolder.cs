@@ -57,7 +57,6 @@ namespace EroMangaManager.ViewModels
         {
             IsInitialing = true;
             var files = await StorageFolder.GetFilesAsync();
-            ReadingInfo[] tags = DatabaseController.ReadingInfo_QueryAll();
 
             List<ReadingInfo> add = new List<ReadingInfo>();
             // 这里如果使用 list<task> 的话，会出bug
@@ -74,18 +73,7 @@ namespace EroMangaManager.ViewModels
                     break;  // 如果不是zip文件，则跳过
                 }
 
-                ReadingInfo readingInfo;
-                try
-                {   //
-                    readingInfo = tags.Single(n => n.AbsolutePath == storageFile.Path);
-                }
-                catch (InvalidOperationException)
-                {
-                    readingInfo = ReadingInfoFactory.Creat(storageFile.Path);
-                    add.Add(readingInfo);
-                }
-
-                MangaBook manga = new MangaBook(storageFile , StorageFolder , readingInfo);
+                MangaBook manga = new MangaBook(storageFile , StorageFolder );
                 manga.Cover = CoverHelper.DefaultCover;
 
                 MangaBooks.Add(manga);
@@ -104,7 +92,6 @@ namespace EroMangaManager.ViewModels
                 }
             }
 
-            await DatabaseController.ReadingInfo_AddMulti(add);
             IsInitialing = false;
         }
         /// <summary>
