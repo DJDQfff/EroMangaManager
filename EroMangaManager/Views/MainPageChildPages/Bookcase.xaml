@@ -29,6 +29,7 @@
                           x:Uid="/Resources/OrderButton" />
             <AppBarButton Click="TranslateEachMangaName"
                           x:Name="TranslateButton"
+                          x:Load="False"
                           x:Uid="/Resources/TranslateButton"
                           Icon="Font" />
         </CommandBar>
