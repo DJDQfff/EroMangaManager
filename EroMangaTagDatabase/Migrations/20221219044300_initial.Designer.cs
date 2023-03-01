@@ -114,7 +114,7 @@ namespace EroMangaDB.Migrations
                     b.Property<int>("ReadingPosition")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("TagPieces")
+                    b.Property<string>("TagsAddedByUser")
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");

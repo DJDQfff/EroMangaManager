@@ -11,6 +11,7 @@ using Windows.Storage;
 
 using static EroMangaDB.BasicController;
 using static Windows.Storage.AccessCache.StorageApplicationPermissions;
+using System.Threading;
 
 namespace EroMangaManager.ViewModels
 {
@@ -69,18 +70,25 @@ namespace EroMangaManager.ViewModels
                 MangaFolders.Add(mangasFolder);
             };
 
-            foreach(var folder in MangaFolders)
+            foreach (var folder in MangaFolders)
             {
                 await folder.Initial();
             }
             // TODO 用这样的话，所有的都卡着不动，这是不是线程死锁？
-           // List<Task> tasks = new List<Task>();
-           // foreach(var folder in MangaFolders)
-           // {
-           //     Task task = new Task( async() => await folder.Initial());
-           //     tasks.Add(task);
-           // }
-           //await  Task.WhenAll(tasks);
+            List<Task> tasks = new List<Task>();
+            //foreach (var folder in MangaFolders)
+            //{
+            //    var f = folder;
+            //    Task task = new Task(async () => await f.Initial());
+            //    tasks.Add(task);
+            //}
+            //await Task.WhenAll(tasks);
+
+            //foreach(var f in MangaFolders)
+            //{
+            //    Thread thread = new Thread(async () => await f.Initial());
+            //    thread.Start();
+            //}
         }
 
         /// <summary>

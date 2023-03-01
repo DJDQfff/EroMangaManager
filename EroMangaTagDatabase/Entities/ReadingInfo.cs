@@ -32,7 +32,7 @@
         /// <summary>
         /// 以 \r 分割的各个标签（不包括本子名）
         /// </summary>
-        public string TagPieces { set; get; }
+        public string TagsAddedByUser { set; get; }
 
         /// <summary>
         ///  内容是否被翻译过

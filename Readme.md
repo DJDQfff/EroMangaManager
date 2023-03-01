@@ -62,6 +62,11 @@
 
 # 更新日志
 
+## 2023.3.1
+
+* MangaBook初始化时不设置ReadingInof了，MangaName和Tags属性改为由方法获取
+* 不在ReadingInfo里放文件名自带的tag了（改为需要时，从文件名即时解析），添加一个TagsAddedByUser属性
+
 ## 2023.2.26
 
 * 给libraryPage添加一个丑不拉几的本子加载中进度条

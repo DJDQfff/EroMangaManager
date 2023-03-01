@@ -29,7 +29,7 @@ namespace EroMangaDB.EntityFactory
                 MangaName = manganame ,
                 MangaName_Translated = manganame ,// 未翻译的情况下，直接以原名作为翻译名，省去了判断是否翻译的麻烦
 
-                TagPieces = string.Join("\r" , tags) ,
+                TagsAddedByUser = string.Join("\r" , tags) ,
                 ReadingPosition = 0
             };
 

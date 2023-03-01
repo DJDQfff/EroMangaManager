@@ -26,7 +26,7 @@ namespace EroMangaManager.Views.InteractPages
         public MangaTagDetail (MangaBook _mangaBook)
         {
             this.InitializeComponent();
-            var tags = readingInfo.TagPieces.Split('\r');
+            var tags = readingInfo.TagsAddedByUser.Split('\r');
             var list = DatabaseController.MatchTag(tags);
             foreach (var l in list)
             {

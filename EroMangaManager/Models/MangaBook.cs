@@ -5,13 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 using EroMangaDB.Entities;
-
-/*
- * 简化版EroManga类
- * 只能获取本子名，是否无修，是否全彩、是否汉化、
- * 解压第一页图至应用临时文件夹下”PrimaryPicture"文件夹
- */
-
+using EroMangaDB.Helper;
 using EroMangaManager.Helpers;
 
 using Windows.Storage;
@@ -75,11 +69,18 @@ namespace EroMangaManager.Models
         public StorageFolder StorageFolder { set; get; }
 
         /// <summary> 本子名字 </summary>
-        /// <summary> 漫画名称 </summary>
-        public virtual string MangaName { set; get; }
+        public virtual string MangaName =>( FileDisplayName.SplitAndParser())[0];
 
         /// <summary> 本子Tag </summary>
-        public string[] MangaTags;
+        public string[] MangaTags 
+        {
+            get
+            {
+                var a = FileDisplayName.SplitAndParser();
+                a.RemoveAt(0);
+                return a.ToArray();
+    }
+     }
         // TODO
 
         /// <summary> 漫画翻译后的断名称 </summary>
@@ -89,7 +90,6 @@ namespace EroMangaManager.Models
         /// <summary> 实例化EroManga </summary>
         /// <param name="storageFile"> </param>
         /// <param name="storageFolder">所属文件夹</param>
-        /// <param name="info"></param>
         public MangaBook (StorageFile storageFile , StorageFolder storageFolder )
         {
             string path = storageFile.Path;
