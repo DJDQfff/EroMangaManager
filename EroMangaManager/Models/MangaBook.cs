@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
@@ -67,18 +68,10 @@ namespace EroMangaManager.Models
         public StorageFolder StorageFolder { set; get; }
 
         /// <summary> 本子名字 </summary>
-        public virtual string MangaName =>( FileDisplayName.SplitAndParser())[0];
+        public virtual string MangaName{  get; }
 
         /// <summary> 本子Tag </summary>
-        public string[] MangaTags 
-        {
-            get
-            {
-                var a = FileDisplayName.SplitAndParser();
-                a.RemoveAt(0);
-                return a.ToArray();
-    }
-     }
+        public string[] MangaTags { get; }
 
         /// <summary> 漫画翻译后的断名称 </summary>
         public string TranslatedMangaName { set; get; }
@@ -93,6 +86,9 @@ namespace EroMangaManager.Models
             FilePath = path;
             StorageFolder = storageFolder;
             StorageFile = storageFile;
+            var tags=FileDisplayName.SplitAndParser();
+            MangaName= tags[0];
+            MangaTags = tags.Skip(1).ToArray();
         }
         private void NotifyPropertyChanged ([CallerMemberName] string propertyName = "")
         {
