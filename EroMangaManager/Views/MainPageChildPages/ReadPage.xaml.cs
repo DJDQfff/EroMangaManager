@@ -85,8 +85,10 @@ namespace EroMangaManager.Views.MainPageChildPages
             async Task SetNewSource (MangaBook newmanga)
             {
                 currentManga = newmanga;
-                currentReader?.Dispose();
+                var oldreader = currentReader;
                 currentReader = new ReaderVM(manga);             
+                //oldreader?.Dispose();
+                // TODO 需要优化
 
                 FLIP.ItemsSource = currentReader.bitmapImages;
 
