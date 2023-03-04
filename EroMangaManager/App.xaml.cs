@@ -37,7 +37,7 @@ namespace EroMangaManager
         private async Task Initial ()
         {
 #if DEBUG
-            await Windows.System.Launcher.LaunchFolderAsync(ApplicationData.Current.LocalFolder);
+            //await Windows.System.Launcher.LaunchFolderAsync(ApplicationData.Current.LocalFolder);
 #endif
             DatabaseController.Migrate();
 

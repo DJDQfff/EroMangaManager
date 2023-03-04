@@ -25,7 +25,7 @@
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>arm</AppxBundlePlatforms>
     <AppInstallerUri>file:///c</AppInstallerUri>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
@@ -286,6 +286,7 @@
     <Content Include="Assets\AppImage\Wide310x150Logo.scale-400.png" />
     <Content Include="Assets\SVGs\书籍.svg" />
     <Content Include="Assets\SVGs\副本.svg" />
+    <None Include="DJDQfff For UWP.pfx" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <PRIResource Include="Strings\zh-Hant\Usage.resw" />
