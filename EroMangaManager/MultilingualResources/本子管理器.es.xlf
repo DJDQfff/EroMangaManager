@@ -202,8 +202,9 @@
           <target state="needs-review-translation" state-qualifier="mt-suggestion">La carpeta está anclada</target>
         </trans-unit>
         <trans-unit id="MailFeedback.Content" translate="yes" xml:space="preserve">
-          <source>邮件反馈</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Comentarios por correo electrónico</target>
+          <source>邮件反馈djdqfff@qq.com</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Comentarios por correo electrónico djdqfff@qq.com</target>
+          <note from="MultilingualUpdate" annotates="source" priority="2">Please verify the translation’s accuracy as the source string was updated after it was translated.</note>
         </trans-unit>
         <trans-unit id="MangaTagDetailPage.CloseButtonText" translate="yes" xml:space="preserve">
           <source>关闭</source>

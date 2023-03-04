@@ -86,6 +86,7 @@ namespace EroMangaManager.Models
             FilePath = path;
             StorageFolder = storageFolder;
             StorageFile = storageFile;
+
             var tags=FileDisplayName.SplitAndParser();
             MangaName= tags[0];
             MangaTagsIncludedInFileName = tags.Skip(1).ToArray();
