@@ -57,33 +57,45 @@ namespace EroMangaManager.Views.MainPageChildPages
         private void removeButton_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             var button = sender as Button;
-            var storageFolder = button.DataContext as MangasFolder;
-
+            var storageFolder = list.SelectedItem as MangasFolder;
+            if (storageFolder != null)
+            {
             App.Current.collectionObserver.RemoveFolder(storageFolder);
+
+            }
         }
 
         private async void LauncherFolder (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             var button = sender as Button;
-            var mf = button.DataContext as MangasFolder;
+            var mf = list.SelectedItem as MangasFolder;
+            if (mf != null)
+            {
+                await Windows.System.Launcher.LaunchFolderAsync(mf.StorageFolder);
 
-            await Windows.System.Launcher.LaunchFolderAsync(mf.StorageFolder);
+            }
         }
 
         private void JumpToBookcase_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             var button = sender as Button;
-            var datacontext = button.DataContext as MangasFolder;
-
+            var datacontext = list.SelectedItem as MangasFolder;
+            if (datacontext != null)
+            {
             MainPage.Current.MainFrame.Navigate(typeof(Bookcase) , datacontext);
+
+            }
         }
 
         private void SetAsDefaultBookcaseFolder_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             var button = sender as Button;
-            var datacontext = button.DataContext as MangasFolder;
-
+            var datacontext =list.SelectedItem  as MangasFolder;
+            if (datacontext != null)
+            {
             ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.DefaultBookcaseFolder.ToString()] = datacontext.FolderPath;
+
+            }
         }
 
         private void ToggleSwitch_Toggled (object sender , Windows.UI.Xaml.RoutedEventArgs e)
