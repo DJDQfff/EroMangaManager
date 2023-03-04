@@ -14,6 +14,7 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
+
         <FlipView x:Name="FLIP" Tapped="FLIP_Tapped"
                   Grid.Row="0"
                   Grid.Column="0"
@@ -41,19 +42,21 @@
                 </DataTemplate>
             </FlipView.ItemTemplate>
         </FlipView>
-        <VariableSizedWrapGrid Grid.Row="0" 
-                               x:Load="True"
-                               x:Name="ReadPageButtonGroup"
-                               FlowDirection="RightToLeft">
-            <ToggleButton Margin="12"
-                          Width="118"
-                          IsChecked="False"
-                          Height="89"
-                          Checked="ToggleButton_Checked"
-                          Unchecked="ToggleButton_Unchecked">
+        
+        <CommandBar Grid.Row="0" Background="Transparent"
+                    x:Load="True" FlowDirection="LeftToRight"
+                    x:Name="ReadPageButtonGroup">
+            <CommandBar.PrimaryCommands>
+                <AppBarToggleButton Margin="12"
+                                    Width="118"
+                                    IsChecked="False"
+                                    Height="89"
+                                    Checked="AppBarToggleButton_Checked"
+                                    Unchecked="AppBarToggleButton_Unchecked"
+                                    Icon="FullScreen" />
 
-                <SymbolIcon Symbol="FullScreen" />
-            </ToggleButton>
-        </VariableSizedWrapGrid>
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+
     </Grid>
 </Page>

@@ -230,7 +230,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             }
         }
 
-        private void ToggleButton_Checked (object sender , RoutedEventArgs e)
+        private void AppBarToggleButton_Checked (object sender , RoutedEventArgs e)
         {
             var applicationView = ApplicationView.GetForCurrentView();
 
@@ -241,13 +241,13 @@ namespace EroMangaManager.Views.MainPageChildPages
 
         }
 
-        private void ToggleButton_Unchecked (object sender , RoutedEventArgs e)
+        private void AppBarToggleButton_Unchecked (object sender , RoutedEventArgs e)
         {
             var applicationView = ApplicationView.GetForCurrentView();
 
             applicationView.ExitFullScreenMode();
             MainPage.Current.MainNavigationView.IsPaneToggleButtonVisible = true;
-        }
 
+        }
     }
 }

@@ -24,7 +24,7 @@
                 VerticalAlignment="Center"
                 Click="addButton_Click"
                 x:Uid="/Resources/AddFolderButton" />
-        <Grid Visibility="Visible" x:Name="ControlGrid"
+        <Grid Visibility="Visible" x:Name="ControlGrid" HorizontalAlignment="Center"
               Grid.Row="2">
             <StackPanel x:Name="StackButton"
                         Orientation="Horizontal"
