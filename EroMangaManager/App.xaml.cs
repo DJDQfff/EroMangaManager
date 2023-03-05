@@ -11,7 +11,6 @@ using Microsoft.Toolkit.Uwp.Notifications;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Resources;
-using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -57,12 +56,11 @@ namespace EroMangaManager
                 new ToastContentBuilder()
                     .AddText(str)
                     .Show();
-            };      
+            };
 
             var folder = MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder().Result.ToArray();
 
-            await   collectionObserver.Initialize(folder);
-
+            await collectionObserver.Initialize(folder);
         }
 
         /// <summary>
@@ -115,7 +113,6 @@ namespace EroMangaManager
             }
 
             await Initial();
-
         }
 
         /// <summary> </summary>
@@ -143,7 +140,7 @@ namespace EroMangaManager
             }
 
             var file = args.Files[0] as Windows.Storage.StorageFile;
-            MangaBook mangaBook = new MangaBook(file , null );
+            MangaBook mangaBook = new MangaBook(file , null);
             mangaBook.Cover = CoverHelper.DefaultCover;
             rootFrame.Navigate(typeof(ReadPage) , mangaBook);
 
@@ -172,7 +169,5 @@ namespace EroMangaManager
 
             deferral.Complete();
         }
-
-        
     }
 }

@@ -7,7 +7,6 @@
                 Value="36" />
         <Setter Property="TextWrapping"
                 Value="Wrap" />
-
     </Style>
     <Style TargetType="TextBlock"
            x:Key="ContentOfPair">

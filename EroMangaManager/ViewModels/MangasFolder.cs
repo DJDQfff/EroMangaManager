@@ -7,37 +7,34 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using EroMangaDB.Entities;
-using EroMangaDB.EntityFactory;
 
 using EroMangaManager.Helpers;
 using EroMangaManager.Models;
 
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-
 using Windows.Storage;
-
-using static EroMangaDB.BasicController;
 
 namespace EroMangaManager.ViewModels
 {
-    internal class MangasFolder:INotifyPropertyChanged
+    internal class MangasFolder : INotifyPropertyChanged
 
     {
         public StorageFolder StorageFolder { get; }
 
-        private bool _IsInitialiing=false;
+        private bool _IsInitialiing = false;
+
         /// <summary>
         /// 是否在更新数据
         /// </summary>
-        public bool IsInitialing 
-        { 
+        public bool IsInitialing
+        {
             set
             {
                 _IsInitialiing = value;
                 PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(""));
             }
             get => _IsInitialiing;
-        } 
+        }
+
         public string FolderPath => StorageFolder.Path;
 
         public ObservableCollection<MangaBook> MangaBooks { get; } = new ObservableCollection<MangaBook>();
@@ -73,7 +70,7 @@ namespace EroMangaManager.ViewModels
                     break;  // 如果不是zip文件，则跳过
                 }
 
-                MangaBook manga = new MangaBook(storageFile , StorageFolder );
+                MangaBook manga = new MangaBook(storageFile , StorageFolder);
                 manga.Cover = CoverHelper.DefaultCover;
 
                 MangaBooks.Add(manga);
@@ -94,25 +91,25 @@ namespace EroMangaManager.ViewModels
 
             IsInitialing = false;
         }
+
         /// <summary>
         /// 对内部漫画进行排序
         /// </summary>
         /// <typeparam name="TKey"></typeparam>
         /// <param name="func"></param>
-        public void SortMangaBooks<TKey>(Func<MangaBook ,TKey> func) 
+        public void SortMangaBooks<TKey> (Func<MangaBook , TKey> func)
         {
-
-          var list=MangaBooks.OrderBy(func);        //OrderBy方法不会修改源数据，返回的值是与源挂钩的，源清零，返回值也清零
+            var list = MangaBooks.OrderBy(func);        //OrderBy方法不会修改源数据，返回的值是与源挂钩的，源清零，返回值也清零
 
             var list2 = new List<MangaBook>(list);
             MangaBooks.Clear();
 
-          foreach(var book in list2)
+            foreach (var book in list2)
             {
                 MangaBooks.Add(book);
             }
-
         }
+
         public void RemoveManga (MangaBook mangaBook)
         {
             MangaBooks.Remove(mangaBook);

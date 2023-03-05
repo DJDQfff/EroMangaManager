@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Concurrent;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,7 +10,6 @@ using Windows.Storage;
 
 using static EroMangaDB.BasicController;
 using static Windows.Storage.AccessCache.StorageApplicationPermissions;
-using System.Threading;
 
 namespace EroMangaManager.ViewModels
 {
@@ -49,20 +47,21 @@ namespace EroMangaManager.ViewModels
                 return list;
             }
         }
+
         /// <summary>
         /// MangasFolder是否正在更新，有任意一个是则返回true
         /// </summary>
-        public bool IsContentInitializing=> MangaFolders.Any((x)=>x.IsInitialing==true);
+        public bool IsContentInitializing => MangaFolders.Any((x) => x.IsInitialing == true);
+
         /// <summary>流的内容不是 zip 存档格式。</summary>
         internal ObservableCollection<MangaBook> NonZipList { get; } = new ObservableCollection<MangaBook>();
-
 
         /// <summary>ViewModel初始化</summary>
         public async Task Initialize (params StorageFolder[] storageFolders)
         {
             MangaFolders.Clear();
             NonZipList.Clear();
-            
+
             //TODO 现在这个是顺序执行，试试多线程方法，加快速度
             foreach (var folder in storageFolders)
             {

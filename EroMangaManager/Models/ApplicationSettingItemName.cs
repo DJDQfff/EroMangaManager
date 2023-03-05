@@ -19,10 +19,12 @@
         /// 删除模式，是移动到回收站还是直接磁盘删除
         /// </summary>
         StorageDeleteOption,
+
         /// <summary>
         /// 默认的Bookcase展示的页面
         /// </summary>
         DefaultBookcaseFolder,
+
         /// <summary>
         /// 是否在LibraryPage显示空漫画的文件夹
         /// </summary>

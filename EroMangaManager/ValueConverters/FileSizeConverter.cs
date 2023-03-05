@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EroMangaManager.ValueConverters
 {
-    internal class FileSizeConverter:Windows.UI.Xaml.Data.IValueConverter
+    internal class FileSizeConverter : Windows.UI.Xaml.Data.IValueConverter
     {
         public object Convert (object value , Type targetType , object parameter , string language)
         {
-            var size=(ulong) value;
+            var size = (ulong) value;
             var kb = size >> 10;
             var mb = kb >> 10;
             if (mb > 1000)
@@ -22,7 +18,6 @@ namespace EroMangaManager.ValueConverters
             {
                 return mb + "MB";
             }
-
         }
 
         public object ConvertBack (object value , Type targetType , object parameter , string language)

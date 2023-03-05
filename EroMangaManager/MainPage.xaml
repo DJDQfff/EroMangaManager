@@ -11,7 +11,6 @@
                         x:FieldModifier="public"
                         OpenPaneLength="200"
                         FlowDirection="LeftToRight"
-                        
                         IsBackButtonVisible="Collapsed"
                         IsSettingsVisible="True"
                         ItemInvoked="MainNavigationView_ItemInvoked"
@@ -22,18 +21,22 @@
 
                 <NavigationViewItem x:Name="BookcaseItem"
                                     x:Uid="/Resources/BookcaseItem"
-                                    Icon="Library"/>
+                                    Icon="Library" />
                 <NavigationViewItem  x:Uid="/Resources/ListItem"
-                                    Icon="List"
-                                    x:Name="ListItem" />
-                <NavigationViewItem x:Name="ReadItem" Visibility="Collapsed" x:FieldModifier="public"
+                                     Icon="List"
+                                     x:Name="ListItem" />
+                <NavigationViewItem x:Name="ReadItem"
+                                    Visibility="Collapsed"
+                                    x:FieldModifier="public"
                                     x:Uid="/Resources/ReadItem"
                                     Icon="Read" />
-                <NavigationViewItem x:Name="SearchMangaPage" Visibility="Collapsed"
+                <NavigationViewItem x:Name="SearchMangaPage"
+                                    Visibility="Collapsed"
                                     Icon="Find"
                                     x:Uid="/Resources/FindNavItem" />
-<!-- TODO 弄这个的话要搞数据库，还得先把MangaTagEdit的页面调好-->
-                <NavigationViewItem x:Name="TagsManagePage" Visibility="Collapsed"
+                <!-- TODO 弄这个的话要搞数据库，还得先把MangaTagEdit的页面调好-->
+                <NavigationViewItem x:Name="TagsManagePage"
+                                    Visibility="Collapsed"
                                     Icon="Tag"
                                     x:Uid="/Resources/Tags" />
                 <NavigationViewItem  x:Name="FunctionPageShower"
@@ -50,17 +53,19 @@
             </NavigationView.Content>
 
             <NavigationView.PaneFooter>
-                <StackPanel Orientation="Vertical" Margin="0"
-                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Vertical"
+                            Margin="0"
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Stretch">
                     <NavigationViewItem Icon="Help"
-                            x:Uid="/Resources/UsageButton"
-                            x:Name="UsageButton" Tapped="UsageButton_Tapped" />
+                                        x:Uid="/Resources/UsageButton"
+                                        x:Name="UsageButton"
+                                        Tapped="UsageButton_Tapped" />
                     <NavigationViewItem Icon="ShowResults"
-                            x:Uid="/Resources/UpdateRecordItem"
-                            x:Name="UpdateRecordItem" Tapped="UpdateRecordItem_Tapped" />
-
+                                        x:Uid="/Resources/UpdateRecordItem"
+                                        x:Name="UpdateRecordItem"
+                                        Tapped="UpdateRecordItem_Tapped" />
                 </StackPanel>
-
             </NavigationView.PaneFooter>
         </NavigationView>
     </Grid>
