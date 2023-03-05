@@ -72,7 +72,7 @@ namespace EroMangaManager.ViewModels
 
                 MangaBook manga = new MangaBook(storageFile , StorageFolder);
                 //manga.Cover = CoverHelper.DefaultCover;
-              
+                manga.CoverPath = CoverHelper.DefaultCoverPath;
                 MangaBooks.Add(manga);
 
                 try

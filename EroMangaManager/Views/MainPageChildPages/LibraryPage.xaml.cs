@@ -82,6 +82,10 @@ namespace EroMangaManager.Views.MainPageChildPages
             var datacontext = list.SelectedItem as MangasFolder;
             if (datacontext != null)
             {
+                if (!datacontext.IsInitialing)
+                {
+
+                }
             MainPage.Current.MainFrame.Navigate(typeof(Bookcase) , datacontext);
 
             }
