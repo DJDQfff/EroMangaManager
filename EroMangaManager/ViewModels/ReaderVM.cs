@@ -20,6 +20,13 @@ namespace EroMangaManager.ViewModels
     /// </summary>
     public class ReaderVM : IDisposable
     {
+        /// <summary>
+        /// 现在是否在打开这个本子，如果是的话，这个为真，否则，为假。设置这个是因为加载所有图片很长，有时候图正在加载中，本子就关闭了，需要这个作为
+        /// </summary>
+        private bool _IsClosing = false;
+
+        // TODO 改为使用多线程，信号量，来关闭进程
+
         /// <summary> </summary>
         public MangaBook manga { set; get; }
 
@@ -51,6 +58,8 @@ namespace EroMangaManager.ViewModels
         /// <summary> 从压缩文件的所有entry中，筛选出符合条件的 </summary>
         public async Task SelectEntriesAsync (bool IsFilterImageOn , bool whetherShow = true)
         {
+            if (_IsClosing)
+                return;
             Stream TempStream = await manga.StorageFile.OpenStreamForReadAsync();
 
             var TempZipArchive = ArchiveFactory.Open(TempStream);
@@ -68,6 +77,10 @@ namespace EroMangaManager.ViewModels
                     zipArchiveEntries.Add(entry);// 异步操作不能放在这里，会占用线程
                     if (whetherShow)
                     {
+                        if (_IsClosing)
+
+                            break;
+
                         bitmapImages.Add(await ShowEntryAsync(entry));
                     }
                 }
@@ -77,9 +90,9 @@ namespace EroMangaManager.ViewModels
         /// <summary> </summary>
         public void Dispose ()
         {
+            _IsClosing = true;
             zipArchiveEntries.Clear();
 
-           
             bitmapImages.Clear();
             zipArchive.Dispose();
             stream.Dispose();

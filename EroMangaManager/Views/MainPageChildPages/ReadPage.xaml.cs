@@ -86,9 +86,8 @@ namespace EroMangaManager.Views.MainPageChildPages
             {
                 currentManga = newmanga;
                 var oldreader = currentReader;
-                currentReader = new ReaderVM(manga);             
-                //oldreader?.Dispose();
-                // TODO 需要优化
+                currentReader = new ReaderVM(manga);
+                oldreader?.Dispose();
 
                 FLIP.ItemsSource = currentReader.bitmapImages;
 
