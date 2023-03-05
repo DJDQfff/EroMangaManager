@@ -139,6 +139,9 @@
     <Compile Include="Models\ApplicationSettingItemName.cs" />
     <Compile Include="Models\RepeatMangaBookGroup.cs" />
     <Compile Include="Services\CoverManager.cs" />
+    <Compile Include="UserControls\MangaBookCover.xaml.cs">
+      <DependentUpon>MangaBookCover.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\TagsDisplayControl.xaml.cs">
       <DependentUpon>TagsDisplayControl.xaml</DependentUpon>
     </Compile>
@@ -365,6 +368,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\TitleContentPairTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\MangaBookCover.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

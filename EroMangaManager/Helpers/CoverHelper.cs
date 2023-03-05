@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using EroMangaManager.Models;
 
+using iText.Layout.Font;
+
 using SharpCompress.Archives;
 
 using SkiaSharp;
@@ -51,9 +53,12 @@ namespace EroMangaManager.Helpers
         /// </summary>
         public static void InitialDefaultCover ()
         {
-            _imageSource = new SvgImageSource(new Uri("ms-appx:///Assets/SVGs/书籍.svg"));
+            _imageSource = new SvgImageSource(new Uri(DefaultCoverPath));
         }
-
+        /// <summary>
+        /// 默认书籍封面路径
+        /// </summary>
+        public static string DefaultCoverPath =>"ms-appx:///Assets/SVGs/书籍.svg";
         /// <summary>
         /// 获取默认封面
         /// </summary>
@@ -64,8 +69,9 @@ namespace EroMangaManager.Helpers
         /// </summary>
         /// <param name="storageFile"></param>
         /// <returns></returns>
-        public static async Task CreatCoverFile_Origin_SharpCompress (this StorageFile storageFile)
+        public static async Task<string> CreatCoverFile_Origin_SharpCompress (this StorageFile storageFile)
         {
+            string path = null;
             StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
             Stream stream = await storageFile.OpenStreamForReadAsync();
             try
@@ -77,17 +83,19 @@ namespace EroMangaManager.Helpers
                         bool canuse = entry.EntryFilter(true);
                         if (canuse)
                         {
-                            string path = Path.Combine(coverfolder.Path , storageFile.DisplayName + ".jpg");
+                            path = Path.Combine(coverfolder.Path , storageFile.DisplayName + ".jpg");
                             entry.WriteToFile(path);
                             break;
                         }
                     }
                 }
+                return path;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+
         }
 
         /// <summary> 调用系统API，返回缩率图 </summary>
@@ -128,15 +136,16 @@ namespace EroMangaManager.Helpers
 
         /// <summary> 尝试创建封面文件。 </summary>
         /// <returns> </returns>
-        public static async Task TryCreatCoverFileAsync (StorageFile storageFile)
+        public static async Task<string> TryCreatCoverFileAsync (StorageFile storageFile)
         {
+            string path;
             StorageFolder folder = await GetChildTemporaryFolder(nameof(Covers));
             IStorageItem storageItem = await folder.TryGetItemAsync(storageFile.DisplayName + ".jpg");
             if (storageItem is null)
             {
                 try
                 {
-                    await CoverHelper.CreatCoverFile_Origin_SharpCompress(storageFile);
+                   path= await CoverHelper.CreatCoverFile_Origin_SharpCompress(storageFile);
                 }
                 catch (Exception ex)
                 {
@@ -160,6 +169,13 @@ namespace EroMangaManager.Helpers
                 ////    await CoverHelper.CreatOriginCoverFile_UsingZipArchiveEntry(storageFile);
                 ////}
             }
+            else
+            {
+                path = storageItem.Path;
+
+            }
+
+            return path;
         }
 
         #region 不用

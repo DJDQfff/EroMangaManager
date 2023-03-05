@@ -14,6 +14,17 @@ namespace EroMangaManager.Models
     /// <summary> 本子 </summary>
     public class MangaBook : INotifyPropertyChanged
     {
+
+        private string coverPath;
+        public string CoverPath
+        {
+            get => coverPath;
+            set
+            {
+                coverPath = value;
+                NotifyPropertyChanged(nameof(CoverPath)); 
+            }
+        }
         /// <summary>
         ///
         /// </summary>
