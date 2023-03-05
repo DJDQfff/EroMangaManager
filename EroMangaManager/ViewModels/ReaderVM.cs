@@ -68,6 +68,9 @@ namespace EroMangaManager.ViewModels
 
             foreach (var name in names)
             {
+                if (_IsClosing)
+                    return;
+
                 var TempEntry = TempZipArchive.Entries.Single(n => n.Key == name);
                 bool cansue = await Task.Run(() => TempEntry.EntryFilter(IsFilterImageOn)); // 放在这里可以
 
@@ -78,8 +81,7 @@ namespace EroMangaManager.ViewModels
                     if (whetherShow)
                     {
                         if (_IsClosing)
-
-                            break;
+                            return;
 
                         bitmapImages.Add(await ShowEntryAsync(entry));
                     }
