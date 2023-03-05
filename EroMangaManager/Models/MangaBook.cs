@@ -30,21 +30,6 @@ namespace EroMangaManager.Models
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private ImageSource imagesource;
-
-        /// <summary>
-        /// 封面图像
-        /// </summary>
-        public ImageSource Cover
-        {
-            set
-            {
-                imagesource = value;
-                NotifyPropertyChanged();
-            }
-            get => imagesource;
-        }
-
         /// <summary> 漫画文件路径 </summary>
         public string FilePath { get; }
 

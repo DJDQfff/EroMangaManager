@@ -141,7 +141,7 @@ namespace EroMangaManager
 
             var file = args.Files[0] as Windows.Storage.StorageFile;
             MangaBook mangaBook = new MangaBook(file , null);
-            mangaBook.Cover = CoverHelper.DefaultCover;
+            mangaBook.CoverPath = CoverHelper.DefaultCoverPath;
             rootFrame.Navigate(typeof(ReadPage) , mangaBook);
 
             Window.Current.Activate();

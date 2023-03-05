@@ -31,6 +31,7 @@ namespace EroMangaManager.Helpers
         /// 读取TemporaryFolder中的本子封面文件，作为封面源
         /// </summary>
         /// <returns> </returns>
+        [Obsolete]
         public static async Task ChangeCoverFromTempFolder (this MangaBook mangaBook)
         {
             StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
@@ -42,7 +43,8 @@ namespace EroMangaManager.Helpers
                 Windows.Storage.StorageFile storageFile = cover as Windows.Storage.StorageFile;
                 BitmapImage bitmapImage = await CoverHelper.GetCoverThumbnail_SystemAsync(storageFile);
 
-                mangaBook.Cover = bitmapImage;
+                // 以前是在MangaBook类里面放一个封面图像缓存，现在改为使用封面图像文件路径，这个方法也废弃
+                //mangaBook.Cover = bitmapImage;
             }
         }
 

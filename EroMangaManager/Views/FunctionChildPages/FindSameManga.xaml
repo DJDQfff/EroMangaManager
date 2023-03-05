@@ -35,7 +35,7 @@
                                             <RowDefinition />
                                         </Grid.RowDefinitions>
                                         <Image Grid.Column="0"
-                                               Source="{x:Bind Cover}"
+                                               Source="{x:Bind CoverPath}"
                                                Grid.RowSpan="2" />
                                         <TextBlock Grid.Column="1"
                                                    Text="{x:Bind FilePath}"

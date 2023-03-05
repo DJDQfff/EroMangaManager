@@ -21,6 +21,6 @@
             <TextBlock Text="{x:Bind manga.StorageFile.Path}" />
         </StackPanel>
         <Image Grid.Row="1"
-               Source="{x:Bind manga.Cover}" />
+               Source="{x:Bind manga.CoverPath}" />
     </Grid>
 </ContentDialog>
