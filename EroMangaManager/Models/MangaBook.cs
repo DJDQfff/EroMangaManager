@@ -16,8 +16,9 @@ namespace EroMangaManager.Models
     {
 
         /// <summary>
-        /// 这个一定要有，不能为null，不然在Image控件加载图像时会异常导致程序闪退
+        /// 封面文件路径
         /// </summary>
+        /// <remarks>这个一定要有，不能为null，不然在Image控件加载图像时会异常导致程序闪退</remarks>
         public string CoverPath { set; get; }
         /// <summary>
         ///
