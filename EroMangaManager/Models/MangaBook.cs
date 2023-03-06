@@ -15,16 +15,10 @@ namespace EroMangaManager.Models
     public class MangaBook : INotifyPropertyChanged
     {
 
-        private string coverPath;
-        public string CoverPath
-        {
-            get => coverPath;
-            set
-            {
-                coverPath = value;
-                NotifyPropertyChanged(nameof(CoverPath)); 
-            }
-        }
+        /// <summary>
+        /// 这个一定要有，不能为null，不然在Image控件加载图像时会异常导致程序闪退
+        /// </summary>
+        public string CoverPath { set; get; }
         /// <summary>
         ///
         /// </summary>

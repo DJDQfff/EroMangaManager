@@ -77,7 +77,7 @@
                                Height="192"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
-                               Source="{x:Bind CoverPath, Mode=OneWay}"
+                               Source="{x:Bind CoverPath, Mode=OneTime}"
                                Stretch="Uniform" />
                         <TextBlock Grid.Row="1"
                                    Width="150"
