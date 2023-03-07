@@ -41,7 +41,6 @@ namespace EroMangaManager.Views.MainPageChildPages
         public Bookcase ()
         {
             this.InitializeComponent();
-            App.Current.bookcaseContainer = this;
         }
 
         /// <summary>
@@ -145,7 +144,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             await Exporter.ExportAsPDF(mangaBook , storageFile);
 
             string done = ResourceLoader.GetForCurrentView("StringResources").GetString("ExportDone");
-            App.Current.collectionObserver.WorkDone(done);
+            App.Current.GlobalViewModel.WorkDone(done);
         }
 
         private void Order (object sender , Windows.UI.Xaml.RoutedEventArgs e)

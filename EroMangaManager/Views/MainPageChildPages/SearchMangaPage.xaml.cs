@@ -23,7 +23,7 @@ namespace EroMangaManager.Views.MainPageChildPages
         public SearchMangaPage ()
         {
             this.InitializeComponent();
-            var mangas = App.Current.collectionObserver.MangaList;
+            var mangas = App.Current.GlobalViewModel.MangaList;
             searchMangaViewModel = new TagManagerViewModel(mangas.Select(x => x.MangaTagsIncludedInFileName));
         }
 

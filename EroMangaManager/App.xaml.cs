@@ -24,14 +24,12 @@ namespace EroMangaManager
     /// <summary> 提供特定于应用程序的行为，以补充默认的应用程序类。 </summary>
     public sealed partial class App : Application
     {
-        internal Bookcase bookcaseContainer;
-
         internal new static App Current;
 
         /// <summary>
-        /// CollectionObserver实例
+        /// 全局ViewModel
         /// </summary>
-        internal ObservableCollectionVM collectionObserver { get; private set; }
+        internal ObservableCollectionVM GlobalViewModel { get; private set; }
 
         private async Task Initial ()
         {
@@ -44,14 +42,14 @@ namespace EroMangaManager
 
             Helpers.CoverHelper.InitialDefaultCover();
 
-            collectionObserver.ErrorZipEvent += (string str) =>
+            GlobalViewModel.ErrorZipEvent += (string str) =>
             {
                 new ToastContentBuilder()
                       .AddText($"{str}\r{ResourceLoader.GetForCurrentView("StringResources").GetString("ErrorString1")}")
                       .Show();
             };
 
-            collectionObserver.WorkDoneEvent += (string str) =>
+            GlobalViewModel.WorkDoneEvent += (string str) =>
             {
                 new ToastContentBuilder()
                     .AddText(str)
@@ -60,7 +58,7 @@ namespace EroMangaManager
 
             var folder = await MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder();
 
-            await collectionObserver.Initialize(folder);
+            await GlobalViewModel.Initialize(folder);
         }
 
         /// <summary>
@@ -70,7 +68,7 @@ namespace EroMangaManager
         public App ()
         {
             this.InitializeComponent();
-            collectionObserver = new ObservableCollectionVM();
+            GlobalViewModel = new ObservableCollectionVM();
 
             Current = this;
             this.Suspending += OnSuspending;

@@ -84,7 +84,7 @@ namespace EroMangaManager.ViewModels
                 {
                     manga.CoverPath = CoverHelper.DefaultCoverPath;
                     ErrorBooks.Add(manga);
-                    App.Current.collectionObserver.ErrorMangaEvent(manga.MangaName);
+                    App.Current.GlobalViewModel.ErrorMangaEvent(manga.MangaName);
                 }
             }
 

@@ -39,9 +39,9 @@ namespace EroMangaManager
             base.OnNavigatedTo(e);
 
             var defaultfolder = ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.DefaultBookcaseFolder.ToString()] as string;
-            var folder = App.Current.collectionObserver.MangaFolders.SingleOrDefault(x=>x.FolderPath== defaultfolder);
+            var folder = App.Current.GlobalViewModel.MangaFolders.SingleOrDefault(x=>x.FolderPath== defaultfolder);
 
-            if (App.Current.collectionObserver.StorageFolders.Count == 0 || folder==null)
+            if (App.Current.GlobalViewModel.StorageFolders.Count == 0 || folder==null)
             {
                 MainFrame.Navigate(typeof(LibraryPage));
             }

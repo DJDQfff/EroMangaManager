@@ -27,7 +27,7 @@ namespace EroMangaManager.Views.FunctionChildPages
         {
             base.OnNavigatedTo(e);
             var containrepeat = new List<MangaBook>();
-            foreach(var book in App.Current.collectionObserver.MangaList)
+            foreach(var book in App.Current.GlobalViewModel.MangaList)
             {
                 if (book.MangaTagsIncludedInFileName.ContainRepeat())
                 {

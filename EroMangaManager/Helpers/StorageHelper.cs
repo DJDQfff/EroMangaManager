@@ -35,7 +35,7 @@ namespace EroMangaManager.Helpers
                 switch (result)
                 {
                     case ContentDialogResult.Primary:
-                        await App.Current.collectionObserver.DeleteSingleMangaBook(eroManga , option);
+                        await App.Current.GlobalViewModel.DeleteSingleMangaBook(eroManga , option);
                         break;
 
                     case ContentDialogResult.Secondary:
@@ -44,7 +44,7 @@ namespace EroMangaManager.Helpers
             }
             else
             {
-                await App.Current.collectionObserver.DeleteSingleMangaBook(eroManga , option);
+                await App.Current.GlobalViewModel.DeleteSingleMangaBook(eroManga , option);
             }
         }
     }

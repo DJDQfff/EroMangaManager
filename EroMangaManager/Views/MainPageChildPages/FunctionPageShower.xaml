@@ -20,7 +20,7 @@ xmlns:app="using:EroMangaManager"
         </Grid.RowDefinitions>
         <TextBlock x:Uid="/Resources/GollectionVMInitialingHint"
                    Style="{StaticResource HintTextBlockStyle}"
-                   Visibility="{x:Bind app:App.Current.collectionObserver.IsContentInitializing,Mode=OneTime,Converter={StaticResource  controlvisibilityconverter}}" />
+                   Visibility="{x:Bind app:App.Current.GlobalViewModel.IsContentInitializing,Mode=OneTime,Converter={StaticResource  controlvisibilityconverter}}" />
         
         <GridView Grid.Row="1" >
             <GridView.ItemContainerStyle>

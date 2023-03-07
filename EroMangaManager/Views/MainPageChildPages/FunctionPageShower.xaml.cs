@@ -37,7 +37,7 @@ namespace EroMangaManager.Views.MainPageChildPages
                     break;
             }
 
-            MainPage.Current.MainFrame.Navigate(type , App.Current.collectionObserver.MangaList);
+            MainPage.Current.MainFrame.Navigate(type , App.Current.GlobalViewModel.MangaList);
 
             return;
 
@@ -47,7 +47,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             //await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal , () =>
             //{
             //    Frame frame = new Frame();
-            //    frame.Navigate(type , App.Current.collectionObserver.MangaList);
+            //    frame.Navigate(type , App.Current.GlobalViewModel.MangaList);
             //    Window.Current.Content = frame;
             //    // You have to activate the window in order to show it later.
             //    Window.Current.Activate();

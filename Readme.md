@@ -63,8 +63,6 @@
 
 * 给FunctionRepeatManga页面添加一次打开几个漫画的功能，配合前面说的控制器，可以实现一次性看三本，从而实现手动比较的功能
 
-* ObservableVM改名GlobalVM
-
 * 给重复tag查找功能添加修改功能，使能移除重复tag
 
 # 更新日志
@@ -72,6 +70,8 @@
 ## 2023.3.7
 
 * 添加检查重复tag的功能。只添加了查看的功能，还没添加修改的功能
+
+*  APP 属性observableCollection改名GlobalVewModel
 
 ## 2023.3.6
 

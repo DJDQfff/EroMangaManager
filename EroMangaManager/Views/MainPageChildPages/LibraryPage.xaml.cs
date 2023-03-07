@@ -42,7 +42,7 @@ namespace EroMangaManager.Views.MainPageChildPages
                 {
                     try
                     {
-                        await App.Current.collectionObserver.AddFolder(f);
+                        await App.Current.GlobalViewModel.AddFolder(f);
                     }
                     catch (Exception)
                     {
@@ -60,7 +60,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             var storageFolder = list.SelectedItem as MangasFolder;
             if (storageFolder != null)
             {
-            App.Current.collectionObserver.RemoveFolder(storageFolder);
+            App.Current.GlobalViewModel.RemoveFolder(storageFolder);
 
             }
         }

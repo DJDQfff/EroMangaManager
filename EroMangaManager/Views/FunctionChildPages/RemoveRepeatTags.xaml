@@ -18,7 +18,10 @@
                     <StackPanel Orientation="Horizontal">
                         <Image Width="500" Source="{x:Bind CoverPath}" />
                         <ListView ItemsSource="{x:Bind MangaTagsIncludedInFileName}" />
-                        
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{x:Bind FolderPath}" />
+                            <TextBlock Text="{x:Bind FileFullName}" />
+                        </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
