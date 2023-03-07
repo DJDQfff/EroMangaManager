@@ -57,7 +57,7 @@ namespace EroMangaManager.ViewModels
         internal ObservableCollection<MangaBook> NonZipList { get; } = new ObservableCollection<MangaBook>();
 
         /// <summary>ViewModel初始化</summary>
-        public async Task Initialize (params StorageFolder[] storageFolders)
+        public async Task Initialize ( IEnumerable<StorageFolder> storageFolders)
         {
             MangaFolders.Clear();
             NonZipList.Clear();

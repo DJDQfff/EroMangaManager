@@ -28,7 +28,7 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition  Width="*" />
                                             <ColumnDefinition  Width="5*" />
-                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -37,12 +37,15 @@
                                         <Image Grid.Column="0"
                                                Source="{x:Bind CoverPath}"
                                                Grid.RowSpan="2" />
-                                        <TextBlock Grid.Column="1"
-                                                   Text="{x:Bind FilePath}"
-                                                   VerticalAlignment="Center"
-                                                   FontSize="20"
-                                                   TextWrapping="Wrap"
-                                                   Grid.RowSpan="2" />
+                                        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.RowSpan="2">
+                                             <TextBlock  Text="{x:Bind FolderPath}"   TextWrapping="Wrap" FontSize="20"/>
+
+                                            <TextBlock
+                                                    Text="{x:Bind FileFullName}"
+                                                       TextWrapping="Wrap"
+                                                       FontSize="20" />
+
+                                        </StackPanel>
                                         <Button x:Uid="/Resources/OpenButton"
                                                 Click="Button_Click_1"
                                                 Grid.Column="2" />

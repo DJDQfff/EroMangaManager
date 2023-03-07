@@ -58,7 +58,7 @@ namespace EroMangaManager
                     .Show();
             };
 
-            var folder = MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder().Result.ToArray();
+            var folder = await MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder();
 
             await collectionObserver.Initialize(folder);
         }
