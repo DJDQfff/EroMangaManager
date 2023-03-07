@@ -152,13 +152,13 @@
     <Compile Include="Views\FunctionChildPages\RemoveRepeatTags.xaml.cs">
       <DependentUpon>RemoveRepeatTags.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\InteractPages\ConfirmDeleteMangaFile.xaml.cs">
+    <Compile Include="Views\ContentDialogPages\ConfirmDeleteMangaFile.xaml.cs">
       <DependentUpon>ConfirmDeleteMangaFile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\InteractPages\MangaTagDetail.xaml.cs">
+    <Compile Include="Views\ContentDialogPages\MangaTagDetail.xaml.cs">
       <DependentUpon>MangaTagDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\InteractPages\MangaTagEdit.xaml.cs">
+    <Compile Include="Views\ContentDialogPages\MangaTagEdit.xaml.cs">
       <DependentUpon>MangaTagEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\FolderEnum.cs" />
@@ -380,15 +380,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\InteractPages\ConfirmDeleteMangaFile.xaml">
+    <Page Include="Views\ContentDialogPages\ConfirmDeleteMangaFile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\InteractPages\MangaTagDetail.xaml">
+    <Page Include="Views\ContentDialogPages\MangaTagDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\InteractPages\MangaTagEdit.xaml">
+    <Page Include="Views\ContentDialogPages\MangaTagEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -3,7 +3,7 @@
 using EroMangaManager.Helpers;
 using EroMangaManager.Models;
 using EroMangaManager.ViewModels;
-using EroMangaManager.Views.InteractPages;
+using EroMangaManager.Views.ContentDialogPages;
 
 using Windows.ApplicationModel.Resources;
 using Windows.Storage;

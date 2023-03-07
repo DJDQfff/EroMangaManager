@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 
 using EroMangaManager.Models;
-using EroMangaManager.Views.InteractPages;
+using EroMangaManager.Views.ContentDialogPages;
 
 using Windows.Storage;
 
