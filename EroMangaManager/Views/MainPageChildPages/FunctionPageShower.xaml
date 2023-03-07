@@ -22,15 +22,23 @@ xmlns:app="using:EroMangaManager"
                    Style="{StaticResource HintTextBlockStyle}"
                    Visibility="{x:Bind app:App.Current.collectionObserver.IsContentInitializing,Mode=OneTime,Converter={StaticResource  controlvisibilityconverter}}" />
         
-        <VariableSizedWrapGrid Grid.Row="1">
+        <GridView Grid.Row="1" >
+            <GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Width"
+                            Value="150" />
+                </Style>
+            </GridView.ItemContainerStyle>
             <Button  x:Name="Function_FindSameMangaName"
                      x:Uid="/Resources/Function_FindSameMangaName"
                      Background="{x:Bind Converter={StaticResource randomcolor },Mode=OneTime}"
             Click="Button_Click" />
-            <!--<Button x:Name="Function_RemoveRepeatTags"
+            <Button x:Name="Function_RemoveRepeatTags"
                     x:Uid="/Resources/Function_RemoveRepeatTags"
-                    Loaded="Button_Loaded"
-                    Click="Button_Click" />-->
-        </VariableSizedWrapGrid>
+                    HorizontalAlignment="Stretch"
+                    Background="{x:Bind Converter={StaticResource randomcolor },Mode=OneTime}"
+                    Click="Button_Click" /> 
+        </GridView>
     </Grid>
 </Page>

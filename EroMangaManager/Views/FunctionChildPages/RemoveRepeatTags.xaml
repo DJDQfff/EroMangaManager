@@ -12,16 +12,14 @@
     xmlns:model="using:EroMangaManager.Models">
 
     <Grid>
-        <ListView  ItemsSource="{x:Bind app:App.Current.collectionObserver.MangaFolders}">
+        <ListView x:Name="list">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="vm:MangasFolder">
-                    <ListView  ItemsSource="{x:Bind MangaBooks}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="model:MangaBook">
-                                <control:TagsDisplayControl   TagArray="{x:Bind FileDisplayName}" />
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                <DataTemplate x:DataType="model:MangaBook">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="500" Source="{x:Bind CoverPath}" />
+                        <ListView ItemsSource="{x:Bind MangaTagsIncludedInFileName}" />
+                        
+                    </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
