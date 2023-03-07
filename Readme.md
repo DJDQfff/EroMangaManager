@@ -71,7 +71,9 @@
 
 * 添加检查重复tag的功能。只添加了查看的功能，还没添加修改的功能
 
-*  APP 属性observableCollection改名GlobalVewModel
+* APP 属性observableCollection改名GlobalVewModel
+
+* ReaderVM简单细化，但还是需要更多优化
 
 ## 2023.3.6
 

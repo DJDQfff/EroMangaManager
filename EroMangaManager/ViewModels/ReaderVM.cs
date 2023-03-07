@@ -58,18 +58,27 @@ namespace EroMangaManager.ViewModels
         /// <summary> 从压缩文件的所有entry中，筛选出符合条件的 </summary>
         public async Task SelectEntriesAsync (bool IsFilterImageOn , bool whetherShow = true)
         {
+            Stream TempStream=null;
+            IArchive TempZipArchive=null;
             if (_IsClosing)
+            {
+                StopWork();
                 return;
-            Stream TempStream = await manga.StorageFile.OpenStreamForReadAsync();
+            }
 
-            var TempZipArchive = ArchiveFactory.Open(TempStream);
+            TempStream = await manga.StorageFile.OpenStreamForReadAsync();
+
+            TempZipArchive = ArchiveFactory.Open(TempStream);
 
             var names = TempZipArchive.SortEntriesByName();
 
             foreach (var name in names)
             {
                 if (_IsClosing)
+                {
+                    StopWork();
                     return;
+                }
 
                 var TempEntry = TempZipArchive.Entries.Single(n => n.Key == name);
                 bool cansue = await Task.Run(() => TempEntry.EntryFilter(IsFilterImageOn)); // 放在这里可以
@@ -81,11 +90,20 @@ namespace EroMangaManager.ViewModels
                     if (whetherShow)
                     {
                         if (_IsClosing)
+                        {
+                            StopWork();
                             return;
+                        }
 
                         bitmapImages.Add(await ShowEntryAsync(entry));
                     }
                 }
+            }
+
+            void StopWork ()
+            {
+                TempStream?.Dispose();
+                TempZipArchive?.Dispose();
             }
         }
 
