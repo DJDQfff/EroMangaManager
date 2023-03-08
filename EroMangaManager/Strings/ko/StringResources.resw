@@ -18,4 +18,10 @@
   <data name="ExportDone" xml:space="preserve">
     <value>내보내기가 완료되었습니다.</value>
   </data>
+  <data name="ContainInvalaidChar" xml:space="preserve">
+    <value>잘못된 문자를 포함합니다.</value>
+  </data>
+  <data name="DontUseEmptyString" xml:space="preserve">
+    <value>빈 콘텐츠 사용 안 함</value>
+  </data>
 </root>

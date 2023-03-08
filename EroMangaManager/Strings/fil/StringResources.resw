@@ -18,4 +18,10 @@
   <data name="ExportDone" xml:space="preserve">
     <value>Ang pag export ay kumpleto</value>
   </data>
+  <data name="ContainInvalaidChar" xml:space="preserve">
+    <value>Naglalaman ng mga iligal na titik</value>
+  </data>
+  <data name="DontUseEmptyString" xml:space="preserve">
+    <value>Huwag gumamit ng walang laman na nilalaman</value>
+  </data>
 </root>

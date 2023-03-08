@@ -18,4 +18,10 @@
   <data name="ExportDone" xml:space="preserve">
     <value>匯出完成</value>
   </data>
+  <data name="ContainInvalaidChar" xml:space="preserve">
+    <value>包含非法字元</value>
+  </data>
+  <data name="DontUseEmptyString" xml:space="preserve">
+    <value>請勿使用空內容</value>
+  </data>
 </root>

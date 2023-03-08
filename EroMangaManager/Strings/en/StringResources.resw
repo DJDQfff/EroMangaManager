@@ -18,4 +18,10 @@
   <data name="ExportDone" xml:space="preserve">
     <value>The export is complete</value>
   </data>
+  <data name="ContainInvalaidChar" xml:space="preserve">
+    <value>Contains illegal characters</value>
+  </data>
+  <data name="DontUseEmptyString" xml:space="preserve">
+    <value>Do not use empty content</value>
+  </data>
 </root>

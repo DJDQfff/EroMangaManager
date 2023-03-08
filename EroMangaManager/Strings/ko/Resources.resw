@@ -201,4 +201,7 @@
   <data name="IsEmptyFolderShow.OnContent" xml:space="preserve">
     <value>있다</value>
   </data>
+  <data name="RenameFlyoutItem.Text" xml:space="preserve">
+    <value>파일 이름 바꾸기</value>
+  </data>
 </root>

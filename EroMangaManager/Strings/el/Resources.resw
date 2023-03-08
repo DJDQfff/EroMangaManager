@@ -201,4 +201,7 @@
   <data name="IsEmptyFolderShow.OnContent" xml:space="preserve">
     <value>είμαι</value>
   </data>
+  <data name="RenameFlyoutItem.Text" xml:space="preserve">
+    <value>Μετονομασία του αρχείου</value>
+  </data>
 </root>

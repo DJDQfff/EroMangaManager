@@ -18,4 +18,10 @@
   <data name="ExportDone" xml:space="preserve">
     <value>L’exportation est terminée</value>
   </data>
+  <data name="ContainInvalaidChar" xml:space="preserve">
+    <value>Contient des caractères non autorisés</value>
+  </data>
+  <data name="DontUseEmptyString" xml:space="preserve">
+    <value>N’utilisez pas de contenu vide</value>
+  </data>
 </root>

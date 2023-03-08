@@ -18,4 +18,10 @@
   <data name="ExportDone" xml:space="preserve">
     <value>エクスポートが完了しました</value>
   </data>
+  <data name="ContainInvalaidChar" xml:space="preserve">
+    <value>不正な文字が含まれています</value>
+  </data>
+  <data name="DontUseEmptyString" xml:space="preserve">
+    <value>空のコンテンツは使用しないでください</value>
+  </data>
 </root>

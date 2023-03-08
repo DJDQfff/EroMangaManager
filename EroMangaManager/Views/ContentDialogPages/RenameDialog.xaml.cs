@@ -10,12 +10,21 @@ using Windows.UI.Xaml.Controls;
 
 namespace EroMangaManager.Views.ContentDialogPages
 {
+    /// <summary>
+    /// 重命名对话框
+    /// </summary>
     public sealed partial class RenameDialog : ContentDialog
     {
         private string str;
-
+        /// <summary>
+        /// 选择的新名字
+        /// </summary>
         public string NewDisplayName => textbox.Text;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mangaBook"></param>
         public RenameDialog (MangaBook mangaBook)
         {
             this.InitializeComponent();

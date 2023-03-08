@@ -23,7 +23,10 @@ namespace EroMangaManager.Views.FunctionChildPages
         {
             this.InitializeComponent();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnNavigatedTo (NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -38,8 +41,9 @@ namespace EroMangaManager.Views.FunctionChildPages
             list.ItemsSource = containrepeat;
         }
 
-        private async void Button_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        private  void Button_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
+            // TODO
         }
     }
 }

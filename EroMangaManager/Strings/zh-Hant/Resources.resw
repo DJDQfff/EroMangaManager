@@ -201,4 +201,7 @@
   <data name="IsEmptyFolderShow.OnContent" xml:space="preserve">
     <value>是</value>
   </data>
+  <data name="RenameFlyoutItem.Text" xml:space="preserve">
+    <value>重新命名檔</value>
+  </data>
 </root>
