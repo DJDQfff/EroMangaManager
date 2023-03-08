@@ -51,7 +51,6 @@ namespace EroMangaManager.Views.MainPageChildPages
         {
             Debug.WriteLine("OnNavigatedTo事件开始");
 
-            
             var mangaBook = e.Parameter as MangaBook;
 
             await TryChangeManga(mangaBook);
@@ -64,10 +63,6 @@ namespace EroMangaManager.Views.MainPageChildPages
         /// <returns></returns>
         public async Task TryChangeManga (MangaBook manga)
         {
-            
-
-
-
             if (manga == null)                          // 传入null，直接跳过
             {
                 return;
@@ -239,7 +234,6 @@ namespace EroMangaManager.Views.MainPageChildPages
             MainPage.Current.MainNavigationView.IsPaneToggleButtonVisible = false;
 
             ReadPageButtonGroup.Visibility = Visibility.Collapsed;
-
         }
 
         private void AppBarToggleButton_Unchecked (object sender , RoutedEventArgs e)
@@ -248,7 +242,6 @@ namespace EroMangaManager.Views.MainPageChildPages
 
             applicationView.ExitFullScreenMode();
             MainPage.Current.MainNavigationView.IsPaneToggleButtonVisible = true;
-
         }
     }
 }

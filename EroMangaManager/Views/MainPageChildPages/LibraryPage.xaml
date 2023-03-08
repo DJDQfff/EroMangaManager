@@ -24,7 +24,9 @@
                 VerticalAlignment="Center"
                 Click="addButton_Click"
                 x:Uid="/Resources/AddFolderButton" />
-        <Grid Visibility="Visible" x:Name="ControlGrid" HorizontalAlignment="Center"
+        <Grid Visibility="Visible"
+              x:Name="ControlGrid"
+              HorizontalAlignment="Center"
               Grid.Row="2">
             <StackPanel x:Name="StackButton"
                         Orientation="Horizontal"
@@ -60,15 +62,14 @@
                         Click="removeButton_Click"
                         x:Uid="/Resources/RemoveFolderButton" />
             </StackPanel>
-
         </Grid>
 
         <TextBlock Visibility="{x:Bind app:App.Current.GlobalViewModel.MangaFolders.Count,Converter={StaticResource  controlvisibilityconverter},Mode=OneWay}"
-                    x:Name="HintAddFolderTextBlock"
-                    x:Uid="/Resources/HintAddFirstFolder"
-                    Grid.Row="3"
-                    Style="{StaticResource HintTextBlockStyle}"
-                    HorizontalAlignment="Center" />
+                   x:Name="HintAddFolderTextBlock"
+                   x:Uid="/Resources/HintAddFirstFolder"
+                   Grid.Row="3"
+                   Style="{StaticResource HintTextBlockStyle}"
+                   HorizontalAlignment="Center" />
 
         <ListView x:Name="list"
                   HorizontalAlignment="Center"
@@ -78,7 +79,7 @@
                   SelectionMode="Single">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="vm:MangasFolder">
-                    <StackPanel Orientation="Horizontal" 
+                    <StackPanel Orientation="Horizontal"
                                 Background="Transparent"
                                 HorizontalAlignment="Stretch">
                         <Grid>

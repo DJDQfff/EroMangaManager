@@ -1,24 +1,22 @@
-﻿<Page
-    x:Class="EroMangaManager.Views.FunctionChildPages.RemoveRepeatTags"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:EroMangaManager.Views.FunctionChildPages"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    xmlns:app="using:EroMangaManager"
-    xmlns:vm="using:EroMangaManager.ViewModels"
-    xmlns:control="using:EroMangaManager.UserControls"
-    xmlns:model="using:EroMangaManager.Models">
+﻿<Page x:Class="EroMangaManager.Views.FunctionChildPages.RemoveRepeatTags"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:model="using:EroMangaManager.Models"
+      mc:Ignorable="d">
     <Grid>
         <ListView x:Name="list">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:MangaBook">
                     <StackPanel Orientation="Horizontal">
-                        <Image Width="500" Source="{x:Bind CoverPath}" />
+                        <Image Width="500"
+                               Source="{x:Bind CoverPath}" />
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Text="{x:Bind FolderPath}" FontSize="20" />
-                            <TextBlock Text="{x:Bind FileFullName}" FontSize="20"/>
+                            <TextBlock Text="{x:Bind FolderPath}"
+                                       FontSize="20" />
+                            <TextBlock Text="{x:Bind FileFullName}"
+                                       FontSize="20" />
                             <Button Click="Button_Click" />
                         </StackPanel>
                     </StackPanel>

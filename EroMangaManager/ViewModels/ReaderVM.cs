@@ -58,8 +58,8 @@ namespace EroMangaManager.ViewModels
         /// <summary> 从压缩文件的所有entry中，筛选出符合条件的 </summary>
         public async Task SelectEntriesAsync (bool IsFilterImageOn , bool whetherShow = true)
         {
-            Stream TempStream=null;
-            IArchive TempZipArchive=null;
+            Stream TempStream = null;
+            IArchive TempZipArchive = null;
             if (_IsClosing)
             {
                 StopWork();

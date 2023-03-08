@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using MyStandard20Library;
+
 using EroMangaManager.Models;
+
+using MyStandard20Library;
 
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -27,7 +28,7 @@ namespace EroMangaManager.Views.FunctionChildPages
         {
             base.OnNavigatedTo(e);
             var containrepeat = new List<MangaBook>();
-            foreach(var book in App.Current.GlobalViewModel.MangaList)
+            foreach (var book in App.Current.GlobalViewModel.MangaList)
             {
                 if (book.MangaTagsIncludedInFileName.ContainRepeat())
                 {

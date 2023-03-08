@@ -3,7 +3,7 @@ using System.Linq;
 
 using EroMangaManager.Models;
 using EroMangaManager.Views.MainPageChildPages;
-using EroMangaManager.Views;
+
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -30,8 +30,9 @@ namespace EroMangaManager
 
             Current = this;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnNavigatedTo (NavigationEventArgs e)
@@ -39,19 +40,16 @@ namespace EroMangaManager
             base.OnNavigatedTo(e);
 
             var defaultfolder = ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.DefaultBookcaseFolder.ToString()] as string;
-            var folder = App.Current.GlobalViewModel.MangaFolders.SingleOrDefault(x=>x.FolderPath== defaultfolder);
+            var folder = App.Current.GlobalViewModel.MangaFolders.SingleOrDefault(x => x.FolderPath == defaultfolder);
 
-            if (App.Current.GlobalViewModel.StorageFolders.Count == 0 || folder==null)
+            if (App.Current.GlobalViewModel.StorageFolders.Count == 0 || folder == null)
             {
                 MainFrame.Navigate(typeof(LibraryPage));
             }
             else
             {
-
-                MainFrame.Navigate(typeof(Bookcase),folder);
-                
+                MainFrame.Navigate(typeof(Bookcase) , folder);
             }
-
         }
 
         private void MainNavigationView_ItemInvoked (NavigationView sender , NavigationViewItemInvokedEventArgs args)
@@ -78,13 +76,14 @@ namespace EroMangaManager
                     case nameof(FunctionPageShower):
                         type = typeof(FunctionPageShower);
                         break;
+
                     case nameof(TagsManagePage):
-                        type= typeof(TagsManagePage);
+                        type = typeof(TagsManagePage);
                         break;
+
                     case nameof(SearchMangaPage):
                         type = typeof(SearchMangaPage);
                         break;
-
                 }
 
             if (!type.Equals(MainFrame.CurrentSourcePageType))
@@ -96,13 +95,11 @@ namespace EroMangaManager
         private void UpdateRecordItem_Tapped (object sender , Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(Views.SettingPageChildPages.UpdateRecordsPage));
-
         }
 
         private void UsageButton_Tapped (object sender , Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(Views.SettingPageChildPages.UsageDocumentPage));
-
         }
     }
 }

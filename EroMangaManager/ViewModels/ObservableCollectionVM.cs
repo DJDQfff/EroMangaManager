@@ -57,7 +57,7 @@ namespace EroMangaManager.ViewModels
         internal ObservableCollection<MangaBook> NonZipList { get; } = new ObservableCollection<MangaBook>();
 
         /// <summary>ViewModel初始化</summary>
-        public async Task Initialize ( IEnumerable<StorageFolder> storageFolders)
+        public async Task Initialize (IEnumerable<StorageFolder> storageFolders)
         {
             MangaFolders.Clear();
             NonZipList.Clear();
@@ -152,18 +152,17 @@ namespace EroMangaManager.ViewModels
         /// <param name="mangaBook"></param>
         /// <param name="newdisplayname"></param>
         /// <returns></returns>
-        public async Task ReNameSingleMangaBook(MangaBook mangaBook,string newdisplayname)
+        public async Task ReNameSingleMangaBook (MangaBook mangaBook , string newdisplayname)
         {
             var folder = mangaBook.StorageFolder;
             foreach (var f in MangaFolders)
             {
                 if (f.StorageFolder.Path == folder.Path)
                 {
-                    await f.RenameManga(mangaBook,newdisplayname);
+                    await f.RenameManga(mangaBook , newdisplayname);
                     break;
                 }
             }
-
         }
 
         /// <summary>

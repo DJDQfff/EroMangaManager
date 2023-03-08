@@ -73,11 +73,11 @@
         </trans-unit>
         <trans-unit id="ContainInvalaidChar" translate="yes" xml:space="preserve">
           <source>包含非法字符</source>
-          <target state="new">包含非法字符</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">不正な文字が含まれています</target>
         </trans-unit>
         <trans-unit id="DontUseEmptyString" translate="yes" xml:space="preserve">
           <source>请勿使用空内容</source>
-          <target state="new">请勿使用空内容</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">空のコンテンツは使用しないでください</target>
         </trans-unit>
       </group>
     </body>
@@ -360,7 +360,7 @@
         </trans-unit>
         <trans-unit id="RenameFlyoutItem.Text" translate="yes" xml:space="preserve">
           <source>重命名文件</source>
-          <target state="new">重命名文件</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">ファイルの名前を変更する</target>
         </trans-unit>
       </group>
     </body>

@@ -15,7 +15,8 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <FlipView x:Name="FLIP" Tapped="FLIP_Tapped"
+        <FlipView x:Name="FLIP"
+                  Tapped="FLIP_Tapped"
                   Grid.Row="0"
                   Grid.Column="0"
                   Grid.RowSpan="3">
@@ -27,7 +28,7 @@
                                 <MenuFlyoutItem Click="FilteThisImage2_Click"
                                                 x:Uid="/Resources/FilterThisImage" />
                                 <MenuFlyoutItem Click="SaveImageAs2_Click"
-                                                x:Uid="/Resources/SaveAs"/>
+                                                x:Uid="/Resources/SaveAs" />
                             </MenuFlyout>
                         </Grid.ContextFlyout>
                         <ScrollViewer HorizontalScrollBarVisibility="Disabled"
@@ -42,18 +43,19 @@
                 </DataTemplate>
             </FlipView.ItemTemplate>
         </FlipView>
-        
-        <CommandBar Grid.Row="0" Background="Transparent"
-                    x:Load="True" FlowDirection="LeftToRight" Visibility="Visible"
+
+        <CommandBar Grid.Row="0"
+                    Background="Transparent"
+                    x:Load="True"
+                    FlowDirection="LeftToRight"
+                    Visibility="Visible"
                     x:Name="ReadPageButtonGroup">
             <CommandBar.PrimaryCommands>
                 <AppBarToggleButton IsChecked="False"
                                     Checked="AppBarToggleButton_Checked"
                                     Unchecked="AppBarToggleButton_Unchecked"
                                     Icon="FullScreen" />
-
             </CommandBar.PrimaryCommands>
         </CommandBar>
-
     </Grid>
 </Page>

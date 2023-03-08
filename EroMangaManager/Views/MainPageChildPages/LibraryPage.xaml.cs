@@ -60,8 +60,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             var storageFolder = list.SelectedItem as MangasFolder;
             if (storageFolder != null)
             {
-            App.Current.GlobalViewModel.RemoveFolder(storageFolder);
-
+                App.Current.GlobalViewModel.RemoveFolder(storageFolder);
             }
         }
 
@@ -72,7 +71,6 @@ namespace EroMangaManager.Views.MainPageChildPages
             if (mf != null)
             {
                 await Windows.System.Launcher.LaunchFolderAsync(mf.StorageFolder);
-
             }
         }
 
@@ -84,21 +82,18 @@ namespace EroMangaManager.Views.MainPageChildPages
             {
                 if (!datacontext.IsInitialing)
                 {
-
                 }
-            MainPage.Current.MainFrame.Navigate(typeof(Bookcase) , datacontext);
-
+                MainPage.Current.MainFrame.Navigate(typeof(Bookcase) , datacontext);
             }
         }
 
         private void SetAsDefaultBookcaseFolder_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             var button = sender as Button;
-            var datacontext =list.SelectedItem  as MangasFolder;
+            var datacontext = list.SelectedItem as MangasFolder;
             if (datacontext != null)
             {
-            ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.DefaultBookcaseFolder.ToString()] = datacontext.FolderPath;
-
+                ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.DefaultBookcaseFolder.ToString()] = datacontext.FolderPath;
             }
         }
 
@@ -106,7 +101,6 @@ namespace EroMangaManager.Views.MainPageChildPages
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
             ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.IsEmptyFolderShow.ToString()] = toggleSwitch.IsOn;
-
         }
 
         private void ToggleSwitch_Loaded (object sender , Windows.UI.Xaml.RoutedEventArgs e)
@@ -114,7 +108,6 @@ namespace EroMangaManager.Views.MainPageChildPages
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
             var a = (bool) (ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.IsEmptyFolderShow.ToString()] ?? false);
             toggleSwitch.IsOn = a;
-
         }
     }
 }

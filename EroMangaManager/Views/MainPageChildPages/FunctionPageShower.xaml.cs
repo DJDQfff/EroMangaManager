@@ -32,6 +32,7 @@ namespace EroMangaManager.Views.MainPageChildPages
                 case nameof(Function_FindSameMangaName):
                     type = typeof(FunctionChildPages.FindSameManga);
                     break;
+
                 case nameof(Function_RemoveRepeatTags):
                     type = typeof(FunctionChildPages.RemoveRepeatTags);
                     break;

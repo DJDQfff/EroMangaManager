@@ -17,7 +17,7 @@
                     <TextBlock x:Uid="/Usage/WhatISTheAppContent"
                                Style="{StaticResource ContentOfPair}" />
                 </StackPanel>
-                
+
                 <StackPanel>
                     <TextBlock  x:Uid="/Usage/WhyZipRatherFolderTitle"
                                 Style="{StaticResource TitleOfPair}" />
@@ -31,7 +31,6 @@
                     <TextBlock x:Uid="/Usage/SupportedTypeContent"
                                Style="{StaticResource ContentOfPair}" />
                 </StackPanel>
-
             </StackPanel>
         </ScrollViewer>
     </Grid>

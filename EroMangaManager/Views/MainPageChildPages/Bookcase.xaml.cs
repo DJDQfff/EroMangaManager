@@ -27,7 +27,7 @@ namespace EroMangaManager.Views.MainPageChildPages
             {
                 _data = value;
                 Bookcase_GridView.ItemsSource = value.MangaBooks;
-                Bookcase_HintTextBlock.Visibility=Windows.UI.Xaml.Visibility.Collapsed;
+                Bookcase_HintTextBlock.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             }
             get
             {
@@ -158,18 +158,15 @@ namespace EroMangaManager.Views.MainPageChildPages
             MangaBook eroManga = menuFlyout.DataContext as MangaBook;
 
             RenameDialog renameDialog = new RenameDialog(eroManga);
-            var result= await renameDialog.ShowAsync();
+            var result = await renameDialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
                 var text = renameDialog.NewDisplayName;
                 // text是否合法由对话框保证
-            await    App.Current.GlobalViewModel.ReNameSingleMangaBook(eroManga , text);
-
-
+                await App.Current.GlobalViewModel.ReNameSingleMangaBook(eroManga , text);
             }
             else
             {
-
             }
         }
     }

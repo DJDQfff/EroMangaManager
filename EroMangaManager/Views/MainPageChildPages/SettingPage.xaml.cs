@@ -43,6 +43,5 @@ namespace EroMangaManager.Views.MainPageChildPages
         {
             SettingFrame.Navigate(typeof(SettingPageChildPages.AboutPage));
         }
-
     }
 }

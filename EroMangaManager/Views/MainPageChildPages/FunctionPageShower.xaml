@@ -21,11 +21,11 @@ xmlns:app="using:EroMangaManager"
         <TextBlock x:Uid="/Resources/GollectionVMInitialingHint"
                    Style="{StaticResource HintTextBlockStyle}"
                    Visibility="{x:Bind app:App.Current.GlobalViewModel.IsContentInitializing,Mode=OneTime,Converter={StaticResource  controlvisibilityconverter}}" />
-        
-        <GridView Grid.Row="1" >
+
+        <GridView Grid.Row="1">
             <GridView.ItemContainerStyle>
                 <Style TargetType="GridViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                     <Setter Property="Width"
                             Value="150" />
                 </Style>
@@ -38,7 +38,7 @@ xmlns:app="using:EroMangaManager"
                     x:Uid="/Resources/Function_RemoveRepeatTags"
                     HorizontalAlignment="Stretch"
                     Background="{x:Bind Converter={StaticResource randomcolor },Mode=OneTime}"
-                    Click="Button_Click" /> 
+                    Click="Button_Click" />
         </GridView>
     </Grid>
 </Page>

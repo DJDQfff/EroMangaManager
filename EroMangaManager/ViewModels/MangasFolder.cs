@@ -75,10 +75,9 @@ namespace EroMangaManager.ViewModels
 
                 try
                 {
-                    var path= await Helpers.CoverHelper.TryCreatCoverFileAsync(storageFile);
+                    var path = await Helpers.CoverHelper.TryCreatCoverFileAsync(storageFile);
                     manga.CoverPath = path ?? CoverHelper.DefaultCoverPath;
                     MangaBooks.Add(manga);
-
                 }
                 catch (Exception)
                 {
@@ -113,15 +112,16 @@ namespace EroMangaManager.ViewModels
         {
             MangaBooks.Remove(mangaBook);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="mangaBook"></param>
         /// <param name="newdisplayname">不带后缀名的新名字，后缀会自行补上，限定为zip</param>
         /// <returns></returns>
-        public async Task RenameManga(MangaBook mangaBook ,string newdisplayname)
+        public async Task RenameManga (MangaBook mangaBook , string newdisplayname)
         {
-           await mangaBook.StorageFile.RenameAsync(newdisplayname+".zip");
+            await mangaBook.StorageFile.RenameAsync(newdisplayname + ".zip");
         }
     }
 }

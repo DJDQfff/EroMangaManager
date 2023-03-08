@@ -9,9 +9,9 @@ namespace EroMangaDB.Helper
     /// </summary>
     public static class TagArrayHelper
     {
-       const  string left = "[【（({";// 左括号
-        const string right = "]】)）}";// 右括号
-       const  string lr = left + right;// 所有括号
+        private const string left = "[【（({";// 左括号
+        private const string right = "]】)）}";// 右括号
+        private const string lr = left + right;// 所有括号
         // TODO  把Split分解为两个方法，一个获取没有包含在对称括号中的tag（一般而言都是MangaName），一个获取包含在对称括号中的tag
 
         /// <summary>
@@ -21,7 +21,6 @@ namespace EroMangaDB.Helper
         /// <returns></returns>
         public static List<string> SplitAndParser (this string _MangaFileName)
         {
-
             string[] tagsarray = _MangaFileName.Split(lr.ToCharArray());              // 初步分解
 
             List<string> tagslist = new List<string>(tagsarray);
@@ -74,7 +73,6 @@ namespace EroMangaDB.Helper
         /// <returns></returns>
         public static bool canbePair (this string tagstring)
         {
-
             for (int i = 0 ; i < 5 ; i++)
             {
                 int count1 = tagstring.Count(n => n == left[i]);

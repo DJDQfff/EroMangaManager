@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 using EroMangaManager.Models;
 
-using iText.Layout.Font;
-
 using SharpCompress.Archives;
 
 using SkiaSharp;
@@ -57,10 +55,12 @@ namespace EroMangaManager.Helpers
         {
             _imageSource = new SvgImageSource(new Uri(DefaultCoverPath));
         }
+
         /// <summary>
         /// 默认书籍封面路径
         /// </summary>
-        public static string DefaultCoverPath =>"ms-appx:///Assets/SVGs/书籍.svg";
+        public static string DefaultCoverPath => "ms-appx:///Assets/SVGs/书籍.svg";
+
         /// <summary>
         /// 获取默认封面
         /// </summary>
@@ -97,7 +97,6 @@ namespace EroMangaManager.Helpers
             {
                 throw ex;
             }
-
         }
 
         /// <summary> 调用系统API，返回缩率图 </summary>
@@ -147,7 +146,7 @@ namespace EroMangaManager.Helpers
             {
                 try
                 {
-                   path= await CoverHelper.CreatCoverFile_Origin_SharpCompress(storageFile);
+                    path = await CoverHelper.CreatCoverFile_Origin_SharpCompress(storageFile);
                 }
                 catch (Exception ex)
                 {
@@ -174,7 +173,6 @@ namespace EroMangaManager.Helpers
             else
             {
                 path = storageItem.Path;
-
             }
 
             return path;

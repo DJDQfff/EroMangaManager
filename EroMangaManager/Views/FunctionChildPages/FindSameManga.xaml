@@ -28,7 +28,7 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition  Width="*" />
                                             <ColumnDefinition  Width="5*" />
-                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
@@ -38,13 +38,12 @@
                                                Source="{x:Bind CoverPath}"
                                                Grid.RowSpan="2" />
                                         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.RowSpan="2">
-                                             <TextBlock  Text="{x:Bind FolderPath}"   TextWrapping="Wrap" FontSize="20"/>
+                                             <TextBlock  Text="{x:Bind FolderPath}"   TextWrapping="Wrap" FontSize="20" />
 
                                             <TextBlock
                                                     Text="{x:Bind FileFullName}"
                                                        TextWrapping="Wrap"
                                                        FontSize="20" />
-
                                         </StackPanel>
                                         <Button x:Uid="/Resources/OpenButton"
                                                 Click="Button_Click_1"

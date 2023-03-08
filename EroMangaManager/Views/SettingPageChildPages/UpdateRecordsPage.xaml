@@ -7,7 +7,7 @@
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <ScrollViewer HorizontalScrollMode="Disabled"
                   HorizontalScrollBarVisibility="Disabled">
-        <StackPanel x:Name="UpdateRecordStackPanel" >
+        <StackPanel x:Name="UpdateRecordStackPanel">
 
             <StackPanel>
                 <TextBlock  x:Uid="/UpdateResources/Version_20230205"

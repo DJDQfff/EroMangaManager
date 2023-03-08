@@ -12,7 +12,8 @@
             <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBlock x:Name="Bookcase_HintTextBlock" Grid.Row="0"
+        <TextBlock x:Name="Bookcase_HintTextBlock"
+                   Grid.Row="0"
                    Grid.RowSpan="2"
                    Style="{StaticResource HintTextBlockStyle}"
                    HorizontalAlignment="Center"
@@ -66,7 +67,7 @@
                                                 x:Uid="/Resources/LaunchFolderFlyoutItem"
                                                 Text="打开文件夹" />
                                 <MenuFlyoutItem Click="Rename"
-                                                x:Uid="/Resources/RenameFlyoutItem" 
+                                                x:Uid="/Resources/RenameFlyoutItem"
                                                 Text="打开文件夹" />
 
                                 <MenuFlyoutSeparator />
