@@ -65,6 +65,10 @@
                                 <MenuFlyoutItem Click="LaunchFolder"
                                                 x:Uid="/Resources/LaunchFolderFlyoutItem"
                                                 Text="打开文件夹" />
+                                <MenuFlyoutItem Click="Rename"
+                                                x:Uid="/Resources/RenameFlyoutItem" 
+                                                Text="打开文件夹" />
+
                                 <MenuFlyoutSeparator />
                                 <MenuFlyoutItem Click="ExportPDF"
                                                 x:Uid="/Resources/ExportPDFFlyoutItem" />

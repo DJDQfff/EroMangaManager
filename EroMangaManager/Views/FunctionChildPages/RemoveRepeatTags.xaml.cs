@@ -36,5 +36,9 @@ namespace EroMangaManager.Views.FunctionChildPages
             }
             list.ItemsSource = containrepeat;
         }
+
+        private async void Button_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        {
+        }
     }
 }

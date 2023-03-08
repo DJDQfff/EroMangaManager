@@ -10,17 +10,16 @@
     xmlns:vm="using:EroMangaManager.ViewModels"
     xmlns:control="using:EroMangaManager.UserControls"
     xmlns:model="using:EroMangaManager.Models">
-
     <Grid>
         <ListView x:Name="list">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:MangaBook">
                     <StackPanel Orientation="Horizontal">
                         <Image Width="500" Source="{x:Bind CoverPath}" />
-                        <ListView ItemsSource="{x:Bind MangaTagsIncludedInFileName}" />
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Text="{x:Bind FolderPath}" />
-                            <TextBlock Text="{x:Bind FileFullName}" />
+                            <TextBlock Text="{x:Bind FolderPath}" FontSize="20" />
+                            <TextBlock Text="{x:Bind FileFullName}" FontSize="20"/>
+                            <Button Click="Button_Click" />
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>

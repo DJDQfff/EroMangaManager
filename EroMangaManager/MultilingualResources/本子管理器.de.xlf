@@ -71,6 +71,14 @@
           <source>导出完成</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Der Export ist abgeschlossen</target>
         </trans-unit>
+        <trans-unit id="ContainInvalaidChar" translate="yes" xml:space="preserve">
+          <source>包含非法字符</source>
+          <target state="new">包含非法字符</target>
+        </trans-unit>
+        <trans-unit id="DontUseEmptyString" translate="yes" xml:space="preserve">
+          <source>请勿使用空内容</source>
+          <target state="new">请勿使用空内容</target>
+        </trans-unit>
       </group>
     </body>
   </file>
@@ -349,6 +357,10 @@
         <trans-unit id="IsEmptyFolderShow.OnContent" translate="yes" xml:space="preserve">
           <source>是</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">sein</target>
+        </trans-unit>
+        <trans-unit id="RenameFlyoutItem.Text" translate="yes" xml:space="preserve">
+          <source>重命名文件</source>
+          <target state="new">重命名文件</target>
         </trans-unit>
       </group>
     </body>

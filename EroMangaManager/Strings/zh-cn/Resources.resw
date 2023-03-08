@@ -258,6 +258,9 @@
   <data name="RemoveFolderButton.Content" xml:space="preserve">
     <value>移除文件夹</value>
   </data>
+  <data name="RenameFlyoutItem.Text" xml:space="preserve">
+    <value>重命名文件</value>
+  </data>
   <data name="SaveAs.Text" xml:space="preserve">
     <value>另存为</value>
   </data>

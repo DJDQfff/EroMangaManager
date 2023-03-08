@@ -29,6 +29,12 @@
         <Setter Property="Foreground"
                 Value="RoyalBlue" />
     </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize"
+                    Value="20" />
+        </Style>
+
     <AcrylicBrush x:Key="acrylic1"
                   BackgroundSource="HostBackdrop"
                   FallbackColor="White"

@@ -151,5 +151,26 @@ namespace EroMangaManager.Views.MainPageChildPages
         {
             BindMangasFolder.SortMangaBooks(x => x.FileSize);
         }
+
+        private async void Rename (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
+            MangaBook eroManga = menuFlyout.DataContext as MangaBook;
+
+            RenameDialog renameDialog = new RenameDialog(eroManga);
+            var result= await renameDialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                var text = renameDialog.NewDisplayName;
+                // text是否合法由对话框保证
+            await    App.Current.GlobalViewModel.ReNameSingleMangaBook(eroManga , text);
+
+
+            }
+            else
+            {
+
+            }
+        }
     }
 }

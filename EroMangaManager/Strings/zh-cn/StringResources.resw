@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ContainInvalaidChar" xml:space="preserve">
+    <value>包含非法字符</value>
+  </data>
+  <data name="DontUseEmptyString" xml:space="preserve">
+    <value>请勿使用空内容</value>
+  </data>
   <data name="ErrorString1" xml:space="preserve">
     <value>出错啦，无法打开</value>
   </data>

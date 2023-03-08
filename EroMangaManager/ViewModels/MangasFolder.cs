@@ -113,5 +113,15 @@ namespace EroMangaManager.ViewModels
         {
             MangaBooks.Remove(mangaBook);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mangaBook"></param>
+        /// <param name="newdisplayname">不带后缀名的新名字，后缀会自行补上，限定为zip</param>
+        /// <returns></returns>
+        public async Task RenameManga(MangaBook mangaBook ,string newdisplayname)
+        {
+           await mangaBook.StorageFile.RenameAsync(newdisplayname+".zip");
+        }
     }
 }

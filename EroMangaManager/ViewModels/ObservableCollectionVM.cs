@@ -140,9 +140,30 @@ namespace EroMangaManager.ViewModels
                     break;
                 }
             }
+            // TODO 因该可以删除
             await DatabaseController.ReadingInfo_RemoveSingle(mangaBook.StorageFile.Path);
 
             await mangaBook.StorageFile.DeleteAsync(deleteOption);
+        }
+
+        /// <summary>
+        /// 重命名漫画
+        /// </summary>
+        /// <param name="mangaBook"></param>
+        /// <param name="newdisplayname"></param>
+        /// <returns></returns>
+        public async Task ReNameSingleMangaBook(MangaBook mangaBook,string newdisplayname)
+        {
+            var folder = mangaBook.StorageFolder;
+            foreach (var f in MangaFolders)
+            {
+                if (f.StorageFolder.Path == folder.Path)
+                {
+                    await f.RenameManga(mangaBook,newdisplayname);
+                    break;
+                }
+            }
+
         }
 
         /// <summary>
