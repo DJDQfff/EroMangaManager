@@ -6,9 +6,12 @@
     <Application.Resources>
         <muxc:XamlControlsResources>
             <muxc:XamlControlsResources.MergedDictionaries>
-                <ResourceDictionary Source="ResourceDictionarys/DefaultTheme.xaml" />
+                <ResourceDictionary Source="ResourceDictionarys/DefaultControlStyle.xaml" />
                 <ResourceDictionary Source="ResourceDictionarys/TitleContentPairTheme.xaml" />
                 <ResourceDictionary Source="ResourceDictionarys/ValueConverters.xaml" />
+                <ResourceDictionary Source="ResourceDictionarys/FunctionShowerControl.xaml" />
+                <ResourceDictionary Source="ResourceDictionarys/NamedControlStyle.xaml" />
+
             </muxc:XamlControlsResources.MergedDictionaries>
         </muxc:XamlControlsResources>
     </Application.Resources>

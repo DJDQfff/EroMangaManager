@@ -24,10 +24,12 @@
                 </Style>
             </GridView.ItemContainerStyle>
             <Button  x:Name="Function_FindSameMangaName"
+                     Style="{StaticResource FunctionShowControl}"
                      x:Uid="/Resources/Function_FindSameMangaName"
                      Background="{x:Bind Converter={StaticResource randomcolor },Mode=OneTime}"
             Click="Button_Click" />
             <Button x:Name="Function_RemoveRepeatTags"
+                    Style="{StaticResource FunctionShowControl}"
                     x:Uid="/Resources/Function_RemoveRepeatTags"
                     HorizontalAlignment="Stretch"
                     Background="{x:Bind Converter={StaticResource randomcolor },Mode=OneTime}"
