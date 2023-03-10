@@ -4,14 +4,14 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-using EroMangaManager.Models;
+using EroMangaManager.UWP.Models;
 
 using Windows.Storage;
 
 using static EroMangaDB.BasicController;
 using static Windows.Storage.AccessCache.StorageApplicationPermissions;
 
-namespace EroMangaManager.ViewModels
+namespace EroMangaManager.UWP.ViewModels
 {
     /// <summary>
     /// 所有需要持续观察的集合都放在这，ViewModel

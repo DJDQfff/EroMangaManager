@@ -7,8 +7,8 @@
     <ProjectGuid>{79BF3F69-21E1-41F2-95B4-F60B65BDF2A9}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EroMangaManager</RootNamespace>
-    <AssemblyName>EroMangaManager</AssemblyName>
+    <RootNamespace>EroMangaManager.UWP</RootNamespace>
+    <AssemblyName>EroMangaManager.UWP</AssemblyName>
     <DefaultLanguage>zh-cn</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
@@ -110,7 +110,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
-    <DocumentationFile>bin\x64\Debug\EroMangaManager.XML</DocumentationFile>
+    <DocumentationFile>bin\x64\Debug\EroMangaManager.UWP.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>

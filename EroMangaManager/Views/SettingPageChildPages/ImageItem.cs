@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.UI.Xaml.Media.Imaging;
 
-using static EroMangaManager.Models.FolderEnum;
+using static EroMangaManager.UWP.Models.FolderEnum;
 using static MyUWPLibrary.StorageFolderHelper;
 
-namespace EroMangaManager.Views.SettingPageChildPages
+namespace EroMangaManager.UWP.Views.SettingPageChildPages
 {
     /// <summary>
     /// 文件信息类

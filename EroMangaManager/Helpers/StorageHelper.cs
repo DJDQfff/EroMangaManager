@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-using EroMangaManager.Models;
-using EroMangaManager.Views.ContentDialogPages;
+using EroMangaManager.UWP.Models;
+using EroMangaManager.UWP.Views.ContentDialogPages;
 
 using Windows.Storage;
 
 using Windows.UI.Xaml.Controls;
 
-namespace EroMangaManager.Helpers
+namespace EroMangaManager.UWP.Helpers
 {
     /// <summary>
     /// 为什么要弄这个：

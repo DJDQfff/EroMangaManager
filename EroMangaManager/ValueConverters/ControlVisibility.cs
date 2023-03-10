@@ -2,7 +2,7 @@
 
 using Windows.UI.Xaml;
 
-namespace EroMangaManager.ValueConverters
+namespace EroMangaManager.UWP.ValueConverters
 {
     internal class ControlVisibility : Windows.UI.Xaml.Data.IValueConverter
     {

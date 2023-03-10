@@ -4,16 +4,16 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-using EroMangaManager.Helpers;
-using EroMangaManager.Models;
+using EroMangaManager.UWP.Helpers;
+using EroMangaManager.UWP.Models;
 
 using SharpCompress.Archives;
 
 using Windows.UI.Xaml.Media.Imaging;
 
-using static EroMangaManager.Helpers.ZipEntryHelper;
+using static EroMangaManager.UWP.Helpers.ZipEntryHelper;
 
-namespace EroMangaManager.ViewModels
+namespace EroMangaManager.UWP.ViewModels
 {
     /// <summary>
     /// 阅读页面的ViewModel

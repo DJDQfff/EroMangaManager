@@ -1,4 +1,4 @@
-﻿namespace EroMangaManager.Models
+﻿namespace EroMangaManager.UWP.Models
 {
     /// <summary>
     /// 应用设置枚举项，使用是使用ToStrng（）方法转化为string，从ApplicationModel.Resources命名空间中获取应用程序设置

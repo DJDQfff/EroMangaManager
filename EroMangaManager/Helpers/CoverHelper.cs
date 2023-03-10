@@ -4,7 +4,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Threading.Tasks;
 
-using EroMangaManager.Models;
+using EroMangaManager.UWP.Models;
 
 using SharpCompress.Archives;
 
@@ -15,10 +15,10 @@ using Windows.Storage.FileProperties;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
 
-using static EroMangaManager.Models.FolderEnum;
+using static EroMangaManager.UWP.Models.FolderEnum;
 using static MyUWPLibrary.StorageFolderHelper;
 
-namespace EroMangaManager.Helpers
+namespace EroMangaManager.UWP.Helpers
 {
     /// <summary>
     /// 封面帮助类

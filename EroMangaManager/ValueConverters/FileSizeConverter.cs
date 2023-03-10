@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EroMangaManager.ValueConverters
+namespace EroMangaManager.UWP.ValueConverters
 {
     internal class FileSizeConverter : Windows.UI.Xaml.Data.IValueConverter
     {

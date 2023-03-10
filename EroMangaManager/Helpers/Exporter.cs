@@ -2,8 +2,8 @@
 using System.IO;
 using System.Threading.Tasks;
 
-using EroMangaManager.Models;
-using EroMangaManager.ViewModels;
+using EroMangaManager.UWP.Models;
+using EroMangaManager.UWP.ViewModels;
 
 using iText.IO.Image;
 using iText.Kernel.Pdf;
@@ -12,7 +12,7 @@ using iText.Layout.Element;
 
 using Windows.Storage;
 
-namespace EroMangaManager.Helpers
+namespace EroMangaManager.UWP.Helpers
 {
     internal class Exporter
     {

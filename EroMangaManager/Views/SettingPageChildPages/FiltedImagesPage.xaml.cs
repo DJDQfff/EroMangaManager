@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-using EroMangaManager.Models;
+using EroMangaManager.UWP.Models;
 
 using Windows.Storage;
 using Windows.UI.Xaml;
@@ -12,7 +12,7 @@ using Windows.UI.Xaml.Navigation;
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
 
-namespace EroMangaManager.Views.SettingPageChildPages
+namespace EroMangaManager.UWP.Views.SettingPageChildPages
 {
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class FiltedImagesPage : Page
@@ -53,7 +53,7 @@ namespace EroMangaManager.Views.SettingPageChildPages
                 await imageItem.storageFile.DeleteAsync(StorageDeleteOption.PermanentDelete);
             }
             string[] vs = hashlist.ToArray();
-            await EroMangaManager.Models.HashManager.Remove(vs);
+            await EroMangaManager.UWP.Models.HashManager.Remove(vs);
             button.IsEnabled = true;
         }
 

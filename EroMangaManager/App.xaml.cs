@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-using EroMangaManager.Helpers;
-using EroMangaManager.Models;
-using EroMangaManager.ViewModels;
-using EroMangaManager.Views.MainPageChildPages;
+using EroMangaManager.UWP.Helpers;
+using EroMangaManager.UWP.Models;
+using EroMangaManager.UWP.ViewModels;
+using EroMangaManager.UWP.Views.MainPageChildPages;
 
 using Microsoft.Toolkit.Uwp.Notifications;
 
@@ -16,10 +16,10 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 using static EroMangaDB.BasicController;
-using static EroMangaManager.Models.FolderEnum;
+using static EroMangaManager.UWP.Models.FolderEnum;
 using static MyUWPLibrary.StorageFolderHelper;
 
-namespace EroMangaManager
+namespace EroMangaManager.UWP
 {
     /// <summary> 提供特定于应用程序的行为，以补充默认的应用程序类。 </summary>
     public sealed partial class App : Application

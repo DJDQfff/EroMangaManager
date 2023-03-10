@@ -1,11 +1,11 @@
 ﻿using System;
 
-using EroMangaManager.ViewModels;
+using EroMangaManager.UWP.ViewModels;
 
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
-namespace EroMangaManager.ValueConverters
+namespace EroMangaManager.UWP.ValueConverters
 {
     /// <summary>
     /// 进度条可见性

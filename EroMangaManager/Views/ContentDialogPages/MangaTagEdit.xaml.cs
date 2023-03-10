@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-using EroMangaManager.Models;
+using EroMangaManager.UWP.Models;
 
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
@@ -12,7 +12,7 @@ using static EroMangaDB.BasicController;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“内容对话框”项模板
 
-namespace EroMangaManager.Views.ContentDialogPages
+namespace EroMangaManager.UWP.Views.ContentDialogPages
 {
     /// <summary>
     ///

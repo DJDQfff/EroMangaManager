@@ -1,7 +1,7 @@
 ﻿using EroMangaDB.Entities;
 
-using EroMangaManager.Models;
-using EroMangaManager.UserControls;
+using EroMangaManager.UWP.Models;
+using EroMangaManager.UWP.UserControls;
 
 using Windows.UI.Xaml.Controls;
 
@@ -10,7 +10,7 @@ using static EroMangaDB.BasicController;
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“内容对话框”项模板
 
-namespace EroMangaManager.Views.ContentDialogPages
+namespace EroMangaManager.UWP.Views.ContentDialogPages
 {
     /// <summary>
     ///

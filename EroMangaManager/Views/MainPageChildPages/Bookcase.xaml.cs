@@ -1,9 +1,9 @@
 ﻿using System;
 
-using EroMangaManager.Helpers;
-using EroMangaManager.Models;
-using EroMangaManager.ViewModels;
-using EroMangaManager.Views.ContentDialogPages;
+using EroMangaManager.UWP.Helpers;
+using EroMangaManager.UWP.Models;
+using EroMangaManager.UWP.ViewModels;
+using EroMangaManager.UWP.Views.ContentDialogPages;
 
 using Windows.ApplicationModel.Resources;
 using Windows.Storage;
@@ -12,7 +12,7 @@ using Windows.UI.Xaml.Navigation;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
-namespace EroMangaManager.Views.MainPageChildPages
+namespace EroMangaManager.UWP.Views.MainPageChildPages
 {
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。

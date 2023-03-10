@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="EroMangaManager.Views.SettingPageChildPages.UsageDocumentPage"
+    x:Class="EroMangaManager.UWP.Views.SettingPageChildPages.UsageDocumentPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:EroMangaManager.Views.SettingPageChildPages"
+    xmlns:local="using:EroMangaManager.UWP.Views.SettingPageChildPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"

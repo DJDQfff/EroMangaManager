@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace EroMangaManager.ViewModels
+namespace EroMangaManager.UWP.ViewModels
 {
     internal class TagManagerViewModel
     {

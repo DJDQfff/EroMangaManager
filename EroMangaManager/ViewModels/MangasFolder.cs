@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 using EroMangaDB.Entities;
 
-using EroMangaManager.Helpers;
-using EroMangaManager.Models;
+using EroMangaManager.UWP.Helpers;
+using EroMangaManager.UWP.Models;
 
 using Windows.Storage;
 
-namespace EroMangaManager.ViewModels
+namespace EroMangaManager.UWP.ViewModels
 {
     internal class MangasFolder : INotifyPropertyChanged
 

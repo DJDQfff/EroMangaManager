@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-using EroMangaManager.Models;
+using EroMangaManager.UWP.Models;
 
 using ICSharpCode.SharpZipLib.Zip;
 
@@ -12,7 +12,7 @@ using SharpCompress.Archives;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
 
-namespace EroMangaManager.Helpers
+namespace EroMangaManager.UWP.Helpers
 {
     /// <summary>
     /// 压缩文件帮助类

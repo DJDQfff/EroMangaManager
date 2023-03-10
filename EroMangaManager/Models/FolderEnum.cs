@@ -1,4 +1,4 @@
-﻿namespace EroMangaManager.Models
+﻿namespace EroMangaManager.UWP.Models
 {
     internal enum FolderEnum
     {

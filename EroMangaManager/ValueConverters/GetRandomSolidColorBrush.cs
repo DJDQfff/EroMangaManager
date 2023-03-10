@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EroMangaManager.ValueConverters
+namespace EroMangaManager.UWP.ValueConverters
 {
     /// <summary>
     /// 返回随机SolidSolorBrtush

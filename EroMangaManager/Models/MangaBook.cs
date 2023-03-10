@@ -8,7 +8,7 @@ using EroMangaDB.Helper;
 
 using Windows.Storage;
 
-namespace EroMangaManager.Models
+namespace EroMangaManager.UWP.Models
 {
     /// <summary> 本子 </summary>
     public class MangaBook : INotifyPropertyChanged

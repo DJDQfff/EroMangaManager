@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
-using EroMangaManager.Models;
-using EroMangaManager.Views.MainPageChildPages;
+using EroMangaManager.UWP.Models;
+using EroMangaManager.UWP.Views.MainPageChildPages;
 
 using RepeatItemsChecker.Core.ViewModels;
 
@@ -11,7 +11,7 @@ using Windows.UI.Xaml.Navigation;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
-namespace EroMangaManager.Views.FunctionChildPages
+namespace EroMangaManager.UWP.Views.FunctionChildPages
 {
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。

@@ -1,11 +1,11 @@
-﻿using EroMangaManager.Models;
+﻿using EroMangaManager.UWP.Models;
 
 using Windows.UI.Xaml.Controls;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“内容对话框”项模板
 
-namespace EroMangaManager.Views.ContentDialogPages
+namespace EroMangaManager.UWP.Views.ContentDialogPages
 {
     /// <summary>
     /// 确认删除对话框

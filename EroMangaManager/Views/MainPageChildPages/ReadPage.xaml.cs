@@ -3,8 +3,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
-using EroMangaManager.Models;
-using EroMangaManager.ViewModels;
+using EroMangaManager.UWP.Models;
+using EroMangaManager.UWP.ViewModels;
 
 using SharpCompress.Archives;
 
@@ -14,8 +14,8 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-using static EroMangaManager.Helpers.ZipEntryHelper;
-using static EroMangaManager.Models.FolderEnum;
+using static EroMangaManager.UWP.Helpers.ZipEntryHelper;
+using static EroMangaManager.UWP.Models.FolderEnum;
 using static MyStandard20Library.HashComputer;
 using static MyUWPLibrary.StorageFolderHelper;
 using static MyUWPLibrary.StorageItemPicker;
@@ -23,7 +23,7 @@ using static MyUWPLibrary.StorageItemPicker;
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
 
-namespace EroMangaManager.Views.MainPageChildPages
+namespace EroMangaManager.UWP.Views.MainPageChildPages
 {
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class ReadPage : Page

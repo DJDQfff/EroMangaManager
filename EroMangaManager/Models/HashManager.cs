@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using static EroMangaDB.BasicController;
 using static MyStandard20Library.HashComputer;
 
-namespace EroMangaManager.Models
+namespace EroMangaManager.UWP.Models
 {
     /// <summary>
     /// Hash帮助类
