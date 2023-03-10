@@ -5,6 +5,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:app="using:EroMangaManager"
       xmlns:vm="using:EroMangaManager.ViewModels"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
       NavigationCacheMode="Disabled"
       mc:Ignorable="d">
     <Grid>
@@ -87,7 +88,7 @@
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <ProgressBar Grid.Column="0"
+                            <muxc:ProgressBar Grid.Column="0"
                                          Grid.ColumnSpan="2"
                                          HorizontalAlignment="Stretch"
                                          VerticalAlignment="Bottom"
