@@ -537,14 +537,6 @@
       <Project>{65481f91-552b-45b2-9ffa-09dea94dc910}</Project>
       <Name>RepeatItemsChecker.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\我的API库\MyStandard20Library\MyStandard20Library.csproj">
-      <Project>{5e80b947-fde4-4336-abb7-e57139b8fc2b}</Project>
-      <Name>MyStandard20Library</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\我的API库\MyUWPLibrary\MyUWPLibrary.csproj">
-      <Project>{0b1515f5-9a8c-404a-bd4a-1f2645e4c67d}</Project>
-      <Name>MyUWPLibrary</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EroMangaTagDatabase\EroMangaDB.csproj">
       <Project>{08494729-640a-4d82-a53e-8718c85483b7}</Project>
       <Name>EroMangaDB</Name>
