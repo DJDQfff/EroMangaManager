@@ -533,6 +533,14 @@
       <Project>{94295f5e-a01c-43f1-947d-47d521f56e09}</Project>
       <Name>BaiduTranslate</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\MyLibrary\MyLibrary.Standard20\MyLibrary.Standard20.csproj">
+      <Project>{6b053932-1988-4c60-ba5f-3b660137d5a8}</Project>
+      <Name>MyLibrary.Standard20</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MyLibrary\MyLibrary.UWP\MyLibrary.UWP.csproj">
+      <Project>{0b1515f5-9a8c-404a-bd4a-1f2645e4c67d}</Project>
+      <Name>MyLibrary.UWP</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\RepeatItemChecker\RepeatItemsChecker.Core\RepeatItemsChecker.Core.csproj">
       <Project>{65481f91-552b-45b2-9ffa-09dea94dc910}</Project>
       <Name>RepeatItemsChecker.Core</Name>

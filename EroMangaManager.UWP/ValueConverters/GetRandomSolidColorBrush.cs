@@ -17,7 +17,7 @@ namespace EroMangaManager.UWP.ValueConverters
         /// <returns></returns>
         public object Convert (object value , Type targetType , object parameter , string language)
         {
-            var brush = MyUWPLibrary.WindowsUIColorHelper.GetRandomSolidColorBrush();
+            var brush = MyLibrary.UWP.WindowsUIColorHelper.GetRandomSolidColorBrush();
             return brush;
         }
 

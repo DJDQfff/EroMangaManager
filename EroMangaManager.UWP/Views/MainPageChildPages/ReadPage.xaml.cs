@@ -16,9 +16,9 @@ using Windows.UI.Xaml.Navigation;
 
 using static EroMangaManager.UWP.Helpers.ZipEntryHelper;
 using static EroMangaManager.UWP.Models.FolderEnum;
-using static MyStandard20Library.HashComputer;
-using static MyUWPLibrary.StorageFolderHelper;
-using static MyUWPLibrary.StorageItemPicker;
+using static MyLibrary.Standard20.HashComputer;
+using static MyLibrary.UWP.StorageFolderHelper;
+using static MyLibrary.UWP.StorageItemPicker;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板

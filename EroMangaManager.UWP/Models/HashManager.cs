@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 
 using static EroMangaDB.BasicController;
-using static MyStandard20Library.HashComputer;
+using static  MyLibrary.Standard20.HashComputer;
 
 namespace EroMangaManager.UWP.Models
 {

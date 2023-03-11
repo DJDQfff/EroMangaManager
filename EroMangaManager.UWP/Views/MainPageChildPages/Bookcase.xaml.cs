@@ -138,8 +138,10 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
         private async void ExportPDF (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
-            StorageFile storageFile = await MyUWPLibrary.StorageItemPicker.SaveFileAsync(".pdf");
-            var mangaBook = (sender as MenuFlyoutItem).DataContext as MangaBook;
+            MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
+            MangaBook mangaBook = menuFlyout.DataContext as MangaBook;
+
+            StorageFile storageFile = await MyLibrary.UWP.StorageItemPicker.SaveFileAsync(".pdf");
 
             await Exporter.ExportAsPDF(mangaBook , storageFile);
 

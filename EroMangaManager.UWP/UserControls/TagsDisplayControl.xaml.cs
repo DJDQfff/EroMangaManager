@@ -2,7 +2,7 @@
 
 using EroMangaDB.Helper;
 
-using MyStandard20Library;
+using MyLibrary.Standard20;
 
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -42,7 +42,7 @@ namespace EroMangaManager.UWP.UserControls
         private void Border_Loaded (object sender , RoutedEventArgs e)
         {
             Border border = sender as Border;
-            border.Background = MyUWPLibrary.WindowsUIColorHelper.GetRandomSolidColorBrush();
+            border.Background = MyLibrary.UWP.WindowsUIColorHelper.GetRandomSolidColorBrush();
         }
     }
 }

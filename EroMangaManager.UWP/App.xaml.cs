@@ -17,7 +17,7 @@ using Windows.UI.Xaml.Navigation;
 
 using static EroMangaDB.BasicController;
 using static EroMangaManager.UWP.Models.FolderEnum;
-using static MyUWPLibrary.StorageFolderHelper;
+using static MyLibrary.UWP.StorageFolderHelper;
 
 namespace EroMangaManager.UWP
 {
@@ -56,7 +56,7 @@ namespace EroMangaManager.UWP
                     .Show();
             };
 
-            var folder = await MyUWPLibrary.AccestListHelper.GetAvailableFutureFolder();
+            var folder = await MyLibrary.UWP.AccestListHelper.GetAvailableFutureFolder();
 
             await GlobalViewModel.Initialize(folder);
         }

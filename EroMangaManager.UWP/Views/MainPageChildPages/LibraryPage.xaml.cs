@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.ViewModels;
 
-using MyUWPLibrary;
+using MyLibrary.UWP;
 
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 
-using static MyUWPLibrary.StorageItemPicker;
+using static MyLibrary.UWP.StorageItemPicker;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板

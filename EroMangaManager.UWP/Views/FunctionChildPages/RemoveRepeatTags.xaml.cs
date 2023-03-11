@@ -2,7 +2,7 @@
 
 using EroMangaManager.UWP.Models;
 
-using MyStandard20Library;
+using MyLibrary.Standard20;
 
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
