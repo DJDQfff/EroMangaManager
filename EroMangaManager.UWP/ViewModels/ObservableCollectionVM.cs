@@ -141,7 +141,7 @@ namespace EroMangaManager.UWP.ViewModels
                     break;
                 }
             }
-            // TODO 因该可以删除
+            // TODO 这里可以在设置里添加一个“是否删除阅读记录”
             await DatabaseController.ReadingInfo_RemoveSingle(mangaBook.FilePath);
 
 

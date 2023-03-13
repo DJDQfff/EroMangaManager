@@ -36,7 +36,7 @@ namespace EroMangaManager.Core.Models
         /// <summary>
         /// 获取漫画文件大小。单位：字节
         /// </summary>
-        public ulong FileSize { get; }
+        public ulong FileSize { get; set; }
 
         // TODO，需要验证，好像不对
         /// <summary> 漫画文件所在文件夹路径 </summary>

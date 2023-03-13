@@ -25,8 +25,6 @@ namespace EroMangaManager.UWP.ViewModels
         /// </summary>
         private bool _IsClosing = false;
 
-        // TODO 改为使用多线程，信号量，来关闭进程
-
         /// <summary> </summary>
         public MangaBook manga { set; get; }
 

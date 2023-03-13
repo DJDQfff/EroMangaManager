@@ -21,7 +21,7 @@ namespace EroMangaManager.UWP.Models
         {
              var filepath = storageFile.Path;
             MangaBook mangaBook = new MangaBook ( filepath);
-
+            mangaBook.FileSize = (await storageFile.GetBasicPropertiesAsync()).Size;
             var coverpath = await Helpers.CoverHelper.TryCreatCoverFileAsync(storageFile);
             mangaBook.CoverPath = coverpath ?? CoverHelper.DefaultCoverPath;
 

@@ -38,15 +38,15 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
             var bool1 = string.IsNullOrWhiteSpace(NewDisplayName);
             var invalidChars = Path.GetInvalidFileNameChars();
             var bool2 = NewDisplayName.Any(c => invalidChars.Contains(c));
-
             if (bool1)
             {
-                // TODO 还要检查非法文件字符
+                // 检查文件名是非为空
                 hinttextblock.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("StringResources").GetString("DontUseEmptyString");
                 PrimaryButtonText = string.Empty;
             }
             else if (bool2)
             {
+                // 检查文件是否含有非法字符
                 hinttextblock.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("StringResources").GetString("ContainInvalaidChar");
                 PrimaryButtonText = string.Empty;
             }
