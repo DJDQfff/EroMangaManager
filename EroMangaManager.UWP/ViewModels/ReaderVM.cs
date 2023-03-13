@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Threading;
 
 using EroMangaManager.UWP.Helpers;
 using EroMangaManager.Core.Models;
@@ -46,10 +47,16 @@ namespace EroMangaManager.UWP.ViewModels
         /// <param name="_manga"> </param>
         public ReaderVM (MangaBook _manga)
         {
-            this.manga = _manga;
-            var file = manga.FolderPath.GetStorageFile().Result;
-            stream =file.OpenStreamForReadAsync().Result;
+            this.manga = _manga;    
+
+        }
+
+        public async Task Initial ()
+        {
+            var file =await manga.FilePath.GetStorageFile();
+            stream = file.OpenStreamForReadAsync().Result;
             zipArchive = ArchiveFactory.Open(stream);
+
         }
 
         //TODO 把selectentry和showentry分开
