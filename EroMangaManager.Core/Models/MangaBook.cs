@@ -32,13 +32,11 @@ namespace EroMangaManager.Core.Models
         /// <summary> 文件Display名（不带扩展名） </summary>
         public string FileDisplayName => Path.GetFileNameWithoutExtension(FilePath);
 
-        // TODO，在初始化时设置
         /// <summary>
         /// 获取漫画文件大小。单位：字节
         /// </summary>
         public ulong FileSize { get; set; }
 
-        // TODO，需要验证，好像不对
         /// <summary> 漫画文件所在文件夹路径 </summary>
         public string FolderPath =>Path.GetDirectoryName(FilePath);
 
