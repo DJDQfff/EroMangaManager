@@ -12,7 +12,6 @@ namespace EroMangaDB.Helper
         private const string left = "[【（({";// 左括号
         private const string right = "]】)）}";// 右括号
         private const string lr = left + right;// 所有括号
-        // TODO  把Split分解为两个方法，一个获取没有包含在对称括号中的tag（一般而言都是MangaName），一个获取包含在对称括号中的tag
 
         /// <summary>
         /// 按左右括号分离tag并解析

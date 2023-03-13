@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
+using EroMangaDB.Helper;
 
 namespace EroMangaManager.Core.Models
 {
@@ -22,7 +23,7 @@ namespace EroMangaManager.Core.Models
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary> 漫画文件路径 </summary>
-        public string FilePath { get; set; }
+        public string FilePath { get; private set; }
 
 
         /// <summary> 获取文件的扩展名 </summary>
@@ -39,7 +40,7 @@ namespace EroMangaManager.Core.Models
 
         // TODO，需要验证，好像不对
         /// <summary> 漫画文件所在文件夹路径 </summary>
-        public string FolderPath { set; get; }
+        public string FolderPath =>Path.GetDirectoryName(FilePath);
 
         /// <summary> 漫画文件名（全名，带扩展名，不包含文件夹名） </summary>
         public string FileFullName => Path.GetFileName(FilePath);
@@ -48,10 +49,10 @@ namespace EroMangaManager.Core.Models
 
 
         /// <summary> 本子名字 </summary>
-        public virtual string MangaName { get; set; }
+        public virtual string MangaName { get; }
 
         /// <summary> 包含在文件名中的本子Tag </summary>
-        public string[] MangaTagsIncludedInFileName { get; set; }
+        public string[] MangaTagsIncludedInFileName { get;  }
 
         /// <summary> 漫画翻译后的断名称 </summary>
         public string TranslatedMangaName { set; get; }
@@ -62,17 +63,14 @@ namespace EroMangaManager.Core.Models
         /// <summary> 实例化EroManga </summary>
         /// <param name="storageFile"> </param>
         /// <param name="storageFolder">所属文件夹</param>
-        //public MangaBook (StorageFile storageFile , StorageFolder storageFolder)
-        //{
-        //    string path = storageFile.Path;
-        //    FilePath = path;
-        //    StorageFolder = storageFolder;
-        //    StorageFile = storageFile;
+        public MangaBook (string filepath)
+        {
+            FilePath = filepath;
 
-        //    var tags = FileDisplayName.SplitAndParser();
-        //    MangaName = tags[0];
-        //    MangaTagsIncludedInFileName = tags.Skip(1).ToArray();
-        //}
+            var tags = FileDisplayName.SplitAndParser();
+            MangaName = tags[0];
+            MangaTagsIncludedInFileName = tags.Skip(1).ToArray();
+        }
 
         private void NotifyPropertyChanged ([CallerMemberName] string propertyName = "")
         {
