@@ -9,9 +9,12 @@ using EroMangaManager.UWP.Views.MainPageChildPages;
 
 using Microsoft.Toolkit.Uwp.Notifications;
 
+using MyUWPLibrary.StorageItemManager;
+
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Resources;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -31,11 +34,13 @@ namespace EroMangaManager.UWP
         /// 全局ViewModel
         /// </summary>
         internal ObservableCollectionVM GlobalViewModel { get; private set; }
+      
+        internal StorageItemManager storageItemManager = new StorageItemManager();
 
         private async Task Initial ()
         {
 #if DEBUG
-            //await Windows.System.Launcher.LaunchFolderAsync(ApplicationData.Current.LocalFolder);
+            await Windows.System.Launcher.LaunchFolderAsync(ApplicationData.Current.LocalFolder);
 #endif
             DatabaseController.Migrate();
 
@@ -58,7 +63,7 @@ namespace EroMangaManager.UWP
             };
 
             var folder = await MyLibrary.UWP.AccestListHelper.GetAvailableFutureFolder();
-
+            storageItemManager.InitialFolders(folder);
             await GlobalViewModel.Initialize(folder);
         }
 

@@ -16,7 +16,6 @@ using MyLibrary.UWP;
 namespace EroMangaManager.UWP.ViewModels
 {
     internal class MangasFolder : INotifyPropertyChanged
-
     {
         public StorageFolder StorageFolder { get; }
 
@@ -55,7 +54,6 @@ namespace EroMangaManager.UWP.ViewModels
             IsInitialing = true;
             var files = await StorageFolder.GetFilesAsync();
 
-            List<ReadingInfo> add = new List<ReadingInfo>();
             // 这里如果使用 list<task> 的话，会出bug
             // 普通的遍历添加反而不会出现bug
             // bug 名称：已为另一线程调用

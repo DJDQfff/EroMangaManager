@@ -139,8 +139,6 @@
     <Compile Include="Models\ApplicationSettingItemName.cs" />
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="Models\RepeatMangaBookGroup.cs" />
-    <Compile Include="Services\CoverManager.cs" />
-    <Compile Include="Services\StorageService.cs" />
     <Compile Include="UserControls\TagsDisplayControl.xaml.cs">
       <DependentUpon>TagsDisplayControl.xaml</DependentUpon>
     </Compile>
@@ -555,7 +553,9 @@
       <Name>EroMangaDB</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
   <ItemGroup>
     <XliffResource Include="MultilingualResources\本子管理器.de.xlf" />
     <XliffResource Include="MultilingualResources\本子管理器.el.xlf" />
