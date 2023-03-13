@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-using EroMangaManager.UWP.Models;
+using EroMangaManager.Core.Models;
 
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;

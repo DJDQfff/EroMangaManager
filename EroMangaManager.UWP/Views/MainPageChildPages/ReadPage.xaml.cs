@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.ViewModels;
-
+using EroMangaManager.Core.Models;
 using SharpCompress.Archives;
 
 using Windows.Storage;

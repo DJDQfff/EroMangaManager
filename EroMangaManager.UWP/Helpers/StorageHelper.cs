@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 
 using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.Views.ContentDialogPages;
+using EroMangaManager.Core.Models;
 
 using Windows.Storage;
 

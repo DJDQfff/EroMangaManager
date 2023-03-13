@@ -2,7 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 
-using EroMangaManager.UWP.Models;
+using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.ViewModels;
 
 using iText.IO.Image;

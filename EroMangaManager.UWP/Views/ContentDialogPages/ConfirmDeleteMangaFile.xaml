@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="{x:Bind manga.MangaName}" />
-            <TextBlock Text="{x:Bind manga.StorageFile.Path}" />
+            <TextBlock Text="{x:Bind manga.FilePath}" />
         </StackPanel>
         <Image Grid.Row="1"
                Source="{x:Bind manga.CoverPath}" />

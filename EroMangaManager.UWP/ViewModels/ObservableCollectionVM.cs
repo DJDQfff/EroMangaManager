@@ -5,11 +5,12 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using EroMangaManager.UWP.Models;
-
+using EroMangaManager.Core.Models;
 using Windows.Storage;
 
 using static EroMangaDB.BasicController;
 using static Windows.Storage.AccessCache.StorageApplicationPermissions;
+using MyLibrary.UWP;
 
 namespace EroMangaManager.UWP.ViewModels
 {
@@ -131,7 +132,7 @@ namespace EroMangaManager.UWP.ViewModels
         /// <returns></returns>
         public async Task DeleteSingleMangaBook (MangaBook mangaBook , StorageDeleteOption deleteOption)
         {
-            var folder = mangaBook.StorageFolder;
+            var folder = await mangaBook.FolderPath.GetStorageFolder();
             foreach (var f in MangaFolders)
             {
                 if (f.StorageFolder.Path == folder.Path)
@@ -141,9 +142,11 @@ namespace EroMangaManager.UWP.ViewModels
                 }
             }
             // TODO 因该可以删除
-            await DatabaseController.ReadingInfo_RemoveSingle(mangaBook.StorageFile.Path);
+            await DatabaseController.ReadingInfo_RemoveSingle(mangaBook.FilePath);
 
-            await mangaBook.StorageFile.DeleteAsync(deleteOption);
+
+            var file = await mangaBook.FilePath.GetStorageFile();
+            await file.DeleteAsync(deleteOption);
         }
 
         /// <summary>
@@ -154,7 +157,8 @@ namespace EroMangaManager.UWP.ViewModels
         /// <returns></returns>
         public async Task ReNameSingleMangaBook (MangaBook mangaBook , string newdisplayname)
         {
-            var folder = mangaBook.StorageFolder;
+            var file = mangaBook.FilePath.GetStorageFile();
+            var folder = await mangaBook.FolderPath.GetStorageFolder();
             foreach (var f in MangaFolders)
             {
                 if (f.StorageFolder.Path == folder.Path)

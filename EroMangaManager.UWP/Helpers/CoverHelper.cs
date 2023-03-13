@@ -4,7 +4,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Threading.Tasks;
 
-using EroMangaManager.UWP.Models;
+using EroMangaManager.Core.Models;
 
 using SharpCompress.Archives;
 
@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Media.Imaging;
 
 using static EroMangaManager.UWP.Models.FolderEnum;
 using static MyLibrary.UWP.StorageFolderHelper;
+using MyLibrary.UWP;
 
 namespace EroMangaManager.UWP.Helpers
 {
@@ -34,7 +35,8 @@ namespace EroMangaManager.UWP.Helpers
         {
             StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
 
-            var cover = await coverfolder.TryGetItemAsync(mangaBook.StorageFile.DisplayName + ".jpg");
+            var file = await mangaBook.FilePath.GetStorageFile();
+            var cover = await coverfolder.TryGetItemAsync(file.DisplayName + ".jpg");
 
             if (cover != null)
             {

@@ -1,6 +1,6 @@
 ﻿using EroMangaDB.Entities;
 
-using EroMangaManager.UWP.Models;
+using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.UserControls;
 
 using Windows.UI.Xaml.Controls;

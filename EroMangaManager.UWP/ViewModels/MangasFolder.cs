@@ -10,9 +10,9 @@ using EroMangaDB.Entities;
 
 using EroMangaManager.UWP.Helpers;
 using EroMangaManager.UWP.Models;
-
+using EroMangaManager.Core.Models;
 using Windows.Storage;
-
+using MyLibrary.UWP;
 namespace EroMangaManager.UWP.ViewModels
 {
     internal class MangasFolder : INotifyPropertyChanged
@@ -70,18 +70,14 @@ namespace EroMangaManager.UWP.ViewModels
                     break;  // 如果不是zip文件，则跳过
                 }
 
-                MangaBook manga = new MangaBook(storageFile , StorageFolder);
-                manga.CoverPath = CoverHelper.DefaultCoverPath;
+                MangaBook manga = await ModelFactory.CreateMangaBook(storageFile , StorageFolder);
 
                 try
                 {
-                    var path = await Helpers.CoverHelper.TryCreatCoverFileAsync(storageFile);
-                    manga.CoverPath = path ?? CoverHelper.DefaultCoverPath;
                     MangaBooks.Add(manga);
                 }
                 catch (Exception)
                 {
-                    manga.CoverPath = CoverHelper.DefaultCoverPath;
                     ErrorBooks.Add(manga);
                     App.Current.GlobalViewModel.ErrorMangaEvent(manga.MangaName);
                 }
@@ -121,7 +117,8 @@ namespace EroMangaManager.UWP.ViewModels
         /// <returns></returns>
         public async Task RenameManga (MangaBook mangaBook , string newdisplayname)
         {
-            await mangaBook.StorageFile.RenameAsync(newdisplayname + ".zip");
+            var file = (await mangaBook.FilePath.GetStorageFile());
+           await file.RenameAsync(newdisplayname + ".zip");
         }
     }
 }

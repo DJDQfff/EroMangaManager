@@ -4,7 +4,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:root="using:EroMangaManager.UWP"
-      xmlns:manga="using:EroMangaManager.UWP.Models"
+      xmlns:manga="using:EroMangaManager.Core.Models"
       mc:Ignorable="d"
       Background="Transparent">
 

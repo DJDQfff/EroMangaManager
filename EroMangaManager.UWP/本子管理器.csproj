@@ -137,8 +137,10 @@
     <Compile Include="Helpers\Exporter.cs" />
     <Compile Include="Helpers\StorageHelper.cs" />
     <Compile Include="Models\ApplicationSettingItemName.cs" />
+    <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="Models\RepeatMangaBookGroup.cs" />
     <Compile Include="Services\CoverManager.cs" />
+    <Compile Include="Services\StorageService.cs" />
     <Compile Include="UserControls\TagsDisplayControl.xaml.cs">
       <DependentUpon>TagsDisplayControl.xaml</DependentUpon>
     </Compile>
@@ -206,7 +208,6 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\HashManager.cs" />
-    <Compile Include="Models\MangaBook.cs" />
     <Compile Include="ViewModels\ObservableCollectionVM.cs" />
     <Compile Include="Helpers\Translator.cs" />
     <Compile Include="Views\MainPageChildPages\LibraryPage.xaml.cs">
@@ -544,6 +545,10 @@
     <ProjectReference Include="..\..\RepeatItemChecker\RepeatItemsChecker.Core\RepeatItemsChecker.Core.csproj">
       <Project>{65481f91-552b-45b2-9ffa-09dea94dc910}</Project>
       <Name>RepeatItemsChecker.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EroMangaManager.Core\EroMangaManager.Core.csproj">
+      <Project>{aab9173c-fea0-4100-9add-2e4965f83580}</Project>
+      <Name>EroMangaManager.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\EroMangaTagDatabase\EroMangaDB.csproj">
       <Project>{08494729-640a-4d82-a53e-8718c85483b7}</Project>

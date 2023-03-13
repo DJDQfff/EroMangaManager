@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
+using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.Helpers;
 using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.ViewModels;
@@ -116,7 +117,7 @@ namespace EroMangaManager.UWP
         /// <summary> </summary>
         /// <remarks> 不能瞎改，里面一些奇葩问题 </remarks>
         /// <param name="args"> </param>
-        protected override void OnFileActivated (FileActivatedEventArgs args)
+        protected override async void OnFileActivated (FileActivatedEventArgs args)
         {
             base.OnFileActivated(args);
 
@@ -138,9 +139,9 @@ namespace EroMangaManager.UWP
             }
 
             var file = args.Files[0] as Windows.Storage.StorageFile;
-            MangaBook mangaBook = new MangaBook(file , null);
-            mangaBook.CoverPath = CoverHelper.DefaultCoverPath;
-            rootFrame.Navigate(typeof(ReadPage) , mangaBook);
+
+            MangaBook book =await ModelFactory.CreateMangaBook(file , null);
+            rootFrame.Navigate(typeof(ReadPage) , book);
 
             Window.Current.Activate();
         }

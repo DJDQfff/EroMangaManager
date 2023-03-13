@@ -2,6 +2,7 @@
 
 using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.Views.MainPageChildPages;
+using EroMangaManager.Core.Models;
 
 using RepeatItemsChecker.Core.ViewModels;
 

@@ -1,7 +1,7 @@
 ﻿using System;
 
 using EroMangaManager.UWP.Helpers;
-using EroMangaManager.UWP.Models;
+using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.ViewModels;
 using EroMangaManager.UWP.Views.ContentDialogPages;
 
@@ -9,7 +9,7 @@ using Windows.ApplicationModel.Resources;
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-
+using MyLibrary.UWP;
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
 namespace EroMangaManager.UWP.Views.MainPageChildPages
@@ -127,13 +127,13 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         private async void LaunchFolder (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             var mangaBook = (sender as MenuFlyoutItem).DataContext as MangaBook;
-            await Windows.System.Launcher.LaunchFolderAsync(mangaBook.StorageFolder);
+            await Windows.System.Launcher.LaunchFolderPathAsync(mangaBook.FolderPath);
         }
 
         private async void LaunchFile (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             var mangaBook = (sender as MenuFlyoutItem).DataContext as MangaBook;
-            await Windows.System.Launcher.LaunchFileAsync(mangaBook.StorageFile);
+            await Windows.System.Launcher.LaunchFileAsync(await mangaBook.FilePath.GetStorageFile());
         }
 
         private async void ExportPDF (object sender , Windows.UI.Xaml.RoutedEventArgs e)

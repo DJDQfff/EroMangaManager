@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-using EroMangaManager.UWP.Models;
+using EroMangaManager.Core.Models;
 
 using MyLibrary.Standard20;
 

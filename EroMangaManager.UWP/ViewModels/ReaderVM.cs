@@ -5,12 +5,12 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using EroMangaManager.UWP.Helpers;
-using EroMangaManager.UWP.Models;
+using EroMangaManager.Core.Models;
 
 using SharpCompress.Archives;
 
 using Windows.UI.Xaml.Media.Imaging;
-
+using MyLibrary.UWP;
 using static EroMangaManager.UWP.Helpers.ZipEntryHelper;
 
 namespace EroMangaManager.UWP.ViewModels
@@ -49,7 +49,8 @@ namespace EroMangaManager.UWP.ViewModels
         public ReaderVM (MangaBook _manga)
         {
             this.manga = _manga;
-            stream = manga.StorageFile.OpenStreamForReadAsync().Result;
+            var file = manga.FolderPath.GetStorageFile().Result;
+            stream =file.OpenStreamForReadAsync().Result;
             zipArchive = ArchiveFactory.Open(stream);
         }
 
@@ -65,8 +66,8 @@ namespace EroMangaManager.UWP.ViewModels
                 StopWork();
                 return;
             }
-
-            TempStream = await manga.StorageFile.OpenStreamForReadAsync();
+            var file = await manga.FilePath.GetStorageFile();
+            TempStream = await file.OpenStreamForReadAsync();
 
             TempZipArchive = ArchiveFactory.Open(TempStream);
 

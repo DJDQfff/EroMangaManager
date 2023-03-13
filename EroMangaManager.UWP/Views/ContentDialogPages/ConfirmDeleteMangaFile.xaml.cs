@@ -1,4 +1,4 @@
-﻿using EroMangaManager.UWP.Models;
+﻿using EroMangaManager.Core.Models;
 
 using Windows.UI.Xaml.Controls;
 
