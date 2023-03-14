@@ -61,7 +61,7 @@ namespace EroMangaManager.Core.ViewModels
         /// </summary>
         /// <param name="folder"></param>
         /// <returns></returns>
-        public async Task<MangasFolder> AddFolder (string  path)
+        public MangasFolder AddFolder (string path)
         {
             MangasFolder mangasFolder = new MangasFolder(path);
             return mangasFolder;

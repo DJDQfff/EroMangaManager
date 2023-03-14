@@ -42,17 +42,6 @@ namespace EroMangaManager.Core.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        /// 初始化
-        /// </summary>
-        /// <returns></returns>
-        public async Task Initial (IEnumerable<MangaBook> mangaBooks)
-        {
-            IsInitialing = true;
-
-            IsInitialing = false;
-        }
-
-        /// <summary>
         /// 对内部漫画进行排序
         /// </summary>
         /// <typeparam name="TKey"></typeparam>

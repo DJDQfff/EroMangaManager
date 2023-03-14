@@ -45,7 +45,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                 {
                     try
                     {
-                        var a=   await App.Current.GlobalViewModel.AddFolder(f.Path);
+                        var a=   App.Current.GlobalViewModel.AddFolder(f.Path);
 
                             await ModelFactory.InitialMangasFolder(a , folder);
 

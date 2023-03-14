@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-using EroMangaManager.UWP.Models;
+using EroMangaManager.UWP.SettingEnums;
 
 using Windows.Storage;
 using Windows.UI.Xaml;

@@ -1,4 +1,4 @@
-﻿using EroMangaManager.UWP.Models;
+﻿using EroMangaManager.UWP.SettingEnums;
 
 using Windows.Storage;
 using Windows.UI.Xaml;

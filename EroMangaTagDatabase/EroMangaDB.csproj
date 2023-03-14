@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\我的API库\MyStandard20Library\MyStandard20Library.csproj" />
+    <ProjectReference Include="..\..\MyLibrary\MyLibrary.Standard20\MyLibrary.Standard20.csproj" />
   </ItemGroup>
 
 </Project>

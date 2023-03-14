@@ -41,6 +41,7 @@ namespace EroMangaManager.UWP.Models
 
         public static async Task InitialMangasFolder (MangasFolder mangasFolder , StorageFolder StorageFolder)
         {
+            mangasFolder.IsInitialing = true;
             var files = await StorageFolder.GetFilesAsync();
 
             // 这里如果使用 list<task> 的话，会出bug
@@ -69,6 +70,7 @@ namespace EroMangaManager.UWP.Models
                     App.Current.GlobalViewModel.ErrorMangaEvent(manga.MangaName);
                 }
             }
+            mangasFolder.IsInitialing = false;
 
         }
         public static async Task<MangaBook> CreateMangaBook (StorageFile storageFile )
