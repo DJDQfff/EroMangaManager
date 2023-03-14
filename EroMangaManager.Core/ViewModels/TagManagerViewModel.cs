@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace EroMangaManager.UWP.ViewModels
 {
-    internal class TagManagerViewModel
+    public class TagManagerViewModel
     {
         public IEnumerable<string> AllTags;
 
