@@ -53,7 +53,7 @@ namespace EroMangaManager.UWP.ViewModels
 
         public async Task Initial ()
         {
-            var file =await manga.FilePath.GetStorageFile();
+            var file =await App.Current.storageItemManager.GetStorageFile(manga.FilePath);
             stream = file.OpenStreamForReadAsync().Result;
             zipArchive = ArchiveFactory.Open(stream);
 
@@ -71,7 +71,7 @@ namespace EroMangaManager.UWP.ViewModels
                 StopWork();
                 return;
             }
-            var file = await manga.FilePath.GetStorageFile();
+            var file = await App.Current.storageItemManager.GetStorageFile(manga.FilePath);
             TempStream = await file.OpenStreamForReadAsync();
 
             TempZipArchive = ArchiveFactory.Open(TempStream);

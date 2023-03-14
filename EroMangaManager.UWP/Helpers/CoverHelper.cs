@@ -35,7 +35,7 @@ namespace EroMangaManager.UWP.Helpers
         {
             StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
 
-            var file = await mangaBook.FilePath.GetStorageFile();
+            var file =await App.Current.storageItemManager.GetStorageFile(mangaBook.FilePath);
             var cover = await coverfolder.TryGetItemAsync(file.DisplayName + ".jpg");
 
             if (cover != null)

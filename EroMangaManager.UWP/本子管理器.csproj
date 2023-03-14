@@ -145,6 +145,7 @@
     <Compile Include="ValueConverters\FileSizeConverter.cs" />
     <Compile Include="ValueConverters\GetRandomSolidColorBrush.cs" />
     <Compile Include="ValueConverters\ControlVisibility.cs" />
+    <Compile Include="ViewModels\ObservableCollectionVM.cs" />
     <Compile Include="ViewModels\TagManagerViewModel.cs" />
     <Compile Include="Views\ContentDialogPages\RenameDialog.xaml.cs">
       <DependentUpon>RenameDialog.xaml</DependentUpon>
@@ -165,7 +166,6 @@
       <DependentUpon>MangaTagEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\FolderEnum.cs" />
-    <Compile Include="ViewModels\MangasFolder.cs" />
     <Compile Include="ViewModels\ReaderVM.cs" />
     <Compile Include="Views\MainPageChildPages\Bookcase.xaml.cs">
       <DependentUpon>Bookcase.xaml</DependentUpon>
@@ -206,7 +206,6 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\HashManager.cs" />
-    <Compile Include="ViewModels\ObservableCollectionVM.cs" />
     <Compile Include="Helpers\Translator.cs" />
     <Compile Include="Views\MainPageChildPages\LibraryPage.xaml.cs">
       <DependentUpon>LibraryPage.xaml</DependentUpon>

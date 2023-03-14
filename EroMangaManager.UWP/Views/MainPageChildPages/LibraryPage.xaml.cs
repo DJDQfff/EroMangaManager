@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 using EroMangaManager.UWP.Models;
-using EroMangaManager.UWP.ViewModels;
+using EroMangaManager.Core.ViewModels;
 
 using MyLibrary.UWP;
 
@@ -70,7 +70,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             var mf = list.SelectedItem as MangasFolder;
             if (mf != null)
             {
-                await Windows.System.Launcher.LaunchFolderAsync(mf.StorageFolder);
+                await Windows.System.Launcher.LaunchFolderPathAsync(mf.FolderPath);
             }
         }
 

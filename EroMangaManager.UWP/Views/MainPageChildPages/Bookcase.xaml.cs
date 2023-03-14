@@ -2,7 +2,7 @@
 
 using EroMangaManager.UWP.Helpers;
 using EroMangaManager.Core.Models;
-using EroMangaManager.UWP.ViewModels;
+using EroMangaManager.Core.ViewModels;
 using EroMangaManager.UWP.Views.ContentDialogPages;
 
 using Windows.ApplicationModel.Resources;
@@ -133,7 +133,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         private async void LaunchFile (object sender , Windows.UI.Xaml.RoutedEventArgs e)
         {
             var mangaBook = (sender as MenuFlyoutItem).DataContext as MangaBook;
-            await Windows.System.Launcher.LaunchFileAsync(await mangaBook.FilePath.GetStorageFile());
+            await Windows.System.Launcher.LaunchFileAsync(await App.Current.storageItemManager.GetStorageFile(mangaBook.FilePath));
         }
 
         private async void ExportPDF (object sender , Windows.UI.Xaml.RoutedEventArgs e)

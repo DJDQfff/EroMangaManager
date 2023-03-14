@@ -9,7 +9,7 @@ using EroMangaManager.UWP.Views.MainPageChildPages;
 
 using Microsoft.Toolkit.Uwp.Notifications;
 
-using MyUWPLibrary.StorageItemManager;
+using MyLibrary.UWP.StorageItemManager;
 
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -64,7 +64,7 @@ namespace EroMangaManager.UWP
 
             var folder = await MyLibrary.UWP.AccestListHelper.GetAvailableFutureFolder();
             storageItemManager.InitialFolders(folder);
-            await GlobalViewModel.Initialize(folder);
+            await GlobalViewModel.Initialize(folder.Values);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace EroMangaManager.UWP
 
             var file = args.Files[0] as Windows.Storage.StorageFile;
 
-            MangaBook book =await ModelFactory.CreateMangaBook(file , null);
+            MangaBook book =await ModelFactory.CreateMangaBook(file );
             rootFrame.Navigate(typeof(ReadPage) , book);
 
             Window.Current.Activate();

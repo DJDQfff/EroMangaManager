@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using EroMangaManager.UWP.Models;
+using EroMangaManager.Core.ViewModels;
 using EroMangaManager.Core.Models;
 using Windows.Storage;
 
@@ -32,7 +33,7 @@ namespace EroMangaManager.UWP.ViewModels
         internal ObservableCollection<MangasFolder> MangaFolders { get; } = new ObservableCollection<MangasFolder>();
 
         /// <summary>存放zip文件的文件夹</summary>
-        internal List<StorageFolder> StorageFolders => MangaFolders.Select(n => n.StorageFolder).ToList();
+        internal List<string> StorageFolders => MangaFolders.Select(n => n.FolderPath).ToList();
 
         /// <summary>各漫画zip</summary>
         ///
@@ -66,13 +67,14 @@ namespace EroMangaManager.UWP.ViewModels
             //TODO 现在这个是顺序执行，试试多线程方法，加快速度
             foreach (var folder in storageFolders)
             {
-                MangasFolder mangasFolder = new MangasFolder(folder);
+                MangasFolder mangasFolder =new MangasFolder(folder.Path);
                 MangaFolders.Add(mangasFolder);
             };
 
             foreach (var folder in MangaFolders)
             {
-                await folder.Initial();
+                var storage = App.Current.storageItemManager.GetStorageFolder(folder.FolderPath);
+                await ModelFactory.InitialMangasFolder(folder , storage);
             }
             // TODO 用这样的话，所有的都卡着不动，这是不是线程死锁？
             List<Task> tasks = new List<Task>();
@@ -105,9 +107,9 @@ namespace EroMangaManager.UWP.ViewModels
 
             if (MangaFolders.FirstOrDefault(x => x.FolderPath == folder.Path) is null)
             {
-                MangasFolder mangasFolder = new MangasFolder(folder);
+                MangasFolder mangasFolder = new MangasFolder(folder.Path);
                 MangaFolders.Add(mangasFolder);
-                await mangasFolder.Initial();
+                await ModelFactory.InitialMangasFolder(mangasFolder , folder);
             }
         }
 
@@ -121,9 +123,8 @@ namespace EroMangaManager.UWP.ViewModels
         {
             MangaFolders.Remove(mangasfolder);
 
-            string token = FutureAccessList.Add(mangasfolder.StorageFolder);        // 获取系统存储token
+            App.Current.storageItemManager.RemoveToken(mangasfolder.FolderPath);
 
-            FutureAccessList.Remove(token); // 从系统未来访问列表里删除
         }
 
         /// <summary>从数据库中移除指定漫画的 MangaTag</summary>
@@ -132,20 +133,13 @@ namespace EroMangaManager.UWP.ViewModels
         /// <returns></returns>
         public async Task DeleteSingleMangaBook (MangaBook mangaBook , StorageDeleteOption deleteOption)
         {
-            var folder = await mangaBook.FolderPath.GetStorageFolder();
-            foreach (var f in MangaFolders)
-            {
-                if (f.StorageFolder.Path == folder.Path)
-                {
-                    f.RemoveManga(mangaBook);
-                    break;
-                }
-            }
+            await App.Current.storageItemManager.DeleteStorageFile( mangaBook.FilePath, StorageDeleteOption.Default);
+
             // TODO 这里可以在设置里添加一个“是否删除阅读记录”
             await DatabaseController.ReadingInfo_RemoveSingle(mangaBook.FilePath);
 
 
-            var file = await mangaBook.FilePath.GetStorageFile();
+            var file = await App.Current.storageItemManager.GetStorageFile(mangaBook.FilePath);
             await file.DeleteAsync(deleteOption);
         }
 
@@ -157,16 +151,11 @@ namespace EroMangaManager.UWP.ViewModels
         /// <returns></returns>
         public async Task ReNameSingleMangaBook (MangaBook mangaBook , string newdisplayname)
         {
-            var file = mangaBook.FilePath.GetStorageFile();
-            var folder = await mangaBook.FolderPath.GetStorageFolder();
-            foreach (var f in MangaFolders)
-            {
-                if (f.StorageFolder.Path == folder.Path)
-                {
-                    await f.RenameManga(mangaBook , newdisplayname);
-                    break;
-                }
-            }
+            var name = mangaBook.FilePath;
+            var newname = newdisplayname + ".zip";
+
+            await App.Current.storageItemManager.RenameStorageFile(name, newdisplayname);
+
         }
 
         /// <summary>
