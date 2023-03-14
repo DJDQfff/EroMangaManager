@@ -165,7 +165,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             {
                 var text = renameDialog.NewDisplayName;
                 // text是否合法由对话框保证
-                await App.Current.GlobalViewModel.ReNameSingleMangaBook(eroManga , text);
+                await App.Current.storageItemManager.RenameStorageFile(eroManga.FilePath, text+"zip");
             }
             else
             {

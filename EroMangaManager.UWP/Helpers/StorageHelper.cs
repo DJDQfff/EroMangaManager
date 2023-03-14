@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.Views.ContentDialogPages;
 using EroMangaManager.Core.Models;
-
+using EroMangaManager.Core.ViewModels;
 using Windows.Storage;
 
 using Windows.UI.Xaml.Controls;
@@ -36,7 +36,8 @@ namespace EroMangaManager.UWP.Helpers
                 switch (result)
                 {
                     case ContentDialogResult.Primary:
-                        await App.Current.GlobalViewModel.DeleteSingleMangaBook(eroManga , option);
+                         App.Current.GlobalViewModel.RemoveManga(eroManga );
+                        await App.Current.storageItemManager.DeleteStorageFile(eroManga.FilePath , option);
                         break;
 
                     case ContentDialogResult.Secondary:
@@ -45,7 +46,9 @@ namespace EroMangaManager.UWP.Helpers
             }
             else
             {
-                await App.Current.GlobalViewModel.DeleteSingleMangaBook(eroManga , option);
+                 App.Current.GlobalViewModel.RemoveManga(eroManga );
+                await App.Current.storageItemManager.DeleteStorageFile(eroManga.FilePath , option);
+
             }
         }
     }

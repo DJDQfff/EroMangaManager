@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.Helpers;
 using EroMangaManager.UWP.Models;
-using EroMangaManager.UWP.ViewModels;
+using EroMangaManager.Core.ViewModels;
 using EroMangaManager.UWP.Views.MainPageChildPages;
 
 using Microsoft.Toolkit.Uwp.Notifications;
@@ -64,7 +64,7 @@ namespace EroMangaManager.UWP
 
             var folder = await MyLibrary.UWP.AccestListHelper.GetAvailableFutureFolder();
             storageItemManager.InitialFolders(folder);
-            await GlobalViewModel.Initialize(folder.Values);
+         await   ModelFactory.InitialIzeFoldersViewModel(GlobalViewModel , folder.Values);
         }
 
         /// <summary>

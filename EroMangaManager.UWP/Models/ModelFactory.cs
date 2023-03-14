@@ -17,9 +17,29 @@ using EroMangaManager.Core.ViewModels;
 namespace EroMangaManager.UWP.Models
 {
     internal static class ModelFactory
-    {
-       
-        public static async Task<MangasFolder> InitialMangasFolder (MangasFolder mangasFolder , StorageFolder StorageFolder)
+    {         
+        /// <summary>ViewModel初始化</summary>
+       public static async Task InitialIzeFoldersViewModel (ObservableCollectionVM ViewModel, IEnumerable<StorageFolder> storageFolders)
+        {
+                ViewModel. MangaFolders.Clear();
+            ViewModel.NonZipList.Clear();
+
+                //TODO 现在这个是顺序执行，试试多线程方法，加快速度
+                foreach (var folder in storageFolders)
+                {
+                    MangasFolder mangasFolder = new MangasFolder(folder.Path);
+                ViewModel.MangaFolders.Add(mangasFolder);
+                };
+
+                foreach (var folder in ViewModel.MangaFolders)
+                {
+                    var storage = App.Current.storageItemManager.GetStorageFolder(folder.FolderPath);
+                    await ModelFactory.InitialMangasFolder(folder , storage);
+                }
+
+        }
+
+        public static async Task InitialMangasFolder (MangasFolder mangasFolder , StorageFolder StorageFolder)
         {
             var files = await StorageFolder.GetFilesAsync();
 
@@ -50,7 +70,6 @@ namespace EroMangaManager.UWP.Models
                 }
             }
 
-            return mangasFolder;
         }
         public static async Task<MangaBook> CreateMangaBook (StorageFile storageFile )
         { 

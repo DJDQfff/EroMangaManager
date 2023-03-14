@@ -35,6 +35,9 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
             if (folder != null)
             {
+
+                App.Current.storageItemManager.AddToken(folder);
+
                 List<StorageFolder> folders;
                 folders = await folder.GetAllStorageFolder();
                 folders.Add(folder);//得把文件夹自身也加入扫描类中
@@ -42,7 +45,10 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                 {
                     try
                     {
-                        await App.Current.GlobalViewModel.AddFolder(f);
+                        var a=   await App.Current.GlobalViewModel.AddFolder(f.Path);
+
+                            await ModelFactory.InitialMangasFolder(a , folder);
+
                     }
                     catch (Exception)
                     {
@@ -60,6 +66,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             var storageFolder = list.SelectedItem as MangasFolder;
             if (storageFolder != null)
             {
+                App.Current.storageItemManager.RemoveToken(storageFolder.FolderPath);
                 App.Current.GlobalViewModel.RemoveFolder(storageFolder);
             }
         }
