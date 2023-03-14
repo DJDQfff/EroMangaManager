@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.UI.Xaml.Media.Imaging;
 
-using static EroMangaManager.UWP.Models.FolderEnum;
+using static EroMangaManager.UWP.SettingEnums.FolderEnum;
 using static MyLibrary.UWP.StorageFolderHelper;
 
 namespace EroMangaManager.UWP.Views.SettingPageChildPages

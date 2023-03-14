@@ -15,9 +15,8 @@ using Windows.Storage.FileProperties;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
 
-using static EroMangaManager.UWP.Models.FolderEnum;
+using static EroMangaManager.UWP.SettingEnums.FolderEnum;
 using static MyLibrary.UWP.StorageFolderHelper;
-using MyLibrary.UWP;
 
 namespace EroMangaManager.UWP.Helpers
 {

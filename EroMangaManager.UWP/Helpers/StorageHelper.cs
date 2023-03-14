@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-using EroMangaManager.UWP.Models;
+using EroMangaManager.UWP.SettingEnums;
 using EroMangaManager.UWP.Views.ContentDialogPages;
 using EroMangaManager.Core.Models;
-using EroMangaManager.Core.ViewModels;
 using Windows.Storage;
 
 using Windows.UI.Xaml.Controls;

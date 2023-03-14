@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 using static EroMangaManager.UWP.Helpers.ZipEntryHelper;
-using static EroMangaManager.UWP.Models.FolderEnum;
+using static EroMangaManager.UWP.SettingEnums.FolderEnum;
 using static MyLibrary.Standard20.HashComputer;
 using static MyLibrary.UWP.StorageFolderHelper;
 using static MyLibrary.UWP.StorageItemPicker;

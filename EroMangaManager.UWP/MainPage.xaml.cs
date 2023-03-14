@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-using EroMangaManager.UWP.Models;
+using EroMangaManager.UWP.SettingEnums;
 using EroMangaManager.UWP.Views.MainPageChildPages;
 
 using Windows.Storage;

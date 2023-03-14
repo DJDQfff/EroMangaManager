@@ -20,7 +20,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 using static EroMangaDB.BasicController;
-using static EroMangaManager.UWP.Models.FolderEnum;
+using static EroMangaManager.UWP.SettingEnums.FolderEnum;
 using static MyLibrary.UWP.StorageFolderHelper;
 
 namespace EroMangaManager.UWP

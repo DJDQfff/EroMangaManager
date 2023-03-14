@@ -136,7 +136,7 @@
   <ItemGroup>
     <Compile Include="Helpers\Exporter.cs" />
     <Compile Include="Helpers\StorageHelper.cs" />
-    <Compile Include="Models\ApplicationSettingItemName.cs" />
+    <Compile Include="SettingEnums\ApplicationSettingItemName.cs" />
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="Models\RepeatMangaBookGroup.cs" />
     <Compile Include="UserControls\TagsDisplayControl.xaml.cs">
@@ -163,7 +163,7 @@
     <Compile Include="Views\ContentDialogPages\MangaTagEdit.xaml.cs">
       <DependentUpon>MangaTagEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\FolderEnum.cs" />
+    <Compile Include="SettingEnums\FolderEnum.cs" />
     <Compile Include="ViewModels\ReaderVM.cs" />
     <Compile Include="Views\MainPageChildPages\Bookcase.xaml.cs">
       <DependentUpon>Bookcase.xaml</DependentUpon>
