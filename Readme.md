@@ -1,14 +1,8 @@
 # 要实现的功能
 
-* 把MangaBook类，Model和ViewModel放到standard2.0库里面，为以后可能的跨平台做准备
-
-* 创建一个UWP文件权限管理类，存放所有StorageFIle和StorageFolder权限，对传入文件路径时，负责返回权限，负责文件改名、删除。
-  
-  > 现在用的库是每次需要文件权限就去翻系统api，很浪费性能
+* 在初始化GlobalViewModel时添加文件夹的话，会倒错（被修改的集合、原来的MangasFolder不初始化）
 
 * 导出pdf功能好像会阻塞线程，尝试新建线程执行任务
-
-* 重命名功能需要完善，还是得改为standard2.0库来实现
 
 * 本子名翻译功能，及设置都需要改，这是可以传参的
 
@@ -74,11 +68,17 @@
 
 # 更新日志
 
+## 2023.3.14
+
+* 把MangaBook类，MangasFolder类、ObservableCollectionVM类放到standard2.0库里面
+
+* 创建一个UWP文件权限管理类，存放所有StorageFIle和StorageFolder权限，对传入文件路径时，负责返回权限，负责文件改名、删除。
+
 ## 2023.3.13
 
 * 把MangaBook提取到standard2.0库里面去
 
-## 2020.3.10
+## 2023.3.10
 
 * 引入winui，librarypage的ProgressBar现在可以显示为条状了
 

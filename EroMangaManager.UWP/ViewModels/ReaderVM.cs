@@ -48,13 +48,12 @@ namespace EroMangaManager.UWP.ViewModels
         public ReaderVM (MangaBook _manga)
         {
             this.manga = _manga;    
-
         }
 
         public async Task Initial ()
         {
             var file =await App.Current.storageItemManager.GetStorageFile(manga.FilePath);
-            stream = file.OpenStreamForReadAsync().Result;
+            stream =await file.OpenStreamForReadAsync();
             zipArchive = ArchiveFactory.Open(stream);
 
         }

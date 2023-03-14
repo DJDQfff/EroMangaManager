@@ -63,9 +63,11 @@ namespace EroMangaManager.Core.ViewModels
         /// <returns></returns>
         public MangasFolder AddFolder (string path)
         {
-            MangasFolder mangasFolder = new MangasFolder(path);
-            return mangasFolder;
+            MangasFolder mangasFolder = new MangasFolder(path);    
 
+            MangaFolders.Add(mangasFolder);
+
+            return mangasFolder;
         }
 
         /// <summary>
