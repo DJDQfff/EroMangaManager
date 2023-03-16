@@ -46,9 +46,8 @@ namespace EroMangaManager.UWP.Models
             mangasFolder.IsInitialing = true;
             var files = await StorageFolder.GetFilesAsync();
 
-            for (int i = 0; i < files.Count; i++)
+            foreach(var storageFile in files)
             {
-                StorageFile storageFile = files[i];
 
                 string extension = Path.GetExtension(storageFile.Path).ToLower();
 
