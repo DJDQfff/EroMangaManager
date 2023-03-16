@@ -12,7 +12,7 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
         /// <summary>
         ///
         /// </summary>
-        public UsageDocumentPage ()
+        public UsageDocumentPage()
         {
             this.InitializeComponent();
         }

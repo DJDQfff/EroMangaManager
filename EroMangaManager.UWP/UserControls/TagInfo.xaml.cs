@@ -22,7 +22,7 @@ namespace EroMangaManager.UWP.UserControls
         /// <summary>
         /// 构造
         /// </summary>
-        public TagInfo ()
+        public TagInfo()
         {
             this.InitializeComponent();
         }

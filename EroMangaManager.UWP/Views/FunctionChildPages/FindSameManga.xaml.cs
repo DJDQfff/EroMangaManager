@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
+using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.Views.MainPageChildPages;
-using EroMangaManager.Core.Models;
 
 using GroupedItemsLibrary.ViewModels;
 
@@ -19,14 +19,14 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
     /// </summary>
     public sealed partial class FindSameManga : Page
     {
-        private ItemsGroupsViewModel<string , MangaBook , RepeatMangaBookGroup> mangaBookViewModel;
+        private ItemsGroupsViewModel<string, MangaBook, RepeatMangaBookGroup> mangaBookViewModel;
 
         private List<MangaBook> mangaBooks;
 
         /// <summary>
         ///
         /// </summary>
-        public FindSameManga ()
+        public FindSameManga()
         {
             this.InitializeComponent();
         }
@@ -35,16 +35,16 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
         ///
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnNavigatedTo (NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
             mangaBooks = e.Parameter as List<MangaBook>;
-            mangaBookViewModel = new ItemsGroupsViewModel<string , MangaBook , RepeatMangaBookGroup>(mangaBooks , n => n.MangaName);
+            mangaBookViewModel = new ItemsGroupsViewModel<string, MangaBook, RepeatMangaBookGroup>(mangaBooks, n => n.MangaName);
             listView.ItemsSource = mangaBookViewModel.RepeatPairs;
         }
 
-        private async void Button_Click (object sender , RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
 
@@ -55,13 +55,13 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
             mangaBookViewModel.DeleteStorageFileInRootObservable(eroManga);
         }
 
-        private void Button_Click_1 (object sender , RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
 
             var mangaBook = button.DataContext as MangaBook;
 
-            MainPage.Current.MainFrame.Navigate(typeof(ReadPage) , mangaBook);
+            MainPage.Current.MainFrame.Navigate(typeof(ReadPage), mangaBook);
 
             MainPage.Current.MainNavigationView.SelectedItem = MainPage.Current.MainNavigationView.MenuItems[2];
         }

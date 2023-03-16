@@ -20,7 +20,7 @@ namespace EroMangaDB.Services
         public List<ReadingInfo> NeedAddToDatabase { set; get; } = new List<ReadingInfo>();
 
         /// <summary> 构造函数 </summary>
-        public ReadingInfoManager ()
+        public ReadingInfoManager()
         {
             InDatabasereadingInfos = DatabaseController.ReadingInfo_QueryAll();
         }
@@ -28,7 +28,7 @@ namespace EroMangaDB.Services
         /// <summary> 获得一个ReadingInf，如果不存在则创建一个 </summary>
         /// <param name="path"> </param>
         /// <returns> </returns>
-        public ReadingInfo Get (string path)
+        public ReadingInfo Get(string path)
         {
             ReadingInfo readingInfo;
             try
@@ -45,13 +45,13 @@ namespace EroMangaDB.Services
 
         /// <summary> 把readinginfo保存到数据库 </summary>
         /// <returns> </returns>
-        public async Task SaveChanges ()
+        public async Task SaveChanges()
         {
             await DatabaseController.ReadingInfo_AddMulti(NeedAddToDatabase);
         }
 
         /// <summary> 释放此实例 </summary>
-        public void Dispose ()
+        public void Dispose()
         {
             InDatabasereadingInfos = null;
             NeedAddToDatabase.Clear();

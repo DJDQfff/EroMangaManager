@@ -11,7 +11,7 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
         /// <summary>
         /// 构造函数
         /// </summary>
-        public ErrorZipPage ()
+        public ErrorZipPage()
         {
             this.InitializeComponent();
         }

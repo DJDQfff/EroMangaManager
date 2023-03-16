@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 
 using static EroMangaDB.BasicController;
-using static  MyLibrary.Standard20.HashComputer;
+using static MyLibrary.Standard20.HashComputer;
 
 namespace EroMangaManager.UWP.Models
 {
@@ -16,7 +16,7 @@ namespace EroMangaManager.UWP.Models
         /// </summary>
         /// <param name="length"> </param>
         /// <returns> </returns>
-        public static bool WhetherDatabaseMatchLength (long length)
+        public static bool WhetherDatabaseMatchLength(long length)
         {
             int count = DatabaseController.ImageFilter_LengthConditionCount(length);
             return count != 0;
@@ -27,7 +27,7 @@ namespace EroMangaManager.UWP.Models
         /// </summary>
         /// <param name="stream"> </param>
         /// <returns> </returns>
-        public static bool StreamHashFilter (Stream stream)
+        public static bool StreamHashFilter(Stream stream)
         {
             string hash = stream.ComputeHash();
             int count = DatabaseController.ImageFilter_HashConditionCount(hash);
@@ -40,9 +40,9 @@ namespace EroMangaManager.UWP.Models
         /// <param name="hash"></param>
         /// <param name="length"></param>
         /// <returns></returns>
-        public static async Task Add (string hash , long length)
+        public static async Task Add(string hash, long length)
         {
-            await DatabaseController.ImageFilter_Add(hash , length);
+            await DatabaseController.ImageFilter_Add(hash, length);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace EroMangaManager.UWP.Models
         /// </summary>
         /// <param name="hashes"></param>
         /// <returns></returns>
-        public static async Task Remove (string[] hashes)
+        public static async Task Remove(string[] hashes)
         {
             await DatabaseController.ImageFilter_Remove(hashes);
         }

@@ -25,7 +25,7 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
         /// 
         /// </summary>
         /// <param name="mangaBook"></param>
-        public RenameDialog (MangaBook mangaBook)
+        public RenameDialog(MangaBook mangaBook)
         {
             this.InitializeComponent();
             textbox.Text = mangaBook.FileDisplayName;
@@ -33,7 +33,7 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
             str = PrimaryButtonText;
         }
 
-        private void textbox_TextChanged (object sender , TextChangedEventArgs e)
+        private void textbox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var bool1 = string.IsNullOrWhiteSpace(NewDisplayName);
             var invalidChars = Path.GetInvalidFileNameChars();

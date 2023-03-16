@@ -3,15 +3,14 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Threading;
 
-using EroMangaManager.UWP.Helpers;
 using EroMangaManager.Core.Models;
+using EroMangaManager.UWP.Helpers;
 
 using SharpCompress.Archives;
 
 using Windows.UI.Xaml.Media.Imaging;
-using MyLibrary.UWP;
+
 using static EroMangaManager.UWP.Helpers.ZipEntryHelper;
 
 namespace EroMangaManager.UWP.ViewModels
@@ -45,15 +44,15 @@ namespace EroMangaManager.UWP.ViewModels
 
         /// <summary> 初始化</summary>
         /// <param name="_manga"> </param>
-        public ReaderVM (MangaBook _manga)
+        public ReaderVM(MangaBook _manga)
         {
-            this.manga = _manga;    
+            this.manga = _manga;
         }
 
-        public async Task Initial ()
+        public async Task Initial()
         {
-            var file =await App.Current.storageItemManager.GetStorageFile(manga.FilePath);
-            stream =await file.OpenStreamForReadAsync();
+            var file = await App.Current.storageItemManager.GetStorageFile(manga.FilePath);
+            stream = await file.OpenStreamForReadAsync();
             zipArchive = ArchiveFactory.Open(stream);
 
         }
@@ -61,7 +60,7 @@ namespace EroMangaManager.UWP.ViewModels
         //TODO 把selectentry和showentry分开
         //TODO 给selectentry添加一个参数，要过滤的数据库
         /// <summary> 从压缩文件的所有entry中，筛选出符合条件的 </summary>
-        public async Task SelectEntriesAsync (bool IsFilterImageOn , bool whetherShow = true)
+        public async Task SelectEntriesAsync(bool IsFilterImageOn, bool whetherShow = true)
         {
             Stream TempStream = null;
             IArchive TempZipArchive = null;
@@ -105,7 +104,7 @@ namespace EroMangaManager.UWP.ViewModels
                 }
             }
 
-            void StopWork ()
+            void StopWork()
             {
                 TempStream?.Dispose();
                 TempZipArchive?.Dispose();
@@ -113,7 +112,7 @@ namespace EroMangaManager.UWP.ViewModels
         }
 
         /// <summary> </summary>
-        public void Dispose ()
+        public void Dispose()
         {
             _IsClosing = true;
             zipArchiveEntries.Clear();

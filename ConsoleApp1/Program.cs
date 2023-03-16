@@ -8,7 +8,7 @@ namespace DatabaseOperation
         ///
         /// </summary>
         /// <returns></returns>
-        private static void Main ()
+        private static void Main()
         {
             DatabaseController.Migrate();
             //var a = DatabaseController.TagCategory_QueryAll();

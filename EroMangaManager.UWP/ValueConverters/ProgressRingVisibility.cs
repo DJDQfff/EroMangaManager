@@ -20,7 +20,7 @@ namespace EroMangaManager.UWP.ValueConverters
         /// <param name="parameter"></param>
         /// <param name="language"></param>
         /// <returns></returns>
-        public object Convert (object value , Type targetType , object parameter , string language)
+        public object Convert(object value, Type targetType, object parameter, string language)
         {
             ReaderVM reader = value as ReaderVM;
             if (reader is null)
@@ -42,7 +42,7 @@ namespace EroMangaManager.UWP.ValueConverters
         /// <param name="language"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public object ConvertBack (object value , Type targetType , object parameter , string language)
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             throw new NotImplementedException();
         }

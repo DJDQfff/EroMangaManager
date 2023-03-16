@@ -26,7 +26,7 @@ namespace EroMangaManager.UWP.Helpers
         /// </summary>
         /// <param name="entry"></param>
         /// <returns></returns>
-        public static async Task<BitmapImage> ShowEntryAsync (IArchiveEntry entry)
+        public static async Task<BitmapImage> ShowEntryAsync(IArchiveEntry entry)
         {
             using (Stream stream1 = entry.OpenEntryStream())
             {
@@ -54,7 +54,7 @@ namespace EroMangaManager.UWP.Helpers
         /// <param name="entry"></param>
         /// <param name="isfilterimageon">TODO 是否过滤图片</param>
         /// <returns></returns>
-        public static bool EntryFilter (this SharpCompress.Archives.IArchiveEntry entry , bool isfilterimageon)
+        public static bool EntryFilter(this SharpCompress.Archives.IArchiveEntry entry, bool isfilterimageon)
         {
             bool canuse = true;
 
@@ -92,7 +92,7 @@ namespace EroMangaManager.UWP.Helpers
         /// <param name="zipArchive"></param>
         /// <param name="sortFunc"></param>
         /// <returns></returns>
-        public static IEnumerable<string> SortEntriesByName (this IArchive zipArchive , Action<IEnumerable<string>> sortFunc = null)
+        public static IEnumerable<string> SortEntriesByName(this IArchive zipArchive, Action<IEnumerable<string>> sortFunc = null)
         {
             List<string> vs = new List<string>();
             foreach (var zipEntry in zipArchive.Entries)
@@ -122,7 +122,7 @@ namespace EroMangaManager.UWP.Helpers
         /// </summary>
         /// <param name="zipArchiveEntry"></param>
         /// <returns></returns>
-        public static async Task<BitmapImage> ShowEntryAsync (System.IO.Compression.ZipArchiveEntry zipArchiveEntry)
+        public static async Task<BitmapImage> ShowEntryAsync(System.IO.Compression.ZipArchiveEntry zipArchiveEntry)
         {
             using (Stream stream1 = zipArchiveEntry.Open())
             {
@@ -147,7 +147,7 @@ namespace EroMangaManager.UWP.Helpers
         /// <summary> 过滤掉不属于本子的内容，如：汉化组信息、付款码等 </summary>
         /// <param name="entry"> </param>
         /// <returns> </returns>
-        public static bool EntryFilter (this System.IO.Compression.ZipArchiveEntry entry)
+        public static bool EntryFilter(this System.IO.Compression.ZipArchiveEntry entry)
         {
             bool canuse = true;
 
@@ -182,10 +182,10 @@ namespace EroMangaManager.UWP.Helpers
         /// 排序方法。传参，则按给定方法排序；不传，则按List.Sort()方法排序
         /// </param>
         /// <returns> </returns>
-        public static IEnumerable<string> SortEntriesByName (this System.IO.Compression.ZipArchive zipArchive , Action<IEnumerable<string>> sortFunc = null)
+        public static IEnumerable<string> SortEntriesByName(this System.IO.Compression.ZipArchive zipArchive, Action<IEnumerable<string>> sortFunc = null)
         {
             List<string> vs = new List<string>();
-            for (int i = 0 ; i < zipArchive.Entries.Count ; i++)
+            for (int i = 0; i < zipArchive.Entries.Count; i++)
             {
                 string entryName = zipArchive.Entries[i].FullName;
                 vs.Add(entryName);
@@ -212,7 +212,7 @@ namespace EroMangaManager.UWP.Helpers
         /// </summary>
         /// <param name="entry"></param>
         /// <returns></returns>
-        public static bool EntryFilter (this ZipEntry entry)
+        public static bool EntryFilter(this ZipEntry entry)
         {
             bool canuse = true;
 

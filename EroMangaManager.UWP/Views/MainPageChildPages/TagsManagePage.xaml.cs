@@ -12,7 +12,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         /// <summary>
         ///
         /// </summary>
-        public TagsManagePage ()
+        public TagsManagePage()
         {
             this.InitializeComponent();
         }

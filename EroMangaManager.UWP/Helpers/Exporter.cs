@@ -16,12 +16,12 @@ namespace EroMangaManager.UWP.Helpers
 {
     internal class Exporter
     {
-        internal static async Task ExportAsPDF (MangaBook mangaBook , StorageFile target)
+        internal static async Task ExportAsPDF(MangaBook mangaBook, StorageFile target)
         {
             using (ReaderVM reader = new ReaderVM(mangaBook))
             {
                 await reader.Initial();
-                await reader.SelectEntriesAsync(false , false);
+                await reader.SelectEntriesAsync(false, false);
 
                 Stream stream1 = await target.OpenStreamForWriteAsync();
 
@@ -40,7 +40,7 @@ namespace EroMangaManager.UWP.Helpers
                                         stream.CopyTo(memoryStream);
                                         var b = new byte[memoryStream.Length];
                                         memoryStream.Position = 0;
-                                        memoryStream.Read(b , 0 , b.Length);
+                                        memoryStream.Read(b, 0, b.Length);
 
                                         ImageData imageData = ImageDataFactory.Create(b);
 

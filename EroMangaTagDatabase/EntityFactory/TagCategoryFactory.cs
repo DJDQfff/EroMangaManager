@@ -15,10 +15,10 @@ namespace EroMangaDB.EntityFactory
         /// <param name="categoryname"></param>
         /// <param name="keywords"></param>
         /// <returns></returns>
-        public static TagCategory Creat (string categoryname , IEnumerable<string> keywords)
+        public static TagCategory Creat(string categoryname, IEnumerable<string> keywords)
         {
-            string keywordsstring = string.Join("\r" , keywords);
-            TagCategory tagKeywords = new TagCategory() { CategoryName = categoryname , Keywords = keywordsstring };
+            string keywordsstring = string.Join("\r", keywords);
+            TagCategory tagKeywords = new TagCategory() { CategoryName = categoryname, Keywords = keywordsstring };
             return tagKeywords;
         }
     }

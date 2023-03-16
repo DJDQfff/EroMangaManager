@@ -15,12 +15,12 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         /// <summary>
         /// 所有工具也的集中展示页面
         /// </summary>
-        public FunctionPageShower ()
+        public FunctionPageShower()
         {
             this.InitializeComponent();
         }
 
-        private void Button_Click (object sender , RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
             var name = button.Name;
@@ -38,7 +38,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                     break;
             }
 
-            MainPage.Current.MainFrame.Navigate(type , App.Current.GlobalViewModel.MangaList);
+            MainPage.Current.MainFrame.Navigate(type, App.Current.GlobalViewModel.MangaList);
 
             return;
 

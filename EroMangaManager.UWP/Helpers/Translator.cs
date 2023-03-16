@@ -16,7 +16,7 @@ namespace EroMangaManager.UWP.Helpers
     {
         /// <summary> 翻译多个本子名 </summary>
         /// <returns> </returns>
-        public static async Task TranslateAllMangaName ()
+        public static async Task TranslateAllMangaName()
         {
             var names = App.Current.GlobalViewModel.MangaList.Select(n => n.MangaName).ToList();
 
@@ -26,7 +26,7 @@ namespace EroMangaManager.UWP.Helpers
             {
                 try
                 {
-                    results = await controller.CommonTranslateAsync(names , "zh");
+                    results = await controller.CommonTranslateAsync(names, "zh");
                 }
                 catch (Exception)
                 {

@@ -6,7 +6,7 @@ namespace EroMangaManager.UWP.ValueConverters
 {
     internal class ControlVisibility : Windows.UI.Xaml.Data.IValueConverter
     {
-        public object Convert (object value , Type targetType , object parameter , string language)
+        public object Convert(object value, Type targetType, object parameter, string language)
         {
             if (value is int count)
             {
@@ -22,7 +22,7 @@ namespace EroMangaManager.UWP.ValueConverters
             }
         }
 
-        private Visibility VIsibilityFromBool (bool b)
+        private Visibility VIsibilityFromBool(bool b)
         {
             if (b is true)
             {
@@ -34,7 +34,7 @@ namespace EroMangaManager.UWP.ValueConverters
             }
         }
 
-        private Visibility VisibilityFromNull (object o)
+        private Visibility VisibilityFromNull(object o)
         {
             if (o is null)
             {
@@ -46,7 +46,7 @@ namespace EroMangaManager.UWP.ValueConverters
             }
         }
 
-        private Visibility VisibilityFromCount (int count)
+        private Visibility VisibilityFromCount(int count)
         {
             if (count == 0)
             {
@@ -58,7 +58,7 @@ namespace EroMangaManager.UWP.ValueConverters
             }
         }
 
-        public object ConvertBack (object value , Type targetType , object parameter , string language)
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             throw new NotImplementedException();
         }

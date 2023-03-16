@@ -30,11 +30,11 @@ namespace EroMangaManager.UWP.Helpers
         /// </summary>
         /// <returns> </returns>
         [Obsolete]
-        public static async Task ChangeCoverFromTempFolder (this MangaBook mangaBook)
+        public static async Task ChangeCoverFromTempFolder(this MangaBook mangaBook)
         {
             StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
 
-            var file =await App.Current.storageItemManager.GetStorageFile(mangaBook.FilePath);
+            var file = await App.Current.storageItemManager.GetStorageFile(mangaBook.FilePath);
             var cover = await coverfolder.TryGetItemAsync(file.DisplayName + ".jpg");
 
             if (cover != null)
@@ -52,7 +52,7 @@ namespace EroMangaManager.UWP.Helpers
         /// <summary>
         /// 初始化默认漫画封面
         /// </summary>
-        public static void InitialDefaultCover ()
+        public static void InitialDefaultCover()
         {
             _imageSource = new SvgImageSource(new Uri(DefaultCoverPath));
         }
@@ -72,7 +72,7 @@ namespace EroMangaManager.UWP.Helpers
         /// </summary>
         /// <param name="storageFile"></param>
         /// <returns></returns>
-        public static async Task<string> CreatCoverFile_Origin_SharpCompress (this StorageFile storageFile)
+        public static async Task<string> CreatCoverFile_Origin_SharpCompress(this StorageFile storageFile)
         {
             string path = null;
             StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
@@ -86,7 +86,7 @@ namespace EroMangaManager.UWP.Helpers
                         bool canuse = entry.EntryFilter(true);
                         if (canuse)
                         {
-                            path = Path.Combine(coverfolder.Path , storageFile.DisplayName + ".jpg");
+                            path = Path.Combine(coverfolder.Path, storageFile.DisplayName + ".jpg");
                             entry.WriteToFile(path);
                             break;
                         }
@@ -103,13 +103,13 @@ namespace EroMangaManager.UWP.Helpers
         /// <summary> 调用系统API，返回缩率图 </summary>
         /// <param name="cover"> </param>
         /// <returns> </returns>
-        public static async Task<BitmapImage> GetCoverThumbnail_SystemAsync (this StorageFile cover)
+        public static async Task<BitmapImage> GetCoverThumbnail_SystemAsync(this StorageFile cover)
         {
             BitmapImage bitmapImage = new BitmapImage();
             //thumbnailMode.picturemode有坑,缩略图不完整
             IRandomAccessStream randomAccessStream;
 
-            using (StorageItemThumbnail thumbnail = await cover.GetThumbnailAsync(ThumbnailMode.SingleItem , 80))
+            using (StorageItemThumbnail thumbnail = await cover.GetThumbnailAsync(ThumbnailMode.SingleItem, 80))
             {
                 randomAccessStream = thumbnail.CloneStream();
             }
@@ -122,7 +122,7 @@ namespace EroMangaManager.UWP.Helpers
         /// 清除所有封面文件
         /// </summary>
         /// <returns></returns>
-        public static async Task ClearCovers ()
+        public static async Task ClearCovers()
         {
             StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Covers));
             var files = await storageFolder.GetFilesAsync();
@@ -138,7 +138,7 @@ namespace EroMangaManager.UWP.Helpers
 
         /// <summary> 尝试创建封面文件。 </summary>
         /// <returns> </returns>
-        public static async Task<string> TryCreatCoverFileAsync (StorageFile storageFile)
+        public static async Task<string> TryCreatCoverFileAsync(StorageFile storageFile)
         {
             string path;
             StorageFolder folder = await GetChildTemporaryFolder(nameof(Covers));
@@ -186,7 +186,7 @@ namespace EroMangaManager.UWP.Helpers
         /// </summary>
         /// <param name="cover"> </param>
         /// <returns> </returns>
-        public static async Task<BitmapImage> GetCoverThumbnail_CustomAsync (this StorageFile cover)
+        public static async Task<BitmapImage> GetCoverThumbnail_CustomAsync(this StorageFile cover)
         {
             BitmapImage bitmapImage = new BitmapImage();
 
@@ -204,7 +204,7 @@ namespace EroMangaManager.UWP.Helpers
         /// <summary> 创建 缩略图 作为封面文件 </summary>
         /// <param name="storageFile"> </param>
         /// <returns> </returns>
-        public static async Task CreatCoverFile_Thumbnail_SkiaSharp (this StorageFile storageFile)
+        public static async Task CreatCoverFile_Thumbnail_SkiaSharp(this StorageFile storageFile)
         {
             StorageFolder coverFolder = await GetChildTemporaryFolder(nameof(Covers));
             StorageFile coverFIle = await coverFolder.CreateFileAsync(storageFile.DisplayName + ".jpg");
@@ -232,7 +232,7 @@ namespace EroMangaManager.UWP.Helpers
                                     // 存在bug，一些图片解码会返回null
 
                                     SkiaSharp.SKBitmap sKBitmap = SkiaSharp.SKBitmap.Decode(memoryStream);
-                                    SKBitmap sKBitmap1 = sKBitmap.Resize(new SKImageInfo(sKBitmap.Width , sKBitmap.Height) , SKFilterQuality.Low);
+                                    SKBitmap sKBitmap1 = sKBitmap.Resize(new SKImageInfo(sKBitmap.Width, sKBitmap.Height), SKFilterQuality.Low);
 
                                     // SkiaSharp.SKImage
                                     // sKImage =
@@ -242,7 +242,7 @@ namespace EroMangaManager.UWP.Helpers
 
                                     using (Stream writestream = await coverFIle.OpenStreamForWriteAsync())
                                     {
-                                        sKBitmap1.Encode(writestream , SKEncodedImageFormat.Jpeg , 30);
+                                        sKBitmap1.Encode(writestream, SKEncodedImageFormat.Jpeg, 30);
                                     }
                                 }
                                 break;
@@ -258,7 +258,7 @@ namespace EroMangaManager.UWP.Helpers
         /// </summary>
         /// <param name="storageFile"></param>
         /// <returns></returns>
-        public static async Task CreatCoverFile_Origin_ISharpCodeSharpZipLib (this StorageFile storageFile)
+        public static async Task CreatCoverFile_Origin_ISharpCodeSharpZipLib(this StorageFile storageFile)
         {
             StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
             Stream stream = await storageFile.OpenStreamForReadAsync();
@@ -274,7 +274,7 @@ namespace EroMangaManager.UWP.Helpers
                             bool canuse = entry.EntryFilter();
                             if (canuse)
                             {
-                                string path = Path.Combine(coverfolder.Path , storageFile.DisplayName + ".jpg");
+                                string path = Path.Combine(coverfolder.Path, storageFile.DisplayName + ".jpg");
                                 File.Create(path);
                                 FileInfo fileInfo = new FileInfo(path);
                                 FileStream writestream = fileInfo.OpenWrite();
@@ -300,7 +300,7 @@ namespace EroMangaManager.UWP.Helpers
         /// <summary> 使用.net类库创建 源图 作为封面文件 </summary>
         /// <param name="storageFile"> </param>
         /// <returns> </returns>
-        public static async Task CreatCoverFile_Origin_SystemIOCompressionZipArchive (this StorageFile storageFile)
+        public static async Task CreatCoverFile_Origin_SystemIOCompressionZipArchive(this StorageFile storageFile)
         {
             StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
 
@@ -341,7 +341,7 @@ namespace EroMangaManager.UWP.Helpers
                             bool canuse = entry.EntryFilter();
                             if (canuse)
                             {
-                                string path = Path.Combine(coverfolder.Path , storageFile.DisplayName + ".jpg");
+                                string path = Path.Combine(coverfolder.Path, storageFile.DisplayName + ".jpg");
                                 entry.ExtractToFile(path);
                                 break;
                             }

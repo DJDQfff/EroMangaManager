@@ -12,11 +12,11 @@ namespace EroMangaDB
         /// <returns>
         /// 一个字典，第一项为本子标签，第二项为对应的TagName（如没有则为空字符串）
         /// </returns>
-        public Dictionary<string , string> MatchTag (IEnumerable<string> tags)
+        public Dictionary<string, string> MatchTag(IEnumerable<string> tags)
         {
             var dictionaries = DatabaseController.TagCategory_QueryAll();
 
-            Dictionary<string , string> keyValuePairs = new Dictionary<string , string>();
+            Dictionary<string, string> keyValuePairs = new Dictionary<string, string>();
 
             tags = tags.Distinct().ToArray();           // 去重
 
@@ -33,14 +33,14 @@ namespace EroMangaDB
                 }
                 // 未在数据库中找到，则传入一个null
                 string key = (b is null) ? null : b;
-                keyValuePairs.Add(tag , key);
+                keyValuePairs.Add(tag, key);
             }
             return keyValuePairs;
         }
 
         /// <summary> 保存数据库更改 </summary>
         /// <returns> </returns>
-        public async Task SaveChanges ()
+        public async Task SaveChanges()
         {
             await database.SaveChangesAsync();
         }

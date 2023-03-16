@@ -25,14 +25,14 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
         /// </summary>
         public BitmapImage bitmapImage { set; get; } = new BitmapImage();
 
-        private ImageItem (StorageFile storage)
+        private ImageItem(StorageFile storage)
         {
             storageFile = storage;
         }
 
-        private async Task InitializeImage ()
+        private async Task InitializeImage()
         {
-            var thumbnail = await storageFile.GetThumbnailAsync(Windows.Storage.FileProperties.ThumbnailMode.SingleItem , 80);
+            var thumbnail = await storageFile.GetThumbnailAsync(Windows.Storage.FileProperties.ThumbnailMode.SingleItem, 80);
             await bitmapImage.SetSourceAsync(thumbnail);
         }
 
@@ -41,7 +41,7 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
         /// </summary>
         /// <param name="items"></param>
         /// <returns></returns>
-        public static async Task GetsAsync (ObservableCollection<ImageItem> items)
+        public static async Task GetsAsync(ObservableCollection<ImageItem> items)
         {
             StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filters));
             var files = await storageFolder.GetFilesAsync();

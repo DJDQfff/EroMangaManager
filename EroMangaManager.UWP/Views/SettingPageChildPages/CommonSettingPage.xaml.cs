@@ -16,34 +16,34 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
         /// <summary>
         /// 一般设置页面
         /// </summary>
-        public CommonSettingPage ()
+        public CommonSettingPage()
         {
             this.InitializeComponent();
         }
 
-        private void DirectDeleteOption (object sender , RoutedEventArgs e)
+        private void DirectDeleteOption(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
             ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.WhetherShowDialogBeforeDelete.ToString()] = toggleSwitch.IsOn;
         }
 
-        private void DeleteOption (object sender , RoutedEventArgs e)
+        private void DeleteOption(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
             ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.StorageDeleteOption.ToString()] = toggleSwitch.IsOn;
         }
 
-        private void ToggleSwitch_Loaded (object sender , RoutedEventArgs e)
+        private void ToggleSwitch_Loaded(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            var a = (bool) (ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.WhetherShowDialogBeforeDelete.ToString()] ?? false);
+            var a = (bool)(ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.WhetherShowDialogBeforeDelete.ToString()] ?? false);
             toggleSwitch.IsOn = a;
         }
 
-        private void ToggleSwitch_Loaded_1 (object sender , RoutedEventArgs e)
+        private void ToggleSwitch_Loaded_1(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            var a = (bool) (ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.StorageDeleteOption.ToString()] ?? false);
+            var a = (bool)(ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.StorageDeleteOption.ToString()] ?? false);
             toggleSwitch.IsOn = a;
         }
     }

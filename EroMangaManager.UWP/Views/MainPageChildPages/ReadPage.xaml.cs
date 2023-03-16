@@ -3,9 +3,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
+using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.ViewModels;
-using EroMangaManager.Core.Models;
+
 using SharpCompress.Archives;
 
 using Windows.Storage;
@@ -38,7 +39,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         /// <summary>
         /// 构造函数
         /// </summary>
-        public ReadPage ()
+        public ReadPage()
         {
             this.InitializeComponent();
         }
@@ -47,7 +48,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         /// 导航前
         /// </summary>
         /// <param name="e"></param>
-        protected override async void OnNavigatedTo (NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             Debug.WriteLine("OnNavigatedTo事件开始");
 
@@ -61,7 +62,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         /// </summary>
         /// <param name="manga"></param>
         /// <returns></returns>
-        public async Task TryChangeManga (MangaBook manga)
+        public async Task TryChangeManga(MangaBook manga)
         {
             if (manga == null)                          // 传入null，直接跳过
             {
@@ -77,7 +78,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                 //Do Nothing
             }
 
-            async Task SetNewSource (MangaBook newmanga)
+            async Task SetNewSource(MangaBook newmanga)
             {
                 currentManga = newmanga;
                 var oldreader = currentReader;
@@ -89,14 +90,14 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
                 var result = ApplicationData.Current.LocalSettings.Values["IsFilterImageOn"] ?? false;
 
-                var isfilterimage = (bool) result;
+                var isfilterimage = (bool)result;
                 await currentReader.SelectEntriesAsync(isfilterimage);
             }
         }
 
         #region 数据绑定到已解码的BitmapImage
 
-        private async void FilteThisImage2_Click (object sender , RoutedEventArgs e)
+        private async void FilteThisImage2_Click(object sender, RoutedEventArgs e)
         {
             var bitmap = FLIP.SelectedItem as Windows.UI.Xaml.Media.Imaging.BitmapImage;
             var index = currentReader.bitmapImages.IndexOf(bitmap);
@@ -105,10 +106,10 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             currentReader.bitmapImages.Remove(bitmap);
             string hash = entry.ComputeHash();
             long length = entry.Size;
-            await HashManager.Add(hash , length);
+            await HashManager.Add(hash, length);
 
             StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filters));
-            string path = Path.Combine(storageFolder.Path , hash + ".jpg");
+            string path = Path.Combine(storageFolder.Path, hash + ".jpg");
             entry.WriteToFile(path);
         }
 
@@ -116,7 +117,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         /// <param name="sender"> </param>
         /// <param name="e"> </param>
 
-        private async void SaveImageAs2_Click (object sender , RoutedEventArgs e)
+        private async void SaveImageAs2_Click(object sender, RoutedEventArgs e)
         {
             var bitmap = FLIP.SelectedItem as Windows.UI.Xaml.Media.Imaging.BitmapImage;
             var index = currentReader.bitmapImages.IndexOf(bitmap);
@@ -137,7 +138,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         #region 数据绑定到压缩文件类的每个压缩入口Entry
 
         [Obsolete]
-        private async void FLIP_SelectionChangedNew (object sender , SelectionChangedEventArgs e)
+        private async void FLIP_SelectionChangedNew(object sender, SelectionChangedEventArgs e)
         {
             Debug.WriteLine($"SelectionChanged事件开始增加个数：{e.AddedItems.Count}移除个数：{e.RemovedItems.Count}");
 
@@ -162,7 +163,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         /// <param name="sender"> </param>
         /// <param name="e"> </param>
         [Obsolete]
-        private async void FLIP_SelectionChanged (object sender , SelectionChangedEventArgs e)
+        private async void FLIP_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int c = e.AddedItems.Count;
 
@@ -185,22 +186,22 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         /// <param name="sender"> </param>
         /// <param name="e"> </param>
         [Obsolete]
-        private async void FilteThisImage_Click (object sender , RoutedEventArgs e)
+        private async void FilteThisImage_Click(object sender, RoutedEventArgs e)
         {
             var entry = FLIP.SelectedItem as IArchiveEntry;
 
             currentReader.zipArchiveEntries.Remove(entry);
             string hash = entry.ComputeHash();
             long length = entry.Size;
-            await HashManager.Add(hash , length);
+            await HashManager.Add(hash, length);
 
             StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filters));
-            string path = Path.Combine(storageFolder.Path , hash + ".jpg");
+            string path = Path.Combine(storageFolder.Path, hash + ".jpg");
             entry.WriteToFile(path);
         }
 
         [Obsolete]
-        private async void SaveImageAs_Click (object sender , RoutedEventArgs e)
+        private async void SaveImageAs_Click(object sender, RoutedEventArgs e)
         {
             var entry = FLIP.SelectedItem as IArchiveEntry;
             StorageFile storageFile = await SavePictureAsync();
@@ -214,7 +215,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
         #endregion 数据绑定到压缩文件类的每个压缩入口Entry
 
-        private void FLIP_Tapped (object sender , Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        private void FLIP_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             var a = ReadPageButtonGroup.Visibility;
             if (a == Visibility.Collapsed)
@@ -227,7 +228,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             }
         }
 
-        private void AppBarToggleButton_Checked (object sender , RoutedEventArgs e)
+        private void AppBarToggleButton_Checked(object sender, RoutedEventArgs e)
         {
             var applicationView = ApplicationView.GetForCurrentView();
 
@@ -237,7 +238,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             ReadPageButtonGroup.Visibility = Visibility.Collapsed;
         }
 
-        private void AppBarToggleButton_Unchecked (object sender , RoutedEventArgs e)
+        private void AppBarToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             var applicationView = ApplicationView.GetForCurrentView();
 

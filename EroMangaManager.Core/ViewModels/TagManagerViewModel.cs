@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace EroMangaManager.UWP.ViewModels
+namespace EroMangaManager.Core.ViewModels
 {
     public class TagManagerViewModel
     {
         public IEnumerable<string> AllTags;
 
-        public TagManagerViewModel (IEnumerable<string[]> strings)
+        public TagManagerViewModel(IEnumerable<string[]> strings)
         {
             var tempalltags = new List<string>();
             foreach (var manga in strings)
@@ -18,7 +18,7 @@ namespace EroMangaManager.UWP.ViewModels
             AllTags = tempalltags.Distinct();
         }
 
-        public List<string> Search (string query)
+        public List<string> Search(string query)
         {
             var temptags = new List<string>();
             foreach (var x in AllTags)

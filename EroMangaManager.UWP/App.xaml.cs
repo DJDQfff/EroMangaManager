@@ -2,9 +2,8 @@
 using System.Threading.Tasks;
 
 using EroMangaManager.Core.Models;
-using EroMangaManager.UWP.Helpers;
-using EroMangaManager.UWP.Models;
 using EroMangaManager.Core.ViewModels;
+using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.Views.MainPageChildPages;
 
 using Microsoft.Toolkit.Uwp.Notifications;
@@ -34,17 +33,17 @@ namespace EroMangaManager.UWP
         /// 全局ViewModel
         /// </summary>
         internal ObservableCollectionVM GlobalViewModel { get; private set; }
-      
+
         internal StorageItemManager storageItemManager = new StorageItemManager();
 
-        private async Task Initial ()
+        private async Task Initial()
         {
 #if DEBUG
             await Windows.System.Launcher.LaunchFolderAsync(ApplicationData.Current.LocalFolder);
 #endif
             DatabaseController.Migrate();
 
-            await EnsureChildTemporaryFolders(Covers.ToString() , Filters.ToString());
+            await EnsureChildTemporaryFolders(Covers.ToString(), Filters.ToString());
 
             Helpers.CoverHelper.InitialDefaultCover();
 
@@ -64,14 +63,14 @@ namespace EroMangaManager.UWP
 
             var folder = await MyLibrary.UWP.AccestListHelper.GetAvailableFutureFolder();
             storageItemManager.InitialFolders(folder);
-         await   ModelFactory.InitialIzeFoldersViewModel(GlobalViewModel , folder.Values);
+            await ModelFactory.InitialIzeFoldersViewModel(GlobalViewModel, folder.Values);
         }
 
         /// <summary>
         /// 初始化单一实例应用程序对象。这是执行的创作代码的第一行， 已执行，逻辑上等同于 main() 或
         /// WinMain()。
         /// </summary>
-        public App ()
+        public App()
         {
             this.InitializeComponent();
             GlobalViewModel = new ObservableCollectionVM();
@@ -84,7 +83,7 @@ namespace EroMangaManager.UWP
         /// 在应用程序由最终用户正常启动时进行调用。 将在启动应用程序以打开特定文件等情况下使用。
         /// </summary>
         /// <param name="e"> 有关启动请求和过程的详细信息。 </param>
-        protected override async void OnLaunched (LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -110,7 +109,7 @@ namespace EroMangaManager.UWP
                 {
                     // 当导航堆栈尚未还原时，导航到第一页，
                     // 并通过将所需信息作为导航参数传入来配置 参数
-                    rootFrame.Navigate(typeof(MainPage) , e.Arguments);
+                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
                 }
                 // 确保当前窗口处于活动状态
                 Window.Current.Activate();
@@ -122,7 +121,7 @@ namespace EroMangaManager.UWP
         /// <summary> </summary>
         /// <remarks> 不能瞎改，里面一些奇葩问题 </remarks>
         /// <param name="args"> </param>
-        protected override async void OnFileActivated (FileActivatedEventArgs args)
+        protected override async void OnFileActivated(FileActivatedEventArgs args)
         {
             base.OnFileActivated(args);
 
@@ -145,8 +144,8 @@ namespace EroMangaManager.UWP
 
             var file = args.Files[0] as Windows.Storage.StorageFile;
 
-            MangaBook book =await ModelFactory.CreateMangaBook(file );
-            rootFrame.Navigate(typeof(ReadPage) , book);
+            MangaBook book = await ModelFactory.CreateMangaBook(file);
+            rootFrame.Navigate(typeof(ReadPage), book);
 
             Window.Current.Activate();
         }
@@ -156,7 +155,7 @@ namespace EroMangaManager.UWP
         /// </summary>
         ///<param name="sender">导航失败的框架</param>
         ///<param name="e">有关导航失败的详细信息</param>
-        private void OnNavigationFailed (object sender , NavigationFailedEventArgs e)
+        private void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
@@ -167,7 +166,7 @@ namespace EroMangaManager.UWP
         /// </summary>
         /// <param name="sender"> 挂起的请求的源。 </param>
         /// <param name="e"> 有关挂起请求的详细信息。 </param>
-        private void OnSuspending (object sender , SuspendingEventArgs e)
+        private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
 

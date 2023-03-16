@@ -18,7 +18,7 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
         /// 确认删除对话框
         /// </summary>
         /// <param name="_mangaBook"></param>
-        public ConfirmDeleteMangaFile (MangaBook _mangaBook)
+        public ConfirmDeleteMangaFile(MangaBook _mangaBook)
         {
             this.InitializeComponent();
             manga = _mangaBook;

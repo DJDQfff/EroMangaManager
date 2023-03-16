@@ -29,7 +29,7 @@ namespace EroMangaDB.Tables
         /// <summary>
         /// 构造函数
         /// </summary>
-        public DataBase_Version2 ()
+        public DataBase_Version2()
         {
             ConnectionString = "Data Source=DataBase_Version2.db";
         }
@@ -38,7 +38,7 @@ namespace EroMangaDB.Tables
         /// 配置数据库
         /// </summary>
         /// <param name="optionsBuilder"></param>
-        protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlite(ConnectionString);

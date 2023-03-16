@@ -14,7 +14,7 @@ namespace EroMangaManager.UWP.Views
         /// <summary>
         /// 测试用页面
         /// </summary>
-        public TestPage ()
+        public TestPage()
         {
             this.InitializeComponent();
 

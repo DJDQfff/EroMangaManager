@@ -34,12 +34,12 @@ namespace EroMangaManager.UWP.UserControls
         /// <summary>
         ///
         /// </summary>
-        public TagsDisplayControl ()
+        public TagsDisplayControl()
         {
             this.InitializeComponent();
         }
 
-        private void Border_Loaded (object sender , RoutedEventArgs e)
+        private void Border_Loaded(object sender, RoutedEventArgs e)
         {
             Border border = sender as Border;
             border.Background = MyLibrary.UWP.WindowsUIColorHelper.GetRandomSolidColorBrush();

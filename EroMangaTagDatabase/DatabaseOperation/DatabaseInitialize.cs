@@ -10,7 +10,7 @@ namespace EroMangaDB
     public partial class BasicController
     {
         /// <summary> 并初始化默认数据 </summary>
-        public async Task InitializeDefaultData ()
+        public async Task InitializeDefaultData()
         {
             // 初始化数据
             List<string>[] vs = new List<string>[]
@@ -36,7 +36,7 @@ namespace EroMangaDB
                 {
                     string tagname = list[0];
                     list.RemoveAt(0);
-                    var one = EntityFactory.TagCategoryFactory.Creat(tagname , list);
+                    var one = EntityFactory.TagCategoryFactory.Creat(tagname, list);
                     database.TagCategorys.Add(one);
                 }
             }

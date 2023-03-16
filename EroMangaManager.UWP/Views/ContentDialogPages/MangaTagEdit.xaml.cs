@@ -31,7 +31,7 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
         /// tag编辑对话框
         /// </summary>
         /// <param name="_mangaBook"></param>
-        public MangaTagEdit (MangaBook _mangaBook)
+        public MangaTagEdit(MangaBook _mangaBook)
         {
             this.InitializeComponent();
             mangaBook = _mangaBook;
@@ -40,10 +40,10 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
             comboxitemlist.Add("忽略此标签");
         }
 
-        private async void ContentDialog_PrimaryButtonClick (ContentDialog sender , ContentDialogButtonClickEventArgs args)
+        private async void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             var tags = List.Items;
-            Dictionary<string , string> moveWork = new Dictionary<string , string>();
+            Dictionary<string, string> moveWork = new Dictionary<string, string>();
             foreach (var tag in tags)
             {
                 var keyword = tag as string;
@@ -56,7 +56,7 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
 
                 var tagname = combobox.SelectedItem as string;
 
-                moveWork.Add(keyword , tagname);
+                moveWork.Add(keyword, tagname);
             }
             await DatabaseController.TagCategory_MoveMulti(moveWork);
         }
@@ -66,7 +66,7 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void ComboBox_SelectionChanged (object sender , SelectionChangedEventArgs e)
+        private async void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.RemovedItems.Count == 0)                  // 初始化
                 return;
@@ -80,7 +80,7 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
 
                 string keyword = comboBox.DataContext as string;
 
-                await DatabaseController.TagCategory_AppendKeywordSingle(tagname , keyword);
+                await DatabaseController.TagCategory_AppendKeywordSingle(tagname, keyword);
             }
         }
     }
@@ -98,13 +98,13 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
         /// <param name="parameter"></param>
         /// <param name="language"></param>
         /// <returns></returns>
-        public object Convert (object value , Type targetType , object parameter , string language)
+        public object Convert(object value, Type targetType, object parameter, string language)
         {
             string str = value as string;
             if (str is null)
                 return null;
 
-            Dictionary<string , string[]> keyValuePairs = DatabaseController.TagCategory_QueryAll();
+            Dictionary<string, string[]> keyValuePairs = DatabaseController.TagCategory_QueryAll();
 
             int i = 0;
             foreach (var pair in keyValuePairs)
@@ -127,7 +127,7 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
         /// <param name="language"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public object ConvertBack (object value , Type targetType , object parameter , string language)
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             throw new NotImplementedException();
         }

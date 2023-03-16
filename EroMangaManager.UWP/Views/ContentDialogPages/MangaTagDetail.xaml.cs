@@ -23,7 +23,7 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
         /// Tag细节对话框
         /// </summary>
         /// <param name="_mangaBook"></param>
-        public MangaTagDetail (MangaBook _mangaBook)
+        public MangaTagDetail(MangaBook _mangaBook)
         {
             this.InitializeComponent();
             var tags = readingInfo.TagsAddedByUser.Split('\r');
@@ -32,14 +32,14 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
             {
                 TagInfo tag = new TagInfo()
                 {
-                    TagName = l.Value ?? "未知标签" ,
+                    TagName = l.Value ?? "未知标签",
                     TagValue = l.Key
                 };
                 Stack.Children.Add(tag);
             }
         }
 
-        private string ConvertTagValue (object tagvalue)
+        private string ConvertTagValue(object tagvalue)
         {
             switch (tagvalue)
             {

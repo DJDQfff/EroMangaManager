@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-
-using EroMangaDB.Entities;
 
 using EroMangaManager.Core.Models;
 
@@ -14,7 +10,7 @@ namespace EroMangaManager.Core.ViewModels
 {
     public class MangasFolder : INotifyPropertyChanged
     {
-        public string  FolderPath { get; }
+        public string FolderPath { get; }
 
         private bool _IsInitialiing = false;
 
@@ -26,7 +22,7 @@ namespace EroMangaManager.Core.ViewModels
             set
             {
                 _IsInitialiing = value;
-                PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(""));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
             }
             get => _IsInitialiing;
         }
@@ -34,7 +30,7 @@ namespace EroMangaManager.Core.ViewModels
         public ObservableCollection<MangaBook> MangaBooks { get; } = new ObservableCollection<MangaBook>();
         public ObservableCollection<MangaBook> ErrorBooks { get; } = new ObservableCollection<MangaBook>();
 
-        public MangasFolder (string storageFolder)
+        public MangasFolder(string storageFolder)
         {
             FolderPath = storageFolder;
         }
@@ -46,7 +42,7 @@ namespace EroMangaManager.Core.ViewModels
         /// </summary>
         /// <typeparam name="TKey"></typeparam>
         /// <param name="func"></param>
-        public void SortMangaBooks<TKey> (Func<MangaBook , TKey> func)
+        public void SortMangaBooks<TKey>(Func<MangaBook, TKey> func)
         {
             var list = MangaBooks.OrderBy(func);        //OrderBy方法不会修改源数据，返回的值是与源挂钩的，源清零，返回值也清零
 
@@ -59,7 +55,7 @@ namespace EroMangaManager.Core.ViewModels
             }
         }
 
-        public void RemoveManga (MangaBook mangaBook)
+        public void RemoveManga(MangaBook mangaBook)
         {
             MangaBooks.Remove(mangaBook);
         }

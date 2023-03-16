@@ -15,7 +15,7 @@ namespace EroMangaDB.EntityFactory
         /// </summary>
         /// <param name="absolutepath"></param>
         /// <returns></returns>
-        public static ReadingInfo Creat (string absolutepath)
+        public static ReadingInfo Creat(string absolutepath)
         {
             string manganamewithTag = Path.GetFileNameWithoutExtension(absolutepath);
 
@@ -25,11 +25,11 @@ namespace EroMangaDB.EntityFactory
 
             ReadingInfo readingInfo = new ReadingInfo()
             {
-                AbsolutePath = absolutepath ,
-                MangaName = manganame ,
-                MangaName_Translated = manganame ,// 未翻译的情况下，直接以原名作为翻译名，省去了判断是否翻译的麻烦
+                AbsolutePath = absolutepath,
+                MangaName = manganame,
+                MangaName_Translated = manganame,// 未翻译的情况下，直接以原名作为翻译名，省去了判断是否翻译的麻烦
 
-                TagsAddedByUser = string.Join("\r" , tags) ,
+                TagsAddedByUser = string.Join("\r", tags),
                 ReadingPosition = 0
             };
 

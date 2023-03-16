@@ -22,7 +22,7 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
         /// <summary>
         /// 构造函数
         /// </summary>
-        public FiltedImagesPage ()
+        public FiltedImagesPage()
         {
             this.InitializeComponent();
         }
@@ -31,20 +31,20 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
         /// 导航前
         /// </summary>
         /// <param name="e"></param>
-        protected override async void OnNavigatedTo (NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             await ImageItem.GetsAsync(items);
         }
 
-        private async void Button_Click (object sender , RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
             button.IsEnabled = false;
 
             IList<object> listobject = GridView.SelectedItems;
             List<string> hashlist = new List<string>();
-            for (int i = listobject.Count - 1 ; i >= 0 ; i--)              // 还是老问题，遍历删除不能使用foreach或正序for循环要用倒序for
+            for (int i = listobject.Count - 1; i >= 0; i--)              // 还是老问题，遍历删除不能使用foreach或正序for循环要用倒序for
             {
                 ImageItem imageItem = listobject[i] as ImageItem;
                 items.Remove(imageItem);                // items和listobjects本质上是同一个集合，只不过以不同类型打开
@@ -57,16 +57,16 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
             button.IsEnabled = true;
         }
 
-        private void ToggleSwitch_Toggled (object sender , RoutedEventArgs e)
+        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
             ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.IsFilterImageOn.ToString()] = toggleSwitch.IsOn;
         }
 
-        private void ToggleSwitch_Loaded (object sender , RoutedEventArgs e)
+        private void ToggleSwitch_Loaded(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            var a = (bool) (ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.IsFilterImageOn.ToString()] ?? false);
+            var a = (bool)(ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.IsFilterImageOn.ToString()] ?? false);
             toggleSwitch.IsOn = a;
         }
     }

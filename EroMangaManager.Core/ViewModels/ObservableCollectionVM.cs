@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
-using EroMangaManager.Core.ViewModels;
+
 using EroMangaManager.Core.Models;
-using static EroMangaDB.BasicController;
 
 namespace EroMangaManager.Core.ViewModels
 {
@@ -61,9 +59,9 @@ namespace EroMangaManager.Core.ViewModels
         /// </summary>
         /// <param name="folder"></param>
         /// <returns></returns>
-        public MangasFolder AddFolder (string path)
+        public MangasFolder AddFolder(string path)
         {
-            MangasFolder mangasFolder = new MangasFolder(path);    
+            MangasFolder mangasFolder = new MangasFolder(path);
 
             MangaFolders.Add(mangasFolder);
 
@@ -76,14 +74,14 @@ namespace EroMangaManager.Core.ViewModels
         /// 2.从FolderList里移除
         /// 3.从MangaList里移除文件夹下属漫画
         /// </summary>
-        public void RemoveFolder (MangasFolder mangasfolder)
+        public void RemoveFolder(MangasFolder mangasfolder)
         {
             MangaFolders.Remove(mangasfolder);
         }
         public void RemoveManga(MangaBook mangaBook)
         {
             string folderpath = mangaBook.FolderPath;
-            var folder=MangaFolders.Single(x=>x.FolderPath == folderpath);
+            var folder = MangaFolders.Single(x => x.FolderPath == folderpath);
             folder.RemoveManga(mangaBook);
         }
 
@@ -91,13 +89,13 @@ namespace EroMangaManager.Core.ViewModels
         /// 事情完成时发生
         /// </summary>
         /// <param name="message"></param>
-        public void WorkDone (string message) => WorkDoneEvent?.Invoke(message);
+        public void WorkDone(string message) => WorkDoneEvent?.Invoke(message);
 
         /// <summary>
         /// 发现错误漫画时引发
         /// </summary>
         /// <param name="manganame"></param>
-        public void ErrorMangaEvent (string manganame)
+        public void ErrorMangaEvent(string manganame)
         {
             ErrorZipEvent?.Invoke(manganame);
         }

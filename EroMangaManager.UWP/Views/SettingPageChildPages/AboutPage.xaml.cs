@@ -15,12 +15,12 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
         /// <summary>
         ///
         /// </summary>
-        public AboutPage ()
+        public AboutPage()
         {
             this.InitializeComponent();
         }
 
-        private async void HyperlinkButton_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        private async void HyperlinkButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var mail = new System.Uri("mailto:djdqfff@qq.com");
             await Launcher.LaunchUriAsync(mail);

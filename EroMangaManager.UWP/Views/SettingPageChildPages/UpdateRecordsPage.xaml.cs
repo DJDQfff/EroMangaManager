@@ -12,7 +12,7 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
         /// <summary>
         /// 更新日志展示界面
         /// </summary>
-        public UpdateRecordsPage ()
+        public UpdateRecordsPage()
         {
             this.InitializeComponent();
         }

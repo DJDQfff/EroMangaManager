@@ -19,7 +19,7 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
         /// <summary>
         ///
         /// </summary>
-        public RemoveRepeatTags ()
+        public RemoveRepeatTags()
         {
             this.InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
         /// 
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnNavigatedTo (NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             var containrepeat = new List<MangaBook>();
@@ -41,7 +41,7 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
             list.ItemsSource = containrepeat;
         }
 
-        private  void Button_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
 
         }

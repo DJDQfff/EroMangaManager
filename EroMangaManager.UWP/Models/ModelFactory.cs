@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 using EroMangaManager.Core.Models;
@@ -20,16 +21,19 @@ namespace EroMangaManager.UWP.Models
             ViewModel.NonZipList.Clear();
 
             //TODO 现在这个是顺序执行，试试多线程方法，加快速度
+            List<Task> tasks = new List<Task>();
+
             foreach (var folder in storageFolders)
             {
                 MangasFolder mangasFolder = new MangasFolder(folder.Path);
                 ViewModel.MangaFolders.Add(mangasFolder);
+
+
             };
-            List<Task> tasks = new List<Task>();
             foreach (var folder in ViewModel.MangaFolders)
             {
                 var tempfolder = folder;
-                var storage = App.Current.storageItemManager.GetStorageFolder(tempfolder.FolderPath);
+                var storage = storageFolders.Single(x => x.Path == folder.FolderPath);
                 await ModelFactory.InitialMangasFolder(tempfolder, storage);
                 //var task = Task.Run(async () => await ModelFactory.InitialMangasFolder(tempfolder, storage));
                 //tasks.Add(task);

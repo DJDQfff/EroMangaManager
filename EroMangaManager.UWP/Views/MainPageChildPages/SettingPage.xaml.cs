@@ -12,12 +12,12 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         /// <summary>
         /// 构造函数
         /// </summary>
-        public SettingPage ()
+        public SettingPage()
         {
             this.InitializeComponent();
         }
 
-        private void NavigationView_ItemInvoked (NavigationView sender , NavigationViewItemInvokedEventArgs args)
+        private void NavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             switch (args.InvokedItemContainer.Name)
             {
@@ -39,7 +39,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             }
         }
 
-        private void SettingFrame_Loaded (object sender , RoutedEventArgs e)
+        private void SettingFrame_Loaded(object sender, RoutedEventArgs e)
         {
             SettingFrame.Navigate(typeof(SettingPageChildPages.AboutPage));
         }

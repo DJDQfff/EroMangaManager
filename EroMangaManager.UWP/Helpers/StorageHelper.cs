@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 
+using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.SettingEnums;
 using EroMangaManager.UWP.Views.ContentDialogPages;
-using EroMangaManager.Core.Models;
-using Windows.Storage;
 
+using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 
 namespace EroMangaManager.UWP.Helpers
@@ -21,10 +21,10 @@ namespace EroMangaManager.UWP.Helpers
         /// </summary>
         /// <param name="eroManga"></param>
         /// <returns></returns>
-        public static async Task DeleteSourceFile (MangaBook eroManga)
+        public static async Task DeleteSourceFile(MangaBook eroManga)
         {
-            var temp1 = (bool) (ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.WhetherShowDialogBeforeDelete.ToString()] ?? false);
-            var temp2 = (bool) (ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.StorageDeleteOption.ToString()] ?? false);
+            var temp1 = (bool)(ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.WhetherShowDialogBeforeDelete.ToString()] ?? false);
+            var temp2 = (bool)(ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.StorageDeleteOption.ToString()] ?? false);
 
             var option = temp2 ? StorageDeleteOption.PermanentDelete : StorageDeleteOption.Default;
 
@@ -35,8 +35,8 @@ namespace EroMangaManager.UWP.Helpers
                 switch (result)
                 {
                     case ContentDialogResult.Primary:
-                         App.Current.GlobalViewModel.RemoveManga(eroManga );
-                        await App.Current.storageItemManager.DeleteStorageFile(eroManga.FilePath , option);
+                        App.Current.GlobalViewModel.RemoveManga(eroManga);
+                        await App.Current.storageItemManager.DeleteStorageFile(eroManga.FilePath, option);
                         break;
 
                     case ContentDialogResult.Secondary:
@@ -45,8 +45,8 @@ namespace EroMangaManager.UWP.Helpers
             }
             else
             {
-                 App.Current.GlobalViewModel.RemoveManga(eroManga );
-                await App.Current.storageItemManager.DeleteStorageFile(eroManga.FilePath , option);
+                App.Current.GlobalViewModel.RemoveManga(eroManga);
+                await App.Current.storageItemManager.DeleteStorageFile(eroManga.FilePath, option);
 
             }
         }

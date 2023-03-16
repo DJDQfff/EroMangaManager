@@ -24,7 +24,7 @@ namespace EroMangaManager.UWP
         /// <summary>
         ///
         /// </summary>
-        public MainPage ()
+        public MainPage()
         {
             this.InitializeComponent();
 
@@ -35,7 +35,7 @@ namespace EroMangaManager.UWP
         ///
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnNavigatedTo (NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
@@ -48,11 +48,11 @@ namespace EroMangaManager.UWP
             }
             else
             {
-                MainFrame.Navigate(typeof(Bookcase) , folder);
+                MainFrame.Navigate(typeof(Bookcase), folder);
             }
         }
 
-        private void MainNavigationView_ItemInvoked (NavigationView sender , NavigationViewItemInvokedEventArgs args)
+        private void MainNavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             Type type = null;
 
@@ -92,12 +92,12 @@ namespace EroMangaManager.UWP
             }
         }
 
-        private void UpdateRecordItem_Tapped (object sender , Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        private void UpdateRecordItem_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(Views.SettingPageChildPages.UpdateRecordsPage));
         }
 
-        private void UsageButton_Tapped (object sender , Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        private void UsageButton_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(Views.SettingPageChildPages.UsageDocumentPage));
         }

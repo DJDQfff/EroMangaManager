@@ -11,12 +11,12 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
         /// <summary>
         /// 构造函数
         /// </summary>
-        public TagKeywordsManagePage ()
+        public TagKeywordsManagePage()
         {
             this.InitializeComponent();
         }
 
-        private void Combo_SelectionChanged (object sender , SelectionChangedEventArgs e)
+        private void Combo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox comboBox = sender as ComboBox;
             int index = comboBox.SelectedIndex;

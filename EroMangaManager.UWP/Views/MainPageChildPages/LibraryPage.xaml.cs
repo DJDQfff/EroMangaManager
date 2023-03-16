@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using EroMangaManager.UWP.Models;
 using EroMangaManager.Core.ViewModels;
+using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.SettingEnums;
+
 using MyLibrary.UWP;
 
 using Windows.Storage;
@@ -22,12 +23,12 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         /// <summary>
         /// 构造函数
         /// </summary>
-        public LibraryPage ()
+        public LibraryPage()
         {
             this.InitializeComponent();
         }
 
-        private async void addButton_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        private async void addButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             Button button = sender as Button;
             button.IsEnabled = false;
@@ -45,9 +46,9 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                 {
                     try
                     {
-                        var a=   App.Current.GlobalViewModel.AddFolder(f.Path);
+                        var a = App.Current.GlobalViewModel.AddFolder(f.Path);
 
-                            await ModelFactory.InitialMangasFolder(a , f);
+                        await ModelFactory.InitialMangasFolder(a, f);
 
                     }
                     catch (Exception)
@@ -60,7 +61,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             button.IsEnabled = true;
         }
 
-        private void removeButton_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        private void removeButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var button = sender as Button;
             var storageFolder = list.SelectedItem as MangasFolder;
@@ -71,7 +72,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             }
         }
 
-        private async void LauncherFolder (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        private async void LauncherFolder(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var button = sender as Button;
             var mf = list.SelectedItem as MangasFolder;
@@ -81,7 +82,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             }
         }
 
-        private void JumpToBookcase_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        private void JumpToBookcase_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var button = sender as Button;
             var datacontext = list.SelectedItem as MangasFolder;
@@ -90,11 +91,11 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                 if (!datacontext.IsInitialing)
                 {
                 }
-                MainPage.Current.MainFrame.Navigate(typeof(Bookcase) , datacontext);
+                MainPage.Current.MainFrame.Navigate(typeof(Bookcase), datacontext);
             }
         }
 
-        private void SetAsDefaultBookcaseFolder_Click (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        private void SetAsDefaultBookcaseFolder_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var button = sender as Button;
             var datacontext = list.SelectedItem as MangasFolder;
@@ -104,16 +105,16 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             }
         }
 
-        private void ToggleSwitch_Toggled (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        private void ToggleSwitch_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
             ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.IsEmptyFolderShow.ToString()] = toggleSwitch.IsOn;
         }
 
-        private void ToggleSwitch_Loaded (object sender , Windows.UI.Xaml.RoutedEventArgs e)
+        private void ToggleSwitch_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            var a = (bool) (ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.IsEmptyFolderShow.ToString()] ?? false);
+            var a = (bool)(ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.IsEmptyFolderShow.ToString()] ?? false);
             toggleSwitch.IsOn = a;
         }
     }

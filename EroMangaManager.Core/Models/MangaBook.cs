@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -38,7 +37,7 @@ namespace EroMangaManager.Core.Models
         public ulong FileSize { get; set; }
 
         /// <summary> 漫画文件所在文件夹路径 </summary>
-        public string FolderPath =>Path.GetDirectoryName(FilePath);
+        public string FolderPath => Path.GetDirectoryName(FilePath);
 
         /// <summary> 漫画文件名（全名，带扩展名，不包含文件夹名） </summary>
         public string FileFullName => Path.GetFileName(FilePath);
@@ -50,7 +49,7 @@ namespace EroMangaManager.Core.Models
         public virtual string MangaName { get; }
 
         /// <summary> 包含在文件名中的本子Tag </summary>
-        public string[] MangaTagsIncludedInFileName { get;  }
+        public string[] MangaTagsIncludedInFileName { get; }
 
         /// <summary> 漫画翻译后的断名称 </summary>
         public string TranslatedMangaName { set; get; }
@@ -61,7 +60,7 @@ namespace EroMangaManager.Core.Models
         /// <summary> 实例化EroManga </summary>
         /// <param name="storageFile"> </param>
         /// <param name="storageFolder">所属文件夹</param>
-        public MangaBook (string filepath)
+        public MangaBook(string filepath)
         {
             FilePath = filepath;
 
@@ -70,9 +69,9 @@ namespace EroMangaManager.Core.Models
             MangaTagsIncludedInFileName = tags.Skip(1).ToArray();
         }
 
-        private void NotifyPropertyChanged ([CallerMemberName] string propertyName = "")
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            PropertyChanged?.Invoke(this , new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
