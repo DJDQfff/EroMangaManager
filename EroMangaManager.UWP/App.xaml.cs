@@ -51,7 +51,7 @@ namespace EroMangaManager.UWP
             GlobalViewModel.ErrorZipEvent += (string str) =>
             {
                 new ToastContentBuilder()
-                      .AddText($"{str}\r{ResourceLoader.GetForCurrentView("StringResources").GetString("ErrorString1")}")
+                      .AddText($"{str}\r{ResourceLoader.GetForViewIndependentUse("StringResources").GetString("ErrorString1")}")
                       .Show();
             };
 

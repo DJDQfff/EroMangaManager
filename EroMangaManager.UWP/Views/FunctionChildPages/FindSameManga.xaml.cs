@@ -4,7 +4,7 @@ using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.Views.MainPageChildPages;
 using EroMangaManager.Core.Models;
 
-using RepeatItemsChecker.Core.ViewModels;
+using GroupedItemsLibrary.ViewModels;
 
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -19,7 +19,7 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
     /// </summary>
     public sealed partial class FindSameManga : Page
     {
-        private RepeatItemGroupViewModel<string , MangaBook , RepeatMangaBookGroup> mangaBookViewModel;
+        private ItemsGroupsViewModel<string , MangaBook , RepeatMangaBookGroup> mangaBookViewModel;
 
         private List<MangaBook> mangaBooks;
 
@@ -40,7 +40,7 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
             base.OnNavigatedTo(e);
 
             mangaBooks = e.Parameter as List<MangaBook>;
-            mangaBookViewModel = new RepeatItemGroupViewModel<string , MangaBook , RepeatMangaBookGroup>(mangaBooks , n => n.MangaName);
+            mangaBookViewModel = new ItemsGroupsViewModel<string , MangaBook , RepeatMangaBookGroup>(mangaBooks , n => n.MangaName);
             listView.ItemsSource = mangaBookViewModel.RepeatPairs;
         }
 

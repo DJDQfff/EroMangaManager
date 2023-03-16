@@ -537,9 +537,9 @@
       <Project>{0b1515f5-9a8c-404a-bd4a-1f2645e4c67d}</Project>
       <Name>MyLibrary.UWP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\RepeatItemChecker\RepeatItemsChecker.Core\RepeatItemsChecker.Core.csproj">
-      <Project>{65481f91-552b-45b2-9ffa-09dea94dc910}</Project>
-      <Name>RepeatItemsChecker.Core</Name>
+    <ProjectReference Include="..\..\RepeatItemChecker\GroupedItemsLibrary\GroupedItemsLibrary.csproj">
+      <Project>{8e793cac-8373-4751-8121-b77c902966cf}</Project>
+      <Name>GroupedItemsLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\EroMangaManager.Core\EroMangaManager.Core.csproj">
       <Project>{aab9173c-fea0-4100-9add-2e4965f83580}</Project>
