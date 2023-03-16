@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using EroMangaManager.Core.Models;
 using EroMangaManager.Core.ViewModels;
 using EroMangaManager.UWP.Helpers;
-
 using Windows.Storage;
 
 namespace EroMangaManager.UWP.Models
@@ -21,7 +20,7 @@ namespace EroMangaManager.UWP.Models
             ViewModel.NonZipList.Clear();
 
             //TODO 现在这个是顺序执行，试试多线程方法，加快速度
-            List<Task> tasks = new List<Task>();
+            //List<Task> tasks = new List<Task>();
 
             foreach (var folder in storageFolders)
             {
@@ -38,24 +37,17 @@ namespace EroMangaManager.UWP.Models
                 //var task = Task.Run(async () => await ModelFactory.InitialMangasFolder(tempfolder, storage));
                 //tasks.Add(task);
             }
-            await Task.WhenAll(tasks);
+            //await Task.WhenAll(tasks);
         }
 
         public static async Task InitialMangasFolder(MangasFolder mangasFolder, StorageFolder StorageFolder)
         {
             mangasFolder.IsInitialing = true;
             var files = await StorageFolder.GetFilesAsync();
+            var filteredfiles = files.Where(x => Path.GetExtension(x.Path).ToLower() == ".zip").ToList();
 
-            foreach(var storageFile in files)
+            foreach(var storageFile in filteredfiles)
             {
-
-                string extension = Path.GetExtension(storageFile.Path).ToLower();
-
-                if (extension != ".zip"/*&& extension!=".rar"*/)
-                {
-                    break;  // 如果不是zip文件，则跳过
-                }
-
                 MangaBook manga = await ModelFactory.CreateMangaBook(storageFile);
 
                 // TODO 使用多线程的话总是在这出问题

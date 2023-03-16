@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 using EroMangaManager.Core.Models;
@@ -63,7 +64,8 @@ namespace EroMangaManager.UWP
 
             var folder = await MyLibrary.UWP.AccestListHelper.GetAvailableFutureFolder();
             storageItemManager.InitialFolders(folder);
-            await ModelFactory.InitialIzeFoldersViewModel(GlobalViewModel, folder.Values);
+                await ModelFactory.InitialIzeFoldersViewModel(GlobalViewModel, folder.Values);
+
         }
 
         /// <summary>
@@ -77,6 +79,7 @@ namespace EroMangaManager.UWP
 
             Current = this;
             this.Suspending += OnSuspending;
+
         }
 
         /// <summary>

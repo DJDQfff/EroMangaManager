@@ -39,16 +39,16 @@ namespace EroMangaManager.UWP
         {
             base.OnNavigatedTo(e);
 
-            var defaultfolder = ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.DefaultBookcaseFolder.ToString()] as string;
-            var folder = App.Current.GlobalViewModel.MangaFolders.SingleOrDefault(x => x.FolderPath == defaultfolder);
+            var defaultfolderpath = ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.DefaultBookcaseFolder.ToString()] as string;
+            var defaultfolder = App.Current.GlobalViewModel.MangaFolders.SingleOrDefault(x => x.FolderPath == defaultfolderpath);
 
-            if (App.Current.GlobalViewModel.StorageFolders.Count == 0 || folder == null)
+            if (App.Current.GlobalViewModel.StorageFolders.Count == 0 || defaultfolder == null)
             {
                 MainFrame.Navigate(typeof(LibraryPage));
             }
             else
             {
-                MainFrame.Navigate(typeof(Bookcase), folder);
+                MainFrame.Navigate(typeof(Bookcase), defaultfolder);
             }
         }
 
