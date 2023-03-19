@@ -117,22 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SupportedTypeContent.Text" xml:space="preserve">
+  <data name="SupportedTypeContent" xml:space="preserve">
     <value>Zip。对于保存漫画档案而言，zip是个很好的选择。其他格式当然可以，但没必要。windows内置支持zip，且zip免费开源，在解压缩速度和压缩率方面是个折中选择。</value>
   </data>
-  <data name="SupportedTypeTitle.Text" xml:space="preserve">
+  <data name="SupportedTypeTitle" xml:space="preserve">
     <value>支持的类型</value>
   </data>
-  <data name="WhatISTheAppContent.Text" xml:space="preserve">
+  <data name="WhatISTheAppContent" xml:space="preserve">
     <value>这是一个用于管理本地压缩格式的漫画档案的软件</value>
   </data>
-  <data name="WhatISTheAppTitle.Text" xml:space="preserve">
+  <data name="WhatISTheAppTitle" xml:space="preserve">
     <value>这是什么软件？</value>
   </data>
-  <data name="WhyZipRatherFolderContent.Text" xml:space="preserve">
+  <data name="WhyZipRatherFolderContent" xml:space="preserve">
     <value>使用文件夹的话，会有大量散乱的单个图片文件。对这些文件，进行文件操作时，会非常不便，而且也不符合收藏保存的理念。</value>
   </data>
-  <data name="WhyZipRatherFolderTitle.Text" xml:space="preserve">
+  <data name="WhyZipRatherFolderTitle" xml:space="preserve">
     <value>为什么使用压缩格式而不是文件夹</value>
   </data>
 </root>

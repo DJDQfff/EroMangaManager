@@ -117,196 +117,178 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddFolderButton.Content" xml:space="preserve">
+  <data name="AddAFolder" xml:space="preserve">
     <value>添加文件夹</value>
   </data>
-  <data name="BookcaseItem.Content" xml:space="preserve">
+  <data name="Bookcase" xml:space="preserve">
     <value>书架</value>
   </data>
-  <data name="BookcaseItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+  <data name="BookcaseItemToolTip" xml:space="preserve">
     <value>漫画书架</value>
   </data>
-  <data name="CommonSettingNavigationViewItem.Content" xml:space="preserve">
+  <data name="CancleEdit" xml:space="preserve">
+    <value>不作调整</value>
+  </data>
+  <data name="ChangeSortMethod" xml:space="preserve">
+    <value>切换排序</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="CommonSetting" xml:space="preserve">
     <value>一般设置</value>
   </data>
-  <data name="DeleteButton.Content" xml:space="preserve">
-    <value>删除</value>
+  <data name="ConfirmEdit" xml:space="preserve">
+    <value>确认调整</value>
   </data>
-  <data name="DeleteFileConfirmPage.PrimaryButtonText" xml:space="preserve">
-    <value>是</value>
-  </data>
-  <data name="DeleteFileConfirmPage.SecondaryButtonText" xml:space="preserve">
-    <value>否</value>
-  </data>
-  <data name="DeleteFileConfirmPage.Title" xml:space="preserve">
+  <data name="DeleteFile" xml:space="preserve">
     <value>确认删除文件？</value>
   </data>
-  <data name="DeleteSourceMangaFileFlyoutItem.Text" xml:space="preserve">
+  <data name="DeleteIt" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="DeleteMode" xml:space="preserve">
+    <value>删除模式</value>
+  </data>
+  <data name="DeleteMode_JustDelete" xml:space="preserve">
+    <value>从磁盘删除</value>
+  </data>
+  <data name="DeleteMode_MoveTo" xml:space="preserve">
+    <value>移动到回收站</value>
+  </data>
+  <data name="DeleteSourceFile" xml:space="preserve">
     <value>删除源文件</value>
+  </data>
+  <data name="DontShowThisImage" xml:space="preserve">
+    <value>不显示此图</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>编辑</value>
   </data>
   <data name="ErrorZipPageButton.Content" xml:space="preserve">
     <value>异常Zip</value>
   </data>
-  <data name="ExportPDFFlyoutItem.Text" xml:space="preserve">
+  <data name="ExportToPDF" xml:space="preserve">
     <value>导出为PDF</value>
   </data>
-  <data name="FilterImageONOFF.Header" xml:space="preserve">
-    <value>是否启用单页过滤功能（开启此功能将减慢漫画打开速度）</value>
-  </data>
-  <data name="FilterImageONOFF.OffContent" xml:space="preserve">
-    <value>已禁用</value>
-  </data>
-  <data name="FilterImageONOFF.OnContent" xml:space="preserve">
-    <value>已启用</value>
-  </data>
-  <data name="FilterThisImage.Text" xml:space="preserve">
-    <value>不显示此图</value>
-  </data>
-  <data name="FindNavItem.Content" xml:space="preserve">
-    <value>查找</value>
-  </data>
-  <data name="FullScreenToggle.Content" xml:space="preserve">
-    <value>全屏</value>
-  </data>
-  <data name="FunctionPageShower.Content" xml:space="preserve">
-    <value>工具箱</value>
-  </data>
-  <data name="FunctionPageShower.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>工具箱</value>
-  </data>
-  <data name="Function_FindSameMangaName.Content" xml:space="preserve">
-    <value>查找相同漫画</value>
-  </data>
-  <data name="Function_RemoveRepeatTags.Content" xml:space="preserve">
-    <value>移除重复本子标签</value>
-  </data>
-  <data name="GollectionVMInitialingHint.Text" xml:space="preserve">
-    <value>正在初始化文件夹，现在使用工具功能可能出错</value>
-  </data>
-  <data name="HintAddFirstFolder.Text" xml:space="preserve">
-    <value>目前没有文件夹，请添加你的第一个扫描文件夹</value>
-  </data>
-  <data name="IsEmptyFolderShow.Header" xml:space="preserve">
-    <value>是否显示空文件夹</value>
-  </data>
-  <data name="IsEmptyFolderShow.OffContent" xml:space="preserve">
-    <value>否</value>
-  </data>
-  <data name="IsEmptyFolderShow.OnContent" xml:space="preserve">
-    <value>是</value>
-  </data>
-  <data name="LaunchFileFlyoutItem.Text" xml:space="preserve">
-    <value>打开文件</value>
-  </data>
-  <data name="LaunchFolderButton.Content" xml:space="preserve">
-    <value>打开文件夹</value>
-  </data>
-  <data name="LaunchFolderFlyoutItem.Text" xml:space="preserve">
-    <value>打开所在文件夹</value>
-  </data>
-  <data name="ListItem.Content" xml:space="preserve">
-    <value>文件夹</value>
-  </data>
-  <data name="ListItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>已固定文件夹</value>
-  </data>
-  <data name="MailFeedback.Content" xml:space="preserve">
-    <value>邮件反馈djdqfff@qq.com</value>
-  </data>
-  <data name="MangaTagDetailPage.CloseButtonText" xml:space="preserve">
-    <value>关闭</value>
-  </data>
-  <data name="MangaTagDetailPage.PrimaryButtonText" xml:space="preserve">
-    <value>编辑</value>
-  </data>
-  <data name="MangaTagEditPage.CloseButtonText" xml:space="preserve">
-    <value>不作调整</value>
-  </data>
-  <data name="MangaTagEditPage.PrimaryButtonText" xml:space="preserve">
-    <value>确认调整</value>
-  </data>
-  <data name="MangaTags.Text" xml:space="preserve">
-    <value>本子标签</value>
-  </data>
-  <data name="MangaTypes.Text" xml:space="preserve">
-    <value>标签分类</value>
-  </data>
-  <data name="MenuItem1.Text" xml:space="preserve">
-    <value>查看信息</value>
-  </data>
-  <data name="NavigateUriButton.Content" xml:space="preserve">
-    <value>商店中打开</value>
-  </data>
-  <data name="NoChosenFolder.Text" xml:space="preserve">
-    <value>未选择文件夹</value>
-  </data>
-  <data name="OpenButton.Content" xml:space="preserve">
-    <value>打开</value>
-  </data>
-  <data name="OrderButton.Label" xml:space="preserve">
-    <value>切换排序</value>
-  </data>
-  <data name="ReadItem.Content" xml:space="preserve">
-    <value>正在阅读</value>
-  </data>
-  <data name="ReadItem.[using:Windows.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>正在阅读</value>
-  </data>
-  <data name="RefreshButton.Label" xml:space="preserve">
-    <value>刷新</value>
-  </data>
-  <data name="RemoveFolderButton.Content" xml:space="preserve">
-    <value>移除文件夹</value>
-  </data>
-  <data name="RenameFlyoutItem.Text" xml:space="preserve">
-    <value>重命名文件</value>
-  </data>
-  <data name="SaveAs.Text" xml:space="preserve">
-    <value>另存为</value>
-  </data>
-  <data name="SetAsDefaultBookcaseFolder.Content" xml:space="preserve">
-    <value>设置为默认展示文件夹</value>
-  </data>
-  <data name="SetBack.Text" xml:space="preserve">
-    <value>还原</value>
-  </data>
-  <data name="SettingFilterImageButton.Content" xml:space="preserve">
+  <data name="FilteredImages" xml:space="preserve">
     <value>过滤图库</value>
   </data>
-  <data name="SettingTagButton.Content" xml:space="preserve">
+  <data name="FindSameMangaByName" xml:space="preserve">
+    <value>查找相同漫画</value>
+  </data>
+  <data name="Folders" xml:space="preserve">
+    <value>文件夹</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>全屏</value>
+  </data>
+  <data name="FunctionOff" xml:space="preserve">
+    <value>已启用</value>
+  </data>
+  <data name="FunctionOn" xml:space="preserve">
+    <value>已禁用</value>
+  </data>
+  <data name="IsEmptyFolderShow" xml:space="preserve">
+    <value>是否显示空文件夹</value>
+  </data>
+  <data name="MailFeedbackToDeveloper" xml:space="preserve">
+    <value>邮件反馈djdqfff@qq.com</value>
+  </data>
+  <data name="MangaTags" xml:space="preserve">
+    <value>本子标签</value>
+  </data>
+  <data name="MangaTagsCategorys" xml:space="preserve">
+    <value>标签分类</value>
+  </data>
+  <data name="MangaTagsManage" xml:space="preserve">
     <value>标签管理</value>
   </data>
-  <data name="ShowFolderBookcase.Content" xml:space="preserve">
-    <value>显示书架</value>
-  </data>
-  <data name="StorageDeleteOption.Header" xml:space="preserve">
-    <value>删除模式</value>
-  </data>
-  <data name="StorageDeleteOption.OffContent" xml:space="preserve">
-    <value>移动到回收站</value>
-  </data>
-  <data name="StorageDeleteOption.OnContent" xml:space="preserve">
-    <value>从磁盘删除</value>
-  </data>
-  <data name="Tags.Content" xml:space="preserve">
-    <value>标签</value>
-  </data>
-  <data name="TranslateButton.Label" xml:space="preserve">
-    <value>翻译</value>
-  </data>
-  <data name="UpdateRecordItem.Content" xml:space="preserve">
-    <value>更新记录</value>
-  </data>
-  <data name="UsageButton.Content" xml:space="preserve">
-    <value>使用说明</value>
-  </data>
-  <data name="WhetherShowDialogBeforeDelete.Header" xml:space="preserve">
-    <value>是否直接删除</value>
-  </data>
-  <data name="WhetherShowDialogBeforeDelete.OffContent" xml:space="preserve">
+  <data name="No" xml:space="preserve">
     <value>否</value>
   </data>
-  <data name="WhetherShowDialogBeforeDelete.OnContent" xml:space="preserve">
+  <data name="NoFoldersPleaseAddFirst" xml:space="preserve">
+    <value>目前没有文件夹，请添加你的第一个扫描文件夹</value>
+  </data>
+  <data name="NoSelectedFolder" xml:space="preserve">
+    <value>未选择文件夹</value>
+  </data>
+  <data name="NowInitializingMaybeError" xml:space="preserve">
+    <value>正在初始化文件夹，现在使用工具功能可能出错</value>
+  </data>
+  <data name="NowReading" xml:space="preserve">
+    <value>正在阅读</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>打开</value>
+  </data>
+  <data name="OpenFile" xml:space="preserve">
+    <value>打开文件</value>
+  </data>
+  <data name="OpenFolder" xml:space="preserve">
+    <value>打开文件夹</value>
+  </data>
+  <data name="OpenInMicrosoftStore" xml:space="preserve">
+    <value>商店中打开</value>
+  </data>
+  <data name="OpenItsPlacedFolder" xml:space="preserve">
+    <value>打开所在文件夹</value>
+  </data>
+  <data name="OverviewInformation" xml:space="preserve">
+    <value>查看信息</value>
+  </data>
+  <data name="PinnedFolders" xml:space="preserve">
+    <value>已固定文件夹</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="RemoveFolder" xml:space="preserve">
+    <value>移除文件夹</value>
+  </data>
+  <data name="RemoveRepeatTags" xml:space="preserve">
+    <value>移除重复本子标签</value>
+  </data>
+  <data name="RenameFile" xml:space="preserve">
+    <value>重命名文件</value>
+  </data>
+  <data name="SaveAs" xml:space="preserve">
+    <value>另存为</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>查找</value>
+  </data>
+  <data name="SetAsDefaultBookcaseFolder" xml:space="preserve">
+    <value>设置为默认展示文件夹</value>
+  </data>
+  <data name="SetBack" xml:space="preserve">
+    <value>还原</value>
+  </data>
+  <data name="ShowFolderBookcase" xml:space="preserve">
+    <value>显示书架</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="ToolBox" xml:space="preserve">
+    <value>工具箱</value>
+  </data>
+  <data name="Translate" xml:space="preserve">
+    <value>翻译</value>
+  </data>
+  <data name="UpdateRecords" xml:space="preserve">
+    <value>更新记录</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>使用说明</value>
+  </data>
+  <data name="WhetherOpenFilterImageFunction" xml:space="preserve">
+    <value>是否启用单页过滤功能（开启此功能将减慢漫画打开速度）</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete" xml:space="preserve">
+    <value>是否直接删除</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
     <value>是</value>
   </data>
 </root>
