@@ -4,6 +4,10 @@
                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                x:Uid="/Resources/DeleteFileConfirmPage"
+               xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
+               Title="{uid:ResourcesReswEnum ResourcesReswEnum=DeleteFile}"
+PrimaryButtonText="{uid:ResourcesReswEnum ResourcesReswEnum=Yes}"
+SecondaryButtonText="{uid:ResourcesReswEnum ResourcesReswEnum=No}"
                mc:Ignorable="d">
     <ContentDialog.Resources>
         <Style TargetType="TextBlock">

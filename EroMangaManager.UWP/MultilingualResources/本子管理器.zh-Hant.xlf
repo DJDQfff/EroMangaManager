@@ -105,10 +105,6 @@
     </header>
     <body>
       <group id="本子管理器/STRINGS/ZH-CN/RESOURCES.RESW" datatype="resx">
-        <trans-unit id="ErrorZipPageButton.Content" translate="yes" xml:space="preserve">
-          <source>异常Zip</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">異常Zip</target>
-        </trans-unit>
         <trans-unit id="AddAFolder" translate="yes" xml:space="preserve">
           <source>添加文件夹</source>
           <target state="new">添加文件夹</target>
@@ -336,6 +332,10 @@
         <trans-unit id="Yes" translate="yes" xml:space="preserve">
           <source>是</source>
           <target state="new">是</target>
+        </trans-unit>
+        <trans-unit id="ErrorZips" translate="yes" xml:space="preserve">
+          <source>异常Zip</source>
+          <target state="new">异常Zip</target>
         </trans-unit>
       </group>
     </body>

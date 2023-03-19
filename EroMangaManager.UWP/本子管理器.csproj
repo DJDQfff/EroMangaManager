@@ -158,12 +158,6 @@
     <Compile Include="Views\ContentDialogPages\ConfirmDeleteMangaFile.xaml.cs">
       <DependentUpon>ConfirmDeleteMangaFile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ContentDialogPages\MangaTagDetail.xaml.cs">
-      <DependentUpon>MangaTagDetail.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ContentDialogPages\MangaTagEdit.xaml.cs">
-      <DependentUpon>MangaTagEdit.xaml</DependentUpon>
-    </Compile>
     <Compile Include="SettingEnums\FolderEnum.cs" />
     <Compile Include="ViewModels\ReaderVM.cs" />
     <Compile Include="Views\MainPageChildPages\Bookcase.xaml.cs">
@@ -353,7 +347,9 @@
     <PRIResource Include="Strings\zh-cn\AppxmanifestResources.resw" />
     <PRIResource Include="Strings\zh-cn\StringResources.resw" />
     <PRIResource Include="Strings\zh-cn\UpdateResources.resw" />
-    <PRIResource Include="Strings\zh-cn\Resources.resw" />
+    <PRIResource Include="Strings\zh-cn\Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -393,14 +389,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ContentDialogPages\ConfirmDeleteMangaFile.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ContentDialogPages\MangaTagDetail.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ContentDialogPages\MangaTagEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

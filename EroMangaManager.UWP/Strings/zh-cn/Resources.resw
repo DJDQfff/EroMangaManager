@@ -165,7 +165,7 @@
   <data name="Edit" xml:space="preserve">
     <value>编辑</value>
   </data>
-  <data name="ErrorZipPageButton.Content" xml:space="preserve">
+  <data name="ErrorZips" xml:space="preserve">
     <value>异常Zip</value>
   </data>
   <data name="ExportToPDF" xml:space="preserve">
