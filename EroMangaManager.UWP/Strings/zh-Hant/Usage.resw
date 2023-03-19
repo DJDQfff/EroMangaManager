@@ -12,22 +12,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="WhatISTheAppContent.Text" xml:space="preserve">
-    <value>這是一個用於管理本地壓縮格式的漫畫檔案的軟體</value>
-  </data>
-  <data name="WhatISTheAppTitle.Text" xml:space="preserve">
-    <value>這是什麼軟體？</value>
-  </data>
-  <data name="SupportedTypeContent.Text" xml:space="preserve">
-    <value>Zip。 對於保存漫畫檔案而言，zip是個很好的選擇。 其他格式當然可以，但沒必要。 windows內置支援zip，且zip免費開源，在解壓縮速度和壓縮率方面是個折中選擇。</value>
-  </data>
-  <data name="SupportedTypeTitle.Text" xml:space="preserve">
-    <value>支援的類型</value>
-  </data>
-  <data name="WhyZipRatherFolderContent.Text" xml:space="preserve">
-    <value>使用資料夾的話，會有大量散亂的單個圖片檔。 對這些文件，進行檔操作時，會非常不便，而且也不符合收藏保存的理念。</value>
-  </data>
-  <data name="WhyZipRatherFolderTitle.Text" xml:space="preserve">
-    <value>為什麼使用壓縮格式而不是資料夾</value>
-  </data>
 </root>

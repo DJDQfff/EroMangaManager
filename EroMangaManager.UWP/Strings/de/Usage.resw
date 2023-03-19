@@ -12,22 +12,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="WhatISTheAppContent.Text" xml:space="preserve">
-    <value>Dies ist eine Software zur Verwaltung von Manga-Archiven in lokalen komprimierten Formaten</value>
-  </data>
-  <data name="WhatISTheAppTitle.Text" xml:space="preserve">
-    <value>Was ist diese Software?</value>
-  </data>
-  <data name="SupportedTypeContent.Text" xml:space="preserve">
-    <value>Schwirren. Zip ist eine gute Wahl zum Speichern von Comic-Archiven. Andere Formate sind sicherlich in Ordnung, aber nicht notwendig. Windows hat integrierte Unterstützung für zip, und zip ist kostenlos und Open Source, was ein Kompromiss in Bezug auf Dekomprimierungsgeschwindigkeit und Komprimierungsrate ist.</value>
-  </data>
-  <data name="SupportedTypeTitle.Text" xml:space="preserve">
-    <value>Unterstützte Typen</value>
-  </data>
-  <data name="WhyZipRatherFolderContent.Text" xml:space="preserve">
-    <value>Wenn Sie Ordner verwenden, gibt es viele verstreute einzelne Bilddateien. Wenn Sie Dateioperationen für diese Dateien ausführen, ist dies sehr umständlich und entspricht nicht dem Konzept der Sammlungserhaltung.</value>
-  </data>
-  <data name="WhyZipRatherFolderTitle.Text" xml:space="preserve">
-    <value>Gründe für die Verwendung eines komprimierten Formats anstelle eines Ordners</value>
-  </data>
 </root>

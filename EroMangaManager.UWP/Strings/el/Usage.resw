@@ -12,22 +12,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="WhatISTheAppContent.Text" xml:space="preserve">
-    <value>Αυτό είναι ένα λογισμικό για τη διαχείριση αρχείων manga σε τοπικές συμπιεσμένες μορφές</value>
-  </data>
-  <data name="WhatISTheAppTitle.Text" xml:space="preserve">
-    <value>Τι είναι αυτό το λογισμικό;</value>
-  </data>
-  <data name="SupportedTypeContent.Text" xml:space="preserve">
-    <value>Δραστηριότητα. Το Zip είναι μια καλή επιλογή για την αποθήκευση αρχείων κόμικς. Άλλες μορφές είναι σίγουρα καλές, αλλά όχι απαραίτητες. Τα Windows έχουν ενσωματωμένη υποστήριξη για zip και το zip είναι δωρεάν και ανοιχτού κώδικα, κάτι που αποτελεί συμβιβασμό όσον αφορά την ταχύτητα αποσυμπίεσης και το ρυθμό συμπίεσης.</value>
-  </data>
-  <data name="SupportedTypeTitle.Text" xml:space="preserve">
-    <value>Υποστηριζόμενοι τύποι</value>
-  </data>
-  <data name="WhyZipRatherFolderContent.Text" xml:space="preserve">
-    <value>Εάν χρησιμοποιείτε φακέλους, θα υπάρχουν πολλά διάσπαρτα μεμονωμένα αρχεία εικόνας. Κατά την εκτέλεση λειτουργιών αρχείων σε αυτά τα αρχεία, θα είναι πολύ ενοχλητικό και δεν συνάδει με την έννοια της διατήρησης της συλλογής.</value>
-  </data>
-  <data name="WhyZipRatherFolderTitle.Text" xml:space="preserve">
-    <value>Γιατί να χρησιμοποιήσετε μια συμπιεσμένη μορφή αντί για ένα φάκελο</value>
-  </data>
 </root>

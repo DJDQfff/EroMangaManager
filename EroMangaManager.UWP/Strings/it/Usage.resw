@@ -12,22 +12,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="WhatISTheAppContent.Text" xml:space="preserve">
-    <value>Si tratta di un software per la gestione di archivi manga in formati compressi locali</value>
-  </data>
-  <data name="WhatISTheAppTitle.Text" xml:space="preserve">
-    <value>Cos'è questo software?</value>
-  </data>
-  <data name="SupportedTypeContent.Text" xml:space="preserve">
-    <value>Zip. Zip è una buona scelta per salvare gli archivi di fumetti. Altri formati vanno certamente bene, ma non necessari. Windows ha il supporto integrato per zip, e zip è gratuito e open source, che è un compromesso in termini di velocità di decompressione e tasso di compressione.</value>
-  </data>
-  <data name="SupportedTypeTitle.Text" xml:space="preserve">
-    <value>Tipi supportati</value>
-  </data>
-  <data name="WhyZipRatherFolderContent.Text" xml:space="preserve">
-    <value>Se si utilizzano cartelle, ci saranno molti singoli file di immagine sparsi. Quando si eseguono operazioni sui file su questi file, sarà molto scomodo e non è in linea con il concetto di conservazione della raccolta.</value>
-  </data>
-  <data name="WhyZipRatherFolderTitle.Text" xml:space="preserve">
-    <value>Perché utilizzare un formato compresso invece di una cartella</value>
-  </data>
 </root>

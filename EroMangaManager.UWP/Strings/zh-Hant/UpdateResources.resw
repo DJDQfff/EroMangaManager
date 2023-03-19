@@ -12,40 +12,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Description_20221219.Text" xml:space="preserve">
-    <value>添加導出PDF功能</value>
-  </data>
-  <data name="Description_20221226.Text" xml:space="preserve">
-    <value>修復了一些bug; 添加更新日誌</value>
-  </data>
-  <data name="Description_20230109.Text" xml:space="preserve">
-    <value>添加重複本子查找功能</value>
-  </data>
-  <data name="Description_20230125.Text" xml:space="preserve">
-    <value>閱讀頁面全屏功能; 默認書架</value>
-  </data>
-  <data name="Description_20230205.Text" xml:space="preserve">
-    <value>優化啟動速度</value>
-  </data>
-  <data name="Description_before.Text" xml:space="preserve">
-    <value>更早的記錄</value>
-  </data>
-  <data name="Version_20221219.Text" xml:space="preserve">
-    <value>2022.12.19</value>
-  </data>
-  <data name="Version_20221226.Text" xml:space="preserve">
-    <value>2022.12.26</value>
-  </data>
-  <data name="Version_20230109.Text" xml:space="preserve">
-    <value>2023.01.09</value>
-  </data>
-  <data name="Version_20230125.Text" xml:space="preserve">
-    <value>2023.01.25</value>
-  </data>
-  <data name="Version_20230205.Text" xml:space="preserve">
-    <value>2023.2.5</value>
-  </data>
-  <data name="Version_before.Text" xml:space="preserve">
-    <value>更早的版本</value>
-  </data>
 </root>

@@ -12,22 +12,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="WhatISTheAppContent.Text" xml:space="preserve">
-    <value>Este es un software para administrar archivos de manga en formatos comprimidos locales</value>
-  </data>
-  <data name="WhatISTheAppTitle.Text" xml:space="preserve">
-    <value>¿Qué es este software?</value>
-  </data>
-  <data name="SupportedTypeContent.Text" xml:space="preserve">
-    <value>Cremallera. Zip es una buena opción para guardar archivos de cómics. Otros formatos están ciertamente bien, pero no son necesarios. Windows tiene soporte incorporado para zip, y zip es gratuito y de código abierto, lo que es un compromiso en términos de velocidad de descompresión y tasa de compresión.</value>
-  </data>
-  <data name="SupportedTypeTitle.Text" xml:space="preserve">
-    <value>Tipos admitidos</value>
-  </data>
-  <data name="WhyZipRatherFolderContent.Text" xml:space="preserve">
-    <value>Si usa carpetas, habrá muchos archivos de imagen individuales dispersos. Al realizar operaciones de archivo en estos archivos, será muy inconveniente y no está en línea con el concepto de preservación de la colección.</value>
-  </data>
-  <data name="WhyZipRatherFolderTitle.Text" xml:space="preserve">
-    <value>¿Por qué usar un formato comprimido en lugar de una carpeta?</value>
-  </data>
 </root>

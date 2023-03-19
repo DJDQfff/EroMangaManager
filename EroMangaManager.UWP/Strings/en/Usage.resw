@@ -12,22 +12,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="WhatISTheAppContent.Text" xml:space="preserve">
-    <value>This is a software for managing manga archives in local compressed formats</value>
-  </data>
-  <data name="WhatISTheAppTitle.Text" xml:space="preserve">
-    <value>What is this software?</value>
-  </data>
-  <data name="SupportedTypeContent.Text" xml:space="preserve">
-    <value>Zip。 Zip is a good choice for saving comic archives. Other formats are certainly fine, but not necessary. Windows has built-in support for zip, and zip is free and open source, which is a compromise in terms of decompression speed and compression rate.</value>
-  </data>
-  <data name="SupportedTypeTitle.Text" xml:space="preserve">
-    <value>Supported types</value>
-  </data>
-  <data name="WhyZipRatherFolderContent.Text" xml:space="preserve">
-    <value>If you use folders, there will be a lot of scattered individual image files. When performing file operations on these files, it will be very inconvenient, and it is not in line with the concept of collection preservation.</value>
-  </data>
-  <data name="WhyZipRatherFolderTitle.Text" xml:space="preserve">
-    <value>Why use a compressed format instead of a folder</value>
-  </data>
 </root>
