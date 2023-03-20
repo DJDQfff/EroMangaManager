@@ -48,7 +48,10 @@ namespace EroMangaManager.UWP.ViewModels
         {
             this.manga = _manga;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public async Task Initial()
         {
             var file = await App.Current.storageItemManager.GetStorageFile(manga.FilePath);

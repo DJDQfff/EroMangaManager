@@ -12,10 +12,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>リトルイエローブック</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>保存したコミックをzip形式で管理・閲覧するためのマンガマネージャーです。 内部画像はJPGおよびPNG形式である必要があります</value>
-  </data>
 </root>

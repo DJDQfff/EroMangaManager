@@ -12,10 +12,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Little Yellow Book</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>This is a manga manager for managing and reading your saved comics in zip form. Internal images must be in JPG and PNG formats</value>
-  </data>
 </root>

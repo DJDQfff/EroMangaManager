@@ -12,10 +12,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Petit Livre Jaune</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>Ceci est un gestionnaire de manga pour gérer et lire vos bandes dessinées enregistrées sous forme zip. Les images internes doivent être aux formats JPG et PNG</value>
-  </data>
 </root>

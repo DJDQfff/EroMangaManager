@@ -1,105 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
-  <file datatype="xml" source-language="zh-CN" target-language="el" original="本子管理器/STRINGS/ZH-CN/UPDATERESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
-    <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
-    </header>
-    <body>
-      <group id="本子管理器/STRINGS/ZH-CN/UPDATERESOURCES.RESW" datatype="resx">
-        <trans-unit id="Description_20221219" translate="yes" xml:space="preserve">
-          <source>添加导出PDF功能</source>
-          <target state="new">添加导出PDF功能</target>
-        </trans-unit>
-        <trans-unit id="Description_20221226" translate="yes" xml:space="preserve">
-          <source>修复了一些bug;添加更新日志</source>
-          <target state="new">修复了一些bug;添加更新日志</target>
-        </trans-unit>
-        <trans-unit id="Description_20230109" translate="yes" xml:space="preserve">
-          <source>添加重复本子查找功能</source>
-          <target state="new">添加重复本子查找功能</target>
-        </trans-unit>
-        <trans-unit id="Description_20230125" translate="yes" xml:space="preserve">
-          <source>阅读页面全屏功能；默认书架</source>
-          <target state="new">阅读页面全屏功能；默认书架</target>
-        </trans-unit>
-        <trans-unit id="Description_20230205" translate="yes" xml:space="preserve">
-          <source>优化启动速度</source>
-          <target state="new">优化启动速度</target>
-        </trans-unit>
-        <trans-unit id="Description_before" translate="yes" xml:space="preserve">
-          <source>更早的记录</source>
-          <target state="new">更早的记录</target>
-        </trans-unit>
-        <trans-unit id="Version_20221219" translate="yes" xml:space="preserve">
-          <source>2022.12.19</source>
-          <target state="new">2022.12.19</target>
-        </trans-unit>
-        <trans-unit id="Version_20221226" translate="yes" xml:space="preserve">
-          <source>2022.12.26</source>
-          <target state="new">2022.12.26</target>
-        </trans-unit>
-        <trans-unit id="Version_20230109" translate="yes" xml:space="preserve">
-          <source>2023.01.09</source>
-          <target state="new">2023.01.09</target>
-        </trans-unit>
-        <trans-unit id="Version_20230125" translate="yes" xml:space="preserve">
-          <source>2023.01.25</source>
-          <target state="new">2023.01.25</target>
-        </trans-unit>
-        <trans-unit id="Version_20230205" translate="yes" xml:space="preserve">
-          <source>2023.2.5</source>
-          <target state="new">2023.2.5</target>
-        </trans-unit>
-        <trans-unit id="Version_before" translate="yes" xml:space="preserve">
-          <source>更早的版本</source>
-          <target state="new">更早的版本</target>
-        </trans-unit>
-      </group>
-    </body>
-  </file>
-  <file datatype="xml" source-language="zh-CN" target-language="el" original="本子管理器/STRINGS/ZH-CN/STRINGRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
-    <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
-    </header>
-    <body>
-      <group id="本子管理器/STRINGS/ZH-CN/STRINGRESOURCES.RESW" datatype="resx">
-        <trans-unit id="ErrorString1" translate="yes" xml:space="preserve">
-          <source>出错啦，无法打开</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Παρουσιάστηκε σφάλμα και δεν ήταν δυνατό το άνοιγμά του</target>
-        </trans-unit>
-        <trans-unit id="ExportDone" translate="yes" xml:space="preserve">
-          <source>导出完成</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Η εξαγωγή ολοκληρώθηκε</target>
-        </trans-unit>
-        <trans-unit id="ContainInvalaidChar" translate="yes" xml:space="preserve">
-          <source>包含非法字符</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Περιέχει παράνομους χαρακτήρες</target>
-        </trans-unit>
-        <trans-unit id="DontUseEmptyString" translate="yes" xml:space="preserve">
-          <source>请勿使用空内容</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Να μην χρησιμοποιείται κενό περιεχόμενο</target>
-        </trans-unit>
-      </group>
-    </body>
-  </file>
-  <file datatype="xml" source-language="zh-CN" target-language="el" original="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
-    <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
-    </header>
-    <body>
-      <group id="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" datatype="resx">
-        <trans-unit id="AppDisplayName" translate="yes" xml:space="preserve">
-          <source>小黄书</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Μικρό Κίτρινο Βιβλίο</target>
-        </trans-unit>
-        <trans-unit id="Description" translate="yes" xml:space="preserve">
-          <source>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Αυτός είναι ένας διαχειριστής manga για τη διαχείριση και την ανάγνωση των αποθηκευμένων κόμικς σας σε μορφή zip. Οι εσωτερικές εικόνες πρέπει να είναι σε μορφές JPG και PNG</target>
-        </trans-unit>
-      </group>
-    </body>
-  </file>
-  <file datatype="xml" source-language="zh-CN" target-language="el" original="本子管理器/STRINGS/ZH-CN/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+  <file datatype="xml" source-language="de" target-language="el" original="本子管理器/STRINGS/ZH-CN/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
     </header>
@@ -168,6 +69,10 @@
         <trans-unit id="Edit" translate="yes" xml:space="preserve">
           <source>编辑</source>
           <target state="new">编辑</target>
+        </trans-unit>
+        <trans-unit id="ErrorZips" translate="yes" xml:space="preserve">
+          <source>异常Zip</source>
+          <target state="new">异常Zip</target>
         </trans-unit>
         <trans-unit id="ExportToPDF" translate="yes" xml:space="preserve">
           <source>导出为PDF</source>
@@ -333,14 +238,109 @@
           <source>是</source>
           <target state="new">是</target>
         </trans-unit>
-        <trans-unit id="ErrorZips" translate="yes" xml:space="preserve">
-          <source>异常Zip</source>
-          <target state="new">异常Zip</target>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="de" target-language="el" original="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" datatype="resx">
+        <trans-unit id="AppDisplayName" translate="yes" xml:space="preserve">
+          <source>小黄书</source>
+          <target state="new">小黄书</target>
+        </trans-unit>
+        <trans-unit id="Description" translate="yes" xml:space="preserve">
+          <source>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</source>
+          <target state="new">这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</target>
         </trans-unit>
       </group>
     </body>
   </file>
-  <file datatype="xml" source-language="zh-CN" target-language="el" original="本子管理器/STRINGS/ZH-CN/USAGE.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+  <file datatype="xml" source-language="de" target-language="el" original="本子管理器/STRINGS/ZH-CN/STRINGRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="本子管理器/STRINGS/ZH-CN/STRINGRESOURCES.RESW" datatype="resx">
+        <trans-unit id="ContainInvalaidChar" translate="yes" xml:space="preserve">
+          <source>包含非法字符</source>
+          <target state="new">包含非法字符</target>
+        </trans-unit>
+        <trans-unit id="DontUseEmptyString" translate="yes" xml:space="preserve">
+          <source>请勿使用空内容</source>
+          <target state="new">请勿使用空内容</target>
+        </trans-unit>
+        <trans-unit id="ErrorString1" translate="yes" xml:space="preserve">
+          <source>出错啦，无法打开</source>
+          <target state="new">出错啦，无法打开</target>
+        </trans-unit>
+        <trans-unit id="ExportDone" translate="yes" xml:space="preserve">
+          <source>导出完成</source>
+          <target state="new">导出完成</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="de" target-language="el" original="本子管理器/STRINGS/ZH-CN/UPDATERESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="本子管理器/STRINGS/ZH-CN/UPDATERESOURCES.RESW" datatype="resx">
+        <trans-unit id="Description_20221219" translate="yes" xml:space="preserve">
+          <source>添加导出PDF功能</source>
+          <target state="new">添加导出PDF功能</target>
+        </trans-unit>
+        <trans-unit id="Description_20221226" translate="yes" xml:space="preserve">
+          <source>修复了一些bug;添加更新日志</source>
+          <target state="new">修复了一些bug;添加更新日志</target>
+        </trans-unit>
+        <trans-unit id="Description_20230109" translate="yes" xml:space="preserve">
+          <source>添加重复本子查找功能</source>
+          <target state="new">添加重复本子查找功能</target>
+        </trans-unit>
+        <trans-unit id="Description_20230125" translate="yes" xml:space="preserve">
+          <source>阅读页面全屏功能；默认书架</source>
+          <target state="new">阅读页面全屏功能；默认书架</target>
+        </trans-unit>
+        <trans-unit id="Description_20230205" translate="yes" xml:space="preserve">
+          <source>优化启动速度</source>
+          <target state="new">优化启动速度</target>
+        </trans-unit>
+        <trans-unit id="Description_before" translate="yes" xml:space="preserve">
+          <source>更早的记录</source>
+          <target state="new">更早的记录</target>
+        </trans-unit>
+        <trans-unit id="Version_20221219" translate="yes" xml:space="preserve">
+          <source>2022.12.19</source>
+          <target state="new">2022.12.19</target>
+        </trans-unit>
+        <trans-unit id="Version_20221226" translate="yes" xml:space="preserve">
+          <source>2022.12.26</source>
+          <target state="new">2022.12.26</target>
+        </trans-unit>
+        <trans-unit id="Version_20230109" translate="yes" xml:space="preserve">
+          <source>2023.01.09</source>
+          <target state="new">2023.01.09</target>
+        </trans-unit>
+        <trans-unit id="Version_20230125" translate="yes" xml:space="preserve">
+          <source>2023.01.25</source>
+          <target state="new">2023.01.25</target>
+        </trans-unit>
+        <trans-unit id="Version_20230205" translate="yes" xml:space="preserve">
+          <source>2023.2.5</source>
+          <target state="new">2023.2.5</target>
+        </trans-unit>
+        <trans-unit id="Version_before" translate="yes" xml:space="preserve">
+          <source>更早的版本</source>
+          <target state="new">更早的版本</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="de" target-language="el" original="本子管理器/STRINGS/ZH-CN/USAGE.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
     </header>
