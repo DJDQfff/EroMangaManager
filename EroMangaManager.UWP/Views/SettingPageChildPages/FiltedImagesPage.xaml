@@ -4,6 +4,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:local="using:EroMangaManager.UWP.Views.SettingPageChildPages"
+xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
       NavigationCacheMode="Disabled"
       mc:Ignorable="d">
 
@@ -15,7 +16,9 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Stretch">
-            <ToggleSwitch x:Uid="/Resources/FilterImageONOFF"
+            <ToggleSwitch Header="{uid:Resources Resources=WhetherOpenFilterImageFunction}"
+                          OnContent="{uid:Resources Resources=Yes}"
+                          OffContent="{uid:Resources Resources=No}"
                           HorizontalAlignment="Stretch"
                           HorizontalContentAlignment="Left"
                           Toggled="ToggleSwitch_Toggled"
@@ -41,8 +44,7 @@
                 Click="Button_Click">
             <StackPanel Orientation="Horizontal">
                 <TextBlock VerticalAlignment="Center"
-                           x:Uid="/Resources/SetBack"
-                           Text="还原" />
+                           Text="{uid:Resources Resources=SetBack}"/>
                 <FontIcon FontFamily="Segoe UI Emoji"
                           Glyph="&#x2714;" />
             </StackPanel>

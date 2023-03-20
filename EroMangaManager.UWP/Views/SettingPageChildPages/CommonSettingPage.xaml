@@ -3,18 +3,23 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Stretch">
-            <ToggleSwitch x:Uid="/Resources/WhetherShowDialogBeforeDelete"
+            <ToggleSwitch Header="{uid:Resources Resources=WhetherShowDialogBeforeDelete}"
+                          OnContent="{uid:Resources Resources=Yes}"
                           HorizontalAlignment="Stretch"
+                          OffContent="{uid:Resources Resources=No}"
                           HorizontalContentAlignment="Left"
                           Toggled="DirectDeleteOption"
                           Loaded="ToggleSwitch_Loaded" />
-            <ToggleSwitch x:Uid="/Resources/StorageDeleteOption"
+            <ToggleSwitch Header="{uid:Resources Resources=DeleteMode}"
+                          OnContent="{uid:Resources Resources=DeleteMode_JustDelete}"
+                          OffContent="{uid:Resources Resources=DeleteMode_MoveTo}"
                           HorizontalAlignment="Stretch"
                           HorizontalContentAlignment="Left"
                           Toggled="DeleteOption"

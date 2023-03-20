@@ -5,6 +5,7 @@
     xmlns:local="using:EroMangaManager.UWP.Views.SettingPageChildPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -12,24 +13,28 @@
         <ScrollViewer>
             <StackPanel Orientation="Vertical">
                 <StackPanel>
-                    <TextBlock  x:Uid="/Usage/WhatISTheAppTitle"
+                    <TextBlock  Text="{uid:Usage Usage=WhatISTheAppTitle}"
                                 Style="{StaticResource TitleOfPair}" />
-                    <TextBlock x:Uid="/Usage/WhatISTheAppContent"
+                    <TextBlock Text="{uid:Usage Usage=WhatISTheAppContent}"
                                Style="{StaticResource ContentOfPair}" />
                 </StackPanel>
 
                 <StackPanel>
-                    <TextBlock  x:Uid="/Usage/WhyZipRatherFolderTitle"
-                                Style="{StaticResource TitleOfPair}" />
-                    <TextBlock x:Uid="/Usage/WhyZipRatherFolderContent"
-                               Style="{StaticResource ContentOfPair}" />
+                    <TextBlock
+                        Text="{uid:Usage Usage=SupportedTypeTitle}"
+                        Style="{StaticResource TitleOfPair}" />
+                    <TextBlock
+                        Text="{uid:Usage Usage=SupportedTypeContent}"
+                        Style="{StaticResource ContentOfPair}" />
                 </StackPanel>
 
                 <StackPanel>
-                    <TextBlock  x:Uid="/Usage/SupportedTypeTitle"
-                                Style="{StaticResource TitleOfPair}" />
-                    <TextBlock x:Uid="/Usage/SupportedTypeContent"
-                               Style="{StaticResource ContentOfPair}" />
+                    <TextBlock
+                        Text="{uid:Usage Usage=WhyZipRatherFolderTitle}"
+                        Style="{StaticResource TitleOfPair}" />
+                    <TextBlock
+                        Text="{uid:Usage Usage=WhyZipRatherFolderContent}"
+                        Style="{StaticResource ContentOfPair}" />
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

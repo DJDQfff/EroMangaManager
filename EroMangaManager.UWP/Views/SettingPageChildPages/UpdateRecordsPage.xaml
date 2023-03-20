@@ -3,6 +3,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <ScrollViewer HorizontalScrollMode="Disabled"
@@ -10,39 +11,49 @@
         <StackPanel x:Name="UpdateRecordStackPanel">
 
             <StackPanel>
-                <TextBlock  x:Uid="/UpdateResources/Version_20230205"
+                <TextBlock  Text="{uid:UpdateResources UpdateResources=Version_20230205}"
                             Style="{StaticResource TitleOfPair}" />
-                <TextBlock x:Uid="/UpdateResources/Description_20230205"
+                <TextBlock  Text="{uid:UpdateResources UpdateResources=Description_20230205}"
                            Style="{StaticResource ContentOfPair}" />
             </StackPanel>
 
             <StackPanel>
-                <TextBlock  x:Uid="/UpdateResources/Version_20230125"
-                            Style="{StaticResource TitleOfPair}" />
-                <TextBlock x:Uid="/UpdateResources/Description_20230125"
-                           Style="{StaticResource ContentOfPair}" />
+                <TextBlock
+                    Text="{uid:UpdateResources UpdateResources=Version_20230125}"
+                    Style="{StaticResource TitleOfPair}" />
+                <TextBlock
+                    Text="{uid:UpdateResources UpdateResources=Description_20230125}"
+                    Style="{StaticResource ContentOfPair}" />
+            </StackPanel>
+
+
+            <StackPanel>
+                <TextBlock
+                    Text="{uid:UpdateResources UpdateResources=Version_20230109}"
+                    Style="{StaticResource TitleOfPair}" />
+                <TextBlock
+                    Text="{uid:UpdateResources UpdateResources=Description_20230109}"
+                    Style="{StaticResource ContentOfPair}" />
             </StackPanel>
 
             <StackPanel>
-                <TextBlock  x:Uid="/UpdateResources/Version_20230109"
-                            Style="{StaticResource TitleOfPair}" />
-                <TextBlock x:Uid="/UpdateResources/Description_20230109"
-                           Style="{StaticResource ContentOfPair}" />
+                <TextBlock
+                    Text="{uid:UpdateResources UpdateResources=Version_20221226}"
+                    Style="{StaticResource TitleOfPair}" />
+                <TextBlock
+                    Text="{uid:UpdateResources UpdateResources=Description_20221226}"
+                    Style="{StaticResource ContentOfPair}" />
             </StackPanel>
 
             <StackPanel>
-                <TextBlock  x:Uid="/UpdateResources/Version_20221226"
-                            Style="{StaticResource TitleOfPair}" />
-                <TextBlock x:Uid="/UpdateResources/Description_20221226"
-                           Style="{StaticResource ContentOfPair}" />
+                <TextBlock
+                    Text="{uid:UpdateResources UpdateResources=Version_20221219}"
+                    Style="{StaticResource TitleOfPair}" />
+                <TextBlock
+                    Text="{uid:UpdateResources UpdateResources=Description_20221219}"
+                    Style="{StaticResource ContentOfPair}" />
             </StackPanel>
 
-            <StackPanel>
-                <TextBlock x:Uid="/UpdateResources/Version_20221219"
-                           Style="{StaticResource TitleOfPair}" />
-                <TextBlock x:Uid="/UpdateResources/Description_20221219"
-                           Style="{StaticResource ContentOfPair}" />
-            </StackPanel>
         </StackPanel>
     </ScrollViewer>
 </Page>

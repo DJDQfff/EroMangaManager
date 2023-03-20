@@ -111,17 +111,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             await Helpers.StorageHelper.DeleteSourceFile(eroManga);
         }
 
-        private async void ViewMangaTag(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            MenuFlyoutItem menuFlyoutItem = sender as MenuFlyoutItem;
-            MangaBook mangaBook = menuFlyoutItem.DataContext as MangaBook;
-            MangaTagDetail mangaTagDetail = new MangaTagDetail(mangaBook);
-            var result = await mangaTagDetail.ShowAsync();
-            if (result is ContentDialogResult.Primary)
-            {
-                await new MangaTagEdit(mangaBook).ShowAsync();
-            }
-        }
 
         private async void LaunchFolder(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {

@@ -4,6 +4,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:converter="using:EroMangaManager.UWP.ValueConverters"
+      xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
     xmlns:app="using:EroMangaManager.UWP"
       mc:Ignorable="d">
     <Grid Margin="36,0,0,0">
@@ -11,7 +12,8 @@
             <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBlock x:Uid="/Resources/GollectionVMInitialingHint"
+        <TextBlock 
+                   Text="{uid:Resources Resources=NowInitializingMaybeError}"
                    Style="{StaticResource HintTextBlockStyle}"
                    Visibility="{x:Bind app:App.Current.GlobalViewModel.IsContentInitializing,Mode=OneTime,Converter={StaticResource  controlvisibilityconverter}}" />
 
@@ -25,12 +27,12 @@
             </GridView.ItemContainerStyle>
             <Button  x:Name="Function_FindSameMangaName"
                      Style="{StaticResource FunctionShowControl}"
-                     x:Uid="/Resources/Function_FindSameMangaName"
+                     Content="{uid:Resources Resources=FindSameMangaByName}"
                      Background="{x:Bind Converter={StaticResource randomcolor },Mode=OneTime}"
             Click="Button_Click" />
             <Button x:Name="Function_RemoveRepeatTags"
                     Style="{StaticResource FunctionShowControl}"
-                    x:Uid="/Resources/Function_RemoveRepeatTags"
+                    Content="{uid:Resources Resources=RemoveRepeatTags}"
                     HorizontalAlignment="Stretch"
                     Background="{x:Bind Converter={StaticResource randomcolor },Mode=OneTime}"
                     Click="Button_Click" />

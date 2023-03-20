@@ -4,6 +4,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:models="using:EroMangaManager.Core.Models"
+      xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
       mc:Ignorable="d"
       NavigationCacheMode="Required">
 
@@ -18,7 +19,7 @@
                    Style="{StaticResource HintTextBlockStyle}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   x:Uid="/Resources/NoChosenFolder"
+                   Text="{uid:Resources Resources=NoSelectedFolder}"
                    Visibility="Visible" />
         <CommandBar x:Load="True"
                     Background="Transparent"
@@ -26,12 +27,12 @@
                     x:Name="BookcaseCommandBar"
                     VerticalAlignment="Stretch">
             <AppBarButton Click="Order"
-                          Icon="Sort"
-                          x:Uid="/Resources/OrderButton" />
+                          Content="{uid:Resources Resources=ChangeSortMethod}"
+                          Icon="Sort"/>
             <AppBarButton Click="TranslateEachMangaName"
                           x:Name="TranslateButton"
+                          Content="{uid:Resources Resources=Translate}"
                           x:Load="False"
-                          x:Uid="/Resources/TranslateButton"
                           Icon="Font" />
         </CommandBar>
 
@@ -54,25 +55,23 @@
                         <Grid.ContextFlyout>
                             <MenuFlyout>
                                 <!--TODO: 以后在恢复-->
-                                <!--<MenuFlyoutItem Click="ViewMangaTag"
-                                        x:Uid="/Resources/MenuItem1" />-->
+                                <!--<MenuFlyoutItem Click="ViewMangaTag" />-->
 
                                 <MenuFlyoutSeparator />
                                 <!--<MenuFlyoutSubItem Text="文件操作">-->
                                 <MenuFlyoutItem Click="DeleteSourceMangaFile"
-                                                x:Uid="/Resources/DeleteSourceMangaFileFlyoutItem" />
+                                                Text="{uid:Resources Resources=DeleteSourceFile}"
+                                                 />
                                 <MenuFlyoutItem Click="LaunchFile"
-                                                x:Uid="/Resources/LaunchFileFlyoutItem" />
+                                                Text="{uid:Resources Resources=OpenFile}"/>
                                 <MenuFlyoutItem Click="LaunchFolder"
-                                                x:Uid="/Resources/LaunchFolderFlyoutItem"
-                                                Text="打开文件夹" />
+                                                Text="{uid:Resources Resources=OpenFolder}" />
                                 <MenuFlyoutItem Click="Rename"
-                                                x:Uid="/Resources/RenameFlyoutItem"
-                                                Text="打开文件夹" />
+                                                Text="{uid:Resources Resources=RenameFile}"/>
 
                                 <MenuFlyoutSeparator />
                                 <MenuFlyoutItem Click="ExportPDF"
-                                                x:Uid="/Resources/ExportPDFFlyoutItem" />
+                                                Text="{uid:Resources Resources=ExportToPDF}"/>
                                 <!--</MenuFlyoutSubItem>-->
                             </MenuFlyout>
                         </Grid.ContextFlyout>

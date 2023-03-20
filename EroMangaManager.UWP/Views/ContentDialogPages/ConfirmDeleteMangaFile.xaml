@@ -3,11 +3,10 @@
                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-               x:Uid="/Resources/DeleteFileConfirmPage"
                xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
-               Title="{uid:ResourcesReswEnum ResourcesReswEnum=DeleteFile}"
-PrimaryButtonText="{uid:ResourcesReswEnum ResourcesReswEnum=Yes}"
-SecondaryButtonText="{uid:ResourcesReswEnum ResourcesReswEnum=No}"
+               Title="{uid:Resources Resources=DeleteFile}"
+PrimaryButtonText="{uid:Resources Resources=Yes}"
+SecondaryButtonText="{uid:Resources Resources=No}"
                mc:Ignorable="d">
     <ContentDialog.Resources>
         <Style TargetType="TextBlock">

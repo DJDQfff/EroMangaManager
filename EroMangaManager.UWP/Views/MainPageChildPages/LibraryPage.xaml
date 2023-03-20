@@ -6,6 +6,7 @@
       xmlns:app="using:EroMangaManager.UWP"
       xmlns:vm="using:EroMangaManager.Core.ViewModels"
       xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
       NavigationCacheMode="Disabled"
       mc:Ignorable="d">
     <Grid>
@@ -21,7 +22,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Click="addButton_Click"
-                x:Uid="/Resources/AddFolderButton" />
+                Content="{uid:Resources Resources=AddAFolder}"/>
         <Grid Visibility="Visible"
               x:Name="ControlGrid"
               HorizontalAlignment="Center"
@@ -31,7 +32,9 @@
                         Visibility="Visible" 
                         VerticalAlignment="Center"
                         RelativePanel.AlignRightWithPanel="True">
-                <ToggleSwitch x:Uid="/Resources/IsEmptyFolderShow"
+                <ToggleSwitch  Header="{uid:Resources Resources=IsEmptyFolderShow}"
+                              OnContent="{uid:Resources Resources=Yes}"
+                              OffContent="{uid:Resources Resources=No}"
                               Toggled="ToggleSwitch_Toggled"
                               x:Load="False"
                               x:Name="temp"
@@ -40,26 +43,26 @@
                 <Button  x:Name="SetAsDefaultBookcaseFolder"
                          VerticalAlignment="Center" 
                          Click="SetAsDefaultBookcaseFolder_Click"
-                         x:Uid="/Resources/SetAsDefaultBookcaseFolder"/>
+                         Content="{uid:Resources Resources=SetAsDefaultBookcaseFolder}"/>
 
                 <Button  x:Name="JumpToBookcase"
                          VerticalAlignment="Center"
                          Click="JumpToBookcase_Click"
-                         x:Uid="/Resources/ShowFolderBookcase"/>
+                         Content="{uid:Resources Resources=ShowFolderBookcase}"/>
 
                 <Button  VerticalAlignment="Center"
-                         x:Uid="/Resources/LaunchFolderButton"
+                         Content="{uid:Resources Resources=OpenFolder}"
                          Click="LauncherFolder" />
                 <Button x:Name="removeButton"
                         VerticalAlignment="Center"
-                        Click="removeButton_Click"
-                        x:Uid="/Resources/RemoveFolderButton" />
+                        Content="{uid:Resources Resources=RemoveFolder}"
+                        Click="removeButton_Click" />
             </StackPanel>
         </Grid>
 
         <TextBlock Visibility="{x:Bind app:App.Current.GlobalViewModel.MangaFolders.Count,Converter={StaticResource  controlvisibilityconverter},Mode=OneWay}"
                    x:Name="HintAddFolderTextBlock"
-                   x:Uid="/Resources/HintAddFirstFolder"
+                   Text="{uid:Resources Resources=NoFoldersPleaseAddFirst}"
                    Grid.Row="3"
                    Style="{StaticResource HintTextBlockStyle}"
                    HorizontalAlignment="Center" />
