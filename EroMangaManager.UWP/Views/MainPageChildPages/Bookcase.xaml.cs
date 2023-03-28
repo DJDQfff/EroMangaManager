@@ -131,7 +131,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
             StorageFile storageFile = await MyLibrary.UWP.StorageItemPicker.SaveFileAsync(".pdf");
 
-            await Exporter.ExportAsPDF(mangaBook, storageFile);
+           await System.Threading.Tasks.Task.Run( async()=>  await Exporter.ExportAsPDF(mangaBook, storageFile));
 
             string done = ResourceLoader.GetForCurrentView("StringResources").GetString("ExportDone");
             App.Current.GlobalViewModel.WorkDone(done);
