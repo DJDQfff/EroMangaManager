@@ -44,9 +44,9 @@ namespace EroMangaManager.Core.Models
 
 
 
-
+        private string manganame;
         /// <summary> 本子名字 </summary>
-        public virtual string MangaName { get; }
+        public virtual string MangaName { get=>manganame; set { manganame = value;NotifyPropertyChanged(); } }
 
         /// <summary> 包含在文件名中的本子Tag </summary>
         public string[] MangaTagsIncludedInFileName { get; }
