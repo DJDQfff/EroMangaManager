@@ -178,9 +178,6 @@
     <Compile Include="Views\SettingPageChildPages\CommonSettingPage.xaml.cs">
       <DependentUpon>CommonSettingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SettingPageChildPages\ErrorZipPage.xaml.cs">
-      <DependentUpon>ErrorZipPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\SettingPageChildPages\TagKeywordsManagePage.xaml.cs">
       <DependentUpon>TagKeywordsManagePage.xaml</DependentUpon>
     </Compile>
@@ -417,10 +414,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SettingPageChildPages\CommonSettingPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SettingPageChildPages\ErrorZipPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

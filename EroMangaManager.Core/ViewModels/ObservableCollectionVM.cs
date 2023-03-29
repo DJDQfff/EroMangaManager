@@ -47,8 +47,6 @@ namespace EroMangaManager.Core.ViewModels
         /// </summary>
         public bool IsContentInitializing => MangaFolders.Any((x) => x.IsInitialing == true);
 
-        /// <summary>流的内容不是 zip 存档格式。</summary>
-        public ObservableCollection<MangaBook> NonZipList { get; } = new ObservableCollection<MangaBook>();
 
 
         /// <summary>

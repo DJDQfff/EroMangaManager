@@ -18,8 +18,6 @@
                                     Content="{uid:Resources Resources=FilteredImages}" />
                 <NavigationViewItem x:Name="SettingTagButton" Visibility="Collapsed"
                                     Content="{uid:Resources Resources=Tags}"/>
-                <NavigationViewItem x:Name="ErrorZipPageButton"
-                                    Content="{uid:Resources Resources=ErrorZips}" />
             </NavigationView.MenuItems>
             <NavigationView.Content>
                 <Frame x:Name="SettingFrame"

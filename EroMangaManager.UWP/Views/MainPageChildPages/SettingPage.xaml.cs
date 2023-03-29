@@ -33,9 +33,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                     SettingFrame.Navigate(typeof(SettingPageChildPages.TagKeywordsManagePage));
                     break;
 
-                case nameof(ErrorZipPageButton):
-                    SettingFrame.Navigate(typeof(SettingPageChildPages.ErrorZipPage));
-                    break;
             }
         }
 

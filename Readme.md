@@ -4,11 +4,7 @@
 
 * 在初始化GlobalViewModel时添加文件夹的话，会报错（被修改的集合、原来的MangasFolder不初始化）
 
-* 
-
 * 本子名翻译功能，及设置都需要改，这是可以传参的
-
-* 修改FunctionRepeatMangaPage 的UI，改为使用CommandBar，不要再用那么多打开，删除
 
 * 写一个标签搜索控件
 
@@ -62,7 +58,7 @@
 
 * 对文件夹的初始化使用多线程同时加载
   
-  > 一直出问题。已知在MainPage里把导航项LibraryPage的代码注释掉的话，就能多线程同时加载
+  > 一直出问题。已知在MainPage里把导航项LibraryPage的代码注释掉的话，就能多线程同时加载，和UI线程冲突
 
 * 需要优化ReaderVM的实例释放问题，disposs
   
@@ -71,6 +67,10 @@
 * 完善异常捕获、日志功能
 
 # 更新日志
+
+## 2023.3.29
+
+* 修改FunctionRepeatMangaPage 的UI，改为使用CommandBar
 
 ## 2023.3.28
 

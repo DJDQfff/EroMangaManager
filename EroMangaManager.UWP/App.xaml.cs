@@ -63,7 +63,7 @@ namespace EroMangaManager.UWP
             };
 
             var folder = await MyLibrary.UWP.AccestListHelper.GetAvailableFutureFolder();
-            storageItemManager.InitialFolders(folder);
+            storageItemManager.InitialRootFolders(folder);
                 await ModelFactory.InitialIzeFoldersViewModel(GlobalViewModel, folder.Values);
 
         }

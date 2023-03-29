@@ -17,10 +17,7 @@ namespace EroMangaManager.UWP.Models
         public static async Task InitialIzeFoldersViewModel(ObservableCollectionVM ViewModel, IEnumerable<StorageFolder> storageFolders)
         {
             ViewModel.MangaFolders.Clear();
-            ViewModel.NonZipList.Clear();
 
-            //TODO 现在这个是顺序执行，试试多线程方法，加快速度
-            //List<Task> tasks = new List<Task>();
 
             foreach (var folder in storageFolders)
             {
@@ -34,10 +31,7 @@ namespace EroMangaManager.UWP.Models
                 var tempfolder = folder;
                 var storage = storageFolders.Single(x => x.Path == folder.FolderPath);
                 await ModelFactory.InitialMangasFolder(tempfolder, storage);
-                //var task = Task.Run(async () => await ModelFactory.InitialMangasFolder(tempfolder, storage));
-                //tasks.Add(task);
             }
-            //await Task.WhenAll(tasks);
         }
 
         public static async Task InitialMangasFolder(MangasFolder mangasFolder, StorageFolder StorageFolder)
@@ -46,11 +40,11 @@ namespace EroMangaManager.UWP.Models
             var files = await StorageFolder.GetFilesAsync();
             var filteredfiles = files.Where(x => Path.GetExtension(x.Path).ToLower() == ".zip").ToList();
 
+
             foreach(var storageFile in filteredfiles)
             {
                 MangaBook manga = await ModelFactory.CreateMangaBook(storageFile);
 
-                // TODO 使用多线程的话总是在这出问题
                 mangasFolder.MangaBooks.Add(manga);
 
             }

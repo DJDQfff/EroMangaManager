@@ -10,10 +10,26 @@
       Margin="28,0,0,0"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <CommandBar>
+            <CommandBar.PrimaryCommands>
+                <AppBarButton
+                    Label="{uid:Resources Resources=Open}"
+                    Click="Button_Click_1"
+                    Icon="OpenFile" />
+                <AppBarButton
+                    Label="{uid:Resources Resources=DeleteFile}"
+                    Click="Button_Click"
+                    Icon="Delete" />
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
         <ListView x:Name="listView"
+                  Grid.Row="1"
                   SelectionMode="None"
-                  ItemContainerStyle="{StaticResource ListViewItemStyle_1}"
-                  Grid.Column="1">
+                  ItemContainerStyle="{StaticResource ListViewItemStyle_1}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:RepeatMangaBookGroup">
                     <StackPanel  Orientation="Vertical"
@@ -21,9 +37,10 @@
                         <TextBlock Margin="4"
                                    Text="{x:Bind  Key}"
                                    FontSize="24" />
-                        <ListView ItemsSource="{x:Bind }"
+                        <ListView x:Name="mangalist" ItemsSource="{x:Bind }"
                                   ItemContainerStyle="{StaticResource ListViewItemStyle_1}"
-                                  SelectionMode="None">
+                                  SelectionChanged="mangalist_SelectionChanged"
+                                  SelectionMode="Single">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="coremodel:MangaBook">
                                     <Grid>
@@ -47,13 +64,6 @@
                                                        TextWrapping="Wrap"
                                                        FontSize="20" />
                                         </StackPanel>
-                                        <Button Content="{uid:Resources Resources=Open}"
-                                                Click="Button_Click_1"
-                                                Grid.Column="2" />
-                                        <Button  Content="{uid:Resources Resources=DeleteIt}"
-                                                Grid.Column="2"
-                                                Click="Button_Click"
-                                                Grid.Row="1" />
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>

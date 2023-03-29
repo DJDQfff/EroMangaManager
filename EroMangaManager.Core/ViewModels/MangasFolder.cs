@@ -28,7 +28,6 @@ namespace EroMangaManager.Core.ViewModels
         }
 
         public ObservableCollection<MangaBook> MangaBooks { get; } = new ObservableCollection<MangaBook>();
-        public ObservableCollection<MangaBook> ErrorBooks { get; } = new ObservableCollection<MangaBook>();
 
         public MangasFolder(string storageFolder)
         {
