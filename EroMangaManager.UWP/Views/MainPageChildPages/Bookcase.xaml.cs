@@ -147,17 +147,8 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
             MangaBook eroManga = menuFlyout.DataContext as MangaBook;
 
-            RenameDialog renameDialog = new RenameDialog(eroManga);
-            var result = await renameDialog.ShowAsync();
-            if (result == ContentDialogResult.Primary)
-            {               
-                // text是否合法由对话框保证
-                var text = renameDialog.NewDisplayName;
 
-                await App.Current.storageItemManager.RenameStorageFile(eroManga.FilePath, text + ".zip");
-                eroManga.MangaName = text;
-
-            }
+            await StorageHelper.RenameSourceFile(eroManga);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 
 using EroMangaManager.Core.Models;
+using EroMangaManager.UWP.Helpers;
 
 using MyLibrary.Standard20;
 
@@ -41,9 +42,11 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
             list.ItemsSource = containrepeat;
         }
 
-        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-
+            var button = sender as Button;
+            var manga=button.DataContext as MangaBook;
+            await StorageHelper.RenameSourceFile(manga);
         }
     }
 }

@@ -12,31 +12,13 @@
 
 * 阅读进度
 
-* 功能：修改tag名
-
-* 升级版：联网过滤图库
-  
-  * [ ] 过滤图库
-  
-  * [ ] 汉化组库
-  
-  * [ ] 作者库
-
-* 图片ocr识别，即时翻译
-
-* 给Function页面添加缓存模式
+* 功能：修改tag
 
 * ReadPage添加一个阅读控制器ViewModel，由原来的控件控制ReaderVM，改为控件控制控制器VM，再由此VM控制ReaderVM，实现分离，更好
 
 * 在Bookcase页面的CommandBar的Content里添加SearchBox，实现查找功能
 
-* 给Bookcase添加切换DataTemplate的功能
-
-* 给FunctionRepeatManga页面添加一次打开几个漫画的功能，配合前面说的控制器，可以实现一次性看三本，从而实现手动比较的功能
-
 * 给重复tag查找功能添加修改功能，使能移除重复tag
-
-* 改用winui后不知道为什么无法使用默认控件样式了
 
 # 需要持续优化项
 

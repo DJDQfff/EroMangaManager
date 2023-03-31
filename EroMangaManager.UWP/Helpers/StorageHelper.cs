@@ -16,6 +16,22 @@ namespace EroMangaManager.UWP.Helpers
     /// </summary>
     internal class StorageHelper
     {
+
+        public static async Task RenameSourceFile(MangaBook eroManga)
+        {
+            RenameDialog renameDialog = new RenameDialog(eroManga);
+            var result = await renameDialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                // text是否合法由对话框保证
+                var text = renameDialog.NewDisplayName;
+
+                await App.Current.storageItemManager.RenameStorageFile(eroManga.FilePath, text + ".zip");
+                eroManga.MangaName = text;
+
+            }
+
+        }
         /// <summary>
         /// 删除源文件时，会触发删除确认弹框，删除模式，这两个参数都是从程序设置中读取的，因此封装到助手类里面
         /// </summary>

@@ -4,6 +4,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:model="using:EroMangaManager.Core.Models"
+      xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
       mc:Ignorable="d">
     <Grid>
         <ListView x:Name="list">
@@ -17,7 +18,7 @@
                                        FontSize="20" />
                             <TextBlock Text="{x:Bind FileFullName}"
                                        FontSize="20" />
-                            <Button Click="Button_Click" />
+                            <Button Click="Button_Click" Content="{uid:Resources Resources=RenameFile}" />
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>
