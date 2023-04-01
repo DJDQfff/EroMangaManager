@@ -5,9 +5,9 @@ using System.Linq;
 namespace EroMangaDB.Helper
 {
     /// <summary>
-    /// Tag数组帮助类
+    /// 对基于tag的字符串的相关操作的帮助整合类
     /// </summary>
-    public static class TagArrayHelper
+    public static class TagBasedStringHelper
     {
         private const string left = "[【（({";// 左括号
         private const string right = "]】)）}";// 右括号
@@ -17,7 +17,7 @@ namespace EroMangaDB.Helper
         /// 按左右括号分离tag并解析
         /// </summary>
         /// <param name="_MangaFileName">传入漫画文件名（不带后缀）</param>
-        /// <returns></returns>
+        /// <returns>第一个是MangaName，后面的是tag</returns>
         public static List<string> SplitAndParser(this string _MangaFileName)
         {
             string[] tagsarray = _MangaFileName.Split(lr.ToCharArray());              // 初步分解
@@ -65,6 +65,19 @@ namespace EroMangaDB.Helper
             return tagslist;
         }
 
+        //TODO 
+        /// <summary>
+        ///移除其中包含的重复tag
+        /// </summary>
+        /// <param name="oldname">旧的名字</param>
+        public static string RemoveRepeatTag(string oldname)
+        {
+            var tags = SplitAndParser(oldname);
+
+
+
+            return null;
+        }
         /// <summary>
         /// 是否左右括号成对
         /// </summary>

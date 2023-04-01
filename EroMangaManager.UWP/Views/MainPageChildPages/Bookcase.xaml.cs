@@ -148,7 +148,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             MangaBook eroManga = menuFlyout.DataContext as MangaBook;
 
 
-            await StorageHelper.RenameSourceFile(eroManga);
+            await StorageHelper.RenameSourceFile(eroManga,null);
         }
     }
 }

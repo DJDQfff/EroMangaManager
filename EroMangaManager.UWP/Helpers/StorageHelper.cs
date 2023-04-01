@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 
 using EroMangaManager.Core.Models;
@@ -11,15 +13,19 @@ using Windows.UI.Xaml.Controls;
 namespace EroMangaManager.UWP.Helpers
 {
     /// <summary>
-    /// 为什么要弄这个：
-    /// 因为删除文件时，除了直接删除，还有涉及和程序交互的部分、读取程序设置的部分
+    /// 操作文件时，还要与用户进行交互，以及一些别的操作
     /// </summary>
     internal class StorageHelper
     {
-
-        public static async Task RenameSourceFile(MangaBook eroManga)
+        /// <summary>
+        /// 修改文件名
+        /// </summary>
+        /// <param name="eroManga"></param>
+        /// <param name="suggestedname"></param>
+        /// <returns></returns>
+        public static async Task RenameSourceFile(MangaBook eroManga,string suggestedname)
         {
-            RenameDialog renameDialog = new RenameDialog(eroManga);
+            RenameDialog renameDialog = new RenameDialog(eroManga,suggestedname);
             var result = await renameDialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
@@ -28,7 +34,9 @@ namespace EroMangaManager.UWP.Helpers
 
                 await App.Current.storageItemManager.RenameStorageFile(eroManga.FilePath, text + ".zip");
                 eroManga.MangaName = text;
-
+                eroManga.FilePath = Path.Combine(eroManga.FolderPath, text + ".zip");
+                // TODO 这里MangaBook的Tag属性页因该同步更新，但是算了。
+                // 还是把SplitAndParser方法成两个，每次按需调用
             }
 
         }
