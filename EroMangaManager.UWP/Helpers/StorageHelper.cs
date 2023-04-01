@@ -7,6 +7,8 @@ using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.SettingEnums;
 using EroMangaManager.UWP.Views.ContentDialogPages;
 
+using iText.Layout.Font;
+
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 
@@ -35,6 +37,10 @@ namespace EroMangaManager.UWP.Helpers
                 await App.Current.storageItemManager.RenameStorageFile(eroManga.FilePath, text + ".zip");
                 eroManga.MangaName = text;
                 eroManga.FilePath = Path.Combine(eroManga.FolderPath, text + ".zip");
+
+                eroManga.NotifyPropertyChanged(string.Empty);
+                // TODO 不知道为什么，写FilePath属性时是调用过一次次方法的，但是那样不会起作用，还得在外部再调用一次
+
                 // TODO 这里MangaBook的Tag属性页因该同步更新，但是算了。
                 // 还是把SplitAndParser方法成两个，每次按需调用
             }

@@ -18,8 +18,6 @@
                                        FontSize="20" />
                             <TextBlock Text="{x:Bind FileFullName,Mode=OneWay}"
                                        FontSize="20" />
-                            <TextBlock
-                                Text="{x:Bind TestText,Mode=OneWay}" />
                             <Button Click="Button_Click" Content="{uid:Resources Resources=RenameFile}" />
                         </StackPanel>
                     </StackPanel>
