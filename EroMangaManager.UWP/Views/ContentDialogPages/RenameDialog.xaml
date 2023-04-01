@@ -6,7 +6,7 @@
 xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
                mc:Ignorable="d"
                PrimaryButtonText="{uid:Resources Resources=Yes}"
-               SecondaryButtonText="Cancel">
+               SecondaryButtonText="{uid:Resources Resources=CancleEdit}">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -21,9 +21,9 @@ xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
                 <ColumnDefinition  Width="*" />
                 <ColumnDefinition  Width="auto" />
             </Grid.ColumnDefinitions>
-            <TextBox TextChanged="textbox_TextChanged"
+            <TextBox TextChanged="textbox_TextChanged" TextWrapping="Wrap"
                      x:Name="textbox" />
-            <TextBlock Grid.Column="1"
+            <TextBlock Grid.Column="1" TextWrapping="Wrap"
                        Text=".zip" />
         </Grid>
         <TextBlock  Grid.Row="2"
