@@ -13,27 +13,28 @@
         <ScrollViewer>
             <StackPanel Orientation="Vertical">
                 <StackPanel>
-                    <TextBlock  Text="{uid:Usage Usage=WhatISTheAppTitle}"
+                    <TextBlock  Text="{uid:UsageDocument Uid=WhatISTheAppTitle}"
                                 Style="{StaticResource TitleOfPair}" />
-                    <TextBlock Text="{uid:Usage Usage=WhatISTheAppContent}"
+                    <TextBlock
+                        Text="{uid:UsageDocument Uid=WhatISTheAppContent}"
                                Style="{StaticResource ContentOfPair}" />
                 </StackPanel>
 
                 <StackPanel>
                     <TextBlock
-                        Text="{uid:Usage Usage=SupportedTypeTitle}"
+                        Text="{uid:UsageDocument Uid=SupportedTypeTitle}"
                         Style="{StaticResource TitleOfPair}" />
                     <TextBlock
-                        Text="{uid:Usage Usage=SupportedTypeContent}"
+                        Text="{uid:UsageDocument Uid=SupportedTypeContent}"
                         Style="{StaticResource ContentOfPair}" />
                 </StackPanel>
 
                 <StackPanel>
                     <TextBlock
-                        Text="{uid:Usage Usage=WhyZipRatherFolderTitle}"
+                        Text="{uid:UsageDocument Uid=WhyZipRatherFolderTitle}"
                         Style="{StaticResource TitleOfPair}" />
                     <TextBlock
-                        Text="{uid:Usage Usage=WhyZipRatherFolderContent}"
+                        Text="{uid:UsageDocument Uid=WhyZipRatherFolderContent}"
                         Style="{StaticResource ContentOfPair}" />
                 </StackPanel>
             </StackPanel>

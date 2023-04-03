@@ -10,16 +10,16 @@
     <Grid>
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Stretch">
-            <ToggleSwitch Header="{uid:Resources Resources=WhetherShowDialogBeforeDelete}"
-                          OnContent="{uid:Resources Resources=Yes}"
+            <ToggleSwitch Header="{uid:UI Uid=WhetherShowDialogBeforeDelete}"
+                          OnContent="{uid:UI Uid=Yes}"
                           HorizontalAlignment="Stretch"
-                          OffContent="{uid:Resources Resources=No}"
+                          OffContent="{uid:UI Uid=No}"
                           HorizontalContentAlignment="Left"
                           Toggled="DirectDeleteOption"
                           Loaded="ToggleSwitch_Loaded" />
-            <ToggleSwitch Header="{uid:Resources Resources=DeleteMode}"
-                          OnContent="{uid:Resources Resources=DeleteMode_JustDelete}"
-                          OffContent="{uid:Resources Resources=DeleteMode_MoveTo}"
+            <ToggleSwitch Header="{uid:UI Uid=DeleteMode}"
+                          OnContent="{uid:UI Uid=DeleteMode_JustDelete}"
+                          OffContent="{uid:UI Uid=DeleteMode_MoveTo}"
                           HorizontalAlignment="Stretch"
                           HorizontalContentAlignment="Left"
                           Toggled="DeleteOption"

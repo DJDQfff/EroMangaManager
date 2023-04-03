@@ -19,14 +19,13 @@
         <StackPanel   Grid.Row="1"
                       Grid.Column="1"
                       Orientation="Vertical">
-            <HyperlinkButton Content="{uid:Resources Resources=GitHubFeedBack}"
+            <HyperlinkButton Content="{uid:UI Uid=GitHubFeedBack}"
                 NavigateUri="https://github.com/DJDQfff/FeedBack/issues"/>
-            <HyperlinkButton x:Name="hyperlinkButton"
-                             Content="{uid:Resources Resources=MailFeedbackToDeveloper}"
-                             NavigateUri="https://www.microsoft.com/store/apps/9N7C8ZDQ1TJ8"
-                             VerticalAlignment="Center" />
-            <HyperlinkButton Content="{uid:Resources Resources=OpenInMicrosoftStore}"
-                             Click="HyperlinkButton_Click" />
+            <HyperlinkButton Content="{uid:UI Uid=MailFeedbackToDeveloper}"
+                NavigateUri="mailto:djdqfff@qq.com"
+                VerticalAlignment="Center" />
+            <HyperlinkButton Content="{uid:UI Uid=OpenInMicrosoftStore}"
+                NavigateUri="https://www.microsoft.com/store/apps/9N7C8ZDQ1TJ8" />
         </StackPanel>
     </Grid>
 </Page>

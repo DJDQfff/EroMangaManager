@@ -3,7 +3,7 @@ using Windows.ApplicationModel.Resources;
 namespace EroMangaManager.UWP.LocalizationWords
 {
     ///<summary> </summary>
-    public enum AppxmanifestResources
+    public enum Appxmanifest
     {
         ///<summary></summary> 
         AppDisplayName,
@@ -12,21 +12,48 @@ namespace EroMangaManager.UWP.LocalizationWords
 
     }
     ///<summary> </summary>
-    public class AppxmanifestResourcesExtension : MarkupExtension
+    public class AppxmanifestExtension : MarkupExtension
     {
         ///<summary> </summary>
-        public AppxmanifestResources AppxmanifestResources { get; set; }
+        public Appxmanifest Uid { get; set; }
 
         ///<summary> </summary>
         protected override object ProvideValue()
         {
-            return ResourceLoader.GetForViewIndependentUse("AppxmanifestResources").GetString(AppxmanifestResources.ToString());
+            return ResourceLoader.GetForViewIndependentUse("Appxmanifest").GetString(Uid.ToString());
 
         }
     }
 
     ///<summary> </summary>
-    public enum Resources
+    public enum Strings
+    {
+        ///<summary></summary> 
+        ContainInvalaidChar,
+        ///<summary></summary> 
+        DontUseEmptyString,
+        ///<summary></summary> 
+        ErrorString1,
+        ///<summary></summary> 
+        ExportDone,
+
+    }
+    ///<summary> </summary>
+    public class StringsExtension : MarkupExtension
+    {
+        ///<summary> </summary>
+        public Strings Uid { get; set; }
+
+        ///<summary> </summary>
+        protected override object ProvideValue()
+        {
+            return ResourceLoader.GetForViewIndependentUse("Strings").GetString(Uid.ToString());
+
+        }
+    }
+
+    ///<summary> </summary>
+    public enum UI
     {
         ///<summary></summary> 
         AddAFolder,
@@ -149,48 +176,21 @@ namespace EroMangaManager.UWP.LocalizationWords
 
     }
     ///<summary> </summary>
-    public class ResourcesExtension : MarkupExtension
+    public class UIExtension : MarkupExtension
     {
         ///<summary> </summary>
-        public Resources Resources { get; set; }
+        public UI Uid { get; set; }
 
         ///<summary> </summary>
         protected override object ProvideValue()
         {
-            return ResourceLoader.GetForViewIndependentUse("Resources").GetString(Resources.ToString());
+            return ResourceLoader.GetForViewIndependentUse("UI").GetString(Uid.ToString());
 
         }
     }
 
     ///<summary> </summary>
-    public enum StringResources
-    {
-        ///<summary></summary> 
-        ContainInvalaidChar,
-        ///<summary></summary> 
-        DontUseEmptyString,
-        ///<summary></summary> 
-        ErrorString1,
-        ///<summary></summary> 
-        ExportDone,
-
-    }
-    ///<summary> </summary>
-    public class StringResourcesExtension : MarkupExtension
-    {
-        ///<summary> </summary>
-        public StringResources StringResources { get; set; }
-
-        ///<summary> </summary>
-        protected override object ProvideValue()
-        {
-            return ResourceLoader.GetForViewIndependentUse("StringResources").GetString(StringResources.ToString());
-
-        }
-    }
-
-    ///<summary> </summary>
-    public enum UpdateResources
+    public enum UpdateRecord
     {
         ///<summary></summary> 
         Description_20221219,
@@ -219,21 +219,21 @@ namespace EroMangaManager.UWP.LocalizationWords
 
     }
     ///<summary> </summary>
-    public class UpdateResourcesExtension : MarkupExtension
+    public class UpdateRecordExtension : MarkupExtension
     {
         ///<summary> </summary>
-        public UpdateResources UpdateResources { get; set; }
+        public UpdateRecord Uid { get; set; }
 
         ///<summary> </summary>
         protected override object ProvideValue()
         {
-            return ResourceLoader.GetForViewIndependentUse("UpdateResources").GetString(UpdateResources.ToString());
+            return ResourceLoader.GetForViewIndependentUse("UpdateRecord").GetString(Uid.ToString());
 
         }
     }
 
     ///<summary> </summary>
-    public enum Usage
+    public enum UsageDocument
     {
         ///<summary></summary> 
         SupportedTypeContent,
@@ -250,15 +250,15 @@ namespace EroMangaManager.UWP.LocalizationWords
 
     }
     ///<summary> </summary>
-    public class UsageExtension : MarkupExtension
+    public class UsageDocumentExtension : MarkupExtension
     {
         ///<summary> </summary>
-        public Usage Usage { get; set; }
+        public UsageDocument Uid { get; set; }
 
         ///<summary> </summary>
         protected override object ProvideValue()
         {
-            return ResourceLoader.GetForViewIndependentUse("Usage").GetString(Usage.ToString());
+            return ResourceLoader.GetForViewIndependentUse("UsageDocument").GetString(Uid.ToString());
 
         }
     }

@@ -13,7 +13,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <TextBlock 
-                   Text="{uid:Resources Resources=NowInitializingMaybeError}"
+                   Text="{uid:UI Uid=NowInitializingMaybeError}"
                    Style="{StaticResource HintTextBlockStyle}"
                    Visibility="{x:Bind app:App.Current.GlobalViewModel.IsContentInitializing,Mode=OneTime,Converter={StaticResource  controlvisibilityconverter}}" />
 
@@ -27,12 +27,12 @@
             </GridView.ItemContainerStyle>
             <Button  x:Name="Function_FindSameMangaName"
                      Style="{StaticResource FunctionShowControl}"
-                     Content="{uid:Resources Resources=FindSameMangaByName}"
+                     Content="{uid:UI Uid=FindSameMangaByName}"
                      Background="{x:Bind Converter={StaticResource randomcolor },Mode=OneTime}"
             Click="Button_Click" />
             <Button x:Name="Function_RemoveRepeatTags"
                     Style="{StaticResource FunctionShowControl}"
-                    Content="{uid:Resources Resources=RemoveRepeatTags}"
+                    Content="{uid:UI Uid=RemoveRepeatTags}"
                     HorizontalAlignment="Stretch"
                     Background="{x:Bind Converter={StaticResource randomcolor },Mode=OneTime}"
                     Click="Button_Click" />

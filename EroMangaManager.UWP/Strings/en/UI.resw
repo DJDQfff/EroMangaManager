@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddAFolder" xml:space="preserve">
+    <value>Add a folder</value>
+  </data>
+  <data name="Bookcase" xml:space="preserve">
+    <value>bookshelf</value>
+  </data>
+  <data name="BookcaseItemToolTip" xml:space="preserve">
+    <value>Comic bookshelf</value>
+  </data>
+  <data name="CancleEdit" xml:space="preserve">
+    <value>No adjustments</value>
+  </data>
+  <data name="ChangeSortMethod" xml:space="preserve">
+    <value>Toggle sorting</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Shut down</value>
+  </data>
+  <data name="CommonSetting" xml:space="preserve">
+    <value>General settings</value>
+  </data>
+  <data name="ConfirmEdit" xml:space="preserve">
+    <value>Confirm the adjustment</value>
+  </data>
+  <data name="DeleteFile" xml:space="preserve">
+    <value>Confirm deleting files?</value>
+  </data>
+  <data name="DeleteIt" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DeleteMode" xml:space="preserve">
+    <value>Delete the pattern</value>
+  </data>
+  <data name="DeleteMode_JustDelete" xml:space="preserve">
+    <value>Delete from disk</value>
+  </data>
+  <data name="DeleteMode_MoveTo" xml:space="preserve">
+    <value>Move to the Recycle Bin</value>
+  </data>
+  <data name="DeleteSourceFile" xml:space="preserve">
+    <value>Delete the source file</value>
+  </data>
+  <data name="DontShowThisImage" xml:space="preserve">
+    <value>This figure is not displayed</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>edit</value>
+  </data>
+  <data name="ErrorZips" xml:space="preserve">
+    <value>Exception Zip</value>
+  </data>
+  <data name="ExportToPDF" xml:space="preserve">
+    <value>Export to PDF</value>
+  </data>
+  <data name="FilteredImages" xml:space="preserve">
+    <value>Filter the gallery</value>
+  </data>
+  <data name="FindSameMangaByName" xml:space="preserve">
+    <value>Find the same comics</value>
+  </data>
+  <data name="Folders" xml:space="preserve">
+    <value>folder</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>Full screen</value>
+  </data>
+  <data name="FunctionOff" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="FunctionOn" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="GitHubFeedBack" xml:space="preserve">
+    <value>Github feedback</value>
+  </data>
+  <data name="IsEmptyFolderShow" xml:space="preserve">
+    <value>Whether empty folders are displayed</value>
+  </data>
+  <data name="MailFeedbackToDeveloper" xml:space="preserve">
+    <value>Email feedback djdqfff@qq.com</value>
+  </data>
+  <data name="MangaTags" xml:space="preserve">
+    <value>This subtab</value>
+  </data>
+  <data name="MangaTagsCategorys" xml:space="preserve">
+    <value>Label classification</value>
+  </data>
+  <data name="MangaTagsManage" xml:space="preserve">
+    <value>Label management</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>not</value>
+  </data>
+  <data name="NoFoldersPleaseAddFirst" xml:space="preserve">
+    <value>There are currently no folders, please add your first scan folder</value>
+  </data>
+  <data name="NoSelectedFolder" xml:space="preserve">
+    <value>No folder selected</value>
+  </data>
+  <data name="NowInitializingMaybeError" xml:space="preserve">
+    <value>Initializing folder, now using the tool feature may have an error</value>
+  </data>
+  <data name="NowReading" xml:space="preserve">
+    <value>Reading</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Open it</value>
+  </data>
+  <data name="OpenFile" xml:space="preserve">
+    <value>Open the file</value>
+  </data>
+  <data name="OpenFolder" xml:space="preserve">
+    <value>Open the folder</value>
+  </data>
+  <data name="OpenInMicrosoftStore" xml:space="preserve">
+    <value>Open in the store</value>
+  </data>
+  <data name="OpenItsPlacedFolder" xml:space="preserve">
+    <value>Open the folder you are in</value>
+  </data>
+  <data name="OverviewInformation" xml:space="preserve">
+    <value>View information</value>
+  </data>
+  <data name="PinnedFolders" xml:space="preserve">
+    <value>The folder is pinned</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>flushed</value>
+  </data>
+  <data name="RemoveFolder" xml:space="preserve">
+    <value>Remove the folder</value>
+  </data>
+  <data name="RemoveRepeatTags" xml:space="preserve">
+    <value>Remove the Duplicate Book subtab</value>
+  </data>
+  <data name="RenameFile" xml:space="preserve">
+    <value>Rename the file</value>
+  </data>
+  <data name="SaveAs" xml:space="preserve">
+    <value>Save As</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="SetAsDefaultBookcaseFolder" xml:space="preserve">
+    <value>Set as the default presentation folder</value>
+  </data>
+  <data name="SetBack" xml:space="preserve">
+    <value>restore</value>
+  </data>
+  <data name="ShowFolderBookcase" xml:space="preserve">
+    <value>Display the bookshelf</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>label</value>
+  </data>
+  <data name="ToolBox" xml:space="preserve">
+    <value>toolbox</value>
+  </data>
+  <data name="Translate" xml:space="preserve">
+    <value>Translation</value>
+  </data>
+  <data name="UpdateRecords" xml:space="preserve">
+    <value>Update records</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Instructions for use</value>
+  </data>
+  <data name="WhetherOpenFilterImageFunction" xml:space="preserve">
+    <value>Whether to enable single-page filtering (turning on this feature will slow down the opening of comics)</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete" xml:space="preserve">
+    <value>Whether to delete directly</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>be</value>
+  </data>
+</root>

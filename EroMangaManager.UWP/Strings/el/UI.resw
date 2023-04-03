@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddAFolder" xml:space="preserve">
+    <value>Προσθήκη φακέλου</value>
+  </data>
+  <data name="Bookcase" xml:space="preserve">
+    <value>βιβλιοθήκη</value>
+  </data>
+  <data name="BookcaseItemToolTip" xml:space="preserve">
+    <value>Ράφι κόμικς</value>
+  </data>
+  <data name="CancleEdit" xml:space="preserve">
+    <value>Χωρίς προσαρμογές</value>
+  </data>
+  <data name="ChangeSortMethod" xml:space="preserve">
+    <value>Εναλλαγή ταξινόμησης</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Κλείσε</value>
+  </data>
+  <data name="CommonSetting" xml:space="preserve">
+    <value>Γενικές ρυθμίσεις</value>
+  </data>
+  <data name="ConfirmEdit" xml:space="preserve">
+    <value>Επιβεβαιώστε την προσαρμογή</value>
+  </data>
+  <data name="DeleteFile" xml:space="preserve">
+    <value>Επιβεβαιώστε τη διαγραφή αρχείων;</value>
+  </data>
+  <data name="DeleteIt" xml:space="preserve">
+    <value>Διαγράφω</value>
+  </data>
+  <data name="DeleteMode" xml:space="preserve">
+    <value>Διαγραφή του μοτίβου</value>
+  </data>
+  <data name="DeleteMode_JustDelete" xml:space="preserve">
+    <value>Διαγραφή από δίσκο</value>
+  </data>
+  <data name="DeleteMode_MoveTo" xml:space="preserve">
+    <value>Μετακίνηση στον Κάδο Ανακύκλωσης</value>
+  </data>
+  <data name="DeleteSourceFile" xml:space="preserve">
+    <value>Διαγραφή του αρχείου προέλευσης</value>
+  </data>
+  <data name="DontShowThisImage" xml:space="preserve">
+    <value>Αυτή η εικόνα δεν εμφανίζεται</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>επεξεργασία</value>
+  </data>
+  <data name="ErrorZips" xml:space="preserve">
+    <value>Εξαίρεση Zip</value>
+  </data>
+  <data name="ExportToPDF" xml:space="preserve">
+    <value>Εξαγωγή σε PDF</value>
+  </data>
+  <data name="FilteredImages" xml:space="preserve">
+    <value>Φιλτράρισμα της συλλογής</value>
+  </data>
+  <data name="FindSameMangaByName" xml:space="preserve">
+    <value>Βρείτε τα ίδια κόμικς</value>
+  </data>
+  <data name="Folders" xml:space="preserve">
+    <value>φάκελος</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>Πλήρης οθόνη</value>
+  </data>
+  <data name="FunctionOff" xml:space="preserve">
+    <value>Ενεργοποιημένη</value>
+  </data>
+  <data name="FunctionOn" xml:space="preserve">
+    <value>Ανάπηρος</value>
+  </data>
+  <data name="GitHubFeedBack" xml:space="preserve">
+    <value>Σχόλια για το Github</value>
+  </data>
+  <data name="IsEmptyFolderShow" xml:space="preserve">
+    <value>Εάν εμφανίζονται κενοί φάκελοι</value>
+  </data>
+  <data name="MailFeedbackToDeveloper" xml:space="preserve">
+    <value>Σχόλια μέσω ηλεκτρονικού ταχυδρομείου djdqfff@qq.com</value>
+  </data>
+  <data name="MangaTags" xml:space="preserve">
+    <value>Αυτή η υποκαρτέλα</value>
+  </data>
+  <data name="MangaTagsCategorys" xml:space="preserve">
+    <value>Ταξινόμηση ετικέτας</value>
+  </data>
+  <data name="MangaTagsManage" xml:space="preserve">
+    <value>Διαχείριση ετικετών</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>όχι</value>
+  </data>
+  <data name="NoFoldersPleaseAddFirst" xml:space="preserve">
+    <value>Προς το παρόν δεν υπάρχουν φάκελοι, προσθέστε τον πρώτο σας φάκελο σάρωσης</value>
+  </data>
+  <data name="NoSelectedFolder" xml:space="preserve">
+    <value>Δεν έχει επιλεγεί φάκελος</value>
+  </data>
+  <data name="NowInitializingMaybeError" xml:space="preserve">
+    <value>Προετοιμασία φακέλου, τώρα χρησιμοποιώντας τη δυνατότητα εργαλείου, μπορεί να έχει ένα σφάλμα</value>
+  </data>
+  <data name="NowReading" xml:space="preserve">
+    <value>Ανάγνωση</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Ανοίξτε το</value>
+  </data>
+  <data name="OpenFile" xml:space="preserve">
+    <value>Ανοίξτε το αρχείο</value>
+  </data>
+  <data name="OpenFolder" xml:space="preserve">
+    <value>Ανοίξτε το φάκελο</value>
+  </data>
+  <data name="OpenInMicrosoftStore" xml:space="preserve">
+    <value>Άνοιγμα στο κατάστημα</value>
+  </data>
+  <data name="OpenItsPlacedFolder" xml:space="preserve">
+    <value>Ανοίξτε το φάκελο στον οποίο βρίσκεστε</value>
+  </data>
+  <data name="OverviewInformation" xml:space="preserve">
+    <value>Προβολή πληροφοριών</value>
+  </data>
+  <data name="PinnedFolders" xml:space="preserve">
+    <value>Ο φάκελος είναι καρφιτσωμένος</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Ξεπλυθεί</value>
+  </data>
+  <data name="RemoveFolder" xml:space="preserve">
+    <value>Κατάργηση του φακέλου</value>
+  </data>
+  <data name="RemoveRepeatTags" xml:space="preserve">
+    <value>Κατάργηση της υποκαρτέλας Διπλότυπο βιβλίο</value>
+  </data>
+  <data name="RenameFile" xml:space="preserve">
+    <value>Μετονομάστε το αρχείο</value>
+  </data>
+  <data name="SaveAs" xml:space="preserve">
+    <value>Αποθήκευση ως</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Βρίσκω</value>
+  </data>
+  <data name="SetAsDefaultBookcaseFolder" xml:space="preserve">
+    <value>Ορισμός ως προεπιλεγμένου φακέλου παρουσίασης</value>
+  </data>
+  <data name="SetBack" xml:space="preserve">
+    <value>αποκαθιστώ</value>
+  </data>
+  <data name="ShowFolderBookcase" xml:space="preserve">
+    <value>Εμφάνιση του ραφιού</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>ετικέτα</value>
+  </data>
+  <data name="ToolBox" xml:space="preserve">
+    <value>εργαλειοθήκη</value>
+  </data>
+  <data name="Translate" xml:space="preserve">
+    <value>Μετάφραση</value>
+  </data>
+  <data name="UpdateRecords" xml:space="preserve">
+    <value>Ενημέρωση εγγραφών</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Οδηγίες χρήσης</value>
+  </data>
+  <data name="WhetherOpenFilterImageFunction" xml:space="preserve">
+    <value>Εάν θα ενεργοποιήσετε το φιλτράρισμα μίας σελίδας (η ενεργοποίηση αυτής της δυνατότητας θα επιβραδύνει το άνοιγμα των κόμικς)</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete" xml:space="preserve">
+    <value>Εάν θα διαγραφεί απευθείας</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>είμαι</value>
+  </data>
+</root>

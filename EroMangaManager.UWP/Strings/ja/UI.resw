@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddAFolder" xml:space="preserve">
+    <value>フォルダを追加する</value>
+  </data>
+  <data name="Bookcase" xml:space="preserve">
+    <value>書架</value>
+  </data>
+  <data name="BookcaseItemToolTip" xml:space="preserve">
+    <value>コミック本棚</value>
+  </data>
+  <data name="CancleEdit" xml:space="preserve">
+    <value>調整なし</value>
+  </data>
+  <data name="ChangeSortMethod" xml:space="preserve">
+    <value>並べ替えの切り替え</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>シャットダウン</value>
+  </data>
+  <data name="CommonSetting" xml:space="preserve">
+    <value>一般設定</value>
+  </data>
+  <data name="ConfirmEdit" xml:space="preserve">
+    <value>調整を確認する</value>
+  </data>
+  <data name="DeleteFile" xml:space="preserve">
+    <value>ファイルの削除を確認しますか?</value>
+  </data>
+  <data name="DeleteIt" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="DeleteMode" xml:space="preserve">
+    <value>パターンを削除する</value>
+  </data>
+  <data name="DeleteMode_JustDelete" xml:space="preserve">
+    <value>ディスクから削除</value>
+  </data>
+  <data name="DeleteMode_MoveTo" xml:space="preserve">
+    <value>ごみ箱に移動する</value>
+  </data>
+  <data name="DeleteSourceFile" xml:space="preserve">
+    <value>ソースファイルを削除する</value>
+  </data>
+  <data name="DontShowThisImage" xml:space="preserve">
+    <value>この図は表示されません</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="ErrorZips" xml:space="preserve">
+    <value>例外郵便番号</value>
+  </data>
+  <data name="ExportToPDF" xml:space="preserve">
+    <value>PDF にエクスポート</value>
+  </data>
+  <data name="FilteredImages" xml:space="preserve">
+    <value>ギャラリーをフィルター処理する</value>
+  </data>
+  <data name="FindSameMangaByName" xml:space="preserve">
+    <value>同じ漫画を探す</value>
+  </data>
+  <data name="Folders" xml:space="preserve">
+    <value>フォルダ</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>フルスクリーン</value>
+  </data>
+  <data name="FunctionOff" xml:space="preserve">
+    <value>有効</value>
+  </data>
+  <data name="FunctionOn" xml:space="preserve">
+    <value>無効</value>
+  </data>
+  <data name="GitHubFeedBack" xml:space="preserve">
+    <value>Github のフィードバック</value>
+  </data>
+  <data name="IsEmptyFolderShow" xml:space="preserve">
+    <value>空のフォルダを表示するかどうか</value>
+  </data>
+  <data name="MailFeedbackToDeveloper" xml:space="preserve">
+    <value>メールフィードバック djdqfff@qq.com</value>
+  </data>
+  <data name="MangaTags" xml:space="preserve">
+    <value>このサブタブ</value>
+  </data>
+  <data name="MangaTagsCategorys" xml:space="preserve">
+    <value>ラベル分類</value>
+  </data>
+  <data name="MangaTagsManage" xml:space="preserve">
+    <value>ラベル管理</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>じゃない</value>
+  </data>
+  <data name="NoFoldersPleaseAddFirst" xml:space="preserve">
+    <value>現在フォルダがありません。最初のスキャンフォルダを追加してください</value>
+  </data>
+  <data name="NoSelectedFolder" xml:space="preserve">
+    <value>フォルダが選択されていません</value>
+  </data>
+  <data name="NowInitializingMaybeError" xml:space="preserve">
+    <value>フォルダを初期化し、ツール機能を使用するとエラーが発生する場合があります</value>
+  </data>
+  <data name="NowReading" xml:space="preserve">
+    <value>読書</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>開けて下さい</value>
+  </data>
+  <data name="OpenFile" xml:space="preserve">
+    <value>ファイルを開く</value>
+  </data>
+  <data name="OpenFolder" xml:space="preserve">
+    <value>フォルダを開く</value>
+  </data>
+  <data name="OpenInMicrosoftStore" xml:space="preserve">
+    <value>店内で開く</value>
+  </data>
+  <data name="OpenItsPlacedFolder" xml:space="preserve">
+    <value>現在のフォルダを開きます</value>
+  </data>
+  <data name="OverviewInformation" xml:space="preserve">
+    <value>情報を見る</value>
+  </data>
+  <data name="PinnedFolders" xml:space="preserve">
+    <value>フォルダが固定されている</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>フラッシュ</value>
+  </data>
+  <data name="RemoveFolder" xml:space="preserve">
+    <value>フォルダを削除する</value>
+  </data>
+  <data name="RemoveRepeatTags" xml:space="preserve">
+    <value>「複製ブック」サブタブを削除する</value>
+  </data>
+  <data name="RenameFile" xml:space="preserve">
+    <value>ファイルの名前を変更する</value>
+  </data>
+  <data name="SaveAs" xml:space="preserve">
+    <value>名前を付けて保存</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>見付ける</value>
+  </data>
+  <data name="SetAsDefaultBookcaseFolder" xml:space="preserve">
+    <value>既定のプレゼンテーション フォルダーとして設定する</value>
+  </data>
+  <data name="SetBack" xml:space="preserve">
+    <value>戻す</value>
+  </data>
+  <data name="ShowFolderBookcase" xml:space="preserve">
+    <value>本棚を見せる</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>ラベル</value>
+  </data>
+  <data name="ToolBox" xml:space="preserve">
+    <value>ツールボックス</value>
+  </data>
+  <data name="Translate" xml:space="preserve">
+    <value>翻訳</value>
+  </data>
+  <data name="UpdateRecords" xml:space="preserve">
+    <value>レコードの更新</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>使用説明書</value>
+  </data>
+  <data name="WhetherOpenFilterImageFunction" xml:space="preserve">
+    <value>単一ページのフィルタリングを有効にするかどうか(この機能をオンにすると、コミックを開くのが遅くなります)</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete" xml:space="preserve">
+    <value>直接削除するかどうか</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>いる</value>
+  </data>
+</root>

@@ -5,8 +5,8 @@
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
                mc:Ignorable="d"
-               PrimaryButtonText="{uid:Resources Resources=Yes}"
-               SecondaryButtonText="{uid:Resources Resources=CancleEdit}">
+               PrimaryButtonText="{uid:UI Uid=Yes}"
+               SecondaryButtonText="{uid:UI Uid=CancleEdit}">
 
     <Grid>
         <Grid.RowDefinitions>

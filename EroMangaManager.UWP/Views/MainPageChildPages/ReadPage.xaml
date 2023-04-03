@@ -27,9 +27,9 @@
                         <Grid.ContextFlyout>
                             <MenuFlyout>
                                 <MenuFlyoutItem Click="FilteThisImage2_Click"
-                                                Text="{uid:Resources Resources=DontShowThisImage}" />
+                                                Text="{uid:UI Uid=DontShowThisImage}" />
                                 <MenuFlyoutItem Click="SaveImageAs2_Click"
-                                                Text="{uid:Resources Resources=SaveAs}" />
+                                                Text="{uid:UI Uid=SaveAs}" />
                             </MenuFlyout>
                         </Grid.ContextFlyout>
                         <ScrollViewer HorizontalScrollBarVisibility="Disabled"

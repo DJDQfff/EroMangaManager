@@ -16,9 +16,9 @@ xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Stretch">
-            <ToggleSwitch Header="{uid:Resources Resources=WhetherOpenFilterImageFunction}"
-                          OnContent="{uid:Resources Resources=Yes}"
-                          OffContent="{uid:Resources Resources=No}"
+            <ToggleSwitch Header="{uid:UI Uid=WhetherOpenFilterImageFunction}"
+                          OnContent="{uid:UI Uid=Yes}"
+                          OffContent="{uid:UI Uid=No}"
                           HorizontalAlignment="Stretch"
                           HorizontalContentAlignment="Left"
                           Toggled="ToggleSwitch_Toggled"
@@ -44,7 +44,7 @@ xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
                 Click="Button_Click">
             <StackPanel Orientation="Horizontal">
                 <TextBlock VerticalAlignment="Center"
-                           Text="{uid:Resources Resources=SetBack}"/>
+                           Text="{uid:UI Uid=SetBack}"/>
                 <FontIcon FontFamily="Segoe UI Emoji"
                           Glyph="&#x2714;" />
             </StackPanel>

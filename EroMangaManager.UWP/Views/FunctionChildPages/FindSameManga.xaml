@@ -17,11 +17,11 @@
         <CommandBar>
             <CommandBar.PrimaryCommands>
                 <AppBarButton
-                    Label="{uid:Resources Resources=Open}"
+                    Label="{uid:UI Uid=Open}"
                     Click="Button_Click_1"
                     Icon="OpenFile" />
                 <AppBarButton
-                    Label="{uid:Resources Resources=DeleteFile}"
+                    Label="{uid:UI Uid=DeleteFile}"
                     Click="Button_Click"
                     Icon="Delete" />
             </CommandBar.PrimaryCommands>

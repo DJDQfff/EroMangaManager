@@ -22,7 +22,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Click="addButton_Click"
-                Content="{uid:Resources Resources=AddAFolder}"/>
+                Content="{uid:UI Uid=AddAFolder}"/>
         <Grid Visibility="Visible"
               x:Name="ControlGrid"
               HorizontalAlignment="Center"
@@ -32,9 +32,9 @@
                         Visibility="Visible" 
                         VerticalAlignment="Center"
                         RelativePanel.AlignRightWithPanel="True">
-                <ToggleSwitch  Header="{uid:Resources Resources=IsEmptyFolderShow}"
-                              OnContent="{uid:Resources Resources=Yes}"
-                              OffContent="{uid:Resources Resources=No}"
+                <ToggleSwitch  Header="{uid:UI Uid=IsEmptyFolderShow}"
+                              OnContent="{uid:UI Uid=Yes}"
+                              OffContent="{uid:UI Uid=No}"
                               Toggled="ToggleSwitch_Toggled"
                               x:Load="False"
                               x:Name="temp"
@@ -43,26 +43,26 @@
                 <Button  x:Name="SetAsDefaultBookcaseFolder"
                          VerticalAlignment="Center" 
                          Click="SetAsDefaultBookcaseFolder_Click"
-                         Content="{uid:Resources Resources=SetAsDefaultBookcaseFolder}"/>
+                         Content="{uid:UI Uid=SetAsDefaultBookcaseFolder}"/>
 
                 <Button  x:Name="JumpToBookcase"
                          VerticalAlignment="Center"
                          Click="JumpToBookcase_Click"
-                         Content="{uid:Resources Resources=ShowFolderBookcase}"/>
+                         Content="{uid:UI Uid=ShowFolderBookcase}"/>
 
                 <Button  VerticalAlignment="Center"
-                         Content="{uid:Resources Resources=OpenFolder}"
+                         Content="{uid:UI Uid=OpenFolder}"
                          Click="LauncherFolder" />
                 <Button x:Name="removeButton"
                         VerticalAlignment="Center"
-                        Content="{uid:Resources Resources=RemoveFolder}"
+                        Content="{uid:UI Uid=RemoveFolder}"
                         Click="removeButton_Click" />
             </StackPanel>
         </Grid>
 
         <TextBlock Visibility="{x:Bind app:App.Current.GlobalViewModel.MangaFolders.Count,Converter={StaticResource  controlvisibilityconverter},Mode=OneWay}"
                    x:Name="HintAddFolderTextBlock"
-                   Text="{uid:Resources Resources=NoFoldersPleaseAddFirst}"
+                   Text="{uid:UI Uid=NoFoldersPleaseAddFirst}"
                    Grid.Row="3"
                    Style="{StaticResource HintTextBlockStyle}"
                    HorizontalAlignment="Center" />

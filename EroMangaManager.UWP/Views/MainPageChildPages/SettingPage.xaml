@@ -13,11 +13,11 @@
                          IsBackButtonVisible="Collapsed">
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="CommonSettingNavigationViewItem"
-                                    Content="{uid:Resources Resources=CommonSetting}" />
+                                    Content="{uid:UI Uid=CommonSetting}" />
                 <NavigationViewItem x:Name="SettingFilterImageButton"
-                                    Content="{uid:Resources Resources=FilteredImages}" />
+                                    Content="{uid:UI Uid=FilteredImages}" />
                 <NavigationViewItem x:Name="SettingTagButton" Visibility="Collapsed"
-                                    Content="{uid:Resources Resources=Tags}"/>
+                                    Content="{uid:UI Uid=Tags}"/>
             </NavigationView.MenuItems>
             <NavigationView.Content>
                 <Frame x:Name="SettingFrame"

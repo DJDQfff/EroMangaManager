@@ -11,46 +11,46 @@
         <StackPanel x:Name="UpdateRecordStackPanel">
 
             <StackPanel>
-                <TextBlock  Text="{uid:UpdateResources UpdateResources=Version_20230205}"
+                <TextBlock  Text="{uid:UpdateRecord Uid=Version_20230205}"
                             Style="{StaticResource TitleOfPair}" />
-                <TextBlock  Text="{uid:UpdateResources UpdateResources=Description_20230205}"
+                <TextBlock  Text="{uid:UpdateRecord Uid=Description_20230205}"
                            Style="{StaticResource ContentOfPair}" />
             </StackPanel>
 
             <StackPanel>
                 <TextBlock
-                    Text="{uid:UpdateResources UpdateResources=Version_20230125}"
+                    Text="{uid:UpdateRecord Uid=Version_20230125}"
                     Style="{StaticResource TitleOfPair}" />
                 <TextBlock
-                    Text="{uid:UpdateResources UpdateResources=Description_20230125}"
+                    Text="{uid:UpdateRecord Uid=Description_20230125}"
                     Style="{StaticResource ContentOfPair}" />
             </StackPanel>
 
 
             <StackPanel>
                 <TextBlock
-                    Text="{uid:UpdateResources UpdateResources=Version_20230109}"
+                    Text="{uid:UpdateRecord Uid=Version_20230109}"
                     Style="{StaticResource TitleOfPair}" />
                 <TextBlock
-                    Text="{uid:UpdateResources UpdateResources=Description_20230109}"
+                    Text="{uid:UpdateRecord Uid=Description_20230109}"
                     Style="{StaticResource ContentOfPair}" />
             </StackPanel>
 
             <StackPanel>
                 <TextBlock
-                    Text="{uid:UpdateResources UpdateResources=Version_20221226}"
+                    Text="{uid:UpdateRecord Uid=Version_20221226}"
                     Style="{StaticResource TitleOfPair}" />
                 <TextBlock
-                    Text="{uid:UpdateResources UpdateResources=Description_20221226}"
+                    Text="{uid:UpdateRecord Uid=Description_20221226}"
                     Style="{StaticResource ContentOfPair}" />
             </StackPanel>
 
             <StackPanel>
                 <TextBlock
-                    Text="{uid:UpdateResources UpdateResources=Version_20221219}"
+                    Text="{uid:UpdateRecord Uid=Version_20221219}"
                     Style="{StaticResource TitleOfPair}" />
                 <TextBlock
-                    Text="{uid:UpdateResources UpdateResources=Description_20221219}"
+                    Text="{uid:UpdateRecord Uid=Description_20221219}"
                     Style="{StaticResource ContentOfPair}" />
             </StackPanel>
 

@@ -19,7 +19,7 @@
                    Style="{StaticResource HintTextBlockStyle}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   Text="{uid:Resources Resources=NoSelectedFolder}"
+                   Text="{uid:UI Uid=NoSelectedFolder}"
                    Visibility="Visible" />
         <CommandBar x:Load="True"
                     Background="Transparent"
@@ -27,11 +27,11 @@
                     x:Name="BookcaseCommandBar"
                     VerticalAlignment="Stretch">
             <AppBarButton Click="Order"
-                          Content="{uid:Resources Resources=ChangeSortMethod}"
+                          Content="{uid:UI Uid=ChangeSortMethod}"
                           Icon="Sort"/>
             <AppBarButton Click="TranslateEachMangaName"
                           x:Name="TranslateButton"
-                          Content="{uid:Resources Resources=Translate}"
+                          Content="{uid:UI Uid=Translate}"
                           x:Load="False"
                           Icon="Font" />
         </CommandBar>
@@ -54,22 +54,22 @@
                         </Grid.RowDefinitions>
                         <Grid.ContextFlyout>
                             <MenuFlyout>
-                                <MenuFlyoutItem Visibility="Collapsed" Text="{uid:Resources Resources=OverviewInformation}" Click="ViewMangaTag" />
+                                <MenuFlyoutItem Visibility="Collapsed" Text="{uid:UI Uid=OverviewInformation}" Click="ViewMangaTag" />
 
                                 <MenuFlyoutSeparator />
                                 <MenuFlyoutItem Click="DeleteSourceMangaFile"
-                                                Text="{uid:Resources Resources=DeleteSourceFile}"
+                                                Text="{uid:UI Uid=DeleteSourceFile}"
                                                  />
                                 <MenuFlyoutItem Click="LaunchFile"
-                                                Text="{uid:Resources Resources=OpenFile}"/>
+                                                Text="{uid:UI Uid=OpenFile}"/>
                                 <MenuFlyoutItem Click="LaunchFolder"
-                                                Text="{uid:Resources Resources=OpenFolder}" />
+                                                Text="{uid:UI Uid=OpenFolder}" />
                                 <MenuFlyoutItem Click="Rename"
-                                                Text="{uid:Resources Resources=RenameFile}"/>
+                                                Text="{uid:UI Uid=RenameFile}"/>
 
                                 <MenuFlyoutSeparator />
                                 <MenuFlyoutItem Click="ExportPDF"
-                                                Text="{uid:Resources Resources=ExportToPDF}"/>
+                                                Text="{uid:UI Uid=ExportToPDF}"/>
                                 <!--</MenuFlyoutSubItem>-->
                             </MenuFlyout>
                         </Grid.ContextFlyout>

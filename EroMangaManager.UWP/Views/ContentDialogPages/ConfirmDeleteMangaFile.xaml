@@ -4,9 +4,9 @@
                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
-               Title="{uid:Resources Resources=DeleteFile}"
-PrimaryButtonText="{uid:Resources Resources=Yes}"
-SecondaryButtonText="{uid:Resources Resources=No}"
+               Title="{uid:UI Uid=DeleteFile}"
+PrimaryButtonText="{uid:UI Uid=Yes}"
+SecondaryButtonText="{uid:UI Uid=No}"
                mc:Ignorable="d">
     <ContentDialog.Resources>
         <Style TargetType="TextBlock">

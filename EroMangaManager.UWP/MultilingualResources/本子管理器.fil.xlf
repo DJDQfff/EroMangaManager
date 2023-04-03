@@ -5,7 +5,57 @@
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
     </header>
     <body>
-      <group id="本子管理器/STRINGS/ZH-CN/RESOURCES.RESW" datatype="resx">
+      <group id="本子管理器/STRINGS/ZH-CN/RESOURCES.RESW" datatype="resx" />
+    </body>
+  </file>
+  <file datatype="xml" source-language="zh-CN" target-language="fil" original="本子管理器/STRINGS/ZH-CN/APPXMANIFEST.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="本子管理器/STRINGS/ZH-CN/APPXMANIFEST.RESW" datatype="resx">
+        <trans-unit id="AppDisplayName" translate="yes" xml:space="preserve">
+          <source>小黄书</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Maliit na Dilaw na Aklat</target>
+        </trans-unit>
+        <trans-unit id="Description" translate="yes" xml:space="preserve">
+          <source>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ito ay isang manga manager para sa pamamahala at pagbabasa ng iyong mga naka-save na komiks sa zip form. Ang mga panloob na imahe ay dapat nasa JPG at PNG format</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="zh-CN" target-language="fil" original="本子管理器/STRINGS/ZH-CN/STRINGS.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="本子管理器/STRINGS/ZH-CN/STRINGS.RESW" datatype="resx">
+        <trans-unit id="ContainInvalaidChar" translate="yes" xml:space="preserve">
+          <source>包含非法字符</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Naglalaman ng mga iligal na character</target>
+        </trans-unit>
+        <trans-unit id="DontUseEmptyString" translate="yes" xml:space="preserve">
+          <source>请勿使用空内容</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Huwag gumamit ng walang laman na nilalaman</target>
+        </trans-unit>
+        <trans-unit id="ErrorString1" translate="yes" xml:space="preserve">
+          <source>出错啦，无法打开</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">May error na nangyari at hindi ito mabuksan</target>
+        </trans-unit>
+        <trans-unit id="ExportDone" translate="yes" xml:space="preserve">
+          <source>导出完成</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ang pag-export ay kumpleto</target>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+  <file datatype="xml" source-language="zh-CN" target-language="fil" original="本子管理器/STRINGS/ZH-CN/UI.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="本子管理器/STRINGS/ZH-CN/UI.RESW" datatype="resx">
         <trans-unit id="AddAFolder" translate="yes" xml:space="preserve">
           <source>添加文件夹</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Magdagdag ng folder</target>
@@ -101,6 +151,10 @@
         <trans-unit id="FunctionOn" translate="yes" xml:space="preserve">
           <source>已禁用</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Disable</target>
+        </trans-unit>
+        <trans-unit id="GitHubFeedBack" translate="yes" xml:space="preserve">
+          <source>Github反馈</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Feedback ng Github</target>
         </trans-unit>
         <trans-unit id="IsEmptyFolderShow" translate="yes" xml:space="preserve">
           <source>是否显示空文件夹</source>
@@ -238,61 +292,15 @@
           <source>是</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">maging</target>
         </trans-unit>
-        <trans-unit id="GitHubFeedBack" translate="yes" xml:space="preserve">
-          <source>Github反馈</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Feedback ng Github</target>
-        </trans-unit>
       </group>
     </body>
   </file>
-  <file datatype="xml" source-language="zh-CN" target-language="fil" original="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+  <file datatype="xml" source-language="zh-CN" target-language="fil" original="本子管理器/STRINGS/ZH-CN/UPDATERECORD.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
     </header>
     <body>
-      <group id="本子管理器/STRINGS/ZH-CN/APPXMANIFESTRESOURCES.RESW" datatype="resx">
-        <trans-unit id="AppDisplayName" translate="yes" xml:space="preserve">
-          <source>小黄书</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Maliit na Dilaw na Aklat</target>
-        </trans-unit>
-        <trans-unit id="Description" translate="yes" xml:space="preserve">
-          <source>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ito ay isang manga manager para sa pamamahala at pagbabasa ng iyong mga naka-save na komiks sa zip form. Ang mga panloob na imahe ay dapat nasa JPG at PNG format</target>
-        </trans-unit>
-      </group>
-    </body>
-  </file>
-  <file datatype="xml" source-language="zh-CN" target-language="fil" original="本子管理器/STRINGS/ZH-CN/STRINGRESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
-    <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
-    </header>
-    <body>
-      <group id="本子管理器/STRINGS/ZH-CN/STRINGRESOURCES.RESW" datatype="resx">
-        <trans-unit id="ContainInvalaidChar" translate="yes" xml:space="preserve">
-          <source>包含非法字符</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Naglalaman ng mga iligal na character</target>
-        </trans-unit>
-        <trans-unit id="DontUseEmptyString" translate="yes" xml:space="preserve">
-          <source>请勿使用空内容</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Huwag gumamit ng walang laman na nilalaman</target>
-        </trans-unit>
-        <trans-unit id="ErrorString1" translate="yes" xml:space="preserve">
-          <source>出错啦，无法打开</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">May error na nangyari at hindi ito mabuksan</target>
-        </trans-unit>
-        <trans-unit id="ExportDone" translate="yes" xml:space="preserve">
-          <source>导出完成</source>
-          <target state="needs-review-translation" state-qualifier="mt-suggestion">Ang pag-export ay kumpleto</target>
-        </trans-unit>
-      </group>
-    </body>
-  </file>
-  <file datatype="xml" source-language="zh-CN" target-language="fil" original="本子管理器/STRINGS/ZH-CN/UPDATERESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
-    <header>
-      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
-    </header>
-    <body>
-      <group id="本子管理器/STRINGS/ZH-CN/UPDATERESOURCES.RESW" datatype="resx">
+      <group id="本子管理器/STRINGS/ZH-CN/UPDATERECORD.RESW" datatype="resx">
         <trans-unit id="Description_20221219" translate="yes" xml:space="preserve">
           <source>添加导出PDF功能</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Magdagdag ng kakayahang i-export ang PDF</target>
@@ -344,12 +352,12 @@
       </group>
     </body>
   </file>
-  <file datatype="xml" source-language="zh-CN" target-language="fil" original="本子管理器/STRINGS/ZH-CN/USAGE.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+  <file datatype="xml" source-language="zh-CN" target-language="fil" original="本子管理器/STRINGS/ZH-CN/USAGEDOCUMENT.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
     <header>
       <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="0.0.0.0" tool-company="Microsoft" />
     </header>
     <body>
-      <group id="本子管理器/STRINGS/ZH-CN/USAGE.RESW" datatype="resx">
+      <group id="本子管理器/STRINGS/ZH-CN/USAGEDOCUMENT.RESW" datatype="resx">
         <trans-unit id="SupportedTypeContent" translate="yes" xml:space="preserve">
           <source>Zip。对于保存漫画档案而言，zip是个很好的选择。其他格式当然可以，但没必要。windows内置支持zip，且zip免费开源，在解压缩速度和压缩率方面是个折中选择。</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">Zip。 Ang Zip ay isang mahusay na pagpipilian para sa pag-save ng mga archive ng komiks. Ang iba pang mga format ay tiyak na maayos, ngunit hindi kinakailangan. Ang Windows ay may built-in na suporta para sa zip, at ang zip ay libre at bukas na mapagkukunan, na isang kompromiso sa mga tuntunin ng bilis ng decompression at rate ng compression.</target>

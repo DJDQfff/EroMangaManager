@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddAFolder" xml:space="preserve">
+    <value>Aggiungere una cartella</value>
+  </data>
+  <data name="Bookcase" xml:space="preserve">
+    <value>libreria</value>
+  </data>
+  <data name="BookcaseItemToolTip" xml:space="preserve">
+    <value>Libreria a fumetti</value>
+  </data>
+  <data name="CancleEdit" xml:space="preserve">
+    <value>Nessuna regolazione</value>
+  </data>
+  <data name="ChangeSortMethod" xml:space="preserve">
+    <value>Attiva/disattiva l'ordinamento</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Spegni</value>
+  </data>
+  <data name="CommonSetting" xml:space="preserve">
+    <value>Impostazioni generali</value>
+  </data>
+  <data name="ConfirmEdit" xml:space="preserve">
+    <value>Conferma la regolazione</value>
+  </data>
+  <data name="DeleteFile" xml:space="preserve">
+    <value>Confermare l'eliminazione dei file?</value>
+  </data>
+  <data name="DeleteIt" xml:space="preserve">
+    <value>Cancellare</value>
+  </data>
+  <data name="DeleteMode" xml:space="preserve">
+    <value>Eliminare la serie</value>
+  </data>
+  <data name="DeleteMode_JustDelete" xml:space="preserve">
+    <value>Elimina dal disco</value>
+  </data>
+  <data name="DeleteMode_MoveTo" xml:space="preserve">
+    <value>Passare al Cestino</value>
+  </data>
+  <data name="DeleteSourceFile" xml:space="preserve">
+    <value>Eliminare il file di origine</value>
+  </data>
+  <data name="DontShowThisImage" xml:space="preserve">
+    <value>Questa cifra non viene visualizzata</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>redigere</value>
+  </data>
+  <data name="ErrorZips" xml:space="preserve">
+    <value>Eccezione Zip</value>
+  </data>
+  <data name="ExportToPDF" xml:space="preserve">
+    <value>Esporta in PDF</value>
+  </data>
+  <data name="FilteredImages" xml:space="preserve">
+    <value>Filtra la galleria</value>
+  </data>
+  <data name="FindSameMangaByName" xml:space="preserve">
+    <value>Trova gli stessi fumetti</value>
+  </data>
+  <data name="Folders" xml:space="preserve">
+    <value>cartella</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>Schermo intero</value>
+  </data>
+  <data name="FunctionOff" xml:space="preserve">
+    <value>Abilitato</value>
+  </data>
+  <data name="FunctionOn" xml:space="preserve">
+    <value>Disabile</value>
+  </data>
+  <data name="GitHubFeedBack" xml:space="preserve">
+    <value>Feedback su Github</value>
+  </data>
+  <data name="IsEmptyFolderShow" xml:space="preserve">
+    <value>Se vengono visualizzate cartelle vuote</value>
+  </data>
+  <data name="MailFeedbackToDeveloper" xml:space="preserve">
+    <value>Invia feedback via email djdqfff@qq.com</value>
+  </data>
+  <data name="MangaTags" xml:space="preserve">
+    <value>Questa sottoscheda</value>
+  </data>
+  <data name="MangaTagsCategorys" xml:space="preserve">
+    <value>Classificazione delle etichette</value>
+  </data>
+  <data name="MangaTagsManage" xml:space="preserve">
+    <value>Gestione delle etichette</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>non</value>
+  </data>
+  <data name="NoFoldersPleaseAddFirst" xml:space="preserve">
+    <value>Al momento non ci sono cartelle, aggiungi la tua prima cartella di scansione</value>
+  </data>
+  <data name="NoSelectedFolder" xml:space="preserve">
+    <value>Nessuna cartella selezionata</value>
+  </data>
+  <data name="NowInitializingMaybeError" xml:space="preserve">
+    <value>L'inizializzazione della cartella, ora utilizzando la funzione strumento potrebbe avere un errore</value>
+  </data>
+  <data name="NowReading" xml:space="preserve">
+    <value>Lettura</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Aprilo</value>
+  </data>
+  <data name="OpenFile" xml:space="preserve">
+    <value>Apri il file</value>
+  </data>
+  <data name="OpenFolder" xml:space="preserve">
+    <value>Apri la cartella</value>
+  </data>
+  <data name="OpenInMicrosoftStore" xml:space="preserve">
+    <value>Apri nel negozio</value>
+  </data>
+  <data name="OpenItsPlacedFolder" xml:space="preserve">
+    <value>Apri la cartella in cui ti trovi</value>
+  </data>
+  <data name="OverviewInformation" xml:space="preserve">
+    <value>Visualizza informazioni</value>
+  </data>
+  <data name="PinnedFolders" xml:space="preserve">
+    <value>La cartella è bloccata</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>accaldato</value>
+  </data>
+  <data name="RemoveFolder" xml:space="preserve">
+    <value>Rimuovere la cartella</value>
+  </data>
+  <data name="RemoveRepeatTags" xml:space="preserve">
+    <value>Rimuovere la sottoscheda Duplica libro</value>
+  </data>
+  <data name="RenameFile" xml:space="preserve">
+    <value>Rinominare il file</value>
+  </data>
+  <data name="SaveAs" xml:space="preserve">
+    <value>Salva con nome</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Trovare</value>
+  </data>
+  <data name="SetAsDefaultBookcaseFolder" xml:space="preserve">
+    <value>Impostare come cartella di presentazione predefinita</value>
+  </data>
+  <data name="SetBack" xml:space="preserve">
+    <value>restaurare</value>
+  </data>
+  <data name="ShowFolderBookcase" xml:space="preserve">
+    <value>Visualizzare la libreria</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>etichetta</value>
+  </data>
+  <data name="ToolBox" xml:space="preserve">
+    <value>cassetta degli attrezzi</value>
+  </data>
+  <data name="Translate" xml:space="preserve">
+    <value>Traduzione</value>
+  </data>
+  <data name="UpdateRecords" xml:space="preserve">
+    <value>Aggiornare i record</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>Istruzioni per l'uso</value>
+  </data>
+  <data name="WhetherOpenFilterImageFunction" xml:space="preserve">
+    <value>Se abilitare il filtro a pagina singola (l'attivazione di questa funzione rallenterà l'apertura dei fumetti)</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete" xml:space="preserve">
+    <value>Se eliminare direttamente</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>essere</value>
+  </data>
+</root>
