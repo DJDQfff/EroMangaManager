@@ -4,21 +4,15 @@
 
 * 在初始化GlobalViewModel时添加文件夹的话，会报错（被修改的集合、原来的MangasFolder不初始化）
 
-* 写一个标签搜索控件
-
 * Tag管理页面：用于管理所有Tag，
 
 * 本子搜索页面，包含Tag的Linq自动提示，搜索本子
 
 * 阅读进度
 
-* 功能：修改tag
-
 * ReadPage添加一个阅读控制器ViewModel，由原来的控件控制ReaderVM，改为控件控制控制器VM，再由此VM控制ReaderVM，实现分离，更好
 
 * 在Bookcase页面的CommandBar的Content里添加SearchBox，实现查找功能
-
-* 给重复tag查找功能添加修改功能，使能移除重复tag
 
 # 需要持续优化项
 
@@ -33,6 +27,10 @@
 * 完善异常捕获、日志功能
 
 # 更新日志
+
+## 2023.4.1
+
+* 给重复tag查找功能添加修改功能，使能移除重复tag
 
 ## 2023.3.29
 
