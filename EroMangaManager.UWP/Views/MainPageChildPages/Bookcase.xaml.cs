@@ -133,7 +133,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
            await System.Threading.Tasks.Task.Run( async()=>  await Exporter.ExportAsPDF(mangaBook, storageFile));
 
-            string done = ResourceLoader.GetForCurrentView("StringResources").GetString("ExportDone");
+            string done = ResourceLoader.GetForCurrentView("Strings").GetString("ExportDone");
             App.Current.GlobalViewModel.WorkDone(done);
         }
 

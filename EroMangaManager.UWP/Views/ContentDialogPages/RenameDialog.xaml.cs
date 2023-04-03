@@ -42,13 +42,13 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
             if (bool1)
             {
                 // 检查文件名是非为空
-                hinttextblock.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("StringResources").GetString("DontUseEmptyString");
+                hinttextblock.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings").GetString("DontUseEmptyString");
                 PrimaryButtonText = string.Empty;
             }
             else if (bool2)
             {
                 // 检查文件是否含有非法字符
-                hinttextblock.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("StringResources").GetString("ContainInvalaidChar");
+                hinttextblock.Text = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView("Strings").GetString("ContainInvalaidChar");
                 PrimaryButtonText = string.Empty;
             }
             else
