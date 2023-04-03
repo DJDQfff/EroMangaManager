@@ -12,4 +12,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ContainInvalaidChar" xml:space="preserve">
+    <value>Περιέχει μη έγκυρους χαρακτήρες</value>
+  </data>
+  <data name="DontUseEmptyString" xml:space="preserve">
+    <value>Μην χρησιμοποιείτε κενό περιεχόμενο</value>
+  </data>
+  <data name="ErrorString1" xml:space="preserve">
+    <value>Παρουσιάστηκε σφάλμα και δεν ήταν δυνατό το άνοιγμά του</value>
+  </data>
+  <data name="ExportDone" xml:space="preserve">
+    <value>Η εξαγωγή ολοκληρώθηκε</value>
+  </data>
 </root>

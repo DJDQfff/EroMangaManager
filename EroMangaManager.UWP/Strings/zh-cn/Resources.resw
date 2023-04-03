@@ -189,6 +189,9 @@
   <data name="FunctionOn" xml:space="preserve">
     <value>已禁用</value>
   </data>
+  <data name="GitHubFeedBack" xml:space="preserve">
+    <value>Github反馈</value>
+  </data>
   <data name="IsEmptyFolderShow" xml:space="preserve">
     <value>是否显示空文件夹</value>
   </data>

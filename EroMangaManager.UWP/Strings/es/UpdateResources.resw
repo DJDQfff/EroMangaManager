@@ -12,4 +12,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Description_20221219" xml:space="preserve">
+    <value>Agregar la capacidad de exportar PDF</value>
+  </data>
+  <data name="Description_20221226" xml:space="preserve">
+    <value>Corregidos algunos errores; Agregar un registro de cambios</value>
+  </data>
+  <data name="Description_20230109" xml:space="preserve">
+    <value>Añadida la función de búsqueda de libros duplicados</value>
+  </data>
+  <data name="Description_20230125" xml:space="preserve">
+    <value>Función de pantalla completa de la página de lectura; Estantería predeterminada</value>
+  </data>
+  <data name="Description_20230205" xml:space="preserve">
+    <value>Optimice la velocidad de inicio</value>
+  </data>
+  <data name="Description_before" xml:space="preserve">
+    <value>Registros anteriores</value>
+  </data>
+  <data name="Version_20221219" xml:space="preserve">
+    <value>2022.12.19</value>
+  </data>
+  <data name="Version_20221226" xml:space="preserve">
+    <value>2022.12.26</value>
+  </data>
+  <data name="Version_20230109" xml:space="preserve">
+    <value>2023.01.09</value>
+  </data>
+  <data name="Version_20230125" xml:space="preserve">
+    <value>2023.01.25</value>
+  </data>
+  <data name="Version_20230205" xml:space="preserve">
+    <value>2023.2.5</value>
+  </data>
+  <data name="Version_before" xml:space="preserve">
+    <value>Versión anterior</value>
+  </data>
 </root>

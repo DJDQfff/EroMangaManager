@@ -12,4 +12,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SupportedTypeContent" xml:space="preserve">
+    <value>지퍼。 Zip은 만화 아카이브를 저장하는 데 좋은 선택입니다. 다른 형식은 확실히 괜찮지 만 필수는 아닙니다. Windows에는 zip에 대한 지원이 내장되어 있으며 zip은 무료이며 오픈 소스이므로 압축 해제 속도와 압축률 측면에서 절충안입니다.</value>
+  </data>
+  <data name="SupportedTypeTitle" xml:space="preserve">
+    <value>지원되는 유형</value>
+  </data>
+  <data name="WhatISTheAppContent" xml:space="preserve">
+    <value>이것은 로컬 압축 형식으로 만화 아카이브를 관리하기위한 소프트웨어입니다</value>
+  </data>
+  <data name="WhatISTheAppTitle" xml:space="preserve">
+    <value>이 소프트웨어는 무엇입니까?</value>
+  </data>
+  <data name="WhyZipRatherFolderContent" xml:space="preserve">
+    <value>폴더를 사용하면 개별 이미지 파일이 많이 흩어져 있습니다. 이러한 파일에 대해 파일 작업을 수행 할 때 매우 불편하며 컬렉션 보존 개념과 일치하지 않습니다.</value>
+  </data>
+  <data name="WhyZipRatherFolderTitle" xml:space="preserve">
+    <value>폴더 대신 압축 된 형식을 사용하는 이유</value>
+  </data>
 </root>

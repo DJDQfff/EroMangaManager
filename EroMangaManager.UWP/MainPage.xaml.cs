@@ -45,6 +45,7 @@ namespace EroMangaManager.UWP
                 MainFrame.Navigate(typeof(Bookcase), defaultfolder);
         }
 
+
         private void MainNavigationView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             Type type = null;

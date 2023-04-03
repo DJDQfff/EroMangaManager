@@ -54,11 +54,9 @@
                         </Grid.RowDefinitions>
                         <Grid.ContextFlyout>
                             <MenuFlyout>
-                                <!--TODO: 以后在恢复-->
-                                <!--<MenuFlyoutItem Click="ViewMangaTag" />-->
+                                <MenuFlyoutItem Visibility="Collapsed" Text="{uid:Resources Resources=OverviewInformation}" Click="ViewMangaTag" />
 
                                 <MenuFlyoutSeparator />
-                                <!--<MenuFlyoutSubItem Text="文件操作">-->
                                 <MenuFlyoutItem Click="DeleteSourceMangaFile"
                                                 Text="{uid:Resources Resources=DeleteSourceFile}"
                                                  />

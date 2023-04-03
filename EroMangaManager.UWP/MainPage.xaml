@@ -15,6 +15,7 @@
                         IsBackButtonVisible="Collapsed"
                         IsSettingsVisible="True"
                         ItemInvoked="MainNavigationView_ItemInvoked"
+                        
                         d:PaneDisplayMode="Left"
                         PaneDisplayMode="LeftMinimal">
 
@@ -34,6 +35,7 @@
                                     Icon="Read" />
                 <NavigationViewItem x:Name="SearchMangaPage"
                                     Visibility="Collapsed"
+                                    Content="{uid:Resources Resources=Search}"
                                     Icon="Find" />
                 <!-- TODO 弄这个的话要搞数据库，还得先把MangaTagEdit的页面调好-->
                 <NavigationViewItem x:Name="TagsManagePage"

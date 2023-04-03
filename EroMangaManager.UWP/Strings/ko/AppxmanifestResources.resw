@@ -12,4 +12,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>작은 노란 책</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>저장된 만화를 zip 형식으로 관리하고 읽기위한 만화 관리자입니다. 내부 이미지는 JPG 및 PNG 형식이어야 합니다.</value>
+  </data>
 </root>

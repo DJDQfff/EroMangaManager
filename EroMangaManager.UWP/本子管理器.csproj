@@ -146,6 +146,9 @@
     <Compile Include="ValueConverters\FileSizeConverter.cs" />
     <Compile Include="ValueConverters\GetRandomSolidColorBrush.cs" />
     <Compile Include="ValueConverters\ControlVisibility.cs" />
+    <Compile Include="Views\ContentDialogPages\OverviewInformation.xaml.cs">
+      <DependentUpon>OverviewInformation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ContentDialogPages\RenameDialog.xaml.cs">
       <DependentUpon>RenameDialog.xaml</DependentUpon>
     </Compile>
@@ -370,6 +373,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\TagsDisplayControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ContentDialogPages\OverviewInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -12,4 +12,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SupportedTypeContent" xml:space="preserve">
+    <value>Zip。 Ang Zip ay isang mahusay na pagpipilian para sa pag-save ng mga archive ng komiks. Ang iba pang mga format ay tiyak na maayos, ngunit hindi kinakailangan. Ang Windows ay may built-in na suporta para sa zip, at ang zip ay libre at bukas na mapagkukunan, na isang kompromiso sa mga tuntunin ng bilis ng decompression at rate ng compression.</value>
+  </data>
+  <data name="SupportedTypeTitle" xml:space="preserve">
+    <value>Mga suportadong uri</value>
+  </data>
+  <data name="WhatISTheAppContent" xml:space="preserve">
+    <value>Ito ay isang software para sa pamamahala ng mga archive ng manga sa mga lokal na compressed format</value>
+  </data>
+  <data name="WhatISTheAppTitle" xml:space="preserve">
+    <value>Ano ang software na ito?</value>
+  </data>
+  <data name="WhyZipRatherFolderContent" xml:space="preserve">
+    <value>Kung gumagamit ka ng mga folder, magkakaroon ng maraming nakakalat na indibidwal na mga file ng imahe. Kapag nagsasagawa ng mga operasyon ng file sa mga file na ito, ito ay magiging napaka-abala, at hindi ito naaayon sa konsepto ng pagpapanatili ng koleksyon.</value>
+  </data>
+  <data name="WhyZipRatherFolderTitle" xml:space="preserve">
+    <value>Bakit gumamit ng compressed format sa halip na folder</value>
+  </data>
 </root>

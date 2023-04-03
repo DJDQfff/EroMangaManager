@@ -77,6 +77,8 @@ namespace EroMangaManager.UWP.LocalizationWords
         ///<summary></summary> 
         FunctionOn,
         ///<summary></summary> 
+        GitHubFeedBack,
+        ///<summary></summary> 
         IsEmptyFolderShow,
         ///<summary></summary> 
         MailFeedbackToDeveloper,

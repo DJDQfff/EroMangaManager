@@ -12,4 +12,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SupportedTypeContent" xml:space="preserve">
+    <value>Молния. Zip - хороший выбор для сохранения архивов комиксов. Другие форматы, конечно, хороши, но не обязательны. Windows имеет встроенную поддержку zip, а zip является бесплатным и открытым исходным кодом, что является компромиссом с точки зрения скорости декомпрессии и степени сжатия.</value>
+  </data>
+  <data name="SupportedTypeTitle" xml:space="preserve">
+    <value>Поддерживаемые типы</value>
+  </data>
+  <data name="WhatISTheAppContent" xml:space="preserve">
+    <value>Это программное обеспечение для управления архивами манги в локальных сжатых форматах</value>
+  </data>
+  <data name="WhatISTheAppTitle" xml:space="preserve">
+    <value>Что это за программное обеспечение?</value>
+  </data>
+  <data name="WhyZipRatherFolderContent" xml:space="preserve">
+    <value>Если вы используете папки, будет много разбросанных отдельных файлов изображений. При выполнении файловых операций с этими файлами это будет очень неудобно, и это не соответствует концепции сохранения коллекции.</value>
+  </data>
+  <data name="WhyZipRatherFolderTitle" xml:space="preserve">
+    <value>Зачем использовать сжатый формат вместо папки</value>
+  </data>
 </root>

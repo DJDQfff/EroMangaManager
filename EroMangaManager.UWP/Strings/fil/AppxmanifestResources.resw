@@ -12,4 +12,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Maliit na Dilaw na Aklat</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Ito ay isang manga manager para sa pamamahala at pagbabasa ng iyong mga naka-save na komiks sa zip form. Ang mga panloob na imahe ay dapat nasa JPG at PNG format</value>
+  </data>
 </root>

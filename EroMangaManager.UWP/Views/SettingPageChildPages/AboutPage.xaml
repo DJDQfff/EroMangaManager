@@ -19,6 +19,8 @@
         <StackPanel   Grid.Row="1"
                       Grid.Column="1"
                       Orientation="Vertical">
+            <HyperlinkButton Content="{uid:Resources Resources=GitHubFeedBack}"
+                NavigateUri="https://github.com/DJDQfff/FeedBack/issues"/>
             <HyperlinkButton x:Name="hyperlinkButton"
                              Content="{uid:Resources Resources=MailFeedbackToDeveloper}"
                              NavigateUri="https://www.microsoft.com/store/apps/9N7C8ZDQ1TJ8"

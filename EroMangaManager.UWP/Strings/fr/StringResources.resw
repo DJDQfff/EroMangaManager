@@ -12,4 +12,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ContainInvalaidChar" xml:space="preserve">
+    <value>Contient des caractères non autorisés</value>
+  </data>
+  <data name="DontUseEmptyString" xml:space="preserve">
+    <value>N’utilisez pas de contenu vide</value>
+  </data>
+  <data name="ErrorString1" xml:space="preserve">
+    <value>Une erreur s’est produite et il n’a pas pu être ouvert</value>
+  </data>
+  <data name="ExportDone" xml:space="preserve">
+    <value>L’exportation est terminée</value>
+  </data>
 </root>

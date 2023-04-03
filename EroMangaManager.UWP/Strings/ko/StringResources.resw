@@ -12,4 +12,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ContainInvalaidChar" xml:space="preserve">
+    <value>잘못된 문자를 포함합니다.</value>
+  </data>
+  <data name="DontUseEmptyString" xml:space="preserve">
+    <value>빈 콘텐츠 사용 안 함</value>
+  </data>
+  <data name="ErrorString1" xml:space="preserve">
+    <value>오류가 발생하여 열 수 없습니다.</value>
+  </data>
+  <data name="ExportDone" xml:space="preserve">
+    <value>내보내기가 완료되었습니다.</value>
+  </data>
 </root>
