@@ -4,30 +4,61 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
+      xmlns:model="using:EroMangaManager.Core.Models"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="61*" />
-            <RowDefinition Height="203*" />
-            <RowDefinition Height="276*" />
-        </Grid.RowDefinitions>
-        <toolkit:TokenizingTextBox x:Name="tokenbox"
-                                   HorizontalAlignment="Stretch"
-                                   VerticalAlignment="Stretch"
-                                   TextChanged="TokenizingTextBox_TextChanged"
-                                   QuerySubmitted="tokenbox_QuerySubmitted">
-            <toolkit:TokenizingTextBox.QueryIcon>
-                <FontIconSource  Glyph="&#xE11A;"
-                                 FontFamily="Segoe MDL2 Assets" />
-            </toolkit:TokenizingTextBox.QueryIcon>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid
+            Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <AutoSuggestBox Grid.Row="0" VerticalAlignment="Top"   VerticalContentAlignment="Stretch" TextChanged="AutoSuggestBox_TextChanged" SuggestionChosen="AutoSuggestBox_SuggestionChosen" />
+            <toolkit:TokenizingTextBox
+                x:Name="tokenbox"
+                Grid.Row="1"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                TextChanged="TokenizingTextBox_TextChanged"
+                QuerySubmitted="tokenbox_QuerySubmitted">
+                <toolkit:TokenizingTextBox.QueryIcon>
+                    <FontIconSource
+                        Glyph="&#xE11A;"
+                        FontFamily="Segoe MDL2 Assets" />
+                </toolkit:TokenizingTextBox.QueryIcon>
 
-            <toolkit:TokenizingTextBox.SuggestedItemTemplate>
-                <DataTemplate x:DataType="x:String">
-                    <TextBlock Text="{x:Bind Mode=OneTime}" />
+                <toolkit:TokenizingTextBox.SuggestedItemTemplate>
+                    <DataTemplate
+                        x:DataType="x:String">
+                        <TextBlock
+                            Text="{x:Bind Mode=OneTime}" />
+                    </DataTemplate>
+                </toolkit:TokenizingTextBox.SuggestedItemTemplate>
+            </toolkit:TokenizingTextBox>
+
+        </Grid>
+
+        <GridView x:Name="ResultGridView" Grid.Column="1">
+            <GridView.ItemTemplate>
+                <DataTemplate
+                    x:DataType="model:MangaBook">
+                    <StackPanel
+                        Orientation="Vertical">
+                                            <Image
+                        Source="{x:Bind CoverPath}" />
+                        <TextBlock
+                            Text="{x:Bind FileDisplayName}" />
+                        
+
+                    </StackPanel>
                 </DataTemplate>
-            </toolkit:TokenizingTextBox.SuggestedItemTemplate>
-        </toolkit:TokenizingTextBox>
+            </GridView.ItemTemplate>
+        </GridView>
     </Grid>
 </Page>

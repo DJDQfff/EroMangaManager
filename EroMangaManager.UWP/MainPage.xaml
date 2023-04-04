@@ -34,7 +34,7 @@
                                     Content="{uid:UI Uid=NowReading}"
                                     Icon="Read" />
                 <NavigationViewItem x:Name="SearchMangaPage"
-                                    Visibility="Collapsed"
+                                    Visibility="Visible"
                                     Content="{uid:UI Uid=Search}"
                                     Icon="Find" />
                 <!-- TODO 弄这个的话要搞数据库，还得先把MangaTagEdit的页面调好-->
