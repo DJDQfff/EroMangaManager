@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 
 using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.Helpers;
@@ -24,10 +23,10 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
         public RemoveRepeatTags()
         {
             this.InitializeComponent();
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -47,11 +46,10 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
         private async void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var button = sender as Button;
-            var manga=button.DataContext as MangaBook;
+            var manga = button.DataContext as MangaBook;
             string suggestenname = EroMangaDB.Helper.TagBasedStringHelper.RemoveRepeatTag(manga.FileDisplayName);
-           await StorageHelper.RenameSourceFile(manga, suggestenname);
+            await StorageHelper.RenameSourceFile(manga, suggestenname);
 
-           
             // TODO 由于绑定的两个属性只读，我又懒得改，一时不知道如何属性更新
         }
     }

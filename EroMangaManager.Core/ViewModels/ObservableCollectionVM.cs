@@ -47,8 +47,6 @@ namespace EroMangaManager.Core.ViewModels
         /// </summary>
         public bool IsContentInitializing => MangaFolders.Any((x) => x.IsInitialing == true);
 
-
-
         /// <summary>
         /// 添加文件夹，并添加文件夹及下属漫画漫画到集合
         /// 1.添加改文件夹到系统API
@@ -76,6 +74,7 @@ namespace EroMangaManager.Core.ViewModels
         {
             MangaFolders.Remove(mangasfolder);
         }
+
         public void RemoveManga(MangaBook mangaBook)
         {
             string folderpath = mangaBook.FolderPath;

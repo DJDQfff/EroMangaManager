@@ -28,7 +28,7 @@
                     VerticalAlignment="Stretch">
             <AppBarButton Click="Order"
                           Content="{uid:UI Uid=ChangeSortMethod}"
-                          Icon="Sort"/>
+                          Icon="Sort" />
             <AppBarButton Click="TranslateEachMangaName"
                           x:Name="TranslateButton"
                           Content="{uid:UI Uid=Translate}"
@@ -54,22 +54,23 @@
                         </Grid.RowDefinitions>
                         <Grid.ContextFlyout>
                             <MenuFlyout>
-                                <MenuFlyoutItem Visibility="Collapsed" Text="{uid:UI Uid=OverviewInformation}" Click="ViewMangaTag" />
+                                <MenuFlyoutItem Visibility="Collapsed"
+                                                Text="{uid:UI Uid=OverviewInformation}"
+                                                Click="ViewMangaTag" />
 
                                 <MenuFlyoutSeparator />
                                 <MenuFlyoutItem Click="DeleteSourceMangaFile"
-                                                Text="{uid:UI Uid=DeleteSourceFile}"
-                                                 />
+                                                Text="{uid:UI Uid=DeleteSourceFile}" />
                                 <MenuFlyoutItem Click="LaunchFile"
-                                                Text="{uid:UI Uid=OpenFile}"/>
+                                                Text="{uid:UI Uid=OpenFile}" />
                                 <MenuFlyoutItem Click="LaunchFolder"
                                                 Text="{uid:UI Uid=OpenFolder}" />
                                 <MenuFlyoutItem Click="Rename"
-                                                Text="{uid:UI Uid=RenameFile}"/>
+                                                Text="{uid:UI Uid=RenameFile}" />
 
                                 <MenuFlyoutSeparator />
                                 <MenuFlyoutItem Click="ExportPDF"
-                                                Text="{uid:UI Uid=ExportToPDF}"/>
+                                                Text="{uid:UI Uid=ExportToPDF}" />
                                 <!--</MenuFlyoutSubItem>-->
                             </MenuFlyout>
                         </Grid.ContextFlyout>

@@ -32,7 +32,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                 case nameof(SettingTagButton):
                     SettingFrame.Navigate(typeof(SettingPageChildPages.TagKeywordsManagePage));
                     break;
-
             }
         }
 

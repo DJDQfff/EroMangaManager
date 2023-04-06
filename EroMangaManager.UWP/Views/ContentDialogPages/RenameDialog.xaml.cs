@@ -16,20 +16,21 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
     public sealed partial class RenameDialog : ContentDialog
     {
         private string str;
+
         /// <summary>
         /// 选择的新名字
         /// </summary>
         public string NewDisplayName => textbox.Text;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="mangaBook"></param>
         /// <param name="suggestedname"></param>
-        public RenameDialog(MangaBook mangaBook,string suggestedname)
+        public RenameDialog(MangaBook mangaBook, string suggestedname)
         {
             this.InitializeComponent();
-            textbox.Text =suggestedname ?? mangaBook.FileDisplayName;
+            textbox.Text = suggestedname ?? mangaBook.FileDisplayName;
             oldname.Text = mangaBook.FileDisplayName;
             str = PrimaryButtonText;
         }

@@ -58,6 +58,5 @@ namespace EroMangaManager.Core.ViewModels
         {
             MangaBooks.Remove(mangaBook);
         }
-
     }
 }

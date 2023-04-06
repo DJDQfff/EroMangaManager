@@ -3,15 +3,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
       xmlns:model="using:EroMangaManager.Core.Models"
       xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
+      xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
       mc:Ignorable="d"
-
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid
-        Margin="36">
+    <Grid Margin="36">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition />
@@ -21,64 +19,63 @@
                 <ColumnDefinition />
                 <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
-            <Grid
-                Grid.Column="0">
+            <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <AutoSuggestBox x:Name="NameSearchInput"
-                    Header="{uid:UI Uid=SearchByMangaName}"
-                    QueryIcon="Find"
-                    Grid.Row="0"
-                    VerticalAlignment="Top"
-                    VerticalContentAlignment="Stretch"
-                    TextChanged="AutoSuggestBox_TextChanged" />
+                                Header="{uid:UI Uid=SearchByMangaName}"
+                                QueryIcon="Find"
+                                Grid.Row="0"
+                                VerticalAlignment="Top"
+                                VerticalContentAlignment="Stretch"
+                                TextChanged="AutoSuggestBox_TextChanged" />
                 <toolkit:TokenizingTextBox
-                    Header="{uid:UI Uid=SearchByTag}"
-                    x:Name="tokenbox"
-                    Grid.Row="1"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    TextChanged="TokenizingTextBox_TextChanged"
-                    TokenItemAdding="tokenbox_TokenItemAdding"
-                    TokenItemAdded="tokenbox_TokenItemAdded"
-                    TokenItemRemoved="tokenbox_TokenItemRemoved">
+                        Header="{uid:UI Uid=SearchByTag}"
+                                           x:Name="tokenbox"
+                                           Grid.Row="1"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Stretch"
+                                           TextChanged="TokenizingTextBox_TextChanged"
+                                           TokenItemAdding="tokenbox_TokenItemAdding"
+                                           TokenItemAdded="tokenbox_TokenItemAdded"
+                                           TokenItemRemoved="tokenbox_TokenItemRemoved">
                     <toolkit:TokenizingTextBox.QueryIcon>
                         <FontIconSource
-                            Glyph="&#xE11A;"
-                            FontFamily="Segoe MDL2 Assets" />
+                                Glyph="&#xE11A;"
+                                        FontFamily="Segoe MDL2 Assets" />
                     </toolkit:TokenizingTextBox.QueryIcon>
 
                     <toolkit:TokenizingTextBox.SuggestedItemTemplate>
                         <DataTemplate
-                            x:DataType="x:String">
+                                x:DataType="x:String">
                             <TextBlock
-                                Text="{x:Bind Mode=OneTime}" />
+                                    Text="{x:Bind Mode=OneTime}" />
                         </DataTemplate>
                     </toolkit:TokenizingTextBox.SuggestedItemTemplate>
                 </toolkit:TokenizingTextBox>
-
             </Grid>
-            <Button Click="Button_Click" Content="{uid:UI Uid=Search}" VerticalAlignment="Stretch"
-                Grid.Column="1" />
+            <Button Click="Button_Click"
+                    Content="{uid:UI Uid=Search}"
+                    VerticalAlignment="Stretch"
+                    Grid.Column="1" />
         </Grid>
 
-        <GridView x:Name="ResultGridView" Grid.Row="1">
+        <GridView x:Name="ResultGridView"
+                  Grid.Row="1">
             <GridView.ItemTemplate>
                 <DataTemplate
-                    x:DataType="model:MangaBook">
-                    <Grid >
+                        x:DataType="model:MangaBook">
+                    <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
-                                            <Image
-                        Source="{x:Bind CoverPath}" />
-                        <TextBlock Grid.Column="1" TextWrapping="Wrap"
-                            Text="{x:Bind FileDisplayName}" />
-                        
-
+                        <Image Source="{x:Bind CoverPath}" />
+                        <TextBlock Grid.Column="1"
+                                   TextWrapping="Wrap"
+                                   Text="{x:Bind FileDisplayName}" />
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>

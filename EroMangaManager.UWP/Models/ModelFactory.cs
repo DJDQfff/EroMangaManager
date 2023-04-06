@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using EroMangaManager.Core.Models;
 using EroMangaManager.Core.ViewModels;
 using EroMangaManager.UWP.Helpers;
+
 using Windows.Storage;
 
 namespace EroMangaManager.UWP.Models
@@ -18,13 +19,10 @@ namespace EroMangaManager.UWP.Models
         {
             ViewModel.MangaFolders.Clear();
 
-
             foreach (var folder in storageFolders)
             {
                 MangasFolder mangasFolder = new MangasFolder(folder.Path);
                 ViewModel.MangaFolders.Add(mangasFolder);
-
-
             };
             foreach (var folder in ViewModel.MangaFolders)
             {
@@ -40,17 +38,15 @@ namespace EroMangaManager.UWP.Models
             var files = await StorageFolder.GetFilesAsync();
             var filteredfiles = files.Where(x => Path.GetExtension(x.Path).ToLower() == ".zip").ToList();
 
-
-            foreach(var storageFile in filteredfiles)
+            foreach (var storageFile in filteredfiles)
             {
                 MangaBook manga = await ModelFactory.CreateMangaBook(storageFile);
 
                 mangasFolder.MangaBooks.Add(manga);
-
             }
             mangasFolder.IsInitialing = false;
-
         }
+
         public static async Task<MangaBook> CreateMangaBook(StorageFile storageFile)
         {
             var filepath = storageFile.Path;
@@ -60,7 +56,6 @@ namespace EroMangaManager.UWP.Models
             mangaBook.CoverPath = coverpath ?? CoverHelper.DefaultCoverPath;
 
             return mangaBook;
-
         }
     }
 }

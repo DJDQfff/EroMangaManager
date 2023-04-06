@@ -1,6 +1,8 @@
-﻿<ResourceDictionary xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-    <Style x:Key="FunctionShowControl" TargetType="Button">
+﻿<ResourceDictionary
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="FunctionShowControl"
+           TargetType="Button">
 
         <Setter Property="HorizontalAlignment"
                 Value="Stretch" />

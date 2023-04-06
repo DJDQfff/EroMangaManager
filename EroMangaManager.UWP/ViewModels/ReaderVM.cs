@@ -48,8 +48,9 @@ namespace EroMangaManager.UWP.ViewModels
         {
             this.manga = _manga;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public async Task Initial()
@@ -57,7 +58,6 @@ namespace EroMangaManager.UWP.ViewModels
             var file = await App.Current.storageItemManager.GetStorageFile(manga.FilePath);
             stream = await file.OpenStreamForReadAsync();
             zipArchive = ArchiveFactory.Open(stream);
-
         }
 
         //TODO 把selectentry和showentry分开

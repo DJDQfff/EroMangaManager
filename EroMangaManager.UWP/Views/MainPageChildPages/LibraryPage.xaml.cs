@@ -9,7 +9,6 @@ using MyLibrary.UWP;
 
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
 
 using static MyLibrary.UWP.StorageItemPicker;
 
@@ -35,26 +34,22 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             button.IsEnabled = false;
             StorageFolder folder = await OpenSingleFolderAsync();
 
-
             if (folder != null)
             {
                 if (!App.Current.GlobalViewModel.StorageFolders.Contains(folder.Path))
                 {
-                List<StorageFolder> folders;
-                folders = await folder.GetAllStorageFolder();
-                folders.Add(folder);//得把文件夹自身也加入扫描类中
-                App.Current.storageItemManager.AddTokenRange(folders);
+                    List<StorageFolder> folders;
+                    folders = await folder.GetAllStorageFolder();
+                    folders.Add(folder);//得把文件夹自身也加入扫描类中
+                    App.Current.storageItemManager.AddTokenRange(folders);
 
-                foreach (var f in folders)
-                {
+                    foreach (var f in folders)
+                    {
                         var a = App.Current.GlobalViewModel.AddFolder(f.Path);
 
                         await ModelFactory.InitialMangasFolder(a, f);
-
+                    }
                 }
-
-                }
-
             }
 
             button.IsEnabled = true;

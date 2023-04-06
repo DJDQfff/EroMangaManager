@@ -3,24 +3,24 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:converter="using:EroMangaManager.UWP.ValueConverters"
+      xmlns:app="using:EroMangaManager.UWP"
       xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
-    xmlns:app="using:EroMangaManager.UWP"
       mc:Ignorable="d">
     <Grid Margin="36,0,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBlock 
-                   Text="{uid:UI Uid=NowInitializingMaybeError}"
+        <TextBlock
+                Text="{uid:UI Uid=NowInitializingMaybeError}"
                    Style="{StaticResource HintTextBlockStyle}"
                    Visibility="{x:Bind app:App.Current.GlobalViewModel.IsContentInitializing,Mode=OneTime,Converter={StaticResource  controlvisibilityconverter}}" />
 
         <GridView Grid.Row="1">
             <GridView.ItemContainerStyle>
                 <Style TargetType="GridViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="HorizontalContentAlignment"
+                            Value="Stretch" />
                     <Setter Property="Width"
                             Value="150" />
                 </Style>
@@ -29,7 +29,7 @@
                      Style="{StaticResource FunctionShowControl}"
                      Content="{uid:UI Uid=FindSameMangaByName}"
                      Background="{x:Bind Converter={StaticResource randomcolor },Mode=OneTime}"
-            Click="Button_Click" />
+                     Click="Button_Click" />
             <Button x:Name="Function_RemoveRepeatTags"
                     Style="{StaticResource FunctionShowControl}"
                     Content="{uid:UI Uid=RemoveRepeatTags}"

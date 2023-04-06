@@ -65,7 +65,7 @@ namespace EroMangaDB.Helper
             return tagslist;
         }
 
-        //TODO 
+        //TODO
         /// <summary>
         ///移除其中包含的重复tag
         /// </summary>
@@ -74,10 +74,9 @@ namespace EroMangaDB.Helper
         {
             var tags = SplitAndParser(oldname);
 
-
-
             return null;
         }
+
         /// <summary>
         /// 是否左右括号成对
         /// </summary>

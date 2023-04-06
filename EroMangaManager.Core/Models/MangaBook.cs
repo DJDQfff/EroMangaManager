@@ -26,50 +26,48 @@ namespace EroMangaManager.Core.Models
         public ulong FileSize { get; set; }
 
         private string filepath;
+
         /// <summary> 漫画文件路径 </summary>
         public string FilePath
-        { 
+        {
             get
             {
-               return  filepath;
-            }        
+                return filepath;
+            }
             set
-            { 
+            {
                 filepath = value;
 
                 var tags = FileDisplayName.SplitAndParser();
                 MangaName = tags[0];
                 MangaTagsIncludedInFileName = tags.Skip(1).ToArray();
-                NotifyPropertyChanged(); 
-            } 
+                NotifyPropertyChanged();
+            }
         }
-
-
 
         /// <summary> 获取文件的扩展名 </summary>
         public string FileExtension => Path.GetExtension(FilePath).ToLower();
 
         /// <summary> 文件Display名（不带扩展名） </summary>
-        public string FileDisplayName=> Path.GetFileNameWithoutExtension(FilePath);
+        public string FileDisplayName => Path.GetFileNameWithoutExtension(FilePath);
 
         /// <summary> 漫画文件所在文件夹路径 </summary>
         public string FolderPath => Path.GetDirectoryName(FilePath);
 
-    /// <summary> 漫画文件名（全名，带扩展名，不包含文件夹名） </summary>
-        public string FileFullName=> Path.GetFileName(FilePath);
+        /// <summary> 漫画文件名（全名，带扩展名，不包含文件夹名） </summary>
+        public string FileFullName => Path.GetFileName(FilePath);
 
+        private string manganame;
 
-
-    private string manganame;
         /// <summary> 本子名字 </summary>
-        public virtual string MangaName 
+        public virtual string MangaName
         {
-            get=>manganame; 
-            set 
-            { 
+            get => manganame;
+            set
+            {
                 manganame = value;
-                NotifyPropertyChanged(); 
-            } 
+                NotifyPropertyChanged();
+            }
         }
 
         /// <summary> 包含在文件名中的本子Tag </summary>

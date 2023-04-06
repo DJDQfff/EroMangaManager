@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using Windows.UI.Xaml.Controls;
 using EroMangaManager.Core.ViewModels;
-using EroMangaManager.Core.Models;
+
+using Windows.UI.Xaml.Controls;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
@@ -32,13 +32,12 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             tokenbox.SuggestedItemsSource = searchMangaViewModel.Search(a);
         }
 
-
         private void tokenbox_TokenItemAdding(Microsoft.Toolkit.Uwp.UI.Controls.TokenizingTextBox sender, Microsoft.Toolkit.Uwp.UI.Controls.TokenItemAddingEventArgs args)
         {
             var t = args.TokenText;
             if (!searchMangaViewModel.AllTags.Contains(t))
             {
-                args.Cancel= true;
+                args.Cancel = true;
             }
         }
 
@@ -59,22 +58,15 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
         private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            var text=sender.Text; if(text!=null)
+            var text = sender.Text; if (text != null)
             {
-                var a=App.Current.GlobalViewModel.MangaList.Where(x=>x.MangaName.Contains(text)).Select(x=>x.MangaName).ToList();
+                var a = App.Current.GlobalViewModel.MangaList.Where(x => x.MangaName.Contains(text)).Select(x => x.MangaName).ToList();
                 sender.ItemsSource = a;
             }
         }
 
-        private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
-        {
-
-        }
-
-
         private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-
             var manganame = NameSearchInput.Text;
 
             var tags = new List<string>(searchMangaViewModel.SelectedTags)
@@ -88,10 +80,9 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
             var conditions = allmangas
                 .Where(x => tags
-                    .Count(y => x.FileDisplayName.Contains(y) )== requiredMatchCount);
+                    .Count(y => x.FileDisplayName.Contains(y)) == requiredMatchCount);
 
             ResultGridView.ItemsSource = conditions;
-
         }
     }
 }

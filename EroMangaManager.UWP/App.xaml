@@ -10,7 +10,6 @@
                 <ResourceDictionary Source="ResourceDictionarys/ValueConverters.xaml" />
                 <ResourceDictionary Source="ResourceDictionarys/FunctionShowerControl.xaml" />
                 <ResourceDictionary Source="ResourceDictionarys/NamedControlStyle.xaml" />
-
             </muxc:XamlControlsResources.MergedDictionaries>
         </muxc:XamlControlsResources>
     </Application.Resources>

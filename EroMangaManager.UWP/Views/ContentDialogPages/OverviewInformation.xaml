@@ -18,15 +18,13 @@
             <ColumnDefinition
                 Width="4*" />
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="0" 
+        <Image Grid.Column="0"
             Source="{x:Bind MangaBook.CoverPath,Mode=OneWay}" />
         <Grid
             Grid.Column="1">
 
             <StackPanel Orientation="Vertical">
-                
             </StackPanel>
-            
         </Grid>
     </Grid>
 </ContentDialog>

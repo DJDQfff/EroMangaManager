@@ -1,13 +1,10 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 
 using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.SettingEnums;
 using EroMangaManager.UWP.Views.ContentDialogPages;
-
-using iText.Layout.Font;
 
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
@@ -25,9 +22,9 @@ namespace EroMangaManager.UWP.Helpers
         /// <param name="eroManga"></param>
         /// <param name="suggestedname"></param>
         /// <returns></returns>
-        public static async Task RenameSourceFile(MangaBook eroManga,string suggestedname)
+        public static async Task RenameSourceFile(MangaBook eroManga, string suggestedname)
         {
-            RenameDialog renameDialog = new RenameDialog(eroManga,suggestedname);
+            RenameDialog renameDialog = new RenameDialog(eroManga, suggestedname);
             var result = await renameDialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
@@ -44,8 +41,8 @@ namespace EroMangaManager.UWP.Helpers
                 // TODO 这里MangaBook的Tag属性页因该同步更新，但是算了。
                 // 还是把SplitAndParser方法成两个，每次按需调用
             }
-
         }
+
         /// <summary>
         /// 删除源文件时，会触发删除确认弹框，删除模式，这两个参数都是从程序设置中读取的，因此封装到助手类里面
         /// </summary>
@@ -77,7 +74,6 @@ namespace EroMangaManager.UWP.Helpers
             {
                 App.Current.GlobalViewModel.RemoveManga(eroManga);
                 await App.Current.storageItemManager.DeleteStorageFile(eroManga.FilePath, option);
-
             }
         }
     }

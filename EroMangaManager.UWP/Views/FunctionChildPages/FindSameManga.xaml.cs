@@ -24,6 +24,7 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
         private List<MangaBook> mangaBooks;
 
         private MangaBook SelectedMangaBook;
+
         /// <summary>
         ///
         /// </summary>
@@ -54,7 +55,6 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            
             MainPage.Current.MainFrame.Navigate(typeof(ReadPage), SelectedMangaBook);
 
             MainPage.Current.MainNavigationView.SelectedItem = MainPage.Current.MainNavigationView.MenuItems[2];

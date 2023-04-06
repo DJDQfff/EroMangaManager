@@ -9,6 +9,7 @@ using Windows.ApplicationModel.Resources;
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
 namespace EroMangaManager.UWP.Views.MainPageChildPages
@@ -111,7 +112,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             await Helpers.StorageHelper.DeleteSourceFile(eroManga);
         }
 
-
         private async void LaunchFolder(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var mangaBook = (sender as MenuFlyoutItem).DataContext as MangaBook;
@@ -131,7 +131,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
             StorageFile storageFile = await MyLibrary.UWP.StorageItemPicker.SaveFileAsync(".pdf");
 
-           await System.Threading.Tasks.Task.Run( async()=>  await Exporter.ExportAsPDF(mangaBook, storageFile));
+            await System.Threading.Tasks.Task.Run(async () => await Exporter.ExportAsPDF(mangaBook, storageFile));
 
             string done = ResourceLoader.GetForCurrentView("Strings").GetString("ExportDone");
             App.Current.GlobalViewModel.WorkDone(done);
@@ -147,8 +147,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
             MangaBook eroManga = menuFlyout.DataContext as MangaBook;
 
-
-            await StorageHelper.RenameSourceFile(eroManga,null);
+            await StorageHelper.RenameSourceFile(eroManga, null);
         }
 
         private async void ViewMangaTag(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -158,9 +157,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
             OverviewInformation overviewInformation = new OverviewInformation(manga);
             var result = await overviewInformation.ShowAsync();
-
-
-
         }
     }
 }

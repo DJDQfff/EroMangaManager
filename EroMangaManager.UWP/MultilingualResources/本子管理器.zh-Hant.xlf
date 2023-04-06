@@ -294,11 +294,11 @@
         </trans-unit>
         <trans-unit id="SearchByMangaName" translate="yes" xml:space="preserve">
           <source>查找本子名</source>
-          <target state="new">查找本子名</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">查找本子名</target>
         </trans-unit>
         <trans-unit id="SearchByTag" translate="yes" xml:space="preserve">
           <source>按Tag查找</source>
-          <target state="new">按Tag查找</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">按Tag查找</target>
         </trans-unit>
       </group>
     </body>

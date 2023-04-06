@@ -6,13 +6,7 @@
 
 * Tag管理页面：用于管理所有Tag，
 
-* 本子搜索页面，包含Tag的Linq自动提示，搜索本子
-
 * 阅读进度
-
-* ReadPage添加一个阅读控制器ViewModel，由原来的控件控制ReaderVM，改为控件控制控制器VM，再由此VM控制ReaderVM，实现分离，更好
-
-* 在Bookcase页面的CommandBar的Content里添加SearchBox，实现查找功能
 
 # 需要持续优化项
 
@@ -27,6 +21,10 @@
 * 完善异常捕获、日志功能
 
 # 更新日志
+
+## 2023.4.6
+
+* 添加SearchPage页面，实现按“本子名”、“标签”查找功能，包含Tag的Linq自动提示，搜索本子
 
 ## 2023.4.1
 

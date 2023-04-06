@@ -26,7 +26,6 @@
                     Style="{StaticResource ContentOfPair}" />
             </StackPanel>
 
-
             <StackPanel>
                 <TextBlock
                     Text="{uid:UpdateRecord Uid=Version_20230109}"
@@ -53,7 +52,6 @@
                     Text="{uid:UpdateRecord Uid=Description_20221219}"
                     Style="{StaticResource ContentOfPair}" />
             </StackPanel>
-
         </StackPanel>
     </ScrollViewer>
 </Page>
