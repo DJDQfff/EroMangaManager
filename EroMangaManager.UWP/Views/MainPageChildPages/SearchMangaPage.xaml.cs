@@ -30,23 +30,31 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         {
             var a = sender.Text;
             tokenbox.SuggestedItemsSource = searchMangaViewModel.Search(a);
-            searchMangaViewModel.Remove(a);
         }
 
-        private void tokenbox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
-        {
-            var tokens = tokenbox.Items;
-            var list = new List<string>();
-            foreach (var item in tokens)
-            {
-                var b = item as string;  // TODO 试试协变逆变
-               if(b!=null) list.Add(b);
-            }
-            var requiredCount = list.Count;
-            var allmangas = App.Current.GlobalViewModel.MangaList;
-            var conditionMangas = allmangas.Where(x => x.MangaTagsIncludedInFileName.Count(y => list.Contains(y)) == requiredCount);
 
-            ResultGridView.ItemsSource= conditionMangas;
+        private void tokenbox_TokenItemAdding(Microsoft.Toolkit.Uwp.UI.Controls.TokenizingTextBox sender, Microsoft.Toolkit.Uwp.UI.Controls.TokenItemAddingEventArgs args)
+        {
+            var t = args.TokenText;
+            if (!searchMangaViewModel.AllTags.Contains(t))
+            {
+                args.Cancel= true;
+            }
+        }
+
+        private void tokenbox_TokenItemAdded(Microsoft.Toolkit.Uwp.UI.Controls.TokenizingTextBox sender, object args)
+        {
+            var token = args as string;
+            searchMangaViewModel.SelectedTags.Add(token);
+            searchMangaViewModel.HideTag(token);
+        }
+
+        private void tokenbox_TokenItemRemoved(Microsoft.Toolkit.Uwp.UI.Controls.TokenizingTextBox sender, object args)
+        {
+            var token = args as string;
+
+            searchMangaViewModel.SelectedTags.Remove(token);
+            searchMangaViewModel.CancelHideTag(token);
         }
 
         private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
@@ -64,6 +72,18 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
             var a = App.Current.GlobalViewModel.MangaList.Where(x => x.MangaName.Contains(item)).ToList();
             ResultGridView.ItemsSource = a;
+
+        }
+
+
+        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var list = searchMangaViewModel.SelectedTags;
+            var requiredCount = list.Count;
+            var allmangas = App.Current.GlobalViewModel.MangaList;
+            var conditionMangas = allmangas.Where(x => x.MangaTagsIncludedInFileName.Count(y => list.Contains(y)) == requiredCount);
+
+            ResultGridView.ItemsSource = conditionMangas;
 
         }
     }

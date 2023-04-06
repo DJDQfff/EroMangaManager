@@ -261,6 +261,12 @@
   <data name="Search" xml:space="preserve">
     <value>查找</value>
   </data>
+  <data name="SearchByMangaName" xml:space="preserve">
+    <value>查找本子名</value>
+  </data>
+  <data name="SearchByTag" xml:space="preserve">
+    <value>按Tag查找</value>
+  </data>
   <data name="SetAsDefaultBookcaseFolder" xml:space="preserve">
     <value>设置为默认展示文件夹</value>
   </data>

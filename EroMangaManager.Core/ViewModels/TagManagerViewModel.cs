@@ -1,12 +1,27 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace EroMangaManager.Core.ViewModels
 {
     public class TagManagerViewModel
     {
-        public List<string> AllTags;
-        private List<string> originTags;
+        /// <summary>
+        /// 对外公开的所有项
+        /// </summary>
+        public List<string> AllTags { set; get; }
+        /// <summary>
+        /// 选中项
+        /// </summary>
+        public List<string> SelectedTags=new List<string>();
+        /// <summary>
+        /// 数据源
+        /// </summary>
+        private IEnumerable<string> originTags;
+        /// <summary>
+        /// 隐藏起来的项
+        /// </summary>
+        private List<string> hidedTags=new List<string>();
         public TagManagerViewModel(IEnumerable<string[]> strings)
         {
             
@@ -16,20 +31,34 @@ namespace EroMangaManager.Core.ViewModels
                 tempalltags.AddRange(manga);
             }
 
-            originTags = tempalltags.Distinct().ToList();
-            AllTags = originTags;
+            originTags = tempalltags.Distinct();
+            AllTags = new List<string>(originTags);
         }
 
-        public void Remove(string tag)
+        public void HideTag(string tag)
         {
-            AllTags.Remove(tag);
+          if(  AllTags.Remove(tag))
+            {
+                hidedTags.Add(tag);
+            }
         }
 
+        public void CancelHideTag(string tag)
+        {
+
+              if(hidedTags.Remove(tag))
+                {
+                AllTags.Add(tag);
+
+                }
+            
+        }
         public void Initial()
         {
             AllTags.Clear();
             AllTags.AddRange(originTags);
         }
+
         public List<string> Search(string query)
         {
             var temptags = new List<string>();

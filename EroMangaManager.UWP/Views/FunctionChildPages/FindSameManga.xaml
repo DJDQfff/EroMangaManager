@@ -32,8 +32,7 @@
                   ItemContainerStyle="{StaticResource ListViewItemStyle_1}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:RepeatMangaBookGroup">
-                    <StackPanel  Orientation="Vertical"
-                                 Background="{x:Bind Converter={StaticResource  randomcolor},Mode=OneTime}">
+                    <StackPanel  Orientation="Vertical">
                         <TextBlock Margin="4"
                                    Text="{x:Bind  Key}"
                                    FontSize="24" />
@@ -63,6 +62,7 @@
                                                     Text="{x:Bind FileFullName}"
                                                        TextWrapping="Wrap"
                                                        FontSize="20" />
+                                            <TextBlock Text="{x:Bind FileSize,Mode=OneTime,Converter={StaticResource filesizeConverter}}" />
                                         </StackPanel>
                                     </Grid>
                                 </DataTemplate>

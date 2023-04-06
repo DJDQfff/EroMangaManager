@@ -55,6 +55,14 @@ namespace EroMangaManager.UWP.LocalizationWords
     ///<summary> </summary>
     public enum UI
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        SearchByTag,
+        /// <summary>
+        /// 
+        /// </summary>
+        SearchByMangaName,
         ///<summary></summary> 
         AddAFolder,
         ///<summary></summary> 
