@@ -10,49 +10,60 @@
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid
-            Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition
-                    Height="5*" />
-            </Grid.RowDefinitions>
-            <AutoSuggestBox Header="{uid:UI Uid=SearchByMangaName}" QueryIcon="Find" Grid.Row="0" VerticalAlignment="Top"   VerticalContentAlignment="Stretch" TextChanged="AutoSuggestBox_TextChanged" SuggestionChosen="AutoSuggestBox_SuggestionChosen" />
-            <toolkit:TokenizingTextBox
-                Header="{uid:UI Uid=SearchByTag}"
-                x:Name="tokenbox"
-                Grid.Row="1"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                TextChanged="TokenizingTextBox_TextChanged"
-                TokenItemAdding="tokenbox_TokenItemAdding"
-                TokenItemAdded="tokenbox_TokenItemAdded"
-                
-                TokenItemRemoved="tokenbox_TokenItemRemoved">
-                <toolkit:TokenizingTextBox.QueryIcon>
-                    <FontIconSource
-                        Glyph="&#xE11A;"
-                        FontFamily="Segoe MDL2 Assets" />
-                </toolkit:TokenizingTextBox.QueryIcon>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid  Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid
+                Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <AutoSuggestBox
+                    Header="{uid:UI Uid=SearchByMangaName}"
+                    QueryIcon="Find"
+                    Grid.Row="0"
+                    VerticalAlignment="Top"
+                    VerticalContentAlignment="Stretch"
+                    TextChanged="AutoSuggestBox_TextChanged"
+                    SuggestionChosen="AutoSuggestBox_SuggestionChosen" />
+                <toolkit:TokenizingTextBox
+                    Header="{uid:UI Uid=SearchByTag}"
+                    x:Name="tokenbox"
+                    Grid.Row="1"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    TextChanged="TokenizingTextBox_TextChanged"
+                    TokenItemAdding="tokenbox_TokenItemAdding"
+                    TokenItemAdded="tokenbox_TokenItemAdded"
+                    TokenItemRemoved="tokenbox_TokenItemRemoved">
+                    <toolkit:TokenizingTextBox.QueryIcon>
+                        <FontIconSource
+                            Glyph="&#xE11A;"
+                            FontFamily="Segoe MDL2 Assets" />
+                    </toolkit:TokenizingTextBox.QueryIcon>
 
-                <toolkit:TokenizingTextBox.SuggestedItemTemplate>
-                    <DataTemplate
-                        x:DataType="x:String">
-                        <TextBlock
-                            Text="{x:Bind Mode=OneTime}" />
-                    </DataTemplate>
-                </toolkit:TokenizingTextBox.SuggestedItemTemplate>
-            </toolkit:TokenizingTextBox>
-            <Button Grid.Row="2" Background="DarkGreen"
-                Click="Button_Click" />
+                    <toolkit:TokenizingTextBox.SuggestedItemTemplate>
+                        <DataTemplate
+                            x:DataType="x:String">
+                            <TextBlock
+                                Text="{x:Bind Mode=OneTime}" />
+                        </DataTemplate>
+                    </toolkit:TokenizingTextBox.SuggestedItemTemplate>
+                </toolkit:TokenizingTextBox>
+
+            </Grid>
+            <Button Click="Button_Click" Content="{uid:UI Uid=Search}"
+                Grid.Column="1" />
         </Grid>
 
-        <GridView x:Name="ResultGridView" Grid.Column="1">
+        <GridView x:Name="ResultGridView" Grid.Row="1">
             <GridView.ItemTemplate>
                 <DataTemplate
                     x:DataType="model:MangaBook">
