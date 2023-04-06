@@ -7,9 +7,11 @@
       xmlns:model="using:EroMangaManager.Core.Models"
       xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
       mc:Ignorable="d"
+
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid
+        Margin="36">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition />
@@ -25,14 +27,13 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <AutoSuggestBox
+                <AutoSuggestBox x:Name="NameSearchInput"
                     Header="{uid:UI Uid=SearchByMangaName}"
                     QueryIcon="Find"
                     Grid.Row="0"
                     VerticalAlignment="Top"
                     VerticalContentAlignment="Stretch"
-                    TextChanged="AutoSuggestBox_TextChanged"
-                    SuggestionChosen="AutoSuggestBox_SuggestionChosen" />
+                    TextChanged="AutoSuggestBox_TextChanged" />
                 <toolkit:TokenizingTextBox
                     Header="{uid:UI Uid=SearchByTag}"
                     x:Name="tokenbox"
@@ -59,7 +60,7 @@
                 </toolkit:TokenizingTextBox>
 
             </Grid>
-            <Button Click="Button_Click" Content="{uid:UI Uid=Search}"
+            <Button Click="Button_Click" Content="{uid:UI Uid=Search}" VerticalAlignment="Stretch"
                 Grid.Column="1" />
         </Grid>
 
@@ -67,15 +68,18 @@
             <GridView.ItemTemplate>
                 <DataTemplate
                     x:DataType="model:MangaBook">
-                    <StackPanel
-                        Orientation="Vertical">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
                                             <Image
                         Source="{x:Bind CoverPath}" />
-                        <TextBlock
+                        <TextBlock Grid.Column="1" TextWrapping="Wrap"
                             Text="{x:Bind FileDisplayName}" />
                         
 
-                    </StackPanel>
+                    </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>

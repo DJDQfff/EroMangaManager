@@ -68,22 +68,29 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
-            var item=args.SelectedItem as string;
-
-            var a = App.Current.GlobalViewModel.MangaList.Where(x => x.MangaName.Contains(item)).ToList();
-            ResultGridView.ItemsSource = a;
 
         }
 
 
         private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var list = searchMangaViewModel.SelectedTags;
-            var requiredCount = list.Count;
-            var allmangas = App.Current.GlobalViewModel.MangaList;
-            var conditionMangas = allmangas.Where(x => x.MangaTagsIncludedInFileName.Count(y => list.Contains(y)) == requiredCount);
 
-            ResultGridView.ItemsSource = conditionMangas;
+            var manganame = NameSearchInput.Text;
+
+            var tags = new List<string>(searchMangaViewModel.SelectedTags)
+            {
+                manganame
+            };
+
+            var requiredMatchCount = tags.Count;
+
+            var allmangas = App.Current.GlobalViewModel.MangaList;
+
+            var conditions = allmangas
+                .Where(x => tags
+                    .Count(y => x.FileDisplayName.Contains(y) )== requiredMatchCount);
+
+            ResultGridView.ItemsSource = conditions;
 
         }
     }
