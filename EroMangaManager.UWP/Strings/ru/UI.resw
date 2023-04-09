@@ -189,4 +189,10 @@
   <data name="Yes" xml:space="preserve">
     <value>быть</value>
   </data>
+  <data name="SearchByMangaName" xml:space="preserve">
+    <value>Найти подимя</value>
+  </data>
+  <data name="SearchByTag" xml:space="preserve">
+    <value>Найти по тегу</value>
+  </data>
 </root>

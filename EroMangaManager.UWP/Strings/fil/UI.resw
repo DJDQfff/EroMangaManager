@@ -189,4 +189,10 @@
   <data name="Yes" xml:space="preserve">
     <value>maging</value>
   </data>
+  <data name="SearchByMangaName" xml:space="preserve">
+    <value>Hanapin ang subname</value>
+  </data>
+  <data name="SearchByTag" xml:space="preserve">
+    <value>Hanapin sa pamamagitan ng Tag</value>
+  </data>
 </root>

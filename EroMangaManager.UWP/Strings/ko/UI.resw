@@ -189,4 +189,10 @@
   <data name="Yes" xml:space="preserve">
     <value>있다</value>
   </data>
+  <data name="SearchByMangaName" xml:space="preserve">
+    <value>하위 이름 찾기</value>
+  </data>
+  <data name="SearchByTag" xml:space="preserve">
+    <value>태그로 찾기</value>
+  </data>
 </root>

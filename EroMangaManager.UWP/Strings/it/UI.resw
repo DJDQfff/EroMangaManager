@@ -189,4 +189,10 @@
   <data name="Yes" xml:space="preserve">
     <value>essere</value>
   </data>
+  <data name="SearchByMangaName" xml:space="preserve">
+    <value>Trova il sottonome</value>
+  </data>
+  <data name="SearchByTag" xml:space="preserve">
+    <value>Trova per tag</value>
+  </data>
 </root>

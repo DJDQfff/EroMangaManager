@@ -189,4 +189,10 @@
   <data name="Yes" xml:space="preserve">
     <value>是</value>
   </data>
+  <data name="SearchByMangaName" xml:space="preserve">
+    <value>查找本子名</value>
+  </data>
+  <data name="SearchByTag" xml:space="preserve">
+    <value>按Tag查找</value>
+  </data>
 </root>

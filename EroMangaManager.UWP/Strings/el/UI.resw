@@ -189,4 +189,10 @@
   <data name="Yes" xml:space="preserve">
     <value>είμαι</value>
   </data>
+  <data name="SearchByMangaName" xml:space="preserve">
+    <value>Βρείτε το δευτερεύον όνομα</value>
+  </data>
+  <data name="SearchByTag" xml:space="preserve">
+    <value>Εύρεση ανά ετικέτα</value>
+  </data>
 </root>
