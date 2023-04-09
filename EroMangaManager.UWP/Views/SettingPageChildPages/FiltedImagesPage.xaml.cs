@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 using EroMangaManager.UWP.SettingEnums;
+using static EroMangaDB.BasicController;
+using Org.BouncyCastle.Utilities.Collections;
 
 using Windows.Storage;
 using Windows.UI.Xaml;
@@ -53,7 +55,8 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
                 await imageItem.storageFile.DeleteAsync(StorageDeleteOption.PermanentDelete);
             }
             string[] vs = hashlist.ToArray();
-            await EroMangaManager.UWP.Models.HashManager.Remove(vs);
+            await DatabaseController.ImageFilter_Remove(vs);
+
             button.IsEnabled = true;
         }
 

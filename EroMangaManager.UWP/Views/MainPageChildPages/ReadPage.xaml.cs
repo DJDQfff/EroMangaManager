@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.ViewModels;
+using static EroMangaDB.BasicController;
 
 using SharpCompress.Archives;
 
@@ -106,7 +107,8 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             currentReader.bitmapImages.Remove(bitmap);
             string hash = entry.ComputeHash();
             long length = entry.Size;
-            await HashManager.Add(hash, length);
+            await DatabaseController.ImageFilter_Add(hash, length);
+            // TODO  这里是存在一个隐患的，可能正在后台多线程使用DbContext
 
             StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filters));
             string path = Path.Combine(storageFolder.Path, hash + ".jpg");
@@ -193,7 +195,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             currentReader.zipArchiveEntries.Remove(entry);
             string hash = entry.ComputeHash();
             long length = entry.Size;
-            await HashManager.Add(hash, length);
+            await DatabaseController.ImageFilter_Add(hash, length);
 
             StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filters));
             string path = Path.Combine(storageFolder.Path, hash + ".jpg");
