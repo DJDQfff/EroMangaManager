@@ -14,11 +14,21 @@ namespace EroMangaManager.Core.Models
         /// <summary> 实例化EroManga </summary>
         public MangaBook(string filepath) => FilePath = filepath;
 
+
+        private string coverPath;
         /// <summary>
         /// 封面文件路径
         /// </summary>
         /// <remarks>这个一定要有，不能为null，不然在Image控件加载图像时会异常导致程序闪退</remarks>
-        public string CoverPath { set; get; }
+        public string CoverPath 
+        {
+            get => coverPath;
+            set
+            {
+                coverPath = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         /// <summary>
         /// 获取漫画文件大小。单位：字节
