@@ -12,6 +12,9 @@ using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
 
 using static EroMangaDB.BasicController;
+using EroMangaDB.Entities;
+using System.Linq;
+using iText.Kernel.Pdf.Canvas.Parser.ClipperLib;
 
 namespace EroMangaManager.UWP.Helpers
 {
@@ -52,9 +55,9 @@ namespace EroMangaManager.UWP.Helpers
         /// 筛选zipentry
         /// </summary>
         /// <param name="entry"></param>
-        /// <param name="isfilterimageon">TODO 是否过滤图片</param>
+        /// <param name="filteredImages">要进行比较的数据，如果为null，则不进行数据比较</param>
         /// <returns></returns>
-        public static bool EntryFilter(this IArchiveEntry entry, bool isfilterimageon)
+        public static bool EntryFilter(this IArchiveEntry entry, FilteredImage[] filteredImages)
         {
             bool canuse = true;
 
@@ -68,11 +71,11 @@ namespace EroMangaManager.UWP.Helpers
                 return false;
             }
 
-            if (isfilterimageon)            // 是否检查图片过滤
+            if (filteredImages != null)            // 是否检查图片过滤
             {
                 #region 第一个条件：比较数据库，解压后大小
 
-                if (DatabaseController.ImageFilter_LengthConditionCount(entry.Size) == 0)
+                if (filteredImages.Count(n => n.ZipEntryLength == entry.Size)==0)
                     return true;
 
                 #endregion 第一个条件：比较数据库，解压后大小
@@ -82,7 +85,7 @@ namespace EroMangaManager.UWP.Helpers
                     #region // 第二个条件： 计算流hash，判断唯一性
 
                     string hash = stream.ComputeHash();
-                    int count = DatabaseController.ImageFilter_HashConditionCount(hash);
+                    int count = filteredImages.Count(n => n.Hash == hash);
 
                     if (count!=0)
                     {

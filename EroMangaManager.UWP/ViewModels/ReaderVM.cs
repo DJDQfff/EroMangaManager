@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
+using EroMangaDB.Entities;
+
 using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.Helpers;
 
@@ -63,7 +65,7 @@ namespace EroMangaManager.UWP.ViewModels
         //TODO 把selectentry和showentry分开
         //TODO 给selectentry添加一个参数，要过滤的数据库
         /// <summary> 从压缩文件的所有entry中，筛选出符合条件的 </summary>
-        public async Task SelectEntriesAsync(bool IsFilterImageOn, bool whetherShow = true)
+        public async Task SelectEntriesAsync(FilteredImage[] filteredImages, bool whetherShow = true)
         {
             Stream TempStream = null;
             IArchive TempZipArchive = null;
@@ -88,7 +90,7 @@ namespace EroMangaManager.UWP.ViewModels
                 }
 
                 var TempEntry = TempZipArchive.Entries.Single(n => n.Key == name);
-                bool cansue = await Task.Run(() => TempEntry.EntryFilter(IsFilterImageOn)); // 放在这里可以
+                bool cansue = await Task.Run(() => TempEntry.EntryFilter(filteredImages)); // 放在这里可以
 
                 if (cansue)
                 {

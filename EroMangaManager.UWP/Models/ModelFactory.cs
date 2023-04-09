@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using EroMangaManager.Core.Models;
 using EroMangaManager.Core.ViewModels;
 using EroMangaManager.UWP.Helpers;
-
+using EroMangaDB;
 using Windows.Storage;
 
 namespace EroMangaManager.UWP.Models
@@ -47,6 +47,7 @@ namespace EroMangaManager.UWP.Models
             var files = await StorageFolder.GetFilesAsync();
             var filteredfiles = files.Where(x => Path.GetExtension(x.Path).ToLower() == ".zip").ToList();
 
+            var a=BasicController.DatabaseController.database.FilteredImages.ToArray();
             List<Task> tasks = new List<Task>();
             foreach (var storageFile in filteredfiles)
             {
@@ -56,7 +57,7 @@ namespace EroMangaManager.UWP.Models
 
                 mangasFolder.MangaBooks.Add(manga);
 
-                Task task =  Task.Run( async()=> manga.CoverPath=(await Helpers.CoverHelper.TryCreatCoverFileAsync(file)) ?? CoverHelper.DefaultCoverPath); 
+                Task task =  Task.Run( async()=> manga.CoverPath=(await Helpers.CoverHelper.TryCreatCoverFileAsync(file,a)) ?? CoverHelper.DefaultCoverPath); 
                 tasks.Add(task);
             }
             mangasFolder.IsInitialing = false;

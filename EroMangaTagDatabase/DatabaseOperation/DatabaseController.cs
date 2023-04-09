@@ -16,7 +16,7 @@ namespace EroMangaDB
         /// </summary>
         public static BasicController DatabaseController;
 
-        private DataBase_Version2 database;
+        public DataBase_Version2 database;
 
         static BasicController()
         {

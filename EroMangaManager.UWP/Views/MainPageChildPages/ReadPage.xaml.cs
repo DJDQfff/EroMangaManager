@@ -21,6 +21,9 @@ using static EroMangaManager.UWP.SettingEnums.FolderEnum;
 using static MyLibrary.Standard20.HashComputer;
 using static MyLibrary.UWP.StorageFolderHelper;
 using static MyLibrary.UWP.StorageItemPicker;
+using EroMangaDB.Entities;
+using EroMangaDB;
+using System.Linq;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
@@ -92,7 +95,12 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                 var result = ApplicationData.Current.LocalSettings.Values["IsFilterImageOn"] ?? false;
 
                 var isfilterimage = (bool)result;
-                await currentReader.SelectEntriesAsync(isfilterimage);
+                FilteredImage[] filteredImages = null;
+                if (isfilterimage)
+                {
+                    filteredImages = BasicController.DatabaseController.database.FilteredImages.ToArray();
+                }
+                await currentReader.SelectEntriesAsync(filteredImages);
             }
         }
 

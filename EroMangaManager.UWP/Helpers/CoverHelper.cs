@@ -4,11 +4,11 @@ using System.IO;
 using System.IO.Compression;
 using System.Threading.Tasks;
 
+using EroMangaDB.Entities;
+
 using EroMangaManager.Core.Models;
 
 using SharpCompress.Archives;
-
-using SkiaSharp;
 
 using Windows.Storage;
 using Windows.Storage.FileProperties;
@@ -72,8 +72,9 @@ namespace EroMangaManager.UWP.Helpers
         /// 使用SharpCompress类库创建源图片设为封面
         /// </summary>
         /// <param name="storageFile"></param>
+        /// <param name="filteredImages">要比较的数据</param>
         /// <returns></returns>
-        public static async Task<string> CreatCoverFile_Origin_SharpCompress(this StorageFile storageFile)
+        public static async Task<string> CreatCoverFile_Origin_SharpCompress(this StorageFile storageFile, FilteredImage[] filteredImages)
         {
             string path = null;
             StorageFolder coverfolder = await GetChildTemporaryFolder(nameof(Covers));
@@ -84,7 +85,7 @@ namespace EroMangaManager.UWP.Helpers
                 {
                     foreach (var entry in zipArchive.Entries)
                     {
-                        bool canuse = entry.EntryFilter(true);
+                        bool canuse = entry.EntryFilter(filteredImages);
                         if (canuse)
                         {
                             path = Path.Combine(coverfolder.Path, storageFile.DisplayName + ".jpg");
@@ -139,14 +140,14 @@ namespace EroMangaManager.UWP.Helpers
 
         /// <summary> 尝试创建封面文件。 </summary>
         /// <returns> </returns>
-        public static async Task<string> TryCreatCoverFileAsync(StorageFile storageFile)
+        public static async Task<string> TryCreatCoverFileAsync(StorageFile storageFile, FilteredImage[] filteredImages)
         {
             string path;
             StorageFolder folder = await GetChildTemporaryFolder(nameof(Covers));
             IStorageItem storageItem = await folder.TryGetItemAsync(storageFile.DisplayName + ".jpg");
             if (storageItem is null)
             {
-                path = await CoverHelper.CreatCoverFile_Origin_SharpCompress(storageFile);
+                path = await CoverHelper.CreatCoverFile_Origin_SharpCompress(storageFile, filteredImages);
             }
             else
             {
