@@ -54,7 +54,7 @@ namespace EroMangaManager.UWP.Helpers
         /// <param name="entry"></param>
         /// <param name="isfilterimageon">TODO 是否过滤图片</param>
         /// <returns></returns>
-        public static bool EntryFilter(this SharpCompress.Archives.IArchiveEntry entry, bool isfilterimageon)
+        public static bool EntryFilter(this IArchiveEntry entry, bool isfilterimageon)
         {
             bool canuse = true;
 

@@ -38,11 +38,12 @@ namespace EroMangaManager.UWP.Helpers
             var cover = await coverfolder.TryGetItemAsync(file.DisplayName + ".jpg");
 
             if (cover != null)
-            {
-                Windows.Storage.StorageFile storageFile = cover as Windows.Storage.StorageFile;
-                BitmapImage bitmapImage = await CoverHelper.GetCoverThumbnail_SystemAsync(storageFile);
-
+            {      
                 // 以前是在MangaBook类里面放一个封面图像缓存，现在改为使用封面图像文件路径，这个方法也废弃
+
+                //Windows.Storage.StorageFile storageFile = cover as Windows.Storage.StorageFile;
+                //BitmapImage bitmapImage = await CoverHelper.GetCoverThumbnail_SystemAsync(storageFile);
+
                 //mangaBook.Cover = bitmapImage;
             }
         }
@@ -146,23 +147,6 @@ namespace EroMangaManager.UWP.Helpers
             if (storageItem is null)
             {
                 path = await CoverHelper.CreatCoverFile_Origin_SharpCompress(storageFile);
-
-                // 这段代码有坑 在debug模式下，这个try -
-                // catch块可以正常运行，在release模式下无法运行
-                // SkiaSharp库存在Bug，某些正常图片无法解码
-
-                ////try
-                ////{
-                ////    await CoverHelper.CreatThumbnailCoverFile_UsingSkiaSharp(storageFile);
-                ////}
-                ////catch (Exception ex)
-                ////{
-                ////    IStorageItem storageItem1 = await folder.TryGetItemAsync(storageFile.DisplayName + ".jpg");
-
-                ////    await storageItem1?.DeleteAsync(StorageDeleteOption.PermanentDelete);
-
-                ////    await CoverHelper.CreatOriginCoverFile_UsingZipArchiveEntry(storageFile);
-                ////}
             }
             else
             {
