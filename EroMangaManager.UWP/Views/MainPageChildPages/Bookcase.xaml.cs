@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using EroMangaManager.Core.Models;
 using EroMangaManager.Core.ViewModels;
@@ -34,7 +35,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                 return _data;
             }
         }
-
         /// <summary>
         ///
         /// </summary>
@@ -58,6 +58,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                 case MangasFolder mangasFolder:
                     BindMangasFolder = mangasFolder;
                     break;
+
             }
         }
 
@@ -139,7 +140,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
         private void Order(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            BindMangasFolder.SortMangaBooks(x => x.FileSize);
+            BindMangasFolder?.SortMangaBooks(x => x.FileSize);
         }
 
         private async void Rename(object sender, Windows.UI.Xaml.RoutedEventArgs e)
