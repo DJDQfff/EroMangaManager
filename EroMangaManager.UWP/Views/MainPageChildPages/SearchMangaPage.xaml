@@ -57,15 +57,16 @@
                     </toolkit:TokenizingTextBox.SuggestedItemTemplate>
                 </toolkit:TokenizingTextBox>
             </Grid>
-            <Button Click="Button_Click"
-                    Content="{uid:UI Uid=Search}"
-                    VerticalAlignment="Stretch"
-                    Grid.Column="1" />
         </Grid>
         <StackPanel Orientation="Horizontal"
-                    Grid.Row="1">
+                    Grid.Row="1">  
+            <Button Click="Button_Click"
+                    Content="{uid:UI Uid=Search}"
+                    VerticalAlignment="Stretch"/>
+
             <Button Content="{uid:UI Uid=ShowFolderBookcase}"
-                    Click="Button_Click_1" />
+                    Click="Button_Click_1" />    
+
         </StackPanel>
         <GridView x:Name="ResultGridView"
                   Grid.Row="2">
