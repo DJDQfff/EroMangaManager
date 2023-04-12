@@ -57,9 +57,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
         private void removeButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var button = sender as Button;
-            var storageFolder = list.SelectedItem as MangasFolder;
-            if (storageFolder != null)
+            if (list.SelectedItem is MangasFolder storageFolder)
             {
                 App.Current.storageItemManager.RemoveToken(storageFolder.FolderPath);
                 App.Current.GlobalViewModel.RemoveFolder(storageFolder);
@@ -68,9 +66,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
         private async void LauncherFolder(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var button = sender as Button;
-            var mf = list.SelectedItem as MangasFolder;
-            if (mf != null)
+            if (list.SelectedItem is MangasFolder mf)
             {
                 await Windows.System.Launcher.LaunchFolderPathAsync(mf.FolderPath);
             }
@@ -78,12 +74,11 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
         private void JumpToBookcase_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var button = sender as Button;
-            var datacontext = list.SelectedItem as MangasFolder;
-            if (datacontext != null)
+            if (list.SelectedItem is MangasFolder datacontext)
             {
                 if (!datacontext.IsInitialing)
                 {
+                    // TODO 我也知道这个留着是干嘛的
                 }
                 MainPage.Current.MainFrame.Navigate(typeof(Bookcase), datacontext);
             }
@@ -91,9 +86,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
         private void SetAsDefaultBookcaseFolder_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var button = sender as Button;
-            var datacontext = list.SelectedItem as MangasFolder;
-            if (datacontext != null)
+            if (list.SelectedItem is MangasFolder datacontext)
             {
                 ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.DefaultBookcaseFolder.ToString()] = datacontext.FolderPath;
             }

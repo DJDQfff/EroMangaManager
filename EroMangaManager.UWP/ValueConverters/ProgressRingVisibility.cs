@@ -22,8 +22,7 @@ namespace EroMangaManager.UWP.ValueConverters
         /// <returns></returns>
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            ReaderVM reader = value as ReaderVM;
-            if (reader is null)
+            if (!(value is ReaderVM ))
             {
                 return Visibility.Collapsed;
             }

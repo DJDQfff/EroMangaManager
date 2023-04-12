@@ -156,8 +156,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
             var entry = flipView.SelectedItem as IArchiveEntry;
 
-            FlipViewItem item = flipView.ContainerFromItem(entry) as FlipViewItem;
-            if (item is null)
+            if (!(flipView.ContainerFromItem(entry) is FlipViewItem item))
             {
                 return;
             }

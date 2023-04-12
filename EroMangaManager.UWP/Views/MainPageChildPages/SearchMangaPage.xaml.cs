@@ -15,7 +15,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
     /// </summary>
     public sealed partial class SearchMangaPage : Page
     {
-        private TagManagerViewModel searchMangaViewModel;
+        private readonly TagManagerViewModel searchMangaViewModel;
 
         /// <summary>
         ///

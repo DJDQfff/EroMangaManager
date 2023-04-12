@@ -18,12 +18,12 @@ namespace EroMangaManager.Core.ViewModels
         /// <summary>
         /// 数据源
         /// </summary>
-        private IEnumerable<string> originTags;
+        private readonly IEnumerable<string> originTags;
 
         /// <summary>
         /// 隐藏起来的项
         /// </summary>
-        private List<string> hidedTags = new List<string>();
+        private readonly List<string> hidedTags = new List<string>();
 
         public TagManagerViewModel(IEnumerable<string[]> strings)
         {

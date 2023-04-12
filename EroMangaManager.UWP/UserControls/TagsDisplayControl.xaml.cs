@@ -16,7 +16,7 @@ namespace EroMangaManager.UWP.UserControls
     /// </summary>
     public sealed partial class TagsDisplayControl : UserControl
     {
-        private ObservableCollection<string> tags = new ObservableCollection<string>();
+        private readonly ObservableCollection<string> tags = new ObservableCollection<string>();
 
         /// <summary>
         ///

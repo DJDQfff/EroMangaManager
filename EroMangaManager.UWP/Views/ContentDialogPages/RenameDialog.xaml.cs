@@ -15,7 +15,7 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
     /// </summary>
     public sealed partial class RenameDialog : ContentDialog
     {
-        private string str;
+        private readonly string str;
 
         /// <summary>
         /// 选择的新名字

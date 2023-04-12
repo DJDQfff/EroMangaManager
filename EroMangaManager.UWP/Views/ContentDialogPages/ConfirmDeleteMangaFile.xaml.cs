@@ -12,7 +12,7 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
     /// </summary>
     public sealed partial class ConfirmDeleteMangaFile : ContentDialog
     {
-        private MangaBook manga;
+        private readonly MangaBook manga;
 
         /// <summary>
         /// 确认删除对话框

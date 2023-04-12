@@ -72,8 +72,7 @@ namespace EroMangaDB.Helper
         /// <param name="oldname">旧的名字</param>
         public static string RemoveRepeatTag(string oldname)
         {
-            var tags = SplitAndParser(oldname);
-
+            // TODO 输入一个包含重复tag的名称，算出一个去掉重复tag的名称
             return null;
         }
 

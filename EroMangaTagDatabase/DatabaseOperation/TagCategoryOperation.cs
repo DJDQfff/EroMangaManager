@@ -18,7 +18,7 @@ namespace EroMangaDB
         {
             var tags = database.TagCategorys.ToArray();
 
-            List<(string, string[])> vs = new List<(string, string[])>();
+            //List<(string, string[])> vs = new List<(string, string[])>();
 
             Dictionary<string, string[]> keyValuePairs = new Dictionary<string, string[]>();
             foreach (var tag in tags)

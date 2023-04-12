@@ -77,11 +77,12 @@ namespace EroMangaManager.UWP.Models
         public static async Task<MangaBook> CreateMangaBook(StorageFile storageFile)
         {
             var filepath = storageFile.Path;
-            MangaBook mangaBook = new MangaBook(filepath);
+            MangaBook mangaBook = new MangaBook(filepath)
+            {
+                FileSize = (await storageFile.GetBasicPropertiesAsync()).Size,
 
-            mangaBook.FileSize = (await storageFile.GetBasicPropertiesAsync()).Size;
-            
-            mangaBook.CoverPath =  CoverHelper.DefaultCoverPath;
+                CoverPath = CoverHelper.DefaultCoverPath
+            };
 
             return mangaBook;
         }

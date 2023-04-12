@@ -151,13 +151,14 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             await StorageHelper.RenameSourceFile(eroManga, null);
         }
 
-        private async void ViewMangaTag(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private  void ViewMangaTag(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
-            MangaBook manga = menuFlyout.DataContext as MangaBook;
+            // TODO 以后再完成此功能
+            //MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
+            //MangaBook manga = menuFlyout.DataContext as MangaBook;
 
-            OverviewInformation overviewInformation = new OverviewInformation(manga);
-            var result = await overviewInformation.ShowAsync();
+            //OverviewInformation overviewInformation = new OverviewInformation(manga);
+            //var result = await overviewInformation.ShowAsync();
         }
     }
 }

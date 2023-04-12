@@ -18,8 +18,6 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
 
         private void Combo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ComboBox comboBox = sender as ComboBox;
-            int index = comboBox.SelectedIndex;
         }
     }
 }
