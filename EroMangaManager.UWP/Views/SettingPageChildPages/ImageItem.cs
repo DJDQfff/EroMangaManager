@@ -18,22 +18,22 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
         /// <summary>
         /// 文件
         /// </summary>
-        public StorageFile storageFile { set; get; }
+        public StorageFile StorageFile { set; get; }
 
         /// <summary>
         /// 图像
         /// </summary>
-        public BitmapImage bitmapImage { set; get; } = new BitmapImage();
+        public BitmapImage BitmapImage { set; get; } = new BitmapImage();
 
         private ImageItem(StorageFile storage)
         {
-            storageFile = storage;
+            StorageFile = storage;
         }
 
         private async Task InitializeImage()
         {
-            var thumbnail = await storageFile.GetThumbnailAsync(Windows.Storage.FileProperties.ThumbnailMode.SingleItem, 80);
-            await bitmapImage.SetSourceAsync(thumbnail);
+            var thumbnail = await StorageFile.GetThumbnailAsync(Windows.Storage.FileProperties.ThumbnailMode.SingleItem, 80);
+            await BitmapImage.SetSourceAsync(thumbnail);
         }
 
         /// <summary>

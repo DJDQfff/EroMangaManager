@@ -36,10 +36,9 @@
                         <TextBlock Margin="4"
                                    Text="{x:Bind  Key}"
                                    FontSize="24" />
-                        <ListView x:Name="mangalist"
-                                  ItemsSource="{x:Bind }"
+                        <ListView ItemsSource="{x:Bind }"
                                   ItemContainerStyle="{StaticResource ListViewItemStyle_1}"
-                                  SelectionChanged="mangalist_SelectionChanged"
+                                  SelectionChanged="ListView_SelectionChanged"
                                   SelectionMode="Single">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="coremodel:MangaBook">

@@ -51,6 +51,8 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
             await Helpers.StorageHelper.DeleteSourceFile(SelectedMangaBook);
 
             mangaBookViewModel.DeleteStorageFileInRootObservable(SelectedMangaBook);
+
+            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -60,7 +62,7 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
             MainPage.Current.MainNavigationView.SelectedItem = MainPage.Current.MainNavigationView.MenuItems[2];
         }
 
-        private void mangalist_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var listview = sender as ListView;
             var book = listview.SelectedItem as MangaBook;

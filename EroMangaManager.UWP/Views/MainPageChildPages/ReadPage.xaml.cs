@@ -90,7 +90,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                 await currentReader.Initial();
                 oldreader?.Dispose();
 
-                FLIP.ItemsSource = currentReader.bitmapImages;
+                FLIP.ItemsSource = currentReader.BitmapImages;
 
                 var result = ApplicationData.Current.LocalSettings.Values["IsFilterImageOn"] ?? false;
 
@@ -109,10 +109,10 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         private async void FilteThisImage2_Click(object sender, RoutedEventArgs e)
         {
             var bitmap = FLIP.SelectedItem as Windows.UI.Xaml.Media.Imaging.BitmapImage;
-            var index = currentReader.bitmapImages.IndexOf(bitmap);
+            var index = currentReader.BitmapImages.IndexOf(bitmap);
             var entry = currentReader.zipArchiveEntries[index];
             currentReader.zipArchiveEntries.Remove(entry);
-            currentReader.bitmapImages.Remove(bitmap);
+            currentReader.BitmapImages.Remove(bitmap);
             string hash = entry.ComputeHash();
             long length = entry.Size;
             await DatabaseController.ImageFilter_Add(hash, length);
@@ -130,7 +130,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         private async void SaveImageAs2_Click(object sender, RoutedEventArgs e)
         {
             var bitmap = FLIP.SelectedItem as Windows.UI.Xaml.Media.Imaging.BitmapImage;
-            var index = currentReader.bitmapImages.IndexOf(bitmap);
+            var index = currentReader.BitmapImages.IndexOf(bitmap);
             var entry = currentReader.zipArchiveEntries[index];
             StorageFile storageFile = await SavePictureAsync();
             if (storageFile != null)

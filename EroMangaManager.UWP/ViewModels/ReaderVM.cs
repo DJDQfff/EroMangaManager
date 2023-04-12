@@ -28,7 +28,7 @@ namespace EroMangaManager.UWP.ViewModels
         private bool _IsClosing = false;
 
         /// <summary> </summary>
-        public MangaBook manga { set; get; }
+        public MangaBook Manga { set; get; }
 
         /// <summary> 打开的文件流 </summary>
         private Stream stream { set; get; }
@@ -42,13 +42,13 @@ namespace EroMangaManager.UWP.ViewModels
         /// <summary>
         /// 图源
         /// </summary>
-        public ObservableCollection<BitmapImage> bitmapImages { set; get; } = new ObservableCollection<BitmapImage>();
+        public ObservableCollection<BitmapImage> BitmapImages { set; get; } = new ObservableCollection<BitmapImage>();
 
         /// <summary> 初始化</summary>
         /// <param name="_manga"> </param>
         public ReaderVM(MangaBook _manga)
         {
-            this.manga = _manga;
+            this.Manga = _manga;
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace EroMangaManager.UWP.ViewModels
         /// <returns></returns>
         public async Task Initial()
         {
-            var file = await App.Current.storageItemManager.GetStorageFile(manga.FilePath);
+            var file = await App.Current.storageItemManager.GetStorageFile(Manga.FilePath);
             stream = await file.OpenStreamForReadAsync();
             zipArchive = ArchiveFactory.Open(stream);
         }
@@ -74,7 +74,7 @@ namespace EroMangaManager.UWP.ViewModels
                 StopWork();
                 return;
             }
-            var file = await App.Current.storageItemManager.GetStorageFile(manga.FilePath);
+            var file = await App.Current.storageItemManager.GetStorageFile(Manga.FilePath);
             TempStream = await file.OpenStreamForReadAsync();
 
             TempZipArchive = ArchiveFactory.Open(TempStream);
@@ -104,7 +104,7 @@ namespace EroMangaManager.UWP.ViewModels
                             return;
                         }
 
-                        bitmapImages.Add(await ShowEntryAsync(entry));
+                        BitmapImages.Add(await ShowEntryAsync(entry));
                     }
                 }
             }
@@ -122,7 +122,7 @@ namespace EroMangaManager.UWP.ViewModels
             _IsClosing = true;
             zipArchiveEntries.Clear();
 
-            bitmapImages.Clear();
+            BitmapImages.Clear();
             zipArchive.Dispose();
             stream.Dispose();
         }

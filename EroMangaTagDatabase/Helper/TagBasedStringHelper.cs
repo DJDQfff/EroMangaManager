@@ -81,7 +81,7 @@ namespace EroMangaDB.Helper
         /// </summary>
         /// <param name="tagstring"></param>
         /// <returns></returns>
-        public static bool canbePair(this string tagstring)
+        public static bool CanbePair(this string tagstring)
         {
             for (int i = 0; i < 5; i++)
             {

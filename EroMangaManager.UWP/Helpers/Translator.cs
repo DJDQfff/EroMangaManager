@@ -44,7 +44,7 @@ namespace EroMangaManager.UWP.Helpers
                     if (newname != null)
                     {
                         manga.TranslatedMangaName = newname;
-                        //translateTuples.Add((manga.FilePath, newname));
+                        //translateTuples.Add((Manga.FilePath, newname));
                     }
                 }
 

@@ -28,7 +28,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             this.InitializeComponent();
         }
 
-        private async void addButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void Button_AddFolder_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             Button button = sender as Button;
             button.IsEnabled = false;
@@ -55,7 +55,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             button.IsEnabled = true;
         }
 
-        private void removeButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void RemoveFolderButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             if (list.SelectedItem is MangasFolder storageFolder)
             {
@@ -72,7 +72,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             }
         }
 
-        private void JumpToBookcase_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void JumpToBookcaseButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             if (list.SelectedItem is MangasFolder datacontext)
             {

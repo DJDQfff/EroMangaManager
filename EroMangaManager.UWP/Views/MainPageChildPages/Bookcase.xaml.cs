@@ -155,9 +155,9 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         {
             // TODO 以后再完成此功能
             //MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
-            //MangaBook manga = menuFlyout.DataContext as MangaBook;
+            //MangaBook Manga = menuFlyout.DataContext as MangaBook;
 
-            //OverviewInformation overviewInformation = new OverviewInformation(manga);
+            //OverviewInformation overviewInformation = new OverviewInformation(Manga);
             //var result = await overviewInformation.ShowAsync();
         }
     }

@@ -72,10 +72,10 @@ namespace EroMangaDB
         public async Task ReadingInfo_MultiTranslateMangaName(IEnumerable<(string path, string translatedname)> tuples)
         {
             var info = database.ReadingInfos.ToList();
-            foreach (var tuple in tuples)
+            foreach (var (path, translatedname) in tuples)
             {
-                var a = info.SingleOrDefault(n => n.AbsolutePath == tuple.path);
-                a.MangaName_Translated = tuple.translatedname;
+                var a = info.SingleOrDefault(n => n.AbsolutePath == path);
+                a.MangaName_Translated = translatedname;
             }
             database.UpdateRange(info);
             await database.SaveChangesAsync();

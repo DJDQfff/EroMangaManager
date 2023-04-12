@@ -25,23 +25,23 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <AutoSuggestBox x:Name="NameSearchInput"
+                <AutoSuggestBox x:Name="MangaNameAugoSuggestBox"
                                 Header="{uid:UI Uid=SearchByMangaName}"
                                 QueryIcon="Find"
                                 Grid.Row="0"
                                 VerticalAlignment="Top"
                                 VerticalContentAlignment="Stretch"
-                                TextChanged="AutoSuggestBox_TextChanged" />
+                                TextChanged="MangaNameAugoSuggestBox_TextChanged" />
                 <toolkit:TokenizingTextBox
                         Header="{uid:UI Uid=SearchByTag}"
-                                           x:Name="tokenbox"
+                                           x:Name="MangaTagTokenizingTextBox"
                                            Grid.Row="1"
                                            HorizontalAlignment="Stretch"
                                            VerticalAlignment="Stretch"
-                                           TextChanged="TokenizingTextBox_TextChanged"
-                                           TokenItemAdding="tokenbox_TokenItemAdding"
-                                           TokenItemAdded="tokenbox_TokenItemAdded"
-                                           TokenItemRemoved="tokenbox_TokenItemRemoved">
+                                           TextChanged="MangaTagTokenBox_TextChanged"
+                                           TokenItemAdding="MangaTagTokenBox_TokenItemAdding"
+                                           TokenItemAdded="MangaTagTokenBox_TokenItemAdded"
+                                           TokenItemRemoved="MangaTagTokenBox_TokenItemRemoved">
                     <toolkit:TokenizingTextBox.QueryIcon>
                         <FontIconSource
                                 Glyph="&#xE11A;"
@@ -60,12 +60,12 @@
         </Grid>
         <StackPanel Orientation="Horizontal"
                     Grid.Row="1">  
-            <Button Click="Button_Click"
+            <Button x:Name="SearchStartButton" Click="SearchStartButton_Click"
                     Content="{uid:UI Uid=Search}"
                     VerticalAlignment="Stretch"/>
 
-            <Button Content="{uid:UI Uid=ShowFolderBookcase}"
-                    Click="Button_Click_1" />    
+            <Button x:Name="ShowInBookcaseButton" Content="{uid:UI Uid=ShowFolderBookcase}"
+                    Click="ShowInBookcaseButton_Click" />    
 
         </StackPanel>
         <GridView x:Name="ResultGridView"

@@ -17,11 +17,11 @@
             <RowDefinition Height="357*" />
         </Grid.RowDefinitions>
         <!--Grid.Row=1 这一块留白-->
-        <Button x:Name="addButton"
+        <Button x:Name="Button_AddFolder"
                 Grid.Row="1"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Click="addButton_Click"
+                Click="Button_AddFolder_Click"
                 Content="{uid:UI Uid=AddAFolder}" />
         <Grid Visibility="Visible"
               x:Name="ControlGrid"
@@ -45,18 +45,18 @@
                          Click="SetAsDefaultBookcaseFolder_Click"
                          Content="{uid:UI Uid=SetAsDefaultBookcaseFolder}" />
 
-                <Button  x:Name="JumpToBookcase"
+                <Button  x:Name="JumpToBookcaseButton"
                          VerticalAlignment="Center"
-                         Click="JumpToBookcase_Click"
+                         Click="JumpToBookcaseButton_Click"
                          Content="{uid:UI Uid=ShowFolderBookcase}" />
 
                 <Button  VerticalAlignment="Center"
                          Content="{uid:UI Uid=OpenFolder}"
                          Click="LauncherFolder" />
-                <Button x:Name="removeButton"
+                <Button x:Name="RemoveFolderButton"
                         VerticalAlignment="Center"
                         Content="{uid:UI Uid=RemoveFolder}"
-                        Click="removeButton_Click" />
+                        Click="RemoveFolderButton_Click" />
             </StackPanel>
         </Grid>
 

@@ -27,13 +27,13 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             searchMangaViewModel = new TagManagerViewModel(mangas.Select(x => x.MangaTagsIncludedInFileName));
         }
 
-        private void TokenizingTextBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        private void MangaTagTokenBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             var a = sender.Text;
-            tokenbox.SuggestedItemsSource = searchMangaViewModel.Search(a);
+            MangaTagTokenizingTextBox.SuggestedItemsSource = searchMangaViewModel.Search(a);
         }
 
-        private void tokenbox_TokenItemAdding(Microsoft.Toolkit.Uwp.UI.Controls.TokenizingTextBox sender, Microsoft.Toolkit.Uwp.UI.Controls.TokenItemAddingEventArgs args)
+        private void MangaTagTokenBox_TokenItemAdding(Microsoft.Toolkit.Uwp.UI.Controls.TokenizingTextBox sender, Microsoft.Toolkit.Uwp.UI.Controls.TokenItemAddingEventArgs args)
         {
             var t = args.TokenText;
             if (!searchMangaViewModel.AllTags.Contains(t))
@@ -42,14 +42,14 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             }
         }
 
-        private void tokenbox_TokenItemAdded(Microsoft.Toolkit.Uwp.UI.Controls.TokenizingTextBox sender, object args)
+        private void MangaTagTokenBox_TokenItemAdded(Microsoft.Toolkit.Uwp.UI.Controls.TokenizingTextBox sender, object args)
         {
             var token = args as string;
             searchMangaViewModel.SelectedTags.Add(token);
             searchMangaViewModel.HideTag(token);
         }
 
-        private void tokenbox_TokenItemRemoved(Microsoft.Toolkit.Uwp.UI.Controls.TokenizingTextBox sender, object args)
+        private void MangaTagTokenBox_TokenItemRemoved(Microsoft.Toolkit.Uwp.UI.Controls.TokenizingTextBox sender, object args)
         {
             var token = args as string;
 
@@ -57,7 +57,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             searchMangaViewModel.CancelHideTag(token);
         }
 
-        private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        private void MangaNameAugoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             var text = sender.Text; if (text != null)
             {
@@ -65,10 +65,9 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                 sender.ItemsSource = a;
             }
         }
-
-        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void SearchStartButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var manganame = NameSearchInput.Text;
+            var manganame = MangaNameAugoSuggestBox.Text;
 
             var tags = new List<string>(searchMangaViewModel.SelectedTags)
             {
@@ -84,18 +83,18 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                     .Count(y => x.FileDisplayName.Contains(y)) == requiredMatchCount);
 
             ResultGridView.ItemsSource = conditions;
+
         }
 
-        private void Button_Click_1(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void ShowInBookcaseButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            var result=ResultGridView.ItemsSource;
+            var result = ResultGridView.ItemsSource;
 
             var condition = result as IEnumerable<MangaBook>;
 
             var mangasfolder = new MangasFolder(null);
             mangasfolder.MangaBooks.AddRange(condition);
             MainPage.Current.MainFrame.Navigate(typeof(Bookcase), mangasfolder);
-
 
         }
     }

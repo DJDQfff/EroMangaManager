@@ -41,10 +41,10 @@ namespace EroMangaManager.UWP.Helpers
             {      
                 // 以前是在MangaBook类里面放一个封面图像缓存，现在改为使用封面图像文件路径，这个方法也废弃
 
-                //Windows.Storage.StorageFile storageFile = cover as Windows.Storage.StorageFile;
-                //BitmapImage bitmapImage = await CoverHelper.GetCoverThumbnail_SystemAsync(storageFile);
+                //Windows.Storage.StorageFile StorageFile = cover as Windows.Storage.StorageFile;
+                //BitmapImage BitmapImage = await CoverHelper.GetCoverThumbnail_SystemAsync(StorageFile);
 
-                //mangaBook.Cover = bitmapImage;
+                //mangaBook.Cover = BitmapImage;
             }
         }
 

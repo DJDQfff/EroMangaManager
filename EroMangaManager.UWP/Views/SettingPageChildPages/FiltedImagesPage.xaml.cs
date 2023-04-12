@@ -50,9 +50,9 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
             {
                 ImageItem imageItem = listobject[i] as ImageItem;
                 items.Remove(imageItem);                // items和listobjects本质上是同一个集合，只不过以不同类型打开
-                string hash = imageItem.storageFile.DisplayName;
+                string hash = imageItem.StorageFile.DisplayName;
                 hashlist.Add(hash);
-                await imageItem.storageFile.DeleteAsync(StorageDeleteOption.PermanentDelete);
+                await imageItem.StorageFile.DeleteAsync(StorageDeleteOption.PermanentDelete);
             }
             string[] vs = hashlist.ToArray();
             await DatabaseController.ImageFilter_Remove(vs);
