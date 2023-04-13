@@ -43,6 +43,11 @@ namespace EroMangaManager.UWP
 #endif
             DatabaseController.Migrate();
 
+            //var file = await StorageFile.GetFileFromApplicationUriAsync( new Uri("ms-appx:///Assets/AppConfiguration.json"));
+
+            //var path = file.Path;
+
+
             await EnsureChildTemporaryFolders(Covers.ToString(), Filters.ToString());
 
             Helpers.CoverHelper.InitialDefaultCover();

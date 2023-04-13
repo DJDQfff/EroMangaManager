@@ -279,6 +279,7 @@
     <Content Include="Assets\AppImage\Wide310x150Logo.scale-400.png" />
     <Content Include="Assets\SVGs\书籍.svg" />
     <Content Include="Assets\SVGs\副本.svg" />
+    <Content Include="Assets\AppConfiguration.json" />
     <None Include="DJDQfff For UWP.pfx" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
