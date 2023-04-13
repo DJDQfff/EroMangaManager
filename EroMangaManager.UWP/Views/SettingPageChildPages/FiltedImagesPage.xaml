@@ -32,7 +32,7 @@ xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
                 <DataTemplate x:DataType="local:ImageItem">
                     <Image Width="136"
                            Height="192"
-                           Source="{x:Bind bitmapImage}" />
+                           Source="{x:Bind BitmapImage}" />
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
