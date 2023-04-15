@@ -92,9 +92,8 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
                 FLIP.ItemsSource = currentReader.BitmapImages;
 
-                var result = ApplicationData.Current.LocalSettings.Values["IsFilterImageOn"] ?? false;
 
-                var isfilterimage = (bool)result;
+                var isfilterimage = App.Current.AppConfig.IsFilterImageOn;
                 FilteredImage[] filteredImages = null;
                 if (isfilterimage)
                 {

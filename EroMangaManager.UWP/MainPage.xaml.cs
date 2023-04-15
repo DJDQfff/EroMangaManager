@@ -39,7 +39,7 @@ namespace EroMangaManager.UWP
         {
             base.OnNavigatedTo(e);
 
-            var defaultfolderpath = ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.DefaultBookcaseFolder.ToString()] as string;
+            var defaultfolderpath = App.Current.AppConfig.DefaultBookcaseFolder; 
             var defaultfolder = App.Current.GlobalViewModel.MangaFolders.SingleOrDefault(x => x.FolderPath == defaultfolderpath);
 
             MainFrame.Navigate(typeof(Bookcase), defaultfolder);

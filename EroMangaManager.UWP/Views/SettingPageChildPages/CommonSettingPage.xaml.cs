@@ -24,26 +24,32 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
         private void DirectDeleteOption(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.WhetherShowDialogBeforeDelete.ToString()] = toggleSwitch.IsOn;
+
+            App.Current.AppConfig.WhetherShowDialogBeforeDelete = toggleSwitch.IsOn;
         }
 
         private void DeleteOption(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.StorageDeleteOption.ToString()] = toggleSwitch.IsOn;
+
+            App.Current.AppConfig.StorageDeleteOption = toggleSwitch.IsOn;
         }
 
         private void ToggleSwitch_Loaded(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            var a = (bool)(ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.WhetherShowDialogBeforeDelete.ToString()] ?? false);
-            toggleSwitch.IsOn = a;
+
+            var b = App.Current.AppConfig.WhetherShowDialogBeforeDelete;
+
+            toggleSwitch.IsOn = b;
+
+
         }
 
         private void ToggleSwitch_Loaded_1(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            var a = (bool)(ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.StorageDeleteOption.ToString()] ?? false);
+            var a = App.Current.AppConfig.StorageDeleteOption;
             toggleSwitch.IsOn = a;
         }
     }

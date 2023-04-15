@@ -23,6 +23,9 @@ using Config.Net;
 using static EroMangaDB.BasicController;
 using static EroMangaManager.UWP.SettingEnums.FolderEnum;
 using static MyLibrary.UWP.StorageFolderHelper;
+using EroMangaManager.UWP.SettingEnums;
+using System.IO;
+using Microsoft.Toolkit.Uwp.Helpers;
 
 namespace EroMangaManager.UWP
 {
@@ -38,21 +41,39 @@ namespace EroMangaManager.UWP
 
         internal StorageItemManager storageItemManager = new StorageItemManager();
 
-        private async Task Initial()
+        internal SettingEnums.IAppConfig AppConfig { get; private set; }
+
+        private async Task QuickInitialWork()
         {
 #if DEBUG
             await Windows.System.Launcher.LaunchFolderAsync(ApplicationData.Current.LocalFolder);
 #endif
+            #region 数据库迁移
             DatabaseController.Migrate();
+            #endregion
 
-            //var file = await StorageFile.GetFileFromApplicationUriAsync( new Uri("ms-appx:///Assets/AppConfiguration.json"));
+            #region 创建设置文件
+            var filename = "AppConfig.json";
+            var localfolder =  Windows.Storage.ApplicationData.Current.LocalFolder;
+            var configfilepath = Path.Combine(localfolder.Path,filename );
 
-            //var path = file.Path;
+            try
+            {
+            AppConfig = new ConfigurationBuilder<IAppConfig>().UseJsonFile(configfilepath).Build();
+            }
+            catch       // 如果出现问题，那么删除原来的设置文件，在重新操作
+            {
+                if (await localfolder.TryGetItemAsync(filename) is StorageFile exist)
+                {
+                    await exist.DeleteAsync();
+                }
 
+                AppConfig = new ConfigurationBuilder<IAppConfig>().UseJsonFile(configfilepath).Build();
 
-            await EnsureChildTemporaryFolders(Covers.ToString(), Filters.ToString());
-
+            }
+            #endregion
             Helpers.CoverHelper.InitialDefaultCover();
+            await EnsureChildTemporaryFolders(Covers.ToString(), Filters.ToString());
 
             GlobalViewModel.ErrorZipEvent += (string str) =>
             {
@@ -68,7 +89,10 @@ namespace EroMangaManager.UWP
                     .Show();
             };
 
-            var folder = await MyLibrary.UWP.AccestListHelper.GetAvailableFutureFolder();
+        }
+        private async Task LongTimeLoad()
+        {
+          var folder = await MyLibrary.UWP.AccestListHelper.GetAvailableFutureFolder();
             storageItemManager.InitialRootFolders(folder);
 
             await ModelFactory.InitialIzeFoldersViewModel(GlobalViewModel, folder.Values);
@@ -93,6 +117,7 @@ namespace EroMangaManager.UWP
         /// <param name="e"> 有关启动请求和过程的详细信息。 </param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
+           await QuickInitialWork();
             // 不要在窗口已包含内容时重复应用程序初始化， 只需确保窗口处于活动状态
             if (!(Window.Current.Content is Frame rootFrame))
             {
@@ -121,7 +146,7 @@ namespace EroMangaManager.UWP
                 Window.Current.Activate();
             }
 
-            await Initial();
+            await LongTimeLoad();
         }
 
         /// <summary> </summary>

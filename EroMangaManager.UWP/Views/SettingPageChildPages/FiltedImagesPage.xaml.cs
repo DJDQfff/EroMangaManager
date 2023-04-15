@@ -63,13 +63,13 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
         private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.IsFilterImageOn.ToString()] = toggleSwitch.IsOn;
+            App.Current.AppConfig.IsFilterImageOn = toggleSwitch.IsOn;
         }
 
         private void ToggleSwitch_Loaded(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            var a = (bool)(ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.IsFilterImageOn.ToString()] ?? false);
+            var a=App.Current.AppConfig.IsFilterImageOn;
             toggleSwitch.IsOn = a;
         }
     }

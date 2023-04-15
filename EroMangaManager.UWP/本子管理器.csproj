@@ -137,7 +137,7 @@
     <Compile Include="Helpers\Exporter.cs" />
     <Compile Include="Helpers\StorageHelper.cs" />
     <Compile Include="Models\ReswEnum.cs" />
-    <Compile Include="SettingEnums\ApplicationSettingItemName.cs" />
+    <Compile Include="SettingEnums\IAppConfig.cs" />
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="Models\RepeatMangaBookGroup.cs" />
     <Compile Include="UserControls\TagsDisplayControl.xaml.cs">
@@ -279,7 +279,6 @@
     <Content Include="Assets\AppImage\Wide310x150Logo.scale-400.png" />
     <Content Include="Assets\SVGs\书籍.svg" />
     <Content Include="Assets\SVGs\副本.svg" />
-    <Content Include="Assets\AppConfiguration.json" />
     <None Include="DJDQfff For UWP.pfx" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
@@ -477,6 +476,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Config.Net">
+      <Version>5.1.5</Version>
+    </PackageReference>
     <PackageReference Include="itext7">
       <Version>7.2.5</Version>
     </PackageReference>

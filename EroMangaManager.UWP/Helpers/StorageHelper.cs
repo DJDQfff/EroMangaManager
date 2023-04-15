@@ -3,7 +3,6 @@ using System.IO;
 using System.Threading.Tasks;
 
 using EroMangaManager.Core.Models;
-using EroMangaManager.UWP.SettingEnums;
 using EroMangaManager.UWP.Views.ContentDialogPages;
 
 using Windows.Storage;
@@ -50,8 +49,10 @@ namespace EroMangaManager.UWP.Helpers
         /// <returns></returns>
         public static async Task DeleteSourceFile(MangaBook eroManga)
         {
-            var temp1 = (bool)(ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.WhetherShowDialogBeforeDelete.ToString()] ?? false);
-            var temp2 = (bool)(ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.StorageDeleteOption.ToString()] ?? false);
+
+            var temp1 = App.Current.AppConfig.WhetherShowDialogBeforeDelete;
+
+            var temp2 = App.Current.AppConfig.StorageDeleteOption;
 
             var option = temp2 ? StorageDeleteOption.PermanentDelete : StorageDeleteOption.Default;
 

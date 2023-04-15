@@ -88,20 +88,20 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         {
             if (list.SelectedItem is MangasFolder datacontext)
             {
-                ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.DefaultBookcaseFolder.ToString()] = datacontext.FolderPath;
+                App.Current.AppConfig.DefaultBookcaseFolder = datacontext.FolderPath;
             }
         }
 
         private void ToggleSwitch_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.IsEmptyFolderShow.ToString()] = toggleSwitch.IsOn;
+            App.Current.AppConfig.IsEmptyFolderShow = toggleSwitch.IsOn;
         }
 
         private void ToggleSwitch_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            var a = (bool)(ApplicationData.Current.LocalSettings.Values[ApplicationSettingItemName.IsEmptyFolderShow.ToString()] ?? false);
+            var a = App.Current.AppConfig.IsEmptyFolderShow;
             toggleSwitch.IsOn = a;
         }
     }
