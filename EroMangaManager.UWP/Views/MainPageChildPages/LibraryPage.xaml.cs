@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using EroMangaManager.Core.ViewModels;
 using EroMangaManager.UWP.Models;
@@ -7,6 +8,7 @@ using EroMangaManager.UWP.Models;
 using MyLibrary.UWP;
 
 using Windows.Storage;
+using Windows.Storage.AccessCache;
 using Windows.UI.Xaml.Controls;
 
 using static MyLibrary.UWP.StorageItemPicker;
@@ -31,34 +33,45 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         {
             Button button = sender as Button;
             button.IsEnabled = false;
-            StorageFolder folder = await OpenSingleFolderAsync();
+            StorageFolder selectedRootFolder = await OpenSingleFolderAsync();
 
-            if (folder != null)
+            if (selectedRootFolder != null)
             {
-                if (!App.Current.GlobalViewModel.StorageFolders.Contains(folder.Path))
+                if(!App.Current.AppConfig.LibraryFolders.Contains(selectedRootFolder.Path))
                 {
-                    List<StorageFolder> folders;
-                    folders = await folder.GetAllStorageFolder();
-                    folders.Add(folder);//得把文件夹自身也加入扫描类中
-                    App.Current.storageItemManager.AddTokenRange(folders);
+                    List<StorageFolder> folders= await selectedRootFolder.GetAllStorageFolder();
+                    folders.Insert(0,selectedRootFolder);//得把文件夹自身也加入扫描类中
+                    folders.Sort((x,y) =>x.Path.CompareTo(y.Path));
 
+                    var array = App.Current.AppConfig.LibraryFolders;
+                    List<string> strings = new List<string>(array);
                     foreach (var f in folders)
                     {
-                        var a = App.Current.GlobalViewModel.AddFolder(f.Path);
+                        strings.Add(f.Path);
+                        StorageApplicationPermissions.FutureAccessList.Add(f);
 
+                        var a = App.Current.GlobalViewModel.AddFolder(f.Path);
                         await ModelFactory.InitialMangasFolder(a, f);
                     }
+
+                    App.Current.AppConfig.LibraryFolders = strings.Distinct().ToArray();
                 }
             }
 
             button.IsEnabled = true;
         }
 
-        private void RemoveFolderButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void RemoveFolderButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             if (list.SelectedItem is MangasFolder storageFolder)
             {
-                App.Current.storageItemManager.RemoveToken(storageFolder.FolderPath);
+                var array= App.Current.AppConfig.LibraryFolders;
+                var strings = new List<string>(array);
+                strings.Remove(storageFolder.FolderPath);
+                App.Current.AppConfig.LibraryFolders= strings.ToArray();
+
+              await  MyLibrary.UWP.AccestListHelper.RemoveFolder(storageFolder.FolderPath);
+
                 App.Current.GlobalViewModel.RemoveFolder(storageFolder);
             }
         }

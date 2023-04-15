@@ -30,7 +30,8 @@ namespace EroMangaManager.UWP.Helpers
                 // text是否合法由对话框保证
                 var text = renameDialog.NewDisplayName;
 
-                await App.Current.storageItemManager.RenameStorageFile(eroManga.FilePath, text + ".zip");
+                await MyLibrary.UWP.AccestListHelper.RenameFile(eroManga.FilePath, text + ".zip");
+
                 eroManga.MangaName = text;
                 eroManga.FilePath = Path.Combine(eroManga.FolderPath, text + ".zip");
 
@@ -63,7 +64,7 @@ namespace EroMangaManager.UWP.Helpers
                 {
                     case ContentDialogResult.Primary:
                         App.Current.GlobalViewModel.RemoveManga(eroManga);
-                        await App.Current.storageItemManager.DeleteStorageFile(eroManga.FilePath, option);
+                        await MyLibrary.UWP.AccestListHelper.DeleteStorageFile(eroManga.FilePath, option);
                         break;
 
                     case ContentDialogResult.Secondary:
@@ -73,7 +74,7 @@ namespace EroMangaManager.UWP.Helpers
             else
             {
                 App.Current.GlobalViewModel.RemoveManga(eroManga);
-                await App.Current.storageItemManager.DeleteStorageFile(eroManga.FilePath, option);
+                await MyLibrary.UWP.AccestListHelper.DeleteStorageFile(eroManga.FilePath, option);
             }
         }
     }

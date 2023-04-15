@@ -120,7 +120,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         private async void LaunchFile(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var mangaBook = (sender as MenuFlyoutItem).DataContext as MangaBook;
-            await Windows.System.Launcher.LaunchFileAsync(await App.Current.storageItemManager.GetStorageFile(mangaBook.FilePath));
+            await Windows.System.Launcher.LaunchFileAsync(await MyLibrary.UWP.AccestListHelper.GetStorageFile(mangaBook.FilePath));
         }
 
         private async void ExportPDF(object sender, Windows.UI.Xaml.RoutedEventArgs e)

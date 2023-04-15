@@ -12,8 +12,6 @@ using EroMangaManager.UWP.Views.MainPageChildPages;
 
 using Microsoft.Toolkit.Uwp.Notifications;
 
-using MyLibrary.UWP.StorageItemManager;
-
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Resources;
@@ -38,9 +36,7 @@ namespace EroMangaManager.UWP
         /// </summary>
         internal ObservableCollectionVM GlobalViewModel { get; private set; }
 
-        internal StorageItemManager storageItemManager = new StorageItemManager();
-
-        internal SettingEnums.IAppConfig AppConfig { get; private set; }
+        internal IAppConfig AppConfig { get; private set; }
 
         private async Task QuickInitialWork()
         {
@@ -96,10 +92,11 @@ namespace EroMangaManager.UWP
 
         private async Task LongTimeLoad()
         {
-            var folder = await MyLibrary.UWP.AccestListHelper.GetAvailableFutureFolder();
-            storageItemManager.InitialRootFolders(folder);
+            var folders = AppConfig.LibraryFolders;
 
-            await ModelFactory.InitialIzeFoldersViewModel(GlobalViewModel, folder.Values);
+            var dic =await MyLibrary.UWP.AccestListHelper.GetAvailableFutureFolder(folders);
+
+            await ModelFactory.InitialIzeFoldersViewModel(GlobalViewModel, dic.Values);
         }
 
         /// <summary>

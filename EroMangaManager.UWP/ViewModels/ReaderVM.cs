@@ -57,7 +57,7 @@ namespace EroMangaManager.UWP.ViewModels
         /// <returns></returns>
         public async Task Initial()
         {
-            var file = await App.Current.storageItemManager.GetStorageFile(Manga.FilePath);
+            var file = await MyLibrary.UWP.AccestListHelper.GetStorageFile(Manga.FilePath);
             stream = await file.OpenStreamForReadAsync();
             zipArchive = ArchiveFactory.Open(stream);
         }
@@ -74,7 +74,7 @@ namespace EroMangaManager.UWP.ViewModels
                 StopWork();
                 return;
             }
-            var file = await App.Current.storageItemManager.GetStorageFile(Manga.FilePath);
+            var file = await MyLibrary.UWP.AccestListHelper.GetStorageFile(Manga.FilePath);
             TempStream = await file.OpenStreamForReadAsync();
 
             TempZipArchive = ArchiveFactory.Open(TempStream);

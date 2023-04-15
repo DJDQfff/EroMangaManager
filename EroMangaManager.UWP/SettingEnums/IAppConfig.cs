@@ -1,4 +1,7 @@
-﻿using Config.Net;
+﻿using System;
+using System.Collections.Generic;
+
+using Config.Net;
 
 namespace EroMangaManager.UWP.SettingEnums
 {
@@ -35,5 +38,10 @@ namespace EroMangaManager.UWP.SettingEnums
         /// 是否在LibraryPage显示空漫画的文件夹
         /// </summary>
         bool IsEmptyFolderShow { set; get; }
+        /// <summary>
+        /// 添加的文件夹集合
+        /// </summary>
+        /// <remarks>当前版本的Config.Net对IEnumerable只读，还不能直接写</remarks>
+        string[] LibraryFolders { get; set; }
     }
 }
