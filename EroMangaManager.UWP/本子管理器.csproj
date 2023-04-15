@@ -478,7 +478,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="itext7">
-      <Version>7.2.4</Version>
+      <Version>7.2.5</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
       <Version>3.1.31</Version>

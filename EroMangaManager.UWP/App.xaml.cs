@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
+
 using EroMangaManager.Core.Models;
 using EroMangaManager.Core.ViewModels;
 using EroMangaManager.UWP.Models;
@@ -18,6 +19,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
+using Config.Net;
 using static EroMangaDB.BasicController;
 using static EroMangaManager.UWP.SettingEnums.FolderEnum;
 using static MyLibrary.UWP.StorageFolderHelper;
