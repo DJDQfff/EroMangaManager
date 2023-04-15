@@ -16,12 +16,10 @@
         </Grid.RowDefinitions>
         <CommandBar>
             <CommandBar.PrimaryCommands>
-                <AppBarButton
-                        Label="{uid:UI Uid=Open}"
+                <AppBarButton Label="{uid:UI Uid=Open}"
                               Click="Button_Click_1"
                               Icon="OpenFile" />
-                <AppBarButton
-                        Label="{uid:UI Uid=DeleteFile}"
+                <AppBarButton Label="{uid:UI Uid=DeleteFile}"
                               Click="Button_Click"
                               Icon="Delete" />
             </CommandBar.PrimaryCommands>
@@ -62,8 +60,7 @@
                                                         TextWrapping="Wrap"
                                                         FontSize="20" />
 
-                                            <TextBlock
-                                                    Text="{x:Bind FileFullName}"
+                                            <TextBlock Text="{x:Bind FileFullName}"
                                                        TextWrapping="Wrap"
                                                        FontSize="20" />
                                             <TextBlock Text="{x:Bind FileSize,Mode=OneTime,Converter={StaticResource filesizeConverter}}" />

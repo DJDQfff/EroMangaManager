@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 using EroMangaManager.Core.ViewModels;
 using EroMangaManager.UWP.Models;
-using EroMangaManager.UWP.SettingEnums;
 
 using MyLibrary.UWP;
 

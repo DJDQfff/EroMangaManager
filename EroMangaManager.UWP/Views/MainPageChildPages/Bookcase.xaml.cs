@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using EroMangaManager.Core.Models;
 using EroMangaManager.Core.ViewModels;
 using EroMangaManager.UWP.Helpers;
-using EroMangaManager.UWP.Views.ContentDialogPages;
 
 using Windows.ApplicationModel.Resources;
 using Windows.Storage;
@@ -35,6 +33,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                 return _data;
             }
         }
+
         /// <summary>
         ///
         /// </summary>
@@ -58,7 +57,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                 case MangasFolder mangasFolder:
                     BindMangasFolder = mangasFolder;
                     break;
-
             }
         }
 
@@ -151,7 +149,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             await StorageHelper.RenameSourceFile(eroManga, null);
         }
 
-        private  void ViewMangaTag(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void ViewMangaTag(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             // TODO 以后再完成此功能
             //MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;

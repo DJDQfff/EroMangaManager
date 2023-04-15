@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
+using EroMangaDB;
+using EroMangaDB.Entities;
+
 using EroMangaManager.Core.Models;
-using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.ViewModels;
-using static EroMangaDB.BasicController;
 
 using SharpCompress.Archives;
 
@@ -16,14 +18,12 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
+using static EroMangaDB.BasicController;
 using static EroMangaManager.UWP.Helpers.ZipEntryHelper;
 using static EroMangaManager.UWP.SettingEnums.FolderEnum;
 using static MyLibrary.Standard20.HashComputer;
 using static MyLibrary.UWP.StorageFolderHelper;
 using static MyLibrary.UWP.StorageItemPicker;
-using EroMangaDB.Entities;
-using EroMangaDB;
-using System.Linq;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
@@ -91,7 +91,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                 oldreader?.Dispose();
 
                 FLIP.ItemsSource = currentReader.BitmapImages;
-
 
                 var isfilterimage = App.Current.AppConfig.IsFilterImageOn;
                 FilteredImage[] filteredImages = null;

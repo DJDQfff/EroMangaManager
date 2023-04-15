@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
-using static MyLibrary.Standard20.HashComputer;
-
+using EroMangaDB.Entities;
 
 using SharpCompress.Archives;
 
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Media.Imaging;
 
-using static EroMangaDB.BasicController;
-using EroMangaDB.Entities;
-using System.Linq;
-using iText.Kernel.Pdf.Canvas.Parser.ClipperLib;
+using static MyLibrary.Standard20.HashComputer;
 
 namespace EroMangaManager.UWP.Helpers
 {
@@ -23,7 +20,6 @@ namespace EroMangaManager.UWP.Helpers
     /// </summary>
     public static class ZipEntryHelper
     {
-
         /// <summary>
         /// 获取bitmapimage
         /// </summary>
@@ -75,7 +71,7 @@ namespace EroMangaManager.UWP.Helpers
             {
                 #region 第一个条件：比较数据库，解压后大小
 
-                if (filteredImages.Count(n => n.ZipEntryLength == entry.Size)==0)
+                if (filteredImages.Count(n => n.ZipEntryLength == entry.Size) == 0)
                     return true;
 
                 #endregion 第一个条件：比较数据库，解压后大小
@@ -87,7 +83,7 @@ namespace EroMangaManager.UWP.Helpers
                     string hash = stream.ComputeHash();
                     int count = filteredImages.Count(n => n.Hash == hash);
 
-                    if (count!=0)
+                    if (count != 0)
                     {
                         canuse = false;
                     }
@@ -125,8 +121,5 @@ namespace EroMangaManager.UWP.Helpers
 
             return vs;
         }
-
-
-
     }
 }

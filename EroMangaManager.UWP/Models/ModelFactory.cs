@@ -4,12 +4,15 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
+using EroMangaDB;
+
 using EroMangaManager.Core.Models;
 using EroMangaManager.Core.ViewModels;
 using EroMangaManager.UWP.Helpers;
-using EroMangaDB;
-using Windows.Storage;
+
 using MyLibrary.Standard20;
+
+using Windows.Storage;
 
 namespace EroMangaManager.UWP.Models
 {
@@ -48,11 +51,11 @@ namespace EroMangaManager.UWP.Models
             var files = await StorageFolder.GetFilesAsync();
             var filteredfiles = files.Where(x => Path.GetExtension(x.Path).ToLower() == ".zip").ToList();
 
-            var a=BasicController.DatabaseController.database.FilteredImages.ToArray();
+            var a = BasicController.DatabaseController.database.FilteredImages.ToArray();
             List<Task> tasks = new List<Task>();
 
             LimitedConcurrencyLevelTaskScheduler lcts = new LimitedConcurrencyLevelTaskScheduler(2);
-            TaskFactory taskFactory=new TaskFactory(lcts);
+            TaskFactory taskFactory = new TaskFactory(lcts);
             foreach (var storageFile in filteredfiles)
             {
                 var file = storageFile;
@@ -61,7 +64,7 @@ namespace EroMangaManager.UWP.Models
 
                 mangasFolder.MangaBooks.Add(manga);
 
-                Task task =  taskFactory.StartNew( async()=> manga.CoverPath=(await Helpers.CoverHelper.TryCreatCoverFileAsync(file,a)) ?? CoverHelper.DefaultCoverPath); 
+                Task task = taskFactory.StartNew(async () => manga.CoverPath = (await Helpers.CoverHelper.TryCreatCoverFileAsync(file, a)) ?? CoverHelper.DefaultCoverPath);
                 tasks.Add(task);
             }
             mangasFolder.IsInitialing = false;

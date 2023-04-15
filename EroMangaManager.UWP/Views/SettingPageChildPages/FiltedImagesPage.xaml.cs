@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-using EroMangaManager.UWP.SettingEnums;
-using static EroMangaDB.BasicController;
-using Org.BouncyCastle.Utilities.Collections;
-
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+
+using static EroMangaDB.BasicController;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
@@ -69,7 +67,7 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
         private void ToggleSwitch_Loaded(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            var a=App.Current.AppConfig.IsFilterImageOn;
+            var a = App.Current.AppConfig.IsFilterImageOn;
             toggleSwitch.IsOn = a;
         }
     }

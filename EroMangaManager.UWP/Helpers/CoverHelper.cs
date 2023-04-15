@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using System.Threading.Tasks;
 
 using EroMangaDB.Entities;
@@ -38,7 +37,7 @@ namespace EroMangaManager.UWP.Helpers
             var cover = await coverfolder.TryGetItemAsync(file.DisplayName + ".jpg");
 
             if (cover != null)
-            {      
+            {
                 // 以前是在MangaBook类里面放一个封面图像缓存，现在改为使用封面图像文件路径，这个方法也废弃
 
                 //Windows.Storage.StorageFile StorageFile = cover as Windows.Storage.StorageFile;
@@ -156,6 +155,5 @@ namespace EroMangaManager.UWP.Helpers
 
             return path;
         }
-
     }
 }

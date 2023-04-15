@@ -3,7 +3,7 @@
                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
+               xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
                mc:Ignorable="d"
                PrimaryButtonText="{uid:UI Uid=Yes}"
                SecondaryButtonText="{uid:UI Uid=CancleEdit}">
@@ -21,10 +21,11 @@ xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
                 <ColumnDefinition  Width="*" />
                 <ColumnDefinition  Width="auto" />
             </Grid.ColumnDefinitions>
-            <TextBox TextChanged="TextBox_TextChanged" 
+            <TextBox TextChanged="TextBox_TextChanged"
                      TextWrapping="Wrap"
                      x:Name="textbox" />
-            <TextBlock Grid.Column="1" TextWrapping="Wrap"
+            <TextBlock Grid.Column="1"
+                       TextWrapping="Wrap"
                        Text=".zip" />
         </Grid>
         <TextBlock  Grid.Row="2"

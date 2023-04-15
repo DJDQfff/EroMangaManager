@@ -1,4 +1,5 @@
 ﻿using Config.Net;
+
 namespace EroMangaManager.UWP.SettingEnums
 {
     /// <summary>
@@ -9,31 +10,30 @@ namespace EroMangaManager.UWP.SettingEnums
         /// <summary>
         /// 是否启用图片过滤功能
         /// </summary>
-        [Option(DefaultValue =false)]
-       bool IsFilterImageOn { set; get; }
+        [Option(DefaultValue = false)]
+        bool IsFilterImageOn { set; get; }
 
         /// <summary>
         /// 删除漫画源文件前是否显示删除确认对话框
         /// </summary>
-        [Option(DefaultValue =false)]
-       bool  WhetherShowDialogBeforeDelete { set; get; }
+        [Option(DefaultValue = false)]
+        bool WhetherShowDialogBeforeDelete { set; get; }
 
         /// <summary>
         /// 删除模式，是移动到回收站还是直接磁盘删除
         /// </summary>
-        [Option(DefaultValue =false)]
-       bool StorageDeleteOption { set; get; }
+        [Option(DefaultValue = false)]
+        bool StorageDeleteOption { set; get; }
 
         /// <summary>
         /// 默认的Bookcase展示的页面
         /// </summary>
-        [Option(DefaultValue =null)]
-      string DefaultBookcaseFolder { set; get; }
+        [Option(DefaultValue = null)]
+        string DefaultBookcaseFolder { set; get; }
 
         /// <summary>
         /// 是否在LibraryPage显示空漫画的文件夹
         /// </summary>
-      bool IsEmptyFolderShow { set; get; }
-
+        bool IsEmptyFolderShow { set; get; }
     }
 }

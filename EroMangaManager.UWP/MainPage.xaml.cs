@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Linq;
 
-using EroMangaManager.UWP.SettingEnums;
 using EroMangaManager.UWP.Views.MainPageChildPages;
 
-using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -39,7 +37,7 @@ namespace EroMangaManager.UWP
         {
             base.OnNavigatedTo(e);
 
-            var defaultfolderpath = App.Current.AppConfig.DefaultBookcaseFolder; 
+            var defaultfolderpath = App.Current.AppConfig.DefaultBookcaseFolder;
             var defaultfolder = App.Current.GlobalViewModel.MangaFolders.SingleOrDefault(x => x.FolderPath == defaultfolderpath);
 
             MainFrame.Navigate(typeof(Bookcase), defaultfolder);

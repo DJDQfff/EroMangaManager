@@ -3,7 +3,9 @@ using System.Linq;
 
 using EroMangaManager.Core.Models;
 using EroMangaManager.Core.ViewModels;
+
 using MyLibrary.Standard20;
+
 using Windows.UI.Xaml.Controls;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
@@ -65,6 +67,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                 sender.ItemsSource = a;
             }
         }
+
         private void SearchStartButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var manganame = MangaNameAugoSuggestBox.Text;
@@ -83,7 +86,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                     .Count(y => x.FileDisplayName.Contains(y)) == requiredMatchCount);
 
             ResultGridView.ItemsSource = conditions;
-
         }
 
         private void ShowInBookcaseButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -95,7 +97,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             var mangasfolder = new MangasFolder(null);
             mangasfolder.MangaBooks.AddRange(condition);
             MainPage.Current.MainFrame.Navigate(typeof(Bookcase), mangasfolder);
-
         }
     }
 }

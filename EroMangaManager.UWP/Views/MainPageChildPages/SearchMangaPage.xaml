@@ -32,8 +32,7 @@
                                 VerticalAlignment="Top"
                                 VerticalContentAlignment="Stretch"
                                 TextChanged="MangaNameAugoSuggestBox_TextChanged" />
-                <toolkit:TokenizingTextBox
-                        Header="{uid:UI Uid=SearchByTag}"
+                <toolkit:TokenizingTextBox Header="{uid:UI Uid=SearchByTag}"
                                            x:Name="MangaTagTokenizingTextBox"
                                            Grid.Row="1"
                                            HorizontalAlignment="Stretch"
@@ -43,36 +42,33 @@
                                            TokenItemAdded="MangaTagTokenBox_TokenItemAdded"
                                            TokenItemRemoved="MangaTagTokenBox_TokenItemRemoved">
                     <toolkit:TokenizingTextBox.QueryIcon>
-                        <FontIconSource
-                                Glyph="&#xE11A;"
+                        <FontIconSource Glyph="&#xE11A;"
                                         FontFamily="Segoe MDL2 Assets" />
                     </toolkit:TokenizingTextBox.QueryIcon>
 
                     <toolkit:TokenizingTextBox.SuggestedItemTemplate>
-                        <DataTemplate
-                                x:DataType="x:String">
-                            <TextBlock
-                                    Text="{x:Bind Mode=OneTime}" />
+                        <DataTemplate x:DataType="x:String">
+                            <TextBlock Text="{x:Bind Mode=OneTime}" />
                         </DataTemplate>
                     </toolkit:TokenizingTextBox.SuggestedItemTemplate>
                 </toolkit:TokenizingTextBox>
             </Grid>
         </Grid>
         <StackPanel Orientation="Horizontal"
-                    Grid.Row="1">  
-            <Button x:Name="SearchStartButton" Click="SearchStartButton_Click"
+                    Grid.Row="1">
+            <Button x:Name="SearchStartButton"
+                    Click="SearchStartButton_Click"
                     Content="{uid:UI Uid=Search}"
-                    VerticalAlignment="Stretch"/>
+                    VerticalAlignment="Stretch" />
 
-            <Button x:Name="ShowInBookcaseButton" Content="{uid:UI Uid=ShowFolderBookcase}"
-                    Click="ShowInBookcaseButton_Click" />    
-
+            <Button x:Name="ShowInBookcaseButton"
+                    Content="{uid:UI Uid=ShowFolderBookcase}"
+                    Click="ShowInBookcaseButton_Click" />
         </StackPanel>
         <GridView x:Name="ResultGridView"
                   Grid.Row="2">
             <GridView.ItemTemplate>
-                <DataTemplate
-                        x:DataType="model:MangaBook">
+                <DataTemplate x:DataType="model:MangaBook">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />

@@ -49,7 +49,6 @@ namespace EroMangaManager.UWP.Helpers
         /// <returns></returns>
         public static async Task DeleteSourceFile(MangaBook eroManga)
         {
-
             var temp1 = App.Current.AppConfig.WhetherShowDialogBeforeDelete;
 
             var temp2 = App.Current.AppConfig.StorageDeleteOption;

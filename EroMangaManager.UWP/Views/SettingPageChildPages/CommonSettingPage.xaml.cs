@@ -1,7 +1,4 @@
-﻿using EroMangaManager.UWP.SettingEnums;
-
-using Windows.Storage;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
@@ -42,8 +39,6 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
             var b = App.Current.AppConfig.WhetherShowDialogBeforeDelete;
 
             toggleSwitch.IsOn = b;
-
-
         }
 
         private void ToggleSwitch_Loaded_1(object sender, RoutedEventArgs e)

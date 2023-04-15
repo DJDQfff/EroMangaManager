@@ -51,8 +51,6 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
             await Helpers.StorageHelper.DeleteSourceFile(SelectedMangaBook);
 
             mangaBookViewModel.DeleteStorageFileInRootObservable(SelectedMangaBook);
-
-            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
