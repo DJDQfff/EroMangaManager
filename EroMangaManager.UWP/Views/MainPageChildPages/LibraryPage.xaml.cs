@@ -68,8 +68,8 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         {
             if (list.SelectedItem is MangasFolder storageFolder)
             {
-                var array= App.Current.AppConfig.LibraryFolders;
-                var strings = new List<string>(array);
+                var librarys= App.Current.AppConfig.LibraryFolders;
+                var strings = new List<string>(librarys);
                 strings.Remove(storageFolder.FolderPath);
                 App.Current.AppConfig.LibraryFolders= strings.ToArray();
 
