@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 
 using EroMangaDB.Entities;
 
-using EroMangaManager.Core.Models;
-
 using SharpCompress.Archives;
 
 using Windows.Storage;
@@ -24,7 +22,6 @@ namespace EroMangaManager.UWP.Helpers
     /// </summary>
     public static class CoverHelper
     {
-
         private static SvgImageSource _imageSource;
 
         /// <summary>

@@ -33,16 +33,15 @@ namespace EroMangaManager.UWP.Models
             };
         }
 
-        public static async Task ViewModelInitialEachFolders( ObservableCollectionVM ViewModel)
+        public static async Task ViewModelInitialEachFolders(ObservableCollectionVM ViewModel)
         {
             foreach (var folder in ViewModel.MangaFolders)
             {
                 var tempfolder = folder;
                 var folderpath = tempfolder.FolderPath;
-                var storagefolder=await MyLibrary.UWP.AccestListHelper.GetStorageFolder(folderpath);
+                var storagefolder = await MyLibrary.UWP.AccestListHelper.GetStorageFolder(folderpath);
                 await ModelFactory.InitialMangasFolder(tempfolder, storagefolder.Item2);
             }
-
         }
 
         /// <summary>

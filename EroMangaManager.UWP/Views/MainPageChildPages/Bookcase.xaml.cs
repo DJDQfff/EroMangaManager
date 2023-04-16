@@ -6,7 +6,6 @@ using EroMangaManager.Core.ViewModels;
 using EroMangaManager.UWP.Helpers;
 
 using Windows.ApplicationModel.Resources;
-using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -130,9 +129,8 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
             MangaBook mangaBook = menuFlyout.DataContext as MangaBook;
 
-
             FileSavePicker fileSavePicker = new FileSavePicker();
-            fileSavePicker.FileTypeChoices.Add( "PDF",new List<string>{ ".pdf"});
+            fileSavePicker.FileTypeChoices.Add("PDF", new List<string> { ".pdf" });
             fileSavePicker.SuggestedFileName = mangaBook.FileDisplayName;
             var storageFile = await fileSavePicker.PickSaveFileAsync();
 
