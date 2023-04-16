@@ -22,7 +22,7 @@ namespace EroMangaManager.UWP.Models
     internal static class ModelFactory
     {
         /// <summary>ViewModel初始化</summary>
-        public static async Task InitialIzeFoldersViewModel(ObservableCollectionVM ViewModel, IEnumerable<StorageFolder> storageFolders)
+        public static void ViewModelGetAllFolders(ObservableCollectionVM ViewModel, IEnumerable<StorageFolder> storageFolders)
         {
             ViewModel.MangaFolders.Clear();
 
@@ -31,12 +31,18 @@ namespace EroMangaManager.UWP.Models
                 MangasFolder mangasFolder = new MangasFolder(folder.Path);
                 ViewModel.MangaFolders.Add(mangasFolder);
             };
+        }
+
+        public static async Task ViewModelInitialEachFolders( ObservableCollectionVM ViewModel)
+        {
             foreach (var folder in ViewModel.MangaFolders)
             {
                 var tempfolder = folder;
-                var storage = storageFolders.Single(x => x.Path == folder.FolderPath);
-                await ModelFactory.InitialMangasFolder(tempfolder, storage);
+                var folderpath = tempfolder.FolderPath;
+                var storagefolder=await MyLibrary.UWP.AccestListHelper.GetStorageFolder(folderpath);
+                await ModelFactory.InitialMangasFolder(tempfolder, storagefolder.Item2);
             }
+
         }
 
         /// <summary>

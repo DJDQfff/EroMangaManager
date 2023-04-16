@@ -90,10 +90,7 @@ namespace EroMangaManager.UWP
                     .AddText(str)
                     .Show();
             };
-        }
 
-        private async Task LongTimeLoad()
-        {
             var alldic =await MyLibrary.UWP.AccestListHelper.GetAvailableFutureFolder();
 
             Dictionary<string,StorageFolder> keyValuePairs = new Dictionary<string,StorageFolder>();
@@ -106,7 +103,14 @@ namespace EroMangaManager.UWP
                 keyValuePairs.Add(pair.Key,pair.Value);
             }
 
-            await ModelFactory.InitialIzeFoldersViewModel(GlobalViewModel, keyValuePairs.Values);
+            ModelFactory.ViewModelGetAllFolders(GlobalViewModel, keyValuePairs.Values);
+
+        }
+
+        private async Task LongTimeLoad()
+        {
+         await   ModelFactory.ViewModelInitialEachFolders(GlobalViewModel);
+
         }
 
         /// <summary>
