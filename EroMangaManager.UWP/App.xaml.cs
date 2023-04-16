@@ -91,26 +91,24 @@ namespace EroMangaManager.UWP
                     .Show();
             };
 
-            var alldic =await MyLibrary.UWP.AccestListHelper.GetAvailableFutureFolder();
+            var alldic = await MyLibrary.UWP.AccestListHelper.GetAvailableFutureFolder();
 
-            Dictionary<string,StorageFolder> keyValuePairs = new Dictionary<string,StorageFolder>();
+            Dictionary<string, StorageFolder> keyValuePairs = new Dictionary<string, StorageFolder>();
 
             var folders = AppConfig.LibraryFolders;
 
-            foreach(var folder in folders)
+            foreach (var folder in folders)
             {
-                var pair=alldic.Single(x=>x.Value.Path==folder);
-                keyValuePairs.Add(pair.Key,pair.Value);
+                var pair = alldic.Single(x => x.Value.Path == folder);
+                keyValuePairs.Add(pair.Key, pair.Value);
             }
 
             ModelFactory.ViewModelGetAllFolders(GlobalViewModel, keyValuePairs.Values);
-
         }
 
         private async Task LongTimeLoad()
         {
-         await   ModelFactory.ViewModelInitialEachFolders(GlobalViewModel);
-
+            await ModelFactory.ViewModelInitialEachFolders(GlobalViewModel);
         }
 
         /// <summary>
