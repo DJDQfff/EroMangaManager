@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Config.Net;
@@ -92,11 +94,19 @@ namespace EroMangaManager.UWP
 
         private async Task LongTimeLoad()
         {
+            var alldic =await MyLibrary.UWP.AccestListHelper.GetAvailableFutureFolder();
+
+            Dictionary<string,StorageFolder> keyValuePairs = new Dictionary<string,StorageFolder>();
+
             var folders = AppConfig.LibraryFolders;
 
-            var dic =await MyLibrary.UWP.AccestListHelper.GetAvailableFutureFolder(folders);
+            foreach(var folder in folders)
+            {
+                var pair=alldic.Single(x=>x.Value.Path==folder);
+                keyValuePairs.Add(pair.Key,pair.Value);
+            }
 
-            await ModelFactory.InitialIzeFoldersViewModel(GlobalViewModel, dic.Values);
+            await ModelFactory.InitialIzeFoldersViewModel(GlobalViewModel, keyValuePairs.Values);
         }
 
         /// <summary>

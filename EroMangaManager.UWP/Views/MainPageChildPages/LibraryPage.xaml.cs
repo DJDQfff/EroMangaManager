@@ -37,24 +37,27 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
             if (selectedRootFolder != null)
             {
-                if(!App.Current.AppConfig.LibraryFolders.Contains(selectedRootFolder.Path))
-                {
-                    List<StorageFolder> folders= await selectedRootFolder.GetAllStorageFolder();
-                    folders.Insert(0,selectedRootFolder);//得把文件夹自身也加入扫描类中
-                    folders.Sort((x,y) =>x.Path.CompareTo(y.Path));
-
-                    var array = App.Current.AppConfig.LibraryFolders;
-                    List<string> strings = new List<string>(array);
-                    foreach (var f in folders)
+                var libraryfolders = App.Current.AppConfig.LibraryFolders;
+                    if (!libraryfolders.Contains(selectedRootFolder.Path))
                     {
-                        strings.Add(f.Path);
-                        StorageApplicationPermissions.FutureAccessList.Add(f);
+                        List<StorageFolder> folders = await selectedRootFolder.GetAllStorageFolder();
+                        folders.Insert(0, selectedRootFolder);//得把文件夹自身也加入扫描类中
+                        folders.Sort((x, y) => x.Path.CompareTo(y.Path));
 
-                        var a = App.Current.GlobalViewModel.AddFolder(f.Path);
-                        await ModelFactory.InitialMangasFolder(a, f);
-                    }
+                        var array = App.Current.AppConfig.LibraryFolders;
+                        List<string> strings = new List<string>(array);
+                        foreach (var f in folders)
+                        {
+                            strings.Add(f.Path);
+                            StorageApplicationPermissions.FutureAccessList.Add(f);
 
-                    App.Current.AppConfig.LibraryFolders = strings.Distinct().ToArray();
+                            var a = App.Current.GlobalViewModel.AddFolder(f.Path);
+                            await ModelFactory.InitialMangasFolder(a, f);
+                        }
+
+                        App.Current.AppConfig.LibraryFolders = strings.Distinct().ToArray();
+                    
+
                 }
             }
 
@@ -100,7 +103,13 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         {
             if (list.SelectedItem is MangasFolder datacontext)
             {
-                App.Current.AppConfig.DefaultBookcaseFolder = datacontext.FolderPath;
+                var folders = App.Current.AppConfig.LibraryFolders ;
+                var list = new List<string>(folders);
+
+                var defaultpath= datacontext.FolderPath;
+                list.Remove(defaultpath);
+                list.Insert(0, defaultpath);
+                App.Current.AppConfig.LibraryFolders = list.ToArray();
             }
         }
 
