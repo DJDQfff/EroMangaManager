@@ -11,7 +11,7 @@ namespace EroMangaDB.Helper
     {
         private const string left = "[【（({";// 左括号
         private const string right = "]】)）}";// 右括号
-        private const string lr = left + right;// 所有括号
+        private const string leftright = left + right;// 所有括号
 
         /// <summary>
         /// 按左右括号分离tag并解析
@@ -20,7 +20,7 @@ namespace EroMangaDB.Helper
         /// <returns>第一个是MangaName，后面的是tag</returns>
         public static List<string> SplitAndParser(this string _MangaFileName)
         {
-            string[] tagsarray = _MangaFileName.Split(lr.ToCharArray());              // 初步分解
+            string[] tagsarray = _MangaFileName.Split(leftright.ToCharArray());              // 初步分解
 
             List<string> tagslist = new List<string>(tagsarray);
 
@@ -52,10 +52,7 @@ namespace EroMangaDB.Helper
                 // 出现异常说明： 漫画名不是由Tag组成的、或者组成形式不符合一般规律
             }
 
-            for (int i = 0; i < tagslist.Count; i++)                // 移除所有Tag的首尾空白
-            {
-                tagslist[i] = tagslist[i].Trim();
-            }
+            tagslist.ForEach(x => x.Trim());            // 移除所有Tag的首尾空白
 
             if (!flaghaveMangaName)
             {

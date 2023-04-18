@@ -20,7 +20,7 @@ namespace EroMangaDB.EntityFactory
             string manganamewithTag = Path.GetFileNameWithoutExtension(absolutepath);
 
             var tags = manganamewithTag.SplitAndParser();
-            string manganame = tags[0];    // 如果第一个元素为null，则以本子全名为名
+            string manganame = tags[0];    
             tags.RemoveAt(0);
 
             ReadingInfo readingInfo = new ReadingInfo()
