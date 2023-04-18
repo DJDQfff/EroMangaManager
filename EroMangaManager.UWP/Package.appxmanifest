@@ -51,8 +51,8 @@
             <uap:SupportedFileTypes>
               <uap:FileType>.zip</uap:FileType>
             </uap:SupportedFileTypes>
-            <uap:InfoTip>作为漫画打开</uap:InfoTip>
-            <uap:DisplayName>zip漫画</uap:DisplayName>
+            <uap:InfoTip>ms-resource:/Appxmanifest/OpenAsAZipComic</uap:InfoTip>
+            <uap:DisplayName>ms-resource:/Appxmanifest/ZipComic</uap:DisplayName>
           </uap:FileTypeAssociation>
         </uap:Extension>
       </Extensions>

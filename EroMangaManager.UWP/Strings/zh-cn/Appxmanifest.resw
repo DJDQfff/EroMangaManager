@@ -123,4 +123,10 @@
   <data name="Description" xml:space="preserve">
     <value>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</value>
   </data>
+  <data name="OpenAsAZipComic" xml:space="preserve">
+    <value>作为zip压缩包漫画打开</value>
+  </data>
+  <data name="ZipComic" xml:space="preserve">
+    <value>zip漫画包</value>
+  </data>
 </root>
