@@ -23,8 +23,6 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
 
         private List<MangaBook> mangaBooks;
 
-        private MangaBook SelectedMangaBook;
-
         /// <summary>
         ///
         /// </summary>
@@ -46,25 +44,25 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
             listView.ItemsSource = mangaBookViewModel.RepeatPairs;
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private async void DeleteFileClick(object sender, RoutedEventArgs e)
         {
-            await Helpers.StorageHelper.DeleteSourceFile(SelectedMangaBook);
+            var button = sender as Button;
+           var manga=button.DataContext as MangaBook;
 
-            mangaBookViewModel.DeleteStorageFileInRootObservable(SelectedMangaBook);
+            await Helpers.StorageHelper.DeleteSourceFile(manga);
+
+            mangaBookViewModel.DeleteStorageFileInRootObservable(manga);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void OpenMangaClick(object sender, RoutedEventArgs e)
         {
-            MainPage.Current.MainFrame.Navigate(typeof(ReadPage), SelectedMangaBook);
+            var button = sender as Button;
+            var manga = button.DataContext as MangaBook;
+
+            MainPage.Current.MainFrame.Navigate(typeof(ReadPage), manga);
 
             MainPage.Current.MainNavigationView.SelectedItem = MainPage.Current.MainNavigationView.MenuItems[2];
         }
 
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var listview = sender as ListView;
-            var book = listview.SelectedItem as MangaBook;
-            SelectedMangaBook = book;
-        }
     }
 }
