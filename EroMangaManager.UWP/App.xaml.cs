@@ -76,7 +76,7 @@ namespace EroMangaManager.UWP
 
             Helpers.CoverHelper.InitialDefaultCover();
             await EnsureChildTemporaryFolders(Covers.ToString(), Filters.ToString());
-
+            #region 事件赋值
             GlobalViewModel.ErrorZipEvent += (string str) =>
             {
                 new ToastContentBuilder()
@@ -90,7 +90,8 @@ namespace EroMangaManager.UWP
                     .AddText(str)
                     .Show();
             };
-
+            #endregion
+            #region 初始化文件夹目录
             var alldic = await MyLibrary.UWP.AccestListHelper.GetAvailableFutureFolder();
 
             Dictionary<string, StorageFolder> keyValuePairs = new Dictionary<string, StorageFolder>();
@@ -99,11 +100,17 @@ namespace EroMangaManager.UWP
 
             foreach (var folder in folders)
             {
+                try
+                {
                 var pair = alldic.Single(x => x.Value.Path == folder);
-                keyValuePairs.Add(pair.Key, pair.Value);
+                            
+                 keyValuePairs.Add(pair.Key, pair.Value);
+                }
+                catch { }
             }
 
             ModelFactory.ViewModelGetAllFolders(GlobalViewModel, keyValuePairs.Values);
+            #endregion
         }
 
         private async Task LongTimeLoad()

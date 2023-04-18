@@ -22,6 +22,14 @@
           <source>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png格式</source>
           <target state="needs-review-translation" state-qualifier="mt-suggestion">This is a manga manager for managing and reading your saved comics in zip form. Internal images must be in JPG and PNG formats</target>
         </trans-unit>
+        <trans-unit id="OpenAsAZipComic" translate="yes" xml:space="preserve">
+          <source>作为zip压缩包漫画打开</source>
+          <target state="new">作为zip压缩包漫画打开</target>
+        </trans-unit>
+        <trans-unit id="ZipComic" translate="yes" xml:space="preserve">
+          <source>zip漫画包</source>
+          <target state="new">zip漫画包</target>
+        </trans-unit>
       </group>
     </body>
   </file>
