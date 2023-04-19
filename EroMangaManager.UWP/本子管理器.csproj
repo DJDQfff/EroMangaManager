@@ -136,6 +136,7 @@
   <ItemGroup>
     <Compile Include="Helpers\Exporter.cs" />
     <Compile Include="Helpers\StorageHelper.cs" />
+    <Compile Include="Helpers\WindowHelper.cs" />
     <Compile Include="Models\ReswEnum.cs" />
     <Compile Include="SettingEnums\IAppConfig.cs" />
     <Compile Include="Models\ModelFactory.cs" />

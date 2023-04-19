@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using EroMangaManager.Core.Models;
+using EroMangaManager.UWP.Helpers;
 using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.Views.MainPageChildPages;
 
@@ -63,24 +64,7 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
             var button = sender as Button;
             var manga = button.DataContext as MangaBook;
 
-            CoreApplicationView newView = CoreApplication.CreateNewView();
-            int newViewId = 0;
-            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
-                Frame frame = new Frame();
-                frame.Navigate(typeof(ReadPage), manga);
-                Window.Current.Content = frame;
-                // You have to activate the window in order to show it later.
-                Window.Current.Activate();
-                Window.Current.Closed += (objectsender, args) =>
-                {
-                    var page = frame.Content as ReadPage;
-                    page.currentReader.Dispose();
-                };
-                newViewId = ApplicationView.GetForCurrentView().Id;
-            });
-            bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
-
+            await WindowHelper.ShowNewReadPageWindow(manga);
         }
 
     }
