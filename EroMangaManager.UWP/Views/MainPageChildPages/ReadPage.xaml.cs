@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 using EroMangaDB;
@@ -40,6 +41,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         /// </summary>
         public ReaderVM currentReader = null;
 
+       public CancellationTokenSource        CancellationTokenSource= new CancellationTokenSource();
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -105,8 +107,12 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                 filteredImages = BasicController.DatabaseController.database.FilteredImages.ToArray();
             }
             await currentReader.SelectEntriesAsync(filteredImages);
+
+            // TODO 任务取消，但是会一直报错
+            //await Task.Run(async () => { await currentReader.SelectEntriesAsync(filteredImages); });
         }
 
+       
         #region 数据绑定到已解码的BitmapImage
 
         private async void FilteThisImage2_Click(object sender, RoutedEventArgs e)

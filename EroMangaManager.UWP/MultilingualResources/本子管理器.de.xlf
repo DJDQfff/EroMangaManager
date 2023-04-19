@@ -24,11 +24,11 @@
         </trans-unit>
         <trans-unit id="OpenAsAZipComic" translate="yes" xml:space="preserve">
           <source>作为zip压缩包漫画打开</source>
-          <target state="new">作为zip压缩包漫画打开</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">Öffnen als Zip-Archiv für Comics</target>
         </trans-unit>
         <trans-unit id="ZipComic" translate="yes" xml:space="preserve">
           <source>zip漫画包</source>
-          <target state="new">zip漫画包</target>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">ZIP-Comic-Paket</target>
         </trans-unit>
       </group>
     </body>
