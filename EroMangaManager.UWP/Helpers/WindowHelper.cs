@@ -31,7 +31,7 @@ namespace EroMangaManager.UWP.Helpers
                 Window.Current.Closed += (objectsender, args) =>
                 {
                     var page = frame.Content as ReadPage;
-                    page.currentReader.Dispose();
+                    page.currentReader?.Dispose();
                     GC.SuppressFinalize(Window.Current);
                 };
                 newViewId = ApplicationView.GetForCurrentView().Id;
