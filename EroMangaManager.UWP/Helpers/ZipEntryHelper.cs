@@ -27,24 +27,23 @@ namespace EroMangaManager.UWP.Helpers
         /// <returns></returns>
         public static async Task<BitmapImage> ShowEntryAsync(IArchiveEntry entry)
         {
-            using (Stream stream1 = entry.OpenEntryStream())
+            BitmapImage bitmapImage = new BitmapImage();
+
+            using (MemoryStream memoryStream = new MemoryStream())
             {
-                using (MemoryStream memoryStream = new MemoryStream())
+                entry.WriteTo(memoryStream);
+                memoryStream.Position = 0;
+
+                using (IRandomAccessStream randomAccessStream = memoryStream.AsRandomAccessStream())
                 {
-                    stream1.CopyTo(memoryStream);
+                    randomAccessStream.Seek(0);//记得偏移量归零，
 
-                    using (IRandomAccessStream randomAccessStream = memoryStream.AsRandomAccessStream())
-                    {
-                        randomAccessStream.Seek(0);//记得偏移量归零，
-
-                        BitmapImage bitmapImage = new BitmapImage();
-
-                        await bitmapImage.SetSourceAsync(randomAccessStream);
-
-                        return bitmapImage;
-                    }
+                    await bitmapImage.SetSourceAsync(randomAccessStream);
                 }
-            }
+            }    
+            
+            return bitmapImage;
+
         }
 
         /// <summary>
