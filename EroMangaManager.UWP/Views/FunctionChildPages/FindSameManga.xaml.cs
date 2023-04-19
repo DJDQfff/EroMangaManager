@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.Models;
@@ -6,6 +7,9 @@ using EroMangaManager.UWP.Views.MainPageChildPages;
 
 using GroupedItemsLibrary.ViewModels;
 
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -54,14 +58,29 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
             mangaBookViewModel.DeleteStorageFileInRootObservable(manga);
         }
 
-        private void OpenMangaClick(object sender, RoutedEventArgs e)
+        private async void OpenMangaClick(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
             var manga = button.DataContext as MangaBook;
 
-            MainPage.Current.MainFrame.Navigate(typeof(ReadPage), manga);
+            CoreApplicationView newView = CoreApplication.CreateNewView();
+            int newViewId = 0;
+            await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                Frame frame = new Frame();
+                frame.Navigate(typeof(ReadPage), manga);
+                Window.Current.Content = frame;
+                // You have to activate the window in order to show it later.
+                Window.Current.Activate();
+                Window.Current.Closed += (objectsender, args) =>
+                {
+                    var page = frame.Content as ReadPage;
+                    page.currentReader.Dispose();
+                };
+                newViewId = ApplicationView.GetForCurrentView().Id;
+            });
+            bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
 
-            MainPage.Current.MainNavigationView.SelectedItem = MainPage.Current.MainNavigationView.MenuItems[2];
         }
 
     }
