@@ -90,7 +90,7 @@ namespace EroMangaManager.UWP.ViewModels
                 }
 
                 var TempEntry = TempZipArchive.Entries.Single(n => n.Key == name);
-                bool cansue = await Task.Run(() => TempEntry.EntryFilter(filteredImages)); // 放在这里可以
+                bool cansue = TempEntry.EntryFilter(filteredImages); // 放在这里可以
 
                 if (cansue)
                 {
