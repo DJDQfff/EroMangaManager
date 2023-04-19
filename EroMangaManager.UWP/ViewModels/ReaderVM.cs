@@ -125,6 +125,8 @@ namespace EroMangaManager.UWP.ViewModels
             BitmapImages.Clear();
             zipArchive.Dispose();
             stream.Dispose();
+
+            GC.SuppressFinalize(this);
         }
     }
 }

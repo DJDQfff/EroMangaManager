@@ -32,6 +32,7 @@ namespace EroMangaManager.UWP.Helpers
                 {
                     var page = frame.Content as ReadPage;
                     page.currentReader.Dispose();
+                    GC.SuppressFinalize(Window.Current);
                 };
                 newViewId = ApplicationView.GetForCurrentView().Id;
             });
