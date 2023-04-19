@@ -74,32 +74,37 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             }
             if (manga != currentManga)                  // 传入新漫画，则设置新源
             {
-                await SetNewSource(manga);
+                await SetNewSource(manga, manga);
                 Debug.WriteLine(this.GetHashCode());
             }
             else                                       // 未传入新漫画，不作变动。这个其实不用写了
             {
                 //Do Nothing
             }
+        }
+        /// <summary>
+        /// 切换此页面的书籍源
+        /// </summary>
+        /// <param name="newmanga"></param>
+        /// <param name="manga"></param>
+        /// <returns></returns>
+        private async Task SetNewSource(MangaBook newmanga, MangaBook manga)
+        {
+            currentManga = newmanga;
+            var oldreader = currentReader;
+            currentReader = new ReaderVM(manga);
+            await currentReader.Initial();
+            oldreader?.Dispose();
 
-            async Task SetNewSource(MangaBook newmanga)
+            FLIP.ItemsSource = currentReader.BitmapImages;
+
+            var isfilterimage = App.Current.AppConfig.IsFilterImageOn;
+            FilteredImage[] filteredImages = null;
+            if (isfilterimage)
             {
-                currentManga = newmanga;
-                var oldreader = currentReader;
-                currentReader = new ReaderVM(manga);
-                await currentReader.Initial();
-                oldreader?.Dispose();
-
-                FLIP.ItemsSource = currentReader.BitmapImages;
-
-                var isfilterimage = App.Current.AppConfig.IsFilterImageOn;
-                FilteredImage[] filteredImages = null;
-                if (isfilterimage)
-                {
-                    filteredImages = BasicController.DatabaseController.database.FilteredImages.ToArray();
-                }
-                await currentReader.SelectEntriesAsync(filteredImages);
+                filteredImages = BasicController.DatabaseController.database.FilteredImages.ToArray();
             }
+            await currentReader.SelectEntriesAsync(filteredImages);
         }
 
         #region 数据绑定到已解码的BitmapImage
