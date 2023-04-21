@@ -18,4 +18,10 @@
   <data name="Description" xml:space="preserve">
     <value>Ito ay isang manga manager para sa pamamahala at pagbabasa ng iyong mga naka-save na komiks sa zip form. Ang mga panloob na imahe ay dapat nasa JPG at PNG format</value>
   </data>
+  <data name="OpenAsAZipComic" xml:space="preserve">
+    <value>Buksan bilang zip archive para sa komiks</value>
+  </data>
+  <data name="ZipComic" xml:space="preserve">
+    <value>ZIP comic pack</value>
+  </data>
 </root>

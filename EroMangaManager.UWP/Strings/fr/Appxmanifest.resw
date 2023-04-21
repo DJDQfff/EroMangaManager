@@ -18,4 +18,10 @@
   <data name="Description" xml:space="preserve">
     <value>Ceci est un gestionnaire de manga pour gérer et lire vos bandes dessinées enregistrées sous forme zip. Les images internes doivent être aux formats JPG et PNG</value>
   </data>
+  <data name="OpenAsAZipComic" xml:space="preserve">
+    <value>Ouvrir en tant qu’archive zip pour les bandes dessinées</value>
+  </data>
+  <data name="ZipComic" xml:space="preserve">
+    <value>Pack bande dessinée ZIP</value>
+  </data>
 </root>

@@ -65,10 +65,6 @@ namespace EroMangaManager.UWP
                         type = typeof(LibraryPage);
                         break;
 
-                    case nameof(ReadItem):
-                        type = typeof(ReadPage);
-                        break;
-
                     case nameof(FunctionPageShower):
                         type = typeof(FunctionPageShower);
                         break;

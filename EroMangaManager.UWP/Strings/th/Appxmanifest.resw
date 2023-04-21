@@ -18,4 +18,10 @@
   <data name="Description" xml:space="preserve">
     <value>นี่คือผู้จัดการมังงะสําหรับจัดการและอ่านการ์ตูนที่บันทึกไว้ในรูปแบบซิป รูปภาพภายในต้องอยู่ในรูปแบบ JPG และ PNG</value>
   </data>
+  <data name="OpenAsAZipComic" xml:space="preserve">
+    <value>เปิดเป็นไฟล์เก็บถาวร zip สําหรับการ์ตูน</value>
+  </data>
+  <data name="ZipComic" xml:space="preserve">
+    <value>แพ็คการ์ตูน ZIP</value>
+  </data>
 </root>

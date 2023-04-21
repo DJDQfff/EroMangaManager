@@ -18,4 +18,10 @@
   <data name="Description" xml:space="preserve">
     <value>這是一個漫畫管理員，用於管理及閱讀你的以zip形式保存的漫畫。 內部圖片要求為jpg、png格式</value>
   </data>
+  <data name="OpenAsAZipComic" xml:space="preserve">
+    <value>作為zip壓縮包漫畫打開</value>
+  </data>
+  <data name="ZipComic" xml:space="preserve">
+    <value>zip漫畫包</value>
+  </data>
 </root>

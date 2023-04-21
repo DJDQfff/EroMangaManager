@@ -18,4 +18,10 @@
   <data name="Description" xml:space="preserve">
     <value>This is a manga manager for managing and reading your saved comics in zip form. Internal images must be in JPG and PNG formats</value>
   </data>
+  <data name="OpenAsAZipComic" xml:space="preserve">
+    <value>Open as a zip archive for comics</value>
+  </data>
+  <data name="ZipComic" xml:space="preserve">
+    <value>ZIP comic pack</value>
+  </data>
 </root>

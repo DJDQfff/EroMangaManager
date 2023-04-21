@@ -18,4 +18,10 @@
   <data name="Description" xml:space="preserve">
     <value>Este es un administrador de manga para administrar y leer sus cómics guardados en forma de cremallera. Las imágenes internas deben estar en formatos JPG y PNG</value>
   </data>
+  <data name="OpenAsAZipComic" xml:space="preserve">
+    <value>Abrir como un archivo zip para cómics</value>
+  </data>
+  <data name="ZipComic" xml:space="preserve">
+    <value>Paquete de cómics ZIP</value>
+  </data>
 </root>

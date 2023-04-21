@@ -18,4 +18,10 @@
   <data name="Description" xml:space="preserve">
     <value>Questo è un gestore di manga per la gestione e la lettura dei fumetti salvati in forma zip. Le immagini interne devono essere in formato JPG e PNG</value>
   </data>
+  <data name="OpenAsAZipComic" xml:space="preserve">
+    <value>Apri come archivio zip per fumetti</value>
+  </data>
+  <data name="ZipComic" xml:space="preserve">
+    <value>Pacchetto fumetto ZIP</value>
+  </data>
 </root>

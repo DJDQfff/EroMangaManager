@@ -18,4 +18,10 @@
   <data name="Description" xml:space="preserve">
     <value>保存したコミックをzip形式で管理・閲覧するためのマンガマネージャーです。 内部画像はJPGおよびPNG形式である必要があります</value>
   </data>
+  <data name="OpenAsAZipComic" xml:space="preserve">
+    <value>コミックのzipアーカイブとして開く</value>
+  </data>
+  <data name="ZipComic" xml:space="preserve">
+    <value>ZIPコミックパック</value>
+  </data>
 </root>

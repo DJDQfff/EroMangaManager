@@ -18,4 +18,10 @@
   <data name="Description" xml:space="preserve">
     <value>Αυτός είναι ένας διαχειριστής manga για τη διαχείριση και την ανάγνωση των αποθηκευμένων κόμικς σας σε μορφή zip. Οι εσωτερικές εικόνες πρέπει να είναι σε μορφές JPG και PNG</value>
   </data>
+  <data name="OpenAsAZipComic" xml:space="preserve">
+    <value>Άνοιγμα ως αρχείο zip για κόμικς</value>
+  </data>
+  <data name="ZipComic" xml:space="preserve">
+    <value>Πακέτο κόμικς ZIP</value>
+  </data>
 </root>

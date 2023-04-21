@@ -18,4 +18,10 @@
   <data name="Description" xml:space="preserve">
     <value>Это менеджер манги для управления и чтения сохраненных комиксов в zip-форме. Внутренние изображения должны быть в форматах JPG и PNG</value>
   </data>
+  <data name="OpenAsAZipComic" xml:space="preserve">
+    <value>Открыть в виде zip-архива для комиксов</value>
+  </data>
+  <data name="ZipComic" xml:space="preserve">
+    <value>Набор комиксов ZIP</value>
+  </data>
 </root>

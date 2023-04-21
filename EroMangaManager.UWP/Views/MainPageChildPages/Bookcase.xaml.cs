@@ -93,15 +93,11 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void GridView_ItemClick_ReadManga(object sender, ItemClickEventArgs e)
+        private async void GridView_ItemClick_ReadManga(object sender, ItemClickEventArgs e)
         {
             MangaBook mangaBook = e.ClickedItem as MangaBook;
 
-            MainPage.Current.MainFrame.Navigate(typeof(ReadPage), mangaBook);
-
-            MainPage.Current.ReadItem.Visibility = Windows.UI.Xaml.Visibility.Visible;
-
-            MainPage.Current.MainNavigationView.SelectedItem = MainPage.Current.MainNavigationView.MenuItems[2];
+            await WindowHelper.ShowNewReadPageWindow(mangaBook);
         }
 
         private async void DeleteSourceMangaFile(object sender, Windows.UI.Xaml.RoutedEventArgs e)

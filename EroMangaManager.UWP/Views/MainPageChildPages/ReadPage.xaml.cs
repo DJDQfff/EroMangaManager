@@ -41,6 +41,10 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         /// </summary>
         public ReaderVM currentReader = null;
 
+        /// <summary>
+        /// 任务取消令牌，留着给Select方法用的，但是有bug未解决
+        /// </summary>
+
        public CancellationTokenSource        CancellationTokenSource= new CancellationTokenSource();
         /// <summary>
         /// 构造函数

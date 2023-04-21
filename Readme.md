@@ -28,52 +28,32 @@
 
 # 更新日志
 
-## 2023.4.15
-
 * 修复默认显示文件夹功能
 
 * 不再使用系统设置，改为使用Config.Net来存储
 
-## 2023.4.10
+* ReadPage改为弹出新窗口
+
+## 更早版本
 
 * 添加Search结果跳转到Bookcase的控件，实现多线程后台创建封面（但是有点卡）
 
-## 2023.4.6
-
 * 添加SearchPage页面，实现按“本子名”、“标签”查找功能，包含Tag的Linq自动提示，搜索本子
 
-## 2023.4.1
-
 * 给重复tag查找功能添加修改功能，使能移除重复tag
-
-## 2023.3.29
 
 * 修改FunctionRepeatMangaPage 的UI，改为使用CommandBar
 * 完善本子重命名功能
 
-## 2023.3.28
-
 * 把导出pdf放到Task.Run方法里面去
-
-## 2023.3.14
 
 * 把MangaBook类，MangasFolder类、ObservableCollectionVM类放到standard2.0库里面
 
 * 创建一个UWP文件权限管理类，存放所有StorageFIle和StorageFolder权限，对传入文件路径时，负责返回权限，负责文件改名、删除。
 
-## 2023.3.13
-
 * 把MangaBook提取到standard2.0库里面去
 
-## 2023.3.10
-
-* 引入winui，librarypage的ProgressBar现在可以显示为条状了
-
-## 2023.3.8
-
 * 实现漫画文件重命名功能，但UI没有随之变化，需要优化
-
-## 2023.3.7
 
 * 添加检查重复tag的功能。只添加了查看的功能，还没添加修改的功能
 
@@ -81,11 +61,7 @@
 
 * ReaderVM简单细化，但还是需要更多优化
 
-## 2023.3.6
-
 * MangaBook的CoverPath不用数据绑定了，改为直接一次性，
-
-## 2023.3.5
 
 * ReaderVM实例释放内存还是有问题，简单修改了一下
 
@@ -95,43 +71,27 @@
 
 * 从MangaBook类中移除Cover属性，以后使用CoverPath属性
 
-## 2023.3.1
-
 * MangaBook初始化时不设置ReadingInof了，MangaName和Tags属性改为由方法获取
 * 不在ReadingInfo里放文件名自带的tag了（改为需要时，从文件名即时解析），添加一个TagsAddedByUser属性
-
-## 2023.2.26
 
 * 给libraryPage添加一个丑不拉几的本子加载中进度条
 * 给ObservableCollectionVM也添加一个IsContentInitializing属性，并在FunctionPage上显示一个控件，提示正在初始化
 
-## 2023.2.24
-
 * 把使用说明和更新日志挪到MainPage
 
-## 2023.2.23
-
 * 给MangasFolder添加一个标志位，显示是否在初始化这个类的数据
-
-## 2023.2.5
 
 * 把ObserVableCollection的初始化工作放大App.OnLaunch方法最后面，以前是放在最前面的。现在不会在开屏卡半天界面了（因为需要创建本子封面，耗费了大量时间）。
 
 * “请添加第一个文件夹“的提示，控件可见性不再写进代码逻辑里面，直接把可见性绑定到ObservableCollection的文件夹个数
 
-## 2023.2.2
-
 * 所有MangaBook类不再在内部默认初始化默认封面，把封面缓存放到CoverHelper静态类里面作为一个属性，所有Mangabook类实例共享同一个封面图片缓存
 
 * 把MangaBook类的ChangeCover方法提出来，放到CoverHelper助手类里面，作为一个扩展方法存在
 
-## 2023.1.30
-
 * 给MangaBook类添加文件大小属性，在Bookcase页面进行显示
 
 * Bookcase页面添加功能：按
-
-## 2023.1.25
 
 * 阅读页面全屏
 
@@ -142,17 +102,11 @@
   > bug可能存在的一个原因：每次导航是都导向的新的页面实例 一个可能的解决办法：实现阅读进度功能，每次导航的时候定位到进度位置 这样就算你有导航到新页面实例，也不影响
   > 解决了，因为用了两个Frame，虽然是同一个Page，但是不同Frame产生不同Page缓存
 
-## 2023.1.23
-
 * 有原来的BookcaseContainer里面导航到不同Bookcase页面（对应一个文件夹内的漫画），改为一个Bookcase类，其数据源改为使用数据绑定到对应的MangaFolder类
-
-## 2022.12.19
 
 * 添加导出为pdf的功能
 
 * 添加多语种（以后都用自动翻译算了）
-
-## 2022.02.06
 
 * 标签库管理
 - 调整页面跳转方式
