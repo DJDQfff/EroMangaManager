@@ -2,14 +2,12 @@
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 using EroMangaDB.Entities;
 
 using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.Helpers;
-using EroMangaManager.UWP.Models;
 
 using SharpCompress.Archives;
 
@@ -34,6 +32,7 @@ namespace EroMangaManager.UWP.ViewModels
         public MangaBook Manga { set; get; }
 
         private StorageFile StorageFile { set; get; }
+
         /// <summary> 打开的文件流 </summary>
         private Stream stream { set; get; }
 
@@ -56,25 +55,24 @@ namespace EroMangaManager.UWP.ViewModels
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="_manga"></param>
         /// <param name="storageFile"></param>
-        public ReaderVM(MangaBook _manga,StorageFile storageFile):this(_manga)
+        public ReaderVM(MangaBook _manga, StorageFile storageFile) : this(_manga)
         {
-
             StorageFile = storageFile;
         }
+
         /// <summary>
         ///
         /// </summary>
         /// <returns></returns>
         public async Task Initial()
         {
-            if(StorageFile is null)
+            if (StorageFile is null)
             {
-            StorageFile= await MyLibrary.UWP.AccestListHelper.GetStorageFile(Manga.FilePath);
-
+                StorageFile = await MyLibrary.UWP.AccestListHelper.GetStorageFile(Manga.FilePath);
             }
             stream = await StorageFile.OpenStreamForReadAsync();
             zipArchive = ArchiveFactory.Open(stream);

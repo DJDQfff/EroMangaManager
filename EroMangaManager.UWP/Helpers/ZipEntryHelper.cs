@@ -40,10 +40,9 @@ namespace EroMangaManager.UWP.Helpers
 
                     await bitmapImage.SetSourceAsync(randomAccessStream);
                 }
-            }    
-            
-            return bitmapImage;
+            }
 
+            return bitmapImage;
         }
 
         /// <summary>

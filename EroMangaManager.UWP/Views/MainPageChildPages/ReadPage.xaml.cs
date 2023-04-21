@@ -12,8 +12,6 @@ using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.ViewModels;
 
-using iText.Layout.Font;
-
 using SharpCompress.Archives;
 
 using Windows.Storage;
@@ -47,7 +45,8 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         /// <summary>
         /// 任务取消令牌，留着给Select方法用的，但是有bug未解决
         /// </summary>
-       public CancellationTokenSource        CancellationTokenSource= new CancellationTokenSource();
+        public CancellationTokenSource CancellationTokenSource = new CancellationTokenSource();
+
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -64,19 +63,16 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         {
             Debug.WriteLine("OnNavigatedTo事件开始");
 
-
             switch (e.Parameter)
             {
                 case MangaBook mangaBook:
-                      await TryChangeMangaBook(mangaBook);
+                    await TryChangeMangaBook(mangaBook);
                     break;
+
                 case StorageFile storageFile:
-                    await OnceLoadFromStorageFile(storageFile); 
+                    await OnceLoadFromStorageFile(storageFile);
                     break;
-
-
             }
-
         }
 
         /// <summary>
@@ -88,7 +84,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         {
             var manga = await ModelFactory.CreateMangaBook(storageFile);
 
-            currentReader  = new ReaderVM(manga, storageFile);
+            currentReader = new ReaderVM(manga, storageFile);
             await currentReader.Initial();
             FLIP.ItemsSource = currentReader.BitmapImages;
 
@@ -99,7 +95,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                 filteredImages = BasicController.DatabaseController.database.FilteredImages.ToArray();
             }
             await currentReader.SelectEntriesAsync(filteredImages);
-
         }
 
         /// <summary>
@@ -123,6 +118,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                 //Do Nothing
             }
         }
+
         /// <summary>
         /// 切换此页面的书籍源
         /// </summary>
@@ -151,7 +147,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             //await Task.Run(async () => { await currentReader.SelectEntriesAsync(filteredImages); });
         }
 
-       
         #region 数据绑定到已解码的BitmapImage
 
         private async void FilteThisImage2_Click(object sender, RoutedEventArgs e)

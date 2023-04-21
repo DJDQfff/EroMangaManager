@@ -19,7 +19,6 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Resources;
 using Windows.Storage;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -80,7 +79,9 @@ namespace EroMangaManager.UWP
 
             Helpers.CoverHelper.InitialDefaultCover();
             await EnsureChildTemporaryFolders(Covers.ToString(), Filters.ToString());
+
             #region 事件赋值
+
             GlobalViewModel.ErrorZipEvent += (string str) =>
             {
                 new ToastContentBuilder()
@@ -94,8 +95,11 @@ namespace EroMangaManager.UWP
                     .AddText(str)
                     .Show();
             };
-            #endregion
+
+            #endregion 事件赋值
+
             #region 初始化文件夹目录
+
             var alldic = await MyLibrary.UWP.AccestListHelper.GetAvailableFutureFolder();
 
             Dictionary<string, StorageFolder> keyValuePairs = new Dictionary<string, StorageFolder>();
@@ -106,15 +110,16 @@ namespace EroMangaManager.UWP
             {
                 try
                 {
-                var pair = alldic.Single(x => x.Value.Path == folder);
-                            
-                 keyValuePairs.Add(pair.Key, pair.Value);
+                    var pair = alldic.Single(x => x.Value.Path == folder);
+
+                    keyValuePairs.Add(pair.Key, pair.Value);
                 }
                 catch { }
             }
 
             ModelFactory.ViewModelGetAllFolders(GlobalViewModel, keyValuePairs.Values);
-            #endregion
+
+            #endregion 初始化文件夹目录
         }
 
         private async Task LongTimeLoad()
@@ -173,14 +178,13 @@ namespace EroMangaManager.UWP
             await LongTimeLoad();
         }
 
-       
         /// <summary> </summary>
-        /// <remarks> 目前放弃，有bug，无法调试 </remarks>
+        /// <remarks> </remarks>
         /// <param name="args"> </param>
         protected override async void OnFileActivated(FileActivatedEventArgs args)
         {
             base.OnFileActivated(args);
-            if(AppConfig is null)
+            if (AppConfig is null)
             {
                 await QuickInitialWork();
             }
@@ -198,10 +202,9 @@ namespace EroMangaManager.UWP
 
                 case null:
                     {
-                       var rootFrame = new Frame();
+                        var rootFrame = new Frame();
                         rootFrame.NavigationFailed += OnNavigationFailed;
                         rootFrame.Navigate(typeof(ReadPage), file);
-
 
                         Window.Current.Content = rootFrame;
                         Window.Current.Closed += (objectsender, sss) =>
@@ -210,8 +213,6 @@ namespace EroMangaManager.UWP
                             page.currentReader?.Dispose();
                             GC.SuppressFinalize(Window.Current);
                         };
-
-
 
                         Window.Current.Activate();
                     }

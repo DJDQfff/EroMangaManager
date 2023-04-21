@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.Helpers;
 using EroMangaManager.UWP.Models;
-using EroMangaManager.UWP.Views.MainPageChildPages;
 
 using GroupedItemsLibrary.ViewModels;
 
-using Windows.ApplicationModel.Core;
-using Windows.UI.Core;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -52,7 +47,7 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
         private async void DeleteFileClick(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-           var manga=button.DataContext as MangaBook;
+            var manga = button.DataContext as MangaBook;
 
             await Helpers.StorageHelper.DeleteSourceFile(manga);
 
@@ -66,6 +61,5 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
 
             await WindowHelper.ShowNewReadPageWindow(manga);
         }
-
     }
 }

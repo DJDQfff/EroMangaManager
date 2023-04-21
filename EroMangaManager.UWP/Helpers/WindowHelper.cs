@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using EroMangaManager.Core.Models;
@@ -37,8 +34,6 @@ namespace EroMangaManager.UWP.Helpers
                 newViewId = ApplicationView.GetForCurrentView().Id;
             });
             bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
-
-
         }
     }
 }
