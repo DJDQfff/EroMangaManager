@@ -44,7 +44,8 @@ namespace EroMangaManager.UWP
         private async Task QuickInitialWork()
         {
 #if DEBUG
-            await Windows.System.Launcher.LaunchFolderAsync(ApplicationData.Current.LocalFolder);
+            //await Windows.System.Launcher.LaunchFolderAsync(ApplicationData.Current.LocalFolder);
+            System.Diagnostics.Debug.WriteLine(ApplicationData.Current.LocalFolder.Path);
 #endif
 
             #region 数据库迁移
