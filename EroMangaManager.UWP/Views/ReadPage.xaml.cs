@@ -30,7 +30,7 @@ using static MyLibrary.UWP.StorageItemPicker;
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
 
-namespace EroMangaManager.UWP.Views.MainPageChildPages
+namespace EroMangaManager.UWP.Views
 {
     /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
     public sealed partial class ReadPage : Page
@@ -285,7 +285,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             var applicationView = ApplicationView.GetForCurrentView();
 
             applicationView.TryEnterFullScreenMode();
-            MainPage.Current.MainNavigationView.IsPaneToggleButtonVisible = false;
 
             ReadPageButtonGroup.Visibility = Visibility.Collapsed;
         }
@@ -295,7 +294,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             var applicationView = ApplicationView.GetForCurrentView();
 
             applicationView.ExitFullScreenMode();
-            MainPage.Current.MainNavigationView.IsPaneToggleButtonVisible = true;
         }
     }
 }

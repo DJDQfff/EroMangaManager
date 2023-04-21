@@ -12,7 +12,7 @@ using EroMangaManager.UWP.Helpers;
 using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.SettingEnums;
 using EroMangaManager.UWP.Views.MainPageChildPages;
-
+using EroMangaManager.UWP.Views;
 using Microsoft.Toolkit.Uwp.Notifications;
 
 using Windows.ApplicationModel;

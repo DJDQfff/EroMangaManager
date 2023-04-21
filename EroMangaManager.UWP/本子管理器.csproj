@@ -170,6 +170,9 @@
     <Compile Include="Views\MainPageChildPages\FunctionPageShower.xaml.cs">
       <DependentUpon>FunctionPageShower.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MainPageChildPages\LibraryPage.xaml.cs">
+      <DependentUpon>LibraryPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainPageChildPages\SearchMangaPage.xaml.cs">
       <DependentUpon>SearchMangaPage.xaml</DependentUpon>
     </Compile>
@@ -188,7 +191,7 @@
     <Compile Include="UserControls\TagInfo.xaml.cs">
       <DependentUpon>TagInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainPageChildPages\ReadPage.xaml.cs">
+    <Compile Include="Views\ReadPage.xaml.cs">
       <DependentUpon>ReadPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -200,9 +203,6 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Translator.cs" />
-    <Compile Include="Views\MainPageChildPages\LibraryPage.xaml.cs">
-      <DependentUpon>LibraryPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\MainPageChildPages\SettingPage.xaml.cs">
       <DependentUpon>SettingPage.xaml</DependentUpon>
     </Compile>
@@ -416,6 +416,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MainPageChildPages\LibraryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\MainPageChildPages\SearchMangaPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -440,17 +444,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainPageChildPages\ReadPage.xaml">
+    <Page Include="Views\ReadPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\MainPageChildPages\LibraryPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainPageChildPages\SettingPage.xaml">
       <SubType>Designer</SubType>

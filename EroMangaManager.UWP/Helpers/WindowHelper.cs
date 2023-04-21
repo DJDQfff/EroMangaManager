@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 
 using EroMangaManager.Core.Models;
-using EroMangaManager.UWP.Views.MainPageChildPages;
+using EroMangaManager.UWP.Views;
 
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
