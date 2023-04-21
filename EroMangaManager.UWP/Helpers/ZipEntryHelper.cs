@@ -47,7 +47,7 @@ namespace EroMangaManager.UWP.Helpers
         }
 
         /// <summary>
-        /// 筛选zipentry
+        /// 筛选zipentry，如果filteredImages为null，则不进行比较
         /// </summary>
         /// <param name="entry"></param>
         /// <param name="filteredImages">要进行比较的数据，如果为null，则不进行数据比较</param>

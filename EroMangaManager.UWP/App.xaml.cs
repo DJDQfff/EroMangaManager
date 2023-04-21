@@ -8,6 +8,7 @@ using Config.Net;
 
 using EroMangaManager.Core.Models;
 using EroMangaManager.Core.ViewModels;
+using EroMangaManager.UWP.Helpers;
 using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.SettingEnums;
 using EroMangaManager.UWP.Views.MainPageChildPages;
@@ -18,6 +19,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Resources;
 using Windows.Storage;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -169,34 +171,49 @@ namespace EroMangaManager.UWP
             await LongTimeLoad();
         }
 
+       
         /// <summary> </summary>
-        /// <remarks> 不能瞎改，里面一些奇葩问题 </remarks>
+        /// <remarks> 目前放弃，有bug，无法调试 </remarks>
         /// <param name="args"> </param>
         protected override async void OnFileActivated(FileActivatedEventArgs args)
         {
             base.OnFileActivated(args);
 
-            if (!(Window.Current.Content is Frame rootFrame))
-            {
-                rootFrame = new Frame();
-
-                rootFrame.NavigationFailed += OnNavigationFailed;
-
-                Window.Current.Content = rootFrame;
-            }
-
-            // 这一步不能删，搞不懂为什么，删了就无法正常使用
-            if (rootFrame.Content == null)
-            {
-                rootFrame.Navigate(typeof(MainPage));
-            }
-
             var file = args.Files[0] as Windows.Storage.StorageFile;
 
-            MangaBook book = await ModelFactory.CreateMangaBook(file);
-            rootFrame.Navigate(typeof(ReadPage), book);
 
-            Window.Current.Activate();
+
+            switch (Window.Current.Content)
+            {
+                case Frame rootFrame:
+                    MangaBook book = await ModelFactory.CreateMangaBook(file);
+
+                    await WindowHelper.ShowNewReadPageWindow(book);
+
+                    break;
+
+                case null:
+                    {
+                       var rootFrame = new Frame();
+                        rootFrame.NavigationFailed += OnNavigationFailed;
+                        rootFrame.Navigate(typeof(ReadPage), file);
+
+
+                        Window.Current.Content = rootFrame;
+                        Window.Current.Closed += (objectsender, sss) =>
+                        {
+                            var page = rootFrame.Content as ReadPage;
+                            page.currentReader?.Dispose();
+                            GC.SuppressFinalize(Window.Current);
+                        };
+
+
+
+                        Window.Current.Activate();
+                    }
+
+                    break;
+            }
         }
 
         /// <summary>

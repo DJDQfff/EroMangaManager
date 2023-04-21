@@ -9,7 +9,10 @@ using EroMangaDB;
 using EroMangaDB.Entities;
 
 using EroMangaManager.Core.Models;
+using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.ViewModels;
+
+using iText.Layout.Font;
 
 using SharpCompress.Archives;
 
@@ -44,7 +47,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         /// <summary>
         /// 任务取消令牌，留着给Select方法用的，但是有bug未解决
         /// </summary>
-
        public CancellationTokenSource        CancellationTokenSource= new CancellationTokenSource();
         /// <summary>
         /// 构造函数
@@ -62,17 +64,49 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         {
             Debug.WriteLine("OnNavigatedTo事件开始");
 
-            var mangaBook = e.Parameter as MangaBook;
 
-            await TryChangeManga(mangaBook);
+            switch (e.Parameter)
+            {
+                case MangaBook mangaBook:
+                      await TryChangeMangaBook(mangaBook);
+                    break;
+                case StorageFile storageFile:
+                    await OnceLoadFromStorageFile(storageFile); 
+                    break;
+
+
+            }
+
         }
 
         /// <summary>
-        /// 修改阅读漫画
+        /// 直接从StorageFIle里面导入数据，用于第一次实例化时赋值
+        /// </summary>
+        /// <param name="storageFile"></param>
+        /// <returns></returns>
+        private async Task OnceLoadFromStorageFile(StorageFile storageFile)
+        {
+            var manga = await ModelFactory.CreateMangaBook(storageFile);
+
+            currentReader  = new ReaderVM(manga, storageFile);
+            FLIP.ItemsSource = currentReader.BitmapImages;
+
+            var isfilterimage = App.Current.AppConfig.IsFilterImageOn;
+            FilteredImage[] filteredImages = null;
+            if (isfilterimage)
+            {
+                filteredImages = BasicController.DatabaseController.database.FilteredImages.ToArray();
+            }
+            await currentReader.SelectEntriesAsync(filteredImages);
+
+        }
+
+        /// <summary>
+        /// ReadPage的页面不变，但是更换内部数据源
         /// </summary>
         /// <param name="manga"></param>
         /// <returns></returns>
-        public async Task TryChangeManga(MangaBook manga)
+        private async Task TryChangeMangaBook(MangaBook manga)
         {
             if (manga == null)                          // 传入null，直接跳过
             {
