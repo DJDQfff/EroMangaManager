@@ -56,6 +56,8 @@ namespace EroMangaManager.UWP
 
             #region 创建设置文件
 
+            //Windows.ApplicationModel.Resources.Core.ResourceContext.SetGlobalQualifierValue("Language", "fr");
+
             var filename = "AppConfig.json";
             var localfolder = Windows.Storage.ApplicationData.Current.LocalFolder;
             var configfilepath = Path.Combine(localfolder.Path, filename);
