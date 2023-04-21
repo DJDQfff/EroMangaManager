@@ -48,7 +48,7 @@ namespace EroMangaManager.UWP.Helpers
         /// </summary>
         /// <param name="eroManga"></param>
         /// <returns></returns>
-        public static async Task DeleteSourceFile(MangaBook eroManga)
+        public static async Task<bool> DeleteSourceFile(MangaBook eroManga)
         {
             var temp1 = App.Current.AppConfig.WhetherShowDialogBeforeDelete;
 
@@ -56,6 +56,7 @@ namespace EroMangaManager.UWP.Helpers
 
             var option = temp2 ? StorageDeleteOption.PermanentDelete : StorageDeleteOption.Default;
 
+            bool deleteResult = false;
             if (!temp1)
             {
                 ConfirmDeleteMangaFile confirm = new ConfirmDeleteMangaFile(eroManga);
@@ -65,6 +66,7 @@ namespace EroMangaManager.UWP.Helpers
                     case ContentDialogResult.Primary:
                         App.Current.GlobalViewModel.RemoveManga(eroManga);
                         await MyLibrary.UWP.AccestListHelper.DeleteStorageFile(eroManga.FilePath, option);
+                        deleteResult= true;
                         break;
 
                     case ContentDialogResult.Secondary:
@@ -75,7 +77,10 @@ namespace EroMangaManager.UWP.Helpers
             {
                 App.Current.GlobalViewModel.RemoveManga(eroManga);
                 await MyLibrary.UWP.AccestListHelper.DeleteStorageFile(eroManga.FilePath, option);
+                deleteResult= true;
             }
+
+            return deleteResult;
         }
     }
 }
