@@ -92,8 +92,7 @@ namespace EroMangaManager.UWP.ViewModels
                 StopWork();
                 return;
             }
-            var file = await MyLibrary.UWP.AccestListHelper.GetStorageFile(Manga.FilePath);
-            TempStream = await file.OpenStreamForReadAsync();
+            TempStream = await StorageFile.OpenStreamForReadAsync();
 
             TempZipArchive = ArchiveFactory.Open(TempStream);
 
