@@ -34,7 +34,7 @@
 
 * ReadPage改为弹出新窗口
 
-* 目前放弃文件关联激活方式
+* 修复文件关联激活打开的功能的bug
 
 ## 更早版本
 
@@ -45,6 +45,7 @@
 * 给重复tag查找功能添加修改功能，使能移除重复tag
 
 * 修改FunctionRepeatMangaPage 的UI，改为使用CommandBar
+
 * 完善本子重命名功能
 
 * 把导出pdf放到Task.Run方法里面去
@@ -74,9 +75,11 @@
 * 从MangaBook类中移除Cover属性，以后使用CoverPath属性
 
 * MangaBook初始化时不设置ReadingInof了，MangaName和Tags属性改为由方法获取
+
 * 不在ReadingInfo里放文件名自带的tag了（改为需要时，从文件名即时解析），添加一个TagsAddedByUser属性
 
 * 给libraryPage添加一个丑不拉几的本子加载中进度条
+
 * 给ObservableCollectionVM也添加一个IsContentInitializing属性，并在FunctionPage上显示一个控件，提示正在初始化
 
 * 把使用说明和更新日志挪到MainPage

@@ -178,10 +178,9 @@ namespace EroMangaManager.UWP
         protected override async void OnFileActivated(FileActivatedEventArgs args)
         {
             base.OnFileActivated(args);
+            await QuickInitialWork();
 
-            var file = args.Files[0] as Windows.Storage.StorageFile;
-
-
+            var file = args.Files[0] as StorageFile;
 
             switch (Window.Current.Content)
             {

@@ -89,6 +89,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             var manga = await ModelFactory.CreateMangaBook(storageFile);
 
             currentReader  = new ReaderVM(manga, storageFile);
+            await currentReader.Initial();
             FLIP.ItemsSource = currentReader.BitmapImages;
 
             var isfilterimage = App.Current.AppConfig.IsFilterImageOn;
@@ -133,8 +134,8 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             currentManga = newmanga;
             var oldreader = currentReader;
             currentReader = new ReaderVM(manga);
-            await currentReader.Initial();
             oldreader?.Dispose();
+            await currentReader.Initial();
 
             FLIP.ItemsSource = currentReader.BitmapImages;
 
