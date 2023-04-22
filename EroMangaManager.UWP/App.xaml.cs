@@ -4,8 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Config.Net;
-
 using EroMangaManager.Core.Models;
 using EroMangaManager.Core.ViewModels;
 using EroMangaManager.UWP.Helpers;
