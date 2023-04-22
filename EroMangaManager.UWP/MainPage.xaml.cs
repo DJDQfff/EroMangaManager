@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Linq;
 
+using EroMangaManager.UWP.SettingEnums;
+using static EroMangaManager.UWP.SettingEnums.General;
 using EroMangaManager.UWP.Views.MainPageChildPages;
+
+using SharpConfig;
 
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -37,11 +41,12 @@ namespace EroMangaManager.UWP
         {
             base.OnNavigatedTo(e);
 
-            var library = App.Current.AppConfig.LibraryFolders;
+            var library = App.Current.AppConfig[nameof(General)][nameof(LibraryFolders)].StringValueArray;
+
             string defaultfolderpath = default;
             if (library.Length > 0)
             {
-                defaultfolderpath = App.Current.AppConfig.LibraryFolders[0];
+                defaultfolderpath = library[0];
             }
             var defaultfolder = App.Current.GlobalViewModel.MangaFolders.SingleOrDefault(x => x.FolderPath == defaultfolderpath);
 

@@ -11,8 +11,11 @@ using EroMangaDB.Entities;
 using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.ViewModels;
-
+using EroMangaManager.UWP.SettingEnums;
+using static EroMangaManager.UWP.SettingEnums.General;
 using SharpCompress.Archives;
+
+using SharpConfig;
 
 using Windows.Storage;
 using Windows.UI.ViewManagement;
@@ -88,7 +91,7 @@ namespace EroMangaManager.UWP.Views
             await currentReader.Initial();
             FLIP.ItemsSource = currentReader.BitmapImages;
 
-            var isfilterimage = App.Current.AppConfig.IsFilterImageOn;
+            var isfilterimage = Configuration.LoadFromFile(App.Current.AppConfigPath)[nameof(General)][nameof(IsFilterImageOn)].BoolValue;
             FilteredImage[] filteredImages = null;
             if (isfilterimage)
             {
@@ -135,7 +138,7 @@ namespace EroMangaManager.UWP.Views
 
             FLIP.ItemsSource = currentReader.BitmapImages;
 
-            var isfilterimage = App.Current.AppConfig.IsFilterImageOn;
+            var isfilterimage = Configuration.LoadFromFile(App.Current.AppConfigPath)[nameof(General)][nameof(IsFilterImageOn)].BoolValue;
             FilteredImage[] filteredImages = null;
             if (isfilterimage)
             {

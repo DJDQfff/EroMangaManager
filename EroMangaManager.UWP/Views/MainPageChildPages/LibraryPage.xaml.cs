@@ -4,7 +4,8 @@ using System.Linq;
 
 using EroMangaManager.Core.ViewModels;
 using EroMangaManager.UWP.Models;
-
+using EroMangaManager.UWP.SettingEnums;
+using static EroMangaManager.UWP.SettingEnums.General;
 using MyLibrary.UWP;
 
 using Windows.Storage;
@@ -12,6 +13,7 @@ using Windows.Storage.AccessCache;
 using Windows.UI.Xaml.Controls;
 
 using static MyLibrary.UWP.StorageItemPicker;
+using SharpConfig;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
@@ -37,15 +39,15 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
             if (selectedRootFolder != null)
             {
-                var libraryfolders = App.Current.AppConfig.LibraryFolders;
+                var section = App.Current.AppConfig[nameof(General)][nameof(LibraryFolders)];
+                var libraryfolders = section.StringValueArray;
                 if (!libraryfolders.Contains(selectedRootFolder.Path))
                 {
                     List<StorageFolder> folders = await selectedRootFolder.GetAllStorageFolder();
                     folders.Insert(0, selectedRootFolder);//得把文件夹自身也加入扫描类中
                     folders.Sort((x, y) => x.Path.CompareTo(y.Path));
 
-                    var array = App.Current.AppConfig.LibraryFolders;
-                    List<string> strings = new List<string>(array);
+                    List<string> strings = new List<string>(libraryfolders);
                     foreach (var f in folders)
                     {
                         strings.Add(f.Path);
@@ -54,8 +56,8 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                         var a = App.Current.GlobalViewModel.AddFolder(f.Path);
                         await ModelFactory.InitialMangasFolder(a, f);
                     }
-
-                    App.Current.AppConfig.LibraryFolders = strings.Distinct().ToArray();
+                    section.StringValueArray = strings.Distinct().ToArray();
+                    App.Current.AppConfig.SaveToFile(App.Current.AppConfigPath);
                 }
             }
 
@@ -66,10 +68,13 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         {
             if (list.SelectedItem is MangasFolder storageFolder)
             {
-                var librarys = App.Current.AppConfig.LibraryFolders;
+                var section = App.Current.AppConfig[nameof(General)][nameof(LibraryFolders)];
+                var librarys = section.StringValueArray;
+
                 var strings = new List<string>(librarys);
                 strings.Remove(storageFolder.FolderPath);
-                App.Current.AppConfig.LibraryFolders = strings.ToArray();
+                section.StringValueArray = strings.Distinct().ToArray();
+                App.Current.AppConfig.SaveToFile(App.Current.AppConfigPath);
 
                 await MyLibrary.UWP.AccestListHelper.RemoveFolder(storageFolder.FolderPath);
 
@@ -101,27 +106,42 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         {
             if (list.SelectedItem is MangasFolder datacontext)
             {
-                var folders = App.Current.AppConfig.LibraryFolders;
+                var cfg = Configuration.LoadFromFile(App.Current.AppConfigPath);
+                var section = cfg[nameof(General)][nameof(LibraryFolders)];
+                var folders = section.StringValueArray;
+
                 var list = new List<string>(folders);
 
                 var defaultpath = datacontext.FolderPath;
                 list.Remove(defaultpath);
                 list.Insert(0, defaultpath);
-                App.Current.AppConfig.LibraryFolders = list.ToArray();
+
+                section.StringValueArray = list.ToArray();
+                cfg.SaveToFile(App.Current.AppConfigPath);
+
             }
         }
 
         private void ToggleSwitch_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            App.Current.AppConfig.IsEmptyFolderShow = toggleSwitch.IsOn;
+
+            var cfg = Configuration.LoadFromFile(App.Current.AppConfigPath);
+            var section = cfg[nameof(General)][nameof(IsEmptyFolderShow)];
+            section.BoolValue=toggleSwitch.IsOn;
+            cfg.SaveToFile(App.Current.AppConfigPath);
+
         }
 
         private void ToggleSwitch_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            var a = App.Current.AppConfig.IsEmptyFolderShow;
-            toggleSwitch.IsOn = a;
+
+            var cfg = Configuration.LoadFromFile(App.Current.AppConfigPath);
+            var section = cfg[nameof(General)][nameof(IsEmptyFolderShow)];
+
+            toggleSwitch.IsOn = section.BoolValue;
+
         }
     }
 }

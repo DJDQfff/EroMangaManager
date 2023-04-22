@@ -11,6 +11,7 @@ using EroMangaManager.Core.ViewModels;
 using EroMangaManager.UWP.Helpers;
 using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.SettingEnums;
+using static EroMangaManager.UWP.SettingEnums.General;
 using EroMangaManager.UWP.Views.MainPageChildPages;
 using EroMangaManager.UWP.Views;
 using Microsoft.Toolkit.Uwp.Notifications;
@@ -26,7 +27,7 @@ using Windows.UI.Xaml.Navigation;
 using static EroMangaDB.BasicController;
 using static EroMangaManager.UWP.SettingEnums.FolderEnum;
 using static MyLibrary.UWP.StorageFolderHelper;
-
+using SharpConfig;
 namespace EroMangaManager.UWP
 {
     /// <summary> 提供特定于应用程序的行为，以补充默认的应用程序类。 </summary>
@@ -38,13 +39,12 @@ namespace EroMangaManager.UWP
         /// 全局ViewModel
         /// </summary>
         internal ObservableCollectionVM GlobalViewModel { get; private set; }
-
-        internal IAppConfig AppConfig { get; private set; }
-
+        internal Configuration AppConfig { get; private set; }
+        internal string AppConfigPath { get; private set; }
         private async Task QuickInitialWork()
         {
 #if DEBUG
-            //await Windows.System.Launcher.LaunchFolderAsync(ApplicationData.Current.LocalFolder);
+            await Windows.System.Launcher.LaunchFolderAsync(ApplicationData.Current.LocalFolder);
             System.Diagnostics.Debug.WriteLine(ApplicationData.Current.LocalFolder.Path);
 #endif
 
@@ -58,22 +58,23 @@ namespace EroMangaManager.UWP
 
             //Windows.ApplicationModel.Resources.Core.ResourceContext.SetGlobalQualifierValue("Language", "fr");
 
-            var filename = "AppConfig.json";
+            var filename = "AppConfig.cfg";
             var localfolder = Windows.Storage.ApplicationData.Current.LocalFolder;
-            var configfilepath = Path.Combine(localfolder.Path, filename);
+             AppConfigPath = Path.Combine(localfolder.Path, filename);
 
-            try
+            if (!File.Exists(AppConfigPath))
             {
-                AppConfig = new ConfigurationBuilder<IAppConfig>().UseJsonFile(configfilepath).Build();
+                 AppConfig = new Configuration();
+                AppConfig[nameof(General)][nameof(IsFilterImageOn)].BoolValue = false;
+                AppConfig[nameof(General)][nameof(WhetherShowDialogBeforeDelete)].BoolValue = true;
+                AppConfig[nameof(General)][nameof(StorageFileDeleteOption)].BoolValue = false;
+                AppConfig[nameof(General)][nameof(LibraryFolders)].StringValueArray = new string[] { };
+
+                AppConfig.SaveToFile(AppConfigPath);
             }
-            catch       // 如果出现问题，那么删除原来的设置文件，在重新操作
+            else
             {
-                if (await localfolder.TryGetItemAsync(filename) is StorageFile exist)
-                {
-                    await exist.DeleteAsync();
-                }
-
-                AppConfig = new ConfigurationBuilder<IAppConfig>().UseJsonFile(configfilepath).Build();
+                AppConfig=Configuration.LoadFromFile(AppConfigPath);
             }
 
             #endregion 创建设置文件
@@ -105,7 +106,7 @@ namespace EroMangaManager.UWP
 
             Dictionary<string, StorageFolder> keyValuePairs = new Dictionary<string, StorageFolder>();
 
-            var folders = AppConfig.LibraryFolders;
+            var folders = Configuration.LoadFromFile(AppConfigPath)[nameof(General)][nameof(LibraryFolders)].StringValueArray;
 
             foreach (var folder in folders)
             {

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
+using EroMangaManager.UWP.SettingEnums;
+using static EroMangaManager.UWP.SettingEnums.General;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -61,14 +63,16 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
         private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            App.Current.AppConfig.IsFilterImageOn = toggleSwitch.IsOn;
+            App.Current.AppConfig[nameof(General)][nameof(IsFilterImageOn)].BoolValue = toggleSwitch.IsOn;
+            App.Current.AppConfig.SaveToFile(App.Current.AppConfigPath);
+
         }
 
         private void ToggleSwitch_Loaded(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            var a = App.Current.AppConfig.IsFilterImageOn;
-            toggleSwitch.IsOn = a;
+            toggleSwitch.IsOn = App.Current.AppConfig[nameof(General)][nameof(IsFilterImageOn)].BoolValue ;
+
         }
     }
 }

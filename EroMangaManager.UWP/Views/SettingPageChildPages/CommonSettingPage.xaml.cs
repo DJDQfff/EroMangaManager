@@ -1,6 +1,10 @@
-﻿using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+﻿using SharpConfig;
 
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using EroMangaManager.UWP.SettingEnums;
+using static EroMangaManager.UWP.SettingEnums.General;
+using Windows.Storage;
 // https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
 namespace EroMangaManager.UWP.Views.SettingPageChildPages
@@ -10,42 +14,44 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
     /// </summary>
     public sealed partial class CommonSettingPage : Page
     {
+        Configuration Settings { get; set; }
         /// <summary>
         /// 一般设置页面
         /// </summary>
         public CommonSettingPage()
         {
             this.InitializeComponent();
+            Settings = Configuration.LoadFromFile(App.Current.AppConfigPath);
         }
 
         private void DirectDeleteOption(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
 
-            App.Current.AppConfig.WhetherShowDialogBeforeDelete = toggleSwitch.IsOn;
+            App.Current.AppConfig[nameof(General)][nameof(WhetherShowDialogBeforeDelete)].BoolValue = toggleSwitch.IsOn;
+            App.Current.AppConfig.SaveToFile(App.Current.AppConfigPath);
         }
 
         private void DeleteOption(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-
-            App.Current.AppConfig.StorageDeleteOption = toggleSwitch.IsOn;
+            App.Current.AppConfig[nameof(General)][nameof(StorageDeleteOption)].BoolValue = toggleSwitch.IsOn;
+            App.Current.AppConfig.SaveToFile(App.Current.AppConfigPath);
         }
 
         private void ToggleSwitch_Loaded(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
 
-            var b = App.Current.AppConfig.WhetherShowDialogBeforeDelete;
+            toggleSwitch.IsOn =  App.Current.AppConfig[nameof(General)][nameof(WhetherShowDialogBeforeDelete)].BoolValue ;
 
-            toggleSwitch.IsOn = b;
         }
 
         private void ToggleSwitch_Loaded_1(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            var a = App.Current.AppConfig.StorageDeleteOption;
-            toggleSwitch.IsOn = a;
+            toggleSwitch.IsOn = App.Current.AppConfig[nameof(General)][nameof(StorageDeleteOption)].BoolValue ;
+
         }
     }
 }
