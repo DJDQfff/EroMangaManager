@@ -10,9 +10,9 @@ using EroMangaDB.Entities;
 
 using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.Models;
-using EroMangaManager.UWP.ViewModels;
 using EroMangaManager.UWP.SettingEnums;
-using static EroMangaManager.UWP.SettingEnums.General;
+using EroMangaManager.UWP.ViewModels;
+
 using SharpCompress.Archives;
 
 using SharpConfig;
@@ -26,6 +26,7 @@ using Windows.UI.Xaml.Navigation;
 using static EroMangaDB.BasicController;
 using static EroMangaManager.UWP.Helpers.ZipEntryHelper;
 using static EroMangaManager.UWP.SettingEnums.FolderEnum;
+using static EroMangaManager.UWP.SettingEnums.General;
 using static MyLibrary.Standard20.HashComputer;
 using static MyLibrary.UWP.StorageFolderHelper;
 using static MyLibrary.UWP.StorageItemPicker;

@@ -105,7 +105,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
             MangaBook eroManga = menuFlyout.DataContext as MangaBook;
 
-           _= await Helpers.StorageHelper.DeleteSourceFile(eroManga);
+            _ = await Helpers.StorageHelper.DeleteSourceFile(eroManga);
         }
 
         private async void LaunchFolder(object sender, Windows.UI.Xaml.RoutedEventArgs e)

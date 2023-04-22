@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 using EroMangaManager.UWP.SettingEnums;
-using static EroMangaManager.UWP.SettingEnums.General;
+
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 using static EroMangaDB.BasicController;
+using static EroMangaManager.UWP.SettingEnums.General;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
@@ -65,14 +66,12 @@ namespace EroMangaManager.UWP.Views.SettingPageChildPages
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
             App.Current.AppConfig[nameof(General)][nameof(IsFilterImageOn)].BoolValue = toggleSwitch.IsOn;
             App.Current.AppConfig.SaveToFile(App.Current.AppConfigPath);
-
         }
 
         private void ToggleSwitch_Loaded(object sender, RoutedEventArgs e)
         {
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
-            toggleSwitch.IsOn = App.Current.AppConfig[nameof(General)][nameof(IsFilterImageOn)].BoolValue ;
-
+            toggleSwitch.IsOn = App.Current.AppConfig[nameof(General)][nameof(IsFilterImageOn)].BoolValue;
         }
     }
 }

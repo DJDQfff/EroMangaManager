@@ -9,10 +9,11 @@ using EroMangaManager.Core.ViewModels;
 using EroMangaManager.UWP.Helpers;
 using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.SettingEnums;
-using static EroMangaManager.UWP.SettingEnums.General;
-using EroMangaManager.UWP.Views.MainPageChildPages;
 using EroMangaManager.UWP.Views;
+
 using Microsoft.Toolkit.Uwp.Notifications;
+
+using SharpConfig;
 
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -24,8 +25,9 @@ using Windows.UI.Xaml.Navigation;
 
 using static EroMangaDB.BasicController;
 using static EroMangaManager.UWP.SettingEnums.FolderEnum;
+using static EroMangaManager.UWP.SettingEnums.General;
 using static MyLibrary.UWP.StorageFolderHelper;
-using SharpConfig;
+
 namespace EroMangaManager.UWP
 {
     /// <summary> 提供特定于应用程序的行为，以补充默认的应用程序类。 </summary>
@@ -37,8 +39,10 @@ namespace EroMangaManager.UWP
         /// 全局ViewModel
         /// </summary>
         internal ObservableCollectionVM GlobalViewModel { get; private set; }
+
         internal Configuration AppConfig { get; private set; }
         internal string AppConfigPath { get; private set; }
+
         private async Task QuickInitialWork()
         {
 #if DEBUG
@@ -58,11 +62,11 @@ namespace EroMangaManager.UWP
 
             var filename = "AppConfig.cfg";
             var localfolder = Windows.Storage.ApplicationData.Current.LocalFolder;
-             AppConfigPath = Path.Combine(localfolder.Path, filename);
+            AppConfigPath = Path.Combine(localfolder.Path, filename);
 
             if (!File.Exists(AppConfigPath))
             {
-                 AppConfig = new Configuration();
+                AppConfig = new Configuration();
                 AppConfig[nameof(General)][nameof(IsFilterImageOn)].BoolValue = false;
                 AppConfig[nameof(General)][nameof(WhetherShowDialogBeforeDelete)].BoolValue = true;
                 AppConfig[nameof(General)][nameof(StorageFileDeleteOption)].BoolValue = false;
@@ -72,7 +76,7 @@ namespace EroMangaManager.UWP
             }
             else
             {
-                AppConfig=Configuration.LoadFromFile(AppConfigPath);
+                AppConfig = Configuration.LoadFromFile(AppConfigPath);
             }
 
             #endregion 创建设置文件
@@ -186,6 +190,7 @@ namespace EroMangaManager.UWP
             base.OnFileActivated(args);
             if (AppConfig is null)
             {
+                // TODO 看看能不能简化
                 await QuickInitialWork();
             }
 

@@ -3,14 +3,13 @@ using System.IO;
 using System.Threading.Tasks;
 
 using EroMangaManager.Core.Models;
-using EroMangaManager.UWP.Views.ContentDialogPages;
-
 using EroMangaManager.UWP.SettingEnums;
-using static EroMangaManager.UWP.SettingEnums.General;
-using SharpConfig;
+using EroMangaManager.UWP.Views.ContentDialogPages;
 
 using Windows.Storage;
 using Windows.UI.Xaml.Controls;
+
+using static EroMangaManager.UWP.SettingEnums.General;
 
 namespace EroMangaManager.UWP.Helpers
 {
@@ -56,7 +55,7 @@ namespace EroMangaManager.UWP.Helpers
         {
             var temp1 = App.Current.AppConfig[nameof(General)][nameof(WhetherShowDialogBeforeDelete)].BoolValue;
 
-            var temp2 =App.Current.AppConfig[nameof(General)][nameof(StorageFileDeleteOption)].BoolValue;
+            var temp2 = App.Current.AppConfig[nameof(General)][nameof(StorageFileDeleteOption)].BoolValue;
 
             var option = temp2 ? StorageDeleteOption.PermanentDelete : StorageDeleteOption.Default;
 
@@ -70,7 +69,7 @@ namespace EroMangaManager.UWP.Helpers
                     case ContentDialogResult.Primary:
                         App.Current.GlobalViewModel.RemoveManga(eroManga);
                         await MyLibrary.UWP.AccestListHelper.DeleteStorageFile(eroManga.FilePath, option);
-                        deleteResult= true;
+                        deleteResult = true;
                         break;
 
                     case ContentDialogResult.Secondary:
@@ -81,7 +80,7 @@ namespace EroMangaManager.UWP.Helpers
             {
                 App.Current.GlobalViewModel.RemoveManga(eroManga);
                 await MyLibrary.UWP.AccestListHelper.DeleteStorageFile(eroManga.FilePath, option);
-                deleteResult= true;
+                deleteResult = true;
             }
 
             return deleteResult;

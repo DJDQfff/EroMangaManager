@@ -49,15 +49,17 @@
                                                        FontSize="20" />
                                             <TextBlock Text="{x:Bind FileSize,Mode=OneTime,Converter={StaticResource filesizeConverter}}" />
                                         </StackPanel>
-                                        <StackPanel Orientation="Vertical" Grid.Column="2">
-                                                                                    <Button Click="OpenMangaClick"
-                                                HorizontalAlignment="Stretch"
-                                                Content="{uid:UI Uid=Open}" />
-                                        <Button Content="{uid:UI Uid=DeleteFile}"
-                                                HorizontalAlignment="Stretch"
-                                                Click="DeleteFileClick" />
-                                            <Button Content="{uid:UI Uid=OpenFolder}" HorizontalAlignment="Stretch" Click="LauncherFolder" />
-
+                                        <StackPanel Orientation="Vertical"
+                                                    Grid.Column="2">
+                                            <Button Click="OpenMangaClick"
+                                                    HorizontalAlignment="Stretch"
+                                                    Content="{uid:UI Uid=Open}" />
+                                            <Button Content="{uid:UI Uid=DeleteFile}"
+                                                    HorizontalAlignment="Stretch"
+                                                    Click="DeleteFileClick" />
+                                            <Button Content="{uid:UI Uid=OpenFolder}"
+                                                    HorizontalAlignment="Stretch"
+                                                    Click="LauncherFolder" />
                                         </StackPanel>
                                     </Grid>
                                 </DataTemplate>

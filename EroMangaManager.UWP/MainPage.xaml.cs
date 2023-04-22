@@ -2,13 +2,12 @@
 using System.Linq;
 
 using EroMangaManager.UWP.SettingEnums;
-using static EroMangaManager.UWP.SettingEnums.General;
 using EroMangaManager.UWP.Views.MainPageChildPages;
-
-using SharpConfig;
 
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+
+using static EroMangaManager.UWP.SettingEnums.General;
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804
 // 上介绍了“空白页”项模板

@@ -5,15 +5,17 @@ using System.Linq;
 using EroMangaManager.Core.ViewModels;
 using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.SettingEnums;
-using static EroMangaManager.UWP.SettingEnums.General;
+
 using MyLibrary.UWP;
+
+using SharpConfig;
 
 using Windows.Storage;
 using Windows.Storage.AccessCache;
 using Windows.UI.Xaml.Controls;
 
+using static EroMangaManager.UWP.SettingEnums.General;
 using static MyLibrary.UWP.StorageItemPicker;
-using SharpConfig;
 
 // https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
@@ -118,7 +120,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
                 section.StringValueArray = list.ToArray();
                 cfg.SaveToFile(App.Current.AppConfigPath);
-
             }
         }
 
@@ -128,9 +129,8 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
             var cfg = Configuration.LoadFromFile(App.Current.AppConfigPath);
             var section = cfg[nameof(General)][nameof(IsEmptyFolderShow)];
-            section.BoolValue=toggleSwitch.IsOn;
+            section.BoolValue = toggleSwitch.IsOn;
             cfg.SaveToFile(App.Current.AppConfigPath);
-
         }
 
         private void ToggleSwitch_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -141,7 +141,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             var section = cfg[nameof(General)][nameof(IsEmptyFolderShow)];
 
             toggleSwitch.IsOn = section.BoolValue;
-
         }
     }
 }

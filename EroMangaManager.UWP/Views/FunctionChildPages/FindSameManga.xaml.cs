@@ -50,15 +50,15 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
             var button = sender as Button;
             var manga = button.DataContext as MangaBook;
 
-            var deleteResult= await Helpers.StorageHelper.DeleteSourceFile(manga);
+            var deleteResult = await Helpers.StorageHelper.DeleteSourceFile(manga);
 
             if (deleteResult)
             {
                 mangaBookViewModel.DeleteStorageFileInRootObservable(manga);
             }
-            }
+        }
 
-            private async void OpenMangaClick(object sender, RoutedEventArgs e)
+        private async void OpenMangaClick(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
             var manga = button.DataContext as MangaBook;
