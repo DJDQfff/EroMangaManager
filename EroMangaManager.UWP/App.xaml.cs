@@ -60,7 +60,7 @@ namespace EroMangaManager.UWP
 
             //Windows.ApplicationModel.Resources.Core.ResourceContext.SetGlobalQualifierValue("Language", "fr");
 
-            var filename = "AppConfig.cfg";
+            var filename = "AppConfig.ini";
             var localfolder = Windows.Storage.ApplicationData.Current.LocalFolder;
             AppConfigPath = Path.Combine(localfolder.Path, filename);
 
