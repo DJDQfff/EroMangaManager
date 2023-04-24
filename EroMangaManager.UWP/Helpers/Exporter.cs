@@ -31,7 +31,7 @@ namespace EroMangaManager.UWP.Helpers
                     {
                         using (Document document = new Document(pdfDocument))
                         {
-                            foreach (var entry in reader.zipArchiveEntries)
+                            foreach (var entry in reader.FilteredArchiveEntries)
                             {
                                 using (var stream = entry.OpenEntryStream())
                                 {

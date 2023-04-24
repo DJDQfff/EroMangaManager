@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -10,6 +11,7 @@ using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.Helpers;
 
 using SharpCompress.Archives;
+using SharpCompress.Archives.Zip;
 
 using Windows.Storage;
 using Windows.UI.Xaml.Media.Imaging;
@@ -34,13 +36,15 @@ namespace EroMangaManager.UWP.ViewModels
         private StorageFile StorageFile { set; get; }
 
         /// <summary> 打开的文件流 </summary>
-        private Stream stream { set; get; }
+        private Stream Stream { set; get; }
 
         /// <summary> 压缩文件 </summary>
-        private IArchive zipArchive { set; get; }
+        private IArchive ZipArchive { set; get; }
 
-        /// <summary> 视图模型可以打开的压缩图片合集 </summary>
-        public ObservableCollection<IArchiveEntry> zipArchiveEntries { set; get; } = new ObservableCollection<IArchiveEntry>();
+        public IEnumerable<IArchiveEntry> AllEntry => ZipArchive.Entries;
+
+        /// <summary>筛选过后的内容入口 </summary>
+        public ObservableCollection<IArchiveEntry> FilteredArchiveEntries { set; get; } = new ObservableCollection<IArchiveEntry>();
 
         /// <summary>
         /// 图源
@@ -48,7 +52,7 @@ namespace EroMangaManager.UWP.ViewModels
         public ObservableCollection<BitmapImage> BitmapImages { set; get; } = new ObservableCollection<BitmapImage>();
 
         /// <summary> 初始化</summary>
-        /// <param name="_manga"> </param>
+        /// <param entrykey="_manga"> </param>
         public ReaderVM(MangaBook _manga)
         {
             this.Manga = _manga;
@@ -57,8 +61,8 @@ namespace EroMangaManager.UWP.ViewModels
         /// <summary>
         ///
         /// </summary>
-        /// <param name="_manga"></param>
-        /// <param name="storageFile"></param>
+        /// <param entrykey="_manga"></param>
+        /// <param entrykey="storageFile"></param>
         public ReaderVM(MangaBook _manga, StorageFile storageFile) : this(_manga)
         {
             StorageFile = storageFile;
@@ -74,8 +78,8 @@ namespace EroMangaManager.UWP.ViewModels
             {
                 StorageFile = await MyLibrary.UWP.AccestListHelper.GetStorageFile(Manga.FilePath);
             }
-            stream = await StorageFile.OpenStreamForReadAsync();
-            zipArchive = ArchiveFactory.Open(stream);
+            Stream = await StorageFile.OpenStreamForReadAsync();
+            ZipArchive = ArchiveFactory.Open(Stream);
         }
 
         //TODO 把selectentry和showentry分开
@@ -83,39 +87,26 @@ namespace EroMangaManager.UWP.ViewModels
         /// <summary> 从压缩文件的所有entry中，筛选出符合条件的 </summary>
         public async Task SelectEntriesAsync(FilteredImage[] filteredImages, bool whetherShow = true)
         {
-            Stream TempStream = null;
-            IArchive TempZipArchive = null;
-            if (_IsClosing)
-            {
-                StopWork();
-                return;
-            }
-            TempStream = await StorageFile.OpenStreamForReadAsync();
+            var entrykeys = ZipArchive.SortEntriesByName();
 
-            TempZipArchive = ArchiveFactory.Open(TempStream);
-
-            var names = TempZipArchive.SortEntriesByName();
-
-            foreach (var name in names)
+            foreach (var entrykey in entrykeys)
             {
                 if (_IsClosing)
                 {
-                    StopWork();
                     return;
                 }
 
-                var TempEntry = TempZipArchive.Entries.Single(n => n.Key == name);
+                var TempEntry = ZipArchive.Entries.Single(n => n.Key == entrykey);
                 bool cansue = TempEntry.EntryFilter(filteredImages); // 放在这里可以
 
                 if (cansue)
                 {
-                    var entry = zipArchive.Entries.Single(n => n.Key == name);
-                    zipArchiveEntries.Add(entry);// 异步操作不能放在这里，会占用线程
+                    var entry = ZipArchive.Entries.Single(n => n.Key == entrykey);
+                    FilteredArchiveEntries.Add(entry);// 异步操作不能放在这里，会占用线程
                     if (whetherShow)
                     {
                         if (_IsClosing)
                         {
-                            StopWork();
                             return;
                         }
 
@@ -123,23 +114,18 @@ namespace EroMangaManager.UWP.ViewModels
                     }
                 }
             }
-
-            void StopWork()
-            {
-                TempStream?.Dispose();
-                TempZipArchive?.Dispose();
-            }
         }
 
         /// <summary> </summary>
         public void Dispose()
         {
             _IsClosing = true;
-            zipArchiveEntries.Clear();
+
+            FilteredArchiveEntries.Clear();
 
             BitmapImages.Clear();
-            zipArchive.Dispose();
-            stream.Dispose();
+            ZipArchive.Dispose();
+            Stream.Dispose();
 
             GC.SuppressFinalize(this);
         }

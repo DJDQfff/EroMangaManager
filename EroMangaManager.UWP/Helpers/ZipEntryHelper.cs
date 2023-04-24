@@ -99,7 +99,7 @@ namespace EroMangaManager.UWP.Helpers
         /// <param name="zipArchive"></param>
         /// <param name="sortFunc"></param>
         /// <returns></returns>
-        public static IEnumerable<string> SortEntriesByName(this IArchive zipArchive, Action<IEnumerable<string>> sortFunc = null)
+        public static List<string> SortEntriesByName(this IArchive zipArchive, Action<IEnumerable<string>> sortFunc = null)
         {
             List<string> vs = new List<string>();
             foreach (var zipEntry in zipArchive.Entries)

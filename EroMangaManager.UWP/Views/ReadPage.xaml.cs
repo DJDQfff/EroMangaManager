@@ -74,7 +74,7 @@ namespace EroMangaManager.UWP.Views
                     await TryChangeMangaBook(mangaBook);
                     break;
 
-                    /// 当从文件关联打开时，传入StorageFile
+                /// 当从文件关联打开时，传入StorageFile
                 case StorageFile storageFile:
                     await OnceLoadFromStorageFile(storageFile);
                     break;
@@ -159,8 +159,8 @@ namespace EroMangaManager.UWP.Views
         {
             var bitmap = FLIP.SelectedItem as Windows.UI.Xaml.Media.Imaging.BitmapImage;
             var index = currentReader.BitmapImages.IndexOf(bitmap);
-            var entry = currentReader.zipArchiveEntries[index];
-            currentReader.zipArchiveEntries.Remove(entry);
+            var entry = currentReader.FilteredArchiveEntries[index];
+            currentReader.FilteredArchiveEntries.Remove(entry);
             currentReader.BitmapImages.Remove(bitmap);
             string hash = entry.ComputeHash();
             long length = entry.Size;
@@ -180,7 +180,7 @@ namespace EroMangaManager.UWP.Views
         {
             var bitmap = FLIP.SelectedItem as Windows.UI.Xaml.Media.Imaging.BitmapImage;
             var index = currentReader.BitmapImages.IndexOf(bitmap);
-            var entry = currentReader.zipArchiveEntries[index];
+            var entry = currentReader.FilteredArchiveEntries[index];
             StorageFile storageFile = await SavePictureAsync();
             if (storageFile != null)
             {
@@ -248,7 +248,7 @@ namespace EroMangaManager.UWP.Views
         {
             var entry = FLIP.SelectedItem as IArchiveEntry;
 
-            currentReader.zipArchiveEntries.Remove(entry);
+            currentReader.FilteredArchiveEntries.Remove(entry);
             string hash = entry.ComputeHash();
             long length = entry.Size;
             await DatabaseController.ImageFilter_Add(hash, length);
