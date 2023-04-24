@@ -277,14 +277,14 @@ namespace EroMangaManager.UWP.Views
 
         private void FLIP_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            var a = ReadPageButtonGroup.Visibility;
+            var a = ControlsGrid.Visibility;
             if (a == Visibility.Collapsed)
             {
-                ReadPageButtonGroup.Visibility = Visibility.Visible;
+                ControlsGrid.Visibility = Visibility.Visible;
             }
             else
             {
-                ReadPageButtonGroup.Visibility = Visibility.Collapsed;
+                ControlsGrid.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -294,7 +294,7 @@ namespace EroMangaManager.UWP.Views
 
             applicationView.TryEnterFullScreenMode();
 
-            ReadPageButtonGroup.Visibility = Visibility.Collapsed;
+            ControlsGrid.Visibility = Visibility.Collapsed;
         }
 
         private void AppBarToggleButton_Unchecked(object sender, RoutedEventArgs e)

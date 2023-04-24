@@ -10,17 +10,9 @@
       mc:Ignorable="d">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
 
         <FlipView x:Name="FLIP"
-                  Tapped="FLIP_Tapped"
-                  Grid.Row="0"
-                  Grid.Column="0"
-                  Grid.RowSpan="3">
+                  Tapped="FLIP_Tapped">
             <FlipView.ItemTemplate>
                 <DataTemplate  x:DataType="iamge:BitmapImage">
                     <Grid x:Name="RootGrid">
@@ -45,18 +37,26 @@
             </FlipView.ItemTemplate>
         </FlipView>
 
-        <CommandBar Grid.Row="0"
-                    Background="Transparent"
-                    x:Load="True"
-                    FlowDirection="LeftToRight"
-                    Visibility="Visible"
-                    x:Name="ReadPageButtonGroup">
-            <CommandBar.PrimaryCommands>
-                <AppBarToggleButton IsChecked="False"
-                                    Checked="AppBarToggleButton_Checked"
-                                    Unchecked="AppBarToggleButton_Unchecked"
-                                    Icon="FullScreen" />
-            </CommandBar.PrimaryCommands>
-        </CommandBar>
+        <Grid x:Name="ControlsGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <CommandBar Grid.Row="0"
+                        Background="Transparent"
+                        x:Load="True"
+                        FlowDirection="LeftToRight"
+                        Visibility="Visible"
+                        x:Name="ReadPageCommand">
+                <CommandBar.PrimaryCommands>
+                    <AppBarToggleButton IsChecked="False"
+                                        Checked="AppBarToggleButton_Checked"
+                                        Unchecked="AppBarToggleButton_Unchecked"
+                                        Icon="FullScreen" />
+                </CommandBar.PrimaryCommands>
+            </CommandBar>
+        </Grid>
     </Grid>
 </Page>
