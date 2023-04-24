@@ -17,8 +17,10 @@ using SharpConfig;
 
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
 using Windows.Storage;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -210,11 +212,12 @@ namespace EroMangaManager.UWP
                         var rootFrame = new Frame();
                         rootFrame.NavigationFailed += OnNavigationFailed;
                         rootFrame.Navigate(typeof(ReadPage), file);
-
+                        var title = ApplicationView.GetForCurrentView().Title = file.Name;
                         Window.Current.Content = rootFrame;
                         Window.Current.Closed += (objectsender, sss) =>
                         {
                             var page = rootFrame.Content as ReadPage;
+
                             page.currentReader?.Dispose();
                             GC.SuppressFinalize(Window.Current);
                         };

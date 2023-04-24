@@ -22,6 +22,7 @@ namespace EroMangaManager.UWP.Helpers
             {
                 var rootFrame = new Frame();
                 rootFrame.Navigate(typeof(ReadPage), data);
+                var title = ApplicationView.GetForCurrentView().Title = (data as MangaBook).MangaName;
 
                 Window.Current.Content = rootFrame;
                 Window.Current.Closed += (objectsender, args) =>
