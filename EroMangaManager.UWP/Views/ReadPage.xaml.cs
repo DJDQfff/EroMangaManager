@@ -21,6 +21,7 @@ using Windows.Storage;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 using static EroMangaDB.BasicController;
@@ -101,7 +102,7 @@ namespace EroMangaManager.UWP.Views
                 filteredImages = BasicController.DatabaseController.database.FilteredImages.ToArray();
             }
             currentReader.SelectEntries(filteredImages);
-            await currentReader.ShowBitmapImages();
+            await currentReader.ShowFilteredBitmapImages();
         }
 
         /// <summary>
@@ -149,7 +150,7 @@ namespace EroMangaManager.UWP.Views
                 filteredImages = BasicController.DatabaseController.database.FilteredImages.ToArray();
             }
             currentReader.SelectEntries(filteredImages);
-            await currentReader.ShowBitmapImages();
+            await currentReader.ShowFilteredBitmapImages();
 
             // TODO 任务取消，但是会一直报错
             //await Task.Run(async () => { await currentReader.SelectEntries(filteredImages); });
@@ -161,8 +162,8 @@ namespace EroMangaManager.UWP.Views
         {
             var bitmap = FLIP.SelectedItem as Windows.UI.Xaml.Media.Imaging.BitmapImage;
             var index = currentReader.BitmapImages.IndexOf(bitmap);
-            var entry = currentReader.FilteredArchiveEntries[index];
-            currentReader.FilteredArchiveEntries.Remove(entry);
+            var entry = currentReader.FilteredArchiveImageEntries[index];
+            currentReader.FilteredArchiveImageEntries.Remove(entry);
             currentReader.BitmapImages.Remove(bitmap);
             string hash = entry.ComputeHash();
             long length = entry.Size;
@@ -182,7 +183,7 @@ namespace EroMangaManager.UWP.Views
         {
             var bitmap = FLIP.SelectedItem as Windows.UI.Xaml.Media.Imaging.BitmapImage;
             var index = currentReader.BitmapImages.IndexOf(bitmap);
-            var entry = currentReader.FilteredArchiveEntries[index];
+            var entry = currentReader.FilteredArchiveImageEntries[index];
             StorageFile storageFile = await SavePictureAsync();
             if (storageFile != null)
             {
@@ -250,7 +251,7 @@ namespace EroMangaManager.UWP.Views
         {
             var entry = FLIP.SelectedItem as IArchiveEntry;
 
-            currentReader.FilteredArchiveEntries.Remove(entry);
+            currentReader.FilteredArchiveImageEntries.Remove(entry);
             string hash = entry.ComputeHash();
             long length = entry.Size;
             await DatabaseController.ImageFilter_Add(hash, length);
@@ -302,6 +303,12 @@ namespace EroMangaManager.UWP.Views
             var applicationView = ApplicationView.GetForCurrentView();
 
             applicationView.ExitFullScreenMode();
+        }
+
+        private void ReadPositionSlider_ValueChanged(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
+        {
+            var entryindex = Convert.ToInt32(ReadPositionSlider.Value - 1);
+            FLIP.SelectedIndex = entryindex;
         }
     }
 }

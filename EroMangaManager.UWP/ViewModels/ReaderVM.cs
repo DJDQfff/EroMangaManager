@@ -43,8 +43,10 @@ namespace EroMangaManager.UWP.ViewModels
 
         public IEnumerable<IArchiveEntry> AllEntry => ZipArchive.Entries;
 
-        /// <summary>筛选过后的内容入口 </summary>
-        public ObservableCollection<IArchiveEntry> FilteredArchiveEntries { set; get; } = new ObservableCollection<IArchiveEntry>();
+        /// <summary>筛选过后的图片内容入口 </summary>
+        public ObservableCollection<IArchiveEntry> FilteredArchiveImageEntries { set; get; } = new ObservableCollection<IArchiveEntry>();
+
+        public Dictionary<IArchiveEntry, BitmapImage> BitmapImagesDic { set; get; } = new Dictionary<IArchiveEntry, BitmapImage>();
 
         /// <summary>
         /// 图源
@@ -82,20 +84,36 @@ namespace EroMangaManager.UWP.ViewModels
             ZipArchive = ArchiveFactory.Open(Stream);
         }
 
+        public async Task<BitmapImage> ShowSpecificBitmapImage(IArchiveEntry entry)
+        {
+            BitmapImage bitimage;
+            if (!BitmapImagesDic.ContainsKey(entry))
+            {
+                bitimage = await ShowEntryAsync(entry);
+
+                BitmapImages.Add(bitimage);
+                BitmapImagesDic[entry] = bitimage;
+            }
+            else
+            {
+                bitimage = BitmapImagesDic[entry];
+            }
+            return bitimage;
+        }
+
         /// <summary>
         /// 开始转化图片
         /// </summary>
         /// <returns></returns>
-        public async Task ShowBitmapImages()
+        public async Task ShowFilteredBitmapImages()
         {
-            foreach (var entry in FilteredArchiveEntries)
+            foreach (var entry in FilteredArchiveImageEntries)
             {
                 if (_IsClosing)
                 {
                     return;
                 }
-
-                BitmapImages.Add(await ShowEntryAsync(entry));
+                _ = await ShowSpecificBitmapImage(entry);
             }
         }
 
@@ -117,7 +135,7 @@ namespace EroMangaManager.UWP.ViewModels
                 if (cansue)
                 {
                     var entry = ZipArchive.Entries.Single(n => n.Key == entrykey);
-                    FilteredArchiveEntries.Add(entry);// 异步操作不能放在这里，会占用线程
+                    FilteredArchiveImageEntries.Add(entry);// 异步操作不能放在这里，会占用线程
                 }
             }
         }
@@ -127,7 +145,7 @@ namespace EroMangaManager.UWP.ViewModels
         {
             _IsClosing = true;
 
-            FilteredArchiveEntries.Clear();
+            FilteredArchiveImageEntries.Clear();
 
             BitmapImages.Clear();
             ZipArchive.Dispose();

@@ -5,7 +5,7 @@ using EroMangaManager.UWP.ViewModels;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
-namespace EroMangaManager.UWP.ValueConverters
+namespace EroMangaManager.UWP.StaticResource
 {
     /// <summary>
     /// 进度条可见性

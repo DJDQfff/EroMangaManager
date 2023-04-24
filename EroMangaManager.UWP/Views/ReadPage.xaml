@@ -4,37 +4,47 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
-      xmlns:iamge="using:Windows.UI.Xaml.Media.Imaging"
+      xmlns:image="using:Windows.UI.Xaml.Media.Imaging"
+      xmlns:sharpcompress="using:SharpCompress.Archives"
+      xmlns:staticresource="using:EroMangaManager.UWP.StaticResource"
       Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
       NavigationCacheMode="Required"
       mc:Ignorable="d">
-
+    <Page.Resources>
+        <DataTemplate  x:DataType="image:BitmapImage"
+                       x:Key="BitmapImageDateType">
+            <Grid x:Name="RootGrid">
+                <Grid.ContextFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Click="FilteThisImage2_Click"
+                                        Text="{uid:UI Uid=DontShowThisImage}" />
+                        <MenuFlyoutItem Click="SaveImageAs2_Click"
+                                        Text="{uid:UI Uid=SaveAs}" />
+                    </MenuFlyout>
+                </Grid.ContextFlyout>
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                              HorizontalScrollMode="Disabled"
+                              VerticalScrollBarVisibility="Disabled"
+                              VerticalScrollMode="Disabled"
+                              ZoomMode="Enabled">
+                    <Image x:Name="image"
+                           Source="{x:Bind}" />
+                </ScrollViewer>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="EntryDataType"
+                      x:DataType="sharpcompress:IArchiveEntry">
+            <TextBlock Text="jsfdakj    " />
+        </DataTemplate>
+        <staticresource:MyDataTemplateSelector x:Key="Selector"
+                                               OfBitmapImage="{StaticResource BitmapImageDateType }"
+                                               OfIArchiveEntry="{StaticResource EntryDataType}" />
+    </Page.Resources>
     <Grid>
 
         <FlipView x:Name="FLIP"
+                  ItemTemplateSelector="{StaticResource Selector}"
                   Tapped="FLIP_Tapped">
-            <FlipView.ItemTemplate>
-                <DataTemplate  x:DataType="iamge:BitmapImage">
-                    <Grid x:Name="RootGrid">
-                        <Grid.ContextFlyout>
-                            <MenuFlyout>
-                                <MenuFlyoutItem Click="FilteThisImage2_Click"
-                                                Text="{uid:UI Uid=DontShowThisImage}" />
-                                <MenuFlyoutItem Click="SaveImageAs2_Click"
-                                                Text="{uid:UI Uid=SaveAs}" />
-                            </MenuFlyout>
-                        </Grid.ContextFlyout>
-                        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
-                                      HorizontalScrollMode="Disabled"
-                                      VerticalScrollBarVisibility="Disabled"
-                                      VerticalScrollMode="Disabled"
-                                      ZoomMode="Enabled">
-                            <Image x:Name="image"
-                                   Source="{x:Bind}" />
-                        </ScrollViewer>
-                    </Grid>
-                </DataTemplate>
-            </FlipView.ItemTemplate>
         </FlipView>
 
         <Grid x:Name="ControlsGrid">
@@ -57,6 +67,12 @@
                                         Icon="FullScreen" />
                 </CommandBar.PrimaryCommands>
             </CommandBar>
+            <Slider x:Name="ReadPositionSlider"
+                    ValueChanged="ReadPositionSlider_ValueChanged"
+                    Grid.Row="2"
+                    Maximum="{x:Bind currentReader.FilteredArchiveImageEntries.Count,Mode=OneWay}"
+                    Minimum="1"
+                    StepFrequency="1" />
         </Grid>
     </Grid>
 </Page>

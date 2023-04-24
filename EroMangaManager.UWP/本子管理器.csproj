@@ -142,12 +142,13 @@
     <Compile Include="SettingEnums\IAppConfig.cs" />
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="Models\RepeatMangaBookGroup.cs" />
+    <Compile Include="StaticResource\MyDataTemplateSelector.cs" />
     <Compile Include="UserControls\TagsDisplayControl.xaml.cs">
       <DependentUpon>TagsDisplayControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ValueConverters\FileSizeConverter.cs" />
-    <Compile Include="ValueConverters\GetRandomSolidColorBrush.cs" />
-    <Compile Include="ValueConverters\ControlVisibility.cs" />
+    <Compile Include="StaticResource\FileSizeConverter.cs" />
+    <Compile Include="StaticResource\GetRandomSolidColorBrush.cs" />
+    <Compile Include="StaticResource\ControlVisibility.cs" />
     <Compile Include="Views\ContentDialogPages\OverviewInformation.xaml.cs">
       <DependentUpon>OverviewInformation.xaml</DependentUpon>
     </Compile>
@@ -212,7 +213,7 @@
     </Compile>
     <Compile Include="Views\SettingPageChildPages\ImageItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValueConverters\ProgressRingVisibility.cs" />
+    <Compile Include="StaticResource\ProgressRingVisibility.cs" />
     <Compile Include="Views\SettingPageChildPages\UpdateRecordsPage.xaml.cs">
       <DependentUpon>UpdateRecordsPage.xaml</DependentUpon>
     </Compile>
@@ -366,6 +367,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="ResourceDictionarys\FunctionShowerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResourceDictionarys\MyDataTemplateSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
