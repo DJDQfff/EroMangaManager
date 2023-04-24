@@ -69,10 +69,12 @@ namespace EroMangaManager.UWP.Views
 
             switch (e.Parameter)
             {
+                // 当从LibraryFolders打开漫画时，传入MangaBook
                 case MangaBook mangaBook:
                     await TryChangeMangaBook(mangaBook);
                     break;
 
+                    /// 当从文件关联打开时，传入StorageFile
                 case StorageFile storageFile:
                     await OnceLoadFromStorageFile(storageFile);
                     break;
