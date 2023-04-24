@@ -74,20 +74,17 @@ namespace EroMangaManager.UWP.Helpers
 
                 #endregion 第一个条件：比较数据库，解压后大小
 
-                using (Stream stream = entry.OpenEntryStream())               // 不能对stream设置position
+                #region // 第二个条件： 计算流hash，判断唯一性
+
+                string hash = entry.ComputeHash();
+                int count = filteredImages.Count(n => n.Hash == hash);
+
+                if (count != 0)
                 {
-                    #region // 第二个条件： 计算流hash，判断唯一性
-
-                    string hash = stream.ComputeHash();
-                    int count = filteredImages.Count(n => n.Hash == hash);
-
-                    if (count != 0)
-                    {
-                        canuse = false;
-                    }
-
-                    #endregion // 第二个条件： 计算流hash，判断唯一性
+                    canuse = false;
                 }
+
+                #endregion // 第二个条件： 计算流hash，判断唯一性
             }
 
             return canuse;                                                  // 最后一定符合调教

@@ -14,23 +14,26 @@ namespace EroMangaManager.UWP.Helpers
 {
     internal static class WindowHelper
     {
-        internal static async Task ShowNewReadPageWindow(MangaBook mangaBook)
+        internal static async Task ShowNewReadPageWindow(object data)
         {
             CoreApplicationView newView = CoreApplication.CreateNewView();
             int newViewId = 0;
             await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                Frame frame = new Frame();
-                frame.Navigate(typeof(ReadPage), mangaBook);
-                Window.Current.Content = frame;
-                // You have to activate the window in order to show it later.
-                Window.Current.Activate();
+                var rootFrame = new Frame();
+                rootFrame.Navigate(typeof(ReadPage), data);
+
+                Window.Current.Content = rootFrame;
                 Window.Current.Closed += (objectsender, args) =>
                 {
-                    var page = frame.Content as ReadPage;
+                    var page = rootFrame.Content as ReadPage;
                     page.currentReader?.Dispose();
                     GC.SuppressFinalize(Window.Current);
                 };
+
+                // You have to activate the window in order to show it later.
+                Window.Current.Activate();
+
                 newViewId = ApplicationView.GetForCurrentView().Id;
             });
             bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);

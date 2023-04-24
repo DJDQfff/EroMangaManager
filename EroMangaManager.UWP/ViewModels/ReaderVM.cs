@@ -82,10 +82,25 @@ namespace EroMangaManager.UWP.ViewModels
             ZipArchive = ArchiveFactory.Open(Stream);
         }
 
-        //TODO 把selectentry和showentry分开
-        //TODO 给selectentry添加一个参数，要过滤的数据库
-        /// <summary> 从压缩文件的所有entry中，筛选出符合条件的 </summary>
-        public async Task SelectEntriesAsync(FilteredImage[] filteredImages, bool whetherShow = true)
+        /// <summary>
+        /// 开始转化图片
+        /// </summary>
+        /// <returns></returns>
+        public async Task ShowBitmapImages()
+        {
+            foreach (var entry in FilteredArchiveEntries)
+            {
+                if (_IsClosing)
+                {
+                    return;
+                }
+
+                BitmapImages.Add(await ShowEntryAsync(entry));
+            }
+        }
+
+        /// <summary> 从压缩文件的所有entry中，筛选出符合条件的，传入null则为不进行筛选 </summary>
+        public void SelectEntries(FilteredImage[] filteredImages)
         {
             var entrykeys = ZipArchive.SortEntriesByName();
 
@@ -103,15 +118,6 @@ namespace EroMangaManager.UWP.ViewModels
                 {
                     var entry = ZipArchive.Entries.Single(n => n.Key == entrykey);
                     FilteredArchiveEntries.Add(entry);// 异步操作不能放在这里，会占用线程
-                    if (whetherShow)
-                    {
-                        if (_IsClosing)
-                        {
-                            return;
-                        }
-
-                        BitmapImages.Add(await ShowEntryAsync(entry));
-                    }
                 }
             }
         }

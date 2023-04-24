@@ -100,7 +100,8 @@ namespace EroMangaManager.UWP.Views
             {
                 filteredImages = BasicController.DatabaseController.database.FilteredImages.ToArray();
             }
-            await currentReader.SelectEntriesAsync(filteredImages);
+            currentReader.SelectEntries(filteredImages);
+            await currentReader.ShowBitmapImages();
         }
 
         /// <summary>
@@ -147,10 +148,11 @@ namespace EroMangaManager.UWP.Views
             {
                 filteredImages = BasicController.DatabaseController.database.FilteredImages.ToArray();
             }
-            await currentReader.SelectEntriesAsync(filteredImages);
+            currentReader.SelectEntries(filteredImages);
+            await currentReader.ShowBitmapImages();
 
             // TODO 任务取消，但是会一直报错
-            //await Task.Run(async () => { await currentReader.SelectEntriesAsync(filteredImages); });
+            //await Task.Run(async () => { await currentReader.SelectEntries(filteredImages); });
         }
 
         #region 数据绑定到已解码的BitmapImage
