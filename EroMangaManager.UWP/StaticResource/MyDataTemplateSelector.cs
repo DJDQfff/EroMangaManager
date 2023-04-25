@@ -21,14 +21,10 @@ namespace EroMangaManager.UWP.StaticResource
             switch (item)
             {
                 case BitmapImage a:
-                    return OfIArchiveEntry;
+                    return OfBitmapImage;
 
                 case IArchiveEntry s:
                     return OfIArchiveEntry;
-
-                case var s:
-                    return OfBitmapImage;
-                    break;
             }
             return null;
         }
