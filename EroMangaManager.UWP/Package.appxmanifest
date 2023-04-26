@@ -60,6 +60,6 @@
   </Applications>
 
   <Capabilities>
-    <uap:Capability Name="picturesLibrary"/>
-    <Capability Name="internetClient"/></Capabilities>
+    <Capability Name="internetClient"/>
+    <uap:Capability Name="picturesLibrary"/></Capabilities>
 </Package>
