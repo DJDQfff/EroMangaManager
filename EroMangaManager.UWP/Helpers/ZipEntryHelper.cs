@@ -25,7 +25,7 @@ namespace EroMangaManager.UWP.Helpers
         /// </summary>
         /// <param name="entry"></param>
         /// <returns></returns>
-        public static async Task<BitmapImage> ShowEntryAsync(IArchiveEntry entry)
+        public static async Task<BitmapImage> ShowEntryAsync(this IArchiveEntry entry)
         {
             BitmapImage bitmapImage = new BitmapImage();
 

@@ -6,7 +6,17 @@
 
 * Tag管理页面：用于管理所有Tag，
 
-* 阅读进度保存，及本子总页数（这两个是一体的）
+* 阅读进度保存，阅读位置跳转，
+  
+  > 暂时放弃，总有bug，FlipView还是没搞懂
+
+# BUG
+
+* FilterThisImage会导致ReaderVM的ShowALlBItmapImage方法出问题，暂时隐藏
+
+* ReadPage的 DataTemplateSelector不知道为什么无法正常运行
+
+* ReadPage的FilpView（数据源为FilteredEntry情况下），从Slider跳转位置引发的SelectionChangeByEntry在运行时未创建DataTemplate对应的控件
 
 # 需要持续优化项
 

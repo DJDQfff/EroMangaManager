@@ -43,7 +43,7 @@
     <Grid>
 
         <FlipView x:Name="FLIP"
-                  ItemTemplateSelector="{StaticResource Selector}"
+                  ItemTemplate="{StaticResource BitmapImageDateType}"
                   Tapped="FLIP_Tapped">
         </FlipView>
 
@@ -68,6 +68,7 @@
                 </CommandBar.PrimaryCommands>
             </CommandBar>
             <Slider x:Name="ReadPositionSlider"
+                    x:Load="False"
                     ValueChanged="ReadPositionSlider_ValueChanged"
                     Grid.Row="2"
                     Maximum="{x:Bind currentReader.FilteredArchiveImageEntries.Count,Mode=OneWay}"

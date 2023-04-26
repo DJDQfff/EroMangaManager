@@ -89,7 +89,7 @@ namespace EroMangaManager.UWP.ViewModels
             BitmapImage bitimage;
             if (!BitmapImagesDic.ContainsKey(entry))
             {
-                bitimage = await ShowEntryAsync(entry);
+                bitimage = await entry.ShowEntryAsync();
 
                 BitmapImages.Add(bitimage);
                 BitmapImagesDic[entry] = bitimage;
