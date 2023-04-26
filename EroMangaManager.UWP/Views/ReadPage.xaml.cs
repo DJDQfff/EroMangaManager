@@ -75,7 +75,7 @@ namespace EroMangaManager.UWP.Views
                     await TryChangeMangaBook(mangaBook);
                     break;
 
-                /// 当从文件关联打开时，传入StorageFile
+                // 当从文件关联打开时，传入StorageFile
                 case StorageFile storageFile:
                     await OnceLoadFromStorageFile(storageFile);
                     break;
@@ -219,7 +219,7 @@ namespace EroMangaManager.UWP.Views
             entry.WriteToFile(path);
         }
 
-        private async void SaveImageAs_Click(object sender, RoutedEventArgs e)
+        private async void SaveImageAs_Click(object e, RoutedEventArgs args)
         {
             var entry = FLIP.SelectedItem as IArchiveEntry;
             StorageFile storageFile = await SavePictureAsync();

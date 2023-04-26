@@ -41,11 +41,17 @@ namespace EroMangaManager.UWP.ViewModels
         /// <summary> 压缩文件 </summary>
         private IArchive ZipArchive { set; get; }
 
+        /// <summary>
+        /// 所有的entry
+        /// </summary>
         public IEnumerable<IArchiveEntry> AllEntry => ZipArchive.Entries;
 
         /// <summary>筛选过后的图片内容入口 </summary>
         public ObservableCollection<IArchiveEntry> FilteredArchiveImageEntries { set; get; } = new ObservableCollection<IArchiveEntry>();
 
+        /// <summary>
+        /// 对应词典
+        /// </summary>
         public Dictionary<IArchiveEntry, BitmapImage> BitmapImagesDic { set; get; } = new Dictionary<IArchiveEntry, BitmapImage>();
 
         /// <summary>
@@ -84,6 +90,11 @@ namespace EroMangaManager.UWP.ViewModels
             ZipArchive = ArchiveFactory.Open(Stream);
         }
 
+        /// <summary>
+        /// 显示指定entry
+        /// </summary>
+        /// <param name="entry"></param>
+        /// <returns></returns>
         public async Task<BitmapImage> ShowSpecificBitmapImage(IArchiveEntry entry)
         {
             BitmapImage bitimage;
