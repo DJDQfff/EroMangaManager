@@ -203,7 +203,7 @@ namespace EroMangaManager.UWP
                 case Frame rootFrame:
                     MangaBook book = await ModelFactory.CreateMangaBook(file);
 
-                    await WindowHelper.ShowNewReadPageWindow(book);
+                    await WindowHelper.ShowNewWindow(typeof(ReadPage), book);
 
                     break;
 

@@ -2,7 +2,10 @@
 using System.Threading.Tasks;
 
 using EroMangaManager.Core.Models;
+using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.Views;
+
+using iText.Layout.Font;
 
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
@@ -14,15 +17,25 @@ namespace EroMangaManager.UWP.Helpers
 {
     internal static class WindowHelper
     {
-        internal static async Task ShowNewReadPageWindow(object data)
+        internal static async Task ShowNewWindow(Type _type, object data)
         {
             CoreApplicationView newView = CoreApplication.CreateNewView();
             int newViewId = 0;
             await newView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
                 var rootFrame = new Frame();
-                rootFrame.Navigate(typeof(ReadPage), data);
-                var title = ApplicationView.GetForCurrentView().Title = (data as MangaBook).MangaName;
+                rootFrame.Navigate(_type, data);
+
+                switch (data)       // 设置窗口标题文字
+                {
+                    case MangaBook manga:
+                        ApplicationView.GetForCurrentView().Title = manga.MangaName;
+                        break;
+
+                    case RepeatMangaBookGroup group:
+                        ApplicationView.GetForCurrentView().Title = group.Key;
+                        break;
+                }
 
                 Window.Current.Content = rootFrame;
                 Window.Current.Closed += (objectsender, args) =>

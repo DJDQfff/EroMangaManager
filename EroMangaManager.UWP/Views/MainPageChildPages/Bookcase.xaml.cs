@@ -97,7 +97,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         {
             MangaBook mangaBook = e.ClickedItem as MangaBook;
 
-            await WindowHelper.ShowNewReadPageWindow(mangaBook);
+            await WindowHelper.ShowNewWindow(typeof(ReadPage), mangaBook);
         }
 
         private async void DeleteSourceMangaFile(object sender, Windows.UI.Xaml.RoutedEventArgs e)

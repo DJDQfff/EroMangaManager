@@ -63,7 +63,7 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
             var button = sender as Button;
             var manga = button.DataContext as MangaBook;
 
-            await WindowHelper.ShowNewReadPageWindow(manga);
+            await WindowHelper.ShowNewWindow(typeof(ReadPage), manga);
         }
 
         private async void LauncherFolder(object sender, RoutedEventArgs e)
