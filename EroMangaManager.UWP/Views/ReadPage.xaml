@@ -17,6 +17,7 @@
                 <!--<Grid.ContextFlyout>
                     <MenuFlyout>
                         <MenuFlyoutItem Click="FilteThisImage2_Click"
+                                        Visibility="Collapsed"
                                         Text="{uid:UI Uid=DontShowThisImage}" />
                         <MenuFlyoutItem Click="SaveImageAs2_Click"
                                         Text="{uid:UI Uid=SaveAs}" />

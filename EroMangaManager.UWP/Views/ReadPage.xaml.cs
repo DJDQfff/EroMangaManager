@@ -169,16 +169,23 @@ namespace EroMangaManager.UWP.Views
             // TODO 这个也有bug
             var bitmap = FLIP.SelectedItem as BitmapImage;
             var index = currentReader.BitmapImages.IndexOf(bitmap);
-            var entry = currentReader.FilteredArchiveImageEntries[index];
-            StorageFile storageFile = await SavePictureAsync();
-            if (storageFile != null)
+            var key = currentReader.FilteredArchiveImageEntries[index].Key;
+
+            StorageFile saveStorageFile = await SavePictureAsync();
+            await Task.Run(async () =>
             {
-                using (Stream stream = await storageFile.OpenStreamForWriteAsync())
+                using (var stream = await currentReader.StorageFile.OpenStreamForWriteAsync())
                 {
-                    Stream stream1 = entry.OpenEntryStream();
-                    await stream1.CopyToAsync(stream);
+                    using (IArchive v = ArchiveFactory.Open(stream))
+                    {
+                        if (saveStorageFile != null)
+                        {
+                            var entry = v.Entries.SingleOrDefault(x => x.Key == key);
+                            entry.WriteTo(stream);
+                        }
+                    }
                 }
-            }
+            });
         }
 
         private async void FLIP_SelectionChangedNew(object sender, SelectionChangedEventArgs e)

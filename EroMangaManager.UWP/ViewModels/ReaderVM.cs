@@ -33,7 +33,7 @@ namespace EroMangaManager.UWP.ViewModels
         /// <summary> </summary>
         public MangaBook Manga { set; get; }
 
-        private StorageFile StorageFile { set; get; }
+        public StorageFile StorageFile { set; get; }
 
         /// <summary> 打开的文件流 </summary>
         private Stream Stream { set; get; }
