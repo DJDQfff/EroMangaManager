@@ -69,7 +69,8 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
 
         private async void LauncherFolder(object sender, RoutedEventArgs e)
         {
-            var mangaBook = (sender as MenuFlyoutItem).DataContext as MangaBook;
+            var mangaBook = (sender as Button).DataContext as MangaBook;
+
             await Windows.System.Launcher.LaunchFolderPathAsync(mangaBook.FolderPath);
         }
     }
