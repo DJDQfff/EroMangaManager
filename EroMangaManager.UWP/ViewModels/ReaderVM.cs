@@ -41,11 +41,6 @@ namespace EroMangaManager.UWP.ViewModels
         /// <summary> 压缩文件 </summary>
         private IArchive ZipArchive { set; get; }
 
-        /// <summary>
-        /// 所有的entry
-        /// </summary>
-        public IEnumerable<IArchiveEntry> AllEntry => ZipArchive.Entries;
-
         /// <summary>筛选过后的图片内容入口 </summary>
         public ObservableCollection<IArchiveEntry> FilteredArchiveImageEntries { set; get; } = new ObservableCollection<IArchiveEntry>();
 
@@ -156,11 +151,11 @@ namespace EroMangaManager.UWP.ViewModels
         {
             _IsClosing = true;
 
-            FilteredArchiveImageEntries.Clear();
+            FilteredArchiveImageEntries?.Clear();
 
-            BitmapImages.Clear();
-            ZipArchive.Dispose();
-            Stream.Dispose();
+            BitmapImages?.Clear();
+            ZipArchive?.Dispose();
+            Stream?.Dispose();
 
             GC.SuppressFinalize(this);
         }

@@ -10,8 +10,6 @@
   
   > 暂时放弃，总有bug。Entry的加载是个大问题，
 
-* 以后看能不能把ReadPage独立为一个app，以后要直接从管理器启动他
-
 # BUG
 
 * FilterThisImage会导致ReaderVM的ShowALlBItmapImage方法出问题，暂时隐藏

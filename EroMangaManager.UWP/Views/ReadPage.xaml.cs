@@ -164,10 +164,10 @@ namespace EroMangaManager.UWP.Views
         /// <summary> 此图片另存为 </summary>
         /// <param name="sender"> </param>
         /// <param name="e"> </param>
-
         private async void SaveImageAs2_Click(object sender, RoutedEventArgs e)
         {
-            var bitmap = FLIP.SelectedItem as Windows.UI.Xaml.Media.Imaging.BitmapImage;
+            // TODO 这个也有bug
+            var bitmap = FLIP.SelectedItem as BitmapImage;
             var index = currentReader.BitmapImages.IndexOf(bitmap);
             var entry = currentReader.FilteredArchiveImageEntries[index];
             StorageFile storageFile = await SavePictureAsync();

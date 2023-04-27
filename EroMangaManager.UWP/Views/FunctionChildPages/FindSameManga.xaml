@@ -54,7 +54,7 @@
                                             <Button Click="OpenMangaClick"
                                                     HorizontalAlignment="Stretch"
                                                     Content="{uid:UI Uid=Open}" />
-                                            <Button Content="{uid:UI Uid=DeleteFile}"
+                                            <Button Content="{uid:UI Uid=DeleteIt}"
                                                     HorizontalAlignment="Stretch"
                                                     Click="DeleteFileClick" />
                                             <Button Content="{uid:UI Uid=OpenFolder}"
