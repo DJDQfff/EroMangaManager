@@ -8,6 +8,9 @@ using EroMangaManager.UWP.ViewModels;
 
 using GroupedItemsLibrary.ViewModels;
 
+using iText.Layout.Font;
+
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -72,6 +75,13 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
             var mangaBook = (sender as Button).DataContext as MangaBook;
 
             await Windows.System.Launcher.LaunchFolderPathAsync(mangaBook.FolderPath);
+        }
+
+        private async void OpenFile_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var mangaBook = (sender as Button).DataContext as MangaBook;
+            var file = await MyLibrary.UWP.AccestListHelper.GetStorageFile(mangaBook.FilePath);
+            await Windows.System.Launcher.LaunchFileAsync(file);
         }
     }
 }

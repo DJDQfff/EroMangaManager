@@ -14,11 +14,15 @@
 
 # BUG
 
-* ReadPage的FilterThisImage会导致ReaderVM的ShowALlBItmapImage方法出问题，暂时隐藏
-
-* ReadPage的SaveImageAs方法也会导致bug
-
 * ReadPage的 DataTemplateSelector不知道为什么无法正常运
+
+* ReaderVM的ShowAllEntry方法耗时很长，已知以下位置会触发bug：
+  
+  * FindSameManga方法删除。在这个页面打开漫画后，删除很容易引发bug，文件越大越容易。未处理
+  
+  * ReadPage的FilterThisImage，暂时隐藏
+  
+  * ReadPage的SaveImageAs方法，暂时隐藏
 
 # 需要持续优化项
 
