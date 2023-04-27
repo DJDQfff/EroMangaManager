@@ -8,20 +8,21 @@
       xmlns:sharpcompress="using:SharpCompress.Archives"
       xmlns:staticresource="using:EroMangaManager.UWP.StaticResource"
       Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
-      NavigationCacheMode="Required"
       mc:Ignorable="d">
     <Page.Resources>
         <DataTemplate  x:DataType="image:BitmapImage"
                        x:Key="BitmapImageDateType">
             <Grid x:Name="RootGrid">
-                <Grid.ContextFlyout>
+
+                <!--<Grid.ContextFlyout>
                     <MenuFlyout>
                         <MenuFlyoutItem Click="FilteThisImage2_Click"
                                         Text="{uid:UI Uid=DontShowThisImage}" />
                         <MenuFlyoutItem Click="SaveImageAs2_Click"
                                         Text="{uid:UI Uid=SaveAs}" />
                     </MenuFlyout>
-                </Grid.ContextFlyout>
+                </Grid.ContextFlyout>-->
+
                 <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                               HorizontalScrollMode="Disabled"
                               VerticalScrollBarVisibility="Disabled"

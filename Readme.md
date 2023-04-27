@@ -10,9 +10,13 @@
   
   > 暂时放弃，总有bug。Entry的加载是个大问题，
 
+* 试试对于ReadPage的功能，同时打开好几个Stream读取，
+
 # BUG
 
-* FilterThisImage会导致ReaderVM的ShowALlBItmapImage方法出问题，暂时隐藏
+* ReadPage的FilterThisImage会导致ReaderVM的ShowALlBItmapImage方法出问题，暂时隐藏
+
+* ReadPage的SaveImageAs方法也会导致bug
 
 * ReadPage的 DataTemplateSelector不知道为什么无法正常运
 
