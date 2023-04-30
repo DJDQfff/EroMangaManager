@@ -5,6 +5,7 @@
                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+               xmlns:muxc1="using:Microsoft.Toolkit.Uwp.UI.Controls"
                mc:Ignorable="d"
                Title="TITLE"
                PrimaryButtonText="Button1"
@@ -14,9 +15,12 @@
                       x:DataType="local:TagWork">
             <StackPanel Orientation="Horizontal"
                         Margin="4">
-                <TextBlock Text="{x:Bind Tag}" />
+                <TextBlock x:Name="tag"
+                           Text="{x:Bind Tag}" />
                 <TextBlock Text="{x:Bind Left}" />
-                <ComboBox>
+                <ComboBox x:Name="combo"
+                          MinWidth="20"
+                          SelectionChanged="ComboBox_SelectionChanged">
                     <x:String>[]</x:String>
                     <x:String>{}</x:String>
                     <x:String>()</x:String>
@@ -26,20 +30,28 @@
             </StackPanel>
         </DataTemplate>
     </ContentDialog.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
             <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <TextBlock x:Name="OriginName"
+                   TextWrapping="Wrap"
                    Text="{x:Bind MangaBook.FileDisplayName}" />
-        <muxc:ItemsRepeater x:Name="TagGroup"
-                            ItemTemplate="{StaticResource type1}"
-                            Grid.Row="1">
-            <muxc:ItemsRepeater.Layout>
-                <muxc:StackLayout Orientation="Horizontal" />
-            </muxc:ItemsRepeater.Layout>
-        </muxc:ItemsRepeater>
+        <ListView x:Name="TagGroup"
+                  ItemTemplate="{StaticResource type1}"
+                  Grid.Row="1">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <muxc1:WrapPanel />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+        <TextBlock x:Name="ResultName"
+                   TextWrapping="Wrap"
+                   Grid.Row="2"
+                   Loaded="ResultName_Loaded" />
     </Grid>
 </ContentDialog>

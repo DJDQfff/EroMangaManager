@@ -38,10 +38,16 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
                 var items = TagGroup.ItemsSource as List<TagWork>;
                 foreach (var item in items)
                 {
-                    TagWork tagWork = item as TagWork;
-                    stringBuilder.Append(tagWork.Left[0]);
-                    stringBuilder.Append(tagWork.Tag);
-                    stringBuilder.Append(tagWork.Left[1]);
+                    var container = TagGroup.ContainerFromItem(item) as ListViewItem;
+                    var root = container.ContentTemplateRoot as StackPanel;
+                    var textBlock = root.FindName("tag") as TextBlock;
+                    var tag = textBlock.Text;
+                    var kohc = root.FindName("combo") as ComboBox;
+                    var k = (kohc.SelectedItem as string) ?? "[]";
+
+                    stringBuilder.Append(k[0]);
+                    stringBuilder.Append(tag);
+                    stringBuilder.Append(k[1]);
                 }
                 return stringBuilder.ToString();
             }
@@ -69,6 +75,20 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
                 list.Add(tagWork);
             }
             TagGroup.ItemsSource = list;
+        }
+
+        private void ResultName_Loaded(object sender, RoutedEventArgs e)
+        {
+            ResultName.Text = NewDisplayName;
+        }
+
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ResultName.Text = NewDisplayName;
         }
     }
 
