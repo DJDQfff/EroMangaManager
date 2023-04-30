@@ -24,9 +24,10 @@ namespace EroMangaManager.UWP.Helpers
         /// <param name="eroManga"></param>
         /// <param name="suggestedname"></param>
         /// <returns></returns>
-        public static async Task RenameSourceFile(MangaBook eroManga, string suggestedname)
+        public static async Task RenameSourceFile(MangaBook eroManga)
         {
-            RenameDialog renameDialog = new RenameDialog(eroManga, suggestedname);
+            var renameDialog = new RenameDialog(eroManga);
+
             var result = await renameDialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {

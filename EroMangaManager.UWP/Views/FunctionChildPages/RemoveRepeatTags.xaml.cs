@@ -48,7 +48,7 @@ namespace EroMangaManager.UWP.Views.FunctionChildPages
             var button = sender as Button;
             var manga = button.DataContext as MangaBook;
             string suggestenname = EroMangaDB.Helper.TagBasedStringHelper.RemoveRepeatTag(manga.FileDisplayName);
-            await StorageHelper.RenameSourceFile(manga, suggestenname);
+            await StorageHelper.RenameSourceFile(manga);
 
             // TODO 由于绑定的两个属性只读，我又懒得改，一时不知道如何属性更新
         }

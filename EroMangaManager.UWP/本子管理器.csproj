@@ -149,6 +149,9 @@
     <Compile Include="StaticResource\FileSizeConverter.cs" />
     <Compile Include="StaticResource\GetRandomSolidColorBrush.cs" />
     <Compile Include="StaticResource\ControlVisibility.cs" />
+    <Compile Include="Views\ContentDialogPages\EditTag.xaml.cs">
+      <DependentUpon>EditTag.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ContentDialogPages\OverviewInformation.xaml.cs">
       <DependentUpon>OverviewInformation.xaml</DependentUpon>
     </Compile>
@@ -384,6 +387,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\TagsDisplayControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ContentDialogPages\EditTag.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

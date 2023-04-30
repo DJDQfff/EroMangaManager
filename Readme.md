@@ -14,9 +14,11 @@
 
 * 新的ReaderVM及ReadPage功能
 
-* 给RepeatTag提供优化控件
+* 移除RepeatTag页面改为更高级的控件，但是界面太丑，还是用原来的方法吧
 
 * 不知道为什么FunctionPage的后退功能无法使用
+
+* tag，括号，及splitandparser方法需要更细化
 
 # BUG
 

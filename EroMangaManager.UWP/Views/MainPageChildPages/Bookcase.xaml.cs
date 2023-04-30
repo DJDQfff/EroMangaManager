@@ -146,7 +146,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
             MangaBook eroManga = menuFlyout.DataContext as MangaBook;
 
-            await StorageHelper.RenameSourceFile(eroManga, null);
+            await StorageHelper.RenameSourceFile(eroManga);
         }
 
         private void ViewMangaTag(object sender, Windows.UI.Xaml.RoutedEventArgs e)
