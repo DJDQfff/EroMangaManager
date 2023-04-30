@@ -131,11 +131,6 @@ namespace EroMangaManager.UWP.ViewModels
 
             foreach (var entrykey in entrykeys)
             {
-                if (_IsClosing)
-                {
-                    return;
-                }
-
                 var TempEntry = ZipArchive.Entries.Single(n => n.Key == entrykey);
                 bool cansue = TempEntry.EntryFilter(filteredImages); // 放在这里可以
 
