@@ -4,12 +4,11 @@
                xmlns:local="using:EroMangaManager.UWP.Views.ContentDialogPages"
                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+               xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
                mc:Ignorable="d"
                Title="TITLE"
                PrimaryButtonText="Button1"
-               SecondaryButtonText="Button2"
-               PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
-               SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+               SecondaryButtonText="Button2">
     <ContentDialog.Resources>
         <DataTemplate x:Key="type1"
                       x:DataType="local:TagWork">
@@ -35,21 +34,12 @@
         </Grid.RowDefinitions>
         <TextBlock x:Name="OriginName"
                    Text="{x:Bind MangaBook.FileDisplayName}" />
-        <GridView x:Name="TagGroup"
-                  x:Load="True"
-                  Grid.Row="1">
-            <d:GridView.Items>
-                <local:TagWork Tag="jdsfkalj"
-                               Left="[]" />
-                <local:TagWork Tag="nckjasdfj"
-                               Left="[]" />
-                <local:TagWork Tag="ncaskldjf"
-                               Left="[]" />
-            </d:GridView.Items>
-            <GridView.ItemTemplate>
-                <DataTemplate x:DataType="local:TagWork">
-                </DataTemplate>
-            </GridView.ItemTemplate>
-        </GridView>
+        <muxc:ItemsRepeater x:Name="TagGroup"
+                            ItemTemplate="{StaticResource type1}"
+                            Grid.Row="1">
+            <muxc:ItemsRepeater.Layout>
+                <muxc:StackLayout Orientation="Horizontal" />
+            </muxc:ItemsRepeater.Layout>
+        </muxc:ItemsRepeater>
     </Grid>
 </ContentDialog>

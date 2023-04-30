@@ -35,7 +35,7 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
             {
                 StringBuilder stringBuilder = new StringBuilder();
 
-                var items = TagGroup.Items;
+                var items = TagGroup.ItemsSource as List<TagWork>;
                 foreach (var item in items)
                 {
                     TagWork tagWork = item as TagWork;
@@ -69,14 +69,6 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
                 list.Add(tagWork);
             }
             TagGroup.ItemsSource = list;
-        }
-
-        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
-        }
-
-        private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
         }
     }
 
