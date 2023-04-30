@@ -18,7 +18,7 @@ namespace EroMangaManager.UWP.Helpers
     {
         internal static async Task ExportAsPDF(MangaBook mangaBook, StorageFile target)
         {
-            using (ReaderVM reader = new ReaderVM(mangaBook))
+            using (ReaderVM reader = new ReaderVM(mangaBook, target))
             {
                 await reader.Initial();
                 reader.SelectEntries(null);

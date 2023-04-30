@@ -13,6 +13,8 @@ using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.SettingEnums;
 using EroMangaManager.UWP.ViewModels;
 
+using iText.Layout.Font;
+
 using SharpCompress.Archives;
 
 using SharpConfig;
@@ -120,7 +122,9 @@ namespace EroMangaManager.UWP.Views
             {
                 currentManga = manga;
                 var oldreader = currentReader;
-                currentReader = new ReaderVM(manga);
+                var file1 = await MyLibrary.UWP.AccestListHelper.GetStorageFile(manga.FilePath);
+
+                currentReader = new ReaderVM(manga, file1);
                 oldreader?.Dispose();
                 await currentReader.Initial();
 

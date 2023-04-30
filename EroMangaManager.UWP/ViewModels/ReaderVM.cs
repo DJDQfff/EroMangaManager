@@ -61,20 +61,15 @@ namespace EroMangaManager.UWP.ViewModels
         /// </summary>
         public ObservableCollection<BitmapImage> BitmapImages { set; get; } = new ObservableCollection<BitmapImage>();
 
-        /// <summary> 初始化</summary>
-        /// <param entrykey="_manga"> </param>
-        public ReaderVM(MangaBook _manga)
-        {
-            this.Manga = _manga;
-        }
-
         /// <summary>
         ///
         /// </summary>
         /// <param entrykey="_manga"></param>
         /// <param entrykey="storageFile"></param>
-        public ReaderVM(MangaBook _manga, StorageFile storageFile) : this(_manga)
+        public ReaderVM(MangaBook _manga, StorageFile storageFile)
         {
+            this.Manga = _manga;
+
             StorageFile = storageFile;
         }
 
@@ -84,10 +79,6 @@ namespace EroMangaManager.UWP.ViewModels
         /// <returns></returns>
         public async Task Initial()
         {
-            if (StorageFile is null)
-            {
-                StorageFile = await MyLibrary.UWP.AccestListHelper.GetStorageFile(Manga.FilePath);
-            }
             Stream = await StorageFile.OpenStreamForReadAsync();
             ZipArchive = ArchiveFactory.Open(Stream);
             AllEntries = ZipArchive.Entries.ToList();
@@ -127,6 +118,8 @@ namespace EroMangaManager.UWP.ViewModels
                 {
                     return;
                 }
+                //BitmapImage bitmapImage = await entry.ShowEntryAsync();
+                //BitmapImages.Add(bitmapImage);
                 _ = await ShowSpecificBitmapImage(entry);
             }
         }
