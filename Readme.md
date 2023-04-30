@@ -12,6 +12,10 @@
 
 * 试试对于ReadPage的功能，同时打开好几个Stream读取，
 
+* 新的ReaderVM及ReadPage功能
+
+* 给RepeatTag提供优化控件
+
 # BUG
 
 * ReadPage的 DataTemplateSelector不知道为什么无法正常运

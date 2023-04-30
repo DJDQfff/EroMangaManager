@@ -41,6 +41,13 @@ namespace EroMangaManager.UWP.ViewModels
         /// <summary> 压缩文件 </summary>
         private IArchive ZipArchive { set; get; }
 
+        /// <summary>
+        /// 压缩文件的所有entry
+        /// </summary>
+        public List<IArchiveEntry> AllEntries { set; get; }
+
+        private IArchiveEntry currentEntry;
+
         /// <summary>筛选过后的图片内容入口 </summary>
         public ObservableCollection<IArchiveEntry> FilteredArchiveImageEntries { set; get; } = new ObservableCollection<IArchiveEntry>();
 
@@ -83,6 +90,7 @@ namespace EroMangaManager.UWP.ViewModels
             }
             Stream = await StorageFile.OpenStreamForReadAsync();
             ZipArchive = ArchiveFactory.Open(Stream);
+            AllEntries = ZipArchive.Entries.ToList();
         }
 
         /// <summary>

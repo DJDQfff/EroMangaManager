@@ -10,17 +10,33 @@
         <ListView x:Name="list">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:MangaBook">
-                    <StackPanel Orientation="Horizontal">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
                         <Image Width="500"
+                               Grid.Column="0"
                                Source="{x:Bind CoverPath}" />
-                        <StackPanel Orientation="Vertical">
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
                             <TextBlock Text="{x:Bind FolderPath}"
                                        FontSize="20" />
                             <TextBlock Text="{x:Bind FileFullName,Mode=OneWay}"
+                                       TextWrapping="Wrap"
+                                       Grid.Row="1"
                                        FontSize="20" />
-                            <Button Click="Button_Click" Content="{uid:UI Uid=RenameFile}" />
-                        </StackPanel>
-                    </StackPanel>
+                        </Grid>
+                        <Button Click="Button_Click"
+                                Grid.Column="2"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                Content="{uid:UI Uid=RenameFile}" />
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
