@@ -16,6 +16,8 @@
 
 * 给RepeatTag提供优化控件
 
+* 不知道为什么FunctionPage的后退功能无法使用
+
 # BUG
 
 * ReadPage的 DataTemplateSelector不知道为什么无法正常运

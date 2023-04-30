@@ -34,10 +34,5 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                     break;
             }
         }
-
-        private void SettingFrame_Loaded(object sender, RoutedEventArgs e)
-        {
-            SettingFrame.Navigate(typeof(SettingPageChildPages.AboutPage));
-        }
     }
 }

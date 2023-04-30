@@ -16,7 +16,7 @@
                         IsSettingsVisible="True"
                         ItemInvoked="MainNavigationView_ItemInvoked"
                         d:PaneDisplayMode="Left"
-                        PaneDisplayMode="LeftMinimal">
+                        PaneDisplayMode="Auto">
 
             <NavigationView.MenuItems>
 
@@ -42,6 +42,7 @@
                                   FontFamily="Segoe MDL2 Assets" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+                <NavigationViewItemSeparator />
             </NavigationView.MenuItems>
             <NavigationView.Content>
                 <Frame x:Name="MainFrame"

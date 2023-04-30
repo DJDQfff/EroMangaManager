@@ -97,5 +97,9 @@ namespace EroMangaManager.UWP.Views
         {
             MainFrame.Navigate(typeof(Views.SettingPageChildPages.UsageDocumentPage));
         }
+
+        private void FunctionPageShower_DoubleTapped(object sender, Windows.UI.Xaml.Input.DoubleTappedRoutedEventArgs e)
+        {
+        }
     }
 }

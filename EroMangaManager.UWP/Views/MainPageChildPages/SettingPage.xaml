@@ -22,11 +22,32 @@
             </NavigationView.MenuItems>
             <NavigationView.Content>
                 <Frame x:Name="SettingFrame"
-                       Loaded="SettingFrame_Loaded"
                        HorizontalAlignment="Stretch"
                        VerticalAlignment="Stretch"
                        HorizontalContentAlignment="Stretch"
-                       VerticalContentAlignment="Stretch" />
+                       VerticalContentAlignment="Stretch">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="19*" />
+                            <RowDefinition Height="5*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="787*" />
+                            <ColumnDefinition Width="173*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel   Grid.Row="1"
+                                      Grid.Column="1"
+                                      Orientation="Vertical">
+                            <HyperlinkButton Content="{uid:UI Uid=GitHubFeedBack}"
+                                             NavigateUri="https://github.com/DJDQfff/FeedBack/issues" />
+                            <HyperlinkButton Content="{uid:UI Uid=MailFeedbackToDeveloper}"
+                                             NavigateUri="mailto:djdqfff@qq.com"
+                                             VerticalAlignment="Center" />
+                            <HyperlinkButton Content="{uid:UI Uid=OpenInMicrosoftStore}"
+                                             NavigateUri="https://www.microsoft.com/store/apps/9N7C8ZDQ1TJ8" />
+                        </StackPanel>
+                    </Grid>
+                </Frame>
             </NavigationView.Content>
         </NavigationView>
     </Grid>

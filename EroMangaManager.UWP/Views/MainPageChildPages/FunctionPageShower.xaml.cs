@@ -38,8 +38,8 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
                     break;
             }
 
-            MainPage.Current.MainFrame.Navigate(type, App.Current.GlobalViewModel.MangaList);
-
+            //MainPage.Current.MainFrame.Navigate(type, App.Current.GlobalViewModel.MangaList);
+            FunctionFrame.Navigate(type, App.Current.GlobalViewModel.MangaList);
             return;
 
             // 下面的部分原本是设计来弹出个新窗口的，改为页面跳转
@@ -56,6 +56,11 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             //    newViewId = ApplicationView.GetForCurrentView().Id;
             //});
             //bool viewShown = await ApplicationViewSwitcher.TryShowAsStandaloneAsync(newViewId);
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            FunctionFrame.GoBack();
         }
     }
 }
