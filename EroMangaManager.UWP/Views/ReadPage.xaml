@@ -36,7 +36,9 @@
         </DataTemplate>
         <DataTemplate x:Key="EntryDataType"
                       x:DataType="sharpcompress:IArchiveEntry">
-            <TextBlock Text="jsfdakj    " />
+            <Grid>
+                <Image x:Name="image" />
+            </Grid>
         </DataTemplate>
         <staticresource:MyDataTemplateSelector x:Key="Selector"
                                                OfBitmapImage="{StaticResource BitmapImageDateType }"
@@ -45,7 +47,8 @@
     <Grid>
 
         <FlipView x:Name="FLIP"
-                  ItemTemplate="{StaticResource BitmapImageDateType}"
+                  SelectionChanged="FLIP_SelectionChangedNew"
+                  ItemTemplate="{StaticResource EntryDataType}"
                   Tapped="FLIP_Tapped">
         </FlipView>
 

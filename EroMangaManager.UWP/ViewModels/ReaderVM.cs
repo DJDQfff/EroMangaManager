@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -48,6 +49,10 @@ namespace EroMangaManager.UWP.ViewModels
 
         private IArchiveEntry currentEntry;
 
+        private bool isworking;
+
+        private Queue<IArchiveEntry> entries = new Queue<IArchiveEntry>();
+
         /// <summary>筛选过后的图片内容入口 </summary>
         public ObservableCollection<IArchiveEntry> FilteredArchiveImageEntries { set; get; } = new ObservableCollection<IArchiveEntry>();
 
@@ -91,6 +96,12 @@ namespace EroMangaManager.UWP.ViewModels
         /// <returns></returns>
         public async Task<BitmapImage> ShowSpecificBitmapImage(IArchiveEntry entry)
         {
+            if (isworking)
+            {
+                return null;
+            }
+
+            isworking = true;
             BitmapImage bitimage;
             if (!BitmapImagesDic.ContainsKey(entry))
             {
@@ -103,6 +114,7 @@ namespace EroMangaManager.UWP.ViewModels
             {
                 bitimage = BitmapImagesDic[entry];
             }
+            isworking = false;
             return bitimage;
         }
 

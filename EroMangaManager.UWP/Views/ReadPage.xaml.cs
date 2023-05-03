@@ -49,10 +49,7 @@ namespace EroMangaManager.UWP.Views
         /// </summary>
         public ReaderVM currentReader = null;
 
-        /// <summary>
-        /// 任务取消令牌，留着给Select方法用的，但是有bug未解决
-        /// </summary>
-        public CancellationTokenSource CancellationTokenSource = new CancellationTokenSource();
+        private StorageFile currentStorageFile;
 
         /// <summary>
         /// 构造函数
@@ -68,35 +65,33 @@ namespace EroMangaManager.UWP.Views
         /// <param name="e"></param>
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            Debug.WriteLine("OnNavigatedTo事件开始");
-
             switch (e.Parameter)
             {
                 // 当从LibraryFolders打开漫画时，传入MangaBook
-                case MangaBook mangaBook:
-                    await TryChangeMangaBook(mangaBook);
+                case MangaBook manga:
+                    if (manga != currentManga)                  // 传入新漫画，则设置新源
+                    {
+                        currentManga = manga;
+                        var oldreader = currentReader;
+                        currentStorageFile = await MyLibrary.UWP.AccestListHelper.GetStorageFile(manga.FilePath);
+                        currentReader = new ReaderVM(manga, currentStorageFile);
+                        oldreader?.Dispose();
+                    }
                     break;
 
                 // 当从文件关联打开时，传入StorageFile
                 case StorageFile storageFile:
-                    await OnceLoadFromStorageFile(storageFile);
+                    {
+                        currentStorageFile = storageFile;
+                        currentManga = await ModelFactory.CreateMangaBook(currentStorageFile);
+
+                        currentReader = new ReaderVM(currentManga, currentStorageFile);
+                    }
                     break;
             }
-        }
 
-        /// <summary>
-        /// 直接从StorageFIle里面导入数据，用于第一次实例化时赋值
-        /// </summary>
-        /// <param name="storageFile"></param>
-        /// <returns></returns>
-        private async Task OnceLoadFromStorageFile(StorageFile storageFile)
-        {
-            var manga = await ModelFactory.CreateMangaBook(storageFile);
-
-            currentReader = new ReaderVM(manga, storageFile);
             await currentReader.Initial();
-            FLIP.ItemsSource = currentReader.BitmapImages;
-
+            FLIP.ItemsSource = currentReader.FilteredArchiveImageEntries;
             var isfilterimage = Configuration.LoadFromFile(App.Current.AppConfigPath)[nameof(General)][nameof(IsFilterImageOn)].BoolValue;
             FilteredImage[] filteredImages = null;
             if (isfilterimage)
@@ -104,112 +99,29 @@ namespace EroMangaManager.UWP.Views
                 filteredImages = BasicController.DatabaseController.database.FilteredImages.ToArray();
             }
             currentReader.SelectEntries(filteredImages);
-            await currentReader.ShowFilteredBitmapImages();
         }
 
         /// <summary>
-        /// ReadPage的页面不变，但是更换内部数据源
+        /// 这个不知道为什么就能正常工作，不会触发bug
         /// </summary>
-        /// <param name="manga"></param>
-        /// <returns></returns>
-        private async Task TryChangeMangaBook(MangaBook manga)
-        {
-            if (manga == null)                          // 传入null，直接跳过
-            {
-                return;
-            }
-            if (manga != currentManga)                  // 传入新漫画，则设置新源
-            {
-                currentManga = manga;
-                var oldreader = currentReader;
-                var file1 = await MyLibrary.UWP.AccestListHelper.GetStorageFile(manga.FilePath);
-
-                currentReader = new ReaderVM(manga, file1);
-                oldreader?.Dispose();
-                await currentReader.Initial();
-
-                FLIP.ItemsSource = currentReader.BitmapImages;
-
-                var isfilterimage = Configuration.LoadFromFile(App.Current.AppConfigPath)[nameof(General)][nameof(IsFilterImageOn)].BoolValue;
-                FilteredImage[] filteredImages = null;
-                if (isfilterimage)
-                {
-                    filteredImages = BasicController.DatabaseController.database.FilteredImages.ToArray();
-                }
-                currentReader.SelectEntries(filteredImages);
-                await currentReader.ShowFilteredBitmapImages();
-
-                // TODO 任务取消，但是会一直报错
-                //await Task.Run(async () => { await currentReader.SelectEntries(filteredImages); });
-            }
-            else                                       // 未传入新漫画，不作变动。这个其实不用写了
-            {
-                //Do Nothing
-            }
-        }
-
-        private async void FilteThisImage2_Click(object sender, RoutedEventArgs e)
-        {
-            var bitmap = FLIP.SelectedItem as BitmapImage;
-            var index = currentReader.BitmapImages.IndexOf(bitmap);
-            var entry = currentReader.FilteredArchiveImageEntries[index];
-            currentReader.FilteredArchiveImageEntries.Remove(entry);
-            currentReader.BitmapImages.Remove(bitmap);
-            string hash = entry.ComputeHash();
-            long length = entry.Size;
-            await DatabaseController.ImageFilter_Add(hash, length);
-            // TODO  这里是存在一个隐患的，可能正在后台多线程使用DbContext
-
-            StorageFolder storageFolder = await GetChildTemporaryFolder(nameof(Filters));
-            string path = Path.Combine(storageFolder.Path, hash + ".jpg");
-            entry.WriteToFile(path);
-        }
-
-        /// <summary> 此图片另存为 </summary>
-        /// <param name="sender"> </param>
-        /// <param name="e"> </param>
-        private async void SaveImageAs2_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO 这个也有bug
-            var bitmap = FLIP.SelectedItem as BitmapImage;
-            var index = currentReader.BitmapImages.IndexOf(bitmap);
-            var key = currentReader.FilteredArchiveImageEntries[index].Key;
-
-            StorageFile saveStorageFile = await SavePictureAsync();
-            await Task.Run(async () =>
-            {
-                using (var stream = await currentReader.StorageFile.OpenStreamForWriteAsync())
-                {
-                    using (IArchive v = ArchiveFactory.Open(stream))
-                    {
-                        if (saveStorageFile != null)
-                        {
-                            var entry = v.Entries.SingleOrDefault(x => x.Key == key);
-                            entry.WriteTo(stream);
-                        }
-                    }
-                }
-            });
-        }
-
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void FLIP_SelectionChangedNew(object sender, SelectionChangedEventArgs e)
         {
-            Debug.WriteLine($"SelectionChanged事件开始增加个数：{e.AddedItems.Count}移除个数：{e.RemovedItems.Count}");
+            Debug.WriteLine($"SelectionChanged事件开始");
 
             FlipView flipView = sender as FlipView;
-
             var entry = flipView.SelectedItem as IArchiveEntry;
 
-            if (!(flipView.ContainerFromItem(entry) is FlipViewItem item))
+            if (flipView.ContainerFromItem(entry) is FlipViewItem item)
             {
-                return;
+                var root = item.ContentTemplateRoot as Grid;
+
+                var image = root.FindName("image") as Image;
+
+                image.Source = await entry.ShowEntryAsync();
+                Debug.WriteLine($"SelectionChanged事件结束");
             }
-
-            var root = item.ContentTemplateRoot as Grid;
-
-            var image = root.FindName("image") as Image;
-            image.Source = await entry.ShowEntryAsync();
-            Debug.WriteLine("SelectionChanged事件结束");
         }
 
         /// <summary> 添加此图片到过滤图库 </summary>
@@ -275,6 +187,16 @@ namespace EroMangaManager.UWP.Views
         {
             var entryindex = Convert.ToInt32(ReadPositionSlider.Value - 1);
             FLIP.SelectedIndex = entryindex;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            currentReader?.Dispose();
         }
     }
 }
