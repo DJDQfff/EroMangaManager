@@ -90,7 +90,7 @@ namespace EroMangaManager.UWP.ViewModels
         }
 
         /// <summary>
-        /// 显示指定entry
+        /// 显示指定entry，并添加到图片字典中
         /// </summary>
         /// <param name="entry"></param>
         /// <returns></returns>
@@ -119,7 +119,7 @@ namespace EroMangaManager.UWP.ViewModels
         }
 
         /// <summary>
-        /// 开始转化图片
+        /// 所有筛选过的entry一次性转化为图片
         /// </summary>
         /// <returns></returns>
         public async Task ShowFilteredBitmapImages()

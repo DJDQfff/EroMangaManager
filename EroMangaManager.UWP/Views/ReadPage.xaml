@@ -12,18 +12,7 @@
     <Page.Resources>
         <DataTemplate  x:DataType="image:BitmapImage"
                        x:Key="BitmapImageDateType">
-            <Grid x:Name="RootGrid">
-
-                <!--<Grid.ContextFlyout>
-                    <MenuFlyout>
-                        <MenuFlyoutItem Click="FilteThisImage2_Click"
-                                        Visibility="Collapsed"
-                                        Text="{uid:UI Uid=DontShowThisImage}" />
-                        <MenuFlyoutItem Click="SaveImageAs2_Click"
-                                        Text="{uid:UI Uid=SaveAs}" />
-                    </MenuFlyout>
-                </Grid.ContextFlyout>-->
-
+            <Grid>
                 <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                               HorizontalScrollMode="Disabled"
                               VerticalScrollBarVisibility="Disabled"
@@ -37,6 +26,14 @@
         <DataTemplate x:Key="EntryDataType"
                       x:DataType="sharpcompress:IArchiveEntry">
             <Grid>
+                <Grid.ContextFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Click="FilteThisImageByEntry"
+                                        Text="{uid:UI Uid=DontShowThisImage}" />
+                        <MenuFlyoutItem Click="SaveImageByEntry"
+                                        Text="{uid:UI Uid=SaveAs}" />
+                    </MenuFlyout>
+                </Grid.ContextFlyout>
                 <Image x:Name="image" />
             </Grid>
         </DataTemplate>
@@ -47,7 +44,7 @@
     <Grid>
 
         <FlipView x:Name="FLIP"
-                  SelectionChanged="FLIP_SelectionChangedNew"
+                  SelectionChanged="FLIP_SelectionChanged_ByEntry"
                   ItemTemplate="{StaticResource EntryDataType}"
                   Tapped="FLIP_Tapped">
         </FlipView>

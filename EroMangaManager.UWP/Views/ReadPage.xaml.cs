@@ -60,7 +60,7 @@ namespace EroMangaManager.UWP.Views
         }
 
         /// <summary>
-        /// 导航前
+        /// 导航前初始化
         /// </summary>
         /// <param name="e"></param>
         protected override async void OnNavigatedTo(NavigationEventArgs e)
@@ -102,12 +102,13 @@ namespace EroMangaManager.UWP.Views
         }
 
         /// <summary>
-        /// 这个不知道为什么就能正常工作，不会触发bug
+        /// 还是存在切换是闪烁的bug
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void FLIP_SelectionChangedNew(object sender, SelectionChangedEventArgs e)
+        private async void FLIP_SelectionChanged_ByEntry(object sender, SelectionChangedEventArgs e)
         {
+            // TODO，看summary，有空去stackflow问
             Debug.WriteLine($"SelectionChanged事件开始");
 
             FlipView flipView = sender as FlipView;
@@ -142,15 +143,13 @@ namespace EroMangaManager.UWP.Views
             entry.WriteToFile(path);
         }
 
-        private async void SaveImageAs_Click(object e, RoutedEventArgs args)
+        private async void SaveImageByEntry(object e, RoutedEventArgs args)
         {
             var entry = FLIP.SelectedItem as IArchiveEntry;
             StorageFile storageFile = await SavePictureAsync();
             if (storageFile != null)
             {
-                Stream stream = await storageFile.OpenStreamForWriteAsync();
-                Stream stream1 = entry.OpenEntryStream();
-                await stream1.CopyToAsync(stream);
+                entry.WriteTo(await storageFile.OpenStreamForWriteAsync());
             }
         }
 

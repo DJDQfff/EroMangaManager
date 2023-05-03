@@ -10,10 +10,6 @@
   
   > 暂时放弃，总有bug。Entry的加载是个大问题，
 
-* 试试对于ReadPage的功能，同时打开好几个Stream读取，
-
-* 新的ReaderVM及ReadPage功能
-
 * 移除RepeatTag页面改为更高级的控件，用为软软工具箱的WrapPanel可以实现。先把tag升级为更高级的类
 
 * 不知道为什么FunctionPage的后退功能无法使用
@@ -46,6 +42,8 @@
 * 完善异常捕获、日志功能
 
 # 更新日志
+
+* 改回了用Entry作为ReadPage的FlipView数据源的模式，但是又出现了切换页面时闪烁的问题
 
 ## 2023.4.22
 
