@@ -14,7 +14,7 @@
 
 * 新的ReaderVM及ReadPage功能
 
-* 移除RepeatTag页面改为更高级的控件，初步实现，有空去看看TokeningSuggestingBox的换行是怎么实现的
+* 移除RepeatTag页面改为更高级的控件，用为软软工具箱的WrapPanel可以实现。先把tag升级为更高级的类
 
 * 不知道为什么FunctionPage的后退功能无法使用
 

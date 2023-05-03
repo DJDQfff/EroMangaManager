@@ -96,8 +96,10 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         private async void GridView_ItemClick_ReadManga(object sender, ItemClickEventArgs e)
         {
             MangaBook mangaBook = e.ClickedItem as MangaBook;
-
-            await WindowHelper.ShowNewWindow(typeof(ReadPage), mangaBook);
+#if DEBUG
+            MainPage.Current.MainFrame.Navigate(typeof(ReadPage), mangaBook);
+#endif
+            //await WindowHelper.ShowNewWindow(typeof(ReadPage), mangaBook);
         }
 
         private async void DeleteSourceMangaFile(object sender, Windows.UI.Xaml.RoutedEventArgs e)
