@@ -10,7 +10,6 @@ namespace EroMangaManager.Core.Models
     /// <summary> 本子 </summary>
     public class MangaBook : INotifyPropertyChanged
     {
-        // TODO 漫画初始化，这个工作放到平台相关类里实现
         /// <summary> 实例化EroManga </summary>
         public MangaBook(string filepath) => FilePath = filepath;
 

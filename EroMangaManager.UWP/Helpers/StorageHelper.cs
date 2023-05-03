@@ -22,11 +22,11 @@ namespace EroMangaManager.UWP.Helpers
         /// 修改文件名
         /// </summary>
         /// <param name="eroManga"></param>
-        /// <param name="suggestedname"></param>
         /// <returns></returns>
         public static async Task RenameSourceFile(MangaBook eroManga)
         {
-            var renameDialog = new EditTag(eroManga);
+            // TODO 等EditTag功能好了，在改回EditTag页面
+            var renameDialog = new RenameDialog(eroManga);
 
             var result = await renameDialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
@@ -40,10 +40,6 @@ namespace EroMangaManager.UWP.Helpers
                 eroManga.FilePath = Path.Combine(eroManga.FolderPath, text + ".zip");
 
                 eroManga.NotifyPropertyChanged(string.Empty);
-                // TODO 不知道为什么，写FilePath属性时是调用过一次次方法的，但是那样不会起作用，还得在外部再调用一次
-
-                // TODO 这里MangaBook的Tag属性页因该同步更新，但是算了。
-                // 还是把SplitAndParser方法成两个，每次按需调用
             }
         }
 

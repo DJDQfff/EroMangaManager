@@ -4,13 +4,9 @@ using System.Collections.Generic;
 using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.Helpers;
 using EroMangaManager.UWP.Models;
-using EroMangaManager.UWP.ViewModels;
 
 using GroupedItemsLibrary.ViewModels;
 
-using iText.Layout.Font;
-
-using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;

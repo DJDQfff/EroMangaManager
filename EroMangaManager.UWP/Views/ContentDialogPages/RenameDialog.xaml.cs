@@ -32,6 +32,10 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
             textbox.Text = suggestedname ?? mangaBook.FileDisplayName;
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="mangaBook"></param>
         public RenameDialog(MangaBook mangaBook)
         {
             this.InitializeComponent();

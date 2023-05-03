@@ -2,8 +2,6 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 using EroMangaDB;
 using EroMangaDB.Entities;
@@ -13,8 +11,6 @@ using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.SettingEnums;
 using EroMangaManager.UWP.ViewModels;
 
-using iText.Layout.Font;
-
 using SharpCompress.Archives;
 
 using SharpConfig;
@@ -23,7 +19,6 @@ using Windows.Storage;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 using static EroMangaDB.BasicController;
@@ -108,7 +103,6 @@ namespace EroMangaManager.UWP.Views
         /// <param name="e"></param>
         private async void FLIP_SelectionChanged_ByEntry(object sender, SelectionChangedEventArgs e)
         {
-            // TODO，看summary，有空去stackflow问
             Debug.WriteLine($"SelectionChanged事件开始");
 
             FlipView flipView = sender as FlipView;

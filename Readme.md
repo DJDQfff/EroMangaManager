@@ -12,11 +12,11 @@
 
 * 移除RepeatTag页面改为更高级的控件，用为软软工具箱的WrapPanel可以实现。先把tag升级为更高级的类
 
-* 不知道为什么FunctionPage的后退功能无法使用
-
 * tag，括号，及splitandparser方法需要更细化
 
 # BUG
+
+* ReadPage的FlipView的数据源绑定到Entry，切换时加载图象。切换item时，偶尔会发生页面闪烁的情况，有空去stackoverflow问问
 
 * ReadPage的 DataTemplateSelector不知道为什么无法正常运
 
@@ -199,15 +199,5 @@
   2. 有一个bug，压缩文件的ZipArchive类（标准dotnet库或者别的库）不是线程安全，在翻页时候加载图像，就需要多线程解压缩图像，因此线程报错。
   
        现在改成了提前解压文件获取图像，每个页面直接绑定到图像，不需要SelectionChange事件
-
-# 放弃的功能
-
-* 添加一个应用内全屏的功能（非硬件全屏）
   
-  > 反正已经实现全屏了，没必要多此一举
-
-* 把程序页面扩展到标题栏
-
-* ReadingInfo单独作为一个数据库，不和tag数据库放在一起，二者不具有相关性，不应该放在一个数据库里面
-
-> 没必要，ReadingInfo、tag、filteredImage这三个数据库无论哪一个发生更新，程序都必须兼顾更新。简而言之，无论分散和集中，这三个都是同时使用
+  3. 绑定到图象很多问题，有改了回去，不过这次用的类库是SharpCompress类库，没有发生线程安全问题了，但是还是会时不时出现切换页面闪烁的问题

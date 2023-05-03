@@ -26,9 +26,14 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
 {
     public sealed partial class EditTag : ContentDialog
     {
-        // TODO  不能使用GridView，太难看
+        /// <summary>
+        ///
+        /// </summary>
         public MangaBook MangaBook { set; get; }
 
+        /// <summary>
+        ///
+        /// </summary>
         public string NewDisplayName
         {
             get
@@ -53,6 +58,10 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
             }
         }
 
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="mangaBook"></param>
         public EditTag(MangaBook mangaBook)
         {
             this.InitializeComponent();
@@ -61,6 +70,9 @@ namespace EroMangaManager.UWP.Views.ContentDialogPages
             Initial();
         }
 
+        /// <summary>
+        ///
+        /// </summary>
         public void Initial()
         {
             string displayname = MangaBook.FileDisplayName;

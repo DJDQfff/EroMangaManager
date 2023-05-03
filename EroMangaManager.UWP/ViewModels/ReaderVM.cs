@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -12,7 +11,6 @@ using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.Helpers;
 
 using SharpCompress.Archives;
-using SharpCompress.Archives.Zip;
 
 using Windows.Storage;
 using Windows.UI.Xaml.Media.Imaging;
@@ -34,6 +32,9 @@ namespace EroMangaManager.UWP.ViewModels
         /// <summary> </summary>
         public MangaBook Manga { set; get; }
 
+        /// <summary>
+        ///
+        /// </summary>
         public StorageFile StorageFile { set; get; }
 
         /// <summary> 打开的文件流 </summary>

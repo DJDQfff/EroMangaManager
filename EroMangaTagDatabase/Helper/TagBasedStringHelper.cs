@@ -62,7 +62,6 @@ namespace EroMangaDB.Helper
             return tagslist;
         }
 
-        //TODO
         /// <summary>
         ///移除其中包含的重复tag
         /// </summary>

@@ -61,7 +61,7 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
             }
         }
 
-        //TODO 因为原来的Bookcase被拆分为Bookcase和Bookcase两个类，所以这个方法现在有bug
+        //TODO 本子名翻译功能。 因为原来的Bookcase被拆分为Bookcase和Bookcase两个类，所以这个方法现在有bug
         private async void TranslateEachMangaName(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             AppBarButton button = sender as AppBarButton;
@@ -96,10 +96,11 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         private async void GridView_ItemClick_ReadManga(object sender, ItemClickEventArgs e)
         {
             MangaBook mangaBook = e.ClickedItem as MangaBook;
-#if DEBUG
-            MainPage.Current.MainFrame.Navigate(typeof(ReadPage), mangaBook);
-#endif
-            //await WindowHelper.ShowNewWindow(typeof(ReadPage), mangaBook);
+
+            // 需要调试ReadPage及ReaderVM时把这个注释取消掉
+            //MainPage.Current.MainFrame.Navigate(typeof(ReadPage), mangaBook);
+
+            await WindowHelper.ShowNewWindow(typeof(ReadPage), mangaBook);
         }
 
         private async void DeleteSourceMangaFile(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -153,7 +154,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
 
         private void ViewMangaTag(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            // TODO 以后再完成此功能
             //MenuFlyoutItem menuFlyout = sender as MenuFlyoutItem;
             //MangaBook Manga = menuFlyout.DataContext as MangaBook;
 

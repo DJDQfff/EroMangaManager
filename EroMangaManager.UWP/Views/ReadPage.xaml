@@ -4,9 +4,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:uid="using:EroMangaManager.UWP.LocalizationWords"
-      xmlns:image="using:Windows.UI.Xaml.Media.Imaging"
-      xmlns:sharpcompress="using:SharpCompress.Archives"
       xmlns:staticresource="using:EroMangaManager.UWP.StaticResource"
+      xmlns:sharpcompress="using:SharpCompress.Archives"
+      xmlns:image="using:Windows.UI.Xaml.Media.Imaging"
       Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
       mc:Ignorable="d">
     <Page.Resources>

@@ -5,8 +5,6 @@ using EroMangaManager.Core.Models;
 using EroMangaManager.UWP.Models;
 using EroMangaManager.UWP.Views;
 
-using iText.Layout.Font;
-
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 using Windows.UI.ViewManagement;

@@ -17,9 +17,7 @@ using SharpConfig;
 
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.Resources;
-using Windows.Management.Deployment;
 using Windows.Storage;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -50,39 +48,13 @@ namespace EroMangaManager.UWP
         {
 #if DEBUG
             await Windows.System.Launcher.LaunchFolderAsync(ApplicationData.Current.LocalFolder);
-            System.Diagnostics.Debug.WriteLine(ApplicationData.Current.LocalFolder.Path);
 #endif
-
-            #region 数据库迁移
 
             DatabaseController.Migrate();
 
-            #endregion 数据库迁移
-
-            #region 创建设置文件
-
             //Windows.ApplicationModel.Resources.Core.ResourceContext.SetGlobalQualifierValue("Language", "fr");
 
-            var filename = "AppConfig.ini";
-            var localfolder = Windows.Storage.ApplicationData.Current.LocalFolder;
-            AppConfigPath = Path.Combine(localfolder.Path, filename);
-
-            if (!File.Exists(AppConfigPath))
-            {
-                AppConfig = new Configuration();
-                AppConfig[nameof(General)][nameof(IsFilterImageOn)].BoolValue = false;
-                AppConfig[nameof(General)][nameof(WhetherShowDialogBeforeDelete)].BoolValue = true;
-                AppConfig[nameof(General)][nameof(StorageFileDeleteOption)].BoolValue = false;
-                AppConfig[nameof(General)][nameof(LibraryFolders)].StringValueArray = new string[] { };
-
-                AppConfig.SaveToFile(AppConfigPath);
-            }
-            else
-            {
-                AppConfig = Configuration.LoadFromFile(AppConfigPath);
-            }
-
-            #endregion 创建设置文件
+            EnsureAppConfigFile();
 
             Helpers.CoverHelper.InitialDefaultCover();
             await EnsureChildTemporaryFolders(Covers.ToString(), Filters.ToString());
@@ -127,6 +99,31 @@ namespace EroMangaManager.UWP
             ModelFactory.ViewModelGetAllFolders(GlobalViewModel, keyValuePairs.Values);
 
             #endregion 初始化文件夹目录
+        }
+
+        /// <summary>
+        /// 创建设置文件
+        /// </summary>
+        private void EnsureAppConfigFile()
+        {
+            var filename = "AppConfig.ini";
+            var localfolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            AppConfigPath = Path.Combine(localfolder.Path, filename);
+
+            if (!File.Exists(AppConfigPath))
+            {
+                AppConfig = new Configuration();
+                AppConfig[nameof(General)][nameof(IsFilterImageOn)].BoolValue = false;
+                AppConfig[nameof(General)][nameof(WhetherShowDialogBeforeDelete)].BoolValue = true;
+                AppConfig[nameof(General)][nameof(StorageFileDeleteOption)].BoolValue = false;
+                AppConfig[nameof(General)][nameof(LibraryFolders)].StringValueArray = new string[] { };
+
+                AppConfig.SaveToFile(AppConfigPath);
+            }
+            else
+            {
+                AppConfig = Configuration.LoadFromFile(AppConfigPath);
+            }
         }
 
         private async Task LongTimeLoad()
@@ -193,8 +190,7 @@ namespace EroMangaManager.UWP
             base.OnFileActivated(args);
             if (AppConfig is null)
             {
-                // TODO 看看能不能简化
-                await QuickInitialWork();
+                EnsureAppConfigFile();
             }
 
             var file = args.Files[0] as StorageFile;

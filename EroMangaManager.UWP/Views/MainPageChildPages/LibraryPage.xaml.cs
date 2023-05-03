@@ -96,10 +96,6 @@ namespace EroMangaManager.UWP.Views.MainPageChildPages
         {
             if (list.SelectedItem is MangasFolder datacontext)
             {
-                if (!datacontext.IsInitialing)
-                {
-                    // TODO 我也知道这个留着是干嘛的
-                }
                 MainPage.Current.MainFrame.Navigate(typeof(Bookcase), datacontext);
             }
         }
