@@ -13,6 +13,7 @@
   <Project Path="Core/Core.csproj" />
   <Project Path="Database/Database.csproj" />
   <Project Path="Server/Server.csproj" />
+  <Project Path="Tools/Tools.csproj" Id="bc8ecdbc-1e2e-4fb3-82fd-505322fde91d" />
   <Project Path="WinApp/WinApp.csproj">
     <Platform Solution="*|Any CPU" Project="x64" />
     <Platform Solution="*|ARM64" Project="ARM64" />
