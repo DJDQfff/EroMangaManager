@@ -13,3 +13,6 @@
 [submodule "Server"]
 	path = Server
 	url = https://github.com/DJDQfff/EroMangaManager.Server.git
+[submodule "Tools"]
+	path = Tools
+	url = E:\\Projects\\EroMangaManager\\Tools
