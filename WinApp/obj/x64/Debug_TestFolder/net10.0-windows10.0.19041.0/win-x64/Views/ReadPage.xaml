@@ -1,0 +1,77 @@
+﻿<Page
+    x:Class="EroMangaManager.WinUI3.Views.ReadPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sharpcompress="using:SharpCompress.Archives"
+    xmlns:uid="using:EroMangaManager.WinUI3.Strings"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+    <Grid>
+        <FlipView x:ConnectionId='2'
+            x:Name="FLIP"
+                                                            
+                                >
+            <FlipView.ItemTemplate>
+                <DataTemplate                                         >
+                    <Grid>
+                        <Grid.ContextFlyout>
+                            <MenuFlyout>
+                                <MenuFlyoutItem x:ConnectionId='9'                               Text="{uid:Strings Uid=DontShowThisImage}" />
+                                <MenuFlyoutItem x:ConnectionId='10'                          Text="{uid:Strings Uid=SaveAs}" />
+                            </MenuFlyout>
+                        </Grid.ContextFlyout>
+                        <ScrollViewer
+                            HorizontalScrollBarVisibility="Disabled"
+                            HorizontalScrollMode="Disabled"
+                            VerticalScrollBarVisibility="Disabled"
+                            VerticalScrollMode="Disabled"
+                            ZoomMode="Enabled">
+                            <Image
+                                x:Name="image"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Source="Assets/SVGs/书籍.svg" />
+                        </ScrollViewer>
+                    </Grid>
+                </DataTemplate>
+            </FlipView.ItemTemplate>
+            <FlipView.ItemContainerStyle>
+                <Style TargetType="FlipViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                </Style>
+            </FlipView.ItemContainerStyle>
+        </FlipView>
+        <Grid x:ConnectionId='3' x:Name="ControlsGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <CommandBar x:ConnectionId='4'
+                x:Name="ReadPageCommand"
+                Grid.Row="0"
+                Background="Transparent"
+                FlowDirection="LeftToRight"
+                Visibility="Collapsed">
+                <CommandBar.PrimaryCommands>
+                    <AppBarToggleButton x:ConnectionId='6'
+                                                            
+                        Icon="FullScreen"
+                        IsChecked="False"
+                                                                 />
+                </CommandBar.PrimaryCommands>
+            </CommandBar>
+            <Slider x:ConnectionId='5'
+                x:Name="ReadPositionSlider"
+                Grid.Row="2"
+                Minimum="1"
+                StepFrequency="1"
+                                                              
+                Visibility="Collapsed" />
+        </Grid>
+    </Grid>
+</Page>
+

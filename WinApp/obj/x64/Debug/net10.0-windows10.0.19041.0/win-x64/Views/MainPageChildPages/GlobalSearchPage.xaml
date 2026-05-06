@@ -1,0 +1,104 @@
+﻿<Page x:ConnectionId='1'
+    x:Class="EroMangaManager.WinUI3.Views.MainPageChildPages.GlobalSearchPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:EroMangaManager.Core.Models"
+    xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
+    xmlns:uid="using:EroMangaManager.WinUI3.Strings"
+    xmlns:usercontrols="using:EroMangaManager.WinUI3.UserControls.MangaComplexDisplay"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    NavigationCacheMode="Enabled"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:Key="datatemplate0"                         >
+            <usercontrols:BriefInfo x:ConnectionId='5'                  />
+        </DataTemplate>
+        <DataTemplate x:Key="datatemplate1"                         >
+            <usercontrols:StorageInfo x:ConnectionId='3' MaxHeight="160"                  />
+        </DataTemplate>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <AutoSuggestBox x:ConnectionId='8'
+                    x:Name="MangaNameAugoSuggestBox"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalAlignment="Top"
+                    VerticalContentAlignment="Stretch"
+                    Header="{uid:Strings Uid=SearchByMangaName}"
+                    QueryIcon="Find"
+                                                                       
+                                                      />
+                <toolkit:TokenizingTextBox x:ConnectionId='9'
+                    x:Name="MangaTagTokenizingTextBox"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Header="{uid:Strings Uid=SearchByTag}"
+                                                                              
+                                                                                        
+                                                                  
+                    TokenDelimiter="+"
+                                                                 
+                                                                 
+                                                                   >
+                    <toolkit:TokenizingTextBox.QueryIcon>
+                        <FontIconSource FontFamily="Segoe MDL2 Assets" Glyph="&#xE11A;" />
+                    </toolkit:TokenizingTextBox.QueryIcon>
+                    <toolkit:TokenizingTextBox.SuggestedItemTemplate>
+                        <DataTemplate                      >
+                            <TextBlock x:ConnectionId='11'                              />
+                        </DataTemplate>
+                    </toolkit:TokenizingTextBox.SuggestedItemTemplate>
+                </toolkit:TokenizingTextBox>
+            </Grid>
+            <!--  完成的不好  -->
+            <ListBox x:ConnectionId='7'
+                Grid.Column="1"
+                                                           
+                SelectionMode="Single"
+                Visibility="Collapsed">
+                <ListBoxItem Content="{uid:Strings Uid=ThumanailViewMode}" />
+                <ListBoxItem Content="{uid:Strings Uid=FileInfoViewMode}" />
+            </ListBox>
+        </Grid>
+        <!--<StackPanel Visibility="Collapsed"
+            Grid.Row="1"
+            Margin="0,12,0,0"
+            Orientation="Horizontal">
+            <Button
+                x:Name="SearchStartButton"
+                VerticalAlignment="Stretch"
+                Click="SearchStartButton_Click"
+                Content="{uid:Strings Uid=Search}" />
+            <Button
+                x:Name="ShowInBookcaseButton"
+                x:Load="False"
+                Click="ShowInBookcaseButton_Click"
+                Content="{uid:Strings Uid=ShowFolderBookcase}" />
+        </StackPanel>-->
+        <GridView x:ConnectionId='6'
+            x:Name="ResultGridView"
+            Grid.Row="2"
+            ItemTemplate="{StaticResource datatemplate0}"
+                                                                       />
+    </Grid>
+</Page>
+

@@ -1,0 +1,1 @@
+dotnet publish -f net10.0-android -c Release -o ./publish

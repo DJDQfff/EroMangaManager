@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="EroMangaManager.WinUI3.Views.SettingPageChildPages.UsageDocumentPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uid="using:EroMangaManager.WinUI3.Strings"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+    <Grid>
+
+        <ScrollViewer>
+            <TextBlock
+                IsTextSelectionEnabled="False"
+                Text="{uid:Strings Uid=UsageLong}"
+                TextWrapping="Wrap" />
+
+            <!--<StackPanel Orientation="Vertical">
+                <usercontrols:QATextBlock Answer="{uid:Strings Uid=Answer_WhatISTheApp}" Question="{uid:Strings Uid=Question_WhatISTheApp}" />
+                <usercontrols:QATextBlock Answer="{uid:Strings Uid=Answer_SupportedType}" Question="{uid:Strings Uid=Question_SupportedType}" />
+                <usercontrols:QATextBlock Answer="{uid:Strings Uid=Answer_MangaLibrary}" Question="{uid:Strings Uid=Question_MangaLibrary}" />
+                <usercontrols:QATextBlock Answer="{uid:Strings Uid=Answer_Tag}" Question="{uid:Strings Uid=Question_Tag}" />
+            </StackPanel>-->
+        </ScrollViewer>
+    </Grid>
+</Page>
+

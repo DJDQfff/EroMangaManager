@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDenied" xml:space="preserve">
+    <value>访问被拒绝</value>
+  </data>
+  <data name="AddAFolder" xml:space="preserve">
+    <value>添加文件夹</value>
+  </data>
+  <data name="AddCategory" xml:space="preserve">
+    <value>添加分类</value>
+  </data>
+  <data name="AddExe" xml:space="preserve">
+    <value>添加exe</value>
+  </data>
+  <data name="AllInBrackets" xml:space="preserve">
+    <value>全部包含在括号内</value>
+  </data>
+  <data name="Answer_MangaLibrary" xml:space="preserve">
+    <value>按文件夹对本子进行区分管理</value>
+  </data>
+  <data name="Answer_SupportedType" xml:space="preserve">
+    <value>zip、7z和文件夹。内部图片格式仅限webp,jpg,png，其他格式将致软件闪退。对于文件夹类型，图片必须直接包含在文件夹内</value>
+  </data>
+  <data name="Answer_Tag" xml:space="preserve">
+    <value>本子标签从本子名读取。如文件"[玉砂糖] キミ色保護色 (COMIC BAVEL 2021年6月号) [無邪気漢化組] [無邪気無修宇宙分組] [MJK-22-Z2748] [無修正].zip"，在本软件中，包含在一对括号中的内容将被识别为Tag，未包含在括号中的内容将被识别为本子名称。这不一定100%正确识别。</value>
+  </data>
+  <data name="Answer_WhatISTheApp" xml:space="preserve">
+    <value>这是一个用于管理本地硬盘本子的软件。如果你不知道什么是本子，那么你大概率用不上本软件。</value>
+  </data>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>本子管理器</value>
+  </data>
+  <data name="AppUILanguage" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>作者</value>
+  </data>
+  <data name="Bookcase" xml:space="preserve">
+    <value>书架</value>
+  </data>
+  <data name="BookcaseItemToolTip" xml:space="preserve">
+    <value>漫画书架</value>
+  </data>
+  <data name="CancleEdit" xml:space="preserve">
+    <value>不作调整</value>
+  </data>
+  <data name="ChangeSortMethod" xml:space="preserve">
+    <value>切换排序</value>
+  </data>
+  <data name="Chapters" xml:space="preserve">
+    <value>章</value>
+  </data>
+  <data name="ChineseTranslateTeam" xml:space="preserve">
+    <value>汉化组</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="CommonSetting" xml:space="preserve">
+    <value>一般设置</value>
+  </data>
+  <data name="ConfirmEdit" xml:space="preserve">
+    <value>确认调整</value>
+  </data>
+  <data name="ContainInvalaidChar" xml:space="preserve">
+    <value>包含非法字符</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="CustomExe" xml:space="preserve">
+    <value>自定义exe</value>
+  </data>
+  <data name="DefaultWay" xml:space="preserve">
+    <value>默认方式</value>
+  </data>
+  <data name="DeleteFile" xml:space="preserve">
+    <value>确认删除文件？</value>
+  </data>
+  <data name="DeleteIt" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="DeleteMode" xml:space="preserve">
+    <value>删除模式</value>
+  </data>
+  <data name="DeleteMode_JustDelete" xml:space="preserve">
+    <value>从磁盘删除</value>
+  </data>
+  <data name="DeleteMode_MoveTo" xml:space="preserve">
+    <value>移动到回收站</value>
+  </data>
+  <data name="DeleteSourceFile" xml:space="preserve">
+    <value>删除源文件</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png、webp格式</value>
+  </data>
+  <data name="Description_20221219" xml:space="preserve">
+    <value>添加导出PDF功能</value>
+  </data>
+  <data name="Description_20221226" xml:space="preserve">
+    <value>修复了一些bug;添加更新日志</value>
+  </data>
+  <data name="Description_20230109" xml:space="preserve">
+    <value>添加重复本子查找功能</value>
+  </data>
+  <data name="Description_20230125" xml:space="preserve">
+    <value>阅读页面全屏功能；默认书架</value>
+  </data>
+  <data name="Description_20230205" xml:space="preserve">
+    <value>优化启动速度</value>
+  </data>
+  <data name="Description_before" xml:space="preserve">
+    <value>更早的记录</value>
+  </data>
+  <data name="DontShowThisImage" xml:space="preserve">
+    <value>不显示此图</value>
+  </data>
+  <data name="DontUseEmptyString" xml:space="preserve">
+    <value>请勿使用空内容</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="en" xml:space="preserve">
+    <value>英文</value>
+  </data>
+  <data name="ErrorString1" xml:space="preserve">
+    <value>出错啦，无法打开</value>
+  </data>
+  <data name="ErrorZips" xml:space="preserve">
+    <value>异常Zip</value>
+  </data>
+  <data name="ExportDone" xml:space="preserve">
+    <value>导出完成</value>
+  </data>
+  <data name="ExportFailed" xml:space="preserve">
+    <value>导出失败</value>
+  </data>
+  <data name="ExportToPDF" xml:space="preserve">
+    <value>导出为PDF</value>
+  </data>
+  <data name="FileInfoViewMode" xml:space="preserve">
+    <value>文件视图模式</value>
+  </data>
+  <data name="FilteredImages" xml:space="preserve">
+    <value>过滤图库</value>
+  </data>
+  <data name="FindSameMangaByName" xml:space="preserve">
+    <value>查找相同漫画</value>
+  </data>
+  <data name="Folders" xml:space="preserve">
+    <value>文件夹</value>
+  </data>
+  <data name="FullScreen" xml:space="preserve">
+    <value>全屏</value>
+  </data>
+  <data name="FunctionOff" xml:space="preserve">
+    <value>已启用</value>
+  </data>
+  <data name="FunctionOn" xml:space="preserve">
+    <value>已禁用</value>
+  </data>
+  <data name="GitHubFeedBack" xml:space="preserve">
+    <value>Github反馈</value>
+  </data>
+  <data name="GlobalSearch" xml:space="preserve">
+    <value>全局搜索</value>
+  </data>
+  <data name="HaveNoneBrackets" xml:space="preserve">
+    <value>无任何括号</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>图</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>导入</value>
+  </data>
+  <data name="InternalReadPage" xml:space="preserve">
+    <value>内置阅读页</value>
+  </data>
+  <data name="IrregularName" xml:space="preserve">
+    <value>不规则名称</value>
+  </data>
+  <data name="IsEmptyFolderShow" xml:space="preserve">
+    <value>是否显示空文件夹</value>
+  </data>
+  <data name="Library" xml:space="preserve">
+    <value>库</value>
+  </data>
+  <data name="LoadSubDirectory" xml:space="preserve">
+    <value>加载子文件夹</value>
+  </data>
+  <data name="LocateInExplorer" xml:space="preserve">
+    <value>在资源浏览器中打开</value>
+  </data>
+  <data name="MailFeedbackToDeveloper" xml:space="preserve">
+    <value>邮件反馈djdqfff@qq.com</value>
+  </data>
+  <data name="MangaOpenWay" xml:space="preserve">
+    <value>漫画打开方式</value>
+  </data>
+  <data name="MangaTags" xml:space="preserve">
+    <value>本子标签</value>
+  </data>
+  <data name="MangaTagsCategorys" xml:space="preserve">
+    <value>标签分类</value>
+  </data>
+  <data name="MangaTagsManage" xml:space="preserve">
+    <value>标签管理</value>
+  </data>
+  <data name="Method1" xml:space="preserve">
+    <value>方法一</value>
+  </data>
+  <data name="Method2" xml:space="preserve">
+    <value>方法二</value>
+  </data>
+  <data name="Method3" xml:space="preserve">
+    <value>方法三</value>
+  </data>
+  <data name="Method4" xml:space="preserve">
+    <value>方法4</value>
+  </data>
+  <data name="MoveToOtherFolder" xml:space="preserve">
+    <value>移动到其他文件夹</value>
+  </data>
+  <data name="NameWithoutBrackets" xml:space="preserve">
+    <value>文件名无括号</value>
+  </data>
+  <data name="NeedRestart" xml:space="preserve">
+    <value>需要重启</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="NoFoldersPleaseAddFirst" xml:space="preserve">
+    <value>目前没有文件夹，请添加你的第一个扫描文件夹</value>
+  </data>
+  <data name="NoSelectedFolder" xml:space="preserve">
+    <value>未选择文件夹</value>
+  </data>
+  <data name="NotCorrectBracketPairs" xml:space="preserve">
+    <value>不成对括号</value>
+  </data>
+  <data name="NowInitializingMaybeError" xml:space="preserve">
+    <value>正在初始化文件夹，现在使用工具功能可能出错</value>
+  </data>
+  <data name="NowReading" xml:space="preserve">
+    <value>正在阅读</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>打开</value>
+  </data>
+  <data name="OpenAsAZipComic" xml:space="preserve">
+    <value>作为zip压缩包漫画打开</value>
+  </data>
+  <data name="OpenFailed" xml:space="preserve">
+    <value>打开失败</value>
+  </data>
+  <data name="OpenFile" xml:space="preserve">
+    <value>打开文件</value>
+  </data>
+  <data name="OpenFolder" xml:space="preserve">
+    <value>打开文件夹</value>
+  </data>
+  <data name="OpenInMicrosoftStore" xml:space="preserve">
+    <value>商店中打开</value>
+  </data>
+  <data name="OpenItsPlacedFolder" xml:space="preserve">
+    <value>打开所在文件夹</value>
+  </data>
+  <data name="OpenWithExternal" xml:space="preserve">
+    <value>从外部打开</value>
+  </data>
+  <data name="OSRelated" xml:space="preserve">
+    <value>系统关联</value>
+  </data>
+  <data name="OverviewInformation" xml:space="preserve">
+    <value>查看信息</value>
+  </data>
+  <data name="PasswordManagement" xml:space="preserve">
+    <value>密码管理</value>
+  </data>
+  <data name="PinnedFolders" xml:space="preserve">
+    <value>已固定文件夹</value>
+  </data>
+  <data name="Question_MangaLibrary" xml:space="preserve">
+    <value>本子库</value>
+  </data>
+  <data name="Question_SupportedType" xml:space="preserve">
+    <value>支持的类型</value>
+  </data>
+  <data name="Question_Tag" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="Question_WhatISTheApp" xml:space="preserve">
+    <value>这是什么软件？</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="RemoveFolder" xml:space="preserve">
+    <value>移除文件夹</value>
+  </data>
+  <data name="RemoveRepeatTags" xml:space="preserve">
+    <value>移除重复本子标签</value>
+  </data>
+  <data name="Rename" xml:space="preserve">
+    <value>重命名</value>
+  </data>
+  <data name="RenameFile" xml:space="preserve">
+    <value>重命名文件</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="SaveAs" xml:space="preserve">
+    <value>另存为</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>查找</value>
+  </data>
+  <data name="SearchByMangaName" xml:space="preserve">
+    <value>查找本子名</value>
+  </data>
+  <data name="SearchByTag" xml:space="preserve">
+    <value>按Tag查找</value>
+  </data>
+  <data name="SearchSimialr" xml:space="preserve">
+    <value>查找相似</value>
+  </data>
+  <data name="SearchThisTag" xml:space="preserve">
+    <value>查找此Tag</value>
+  </data>
+  <data name="SelectExe" xml:space="preserve">
+    <value>选择exe程序</value>
+  </data>
+  <data name="SeriesMangas" xml:space="preserve">
+    <value>系列漫画</value>
+  </data>
+  <data name="Server" xml:space="preserve">
+    <value>服务器</value>
+  </data>
+  <data name="SetAsDefaultBookcaseFolder" xml:space="preserve">
+    <value>设置为默认展示文件夹</value>
+  </data>
+  <data name="SetBack" xml:space="preserve">
+    <value>还原</value>
+  </data>
+  <data name="ShowFolderBookcase" xml:space="preserve">
+    <value>显示书架</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>开始</value>
+  </data>
+  <data name="StorageOperation" xml:space="preserve">
+    <value>存储操作</value>
+  </data>
+  <data name="SwitchViewMode" xml:space="preserve">
+    <value>切换视图</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="TagsViewMode" xml:space="preserve">
+    <value>标签视图</value>
+  </data>
+  <data name="ThumanailViewMode" xml:space="preserve">
+    <value>缩略图视图</value>
+  </data>
+  <data name="ToolBox" xml:space="preserve">
+    <value>工具箱</value>
+  </data>
+  <data name="Translate" xml:space="preserve">
+    <value>翻译</value>
+  </data>
+  <data name="Translator" xml:space="preserve">
+    <value>译者</value>
+  </data>
+  <data name="UnCategoryed" xml:space="preserve">
+    <value>未分类</value>
+  </data>
+  <data name="UpdateRecords" xml:space="preserve">
+    <value>更新记录</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>使用说明</value>
+  </data>
+  <data name="UsageLong" xml:space="preserve">
+    <value>
+使用说明：
+这是一个用于管理本地硬盘本子的软件。
+如果你不知道什么是本子，那么你大概率用不上本软件。
+		
+按文件夹对本子进行分类管理，一个文件夹视为一个分类。
+		
+本子格式：zip、7z，rar，cbz，cbr，cb7和文件夹。
+本子内部图片格式仅限webp,jpg,png，其他格式自动忽略。
+文件格式需和文件后缀相同，软件不做验证，由用户自行保证。
+				
+括号内文本视为标签，未包含在括号中的内容将被识别为本子名。这不一定100%正确识别。
+标签可分类整理，提供内置分类（不一定正确）。
+如：文件"[玉砂糖] キミ色保護色 (COMIC BAVEL 2021年6月号) [無邪気漢化組] [無邪気無修宇宙分組] [MJK-22-Z2748] [無修正].zip"
+		
+内部功能：本子阅读（基本没用，建议使用外部exe，见下文）、重复本子查找（不一定正确识别）、标签管理、本子文件名管理、
+		
+外部功能：自行添加外部exe路径，调用以外部处理。如外部阅读器，外部压缩文件处理器，推荐NeeViewer。
+		
+软件功能按我自己需求增改。
+		
+自用软件，无偿分享。
+有爱自取，不喜勿喷。
+</value>
+  </data>
+  <data name="Version_20221219" xml:space="preserve">
+    <value>2022.12.19</value>
+  </data>
+  <data name="Version_20221226" xml:space="preserve">
+    <value>2022.12.26</value>
+  </data>
+  <data name="Version_20230109" xml:space="preserve">
+    <value>2023.01.09</value>
+  </data>
+  <data name="Version_20230125" xml:space="preserve">
+    <value>2023.01.25</value>
+  </data>
+  <data name="Version_20230205" xml:space="preserve">
+    <value>2023.2.5</value>
+  </data>
+  <data name="Version_before" xml:space="preserve">
+    <value>更早的版本</value>
+  </data>
+  <data name="WhereContains" xml:space="preserve">
+    <value>含有此文本</value>
+  </data>
+  <data name="WhetherOpenFilterImageFunction" xml:space="preserve">
+    <value>是否启用单页过滤功能（开启此功能将减慢漫画打开速度）</value>
+  </data>
+  <data name="WhetherPickSubFolder" xml:space="preserve">
+    <value>是否添加子文件夹</value>
+  </data>
+  <data name="WhetherShowDialogBeforeDelete" xml:space="preserve">
+    <value>删除不需确认</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="zhCN" xml:space="preserve">
+    <value>简中</value>
+  </data>
+  <data name="ZipComic" xml:space="preserve">
+    <value>zip漫画包</value>
+  </data>
+</root>

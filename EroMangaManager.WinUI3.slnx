@@ -1,0 +1,36 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Release" />
+    <Platform Name="Any CPU" />
+    <Platform Name="ARM64" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="README.md" />
+    <File Path="TODO.md" />
+  </Folder>
+  <Project Path="Core/EroMangaManager.Core.csproj">
+    <BuildType Solution="Test|*" Project="Debug_TestFolder" />
+  </Project>
+  <Project Path="Database/EroMangaDatabase.csproj">
+    <BuildType Solution="Test|*" Project="Debug_TestFolder" />
+  </Project>
+  <Project Path="Server/EroMangaManager.Server.csproj">
+    <BuildType Solution="Test|*" Project="Debug" />
+  </Project>
+  <Project Path="WinApp/EroMangaManager.WinUI3.csproj">
+    <BuildType Solution="Test|*" Project="Debug_TestFolder" />
+    <Platform Solution="*|Any CPU" Project="x64" />
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
+    <Platform Solution="*|x86" Project="x86" />
+    <Deploy />
+  </Project>
+  <Project Path="UnoApp/EroMangaManagerHttpApiClient.csproj">
+    <BuildType Solution="Test|*" Project="Debug_TestFolder" />
+    <Deploy />
+  </Project>
+</Solution>

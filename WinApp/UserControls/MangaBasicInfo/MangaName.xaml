@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<UserControl
+    x:Class="EroMangaManager.WinUI3.UserControls.MangaBasicInfo.MangaName"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:EroMangaManager.WinUI3.UserControls.MangaBasicInfo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:strings="using:EroMangaManager.WinUI3.Strings"
+    mc:Ignorable="d">
+
+    <TextBlock
+        x:Name="manganameTextblock"
+        FontSize="20"
+        Text="{x:Bind Manga.MangaName, Mode=OneWay}">
+        <TextBlock.ContextFlyout>
+            <MenuFlyout>
+                <MenuFlyoutItem Click="MenuFlyoutItem_Click" Text="{strings:Strings Uid=Copy}" />
+                <MenuFlyoutItem Click="MenuFlyoutItem_Click_1" Text="{strings:Strings Uid=Search}" />
+            </MenuFlyout>
+        </TextBlock.ContextFlyout>
+    </TextBlock>
+</UserControl>

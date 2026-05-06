@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <AppxShowAllApps>True</AppxShowAllApps>
+    <Source>D:\Projects\EroMangaManager.WinUI3\EroMangaManager.WinUI3\Assets\icon.pdf</Source>
+    <SmallTileSource>D:\Projects\EroMangaManager.WinUI3\EroMangaManager.WinUI3\Assets\icon.pdf</SmallTileSource>
+    <MediumTileSource>D:\Projects\EroMangaManager.WinUI3\EroMangaManager.WinUI3\Assets\icon.pdf</MediumTileSource>
+    <WideTileSource>D:\Projects\EroMangaManager.WinUI3\EroMangaManager.WinUI3\Assets\icon.pdf</WideTileSource>
+    <LargeTileSource>D:\Projects\EroMangaManager.WinUI3\EroMangaManager.WinUI3\Assets\icon.pdf</LargeTileSource>
+    <AppIconSource>D:\Projects\EroMangaManager.WinUI3\EroMangaManager.WinUI3\Assets\icon.pdf</AppIconSource>
+    <SplashScreenSource>D:\Projects\EroMangaManager.WinUI3\EroMangaManager.WinUI3\Assets\icon.pdf</SplashScreenSource>
+    <BadgeLogoSource>D:\Projects\EroMangaManager.WinUI3\EroMangaManager.WinUI3\Assets\icon.pdf</BadgeLogoSource>
+    <PackageLogoSource>D:\Projects\EroMangaManager.WinUI3\EroMangaManager.WinUI3\Assets\icon.pdf</PackageLogoSource>
+    <UapAppxPackageBuildMode>StoreAndSideload</UapAppxPackageBuildMode>
+    <AppxBuildConfigurationSelection>x86|x64|arm64</AppxBuildConfigurationSelection>
+    <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
+    <_LastSelectedProfileId>D:\Projects\EroMangaManager.WinUI3\EroMangaManager.WinUI3\Properties\PublishProfiles\win10-x64.pubxml</_LastSelectedProfileId>
+    <ActiveDebugProfile>EroMangaManager.WinUI3 (Package)</ActiveDebugProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TestFolder|x64'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Update="App.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </None>
+    <Page Update="Views\MainPageChildPages\ServerPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\MangaBasicInfo\MangaName.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\MangaBasicInfo\SizeImagesChaptersAmount.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ContentDialogPages\TagCategorySelect.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\TagTextBlock.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\TagItemsRepeater.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\TagListOrder2.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainPageChildPages\MnagaFolderReOrganize.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ContentDialogPages\RenameCategoryName.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\RenameMangaByDragTag.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainPageChildPages\RemoveRepeatTags2.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainPageChildPages\SeriesMangas.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\MangaOpenButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainPageChildPages\IrregularNameSearch.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\TagListOrder.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ContentDialogPages\SettingDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\SettingParts\ManageMangaOpenWay3Setting.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SettingPageChildPages\PasswordManagementPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\DefaultControlStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\FunctionShowerControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\MyDataTemplateSelector.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\NamedControlStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\TitleContentPairTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ResourceDictionarys\ValueConverters.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ReadPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainPageChildPages\Bookcase.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainPageChildPages\FindSameManga.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainPageChildPages\FunctionPageShower.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainPageChildPages\LibraryPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainPageChildPages\RemoveRepeatTags.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainPageChildPages\GlobalSearchPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainPageChildPages\SettingPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainPageChildPages\TagsManagePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SettingPageChildPages\CommonSettingPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SettingPageChildPages\FiltedImagesPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SettingPageChildPages\TagKeywordsManagePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SettingPageChildPages\UpdateRecordsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SettingPageChildPages\UsageDocumentPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ContentDialogPages\ConfirmDeleteMangaFile.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ContentDialogPages\OverviewInformation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ContentDialogPages\RenameDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\TagInfo.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\QATextBlock.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserControls\RenameMangaBookByEditString.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Update="Strings\Resources.language-zh-CN.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
+  </ItemGroup>
+</Project>

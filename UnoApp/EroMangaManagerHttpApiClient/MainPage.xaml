@@ -1,0 +1,17 @@
+﻿<Page
+    x:Class="EroMangaManagerHttpApiClient.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dto="using:EroMangaManager.Core.DTOs"
+    xmlns:local="using:EroMangaManagerHttpApiClient"
+    xmlns:utu="using:Uno.Toolkit.UI" xmlns:views="using:EroMangaManagerHttpApiClient"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <!--  核心：让内容自动避开状态栏  -->
+    <utu:SafeArea Insets="Top">
+        <Frame x:Name="mainFrame">
+        </Frame>
+
+    </utu:SafeArea>
+
+</Page>

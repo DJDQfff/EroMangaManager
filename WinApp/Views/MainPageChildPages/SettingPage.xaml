@@ -1,0 +1,57 @@
+﻿<Page
+    x:Class="EroMangaManager.WinUI3.Views.MainPageChildPages.SettingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:settingviews="using:EroMangaManager.WinUI3.Views.SettingPageChildPages"
+    xmlns:uid="using:EroMangaManager.WinUI3.Strings"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+    <Grid>
+        <NavigationView
+            IsBackButtonVisible="Collapsed"
+            IsSettingsVisible="False"
+            ItemInvoked="NavigationView_ItemInvoked"
+            PaneDisplayMode="Top">
+            <NavigationView.MenuItems>
+                <NavigationViewItem
+                    x:Name="CommonSettingNavigationViewItem"
+                    Content="{uid:Strings Uid=CommonSetting}"
+                    IsSelected="True" />
+                <NavigationViewItem x:Name="PasswordManagementSetting" Visibility="Collapsed" Content="{uid:Strings Uid=PasswordManagement}" />
+                <NavigationViewItem
+                    x:Name="SettingFilterImageButton"
+                    Content="{uid:Strings Uid=FilteredImages}"
+                    Visibility="Collapsed" />
+                <NavigationViewItem
+                    x:Name="SettingTagButton"
+                    Content="{uid:Strings Uid=Tags}"
+                    Visibility="Collapsed" />
+            </NavigationView.MenuItems>
+            <NavigationView.Content>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Frame x:Name="SettingFrame">
+                        <settingviews:CommonSettingPage />
+                    </Frame>
+                    <StackPanel
+                        x:Name="NavigateButtons"
+                        Grid.Row="1"
+                        Orientation="Vertical"
+                        RelativePanel.AlignBottomWithPanel="True">
+                        <HyperlinkButton Content="{uid:Strings Uid=OpenInMicrosoftStore}" NavigateUri="https://www.microsoft.com/store/apps/9N7C8ZDQ1TJ8" />
+                        <HyperlinkButton Content="{uid:Strings Uid=GitHubFeedBack}" NavigateUri="https://github.com/DJDQfff/FeedBack/issues" />
+                        <HyperlinkButton
+                            VerticalAlignment="Center"
+                            Content="{uid:Strings Uid=MailFeedbackToDeveloper}"
+                            NavigateUri="mailto:djdqfff@qq.com" />
+                    </StackPanel>
+                </Grid>
+            </NavigationView.Content>
+        </NavigationView>
+    </Grid>
+</Page>

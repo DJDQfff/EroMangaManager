@@ -1,0 +1,161 @@
+﻿<Page
+    x:Class="EroMangaManager.WinUI3.Views.MainPageChildPages.Bookcase"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:app="using:EroMangaManager.WinUI3"
+    xmlns:complexmanga="using:EroMangaManager.WinUI3.UserControls.MangaComplexDisplay"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:EroMangaManager.Core.Models"
+    xmlns:uid="using:EroMangaManager.WinUI3.Strings"
+    xmlns:usercontrols="using:EroMangaManager.WinUI3.UserControls"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    NavigationCacheMode="Required"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:Key="BookcaseTemplate1" x:DataType="models:Manga">
+            <complexmanga:MangaTagsView Manga="{x:Bind}" />
+        </DataTemplate>
+        <DataTemplate x:Key="BookcaseTemplate0" x:DataType="models:Manga">
+            <complexmanga:BriefInfo Manga="{x:Bind}" />
+        </DataTemplate>
+    </Page.Resources>
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock
+            x:Name="Bookcase_HintTextBlock"
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Style="{StaticResource HintTextBlockStyle}"
+            Text="{uid:Strings Uid=NoSelectedFolder}"
+            Visibility="Visible" />
+        <CommandBar
+            x:Name="BookcaseCommandBar"
+            Grid.Row="0"
+            VerticalAlignment="Stretch"
+            VerticalContentAlignment="Center">
+            <CommandBar.Content>
+                <ComboBox
+                    x:Name="combochangefolder"
+                    DisplayMemberPath="FolderPath"
+                    ItemsSource="{x:Bind app:App.Current.GlobalViewModel.MangaFolders, Mode=OneWay}"
+                    SelectedItem="{x:Bind app:App.Current.AppConfig.AppConfig.General.DefaultBookcaseFolder, Mode=TwoWay, Converter={StaticResource displayfolder}}"
+                    SelectionChanged="Combochangefolder_SelectionChanged" />
+                <!--<TextBlock x:Name="CommandText"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{x:Bind MangasGroup.ShowString, Mode=OneWay}"
+                           TextAlignment="Center" />-->
+            </CommandBar.Content>
+            <AppBarElementContainer VerticalAlignment="Center" VerticalContentAlignment="Center">
+                <usercontrols:MangaOpenButton  ToolTipService.ToolTip="{uid:Strings Uid=DefaultWay}"/>
+            </AppBarElementContainer>
+            <AppBarButton
+                AllowFocusOnInteraction="True"
+                Content="Filter"
+                Icon="Filter">
+                <AppBarButton.Flyout>
+                    <Flyout>
+                        <StackPanel Width="200" Orientation="Vertical">
+                            <TextBox PlaceholderText="含有内容" />
+
+                            <RadioButtons MaxColumns="2" />
+                            <!--<Grid>
+                                <Grid.Resources>
+                                    <Style TargetType="ToggleButton">
+                                        <Setter Property="Height" Value="40" />
+                                        <Setter Property="HorizontalAlignment" Value="Stretch" />
+                            -->
+                            <!--<Setter Property="Content">
+                                            <Setter.Value>
+                                                <Rectangle Fill="{ThemeResource SystemAccentColor}" />
+                                            </Setter.Value>
+                                        </Setter>-->
+                            <!--
+                                    </Style>
+                                </Grid.Resources>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <ToggleButton IsEnabledChanged="ToggleButton_IsEnabledChanged"
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Content="size降" />
+                                <ToggleButton IsEnabledChanged="ToggleButton_IsEnabledChanged"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Content="size升" />
+                                <ToggleButton IsEnabledChanged="ToggleButton_IsEnabledChanged"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Content="chapter降" />
+                                <ToggleButton
+                                    Grid.Row="1" IsEnabledChanged="ToggleButton_IsEnabledChanged"
+                                    Grid.Column="1"
+                                    Content="chapter升" />
+
+                                <ToggleButton IsEnabledChanged="ToggleButton_IsEnabledChanged"
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Content="images降" />
+                                <ToggleButton IsEnabledChanged="ToggleButton_IsEnabledChanged"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Content="images升" />
+                            </Grid>-->
+                        </StackPanel>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+            <AppBarButton
+                AllowFocusOnInteraction="True"
+                Icon="Switch"
+                Label="{uid:Strings Uid=SwitchViewMode}"
+                Visibility="Collapsed">
+                <AppBarButton.Flyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem
+                            Click="MenuFlyoutItem_Click"
+                            Tag="0"
+                            Text="{uid:Strings Uid=ThumanailViewMode}" />
+                        <MenuFlyoutItem
+                            Click="MenuFlyoutItem_Click"
+                            Tag="1"
+                            Text="{uid:Strings Uid=TagsViewMode}" />
+                    </MenuFlyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+            <AppBarButton
+                Click="Order"
+                Icon="Sort"
+                Label="{uid:Strings Uid=ChangeSortMethod}" />
+            <AppBarButton
+                x:Name="TranslateButton"
+                x:Load="False"
+                Click="TranslateEachMangaName"
+                Icon="Font"
+                Label="{uid:Strings Uid=Translate}" />
+        </CommandBar>
+        <GridView
+            x:Name="Bookcase_GridView"
+            Grid.Row="1"
+            Margin="4"
+            x:FieldModifier="public"
+            IsItemClickEnabled="True"
+            ItemContainerStyle="{ThemeResource GridViewItemRevealStyle}"
+            SelectionMode="Single" />
+    </Grid>
+</Page>

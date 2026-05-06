@@ -1,0 +1,130 @@
+name: Release Android APK
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build-and-release:
+    runs-on: windows-latest
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 .NET 版本
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: 安装 android workload
+        run: |
+          dotnet workload install android ios
+
+      - name: 克隆桌面端仓库（获取 Core 和 Database 项目）
+        shell: pwsh
+        run: |
+          # 明确指定临时目录的绝对路径
+          $tempDir = "${{ github.workspace }}/../EroMangaManager_temp"
+          Write-Output "临时目录: $tempDir"
+          
+          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/DJDQfff/EroMangaManager.git $tempDir
+          
+          # 列出临时目录的内容，确认结构
+          Write-Output "临时目录内容:"
+          Get-ChildItem $tempDir -Directory | Select-Object Name
+          
+          # 目标目录
+          $targetDir = "${{ github.workspace }}/EroMangaManager"
+          New-Item -ItemType Directory -Force -Path "$targetDir/EroMangaManager.Core"
+          New-Item -ItemType Directory -Force -Path "$targetDir/EroMangaDatabase"
+          
+          # 复制 Core 和 Database
+          Copy-Item -Path "$tempDir/EroMangaManager.Core/*" -Destination "$targetDir/EroMangaManager.Core/" -Recurse -Force
+          Copy-Item -Path "$tempDir/EroMangaDatabase/*" -Destination "$targetDir/EroMangaDatabase/" -Recurse -Force
+          
+          # 验证
+          if (-not (Test-Path "$targetDir/EroMangaManager.Core/EroMangaManager.Core.csproj")) {
+            Write-Error "❌ Core 项目克隆失败"
+            exit 1
+          }
+          if (-not (Test-Path "$targetDir/EroMangaDatabase/EroMangaDatabase.csproj")) {
+            Write-Error "❌ Database 项目克隆失败"
+            exit 1
+          }
+          Write-Output "✅ Core 和 Database 项目已就位"
+      - name: 修正 .slnx 路径
+        shell: pwsh
+        run: |
+          $slnxPath = "EroMangaManagerHttpApiClient.slnx"
+          # 直接写入只包含安卓项目和 Core 项目的 .slnx
+          @"
+          <Solution>
+            <Project Path="EroMangaManager/EroMangaDatabase/EroMangaDatabase.csproj" />
+            <Project Path="EroMangaManager/EroMangaManager.Core/EroMangaManager.Core.csproj" />
+            <Project Path="EroMangaManagerHttpApiClient/EroMangaManagerHttpApiClient.csproj">
+              <Deploy />
+            </Project>
+          </Solution>
+          "@ | Set-Content $slnxPath
+          Write-Output "修正后的 slnx:"
+          Get-Content $slnxPath
+      
+      - name: 修正 .csproj 项目引用路径
+        shell: pwsh
+        run: |
+          $csprojPath = "EroMangaManagerHttpApiClient/EroMangaManagerHttpApiClient.csproj"
+          Write-Output "修正前:"
+          Get-Content $csprojPath
+          
+          $content = Get-Content $csprojPath -Raw
+          # 替换所有可能指向 Core 的相对路径为 CI 里的实际路径
+          $content = $content -replace '\.\.\\\.\.\\EroMangaManager\\EroMangaManager\.Core\\EroMangaManager\.Core\.csproj', '..\EroMangaManager\EroMangaManager.Core\EroMangaManager.Core.csproj'
+          $content = $content -replace '\.\./\.\./EroMangaManager/EroMangaManager\.Core/EroMangaManager\.Core\.csproj', '../EroMangaManager/EroMangaManager.Core/EroMangaManager.Core.csproj'
+          Set-Content $csprojPath -Value $content
+          
+          Write-Output "修正后:"
+          Get-Content $csprojPath
+          
+      - name: 还原依赖
+        run: dotnet restore EroMangaManagerHttpApiClient.slnx
+      
+      - name: 构建 Android APK
+        run: |
+          dotnet publish EroMangaManagerHttpApiClient/EroMangaManagerHttpApiClient.csproj `
+            -f net10.0-android `
+            -c Release `
+            -p:AndroidPackageFormats=apk `
+            -o ./publish
+
+      - name: 查找 APK 文件
+        id: find_apk
+        shell: pwsh
+        run: |
+          $apkPath = Get-ChildItem -Path ./publish -Filter "*.apk" -Recurse | Select-Object -First 1
+          if (-not $apkPath) {
+            Write-Error "未找到 APK 文件"
+            exit 1
+          }
+          Write-Output "APK 路径: $($apkPath.FullName)"
+          echo "apk_path=$($apkPath.FullName)" >> $env:GITHUB_OUTPUT
+
+      - name: 创建 GitHub Release 并上传 APK
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.find_apk.outputs.apk_path }}
+          name: Release ${{ github.ref_name }}
+          body: |
+            ## 🎉 新版本发布
+            
+            自动构建于 ${{ github.ref_name }}
+            
+            ### 下载安装
+            下载下方的 `*.apk` 文件，在安卓设备上直接安装。
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

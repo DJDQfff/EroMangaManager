@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>EroMangaManager.WinUI3</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Platforms>x86;x64;ARM64</Platforms>
+    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
+    <UseWinUI>true</UseWinUI>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxPackageSigningEnabled>False</AppxPackageSigningEnabled>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm64</AppxBundlePlatforms>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <Configurations>Debug;Release;Debug_TestFolder</Configurations>
+  </PropertyGroup>
+  <PropertyGroup Label="MultilingualAppToolkit">
+    <MultilingualAppToolkitVersion>4.0</MultilingualAppToolkitVersion>
+    <MultilingualFallbackLanguage>en-US</MultilingualFallbackLanguage>
+    <TranslationReport Condition="'$(Configuration)' == 'Release'">true</TranslationReport>
+    <SuppressPseudoWarning Condition="'$(Configuration)' == 'Debug'">true</SuppressPseudoWarning>
+    <SuppressPseudoWarning Condition="'$(Configuration)'=='Debug_TestFolder'">true</SuppressPseudoWarning>
+    <DefaultLanguage>zh-CN</DefaultLanguage>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="Assets\money100.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Assets\AppIcons\BadgeLogo.scale-100.png" />
+    <None Remove="Assets\AppIcons\BadgeLogo.scale-125.png" />
+    <None Remove="Assets\AppIcons\BadgeLogo.scale-150.png" />
+    <None Remove="Assets\AppIcons\BadgeLogo.scale-200.png" />
+    <None Remove="Assets\AppIcons\BadgeLogo.scale-400.png" />
+    <None Remove="Assets\AppIcons\SplashScreen.scale-400.png" />
+    <None Remove="Assets\AppIcons\StoreLogo.scale-100.png" />
+    <None Remove="Assets\AppIcons\StoreLogo.scale-125.png" />
+    <None Remove="Assets\AppIcons\StoreLogo.scale-150.png" />
+    <None Remove="Assets\AppIcons\StoreLogo.scale-200.png" />
+    <None Remove="Assets\AppIcons\StoreLogo.scale-400.png" />
+    <None Remove="Assets\SVGs\book.svg" />
+    <None Remove="Assets\SVGs\error.svg" />
+    <None Remove="author.txt" />
+    <None Remove="MultilingualResources\EroMangaManager.WinUI3.en.xlf" />
+    <None Remove="ResourceDictionarys\DefaultControlStyle.xaml" />
+    <None Remove="ResourceDictionarys\FunctionShowerControl.xaml" />
+    <None Remove="ResourceDictionarys\MyDataTemplateSelector.xaml" />
+    <None Remove="ResourceDictionarys\NamedControlStyle.xaml" />
+    <None Remove="ResourceDictionarys\TitleContentPairTheme.xaml" />
+    <None Remove="ResourceDictionarys\ValueConverters.xaml" />
+    <None Remove="UserControls\CoverWithContextFlyout.xaml" />
+    <None Remove="UserControls\MangaBasicInfo\MangaName.xaml" />
+    <None Remove="UserControls\MangaBasicInfo\SizeImagesChaptersAmount.xaml" />
+    <None Remove="UserControls\MangaCoverTags.xaml" />
+    <None Remove="UserControls\MangaDetailInfo.xaml" />
+    <None Remove="UserControls\MangaOpenButton.xaml" />
+    <None Remove="UserControls\QATextBlock.xaml" />
+    <None Remove="UserControls\SettingParts\ManageMangaOpenWay3Setting.xaml" />
+    <None Remove="UserControls\TagInfo.xaml" />
+    <None Remove="UserControls\TagItemsRepeater.xaml" />
+    <None Remove="UserControls\TagListOrder.xaml" />
+    <None Remove="UserControls\TagListOrder2.xaml" />
+    <None Remove="UserControls\TagTextBlock.xaml" />
+    <None Remove="Views\ContentDialogPages\ConfirmDeleteMangaFile.xaml" />
+    <None Remove="Views\ContentDialogPages\OverviewInformation.xaml" />
+    <None Remove="Views\ContentDialogPages\RenameCategoryName.xaml" />
+    <None Remove="Views\ContentDialogPages\RenameDialog.xaml" />
+    <None Remove="Views\ContentDialogPages\SettingDialog.xaml" />
+    <None Remove="Views\ContentDialogPages\TagCategorySelect.xaml" />
+    <None Remove="Views\MainPage.xaml" />
+    <None Remove="Views\MainPageChildPages\Bookcase.xaml" />
+    <None Remove="Views\MainPageChildPages\FindSameManga.xaml" />
+    <None Remove="Views\MainPageChildPages\FunctionPageShower.xaml" />
+    <None Remove="Views\MainPageChildPages\IrregularNameSearch.xaml" />
+    <None Remove="Views\MainPageChildPages\LibraryPage.xaml" />
+    <None Remove="Views\MainPageChildPages\MnagaFolderReOrganize.xaml" />
+    <None Remove="Views\MainPageChildPages\RemoveRepeatTags.xaml" />
+    <None Remove="Views\MainPageChildPages\RemoveRepeatTags2.xaml" />
+    <None Remove="Views\MainPageChildPages\SeriesMangas.xaml" />
+    <None Remove="Views\MainPageChildPages\ServerPage.xaml" />
+    <None Remove="Views\MainPageChildPages\SettingPage.xaml" />
+    <None Remove="Views\MainPageChildPages\TagsManagePage.xaml" />
+    <None Remove="Views\ReadPage.xaml" />
+    <None Remove="Views\SettingPageChildPages\CommonSettingPage.xaml" />
+    <None Remove="Views\SettingPageChildPages\FiltedImagesPage.xaml" />
+    <None Remove="Views\SettingPageChildPages\PasswordManagementPage.xaml" />
+    <None Remove="Views\SettingPageChildPages\TagKeywordsManagePage.xaml" />
+    <None Remove="Views\SettingPageChildPages\UpdateRecordsPage.xaml" />
+    <None Remove="Views\SettingPageChildPages\UsageDocumentPage.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" Version="8.2.250402" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.TokenizingTextBox" Version="8.2.250402" />
+    <PackageReference Include="DJDQfff.BaiduTranslateAPI" Version="1.2.1" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250606001" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.4188" />
+    <PackageReference Include="SharpCompress" Version="0.40.0" />
+    <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+  <!-- 
+    Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
+    Tools extension to be activated for this project even if the Windows App SDK Nuget
+    package has not yet been restored.
+  -->
+  <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MyLibrary\CommonLibrary\CommonLibrary.csproj" />
+    <ProjectReference Include="..\EroMangaDatabase\EroMangaDatabase.csproj" />
+    <ProjectReference Include="..\EroMangaManager.Core\EroMangaManager.Core.csproj" />
+    <ProjectReference Include="..\EroMangaManager.Core\EroMangaManager.Core.csproj" />
+    <ProjectReference Include="..\EroMangaManager.Server\EroMangaManager.Server.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="ResourceDictionarys\DefaultControlStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="ResourceDictionarys\FunctionShowerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="ResourceDictionarys\MyDataTemplateSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="ResourceDictionarys\NamedControlStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="ResourceDictionarys\TitleContentPairTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="ResourceDictionarys\ValueConverters.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="UserControls\TagListOrder.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\ReadPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\MainPageChildPages\Bookcase.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\MainPageChildPages\FindSameManga.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\MainPageChildPages\FunctionPageShower.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\MainPageChildPages\LibraryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\MainPageChildPages\RemoveRepeatTags.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\MainPageChildPages\GlobalSearchPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\MainPageChildPages\SettingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\MainPageChildPages\TagsManagePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\SettingPageChildPages\CommonSettingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\SettingPageChildPages\FiltedImagesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\SettingPageChildPages\TagKeywordsManagePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\SettingPageChildPages\UpdateRecordsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\SettingPageChildPages\UsageDocumentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\ContentDialogPages\ConfirmDeleteMangaFile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\ContentDialogPages\OverviewInformation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Page>
+    <Page Update="Views\ContentDialogPages\RenameDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="UserControls\TagInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Page>
+    <Page Update="UserControls\QATextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="UserControls\MangaDetailInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="UserControls\BriefInfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <!-- 
+    Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution 
+    Explorer "Package and Publish" context menu entry to be enabled for this project even if 
+    the Windows App SDK Nuget package has not yet been restored.
+  -->
+  <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+    <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <NoWarn />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TestFolder|x86'">
+    <NoWarn />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <NoWarn />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TestFolder|x64'">
+    <NoWarn />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+    <NoWarn />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TestFolder|ARM64'">
+    <NoWarn />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <NoWarn />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <NoWarn />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    <NoWarn />
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.PriResources.targets" Label="MultilingualAppToolkit" Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\v$(MultilingualAppToolkitVersion)\Microsoft.Multilingual.PriResources.targets')" />
+  <Target Name="MATPrerequisite" BeforeTargets="PrepareForBuild" Condition="!Exists('$(MSBuildExtensionsPath)\Microsoft\Multilingual App Toolkit\Microsoft.Multilingual.PriResources.targets')" Label="MultilingualAppToolkit">
+    <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
+  </Target>
+  <ItemGroup>
+    <CustomAdditionalCompileInputs Remove="UserControls\RenameMangaByEditString.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Remove="UserControls\RenameMangaByEditString.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <XliffResource Include="MultilingualResources\EroMangaManager.WinUI3.en.xlf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\ContentDialogPages\TagCategorySelect.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\TagTextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\TagItemsRepeater.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\ContentDialogPages\RenameCategoryName.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\CoverWithContextFlyout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\RenameMangaByDragTag.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MainPageChildPages\RemoveRepeatTags2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MainPageChildPages\SeriesMangas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\MangaOpenButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MainPageChildPages\IrregularNameSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\ContentDialogPages\SettingDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\SettingParts\ManageMangaOpenWay3Setting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\SettingPageChildPages\PasswordManagementPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\MangaCoverTags.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\TagListOrder2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MainPageChildPages\MnagaFolderReOrganize.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\MangaBasicInfo\SizeImagesChaptersAmount.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Themes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MainPageChildPages\ServerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\MangaBasicInfo\MangaName.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>

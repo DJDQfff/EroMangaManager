@@ -1,0 +1,1518 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EroMangaManager.Core</name>
+    </assembly>
+    <members>
+        <member name="T:EroMangaManager.Core.Algorithm.SimilarMangaNameComparor">
+            <summary>
+            本子名比较器，用于从一堆类似的本子中选出可能相同的本子。
+            </summary>
+            <remarks>
+            传入要比较的本子
+            </remarks>
+            <param name="_books"></param>
+        </member>
+        <member name="M:EroMangaManager.Core.Algorithm.SimilarMangaNameComparor.#ctor(System.Collections.Generic.IEnumerable{EroMangaManager.Core.Models.Manga})">
+            <summary>
+            本子名比较器，用于从一堆类似的本子中选出可能相同的本子。
+            </summary>
+            <remarks>
+            传入要比较的本子
+            </remarks>
+            <param name="_books"></param>
+        </member>
+        <member name="M:EroMangaManager.Core.Algorithm.SimilarMangaNameComparor.CompareByMangaName">
+            <summary>
+            依据本子名进行比较，找出这个本子的名。
+            本子名（如xxx1，xxx2，yyy前篇，yyy后篇，zzz上，zzz下。
+            有的本子名既有原名也有译名，有的本子名是译名而不是原名）
+            很多喜欢用空格进行分隔
+            </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.Algorithm.SimilarMangaNameComparor.FindUniqueName(EroMangaManager.Core.Models.Manga)">
+             <summary>
+             </summary>
+            
+             <returns></returns>
+        </member>
+        <member name="T:EroMangaManager.Core.IOOperation.Exporter">
+            <summary>
+            对外导出功能
+            </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.IOOperation.Exporter.Export_PDFSharp(EroMangaManager.Core.Models.Manga,System.String)">
+            <summary>
+            通过pdfsharp库导出pdf，MIT协议，有书签功能，但有些日文会乱码
+            </summary>
+            <param name="manga"></param>
+            <param name="fileName"></param>
+        </member>
+        <member name="T:EroMangaManager.Core.IOOperation.MangaFileIO">
+            <summary>
+            manga的io操作
+            </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.IOOperation.MangaFileIO.LoadMangaInfo(EroMangaManager.Core.Models.Manga)">
+            <summary>
+            高级属性加载
+            </summary>
+            <param name="manga"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EroMangaManager.Core.IOOperation.MangaFileIO.CountFileSize(EroMangaManager.Core.Models.Manga)">
+            <summary>
+            统计漫画文件大小，压缩包则获取文件大小，文件夹则统计内部图片大小
+            </summary>
+            <param name="manga"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EroMangaManager.Core.IOOperation.MangaFileIO.Exists(EroMangaManager.Core.Models.Manga)">
+            <summary>
+            漫画文件是否存在
+            </summary>
+            <param name="manga"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EroMangaManager.Core.IOOperation.MangaFileIO.CountImageAmount(EroMangaManager.Core.Models.Manga)">
+            <summary>
+            统计内部图片数量
+            </summary>
+            <param name="manga"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EroMangaManager.Core.IOOperation.MangaFileIO.LoadChapter(EroMangaManager.Core.Models.Manga)">
+            <summary>
+            加载内部章节信息
+            </summary>
+            <param name="manga"></param>
+        </member>
+        <member name="M:EroMangaManager.Core.IOOperation.MangaFileIO.CountChapterAmount(EroMangaManager.Core.Models.Manga)">
+            <summary>
+            计算manga中的章节数，此方法只统计数量，并无具体章节信息
+            </summary>
+            <param name="manga"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EroMangaManager.Core.IOOperation.MangaFileIO.MoveManga(EroMangaManager.Core.Models.Manga,System.String,System.String)">
+            <summary>
+            移动、重命名漫画。
+            </summary>
+            <param name="book"></param>
+            <param name="targetfolder">目标文件夹</param>
+            <param name="newname">新名字</param>
+        </member>
+        <member name="T:EroMangaManager.Core.IOOperation.ZipEntryHelper">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.IOOperation.ZipEntryHelper.SortEntriesByName(SharpCompress.Archives.IArchive,System.Action{System.Collections.Generic.IEnumerable{System.String}})">
+            <summary>
+            排序zipentry
+            </summary>
+            <param name="zipArchive"></param>
+            <param name="sortFunc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EroMangaManager.Core.IOOperation.ZipEntryHelper.EntryFilter(SharpCompress.Archives.IArchiveEntry,EroMangaDatabase.Entities.FilteredImage[])">
+            <summary>
+            筛选zipentry，如果filteredImages为null，则不进行比较
+            </summary>
+            <param name="entry"></param>
+            <param name="filteredImages">要进行比较的数据，如果为null，则不进行数据比较</param>
+            <returns></returns>
+        </member>
+        <member name="P:EroMangaManager.Core.Models.Chapter.Manga">
+            <summary>
+            源manga
+            </summary>
+        </member>
+        <member name="T:EroMangaManager.Core.Models.Manga">
+            <summary> 本子 </summary>
+            <inheritdoc/>
+        </member>
+        <member name="F:EroMangaManager.Core.Models.Manga.coverPath">
+            <summary>
+            封面文件路径
+            </summary>
+            <remarks>这个一定要有，不能为null，不然在Image控件加载图像时会异常导致程序闪退</remarks>
+        </member>
+        <member name="F:EroMangaManager.Core.Models.Manga.imageAmount">
+            <summary>
+            内里多少图像文件
+            </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Models.Manga.filePath">
+            <summary> 漫画文件路径 </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Models.Manga.chapterAmount">
+            <summary>
+            章节。每个含有图片的文件夹视为一个chapter。仅在快速统计章节量时使用，应使用chapters属性
+            </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Models.Manga.translatedMangaName">
+            <summary> 漫画翻译后的名称 </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.Models.Manga.#ctor(System.String)">
+            <summary> 实例化EroManga </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Models.Manga.type">
+             <summary>
+            本子类型，可以为.zip .7z 文件夹，这也是对应的文件后缀名，文件夹的话为“”空字符串
+             </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Models.Manga.fileDisplayName">
+            <summary> 文件Display名（不带扩展名） </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Models.Manga.fileFullName">
+            <summary> 漫画文件名（全名，带扩展名，不包含文件夹名） </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Models.Manga.fileSize">
+            <summary>
+            获取漫画文件大小。单位：字节
+            </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Models.Manga.folderPath">
+            <summary> 漫画文件所在文件夹路径 </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Models.Manga.mangaName">
+            <summary> 本子名字。第一个括号外的内容（括号外内容可能有多个,也可能所有内容都在括号内） </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Models.Manga.tags">
+            <summary> 文件名中包含在括号的本子Tag </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Models.Manga.CoverPath">
+            <inheritdoc cref="F:EroMangaManager.Core.Models.Manga.coverPath"/>
+        </member>
+        <member name="P:EroMangaManager.Core.Models.Manga.ImageAmount">
+            <inheritdoc cref="F:EroMangaManager.Core.Models.Manga.imageAmount"/>
+        </member>
+        <member name="P:EroMangaManager.Core.Models.Manga.FilePath">
+            <inheritdoc cref="F:EroMangaManager.Core.Models.Manga.filePath"/>
+        </member>
+        <member name="P:EroMangaManager.Core.Models.Manga.ChapterAmount">
+            <inheritdoc cref="F:EroMangaManager.Core.Models.Manga.chapterAmount"/>
+        </member>
+        <member name="P:EroMangaManager.Core.Models.Manga.TranslatedMangaName">
+            <inheritdoc cref="F:EroMangaManager.Core.Models.Manga.translatedMangaName"/>
+        </member>
+        <member name="P:EroMangaManager.Core.Models.Manga.Type">
+            <inheritdoc cref="F:EroMangaManager.Core.Models.Manga.type"/>
+        </member>
+        <member name="P:EroMangaManager.Core.Models.Manga.FileDisplayName">
+            <inheritdoc cref="F:EroMangaManager.Core.Models.Manga.fileDisplayName"/>
+        </member>
+        <member name="P:EroMangaManager.Core.Models.Manga.FileFullName">
+            <inheritdoc cref="F:EroMangaManager.Core.Models.Manga.fileFullName"/>
+        </member>
+        <member name="P:EroMangaManager.Core.Models.Manga.FileSize">
+            <inheritdoc cref="F:EroMangaManager.Core.Models.Manga.fileSize"/>
+        </member>
+        <member name="P:EroMangaManager.Core.Models.Manga.FolderPath">
+            <inheritdoc cref="F:EroMangaManager.Core.Models.Manga.folderPath"/>
+        </member>
+        <member name="P:EroMangaManager.Core.Models.Manga.MangaName">
+            <inheritdoc cref="F:EroMangaManager.Core.Models.Manga.mangaName"/>
+        </member>
+        <member name="P:EroMangaManager.Core.Models.Manga.Tags">
+            <inheritdoc cref="F:EroMangaManager.Core.Models.Manga.tags"/>
+        </member>
+        <member name="M:EroMangaManager.Core.Models.Manga.OnFilePathChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:EroMangaManager.Core.Models.Manga.FilePath"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:EroMangaManager.Core.Models.Manga.FilePath"/> is changed.</remarks>
+        </member>
+        <member name="T:EroMangaManager.Core.Models.RepeatMangasGroup">
+            <summary>
+            表示一组重复的manga
+            </summary>
+        </member>
+        <member name="T:EroMangaManager.Core.Models.SearchParameter">
+            <summary>
+            用于导航到搜索页面的数据包
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Models.SearchParameter.MangaName">
+            <summary>
+            本子名
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Models.SearchParameter.Tags">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="T:EroMangaManager.Core.Setting.FolderEnum">
+            <summary>
+            需要在应用数据文件夹下创建的子文件夹
+            </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Setting.FolderEnum.Covers">
+             <summary>
+            封面图片文件夹
+             </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Setting.FolderEnum.Filters">
+            <summary> 过滤图片文件夹 </summary>
+        </member>
+        <member name="T:EroMangaManager.Core.Setting.IAppConfig">
+            <summary>
+            设置项总和
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.IAppConfig.General">
+            <summary>
+            通用设置
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.IAppConfig.MangaOpenWay3">
+            <summary>
+            漫画打开方式
+            </summary>
+        </member>
+        <member name="T:EroMangaManager.Core.Setting.General">
+            <summary>
+            一般设置项
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.General.IsFilterImageOn">
+            <summary>
+            是否启用过滤图片功能
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.General.WhetherShowDialogBeforeDelete">
+            <summary>
+            是否在删除前显示对话框
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.General.StorageFileDeleteOption">
+            <summary>
+            文件删除设置
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.General.DefaultBookcaseFolder">
+            <summary>
+            默认图书书架
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.General.StorageDeleteOption">
+            <summary>
+            项删除
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.General.IsEmptyFolderShow">
+            <summary>
+            是否显示空文件夹
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.General.DefaultAppUILanguage">
+            <summary>
+            app默认UI语言
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.General.LanguageIndex">
+            <summary>
+            语言序数
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.General.Theme">
+            <summary>
+            系统主题
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.General.BookcaseTemplateKey">
+            <summary>
+            默认书架界面
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.General.WhetherPickSubFolder">
+            <summary>
+            是否加载子文件夹
+            </summary>
+        </member>
+        <member name="T:EroMangaManager.Core.Setting.DefaultAppUILanguageStrings">
+            <summary>
+            app默认UI语言
+            </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Setting.DefaultAppUILanguageStrings.zhCN">
+            <summary>
+            简中
+            </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Setting.DefaultAppUILanguageStrings.en">
+            <summary>
+            英文
+            </summary>
+        </member>
+        <member name="T:EroMangaManager.Core.Setting.MangaOpenWay3">
+            <summary>
+            新的漫画打开方式设置，旧的不再使用
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.MangaOpenWay3.WayIndex">
+            <summary>
+            绑定序数
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.MangaOpenWay3.OpenWays">
+            <summary>
+            打开方式字符串都放这里，因为config.net还不支持集合，用这个代替，需要在外部再套一层集合操作
+            ?的两个为默认设置，|后面跟的是打开exe
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.MangaOpenWay3.DefaultWay">
+            <summary>
+            默认exe，注意，在MangaeMangaOpenWay3Setting.xaml控件中，RadioButtons无法通过此设置数据绑定（双向不可以，单向不知道），额外通过wayindex来绑定。
+            </summary>
+        </member>
+        <member name="T:EroMangaManager.Core.Setting.MangaOpenWaySetting">
+            <summary>
+            漫画打开方式相关设置
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.MangaOpenWaySetting.ReadMangaWay">
+            <summary>
+            打开漫画方式
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.MangaOpenWaySetting.ReadMangaWayIndex">
+            <summary>
+            打开漫画的方式顺序，不再用上面那个
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.MangaOpenWaySetting.UserSelectedReadMangaExePath">
+            <summary>
+            用户选择的打开漫画方式
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.MangaOpenWaySetting.PossibleExePaths">
+            <summary>
+            用户添加的exe路径拼接后字符串，路径由英文竖分割（不是中文竖）：|。因为config.net目前不支持写集合，所以用这个折中方法
+            </summary>
+        </member>
+        <member name="T:EroMangaManager.Core.Setting.ReadMangaWayStrings">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Setting.ReadMangaWayStrings.InternalReadPage">
+            <summary>
+            内部ReadPage，
+            </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Setting.ReadMangaWayStrings.OSRelated">
+            <summary>
+            系统决定的关联打开方式
+            </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Setting.ReadMangaWayStrings.UserSelected">
+            <summary>
+            用户选定的exe
+            </summary>
+        </member>
+        <member name="T:EroMangaManager.Core.Setting.ThemeValue">
+            <summary>
+            主题设置值，这个值对应ComboBox的索引值
+            </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Setting.ThemeValue.Dark">
+            <summary>
+            深色
+            </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Setting.ThemeValue.Light">
+            <summary>
+            浅色
+            </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.Setting.ThemeValue.Auto">
+            <summary>
+            自动
+            </summary>
+        </member>
+        <member name="T:EroMangaManager.Core.Setting.SupportedType">
+            <summary>
+            支持的格式
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.SupportedType.MangaType">
+            <summary>
+            空字符串是文件夹
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.Setting.SupportedType.ImageType">
+            <summary>
+            内部支持的图片格式
+            </summary>
+        </member>
+        <member name="T:EroMangaManager.Core.ViewModels.ManageTagsViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ManageTagsViewModel.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="E:EroMangaManager.Core.ViewModels.ManageTagsViewModel.CategorysChanged">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel.Categorys">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel.Tags">
+            <summary>
+            已分类的tag
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel.UnCategoryTags">
+            <summary>
+            未分类的tag
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel.Item(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="category"></param>
+             <returns></returns>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ManageTagsViewModel.AddCategory(System.String)">
+            <summary>
+            添加新分类
+            </summary>
+            <param name="category"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ManageTagsViewModel.AddUnCategoryTags(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            传入tags，先过滤已分类的tag，剩下的全部挪到未分类里面
+            </summary>
+            <param name="tags"></param>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ManageTagsViewModel.DeleteCategory(System.String)">
+            <summary>
+            移除某一分类
+            </summary>
+            <param name="category"></param>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ManageTagsViewModel.TagChangeCategory(System.String,System.String,System.Collections.Generic.IList{System.String})">
+            <summary>
+            改变某一tag的分类
+            </summary>
+            <param name="oldcategory"></param>
+            <param name="newcategory"></param>
+            <param name="tags"></param>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel.DisplayedCategory">
+            <inheritdoc cref="F:EroMangaManager.Core.ViewModels.ManageTagsViewModel.displayedCategory"/>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel.DisplayedTags">
+            <inheritdoc cref="F:EroMangaManager.Core.ViewModels.ManageTagsViewModel.displayedTags"/>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ManageTagsViewModel.OnDisplayedCategoryChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel.DisplayedCategory"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel.DisplayedCategory"/> is changed.</remarks>
+        </member>
+        <member name="F:EroMangaManager.Core.ViewModels.ManageTagsViewModel.addCategoryCommand">
+            <summary>The backing field for <see cref="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel.AddCategoryCommand"/>.</summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel.AddCategoryCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:EroMangaManager.Core.ViewModels.ManageTagsViewModel.AddCategory(System.String)"/>.</summary>
+        </member>
+        <member name="F:EroMangaManager.Core.ViewModels.ManageTagsViewModel.deleteCategoryCommand">
+            <summary>The backing field for <see cref="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel.DeleteCategoryCommand"/>.</summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel.DeleteCategoryCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:EroMangaManager.Core.ViewModels.ManageTagsViewModel.DeleteCategory(System.String)"/>.</summary>
+        </member>
+        <member name="T:EroMangaManager.Core.ViewModels.ManageTagsViewModel2">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.#ctor">
+            <summary>
+            从数据库读取category以初始化
+            </summary>
+        </member>
+        <member name="E:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.CategoryAlreadyExists">
+            <summary>
+            分类已存在时触发此事件
+            </summary>
+        </member>
+        <member name="E:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.CategorysChanged">
+            <summary>
+            分类改变事件
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.CategoryTags">
+            <summary>
+            已分类的tagcategory
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.ImCategoryedTags">
+            <summary>
+            未分类的tag
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.selectedTagCategory">
+            <summary>
+            选中的tagcategory，其实可以view的字段，但是有bug，所以单独弄了一个
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.Tags">
+            <summary>
+            已分类的tag
+            </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.AddCategory(System.String)">
+            <summary>
+            添加新分类
+            </summary>
+            <param name="category"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.AddUnCategoryTags(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            传入tags，先过滤已分类的tag，剩下的全部挪到未分类里面
+            </summary>
+            <param name="tags"></param>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.DeleteCategory(System.String)">
+            <summary>
+            移除某一分类
+            </summary>
+            <param name="category"></param>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.SaveToDatabase">
+            <summary>
+            保存修改结果
+            </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.TagChangeCategory(EroMangaDatabase.Entities.TagCategory,EroMangaDatabase.Entities.TagCategory,System.Collections.Generic.IList{System.String})">
+            <summary>
+            改变某一tag的分类
+            </summary>
+            <param name="oldcategory"></param>
+            <param name="newcategory"></param>
+            <param name="tags"></param>
+        </member>
+        <member name="F:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.deleteCategoryCommand">
+            <summary>The backing field for <see cref="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.DeleteCategoryCommand"/>.</summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.DeleteCategoryCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.DeleteCategory(System.String)"/>.</summary>
+        </member>
+        <member name="F:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.saveToDatabaseCommand">
+            <summary>The backing field for <see cref="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.SaveToDatabaseCommand"/>.</summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.SaveToDatabaseCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:EroMangaManager.Core.ViewModels.ManageTagsViewModel2.SaveToDatabase"/>.</summary>
+        </member>
+        <member name="T:EroMangaManager.Core.ViewModels.MangaSearchViewModel">
+            <summary>
+            本子标签管理VM
+            </summary>
+            <remarks>
+            搜索ViewModel
+            </remarks>
+            <inheritdoc/>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.MangaSearchViewModel.Sources">
+            <summary>
+            所有要查重的manga集合
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.MangaSearchViewModel.RequiredTags">
+            <summary>
+            选中项
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.MangaSearchViewModel.AllTags">
+            <summary>
+            对外公开的所有项
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.MangaSearchViewModel.AlailableTags">
+            <summary>
+            可能需要的tag
+            </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.MangaSearchViewModel.FiltTags(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="query"></param>
+             <returns></returns>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.MangaSearchViewModel.ResultMangas">
+            <summary>
+            按搜索条件筛选出来的本子
+            </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.MangaSearchViewModel.Search">
+            <summary>
+            按条件查找manga
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.MangaSearchViewModel.RequiredText">
+            <inheritdoc cref="F:EroMangaManager.Core.ViewModels.MangaSearchViewModel.requiredText"/>
+        </member>
+        <member name="T:EroMangaManager.Core.ViewModels.UpdateState">
+            <summary>
+            表示更新状态
+            </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.ViewModels.UpdateState.Ready">
+            <summary>
+            等待开始
+            </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.ViewModels.UpdateState.Busy">
+            <summary>
+            更新中
+            </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.ViewModels.UpdateState.Over">
+            <summary>
+            结束
+            </summary>
+        </member>
+        <member name="T:EroMangaManager.Core.ViewModels.MangasGroup">
+            <summary>
+            本子组
+            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.MangasGroup.FolderPath">
+            <summary>
+            文件夹路径，一开始是作为文件夹设计的，后来不作为文件夹，仅作为本子统一集合
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.MangasGroup.Mangas">
+            <summary>
+            本子集合
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.MangasGroup.AllTags">
+            <summary>
+            所有标签
+            </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.MangasGroup.#ctor">
+            <summary>
+            不当文件夹用，所以不指定文件夹路径
+            </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.MangasGroup.#ctor(System.String)">
+            <summary>
+            当文件夹用，需要指定文件夹路径
+            </summary>
+            <param name="storageFolderPath"></param>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.MangasGroup.SortMangas``1(System.Func{EroMangaManager.Core.Models.Manga,``0})">
+            <summary>
+            对内部漫画进行排序
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <param name="func"></param>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.MangasGroup.RemoveManga(EroMangaManager.Core.Models.Manga)">
+            <summary>
+            移除一个本子
+            </summary>
+            <param name="mangaBook"></param>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.MangasGroup.UpdateState">
+            <inheritdoc cref="F:EroMangaManager.Core.ViewModels.MangasGroup.updateState"/>
+        </member>
+        <member name="T:EroMangaManager.Core.ViewModels.ObservableCollectionVM">
+            <summary>
+            所有需要持续观察的集合都放在这，ViewModel
+            </summary>
+        </member>
+        <member name="E:EroMangaManager.Core.ViewModels.ObservableCollectionVM.ErrorZipEvent">
+            <summary>
+            出现无法解析的Manga时引发
+            </summary>
+        </member>
+        <member name="E:EroMangaManager.Core.ViewModels.ObservableCollectionVM.EventAfterDeleteMangaSource">
+            <summary>
+            删除本子源文件后引发的事件
+            </summary>
+        </member>
+        <member name="E:EroMangaManager.Core.ViewModels.ObservableCollectionVM.WorkDoneEvent">
+            <summary>
+            完成某项任务时引发
+            </summary>
+        </member>
+        <member name="E:EroMangaManager.Core.ViewModels.ObservableCollectionVM.WorkFailedEvent">
+            <summary>
+            任务失败事件
+            </summary>
+        </member>
+        <member name="E:EroMangaManager.Core.ViewModels.ObservableCollectionVM.AccessDeniedEvent">
+            <summary>
+            访问被拒绝，通常因文件权限不足引发
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ObservableCollectionVM.MangaFolders">
+            <summary>
+            本子文件夹集合
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ObservableCollectionVM.MissingFolders">
+            <summary>
+            无法找到的文件夹
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ObservableCollectionVM.StorageFolders">
+            <summary>存放zip文件的文件夹</summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ObservableCollectionVM.MangaList">
+             <summary>各漫画zip</summary>
+            
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ObservableCollectionVM.AllTags">
+            <summary>
+            所有标签
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ObservableCollectionVM.IsContentInitializing">
+            <summary>
+            MangasFolder是否正在更新，有任意一个是则返回true
+            </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ObservableCollectionVM.EnsureAddFolder(System.String,EroMangaManager.Core.ViewModels.MangasGroup@)">
+            <summary>
+            确保已添加文件夹，并添加到集合。如果已存在这个folder，则返回true;否则返回false并创建新的
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ObservableCollectionVM.RemoveFolder(EroMangaManager.Core.ViewModels.MangasGroup)">
+            <summary>
+            移除文件夹，并从集合中移除文件夹及下属漫画 （只移除，不删除）
+            1.从系统API中移除
+            2.从FolderList里移除
+            3.从MangaList里移除文件夹下属漫画
+            </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ObservableCollectionVM.InvokeEvent_AfterDeleteMnagaSource(EroMangaManager.Core.Models.Manga)">
+            <summary>
+            删除manga后执行此事件
+            </summary>
+            <param name="manga"></param>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ObservableCollectionVM.RemoveManga(EroMangaManager.Core.Models.Manga)">
+            <summary>
+            尝试移除一个本子文件，成功返回true，失败或未删除返回false
+            </summary>
+            <param name="mangaBook"></param>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ObservableCollectionVM.WorkDone(System.String)">
+            <summary>
+            事情完成时发生
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ObservableCollectionVM.WorkFailed(System.String)">
+            <summary>
+            任务失败
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ObservableCollectionVM.AccessDenied">
+            <summary>
+            触发访问被拒绝异常
+            </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ObservableCollectionVM.ErrorMangaEvent(System.String)">
+            <summary>
+            发现错误漫画时引发
+            </summary>
+            <param name="manganame"></param>
+        </member>
+        <member name="F:EroMangaManager.Core.ViewModels.ObservableCollectionVM.InitialGroup">
+            <summary>
+            后台更新MangasGroup的Func
+            </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ObservableCollectionVM.StartInitial">
+            <summary>
+            开始初始化所有MangasGroup，会以自我递归的方式，初始化所有groups
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ObservableCollectionVM.PlaceInCorrectGroup(EroMangaManager.Core.Models.Manga)">
+            <summary>
+            把一个本子放到他应该在的集合里面，这个一般用在移动本子后
+            </summary>
+            <param name="book"></param>
+        </member>
+        <member name="T:EroMangaManager.Core.ViewModels.ReaderVM">
+            <summary>
+            阅读页面的ViewModel
+            </summary>
+        </member>
+        <member name="F:EroMangaManager.Core.ViewModels.ReaderVM._IsClosing">
+            <summary>
+            现在是否在打开这个本子，如果是的话，这个为真，否则，为假。设置这个是因为加载所有图片很长，有时候图正在加载中，本子就关闭了，需要这个作为
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ReaderVM.Manga">
+            <summary> </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ReaderVM.Stream">
+            <summary> 打开的文件流 </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ReaderVM.ZipArchive">
+            <summary> 压缩文件 </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ReaderVM.AllEntries">
+            <summary>
+            压缩文件的所有entry
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ReaderVM.FilteredArchiveImageEntries">
+            <summary>筛选过后的图片内容入口 </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.ReaderVM.BitmapImagesDic">
+            <summary>
+            对应词典
+            </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ReaderVM.#ctor(EroMangaManager.Core.Models.Manga)">
+             <summary>
+            
+             </summary>
+             <param entrykey="_manga"></param>
+             <param entrykey="storageFile"></param>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ReaderVM.#ctor(System.IO.Stream)">
+             <summary>
+            
+             </summary>
+             <param name="stream"></param>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ReaderVM.GetOrAddShowedEntry(SharpCompress.Archives.IArchiveEntry)">
+            <summary>
+            显示指定entry，并添加到图片字典中, 如果返回null，则未能正常打开流
+            </summary>
+            <param name="entry"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ReaderVM.ShowFilteredBitmapImages">
+            <summary>
+            所有筛选过的entry一次性转化为图片
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ReaderVM.SelectEntries(EroMangaDatabase.Entities.FilteredImage[])">
+            <summary> 从压缩文件的所有entry中，筛选出符合条件的，传入null则为不进行筛选 </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ReaderVM.Dispose">
+            <summary> </summary>
+        </member>
+        <member name="T:EroMangaManager.Core.ViewModels.ReOrganizeViewModel">
+             <summary>
+             重新管理页面
+             </summary>
+             <remarks>
+            
+             </remarks>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.ReOrganizeViewModel.#ctor">
+             <summary>
+             重新管理页面
+             </summary>
+             <remarks>
+            
+             </remarks>
+        </member>
+        <member name="F:EroMangaManager.Core.ViewModels.ReOrganizeViewModel.contentFolders">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel">
+            <summary>
+            查找重复manga的viewmodel
+            </summary>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="F:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.sperators">
+            <summary>
+            表示查重方法执行中
+            </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.Method3_2(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationTokenSource)">
+            <summary>
+            
+            </summary>
+            <param name="tags"></param>
+            <param name="cancellationTokenSource"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.Method3_1(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationTokenSource)">
+            <summary>
+            先传入tag集合，对每个tag，找出重复的本子
+            </summary>
+            <param name="tags"></param>
+            <param name="cancellationTokenSource"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.Method3_0(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationTokenSource)">
+             <summary>
+            
+             </summary>
+             <param name="tags"></param>
+             <param name="cancellationTokenSource"></param>
+             <returns></returns>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.Method2(System.Threading.CancellationTokenSource)">
+            <summary>
+            先找出第一次重复的tag和manganame，然后以此为key，循环查找
+            TODO 需要优化
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.Method1">
+            <summary>
+            将所有manganame分别切成小段，将所有小段重组成一个字典，各小段设为key，所有含有这个key的视为重复组
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.Method0(System.Threading.CancellationTokenSource)">
+            <summary>
+            遍历找出两个相同manganame，以这个manganame为key，所有相同manganame视为重复组
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged">
+            <inheritdoc cref = "E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/>
+        </member>
+        <member name="E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging">
+            <inheritdoc cref = "E:System.ComponentModel.INotifyPropertyChanging.PropertyChanging"/>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> event.
+            </summary>
+            <param name = "e">The input <see cref = "T:System.ComponentModel.PropertyChangedEventArgs"/> instance.</param>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.OnPropertyChanging(System.ComponentModel.PropertyChangingEventArgs)">
+            <summary>
+            Raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/> event.
+            </summary>
+            <param name = "e">The input <see cref = "T:System.ComponentModel.PropertyChangingEventArgs"/> instance.</param>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.OnPropertyChanged(System.String)">
+            <summary>
+            Raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> event.
+            </summary>
+            <param name = "propertyName">(optional) The name of the property that changed.</param>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.OnPropertyChanging(System.String)">
+            <summary>
+            Raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/> event.
+            </summary>
+            <param name = "propertyName">(optional) The name of the property that changed.</param>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetProperty``1(``0@,``0,System.String)">
+            <summary>
+            Compares the current and new values for a given property. If the value has changed,
+            raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/> event, updates the property with the new
+            value, then raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> event.
+            </summary>
+            <typeparam name = "T">The type of the property that changed.</typeparam>
+            <param name = "field">The field storing the property's value.</param>
+            <param name = "newValue">The property's value after the change occurred.</param>
+            <param name = "propertyName">(optional) The name of the property that changed.</param>
+            <returns><see langword="true"/> if the property was changed, <see langword="false"/> otherwise.</returns>
+            <remarks>
+            The <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/> and <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> events are not raised
+            if the current and new value for the target property are the same.
+            </remarks>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetProperty``1(``0@,``0,System.Collections.Generic.IEqualityComparer{``0},System.String)">
+            <summary>
+            Compares the current and new values for a given property. If the value has changed,
+            raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/> event, updates the property with the new
+            value, then raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> event.
+            See additional notes about this overload in <see cref = "M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetProperty``1(``0@,``0,System.String)"/>.
+            </summary>
+            <typeparam name = "T">The type of the property that changed.</typeparam>
+            <param name = "field">The field storing the property's value.</param>
+            <param name = "newValue">The property's value after the change occurred.</param>
+            <param name = "comparer">The <see cref = "T:System.Collections.Generic.IEqualityComparer`1"/> instance to use to compare the input values.</param>
+            <param name = "propertyName">(optional) The name of the property that changed.</param>
+            <returns><see langword="true"/> if the property was changed, <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetProperty``1(``0,``0,System.Action{``0},System.String)">
+            <summary>
+            Compares the current and new values for a given property. If the value has changed,
+            raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/> event, updates the property with the new
+            value, then raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> event.
+            This overload is much less efficient than <see cref = "M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetProperty``1(``0@,``0,System.String)"/> and it
+            should only be used when the former is not viable (eg. when the target property being
+            updated does not directly expose a backing field that can be passed by reference).
+            For performance reasons, it is recommended to use a stateful callback if possible through
+            the <see cref = "M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetProperty``2(``1,``1,``0,System.Action{``0,``1},System.String)"/> whenever possible
+            instead of this overload, as that will allow the C# compiler to cache the input callback and
+            reduce the memory allocations. More info on that overload are available in the related XML
+            docs. This overload is here for completeness and in cases where that is not applicable.
+            </summary>
+            <typeparam name = "T">The type of the property that changed.</typeparam>
+            <param name = "oldValue">The current property value.</param>
+            <param name = "newValue">The property's value after the change occurred.</param>
+            <param name = "callback">A callback to invoke to update the property value.</param>
+            <param name = "propertyName">(optional) The name of the property that changed.</param>
+            <returns><see langword="true"/> if the property was changed, <see langword="false"/> otherwise.</returns>
+            <remarks>
+            The <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/> and <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> events are not raised
+            if the current and new value for the target property are the same.
+            </remarks>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetProperty``1(``0,``0,System.Collections.Generic.IEqualityComparer{``0},System.Action{``0},System.String)">
+            <summary>
+            Compares the current and new values for a given property. If the value has changed,
+            raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/> event, updates the property with the new
+            value, then raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> event.
+            See additional notes about this overload in <see cref = "M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetProperty``1(``0,``0,System.Action{``0},System.String)"/>.
+            </summary>
+            <typeparam name = "T">The type of the property that changed.</typeparam>
+            <param name = "oldValue">The current property value.</param>
+            <param name = "newValue">The property's value after the change occurred.</param>
+            <param name = "comparer">The <see cref = "T:System.Collections.Generic.IEqualityComparer`1"/> instance to use to compare the input values.</param>
+            <param name = "callback">A callback to invoke to update the property value.</param>
+            <param name = "propertyName">(optional) The name of the property that changed.</param>
+            <returns><see langword="true"/> if the property was changed, <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetProperty``2(``1,``1,``0,System.Action{``0,``1},System.String)">
+             <summary>
+             Compares the current and new values for a given nested property. If the value has changed,
+             raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/> event, updates the property and then raises the
+             <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> event. The behavior mirrors that of <see cref = "M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetProperty``1(``0@,``0,System.String)"/>,
+             with the difference being that this method is used to relay properties from a wrapped model in the
+             current instance. This type is useful when creating wrapping, bindable objects that operate over
+             models that lack support for notification (eg. for CRUD operations).
+             Suppose we have this model (eg. for a database row in a table):
+             <code>
+             public class Person
+             {
+                 public string Name { get; set; }
+             }
+             </code>
+             We can then use a property to wrap instances of this type into our observable model (which supports
+             notifications), injecting the notification to the properties of that model, like so:
+             <code>
+             [ObservableObject]
+             public class BindablePerson
+             {
+                 public Model { get; }
+            
+                 public BindablePerson(Person model)
+                 {
+                     Model = model;
+                 }
+            
+                 public string Name
+                 {
+                     get => Model.Name;
+                     set => Set(Model.Name, value, Model, (model, name) => model.Name = name);
+                 }
+             }
+             </code>
+             This way we can then use the wrapping object in our application, and all those "proxy" properties will
+             also raise notifications when changed. Note that this method is not meant to be a replacement for
+             <see cref = "M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetProperty``1(``0@,``0,System.String)"/>, and it should only be used when relaying properties to a model that
+             doesn't support notifications, and only if you can't implement notifications to that model directly (eg. by having
+             it inherit from <see cref = "T:CommunityToolkit.Mvvm.ComponentModel.ObservableObject"/>). The syntax relies on passing the target model and a stateless callback
+             to allow the C# compiler to cache the function, which results in much better performance and no memory usage.
+             </summary>
+             <typeparam name = "TModel">The type of model whose property (or field) to set.</typeparam>
+             <typeparam name = "T">The type of property (or field) to set.</typeparam>
+             <param name = "oldValue">The current property value.</param>
+             <param name = "newValue">The property's value after the change occurred.</param>
+             <param name = "model">The model containing the property being updated.</param>
+             <param name = "callback">The callback to invoke to set the target property value, if a change has occurred.</param>
+             <param name = "propertyName">(optional) The name of the property that changed.</param>
+             <returns><see langword="true"/> if the property was changed, <see langword="false"/> otherwise.</returns>
+             <remarks>
+             The <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/> and <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> events are not
+             raised if the current and new value for the target property are the same.
+             </remarks>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetProperty``2(``1,``1,System.Collections.Generic.IEqualityComparer{``1},``0,System.Action{``0,``1},System.String)">
+            <summary>
+            Compares the current and new values for a given nested property. If the value has changed,
+            raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/> event, updates the property and then raises the
+            <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> event. The behavior mirrors that of <see cref = "M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetProperty``1(``0@,``0,System.String)"/>,
+            with the difference being that this method is used to relay properties from a wrapped model in the
+            current instance. See additional notes about this overload in <see cref = "M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetProperty``2(``1,``1,``0,System.Action{``0,``1},System.String)"/>.
+            </summary>
+            <typeparam name = "TModel">The type of model whose property (or field) to set.</typeparam>
+            <typeparam name = "T">The type of property (or field) to set.</typeparam>
+            <param name = "oldValue">The current property value.</param>
+            <param name = "newValue">The property's value after the change occurred.</param>
+            <param name = "comparer">The <see cref = "T:System.Collections.Generic.IEqualityComparer`1"/> instance to use to compare the input values.</param>
+            <param name = "model">The model containing the property being updated.</param>
+            <param name = "callback">The callback to invoke to set the target property value, if a change has occurred.</param>
+            <param name = "propertyName">(optional) The name of the property that changed.</param>
+            <returns><see langword="true"/> if the property was changed, <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetPropertyAndNotifyOnCompletion(EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier@,System.Threading.Tasks.Task,System.String)">
+             <summary>
+             Compares the current and new values for a given field (which should be the backing
+             field for a property). If the value has changed, raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/>
+             event, updates the field and then raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> event.
+             The behavior mirrors that of <see cref = "M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetProperty``1(``0@,``0,System.String)"/>, with the difference being that
+             this method will also monitor the new value of the property (a generic <see cref = "T:System.Threading.Tasks.Task"/>) and will also
+             raise the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> again for the target property when it completes.
+             This can be used to update bindings observing that <see cref = "T:System.Threading.Tasks.Task"/> or any of its properties.
+             This method and its overload specifically rely on the <see cref = "T:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier"/> type, which needs
+             to be used in the backing field for the target <see cref = "T:System.Threading.Tasks.Task"/> property. The field doesn't need to be
+             initialized, as this method will take care of doing that automatically. The <see cref = "T:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier"/>
+             type also includes an implicit operator, so it can be assigned to any <see cref = "T:System.Threading.Tasks.Task"/> instance directly.
+             Here is a sample property declaration using this method:
+             <code>
+             private TaskNotifier myTask;
+            
+             public Task MyTask
+             {
+                 get => myTask;
+                 private set => SetAndNotifyOnCompletion(ref myTask, value);
+             }
+             </code>
+             </summary>
+             <param name = "taskNotifier">The field notifier to modify.</param>
+             <param name = "newValue">The property's value after the change occurred.</param>
+             <param name = "propertyName">(optional) The name of the property that changed.</param>
+             <returns><see langword="true"/> if the property was changed, <see langword="false"/> otherwise.</returns>
+             <remarks>
+             The <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/> and <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> events are not raised if the current
+             and new value for the target property are the same. The return value being <see langword="true"/> only
+             indicates that the new value being assigned to <paramref name = "taskNotifier"/> is different than the previous one,
+             and it does not mean the new <see cref = "T:System.Threading.Tasks.Task"/> instance passed as argument is in any particular state.
+             </remarks>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetPropertyAndNotifyOnCompletion(EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier@,System.Threading.Tasks.Task,System.Action{System.Threading.Tasks.Task},System.String)">
+            <summary>
+            Compares the current and new values for a given field (which should be the backing
+            field for a property). If the value has changed, raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/>
+            event, updates the field and then raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> event.
+            This method is just like <see cref = "M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetPropertyAndNotifyOnCompletion(EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier@,System.Threading.Tasks.Task,System.String)"/>,
+            with the difference being an extra <see cref = "T:System.Action`1"/> parameter with a callback being invoked
+            either immediately, if the new task has already completed or is <see langword="null"/>, or upon completion.
+            </summary>
+            <param name = "taskNotifier">The field notifier to modify.</param>
+            <param name = "newValue">The property's value after the change occurred.</param>
+            <param name = "callback">A callback to invoke to update the property value.</param>
+            <param name = "propertyName">(optional) The name of the property that changed.</param>
+            <returns><see langword="true"/> if the property was changed, <see langword="false"/> otherwise.</returns>
+            <remarks>
+            The <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/> and <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> events are not raised
+            if the current and new value for the target property are the same.
+            </remarks>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetPropertyAndNotifyOnCompletion``1(EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier{``0}@,System.Threading.Tasks.Task{``0},System.String)">
+             <summary>
+             Compares the current and new values for a given field (which should be the backing
+             field for a property). If the value has changed, raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/>
+             event, updates the field and then raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> event.
+             The behavior mirrors that of <see cref = "M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetProperty``1(``0@,``0,System.String)"/>, with the difference being that
+             this method will also monitor the new value of the property (a generic <see cref = "T:System.Threading.Tasks.Task"/>) and will also
+             raise the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> again for the target property when it completes.
+             This can be used to update bindings observing that <see cref = "T:System.Threading.Tasks.Task"/> or any of its properties.
+             This method and its overload specifically rely on the <see cref = "T:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier`1"/> type, which needs
+             to be used in the backing field for the target <see cref = "T:System.Threading.Tasks.Task"/> property. The field doesn't need to be
+             initialized, as this method will take care of doing that automatically. The <see cref = "T:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier`1"/>
+             type also includes an implicit operator, so it can be assigned to any <see cref = "T:System.Threading.Tasks.Task"/> instance directly.
+             Here is a sample property declaration using this method:
+             <code>
+             private TaskNotifier&lt;int&gt; myTask;
+            
+             public Task&lt;int&gt; MyTask
+             {
+                 get => myTask;
+                 private set => SetAndNotifyOnCompletion(ref myTask, value);
+             }
+             </code>
+             </summary>
+             <typeparam name = "T">The type of result for the <see cref = "T:System.Threading.Tasks.Task`1"/> to set and monitor.</typeparam>
+             <param name = "taskNotifier">The field notifier to modify.</param>
+             <param name = "newValue">The property's value after the change occurred.</param>
+             <param name = "propertyName">(optional) The name of the property that changed.</param>
+             <returns><see langword="true"/> if the property was changed, <see langword="false"/> otherwise.</returns>
+             <remarks>
+             The <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/> and <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> events are not raised if the current
+             and new value for the target property are the same. The return value being <see langword="true"/> only
+             indicates that the new value being assigned to <paramref name = "taskNotifier"/> is different than the previous one,
+             and it does not mean the new <see cref = "T:System.Threading.Tasks.Task`1"/> instance passed as argument is in any particular state.
+             </remarks>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetPropertyAndNotifyOnCompletion``1(EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier{``0}@,System.Threading.Tasks.Task{``0},System.Action{System.Threading.Tasks.Task{``0}},System.String)">
+            <summary>
+            Compares the current and new values for a given field (which should be the backing
+            field for a property). If the value has changed, raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/>
+            event, updates the field and then raises the <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> event.
+            This method is just like <see cref = "M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetPropertyAndNotifyOnCompletion``1(EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier{``0}@,System.Threading.Tasks.Task{``0},System.String)"/>,
+            with the difference being an extra <see cref = "T:System.Action`1"/> parameter with a callback being invoked
+            either immediately, if the new task has already completed or is <see langword="null"/>, or upon completion.
+            </summary>
+            <typeparam name = "T">The type of result for the <see cref = "T:System.Threading.Tasks.Task`1"/> to set and monitor.</typeparam>
+            <param name = "taskNotifier">The field notifier to modify.</param>
+            <param name = "newValue">The property's value after the change occurred.</param>
+            <param name = "callback">A callback to invoke to update the property value.</param>
+            <param name = "propertyName">(optional) The name of the property that changed.</param>
+            <returns><see langword="true"/> if the property was changed, <see langword="false"/> otherwise.</returns>
+            <remarks>
+            The <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanging"/> and <see cref = "E:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.PropertyChanged"/> events are not raised
+            if the current and new value for the target property are the same.
+            </remarks>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.SetPropertyAndNotifyOnCompletion``1(EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.ITaskNotifier{``0},``0,System.Action{``0},System.String)">
+            <summary>
+            Implements the notification logic for the related methods.
+            </summary>
+            <typeparam name = "TTask">The type of <see cref = "T:System.Threading.Tasks.Task"/> to set and monitor.</typeparam>
+            <param name = "taskNotifier">The field notifier.</param>
+            <param name = "newValue">The property's value after the change occurred.</param>
+            <param name = "callback">(optional) A callback to invoke to update the property value.</param>
+            <param name = "propertyName">(optional) The name of the property that changed.</param>
+            <returns><see langword="true"/> if the property was changed, <see langword="false"/> otherwise.</returns>
+        </member>
+        <member name="T:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.ITaskNotifier`1">
+            <summary>
+            An interface for task notifiers of a specified type.
+            </summary>
+            <typeparam name = "TTask">The type of value to store.</typeparam>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.ITaskNotifier`1.Task">
+            <summary>
+            Gets or sets the wrapped <typeparamref name = "TTask"/> value.
+            </summary>
+        </member>
+        <member name="T:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier">
+            <summary>
+            A wrapping class that can hold a <see cref = "T:System.Threading.Tasks.Task"/> value.
+            </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref = "T:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier"/> class.
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier.EroMangaManager#Core#ViewModels#SameMangaSearchViewModel#ITaskNotifier{System#Threading#Tasks#Task}#Task">
+            <inheritdoc/>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier.op_Implicit(EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier)~System.Threading.Tasks.Task">
+            <summary>
+            Unwraps the <see cref = "T:System.Threading.Tasks.Task"/> value stored in the current instance.
+            </summary>
+            <param name = "notifier">The input <see cref = "T:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier`1"/> instance.</param>
+        </member>
+        <member name="T:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier`1">
+            <summary>
+            A wrapping class that can hold a <see cref = "T:System.Threading.Tasks.Task`1"/> value.
+            </summary>
+            <typeparam name = "T">The type of value for the wrapped <see cref = "T:System.Threading.Tasks.Task`1"/> instance.</typeparam>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref = "T:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier`1"/> class.
+            </summary>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier`1.EroMangaManager#Core#ViewModels#SameMangaSearchViewModel#ITaskNotifier{System#Threading#Tasks#Task{T}}#Task">
+            <inheritdoc/>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier`1.op_Implicit(EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier{`0})~System.Threading.Tasks.Task{`0}">
+            <summary>
+            Unwraps the <see cref = "T:System.Threading.Tasks.Task`1"/> value stored in the current instance.
+            </summary>
+            <param name = "notifier">The input <see cref = "T:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.TaskNotifier`1"/> instance.</param>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.IsWorking">
+            <inheritdoc cref="F:EroMangaManager.Core.ViewModels.SameMangaSearchViewModel.isWorking"/>
+        </member>
+        <member name="T:EroMangaManager.Core.ViewModels.SettingViewModel">
+             <summary>
+             设置项ViewModel
+             </summary>
+             <remarks>
+            
+             </remarks>
+            <inheritdoc/>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.SettingViewModel.AppConfig">
+            <summary>
+            设置数据源
+            </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SettingViewModel.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="iniPath"></param>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.SettingViewModel.ExePaths">
+            <summary>
+            存储的exe路径
+            </summary>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SettingViewModel.RemoveExePath(System.String)">
+            <summary>
+            移除某exe路径
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SettingViewModel.AddExePath(System.String)">
+            <summary>
+            添加exe路径
+            </summary>
+            <param name="exePath"></param>
+        </member>
+        <member name="P:EroMangaManager.Core.ViewModels.SettingViewModel.DefaultWay">
+            <inheritdoc cref="F:EroMangaManager.Core.ViewModels.SettingViewModel.defaultWay"/>
+        </member>
+        <member name="M:EroMangaManager.Core.ViewModels.SettingViewModel.OnDefaultWayChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:EroMangaManager.Core.ViewModels.SettingViewModel.DefaultWay"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:EroMangaManager.Core.ViewModels.SettingViewModel.DefaultWay"/> is changed.</remarks>
+        </member>
+        <member name="F:EroMangaManager.WinUI3.Models.CoverSetter.SetCover">
+            <summary>
+            设置封面文件路径，因为文件创建涉及到winui，且console程序也不显示图片，所以设置封面单独作为委托，需要手动设置
+            </summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CoverPath">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CoverPath" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ImageAmount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ImageAmount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FilePath">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FilePath" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ChapterAmount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ChapterAmount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TranslatedMangaName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TranslatedMangaName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Type">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Type" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FileDisplayName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FileDisplayName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FileFullName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FileFullName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FileSize">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FileSize" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FolderPath">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FolderPath" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MangaName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MangaName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Tags">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Tags" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DisplayedCategory">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DisplayedCategory" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DisplayedTags">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DisplayedTags" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.RequiredText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "RequiredText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.UpdateState">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "UpdateState" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsWorking">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsWorking" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DefaultWay">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DefaultWay" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CoverPath">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CoverPath" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ImageAmount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ImageAmount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FilePath">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FilePath" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ChapterAmount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ChapterAmount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TranslatedMangaName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TranslatedMangaName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Type">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Type" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FileDisplayName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FileDisplayName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FileFullName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FileFullName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FileSize">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FileSize" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FolderPath">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FolderPath" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MangaName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MangaName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Tags">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Tags" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DisplayedCategory">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DisplayedCategory" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DisplayedTags">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DisplayedTags" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.RequiredText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "RequiredText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.UpdateState">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "UpdateState" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsWorking">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsWorking" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DefaultWay">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DefaultWay" generated properties.</summary>
+        </member>
+    </members>
+</doc>
