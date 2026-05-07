@@ -32,7 +32,7 @@ jobs:
 
       - name: 构建 Android APK
         run: |
-          dotnet publish UnoApp/UnoApp.csproj `
+          dotnet publish UnoApp/UnoApp/UnoApp.csproj `
             -f net10.0-android `
             -c Release `
             -p:AndroidPackageFormats=apk `
