@@ -10,6 +10,7 @@
     <File Path="README.md" />
     <File Path="TODO.md" />
   </Folder>
+  <Project Path="../MyLibrary/CommonLibrary/CommonLibrary.csproj" />
   <Project Path="Core/Core.csproj" />
   <Project Path="Database/Database.csproj" />
   <Project Path="Server/Server.csproj" />
