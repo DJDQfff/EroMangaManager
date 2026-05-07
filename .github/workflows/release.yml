@@ -1,0 +1,90 @@
+name: Release All Platforms
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: 克隆 MyLibrary
+        run: |
+          cd ..
+          git clone https://github.com/DJDQfff/MyLibrary.git MyLibrary
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - run: dotnet workload install android ios
+
+      - name: 还原签名证书
+        shell: pwsh
+        run: |
+          [IO.File]::WriteAllBytes("${{ github.workspace }}\certificate.pfx", [Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}"))
+
+      - name: 构建 Android APK
+        run: |
+          dotnet publish UnoApp/UnoApp.csproj `
+            -f net10.0-android `
+            -c Release `
+            -p:AndroidPackageFormats=apk `
+            -p:AndroidSigningKeyStore=${{ github.workspace }}\certificate.pfx `
+            -p:AndroidSigningKeyPass=${{ secrets.CERTIFICATE_PASSWORD }} `
+            -p:AndroidSigningStorePass=${{ secrets.CERTIFICATE_PASSWORD }} `
+            -o ./publish/android
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android-apk
+          path: ./publish/android/*.apk
+
+  build-winapp:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: 克隆 MyLibrary
+        run: |
+          cd ..
+          git clone https://github.com/DJDQfff/MyLibrary.git MyLibrary
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: 构建 WinApp MSIX
+        run: |
+          dotnet publish WinApp/WinApp.csproj `
+            -f net10.0-windows10.0.19041.0 `
+            -c Release `
+            -o ./publish/winapp
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: winapp-msix
+          path: ./publish/winapp/*.msixbundle
+
+  release:
+    needs: [build-android, build-winapp]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            android-apk/*.apk
+            winapp-msix/*.msixbundle
+          name: ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
