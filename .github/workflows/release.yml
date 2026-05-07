@@ -79,6 +79,10 @@ jobs:
     needs: [build-android, build-winapp]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # 获取完整 Git 历史，包含 tag 信息
+
       - uses: actions/download-artifact@v4
 
       - uses: softprops/action-gh-release@v2
