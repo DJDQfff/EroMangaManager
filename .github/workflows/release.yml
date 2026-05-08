@@ -75,6 +75,7 @@ jobs:
           name: winapp-msix
           path: ./publish/winapp/*.msixbundle
 
+
   release:
     needs: [build-android, build-winapp]
     runs-on: ubuntu-latest
