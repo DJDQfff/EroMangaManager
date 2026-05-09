@@ -89,6 +89,14 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path ".\publish\msix-files"
+          # 搜索整个仓库查找生成的 .msix
+          $msix = Get-ChildItem -Recurse -Filter "*.msix" | Where-Object { $_.FullName -like "*${{ matrix.platform.name }}*" } | Select-Object -First 1
+          Copy-Item $msix.FullName ".\publish\msix-files\"
+
+      - name: 收集 MSIX 文件
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path ".\publish\msix-files"
           $msix = Get-ChildItem -Path ".\publish\winapp\${{ matrix.platform.name }}" -Filter "*.msix" -Recurse | Select-Object -First 1
           Copy-Item $msix.FullName ".\publish\msix-files\"
 
