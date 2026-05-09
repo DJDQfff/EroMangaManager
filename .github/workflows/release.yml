@@ -109,7 +109,7 @@ jobs:
       - name: 查找 MakeAppx.exe 并合并
         shell: pwsh
         run: |
-          $makeappx = Get-ChildItem -Path "C:\Program Files (x86)\Windows Kits\10\bin" -Filter "MakeAppx.exe" -Recurse | Select-Object -First 1
+          $makeappx = Get-ChildItem -Path "C:\Program Files (x86)\Windows Kits\10\bin" -Filter "MakeAppx.exe" -Recurse | Where-Object { $_.FullName -like "*\x64\*" } | Select-Object -First 1
           & $makeappx.FullName bundle /d ./msix-files /p ./publish/EroMangaManager.msixbundle
 
       - name: 签名 MSIXBundle
