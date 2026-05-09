@@ -96,7 +96,6 @@ jobs:
           msbuild $env:Solution_Name `
             /p:Configuration=Release `
             /p:Platform=${{ matrix.platform }} `
-            /p:AppxPackageDir="${{ github.workspace }}/msix-artifacts/" `
             /p:AppxBundle=Never `
             /p:GenerateAppxPackageOnBuild=true `
             /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx `
@@ -108,6 +107,32 @@ jobs:
       - name: 移除证书
         run: Remove-Item -path GitHubActionsWorkflow.pfx
 
+        # 1. 这个新的“收集并重命名 MSIX”步骤，就放在“移除证书”后面，取代旧的那个
+      - name: 收集并重命名 MSIX
+        shell: pwsh
+        run: |
+          Write-Output "正在全盘搜索所有 MSIX 文件..."
+          # 查找所有 MSIX 文件，排除 Main 和 Singleton 这些多余的
+          $allMsix = Get-ChildItem -Path "D:\a\" -Filter "*.msix" -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.Name -notmatch "^(Main|Singleton)" }
+
+          if (!$allMsix) {
+              Write-Error "❌ 构建未生成任何 MSIX 文件，请检查 MSBuild 输出。"
+              exit 1
+          }
+          
+          $allMsix | ForEach-Object { Write-Output "  找到 MSIX: $($_.FullName)" }
+
+          # 3. 重命名并移动文件
+          $targetDir = "./publish/msix-files/"
+          New-Item -ItemType Directory -Force -Path $targetDir
+
+          $chosenMsix = $allMsix | Select-Object -First 1
+          $version = "${{ github.ref_name }}" -replace '^v', ''
+          $newName = "EroMangaManager_$version_${{ matrix.platform }}.msix"
+          $destPath = Join-Path $targetDir $newName
+
+          Copy-Item $chosenMsix.FullName $destPath
+          Write-Output "✅ MSIX 处理完毕: $destPath"
 
       - name: 上传证书
         uses: actions/upload-artifact@v4
@@ -119,7 +144,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: msix-${{ matrix.platform }}
-          path: ${{ github.workspace }}/msix-artifacts/*.msix
+          path: ./publish/msix-files/*.msix
 
   release:
     needs: [build-android, build-winapp]
