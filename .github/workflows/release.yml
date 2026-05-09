@@ -99,11 +99,23 @@ jobs:
       - name: 移除证书
         run: Remove-Item -path GitHubActionsWorkflow.pfx
 
-      - name: 收集 MSIX
+      - name: 收集并重命名 MSIX
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path "./publish/msix-files"
-          Get-ChildItem -Recurse -Filter "*.msix" | ForEach-Object { Copy-Item $_.FullName "./publish/msix-files/" }
+          $msix = Get-ChildItem -Recurse -Filter "*.msix" | Where-Object { $_.Name -notmatch "^(Main|Singleton)" } | Select-Object -First 1
+          $version = "${{ github.ref_name }}" -replace '^v', ''
+          $newName = "EroMangaManager_$version_${{ matrix.platform }}.msix"
+          Copy-Item $msix.FullName "./publish/msix-files/$newName"
+      
+      - name: 签名 MSIX
+        shell: pwsh
+        run: |
+          $signtool = Get-ChildItem -Path "C:\Program Files (x86)\Windows Kits\10\bin" -Filter "SignTool.exe" -Recurse | Where-Object { $_.FullName -like "*\x64\*" } | Select-Object -First 1
+          $pfxPath = "GitHubActionsWorkflow.pfx"
+          [IO.File]::WriteAllBytes($pfxPath, [Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}"))
+          $msix = Get-ChildItem -Recurse -Filter "*.msix" | Select-Object -First 1
+          & $signtool.FullName sign /fd SHA256 /f $pfxPath /p ${{ secrets.CERTIFICATE_PASSWORD }} $msix.FullName
 
       - uses: actions/upload-artifact@v4
         with:
