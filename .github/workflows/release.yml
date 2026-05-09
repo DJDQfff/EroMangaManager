@@ -79,6 +79,11 @@ jobs:
           Configuration: Release
           Platform: ${{ matrix.platform }}
 
+      - name: 生成证书文件用于分发
+        shell: pwsh
+        run: |
+          [IO.File]::WriteAllBytes("certificate.cer", [Convert]::FromBase64String("${{ secrets.CERTIFICATE_PUBLIC_KEY }}"))
+
       - name: 解码证书
         run: |
           $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}")
@@ -98,46 +103,21 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path "./publish/msix-files"
-          # 在整个仓库中搜索 .msix 文件，无惧任何输出路径
-          $msix = Get-ChildItem -Recurse -Filter "*.msix" | Select-Object -First 1
-          if (-not $msix) {
-            Write-Error "❌ 未找到任何 .msix 文件"
-            exit 1
-          }
-          Write-Output "找到 MSIX: $($msix.FullName)"
-          Copy-Item $msix.FullName "./publish/msix-files/"
+          Get-ChildItem -Recurse -Filter "*.msix" | ForEach-Object { Copy-Item $_.FullName "./publish/msix-files/" }
 
       - uses: actions/upload-artifact@v4
         with:
-          name: winapp-msixbundle
-          path: ./publish/*.msixbundle
+          name: msix-${{ matrix.platform }}
+          path: ./publish/msix-files/*.msix
 
-  bundle-winapp:
-    needs: build-winapp
-    runs-on: windows-latest
-    steps:
-      - name: 创建打包目录
-        run: New-Item -ItemType Directory -Force -Path ./msix-files
-
-      - uses: actions/download-artifact@v4
+      - name: 上传证书
+        uses: actions/upload-artifact@v4
         with:
-          path: ./msix-files
-
-      - name: 合并为 MSIXBundle
-        id: bundler
-        uses: LanceMcCarthy/Action-MsixBundler@v2.0.0
-        with:
-          msix-folder: msix-files
-          msixbundle-filepath: ${{ github.workspace }}/publish/EroMangaManager.msixbundle
-          msixbundle-version: "0.0.0.0"
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: winapp-msixbundle
-          path: ${{ steps.bundler.outputs.msixbundle_path }}
+          name: certificate
+          path: certificate.cer
 
   release:
-    needs: [build-android, bundle-winapp]
+    needs: [build-android, build-winapp]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -150,10 +130,10 @@ jobs:
         with:
           files: |
             android-apk/*-Signed.apk
-            winapp-msixbundle/*.msixbundle
             msix-x64/*.msix
             msix-x86/*.msix
             msix-ARM64/*.msix
+            certificate/*.cer
           name: ${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
