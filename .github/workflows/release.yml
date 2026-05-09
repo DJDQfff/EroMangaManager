@@ -79,19 +79,22 @@ jobs:
           Configuration: Release
           Platform: ${{ matrix.platform }}
 
-      - name: 生成证书文件用于分发
-        shell: pwsh
-        run: |
-          [IO.File]::WriteAllBytes("certificate.cer", [Convert]::FromBase64String("${{ secrets.CERTIFICATE_PUBLIC_KEY }}"))
-
       - name: 解码证书
         run: |
           $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}")
-          $certificatePath = "GitHubActionsWorkflow.pfx"
-          [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
+          $currentPath = Join-Path -Path $env:GITHUB_WORKSPACE -ChildPath "GitHubActionsWorkflow.pfx"
+          [IO.File]::WriteAllBytes("$currentPath", $pfx_cert_byte)
 
       - name: 构建并打包 MSIX
-        run: msbuild $env:Solution_Name /p:Configuration=Release /p:Platform=${{ matrix.platform }} /p:UapAppxPackageBuildMode=SideloadOnly /p:AppxBundle=Never /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.CERTIFICATE_PASSWORD }} /p:AppxPackageDir=./publish/winapp/${{ matrix.platform }}/ /p:GenerateAppxPackageOnBuild=true
+        run: |
+          msbuild $env:Solution_Name `
+            /p:Configuration=Release `
+            /p:Platform=${{ matrix.platform }} `
+            /p:AppxPackageDir="${{ github.workspace }}/msix-artifacts/" `
+            /p:AppxBundle=Never `
+            /p:GenerateAppxPackageOnBuild=true `
+            /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx `
+            /p:PackageCertificatePassword=${{ secrets.CERTIFICATE_PASSWORD }}
         env:
           Configuration: Release
           Platform: ${{ matrix.platform }}
@@ -99,34 +102,23 @@ jobs:
       - name: 移除证书
         run: Remove-Item -path GitHubActionsWorkflow.pfx
 
-      - name: 收集并重命名 MSIX
+      - name: 生成证书文件
         shell: pwsh
         run: |
-          New-Item -ItemType Directory -Force -Path "./publish/msix-files"
-          $msix = Get-ChildItem -Recurse -Filter "*.msix" | Where-Object { $_.Name -notmatch "^(Main|Singleton)" } | Select-Object -First 1
-          $version = "${{ github.ref_name }}" -replace '^v', ''
-          $newName = "EroMangaManager_$version_${{ matrix.platform }}.msix"
-          Copy-Item $msix.FullName "./publish/msix-files/$newName"
-      
-      - name: 签名 MSIX
-        shell: pwsh
-        run: |
-          $signtool = Get-ChildItem -Path "C:\Program Files (x86)\Windows Kits\10\bin" -Filter "SignTool.exe" -Recurse | Where-Object { $_.FullName -like "*\x64\*" } | Select-Object -First 1
-          $pfxPath = "GitHubActionsWorkflow.pfx"
-          [IO.File]::WriteAllBytes($pfxPath, [Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}"))
-          $msix = Get-ChildItem -Recurse -Filter "*.msix" | Select-Object -First 1
-          & $signtool.FullName sign /fd SHA256 /f $pfxPath /p ${{ secrets.CERTIFICATE_PASSWORD }} $msix.FullName
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: msix-${{ matrix.platform }}
-          path: ./publish/msix-files/*.msix
+          $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2("GitHubActionsWorkflow.pfx", "${{ secrets.CERTIFICATE_PASSWORD }}")
+          [System.IO.File]::WriteAllBytes("${{ github.workspace }}/certificate.cer", $cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert))
 
       - name: 上传证书
         uses: actions/upload-artifact@v4
         with:
           name: certificate
-          path: certificate.cer
+          path: ${{ github.workspace }}/certificate.cer
+
+      - name: 上传 MSIX
+        uses: actions/upload-artifact@v4
+        with:
+          name: msix-${{ matrix.platform }}
+          path: ${{ github.workspace }}/msix-artifacts/*.msix
 
   release:
     needs: [build-android, build-winapp]
@@ -142,10 +134,7 @@ jobs:
         with:
           files: |
             android-apk/*-Signed.apk
-            msix-x64/*.msix
-            msix-x86/*.msix
-            msix-ARM64/*.msix
-            certificate/*.cer
-          name: ${{ github.ref_name }}
+            msix-*/*.msix
+            certificate/*.cer          name: ${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
