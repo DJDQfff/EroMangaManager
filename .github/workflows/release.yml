@@ -98,7 +98,14 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path "./publish/msix-files"
-          Get-ChildItem -Path "./publish/winapp/${{ matrix.platform }}" -Filter "*.msix" -Recurse | ForEach-Object { Copy-Item $_.FullName "./publish/msix-files/" }
+          # 在整个仓库中搜索 .msix 文件，无惧任何输出路径
+          $msix = Get-ChildItem -Recurse -Filter "*.msix" | Select-Object -First 1
+          if (-not $msix) {
+            Write-Error "❌ 未找到任何 .msix 文件"
+            exit 1
+          }
+          Write-Output "找到 MSIX: $($msix.FullName)"
+          Copy-Item $msix.FullName "./publish/msix-files/"
 
       - uses: actions/upload-artifact@v4
         with:
