@@ -88,6 +88,7 @@ jobs:
       - name: 收集 MSIX 文件
         shell: pwsh
         run: |
+          New-Item -ItemType Directory -Force -Path ".\publish\msix-files"
           $msix = Get-ChildItem -Path ".\publish\winapp\${{ matrix.platform.name }}" -Filter "*.msix" -Recurse | Select-Object -First 1
           Copy-Item $msix.FullName ".\publish\msix-files\"
 
@@ -95,7 +96,6 @@ jobs:
         with:
           name: msix-${{ matrix.platform.name }}
           path: ./publish/msix-files/*.msix
-
   bundle-winapp:
     needs: build-winapp
     runs-on: windows-latest
