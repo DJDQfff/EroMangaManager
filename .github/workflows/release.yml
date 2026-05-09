@@ -48,6 +48,12 @@ jobs:
 
   build-winapp:
     runs-on: windows-latest
+    strategy:
+      matrix:
+        platform:
+          - { name: x64, rid: win-x64 }
+          - { name: x86, rid: win-x86 }
+          - { name: ARM64, rid: win-arm64 }
     steps:
       - uses: actions/checkout@v4
         with:
@@ -62,35 +68,78 @@ jobs:
         with:
           dotnet-version: '10.0.x'
 
-      - name: 构建 WinApp MSIX
+      - name: 还原签名证书
+        shell: pwsh
         run: |
-          dotnet publish WinApp/WinApp.csproj `
-            -f net10.0-windows10.0.19041.0 `
+          [IO.File]::WriteAllBytes("${{ github.workspace }}\certificate.pfx", [Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}"))
+
+      - name: 构建 ${{ matrix.platform.name }} MSIX
+        shell: pwsh
+        run: |
+          dotnet build WinApp\WinApp.csproj `
             -c Release `
-            -r win-x64 `
-            -o ./publish/winapp
+            -p:Platform=${{ matrix.platform.name }} `
+            -p:RuntimeIdentifier=${{ matrix.platform.rid }} `
+            -p:AppxPackageDir=.\publish\winapp\${{ matrix.platform.name }}\ `
+            /p:GenerateAppxPackageOnBuild=true `
+            /p:PackageCertificateKeyFile=${{ github.workspace }}\certificate.pfx `
+            /p:PackageCertificatePassword=${{ secrets.CERTIFICATE_PASSWORD }}
+
+      - name: 收集 MSIX 文件
+        shell: pwsh
+        run: |
+          $msix = Get-ChildItem -Path ".\publish\winapp\${{ matrix.platform.name }}" -Filter "*.msix" -Recurse | Select-Object -First 1
+          Copy-Item $msix.FullName ".\publish\msix-files\"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: winapp-msix
-          path: ./publish/winapp/*.msixbundle
+          name: msix-${{ matrix.platform.name }}
+          path: ./publish/msix-files/*.msix
 
+  bundle-winapp:
+    needs: build-winapp
+    runs-on: windows-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: ./msix-files
+
+      - name: 合并 MSIX 为 MSIXBundle
+        shell: pwsh
+        run: |
+          $msixFiles = Get-ChildItem -Path ./msix-files -Filter "*.msix" -Recurse
+          $msixList = $msixFiles -join " "
+          MakeAppx.exe bundle /d ./msix-files /p ./publish/EroMangaManager.msixbundle
+
+      - name: 签名 MSIXBundle
+        shell: pwsh
+        run: |
+          [IO.File]::WriteAllBytes("${{ github.workspace }}\certificate.pfx", [Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}"))
+          SignTool.exe sign /fd SHA256 /f "${{ github.workspace }}\certificate.pfx" /p ${{ secrets.CERTIFICATE_PASSWORD }} ./publish/EroMangaManager.msixbundle
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: winapp-msixbundle
+          path: ./publish/EroMangaManager.msixbundle
 
   release:
-    needs: [build-android, build-winapp]
+    needs: [build-android, bundle-winapp]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0          # 获取完整 Git 历史，包含 tag 信息
+          fetch-depth: 0
 
       - uses: actions/download-artifact@v4
 
       - uses: softprops/action-gh-release@v2
         with:
           files: |
-            android-apk/*.apk
-            winapp-msix/*.msixbundle
+            android-apk/*-Signed.apk
+            winapp-msixbundle/*.msixbundle
+            msix-x64/*.msix
+            msix-x86/*.msix
+            msix-ARM64/*.msix
           name: ${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
