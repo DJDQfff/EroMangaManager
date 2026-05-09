@@ -106,12 +106,11 @@ jobs:
         with:
           path: ./msix-files
 
-      - name: 合并 MSIX 为 MSIXBundle
+      - name: 查找 MakeAppx.exe 并合并
         shell: pwsh
         run: |
-          $msixFiles = Get-ChildItem -Path ./msix-files -Filter "*.msix" -Recurse
-          $msixList = $msixFiles -join " "
-          MakeAppx.exe bundle /d ./msix-files /p ./publish/EroMangaManager.msixbundle
+          $makeappx = Get-ChildItem -Path "C:\Program Files (x86)\Windows Kits\10\bin" -Filter "MakeAppx.exe" -Recurse | Select-Object -First 1
+          & $makeappx.FullName bundle /d ./msix-files /p ./publish/EroMangaManager.msixbundle
 
       - name: 签名 MSIXBundle
         shell: pwsh
