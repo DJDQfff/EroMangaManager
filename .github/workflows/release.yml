@@ -82,14 +82,8 @@ jobs:
       - name: 解码证书
         run: |
           $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}")
-          $currentPath = Join-Path -Path $env:GITHUB_WORKSPACE -ChildPath "GitHubActionsWorkflow.pfx"
-          [IO.File]::WriteAllBytes("$currentPath", $pfx_cert_byte)
-
-      - name: 生成证书文件
-        shell: pwsh
-        run: |
-          $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2("GitHubActionsWorkflow.pfx", "${{ secrets.CERTIFICATE_PASSWORD }}")
-          [System.IO.File]::WriteAllBytes("${{ github.workspace }}/certificate.cer", $cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert))
+          $certPath = Join-Path -Path $env:GITHUB_WORKSPACE -ChildPath "signing-cert.pfx"
+          [IO.File]::WriteAllBytes("$certPath", $pfx_cert_byte)
 
       - name: 构建并打包 MSIX
         run: |
@@ -98,14 +92,11 @@ jobs:
             /p:Platform=${{ matrix.platform }} `
             /p:AppxBundle=Never `
             /p:GenerateAppxPackageOnBuild=true `
-            /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx `
+            /p:PackageCertificateKeyFile=signing-cert.pfx `
             /p:PackageCertificatePassword=${{ secrets.CERTIFICATE_PASSWORD }}
         env:
           Configuration: Release
           Platform: ${{ matrix.platform }}
-
-      - name: 移除证书
-        run: Remove-Item -path GitHubActionsWorkflow.pfx
 
       - name: 收集所有 MSIX 文件
         shell: pwsh
@@ -114,32 +105,37 @@ jobs:
           $allMsix = Get-ChildItem -Path "D:\a\" -Filter "*.msix" -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.Name -notmatch "^(Main|Singleton)" }
 
           if (!$allMsix) {
-              Write-Error "❌ 构建未生成任何 MSIX 文件，请检查 MSBuild 输出。"
+              Write-Error "❌ 构建未生成任何 MSIX 文件"
               exit 1
           }
-          
+
           $allMsix | ForEach-Object { Write-Output "  找到 MSIX: $($_.FullName)" }
 
-          # 创建一个唯一的临时文件夹，用于存放本矩阵任务的产物
           $tmpDir = "./publish/${{ matrix.platform }}-msix"
           New-Item -ItemType Directory -Force -Path $tmpDir
 
-          $allMsix | ForEach-Object {
-              Copy-Item $_.FullName $tmpDir
+          $allMsix | ForEach-Object { Copy-Item $_.FullName $tmpDir }
+
+      - name: 签名所有 MSIX
+        shell: pwsh
+        run: |
+          $signtool = Get-ChildItem -Path "C:\Program Files (x86)\Windows Kits\10\bin" -Filter "SignTool.exe" -Recurse | Where-Object { $_.FullName -like "*\x64\*" } | Select-Object -First 1
+          if (-not $signtool) {
+              Write-Error "❌ 未找到 SignTool.exe"
+              exit 1
           }
 
-      - name: 上传证书
-        uses: actions/upload-artifact@v4
-        with:
-          name: certificate
-          path: ${{ github.workspace }}/certificate.cer
+          $msixFiles = Get-ChildItem -Path "./publish/${{ matrix.platform }}-msix" -Filter "*.msix" -Recurse
+          foreach ($msix in $msixFiles) {
+              Write-Output "正在签名: $($msix.FullName)"
+              & $signtool.FullName sign /fd SHA256 /f signing-cert.pfx /p ${{ secrets.CERTIFICATE_PASSWORD }} $msix.FullName
+          }
 
       - name: 上传 MSIX
         uses: actions/upload-artifact@v4
         with:
           name: msix-${{ matrix.platform }}
           path: ./publish/${{ matrix.platform }}-msix/*.msix
-
   release:
     needs: [build-android, build-winapp]
     runs-on: ubuntu-latest
