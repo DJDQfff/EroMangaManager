@@ -85,6 +85,12 @@ jobs:
           $currentPath = Join-Path -Path $env:GITHUB_WORKSPACE -ChildPath "GitHubActionsWorkflow.pfx"
           [IO.File]::WriteAllBytes("$currentPath", $pfx_cert_byte)
 
+      - name: 生成证书文件
+        shell: pwsh
+        run: |
+          $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2("GitHubActionsWorkflow.pfx", "${{ secrets.CERTIFICATE_PASSWORD }}")
+          [System.IO.File]::WriteAllBytes("${{ github.workspace }}/certificate.cer", $cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert))
+
       - name: 构建并打包 MSIX
         run: |
           msbuild $env:Solution_Name `
@@ -102,11 +108,6 @@ jobs:
       - name: 移除证书
         run: Remove-Item -path GitHubActionsWorkflow.pfx
 
-      - name: 生成证书文件
-        shell: pwsh
-        run: |
-          $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2("GitHubActionsWorkflow.pfx", "${{ secrets.CERTIFICATE_PASSWORD }}")
-          [System.IO.File]::WriteAllBytes("${{ github.workspace }}/certificate.cer", $cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert))
 
       - name: 上传证书
         uses: actions/upload-artifact@v4
@@ -135,6 +136,7 @@ jobs:
           files: |
             android-apk/*-Signed.apk
             msix-*/*.msix
-            certificate/*.cer          name: ${{ github.ref_name }}
+            certificate/*.cer     
+          name: ${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
