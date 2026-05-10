@@ -151,7 +151,7 @@ jobs:
           files: |
             android-apk/*-Signed.apk
             msix-*/*.msix
-            *.cer          # 仓库根目录的证书
+            DJDQfff_certificate.cer
           name: ${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
