@@ -7,55 +7,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-android:
-    runs-on: windows-latest
-    strategy:
-      matrix:
-        arch:
-          - { rid: android-arm64, suffix: arm64-v8a }
-          - { rid: android-arm, suffix: armeabi-v7a }
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: recursive
-
-      - name: 克隆 MyLibrary
-        run: |
-          cd ..
-          git clone https://github.com/DJDQfff/MyLibrary.git MyLibrary
-
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '10.0.x'
-
-      - run: dotnet workload install android ios
-
-      - name: 还原签名证书
-        shell: pwsh
-        run: |
-          [IO.File]::WriteAllBytes("${{ github.workspace }}\certificate.pfx", [Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}"))
-
-      - name: 构建 Android APK (${{ matrix.arch.suffix }})
-        run: |
-          dotnet publish UnoApp/UnoApp/UnoApp.csproj `
-            -f net10.0-android `
-            -r ${{ matrix.arch.rid }} `
-            -c Release `
-            -p:AndroidPackageFormats=apk `
-            -p:AndroidSigningKeyStore=${{ github.workspace }}\certificate.pfx `
-            -p:AndroidSigningKeyPass=${{ secrets.CERTIFICATE_PASSWORD }} `
-            -p:AndroidSigningStorePass=${{ secrets.CERTIFICATE_PASSWORD }} `
-            -o ./publish/${{ matrix.arch.suffix }}
-
-          $apk = Get-ChildItem ./publish/${{ matrix.arch.suffix }} -Filter "*.apk" | Select-Object -First 1
-          $newName = "EroMangaBrowser_${{ matrix.arch.suffix }}-Signed.apk"
-          Rename-Item $apk.FullName $newName
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: android-apk-${{ matrix.arch.suffix }}
-          path: ./publish/${{ matrix.arch.suffix }}/*.apk
-
   build-winapp:
     runs-on: windows-latest
     strategy:
@@ -150,6 +101,56 @@ jobs:
         with:
           name: msix-${{ matrix.platform }}
           path: ./publish/${{ matrix.platform }}-msix/*.msix
+
+  build-android:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        arch:
+          - { rid: android-arm64, suffix: arm64-v8a }
+          - { rid: android-arm, suffix: armeabi-v7a }
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: 克隆 MyLibrary
+        run: |
+          cd ..
+          git clone https://github.com/DJDQfff/MyLibrary.git MyLibrary
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - run: dotnet workload install android ios
+
+      - name: 还原签名证书
+        shell: pwsh
+        run: |
+          [IO.File]::WriteAllBytes("${{ github.workspace }}\certificate.pfx", [Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}"))
+
+      - name: 构建 Android APK (${{ matrix.arch.suffix }})
+        run: |
+          dotnet publish UnoApp/UnoApp/UnoApp.csproj `
+            -f net10.0-android `
+            -r ${{ matrix.arch.rid }} `
+            -c Release `
+            -p:AndroidPackageFormats=apk `
+            -p:AndroidSigningKeyStore=${{ github.workspace }}\certificate.pfx `
+            -p:AndroidSigningKeyPass=${{ secrets.CERTIFICATE_PASSWORD }} `
+            -p:AndroidSigningStorePass=${{ secrets.CERTIFICATE_PASSWORD }} `
+            -o ./publish/${{ matrix.arch.suffix }}
+
+          $apk = Get-ChildItem ./publish/${{ matrix.arch.suffix }} -Filter "*.apk" | Select-Object -First 1
+          $newName = "EroMangaBrowser_${{ matrix.arch.suffix }}-Signed.apk"
+          Rename-Item $apk.FullName $newName
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android-apk-${{ matrix.arch.suffix }}
+          path: ./publish/${{ matrix.arch.suffix }}/*.apk
+
   release:
     needs: [build-android, build-winapp]
     runs-on: ubuntu-latest
