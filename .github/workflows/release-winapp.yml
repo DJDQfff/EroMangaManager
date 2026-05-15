@@ -1,0 +1,84 @@
+name: Build WinApp MSIX
+
+on:
+  workflow_call:
+    inputs:
+      version_tag:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: windows-latest
+    env:
+      Solution_Name: EroMangaManager.slnx
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: 设置 MSBuild
+        uses: microsoft/setup-msbuild@v1.3.1
+
+      - name: 克隆 MyLibrary
+        run: |
+          cd ..
+          git clone https://github.com/DJDQfff/MyLibrary.git MyLibrary
+
+      - name: 还原依赖
+        run: msbuild $env:Solution_Name /t:Restore /p:Configuration=Release /p:Platform=x64
+        env:
+          Configuration: Release
+
+      - name: 解码证书
+        run: |
+          $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}")
+          $certPath = Join-Path -Path $env:GITHUB_WORKSPACE -ChildPath "signing-cert.pfx"
+          [IO.File]::WriteAllBytes("$certPath", $pfx_cert_byte)
+
+      - name: 构建并打包 MSIX
+        run: |
+          $ver = "${{ needs.set-version.outputs.version_tag }}" -replace '^v', ''
+          msbuild $env:Solution_Name `
+            /p:Configuration=Release `
+            /p:Platform=x64 `
+            /p:AppxBundle=Never `
+            /p:GenerateAppxPackageOnBuild=true `
+            /p:PackageCertificateKeyFile=signing-cert.pfx `
+            /p:PackageCertificatePassword=${{ secrets.CERTIFICATE_PASSWORD }} `
+            /p:Version=$ver
+        env:
+          Configuration: Release
+
+      - name: 收集并重命名 MSIX
+        shell: pwsh
+        run: |
+          $allMsix = Get-ChildItem -Path "D:\a\" -Filter "*.msix" -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.Name -notmatch "^(Main|Singleton)" }
+          if (!$allMsix) { Write-Error "❌ 构建未生成任何 MSIX 文件"; exit 1 }
+          $tmpDir = "./publish/msix"
+          New-Item -ItemType Directory -Force -Path $tmpDir
+          $allMsix | ForEach-Object { Copy-Item $_.FullName $tmpDir }
+          $version = "${{ needs.set-version.outputs.version_tag }}" -replace '^v', ''
+          Get-ChildItem $tmpDir -Filter "*.msix" | ForEach-Object {
+            $newName = "EroMangaBrowser_${version}_x64.msix"
+            Rename-Item $_.FullName $newName
+          }
+
+      - name: 签名所有 MSIX
+        shell: pwsh
+        run: |
+          $signtool = Get-ChildItem -Path "C:\Program Files (x86)\Windows Kits\10\bin" -Filter "SignTool.exe" -Recurse | Where-Object { $_.FullName -like "*\x64\*" } | Select-Object -First 1
+          if (-not $signtool) { Write-Error "❌ 未找到 SignTool.exe"; exit 1 }
+          Get-ChildItem "./publish/msix" -Filter "*.msix" | ForEach-Object {
+            & $signtool.FullName sign /fd SHA256 /f signing-cert.pfx /p ${{ secrets.CERTIFICATE_PASSWORD }} $_.FullName
+          }
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: msix-x64
+          path: ./publish/msix/*.msix
