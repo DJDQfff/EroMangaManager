@@ -96,13 +96,14 @@ jobs:
 
       - name: 构建并打包 MSIX
         run: |
-          msbuild $env:Solution_Name `
-            /p:Configuration=Release `
-            /p:Platform=${{ matrix.platform }} `
-            /p:AppxBundle=Never `
+          dotnet build WinApp/WinApp.csproj `
+            -c Release `
+            -p:Platform=${{ matrix.platform }} `
+            -p:RuntimeIdentifier=win-${{ matrix.platform }} `
+            -p:AppxBundle=Never `
             /p:GenerateAppxPackageOnBuild=true `
- #           /p:PackageCertificateKeyFile=${{ github.workspace }}\signing-cert.pfx `
- #           /p:PackageCertificatePassword=${{ secrets.CERTIFICATE_PASSWORD }} `
+            /p:PackageCertificateKeyFile=${{ github.workspace }}\signing-cert.pfx `
+            /p:PackageCertificatePassword=${{ secrets.CERTIFICATE_PASSWORD }}
         env:
           Configuration: Release
           Platform: ${{ matrix.platform }}
