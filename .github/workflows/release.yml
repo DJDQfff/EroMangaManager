@@ -101,7 +101,7 @@ jobs:
             /p:Platform=${{ matrix.platform }} `
             /p:AppxBundle=Never `
             /p:GenerateAppxPackageOnBuild=true `
-            /p:PackageCertificateKeyFile=signing-cert.pfx `
+            /p:PackageCertificateKeyFile=${{ github.workspace }}\signing-cert.pfx `
             /p:PackageCertificatePassword=${{ secrets.CERTIFICATE_PASSWORD }}
         env:
           Configuration: Release
