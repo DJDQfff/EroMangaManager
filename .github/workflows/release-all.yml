@@ -1,9 +1,10 @@
-name: Release All to Root Repository
+name: Release All
 
 on:
   push:
     branches:
       - master
+  workflow_dispatch:
 
 jobs:
   set-version:
@@ -23,12 +24,6 @@ jobs:
           git tag "v${VERSION}"
           git push origin "v${VERSION}"
 
-  build-android:
-    needs: set-version
-    uses: ./.github/workflows/release-android.yml
-    with:
-      version_tag: ${{ needs.set-version.outputs.version_tag }}
-
   build-winapp:
     needs: set-version
     uses: ./.github/workflows/release-winapp.yml
@@ -36,7 +31,7 @@ jobs:
       version_tag: ${{ needs.set-version.outputs.version_tag }}
 
   release:
-    needs: [build-android, build-winapp]
+    needs: [set-version, build-winapp]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -45,13 +40,10 @@ jobs:
 
       - uses: actions/download-artifact@v4
 
-      - name: 发布所有产物到根仓库
-        uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ needs.set-version.outputs.version_tag }}
           name: Release ${{ needs.set-version.outputs.version_tag }}
-          files: |
-            apk-*/*.apk
-            msix-*/*.msix
+          files: msix-*/*.msix
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
