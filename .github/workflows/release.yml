@@ -55,11 +55,15 @@ jobs:
         with:
           name: android-apk-${{ matrix.arch.suffix }}
           path: ./publish/${{ matrix.arch.suffix }}/*.apk
+
   build-winapp:
     runs-on: windows-latest
     strategy:
       matrix:
-        platform: [x64, x86, ARM64]
+        platform:
+          - { name: x64, rid: win-x64 }
+          - { name: x86, rid: win-x86 }
+          - { name: ARM64, rid: win-arm64 }
     env:
       Solution_Name: EroMangaManager.slnx
 
@@ -98,8 +102,8 @@ jobs:
         run: |
           dotnet build WinApp/WinApp.csproj `
             -c Release `
-            -p:Platform=${{ matrix.platform }} `
-            -p:RuntimeIdentifier=win-${{ matrix.platform }} `
+            -p:Platform=${{ matrix.platform.name }} `
+            -p:RuntimeIdentifier=${{ matrix.platform.rid }} `
             -p:AppxBundle=Never `
             /p:GenerateAppxPackageOnBuild=true `
             /p:PackageCertificateKeyFile=${{ github.workspace }}\signing-cert.pfx `
