@@ -1,7 +1,7 @@
-- [ ] 实现远程控制功能：
-  >  * 内置webapplication：内嵌asp.net core的blazor，unolpatform的web端，远程通过网页即可访问
-  >  * 内嵌httpapi：需要外部搭建客户端（如unoplatform的安卓端）
-  >  * 搭建httpapi获取参数，smb负责输出文件
+- [x] 实现远程控制功能：
+  >  - [ ]  内置webapplication：内嵌asp.net core的blazor，unolpatform的web端，远程通过网页即可访问
+  >  - [x] 内嵌httpapi：需要外部搭建客户端（如unoplatform的安卓端）
+  >  - [ ] 搭建httpapi获取参数，smb负责输出文件
 - [ ] 漫画相等性比较，可以添加相似比较，
 
 - [ ] manga在外部exe进程结束后，将重新加载信息时。若文件较大，加载时间较长如果此时调用删除方法，两方法将发生冲突，会导致UI线程错误。
