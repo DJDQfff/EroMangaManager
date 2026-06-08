@@ -16,6 +16,6 @@
 [submodule "Tools"]
 	path = Tools
 	url = https://github.com/DJDQfff/EroMangaManager.Tools.git
-[submodule "EroMangaManager.UnoLibrary"]
+[submodule "UnoLibrary"]
 	path = UnoLibrary
 	url = https://github.com/DJDQfff/EroMangaManager.UnoLibrary.git
