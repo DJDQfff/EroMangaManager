@@ -134,7 +134,7 @@
   > 改为状态了
 * [ ] 显示单个文件夹改为勾选哪些文件夹显示
 
-* [ ] 把所有异常解析的MangaName收集到一个文件
+* [ ] 把所有异常解析的Name收集到一个文件
 - [x] 对文件夹的初始化使用多线程同时加载
   
   > 因为涉及UI更新，所以无法直接多线程初始化，可以尝试并行任务（还没试过）
@@ -212,9 +212,9 @@
 
 - 设置UWP项目程序集信息语言为zhcn，不再出现pri警告了
 
-- 优化MangaName解析方法，现在大部分都可以正常解析，不能解析的看注释
+- 优化Name解析方法，现在大部分都可以正常解析，不能解析的看注释
 
-- 把SplitAndParse方法返回值改为元祖，第一个为MangaName（可能为null），第二个为tags
+- 把SplitAndParse方法返回值改为元祖，第一个为Name（可能为null），第二个为tags
 
 ### 2023.6.25
 
@@ -274,7 +274,7 @@
 
 - ReaderVM简单细化，但还是需要更多优化
 
-- MangaBook的CoverPath不用数据绑定了，改为直接一次性，
+- MangaBook的CoverUri不用数据绑定了，改为直接一次性，
 
 - ReaderVM实例释放内存还是有问题，简单修改了一下
 
@@ -282,9 +282,9 @@
   
   > 此bug已修复
 
-- 从MangaBook类中移除Cover属性，以后使用CoverPath属性
+- 从MangaBook类中移除Cover属性，以后使用CoverUri属性
 
-- MangaBook初始化时不设置ReadingInof了，MangaName和Tags属性改为由方法获取
+- MangaBook初始化时不设置ReadingInof了，Name和Tags属性改为由方法获取
 
 - 不在ReadingInfo里放文件名自带的tag了（改为需要时，从文件名即时解析），添加一个TagsAddedByUser属性
 
