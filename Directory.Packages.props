@@ -1,0 +1,29 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="CommunityToolkit.Common" Version="8.4.2" />
+    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageVersion Include="CommunityToolkit.WinUI.Controls.RangeSelector" Version="8.2.251219" />
+    <PackageVersion Include="CommunityToolkit.WinUI.Controls.SettingsControls" Version="8.2.251219" />
+    <PackageVersion Include="CommunityToolkit.WinUI.Controls.TokenizingTextBox" Version="8.2.251219" />
+    <PackageVersion Include="Config.Net" Version="5.2.1" />
+    <PackageVersion Include="DJDQfff.BaiduTranslateAPI" Version="1.2.1" />
+    <PackageVersion Include="itext7" Version="9.7.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="10.0.10" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.10" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.10" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.10" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.10" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.10" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.10" />
+    <PackageVersion Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.28000.2270" />
+    <PackageVersion Include="Microsoft.WindowsAppSDK" Version="1.7.250909003" />
+    <PackageVersion Include="Octokit" Version="14.0.0" />
+    <PackageVersion Include="PDFsharp" Version="7.0.0-preview-1" />
+    <PackageVersion Include="SharpCompress" Version="0.50.1" />
+    <PackageVersion Include="SixLabors.ImageSharp" Version="3.1.11" />
+    <PackageVersion Include="System.Drawing.Common" Version="10.0.10" />
+  </ItemGroup>
+</Project>
