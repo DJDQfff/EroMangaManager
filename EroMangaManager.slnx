@@ -6,6 +6,7 @@
   </Configurations>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
     <File Path="global.json" />
     <File Path="README.md" />
@@ -17,7 +18,9 @@
   <Project Path="Database/Database.csproj" />
   <Project Path="Server/Server.csproj" />
   <Project Path="Tools/Tools.csproj" Id="bc8ecdbc-1e2e-4fb3-82fd-505322fde91d" />
-  <Project Path="UnoApp/UnoApp.csproj" />
+  <Project Path="UnoApp/UnoApp.csproj">
+    <Deploy Solution="Debug|x64" />
+  </Project>
   <Project Path="UnoLibrary/UnoLibrary.csproj" />
   <Project Path="WinApp/WinApp.csproj">
     <Platform Solution="*|ARM64" Project="ARM64" />
