@@ -1,0 +1,5 @@
+dotnet publish -f net10.0-android -r android-arm64  -c Release -o ./publish
+指定armv8架构包（64位）
+
+dotnet publish -f net10.0-android -r android-arm  -c Release -o ./publish
+指定armv7a架构包（32位）

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<UserControl
+  x:Class="WinApp.UserControls.MangaOpenButton"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:local="using:WinApp.UserControls"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:uid="using:UnoLibrary.Strings"
+  mc:Ignorable="d"
+>
+  <UserControl.Resources>
+    <Flyout x:Key="a">
+      <!--  SelectedIndex="{x:Bind app:App.Current.AppConfig.AppConfig.MangaOpenWay3.WayIndex, Mode=TwoWay}"  -->
+      <ListBox
+        x:Name="b"
+        Background="Transparent"
+        ItemsSource="{x:Bind viewModel.ExePaths, Mode=OneWay}"
+        SelectedItem="{x:Bind viewModel.DefaultWay, Mode=TwoWay}"
+        SelectionMode="Single"
+      >
+        <ListBox.ItemTemplate>
+          <DataTemplate x:DataType="x:String">
+            <TextBlock Text="{x:Bind Converter={StaticResource shortopenway}}" />
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </Flyout>
+  </UserControl.Resources>
+  <Grid>
+    <DropDownButton
+      x:Name="c"
+      Content="{x:Bind b.SelectedValue, Converter={StaticResource shortopenway}, Mode=OneWay}"
+      Flyout="{StaticResource a}"
+    />
+  </Grid>
+</UserControl>

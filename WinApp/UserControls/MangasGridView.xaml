@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<UserControl
+  x:Class="WinApp.UserControls.MangasGridView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:basic="using:WinApp.UserControls.MangaBasicInfo"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:local="using:WinApp.UserControls"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:models="using:Core.Models"
+  xmlns:uid="using:UnoLibrary.Strings"
+  xmlns:uno="using:UnoLibrary"
+  x:Name="usercontrol"
+  mc:Ignorable="d"
+>
+  <UserControl.Resources>
+    <MenuFlyout x:Key="mangaflyout">
+      <MenuFlyoutSubItem
+        x:Name="openwith"
+        Icon="OpenWith"
+        Loaded="MenuFlyoutItem_Loaded"
+        Text="{uid:Strings Uid=OpenWithExternal}"
+      />
+      <MenuFlyoutItem
+        Command="{x:Bind ViewModel.LocateMangaInFolderCommand}"
+        CommandParameter="{Binding Mode=OneWay}"
+        DataContext="{Binding}"
+        Icon="OpenLocal"
+        Text="{uid:Strings Uid=LocateInExplorer}"
+      />
+      <MenuFlyoutSubItem
+        x:Name="moveto"
+        DataContext="{Binding}"
+        Icon="MoveToFolder"
+        Loaded="Moveto_Loaded"
+        Text="{uid:Strings Uid=MoveToOtherFolder}"
+      />
+      <MenuFlyoutItem
+        Command="{x:Bind ViewModel.OverviewInformationCommand}"
+        CommandParameter="{Binding Mode=OneWay}"
+        DataContext="{Binding}"
+        Icon="View"
+        Text="{uid:Strings Uid=OverviewInformation}"
+      />
+      <MenuFlyoutItem
+        Command="{x:Bind ViewModel.RenameMangaCommand}"
+        CommandParameter="{Binding Mode=OneWay}"
+        DataContext="{Binding}"
+        Icon="Rename"
+        Text="{uid:Strings Uid=RenameFile}"
+      />
+      <MenuFlyoutItem
+        Command="{x:Bind SearchSimilarCommand}"
+        CommandParameter="{Binding Mode=OneWay}"
+        DataContext="{Binding}"
+        Icon="Find"
+        Text="{uid:Strings Uid=SearchSimialr}"
+      />
+      <MenuFlyoutItem
+        Command="{x:Bind ViewModel.ExportAsPDFCommand}"
+        CommandParameter="{Binding Mode=OneWay}"
+        DataContext="{Binding}"
+        Icon="Save"
+        Text="{uid:Strings Uid=ExportToPDF}"
+      />
+      <MenuFlyoutSeparator />
+      <MenuFlyoutItem
+        Command="{x:Bind ViewModel.DeleteCommand}"
+        CommandParameter="{Binding Mode=OneWay}"
+        DataContext="{Binding}"
+        Foreground="Red"
+        Icon="Delete"
+        Text="{uid:Strings Uid=DeleteIt}"
+      />
+    </MenuFlyout>
+
+    <DataTemplate x:Key="Template0" x:DataType="models:Manga">
+      <Grid
+        ContextFlyout="{StaticResource mangaflyout}"
+        DoubleTapped="Grid_DoubleTapped"
+        RowDefinitions="auto,*,auto"
+      >
+        <basic:Cover
+          x:Name="cover"
+          Grid.Row="0"
+          Width="166"
+          Height="192"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          Manga="{x:Bind Mode=OneWay}"
+          ViewModel="{Binding ViewModel, ElementName=usercontrol, Mode=OneWay}"
+        />
+        <basic:Name
+          x:Name="name"
+          Grid.Row="1"
+          Width="150"
+          Margin="1"
+          Padding="2"
+          Manga="{x:Bind Mode=OneWay}"
+          ViewModel="{Binding ViewModel, ElementName=usercontrol, Mode=OneWay}"
+        />
+        <uno:SizeImagesChaptersAmount x:Name="info" Grid.Row="2" Manga="{x:Bind Mode=OneWay}" />
+      </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="Template1" x:DataType="models:Manga">
+      <Grid
+        Width="300"
+        ContextFlyout="{StaticResource mangaflyout}"
+        DoubleTapped="Grid_DoubleTapped"
+        RowDefinitions="auto,*,auto"
+      >
+        <basic:Name
+          x:Name="name"
+          Manga="{x:Bind Mode=OneWay}"
+          ViewModel="{Binding ViewModel, ElementName=usercontrol, Mode=OneWay}"
+        />
+        <Grid Grid.Row="1" ColumnDefinitions="*,*">
+          <basic:Cover
+            x:Name="cover"
+            Grid.Column="0"
+            Manga="{x:Bind Mode=OneWay}"
+            ViewModel="{Binding ViewModel, ElementName=usercontrol, Mode=OneWay}"
+          />
+          <basic:TagsItemRepeater
+            x:Name="tags"
+            Grid.Column="1"
+            Manga="{x:Bind Mode=OneWay}"
+            ViewModel="{Binding ViewModel, ElementName=usercontrol, Mode=OneWay}"
+          />
+        </Grid>
+        <uno:SizeImagesChaptersAmount x:Name="info" Grid.Row="2" Manga="{x:Bind Mode=OneWay}" />
+      </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="Template2" x:DataType="models:Manga">
+      <Grid
+        ColumnDefinitions="*,2*"
+        ContextFlyout="{StaticResource mangaflyout}"
+        DoubleTapped="Grid_DoubleTapped"
+      >
+        <basic:Cover
+          Grid.Column="0"
+          Manga="{x:Bind Mode=OneWay}"
+          ViewModel="{Binding ViewModel, ElementName=usercontrol, Mode=OneWay}"
+        />
+        <Grid Grid.Column="1" RowDefinitions="auto,5*,auto">
+          <basic:Name Manga="{x:Bind Mode=OneWay}" />
+          <TextBlock
+            Text="{x:Bind FolderPath, Mode=OneWay}"
+            TextAlignment="Justify"
+            TextWrapping="Wrap"
+          />
+          <TextBlock Grid.Row="1" Text="{x:Bind FileFullName, Mode=OneWay}" TextWrapping="Wrap" />
+          <uno:SizeImagesChaptersAmount Grid.Row="2" Manga="{x:Bind Mode=OneWay}" />
+        </Grid>
+      </Grid>
+    </DataTemplate>
+  </UserControl.Resources>
+  <GridView
+    x:Name="gridview"
+    IsItemClickEnabled="False"
+    ItemContainerStyle="{ThemeResource GridViewItemRevealStyle}"
+    ItemsSource="{x:Bind ItemsSource, Mode=OneWay}"
+    SelectionMode="Single"
+  />
+</UserControl>

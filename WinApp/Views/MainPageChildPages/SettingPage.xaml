@@ -1,0 +1,47 @@
+﻿<Page
+  x:Class="WinApp.Views.MainPageChildPages.SettingPage"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:settingviews="using:WinApp.Views.SettingPageChildPages"
+  xmlns:uid="using:UnoLibrary.Strings"
+  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+  mc:Ignorable="d"
+>
+  <Grid RowDefinitions="*,auto">
+    <ContentControl
+      x:Name="SettingContainer"
+      HorizontalAlignment="Stretch"
+      VerticalAlignment="Stretch"
+      HorizontalContentAlignment="Stretch"
+      VerticalContentAlignment="Stretch"
+    />
+    <StackPanel
+      x:Name="NavigateButtons"
+      Grid.Row="1"
+      Orientation="Vertical"
+      RelativePanel.AlignBottomWithPanel="True"
+    >
+      <HyperlinkButton
+        Content="浏览器查看商店"
+        NavigateUri="https://www.microsoft.com/store/apps/9N7C8ZDQ1TJ8"
+      />
+
+      <HyperlinkButton
+        Content="{uid:Strings Uid=OpenInMicrosoftStore}"
+        NavigateUri="ms-windows-store://pdp/?ProductId=ID9N7C8ZDQ1TJ8"
+      />
+
+      <HyperlinkButton
+        Content="{uid:Strings Uid=GitHubFeedBack}"
+        NavigateUri="https://github.com/DJDQfff/EroMangaManager/issues"
+      />
+      <HyperlinkButton
+        VerticalAlignment="Center"
+        Content="{uid:Strings Uid=MailFeedbackToDeveloper}"
+        NavigateUri="mailto:djdqfff@qq.com"
+      />
+    </StackPanel>
+  </Grid>
+</Page>

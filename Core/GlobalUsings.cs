@@ -1,0 +1,11 @@
+﻿global using System;
+global using System.Collections.Generic;
+global using System.Collections.ObjectModel;
+global using System.ComponentModel;
+global using System.IO;
+global using System.Linq;
+global using CommonLibrary;
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using Core.Models;
+global using Database.Entities;
+global using SharpCompress.Archives;

@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    },
+    "WinApp (Package)": {
+      "commandName": "MsixPackage",
+      "nativeDebugging": false
+    },
+    "WinApp (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

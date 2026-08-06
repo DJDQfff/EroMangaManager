@@ -1,0 +1,59 @@
+﻿<Page
+  x:Class="WinApp.Views.MainPage"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:local="using:WinApp.Views"
+  xmlns:mainpagechild="using:WinApp.Views.MainPageChildPages"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:uid="using:UnoLibrary.Strings"
+  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+  mc:Ignorable="d"
+>
+  <Page.Resources>
+    <DataTemplate x:Key="datatemplate" x:DataType="local:NavigationItem">
+      <NavigationViewItem Content="{x:Bind UidValue}" DataContext="{x:Bind}" Icon="{x:Bind Icon}" />
+    </DataTemplate>
+  </Page.Resources>
+
+  <NavigationView
+    x:Name="MainNavigationView"
+    VerticalAlignment="Stretch"
+    FlowDirection="LeftToRight"
+    IsBackButtonVisible="Collapsed"
+    IsSettingsVisible="True"
+    ItemInvoked="MainNavigationView_ItemInvoked"
+    MenuItemTemplate="{StaticResource datatemplate}"
+    OpenPaneLength="200"
+    PaneDisplayMode="Auto"
+  >
+    <ContentControl
+      x:Name="PageContainer"
+      HorizontalAlignment="Stretch"
+      VerticalAlignment="Stretch"
+      HorizontalContentAlignment="Stretch"
+      VerticalContentAlignment="Stretch"
+    />
+
+    <d:NavigationView.Header>
+      <!--  进度条，以后优化界面  -->
+      <ProgressBar IsIndeterminate="{x:Bind app:App.Current.GlobalViewModel.IsContentInitializing, Mode=OneWay}" />
+
+      <ProgressBar
+        MinHeight="4"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Center"
+        HorizontalContentAlignment="Stretch"
+        VerticalContentAlignment="Center"
+        IsIndeterminate="False"
+      />
+      <TextBlock
+        Grid.Row="0"
+        HorizontalTextAlignment="Center"
+        Style="{StaticResource HintTextBlockStyle}"
+        Text="{uid:Strings Uid=NowInitializingMaybeError}"
+        Visibility="{x:Bind app:App.Current.GlobalViewModel.IsContentInitializing, Mode=OneWay, Converter={StaticResource controlvisibilityconverter}}"
+      />
+    </d:NavigationView.Header>
+  </NavigationView>
+</Page>

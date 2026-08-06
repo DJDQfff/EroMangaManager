@@ -1,0 +1,172 @@
+﻿<Page
+  x:Class="WinApp.Views.MainPageChildPages.Bookcase"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:complexmanga="using:WinApp.UserControls"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:info="using:WinApp.UserControls.MangaBasicInfo"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:models="using:Core.Models"
+  xmlns:uid="using:UnoLibrary.Strings"
+  xmlns:usercontrols="using:WinApp.UserControls"
+  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+  mc:Ignorable="d"
+>
+  <Grid Background="Transparent" RowDefinitions="auto,*">
+    <TextBlock
+      x:Name="Bookcase_HintTextBlock"
+      Grid.Row="0"
+      Grid.RowSpan="2"
+      HorizontalAlignment="Center"
+      VerticalAlignment="Center"
+      Style="{StaticResource HintTextBlockStyle}"
+      Text="{uid:Strings Uid=NoSelectedFolder}"
+      Visibility="Visible"
+    />
+    <CommandBar
+      x:Name="BookcaseCommandBar"
+      Grid.Row="0"
+      VerticalAlignment="Stretch"
+      VerticalContentAlignment="Center"
+    >
+      <CommandBar.Content>
+        <ComboBox
+          x:Name="combochangefolder"
+          DisplayMemberPath="FolderPath"
+          ItemsSource="{x:Bind ViewModel.MangasGroups, Mode=OneWay}"
+          SelectedItem="{x:Bind settingViewModel.AppConfig.General.DefaultBookcaseFolder, Mode=TwoWay, Converter={StaticResource displayfolder}}"
+          SelectionChanged="Combochangefolder_SelectionChanged"
+        />
+        <!--<TextBlock x:Name="CommandText"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           Text="{x:Bind MangasGroup.ShowString, Mode=OneWay}"
+                           TextAlignment="Center" />-->
+      </CommandBar.Content>
+      <AppBarElementContainer VerticalContentAlignment="Center">
+        <NumberBox
+          x:Name="numberbox"
+          VerticalAlignment="Stretch"
+          HorizontalContentAlignment="Center"
+          VerticalContentAlignment="Center"
+          AcceptsExpression="False"
+          LargeChange="10"
+          Minimum="1"
+          SmallChange="1"
+          SpinButtonPlacementMode="Inline"
+          ValidationMode="InvalidInputOverwritten"
+          ValueChanged="Numberbox_ValueChanged"
+          Value="1"
+        />
+      </AppBarElementContainer>
+      <AppBarElementContainer VerticalAlignment="Center" VerticalContentAlignment="Center">
+        <usercontrols:MangaOpenButton ToolTipService.ToolTip="{uid:Strings Uid=DefaultWay}" />
+      </AppBarElementContainer>
+
+      <!--<AppBarButton
+                AllowFocusOnInteraction="True"
+                Content="Filter"
+                Icon="Filter">
+                <AppBarButton.Flyout>
+                    <Flyout>
+                        <StackPanel Width="220" Spacing="8">
+                            <Button
+                                HorizontalAlignment="Stretch"
+                                Click="ApplyFilter_Click"
+                                Content="应用筛选" />
+                            <Button
+                                HorizontalAlignment="Stretch"
+                                Click="ClearFilter_Click"
+                                Content="清除筛选" />
+
+            -->
+      <!--  章节数筛选  -->
+      <!--
+                            <TextBlock FontWeight="SemiBold" Text="章节数" />
+                            <RadioButtons
+                                x:Name="ChapterTypeRadio"
+                                MaxColumns="3"
+                                SelectedIndex="0">
+                                <RadioButton Content="无限制" Tag="0" />
+                                <RadioButton Content="单章节" Tag="1" />
+                                <RadioButton Content="多章节" Tag="2" />
+                            </RadioButtons>
+
+            -->
+      <!--  文件大小筛选（MB）  -->
+      <!--
+                            <TextBlock FontWeight="SemiBold" Text="文件大小 (MB)" />
+                            <Grid ColumnDefinitions="*,Auto,*">
+                                <TextBox x:Name="FilterSizeMin" PlaceholderText="最小" />
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Margin="4,0"
+                                    VerticalAlignment="Center"
+                                    Text="~" />
+                                <TextBox
+                                    x:Name="FilterSizeMax"
+                                    Grid.Column="2"
+                                    PlaceholderText="最大" />
+                            </Grid>
+
+            -->
+      <!--  类型筛选（多选）  -->
+      <!--
+                            <TextBlock FontWeight="SemiBold" Text="文件类型" />
+                            <StackPanel x:Name="FilterTypePanel" Spacing="2">
+                                <CheckBox Content="文件夹" Tag="" />
+                                <CheckBox Content=".zip" Tag=".zip" />
+                                <CheckBox Content=".7z" Tag=".7z" />
+                                <CheckBox Content=".rar" Tag=".rar" />
+                                <CheckBox Content=".cbz" Tag=".cbz" />
+                                <CheckBox Content=".cbr" Tag=".cbr" />
+                                <CheckBox Content=".cb7" Tag=".cb7" />
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>-->
+
+      <AppBarButton
+        AllowFocusOnInteraction="True"
+        Icon="Switch"
+        Label="{uid:Strings Uid=SwitchViewMode}"
+        Visibility="Visible"
+      >
+        <AppBarButton.Flyout>
+          <MenuFlyout>
+            <MenuFlyoutItem
+              Command="{x:Bind ChangeMangaGridViewDataTemplateCommand}"
+              CommandParameter="0"
+              Text="{uid:Strings Uid=ThumanailViewMode}"
+            />
+            <MenuFlyoutItem
+              Command="{x:Bind ChangeMangaGridViewDataTemplateCommand}"
+              CommandParameter="1"
+              Text="{uid:Strings Uid=TagsViewMode}"
+            />
+          </MenuFlyout>
+        </AppBarButton.Flyout>
+      </AppBarButton>
+      <!--<AppBarButton
+                Click="Order"
+                Icon="Sort"
+                Label="{uid:Strings Uid=ChangeSortMethod}" />-->
+      <!--<AppBarButton
+                x:Name="TranslateButton"
+                x:Load="False"
+                Click="TranslateEachName"
+                Icon="Font"
+                Label="{uid:Strings Uid=Translate}" />-->
+    </CommandBar>
+    <usercontrols:MangasGridView
+      x:Name="Bookcase_GridView"
+      Grid.Row="1"
+      Margin="4"
+      x:FieldModifier="public"
+      ItemTemplateIndex="{x:Bind settingViewModel.AppConfig.General.MangasGridViewDataTemplateKey}"
+    />
+  </Grid>
+</Page>
