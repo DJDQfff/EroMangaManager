@@ -1,0 +1,111 @@
+﻿<Page
+  x:Class="UnoApp.ConnectPage"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+>
+  <Grid Padding="24" VerticalAlignment="Center">
+    <StackPanel Spacing="16">
+      <TextBlock
+        Margin="0,0,0,8"
+        HorizontalAlignment="Center"
+        FontSize="24"
+        FontWeight="Bold"
+        Text="连接到本子管理器"
+      />
+
+      <TextBlock HorizontalAlignment="Center" Foreground="Gray" Text="选择桌面端的 IP 地址" />
+
+      <!--  IP 地址  -->
+      <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="4">
+        <muxc:NumberBox
+          Width="70"
+          FontSize="16"
+          IsEnabled="False"
+          Maximum="255"
+          Minimum="0"
+          SpinButtonPlacementMode="Compact"
+          Value="192"
+        />
+        <TextBlock VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Text="." />
+        <muxc:NumberBox
+          Width="70"
+          FontSize="16"
+          IsEnabled="False"
+          Maximum="255"
+          Minimum="0"
+          SpinButtonPlacementMode="Compact"
+          Value="168"
+        />
+        <TextBlock VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Text="." />
+        <muxc:NumberBox
+          x:Name="nbIP3"
+          Width="70"
+          FontSize="16"
+          Maximum="255"
+          Minimum="0"
+          SmallChange="1"
+          SpinButtonPlacementMode="Compact"
+          Value="1"
+        />
+        <TextBlock VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Text="." />
+        <muxc:NumberBox
+          x:Name="nbIP4"
+          Width="70"
+          FontSize="16"
+          Maximum="255"
+          Minimum="0"
+          SmallChange="1"
+          SpinButtonPlacementMode="Compact"
+          Value="1"
+        />
+      </StackPanel>
+
+      <!--  端口  -->
+      <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="4">
+        <TextBlock
+          Margin="0,0,8,0"
+          VerticalAlignment="Center"
+          FontSize="14"
+          Foreground="Gray"
+          Text="端口"
+        />
+        <muxc:NumberBox
+          x:Name="nbPort"
+          Width="90"
+          FontSize="16"
+          IsEnabled="False"
+          Maximum="65535"
+          Minimum="1"
+          SpinButtonPlacementMode="Compact"
+          Value="12965"
+        />
+      </StackPanel>
+
+      <!--  错误提示  -->
+      <TextBlock
+        x:Name="txtError"
+        HorizontalAlignment="Center"
+        Foreground="Red"
+        TextWrapping="Wrap"
+        Visibility="Collapsed"
+      />
+
+      <!--  连接按钮  -->
+      <Button
+        x:Name="btnConnect"
+        Height="48"
+        HorizontalAlignment="Stretch"
+        Background="#0078D4"
+        Click="BtnConnect_Click"
+        Content="连接"
+        CornerRadius="8"
+        FontSize="16"
+        Foreground="White"
+      />
+
+      <ProgressBar x:Name="progressBar" HorizontalAlignment="Center" Visibility="Collapsed" />
+    </StackPanel>
+  </Grid>
+</Page>
