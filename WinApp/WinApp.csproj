@@ -108,6 +108,9 @@
     <ProjectReference Include="..\UnoLibrary\UnoLibrary.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Page Update="MainWindow.xaml">
+      <IsDefaultItem>true</IsDefaultItem>
+    </Page>
     <Page Update="ResourceDictionarys\DefaultControlStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -131,13 +134,28 @@
       <IsDefaultItem>true</IsDefaultItem>
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UserControls\QATextBlock.xaml">
+      <IsDefaultItem>true</IsDefaultItem>
+    </Page>
+    <Page Update="UserControls\SizeImagesChaptersAmount.xaml">
+      <IsDefaultItem>true</IsDefaultItem>
+    </Page>
     <Page Update="UserControls\TagListOrder.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="ValueConverters.xaml">
+      <IsDefaultItem>true</IsDefaultItem>
+    </Page>
+    <Page Update="Views\ContentDialogPages\ConfirmDeleteMangaFile.xaml">
+      <IsDefaultItem>true</IsDefaultItem>
+    </Page>
     <Page Update="Views\ContentDialogPages\OverviewInformation.xaml">
       <IsDefaultItem>true</IsDefaultItem>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ContentDialogPages\TagCategorySelect.xaml">
+      <IsDefaultItem>true</IsDefaultItem>
     </Page>
     <Page Update="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -162,6 +180,12 @@
     </Page>
     <Page Update="Views\MainPageChildPages\TagsManagePage.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\MainPageChildPages\UpdateRecordsPage.xaml">
+      <IsDefaultItem>true</IsDefaultItem>
+    </Page>
+    <Page Update="Views\MainPageChildPages\UsageDocumentPage.xaml">
+      <IsDefaultItem>true</IsDefaultItem>
     </Page>
     <Page Update="Views\SettingPageChildPages\CommonSettingPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -311,6 +335,10 @@
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="MainWindow.xaml.cs">
+      <IsDefaultItem>true</IsDefaultItem>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
     <Compile Update="UserControls\ManageMangaOpenWay3Setting.xaml.cs">
       <IsDefaultItem>true</IsDefaultItem>
       <DependentUpon>%(Filename)</DependentUpon>
@@ -319,7 +347,31 @@
       <IsDefaultItem>true</IsDefaultItem>
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
+    <Compile Update="UserControls\QATextBlock.xaml.cs">
+      <IsDefaultItem>true</IsDefaultItem>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\SizeImagesChaptersAmount.xaml.cs">
+      <IsDefaultItem>true</IsDefaultItem>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ContentDialogPages\ConfirmDeleteMangaFile.xaml.cs">
+      <IsDefaultItem>true</IsDefaultItem>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
     <Compile Update="Views\ContentDialogPages\OverviewInformation.xaml.cs">
+      <IsDefaultItem>true</IsDefaultItem>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ContentDialogPages\TagCategorySelect.xaml.cs">
+      <IsDefaultItem>true</IsDefaultItem>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MainPageChildPages\UpdateRecordsPage.xaml.cs">
+      <IsDefaultItem>true</IsDefaultItem>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MainPageChildPages\UsageDocumentPage.xaml.cs">
       <IsDefaultItem>true</IsDefaultItem>
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>

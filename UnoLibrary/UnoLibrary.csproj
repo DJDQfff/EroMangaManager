@@ -1,4 +1,4 @@
-<Project Sdk="Uno.Sdk">
+﻿<Project Sdk="Uno.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net10.0;net10.0-ios;net10.0-android;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop</TargetFrameworks>
     <UnoSingleProject>true</UnoSingleProject>
@@ -14,9 +14,7 @@
 		SkiaRenderer;Mvvm;Toolkit;
 	</UnoFeatures>
   </PropertyGroup>
-  <ItemGroup
-    Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'"
-  >
+  <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
     <!--
     If you encounter this error message:
 
@@ -88,5 +86,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ContentDialogs\" />
+    <Folder Include="Pages\" />
+    <Folder Include="Services\" />
+    <Folder Include="UserControls\" />
   </ItemGroup>
 </Project>
