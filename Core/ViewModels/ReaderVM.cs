@@ -1,5 +1,4 @@
-﻿using Core.Services;
-
+﻿
 namespace Core.ViewModels;
 
 /// <summary>
@@ -119,22 +118,48 @@ public class ReaderVM : IDisposable
     }
 
     /// <summary> 从压缩文件的所有entry中，筛选出符合条件的，传入null则为不进行筛选 </summary>
-    public void SelectEntries(FilteredImage[] filteredImages)
-    {
-        List<string> entrykeys = ZipArchive.SortEntriesByName();
+    //public void SelectEntries(FilteredImage[] filteredImages)
+    //{
+    //    List<string> entrykeys = SortEntriesByName(ZipArchive);
 
-        foreach (string entrykey in entrykeys)
-        {
-            IArchiveEntry TempEntry = ZipArchive.Entries.Single(n => n.Key == entrykey);
-            bool cansue = TempEntry.EntryFilter(filteredImages); // 放在这里可以
+    //    foreach (string entrykey in entrykeys)
+    //    {
+    //        IArchiveEntry TempEntry = ZipArchive.Entries.Single(n => n.Key == entrykey);
+    //        bool cansue = true;// TODO　懒得弄筛选功能 TempEntry.EntryFilter(filteredImages); // 放在这里可以
 
-            if (cansue)
-            {
-                IArchiveEntry entry = ZipArchive.Entries.Single(n => n.Key == entrykey);
-                FilteredArchiveImageEntries.Add(entry); // 异步操作不能放在这里，会占用线程
-            }
-        }
-    }
+    //        if (cansue)
+    //        {
+    //            IArchiveEntry entry = ZipArchive.Entries.Single(n => n.Key == entrykey);
+    //            FilteredArchiveImageEntries.Add(entry); // 异步操作不能放在这里，会占用线程
+    //        }
+    //    }
+
+    // static List<string> SortEntriesByName (
+    //     IArchive zipArchive ,
+    //    Action<IEnumerable<string>>? sortFunc = null
+    //)
+    //{
+    //    List<string> vs = [];
+
+    //    foreach (var zipEntry in zipArchive.Entries)
+    //    {
+    //        var entryName = zipEntry.Key;
+    //        vs.Add(entryName!);
+    //    }
+
+    //    if (sortFunc != null)
+    //    {
+    //        sortFunc(vs);
+    //    }
+    //    else
+    //    {
+    //        vs.Sort();
+    //    }
+
+    //    return vs;
+    //}
+
+    //}
 
     /// <summary> </summary>
     public void Dispose()

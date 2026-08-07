@@ -7,5 +7,4 @@ global using System.Linq;
 global using CommonLibrary;
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using Core.Models;
-global using Database.Entities;
 global using SharpCompress.Archives;

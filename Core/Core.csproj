@@ -3,7 +3,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <Configurations>Debug;Release;Debug_TestFolder</Configurations>
+    <Configurations>Debug;Release</Configurations>
     <PackageId>Core</PackageId>
     <Version>1.0.0</Version>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -20,6 +20,5 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MyLibrary\CommonLibrary\CommonLibrary.csproj" />
-    <ProjectReference Include="..\Database\Database.csproj" />
   </ItemGroup>
 </Project>

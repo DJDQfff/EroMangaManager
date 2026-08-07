@@ -7,14 +7,14 @@ namespace UnoLibrary.Services;
 /// <summary>
 /// 压缩文件帮助类
 /// </summary>
-public class ZipEntryHelper
+public  class ZipEntryHelper
 {
     /// <summary>
     /// 获取bitmapimage
     /// </summary>
     /// <param name="entry"></param>
     /// <returns></returns>
-    public async Task<BitmapImage> ToBitmapImage(IArchiveEntry entry)
+    public  async Task<BitmapImage> ToBitmapImage(IArchiveEntry entry)
     {
         // TODO 内部可以优化，试试不复制内存流直接读取
         BitmapImage bitmapImage = new();
@@ -46,4 +46,5 @@ public class ZipEntryHelper
 
         return bitmapImage;
     }
+
 }

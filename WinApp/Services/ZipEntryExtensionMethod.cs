@@ -5,38 +5,8 @@ namespace Core.Services;
 /// <summary>
 ///
 /// </summary>
-public static class ZipEntryHelper
+public static class ZipEntryExtensionMethod
 {
-    /// <summary>
-    /// 排序zipentry
-    /// </summary>
-    /// <param name="zipArchive"></param>
-    /// <param name="sortFunc"></param>
-    /// <returns></returns>
-    public static List<string> SortEntriesByName(
-        this IArchive zipArchive,
-        Action<IEnumerable<string>>? sortFunc = null
-    )
-    {
-        List<string> vs = [];
-
-        foreach (var zipEntry in zipArchive.Entries)
-        {
-            var entryName = zipEntry.Key;
-            vs.Add(entryName!);
-        }
-
-        if (sortFunc != null)
-        {
-            sortFunc(vs);
-        }
-        else
-        {
-            vs.Sort();
-        }
-
-        return vs;
-    }
 
     /// <summary>
     /// 筛选zipentry，如果filteredImages为null，则不进行比较
@@ -44,7 +14,7 @@ public static class ZipEntryHelper
     /// <param name="entry"></param>
     /// <param name="filteredImages">要进行比较的数据，如果为null，则不进行数据比较</param>
     /// <returns></returns>
-    public static bool EntryFilter(this IArchiveEntry entry, FilteredImage[]? filteredImages)
+    public static bool EntryFilter (this IArchiveEntry entry , FilteredImage[]? filteredImages)
     {
         bool canuse = true;
 
@@ -83,4 +53,5 @@ public static class ZipEntryHelper
 
         return canuse; // 最后一定符合调教
     }
+
 }

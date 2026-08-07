@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
-    <Configurations>Debug;Release;Debug_TestFolder</Configurations>
+    <Configurations>Debug;Release</Configurations>
     <RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
     <PackageId>EroMangaManager.Database</PackageId>
     <Version>1.0.0</Version>
