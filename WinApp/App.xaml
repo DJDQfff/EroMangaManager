@@ -11,7 +11,7 @@
                 <ResourceDictionary Source="ResourceDictionarys/DefaultControlStyle.xaml" />
                 <ResourceDictionary Source="ResourceDictionarys/FunctionShowerControl.xaml" />
                 <ResourceDictionary Source="ResourceDictionarys/NamedControlStyle.xaml" />
-                <ResourceDictionary Source="ms-appx:///UnoLibrary/ValueConverters.xaml" />
+                <ResourceDictionary Source="ValueConverters.xaml" />
                 <ResourceDictionary Source="ResourceDictionarys/ValueConverters.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <!--  Other app resources here  -->

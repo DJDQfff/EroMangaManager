@@ -105,7 +105,6 @@
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\Database\Database.csproj" />
     <ProjectReference Include="..\Server\Server.csproj" />
-    <ProjectReference Include="..\UnoLibrary\UnoLibrary.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -375,5 +374,15 @@
       <IsDefaultItem>true</IsDefaultItem>
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Update="Strings\Resources.language-en.resw">
+      <IsDefaultItem>true</IsDefaultItem>
+    </PRIResource>
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Update="Strings\Resources.language-zh-CN.resw">
+      <IsDefaultItem>true</IsDefaultItem>
+    </PRIResource>
   </ItemGroup>
 </Project>

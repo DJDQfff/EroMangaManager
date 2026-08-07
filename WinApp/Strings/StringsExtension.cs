@@ -16,7 +16,9 @@ public partial class StringsExtension : MarkupExtension
     static StringsExtension()
     {
         //弄成静态，免得外部频繁改
-        ResourceLoader = ResourceLoader.GetForViewIndependentUse("/UnoLibrary/Resources");
+        ResourceLoader = ResourceLoader.GetForViewIndependentUse();
+
+        //ResourceLoader = ResourceLoader.GetForViewIndependentUse("/UnoLibrary/Resources");
     }
 
     ///<summary> </summary>

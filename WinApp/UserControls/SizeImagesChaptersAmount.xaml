@@ -8,13 +8,6 @@
   xmlns:uid="using:UnoLibrary.Strings"
   mc:Ignorable="d"
 >
-  <UserControl.Resources>
-    <ResourceDictionary>
-      <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="ms-appx:///UnoLibrary/ValueConverters.xaml" />
-      </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
-  </UserControl.Resources>
   <StackPanel Orientation="Horizontal" Spacing="4">
     <!--  文件大小  -->
     <TextBlock Text="{x:Bind Manga.FileSize, Mode=OneWay, Converter={StaticResource size2}}" />
