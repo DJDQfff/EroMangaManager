@@ -1,7 +1,7 @@
 ﻿global using static System.Console;
 using Tools;
 
-var version = "2026.7.29";
+var version = "2026.8.7";
 var slnfolder = "E:\\Projects\\EroMangaManager";
 
 GitHubReleasePublisher publisher = new("DJDQfff", "EroMangaManager");
