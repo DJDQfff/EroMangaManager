@@ -1,6 +1,8 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804
 // 上介绍了“空白页”项模板
 
+using WinApp.Strings;
+
 namespace WinApp.Views;
 
 internal record NavigationItem(Type Page, StringsEnum Uid, SymbolIcon Icon)

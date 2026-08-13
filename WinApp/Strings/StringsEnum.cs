@@ -1,4 +1,4 @@
-﻿namespace UnoLibrary.Strings;
+﻿namespace WinApp.Strings;
 
 ///<summary> </summary>
 public enum StringsEnum

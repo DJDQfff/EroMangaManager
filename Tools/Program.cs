@@ -4,7 +4,6 @@ using Tools;
 var version = "2026.8.10";
 var Slnx = "E:\\Projects\\EroMangaManager";
 var remoteSlnx= "E:\\Projects\\EroMangaManagerRemote";
-goto PackageApks;
 // 1. 仅执行 MSIX 打包
 MsixPackager msixPackager = new (version , Slnx);
 msixPackager.CleanThenRestoreSlnx();
@@ -19,7 +18,6 @@ GitHubReleasePublisher publisher = new("DJDQfff" , "EroMangaManager");
 
 await publisher.PublishAsync(version , msixPackager.Files);
 
-PackageApks:
 // 2. 仅执行 APK 打包
 ApkPackager apkPackager = new(version , remoteSlnx);
 apkPackager.CleanThenRestoreSlnx();

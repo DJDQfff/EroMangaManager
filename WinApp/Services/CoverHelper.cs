@@ -1,10 +1,12 @@
-﻿using Core.Services;
-using Database.Entities;
+﻿using Database.Entities;
+
 using Microsoft.UI.Xaml.Media.Imaging;
+
 using SharpCompress.Archives;
+
 using static Core.Setting.FolderEnum;
 
-namespace UnoLibrary.Services;
+namespace WinApp.Services;
 
 /// <summary>
 /// 封面帮助类

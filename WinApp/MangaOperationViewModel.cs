@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+
 using Microsoft.Windows.AppNotifications.Builder;
 
 namespace WinApp;

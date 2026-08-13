@@ -1,7 +1,7 @@
 ﻿using DJDQfff.BaiduTranslateAPI;
 using DJDQfff.BaiduTranslateAPI.Models.ResponseJSON;
 
-namespace UnoLibrary.Services;
+namespace WinApp.Services;
 
 /// <summary>
 /// 翻译器

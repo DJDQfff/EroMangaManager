@@ -1,3 +1,3 @@
-﻿namespace UnoLibrary.Services;
+﻿namespace WinApp.Services;
 
 public class MainPageNavigator { }

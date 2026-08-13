@@ -117,7 +117,7 @@ public class ReaderVM : IDisposable
         }
     }
 
-    /// <summary> 从压缩文件的所有entry中，筛选出符合条件的，传入null则为不进行筛选 </summary>
+    // <summary> 从压缩文件的所有entry中，筛选出符合条件的，传入null则为不进行筛选 </summary>
     //public void SelectEntries(FilteredImage[] filteredImages)
     //{
     //    List<string> entrykeys = SortEntriesByName(ZipArchive);

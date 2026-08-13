@@ -1,8 +1,10 @@
 ﻿using Microsoft.UI.Xaml.Media.Imaging;
+
 using SharpCompress.Archives;
+
 using SixLabors.ImageSharp;
 
-namespace UnoLibrary.Services;
+namespace WinApp.Services;
 
 /// <summary>
 /// 压缩文件帮助类

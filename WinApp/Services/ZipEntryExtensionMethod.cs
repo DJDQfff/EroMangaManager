@@ -1,6 +1,6 @@
 ﻿using Core.Setting;
 
-namespace Core.Services;
+namespace WinApp.Services;
 
 /// <summary>
 ///

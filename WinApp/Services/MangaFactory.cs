@@ -1,7 +1,8 @@
 ﻿using System.Diagnostics;
+
 using Core.Services;
 
-namespace UnoLibrary.Services;
+namespace WinApp.Services;
 
 /// <summary>
 /// 基于该平台的实例创建方法

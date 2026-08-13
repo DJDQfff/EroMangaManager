@@ -30,7 +30,7 @@ public partial class App : Application
 
         //无其他依赖项
         services.AddTransient<ClipboardHelper>();
-        services.AddSingleton<UnoLibrary.Services.ZipEntryHelper>();
+        services.AddSingleton<ZipEntryHelper>();
         services.AddTransient<MangaStreamProvider>();
         services.AddSingleton<Exporter>();
         services.AddSingleton<MangaFileIO>();
