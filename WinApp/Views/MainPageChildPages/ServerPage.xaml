@@ -72,7 +72,7 @@
                 <HyperlinkButton
                     Grid.Row="3"
                     Content="Android APP Download"
-                    NavigateUri="https://github.com/DJDQfff/EroMangaManager/releases/latest" />
+                    NavigateUri="https://github.com/DJDQfff/EroMangaManagerRemote/releases/latest" />
 
                 <TextBlock
                     x:Name="txtError"

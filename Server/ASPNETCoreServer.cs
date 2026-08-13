@@ -283,9 +283,8 @@ public class ASPNETCoreServer(ObservableCollectionVM collectionVM)
         //);
         #endregion
         //app.MapGet("/covers/all", () => Results.Ok(viewmodel.MangaList.Select(x => x.CoverUri)));
-
         app.MapGet(
-            "/covers/{guid}",
+            "/covers/file/{guid}",
             async (string guid, HttpContext httpContext) =>
             {
                 var file = collectionVM.MangaList.Single(x => x.Guid == guid);
@@ -296,7 +295,17 @@ public class ASPNETCoreServer(ObservableCollectionVM collectionVM)
                 return File.Exists(cover) ? Results.File(cover) : Results.NotFound();
             }
         );
-
+        app.MapGet("/covers/base64/{guid}" , async (string guid) =>
+        {
+            var file = collectionVM.MangaList.Single(x => x.Guid == guid);
+            await CallCoverSetterSingleWork.Invoke(file);
+            var cover = file?.CoverUri;
+            if (cover is null || !File.Exists(cover))
+                return Results.NotFound();
+            var bytes = await File.ReadAllBytesAsync(cover);
+            // 直接返回 byte[]，让 ASP.NET Core 自动处理 Base64 序列化
+            return Results.Ok(bytes);
+        });
         app.MapDelete(
             "/mangas/{guid}",
             async (string guid) =>

@@ -54,7 +54,7 @@ public class DotnetMakePackages
         makeappx = Directory.GetFiles(packtoolfolder).Single(x => x.EndsWith("makeappx.exe"));
         signtool = Directory.GetFiles(packtoolfolder).Single(x => x.EndsWith("signtool.exe"));
 
-        publishversionfolder = Path.Combine(slnFolder, "publish", version);
+        publishversionfolder = Path.Combine(rootPath , "publish", version);
         Directory.CreateDirectory(publishversionfolder);
         Files.Add(Path.Combine(rootPath, "DJDQfff_certificate.cer"));
     }
