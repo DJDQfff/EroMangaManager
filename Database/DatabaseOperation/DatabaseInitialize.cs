@@ -50,12 +50,12 @@ public partial class DatabaseController
     public string LoadCategoryFromAssembly(string enbededResourceFileName)
     {
         var assembly = typeof(DatabaseController).Assembly;
-        var assemblyName = assembly.GetName().Name; // "EroMangaDatabase" 或其他实际项目名
+        var assemblyName = assembly.GetName().Name; // "Database" 或其他实际项目名
         var zip = assembly.GetManifestResourceStream(
             $"{assemblyName}.{enbededResourceFileName}.7z"
         );
         ReaderOptions readerOptions = new() { Password = "F9429775-6EAB-48FC-9F8A-4E079F90AF3F" };
-        var stream = new MemoryStream();
+        MemoryStream stream = new ();
         zip!.Position = 0;
         var archive = ArchiveFactory.OpenArchive(zip, readerOptions);
 

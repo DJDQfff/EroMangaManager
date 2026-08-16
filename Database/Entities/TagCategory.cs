@@ -15,7 +15,7 @@ namespace Database.Entities
     {
         private string name = string.Empty;
 
-        private ObservableCollection<string> tags = [];
+        private ObservableCollection<string>? tags;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 

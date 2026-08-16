@@ -36,7 +36,7 @@ public partial class SameMangaSearchViewModel
     [ObservableProperty]
     public partial bool IsWorking { get; set; } = false;
 
-    private static bool FiltKeystring(string? str) => string.IsNullOrWhiteSpace(str);
+    private static bool FiltKeystring(string? str) => !string.IsNullOrWhiteSpace(str);
 
     /// <summary>
     ///
@@ -103,7 +103,7 @@ public partial class SameMangaSearchViewModel
                     Action = x =>
                         x.Name /*.ToCharArray();//*/
                         .Split(sperators),
-                    Sources = mangas,
+                    Sources = _mangas,
                     MinItemLength = 1,
                 };
                 stringCollection.Run2();
@@ -196,22 +196,20 @@ public partial class SameMangaSearchViewModel
     public async Task Method1()
     {
         RepeatPairs.Clear();
-        Func<Manga, string> func = default!;
 
-        var dic = StringArrayCollection
-            .Run(
-                Source,
-                x => Get_OutsideContent(x.FileDisplayName).SelectMany(x => x.Split(sperators))
-            )
+        var dic=Source
+            .SelectMany(x => Get_OutsideContent(x.FileDisplayName)
+            .SelectMany(x => x.Split(sperators)))
+            .CountBy(x => x)
             .Where(x => x.Value > 1)
             .Where(x => !int.TryParse(x.Key, out _))
             .Where(x => !char.TryParse(x.Key, out _))
             .ToDictionary();
-        func = x =>
-            Get_OutsideContent(x.FileDisplayName)
-                .SelectMany(x => x.Split(sperators))
-                .First(y => dic.ContainsKey(y));
-        await ByEachKey(Source, func, x => !string.IsNullOrWhiteSpace(x.Key));
+        string? func (Manga x) =>
+           Get_OutsideContent(x.FileDisplayName)
+               .SelectMany(x => x.Split(sperators))
+               .FirstOrDefault(y => dic.ContainsKey(y));
+        await ByEachKey(Source,  func , x => !string.IsNullOrWhiteSpace(x.Key), x => string.IsNullOrWhiteSpace(x.Name));
     }
 
     /// <summary>

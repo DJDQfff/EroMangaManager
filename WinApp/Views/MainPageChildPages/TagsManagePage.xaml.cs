@@ -36,7 +36,7 @@ public sealed partial class TagsManagePage : Page
 
     private async void Button_Click(object sender, RoutedEventArgs e)
     {
-        _ = await ViewModel.AddCategory(NewCategoryTextBox.Text);
+        _ = await ViewModel.AddCategory(NewCategoryTextBox.Text,null);
     }
 
     private void Category_ListVIew_ItemClick(object sender, ItemClickEventArgs e)
@@ -55,9 +55,8 @@ public sealed partial class TagsManagePage : Page
             var a = App
                 .Services.GetRequiredService<DatabaseController>()
                 .LoadCategoryFromAssembly(text);
-
-            var b = await ViewModel.AddCategory(item.Text);
-            b?.Keywords = a;
+            var tags=a.Split('\r');
+            _ = await ViewModel.AddCategory(item.Text,tags);
         }
     }
 
@@ -137,4 +136,6 @@ public sealed partial class TagsManagePage : Page
             }
         }
     }
+
+
 }

@@ -67,12 +67,12 @@ public partial class ManageTagsViewModel2
     /// </summary>
     /// <param name="category"></param>
     /// <returns></returns>
-    public async Task<TagCategory?> AddCategory(string category)
+    public async Task<TagCategory?> AddCategory(string category,string[]? words)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(category); // ✅ 快速失败，带明确消息
         if (CategoryTags.FirstOrDefault(x => x.CategoryName == category) is null)
         {
-            var tagCategory = await databaseController.TagCategory_AddCategorySingle(category);
+            var tagCategory = await databaseController.TagCategory_AddCategorySingle(category,words);
 
             CategoryTags.Add(tagCategory);
 

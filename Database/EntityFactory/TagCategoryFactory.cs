@@ -14,11 +14,11 @@ namespace Database.EntityFactory
         /// <param name="categoryname"></param>
         /// <param name="keywords"></param>
         /// <returns></returns>
-        public static TagCategory Creat(string categoryname, IEnumerable<string> keywords)
+        public static TagCategory Creat(string categoryname, IEnumerable<string>? keywords)
         {
             string keywordstring = keywords switch
             {
-                not null => string.Join(Environment.NewLine, keywords),
+                not null => string.Join('\r', keywords),
                 _ => string.Empty,
             };
             TagCategory tagKeywords = new()

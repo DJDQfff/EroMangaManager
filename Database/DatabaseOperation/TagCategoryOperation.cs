@@ -69,7 +69,7 @@ public partial class DatabaseController
     /// <returns></returns>
     public async Task<TagCategory> TagCategory_AddCategorySingle(
         string tagname,
-        params string[] keywords
+        params string[]? keywords
     )
     {
         using var database = contextFactory.CreateDbContext();
