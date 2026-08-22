@@ -10,7 +10,7 @@
 >
   <StackPanel Orientation="Horizontal" Spacing="4">
     <!--  文件大小  -->
-    <TextBlock Text="{x:Bind Manga.FileSize, Mode=OneWay, Converter={StaticResource size2}}" />
+    <TextBlock Text="{x:Bind Manga.FileSizeString, Mode=OneWay}" />
     <!--  章节数量  -->
     <TextBlock>
       <Run Text="{x:Bind Manga.Chapters.Count, Mode=OneWay}" />

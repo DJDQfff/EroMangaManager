@@ -100,7 +100,13 @@ public partial class Manga : ObservableObject /*,IMangaView*/
     /// 获取漫画文件大小。单位：字节
     /// </summary>
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(FileSizeString))]
     public partial long FileSize { get; set; } = 0;
+
+    /// <summary>
+    /// 用于UI显示的文件大小字符串
+    /// </summary>
+    public string FileSizeString => FileSizeHelper.FormatFileSizeBinary(FileSize);
 
     /// <summary> 漫画文件所在文件夹路径 </summary>
     [ObservableProperty]
