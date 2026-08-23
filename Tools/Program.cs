@@ -1,7 +1,7 @@
 ﻿global using static System.Console;
 using Tools;
 
-var version = "2026.8.13";
+var version = "2026.8.23";
 var Slnx = "E:\\Projects\\EroMangaManager";
 var remoteSlnx= "E:\\Projects\\EroMangaManagerRemote";
 
