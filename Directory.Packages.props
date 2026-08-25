@@ -11,9 +11,12 @@
       Include="CommunityToolkit.WinUI.Controls.TokenizingTextBox"
       Version="8.2.251219"
     />
-    <PackageVersion Include="Config.Net" Version="5.2.1" />
+	  <PackageVersion Include="CommunityToolkit.WinUI.Controls.Primitives" Version="8.2.251219" />
+
+	  <PackageVersion Include="Config.Net" Version="5.2.1" />
     <PackageVersion Include="DJDQfff.BaiduTranslateAPI" Version="1.2.1" />
     <PackageVersion Include="itext7" Version="9.7.0" />
+	  
     <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="10.0.10" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.10" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.10" />

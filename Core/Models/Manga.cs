@@ -61,19 +61,21 @@ public partial class Manga : ObservableObject /*,IMangaView*/
             Type = Path.GetExtension(value).ToLower();
         }
 
-        Name = string.Join(' ', BracketBasedStringParser.Get_OutsideContent(FileDisplayName));
+        Name = string.Join(' ' , BracketBasedStringParser.Get_OutsideContent(FileDisplayName));
         Tags = BracketBasedStringParser
             .Get_InsideContent(FileDisplayName)
-            .SelectMany(x => x.Split('&', '、'))
+            .SelectMany(x => x.Split('&' , '、'))
             .Distinct()
             .ToArray();
 
         var dir = Path.GetDirectoryName(FilePath);
-        if (dir is null)
+        if (dir is not null)
+        {
+            FolderPath = dir; // ✅ 编译器通过流分析知道此处 dir 非空，无警告FolderPath = Path.GetDirectoryName(FilePath);
+            FileFullName = Path.GetFileName(FilePath);
+        }
+        else
             throw new InvalidOperationException($"无法从文件路径提取目录名: '{FilePath}'");
-
-        FolderPath = dir; // ✅ 编译器通过流分析知道此处 dir 非空，无警告FolderPath = Path.GetDirectoryName(FilePath);
-        FileFullName = Path.GetFileName(FilePath);
     }
 
     /// <summary> 漫画翻译后的名称 </summary>
