@@ -32,7 +32,6 @@ namespace Core.ViewModels
             DefaultWay = AppConfig.MangaOpenWay3.DefaultWay;
         }
 
-        // TODO 这里疑似有bug。
         // 一开始，winui项目在两个不同的控件直接引用源defalutway（双向绑定），结果两个ui绑定的结果不一致，不能同步。
         // ini文件出现多行defaultway值
         // 然后，在这个viewmodel里面套一层defalutway，那两个控件双向绑定到这个而不是直接到源，ui结果现在保持一致。

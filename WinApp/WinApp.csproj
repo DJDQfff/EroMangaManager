@@ -105,6 +105,7 @@
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\Database\Database.csproj" />
     <ProjectReference Include="..\Server\Server.csproj" />
+    <ProjectReference Include="..\UnoLibrary\UnoLibrary.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">

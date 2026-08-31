@@ -42,7 +42,7 @@ public partial class MangasGroup : ObservableObject
     /// <summary>
     /// 不当文件夹用，所以不指定文件夹路径
     /// </summary>
-    public MangasGroup() { }
+    public MangasGroup () { }
 
     /// <summary>
     ///
@@ -54,7 +54,7 @@ public partial class MangasGroup : ObservableObject
     /// </summary>
     /// <param name="storageFolderPath"></param>
     [SetsRequiredMembers]
-    public MangasGroup(string storageFolderPath)
+    public MangasGroup (string storageFolderPath)
     {
         FolderPath = storageFolderPath;
     }
@@ -67,7 +67,7 @@ public partial class MangasGroup : ObservableObject
     /// <param name="filesize"></param>
     /// <exception cref="NotImplementedException"></exception>
     [Obsolete("未完成")]
-    public void Filter(string name, int chapteramount, long filesize)
+    public void Filter (string name , int chapteramount , long filesize)
     {
         var query = Mangas.AsEnumerable();
 
@@ -76,7 +76,7 @@ public partial class MangasGroup : ObservableObject
 
         if (chapteramount != 0)
         {
-            Func<Manga, bool> amount = chapteramount switch
+            Func<Manga , bool> amount = chapteramount switch
             {
                 0 => manga => true, //无章节数限制
                 1 => manga => manga.Chapters.Count == 1, //单章节
@@ -100,12 +100,12 @@ public partial class MangasGroup : ObservableObject
     /// </summary>
     /// <param name="startindex"></param>
     /// <param name="count"></param>
-    public void Display(int startindex, int count)
+    public void Display (int startindex , int count)
     {
         // 限定范围
-        startindex = Math.Max(0, startindex); // 保证非负
-        startindex = Math.Min(startindex, Mangas.Count); // 保证不超过集合长度
-        int end = Math.Min(startindex + count, Mangas.Count); // 保证 end不越界
+        startindex = Math.Max(0 , startindex); // 保证非负
+        startindex = Math.Min(startindex , Mangas.Count); // 保证不超过集合长度
+        int end = Math.Min(startindex + count , Mangas.Count); // 保证 end不越界
 
         DisplayMangas.Clear();
         var mangas = Mangas[startindex..end];
@@ -118,10 +118,10 @@ public partial class MangasGroup : ObservableObject
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
     /// <param name="func"></param>
-    public void SortMangas<TKey>(Func<Manga, TKey> func)
+    public void SortMangas<TKey> (Func<Manga , TKey> func)
     {
         // TODO 这里没调用func
-        Mangas.Sort((x, y) => x.FileSize.CompareTo(y.FileSize)); // 升序
+        Mangas.Sort((x , y) => x.FileSize.CompareTo(y.FileSize)); // 升序
         // 这是以前对observablecollection设计的：
         // var list = Mangas.OrderByDescending(func).ToList();
         //OrderBy方法不会修改源数据，返回的值是与源挂钩的，源清零，返回值也清零
@@ -142,7 +142,7 @@ public partial class MangasGroup : ObservableObject
     /// </summary>
     /// <param name="mangas"></param>
     /// <returns></returns>
-    public int AddManga(params IList<Manga> mangas)
+    public int AddManga (params IList<Manga> mangas)
     {
         Mangas.AddRange(mangas);
         Count = Mangas.Count;
@@ -153,20 +153,11 @@ public partial class MangasGroup : ObservableObject
     /// 移除一个本子
     /// </summary>
     /// <param name="mangaBook"></param>
-    public bool RemoveManga(Manga mangaBook)
+    public bool RemoveManga (Manga mangaBook)
     {
-        // TODO ，看看调用层次是否需要返回值
-        var a = Mangas.Remove(mangaBook);
-        var b = DisplayMangas.Remove(mangaBook);
+        _ = DisplayMangas.Remove(mangaBook);
         Count = Mangas.Count;
 
-        if (a == b)
-        {
-            return a;
-        }
-        else
-        {
-            return !a;
-        }
+        return Mangas.Remove(mangaBook);
     }
 }

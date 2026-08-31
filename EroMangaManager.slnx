@@ -22,6 +22,7 @@
   <Project Path="UnoApp/UnoApp.csproj">
     <Deploy Solution="Debug|x64" />
   </Project>
+  <Project Path="UnoLibrary/UnoLibrary.csproj" />
   <Project Path="WinApp/WinApp.csproj">
     <Platform Solution="*|ARM64" Project="ARM64" />
     <Platform Solution="*|x64" Project="x64" />
