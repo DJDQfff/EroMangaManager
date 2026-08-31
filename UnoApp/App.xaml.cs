@@ -20,12 +20,11 @@ public partial class App : Application
         services.AddSingleton<ServerStorage>();
         services.AddSingleton<MangaAPIClient>();
         services.AddSingleton<MainWindow>();
-        services.AddTransient<ConnectPage>();
         services.AddSingleton<RemoteMangaViewModel>();
         services.AddSingleton<NavigationPage>();
         Services = services.BuildServiceProvider();
     }
-    protected Window? MainWindow { get; private set; }
+    protected MainWindow? MainWindow { get; private set; }
 
     protected override async void OnLaunched (LaunchActivatedEventArgs args)
     {
@@ -49,13 +48,7 @@ public partial class App : Application
         MainWindow.SetWindowIcon();
         // Ensure the current window is active
         MainWindow.Activate();
-
-        var connect = await Services.GetRequiredService<MangaAPIClient>().CheckConnectionAsync();
-        rootFrame.Content ??= connect switch
-        {
-            true => Services.GetRequiredService<NavigationPage>(),
-            false => Services.GetRequiredService<ConnectPage>()
-        };
+       MainWindow.StartInitialization();
     }
 
     /// <summary>

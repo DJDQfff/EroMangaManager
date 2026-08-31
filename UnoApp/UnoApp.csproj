@@ -5,16 +5,20 @@
     <WindowsPackageType>MSIX</WindowsPackageType>
     <OutputType>Exe</OutputType>
     <!--<UnoDisableHotDesign>true</UnoDisableHotDesign>-->
-<!--这个顺序有很多奇怪问题，之前用的下面这样，能编译。
-后来项目挪了个解决方案就出错了，改成现在这样又好了。
-<TargetFrameworks>net10.0-desktop;net10.0-android;net10.0-ios;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0</TargetFrameworks>
--->
-      <TargetFrameworks>net10.0-windows10.0.26100;net10.0-desktop;net10.0-android;net10.0-ios;net10.0-browserwasm;net10.0</TargetFrameworks>
-      <UnoSingleProject>true</UnoSingleProject>
+<!--这个顺序有很多奇怪问题，有时候突然就出问题了-->
+	  <TargetFrameworks>
+		  net10.0-desktop;
+	  net10.0-android;
+	  net10.0-ios;
+	  net10.0-windows10.0.26100.0;
+	  net10.0-browserwasm;
+	  net10.0
+  </TargetFrameworks>
+	  <UnoSingleProject>true</UnoSingleProject>
     <!-- Display name -->
-    <ApplicationTitle>EroMangaBrowser</ApplicationTitle>
+    <ApplicationTitle>本子管理器</ApplicationTitle>
     <!-- App Identifier -->
-    <ApplicationId>djdqfff.EroMangaBrowser</ApplicationId>
+    <ApplicationId>djdqfff.EroMangaBrowser.Debug</ApplicationId>
     <!-- Versions -->
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
     <ApplicationVersion>1</ApplicationVersion>
@@ -45,7 +49,9 @@
   </PropertyGroup>
   <!-- 在文件底部添加这个 Group -->
   <PropertyGroup Condition="'$(Configuration)' == 'Release' and '$(TargetFramework)' == 'net10.0-android'">
-    <EnableLLVM>True</EnableLLVM>
+	  <ApplicationId>djdqfff.EroMangaBrowser</ApplicationId>
+
+	  <EnableLLVM>True</EnableLLVM>
     <PublishTrimmed>True</PublishTrimmed>
     <RunAOTCompilation>False</RunAOTCompilation>
     <AndroidKeyStore>True</AndroidKeyStore>
@@ -60,6 +66,9 @@
     <AndroidDebuggable>True</AndroidDebuggable>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="ConnectionDialog.xaml" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" />
     <PackageReference Include="DJDQfff.BaiduTranslateAPI" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
@@ -69,5 +78,10 @@
   </ItemGroup>
   <ItemGroup>
     <UnoIcon Include="Assets\Icons\icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="ConnectionDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>

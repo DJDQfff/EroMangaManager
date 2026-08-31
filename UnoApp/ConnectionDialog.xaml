@@ -1,79 +1,75 @@
-﻿<Page
-    x:Class="UnoApp.ConnectPage"
+﻿<ContentDialog
+    x:Class="UnoApp.ConnectDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Grid Padding="24" VerticalAlignment="Center">
-        <StackPanel Spacing="16">
-            <TextBlock
-                Margin="0,0,0,8"
-                HorizontalAlignment="Center"
-                FontSize="24"
-                FontWeight="Bold"
-                Text="连接到本子管理器" />
+    Title="连接到本子管理器"
+    DefaultButton="Primary"
+    PrimaryButtonClick="ConnectDialog_PrimaryButtonClick"
+    PrimaryButtonText="连接">
+    <!--
+        注意：
+        1. 不要设置 PrimaryButtonText，我们在代码里动态设置，或者在这里写死。
+        2. 绝对不要设置 SecondaryButtonText 和 CloseButtonText，这样就没有取消和关闭按钮了。
+        3. 设置 DefaultButton="Primary"，这样用户按回车键也能直接触发连接。
+    -->
+
+    <StackPanel Spacing="4">
 
             <TextBlock
                 HorizontalAlignment="Center"
                 Foreground="Gray"
                 Text="选择桌面端的 IP 地址" />
 
-            <!--  IP 地址  -->
-            <StackPanel
-                HorizontalAlignment="Center"
-                Orientation="Horizontal"
-                Spacing="4">
+            <!--  IP 地址输入部分  -->
+            <!--  使用 Grid 替代 StackPanel，让宽度自适应屏幕  -->
+            <Grid ColumnSpacing="4" ColumnDefinitions="*,auto,*,auto,*,auto,*">
                 <NumberBox
-                    Width="70"
-                    FontSize="16"
+                    Grid.Column="0"
                     IsEnabled="False"
                     Maximum="255"
                     Minimum="0"
-                    SpinButtonPlacementMode="Compact"
+                    SpinButtonPlacementMode="Hidden"
                     Value="192" />
                 <TextBlock
+                    Grid.Column="1"
                     VerticalAlignment="Center"
-                    FontSize="20"
                     FontWeight="Bold"
                     Text="." />
                 <NumberBox
-                    Width="70"
-                    FontSize="16"
+                    Grid.Column="2"
                     IsEnabled="False"
                     Maximum="255"
                     Minimum="0"
-                    SpinButtonPlacementMode="Compact"
+                    SpinButtonPlacementMode="Hidden"
                     Value="168" />
                 <TextBlock
+                    Grid.Column="3"
                     VerticalAlignment="Center"
-                    FontSize="20"
                     FontWeight="Bold"
                     Text="." />
                 <NumberBox
                     x:Name="nbIP3"
-                    Width="70"
-                    FontSize="16"
+                    Grid.Column="4"
                     Maximum="255"
                     Minimum="0"
                     SmallChange="1"
-                    SpinButtonPlacementMode="Compact"
+                    SpinButtonPlacementMode="Hidden"
                     Value="1" />
                 <TextBlock
+                    Grid.Column="5"
                     VerticalAlignment="Center"
-                    FontSize="20"
                     FontWeight="Bold"
                     Text="." />
                 <NumberBox
                     x:Name="nbIP4"
-                    Width="70"
-                    FontSize="16"
+                    Grid.Column="6"
                     Maximum="255"
                     Minimum="0"
                     SmallChange="1"
-                    SpinButtonPlacementMode="Compact"
+                    SpinButtonPlacementMode="Hidden"
                     Value="1" />
-            </StackPanel>
-
-            <!--  端口  -->
+            </Grid>
+            <!--  端口输入部分  -->
             <StackPanel
                 HorizontalAlignment="Center"
                 Orientation="Horizontal"
@@ -103,22 +99,12 @@
                 TextWrapping="Wrap"
                 Visibility="Collapsed" />
 
-            <!--  连接按钮  -->
-            <Button
-                x:Name="btnConnect"
-                Height="48"
-                HorizontalAlignment="Stretch"
-                Background="#0078D4"
-                Click="BtnConnect_Click"
-                Content="连接"
-                CornerRadius="8"
-                FontSize="16"
-                Foreground="White" />
-
+            <!--  加载进度条  -->
             <ProgressBar
                 x:Name="progressBar"
+                Width="200"
                 HorizontalAlignment="Center"
+                IsIndeterminate="True"
                 Visibility="Collapsed" />
-        </StackPanel>
-    </Grid>
-</Page>
+    </StackPanel>
+</ContentDialog>

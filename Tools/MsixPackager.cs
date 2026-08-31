@@ -1,4 +1,6 @@
-﻿namespace Tools;
+﻿using System.Reflection.PortableExecutable;
+
+namespace Tools;
 
 public class MsixPackager
 {
@@ -45,6 +47,18 @@ public class MsixPackager
 
     public void BuildMsix ()
     {
+        // 寻找打包和签名工具
+        var packtoolfolder = Directory
+            .GetDirectories(
+                "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages\\microsoft.windows.sdk.buildtools\\" ,
+                "x64" ,
+                new EnumerationOptions() { RecurseSubdirectories = true }
+            )
+            .First();
+
+        var makeappx = Directory.GetFiles(packtoolfolder).Single(x => x.EndsWith("makeappx.exe"));
+        var signtool = Directory.GetFiles(packtoolfolder).Single(x => x.EndsWith("signtool.exe"));
+
         string winappcsproj = Path.Combine(rootPath , "WinApp/WinApp.csproj");
         string WinApp_bin = Path.Combine(rootPath , "WinApp/bin");
 
@@ -78,7 +92,6 @@ public class MsixPackager
                     $"*_{platform}.msix" ,
                     new EnumerationOptions() { RecurseSubdirectories = true }
                 );
-
                 var msix = files.Single();
                 var target = Path.Combine(publishversionfolder , $"{Path.GetFileName(msix)}");
                 File.Move(msix , target , true);
@@ -90,17 +103,6 @@ public class MsixPackager
             }
         }
 
-        // 寻找打包和签名工具
-        var packtoolfolder = Directory
-            .GetDirectories(
-                "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages\\microsoft.windows.sdk.buildtools\\" ,
-                "x64" ,
-                new EnumerationOptions() { RecurseSubdirectories = true }
-            )
-            .First();
-
-        var makeappx = Directory.GetFiles(packtoolfolder).Single(x => x.EndsWith("makeappx.exe"));
-        var signtool = Directory.GetFiles(packtoolfolder).Single(x => x.EndsWith("signtool.exe"));
 
         // 打包 Bundle 并签名
         PackagingUtils.Run(makeappx , $"bundle /o /d \"{publishversionfolder}\" /p \"{msixbundleFIle}\"" , rootPath);

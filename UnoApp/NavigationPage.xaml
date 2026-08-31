@@ -7,6 +7,7 @@
     xmlns:local="using:UnoApp"
     xmlns:model="using:Core.Models"
     x:Name="rootPage"
+    Loaded="RootPage_Loaded"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <NavigationView
         x:Name="navigationview"

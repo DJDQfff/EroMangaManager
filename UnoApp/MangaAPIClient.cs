@@ -4,7 +4,7 @@ namespace UnoApp;
 
 public class MangaAPIClient
 {
-    HttpClient client=null!;
+    HttpClient client = null!;
     public Uri BaseAddress => client.BaseAddress!;
     public ServerStorage ServerStorage;
 
@@ -22,21 +22,14 @@ public class MangaAPIClient
         client = new HttpClient
         {
             BaseAddress = new Uri(baseUrl) ,
-            Timeout = TimeSpan.FromSeconds(5),
+            Timeout = TimeSpan.FromSeconds(5) ,
         };
     }
 
     public async Task<bool> CheckConnectionAsync ()
     {
-        try
-        {
-            var response = await client.GetAsync("/api/health");
-            return response.IsSuccessStatusCode;
-        }
-        catch
-        {
-            return false;
-        }
+        var response = await client.GetAsync("/api/health");
+        return response.IsSuccessStatusCode;
     }
 
     // 1. 去掉 async 关键字

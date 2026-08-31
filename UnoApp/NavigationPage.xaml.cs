@@ -10,15 +10,6 @@ public sealed partial class NavigationPage : Page
     {
         InitializeComponent();
         ViewModel = remoteMangaViewModel;
-        _ = FirstNavigatedTo();
-
-    }
-
-       async Task FirstNavigatedTo( )
-    {
-        await ViewModel.GetGroups();
-
-        await ViewModel.SelectFirst();
     }
 
     private async void Gridview_ItemClick(object _, ItemClickEventArgs e)
@@ -188,6 +179,14 @@ public sealed partial class NavigationPage : Page
                 }
             }
         }
+    }
+
+    private async void RootPage_Loaded (object sender , RoutedEventArgs e)
+    {
+    await ViewModel.GetGroups ();
+
+    await ViewModel.SelectFirst ();
+
     }
 
 }
