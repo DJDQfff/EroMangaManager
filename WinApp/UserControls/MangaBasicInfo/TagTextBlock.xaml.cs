@@ -1,6 +1,8 @@
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
+using WinApp.Strings;
+
 namespace WinApp.UserControls.MangaBasicInfo;
 
 public sealed partial class TagTextBlock : UserControl
@@ -40,9 +42,9 @@ public sealed partial class TagTextBlock : UserControl
     [RelayCommand]
     private async Task NavigatetoSearch(string text)
     {
-        await App
-            .Services.GetRequiredService<MainPage>()
-            .NavigateToPage<GlobalSearchPage>()
-            .Search(new string[] { text });
+        var page = App
+             .Services.GetRequiredService<MainPage>()
+             .NavigateToPage(StringsEnum.GlobalSearch) as GlobalSearchPage;
+           await page !.Search(new string[] { text });
     }
 }

@@ -468,6 +468,9 @@
   <data name="SetBack" xml:space="preserve">
     <value>还原</value>
   </data>
+  <data name="Setting" xml:space="preserve">
+    <value>设置</value>
+  </data>
   <data name="ShowFolderBookcase" xml:space="preserve">
     <value>显示书架</value>
   </data>

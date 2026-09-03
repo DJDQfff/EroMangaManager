@@ -3,6 +3,7 @@
 ///<summary> </summary>
 public enum StringsEnum
 {
+    Setting,
     Method3, 
     Method4,
     UsageLong,

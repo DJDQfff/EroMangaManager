@@ -10,36 +10,23 @@ namespace WinApp.Views;
 public sealed partial class MainPage : Page
 {
     public IServiceProvider ServiceProvider { get; set; } = null!;
-
+    Pages Pages { get; set; } = null!;
     /// <summary>
     ///
     /// </summary>
-    public MainPage()
+    public MainPage( Pages pages)
     {
         InitializeComponent();
+        Pages = pages;
+        MainNavigationView.MenuItemsSource = pages.MainPages;
 
-        MainNavigationView.MenuItemsSource = new NavigationItem[]
-        {
-            new(typeof(Bookcase),StringsExtension.ResourceLoader.GetString(StringsEnum.Bookcase.ToString()) , new(Symbol.ViewAll)),
-            new(typeof(LibraryPage), StringsExtension.ResourceLoader.GetString(StringsEnum.Library.ToString()), new(Symbol.Library)),
-            new(typeof(GlobalSearchPage), StringsExtension.ResourceLoader.GetString(StringsEnum.GlobalSearch.ToString()), new(Symbol.Find)),
-            new(typeof(TagsManagePage), StringsExtension.ResourceLoader.GetString(StringsEnum.MangaTagsManage.ToString()), new(Symbol.Manage)),
-            new(typeof(FindSameManga), StringsExtension.ResourceLoader.GetString(StringsEnum.FindSameMangaByName.ToString()), new(Symbol.Copy)),
-            //new(typeof(RemoveRepeatTags2), StringsExtension.ResourceLoader.GetString(StringsEnum.RemoveRepeatTags.ToString()), new(Symbol.Tag)),
-            new(typeof(IrregularNameSearch), StringsExtension.ResourceLoader.GetString(StringsEnum.IrregularName.ToString()), new(Symbol.Edit)),
-            new(typeof(ServerPage), StringsExtension.ResourceLoader.GetString(StringsEnum.Server.ToString()), new(Symbol.Remote)),
-        };
-
-        MainNavigationView.FooterMenuItemsSource = new NavigationItem[]
-        {
-            new(typeof(UsageDocumentPage), StringsExtension.ResourceLoader.GetString(StringsEnum.Usage.ToString()), new(Symbol.Help)),
-            //new(typeof(UpdateRecordsPage), StringsExtension.ResourceLoader.GetString(StringsEnum.UpdateRecords.ToString()), new(Symbol.ShowResults) ),
-        };
+        MainNavigationView.FooterMenuItemsSource = pages.FooterPages;
     }
 
     public void OnNavigated()
     {
-        NavigateToPage<Bookcase>();
+        //NavigateToPage<Bookcase>();
+        NavigateToPage(StringsEnum.Bookcase);
     }
 
     private void MainNavigationView_ItemInvoked(
@@ -49,7 +36,8 @@ public sealed partial class MainPage : Page
     {
         if (args.IsSettingsInvoked)
         {
-            NavigateToPage<SettingPage>();
+            //NavigateToPage<SettingPage>();
+            NavigateToPage(StringsEnum.Setting);
             return;
         }
         if (
@@ -64,7 +52,16 @@ public sealed partial class MainPage : Page
             PageContainer.Content = page;
         }
     }
+    public object NavigateToPage(StringsEnum uid)
+    {
+        var pageType = Pages.Find(uid).Page;
+        var page = ServiceProvider.GetRequiredService(pageType);
+        MainNavigationView.SelectedItem = page;
+        PageContainer.Content = null;
+        PageContainer.Content = page;
+        return page;
 
+    }
     public TPage NavigateToPage<TPage>()
         where TPage : Page
     {
@@ -73,7 +70,7 @@ public sealed partial class MainPage : Page
         // 选中菜单项的逻辑与 page 实例无关，只依赖类型
         if (MainNavigationView.MenuItemsSource is IEnumerable<NavigationItem> items)
         {
-            MainNavigationView.SelectedItem = items.SingleOrDefault(x => x.Page == typeof(TPage));
+            MainNavigationView.SelectedItem = items.Single(x => x.Page == typeof(TPage));
         }
         PageContainer.Content = null;
         PageContainer.Content = page;

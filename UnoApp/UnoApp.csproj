@@ -81,11 +81,6 @@
     <UnoIcon Include="Assets\Icons\icon.svg" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Page Update="ConnectionDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

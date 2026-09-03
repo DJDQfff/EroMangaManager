@@ -1,6 +1,8 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
 
+using WinApp.Strings;
+
 namespace WinApp.Views.MainPageChildPages;
 
 /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
@@ -40,10 +42,11 @@ public sealed partial class LibraryPage : Page
     {
         if (sender is MenuFlyoutItem { DataContext: MangasGroup group })
         {
-            await App
-                .Services.GetRequiredService<MainPage>()
-                .NavigateToPage<Bookcase>()
-                .OnNavigated(group);
+            var page = App
+     .Services.GetRequiredService<MainPage>()
+     .NavigateToPage(StringsEnum.GlobalSearch) as Bookcase;
+            await page!.OnNavigated(group);
+
         }
     }
 
@@ -111,10 +114,10 @@ public sealed partial class LibraryPage : Page
     {
         if (sender is Grid { DataContext: MangasGroup group })
         {
-            await App
-                .Services.GetRequiredService<MainPage>()
-                .NavigateToPage<Bookcase>()
-                .OnNavigated(group);
+            var page = App
+     .Services.GetRequiredService<MainPage>()
+     .NavigateToPage(StringsEnum.GlobalSearch) as Bookcase;
+            await page!.OnNavigated(group);
         }
     }
 

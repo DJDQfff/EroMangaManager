@@ -1,6 +1,6 @@
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
-
+using WinApp.Strings;
 namespace WinApp.UserControls.MangaBasicInfo;
 
 public sealed partial class Name : UserControl
@@ -45,8 +45,9 @@ public sealed partial class Name : UserControl
             return;
 
         var mainpage = App.Services.GetRequiredService<MainPage>();
-        await mainpage.NavigateToPage<GlobalSearchPage>().Search(text);
-
+        //await mainpage.NavigateToPage<GlobalSearchPage>().Search(text);
+        var globalSearchPage = mainpage.NavigateToPage(StringsEnum.GlobalSearch) as GlobalSearchPage;
+        await globalSearchPage!.Search(text);
         //MainPage.Current?.MainFrame.Navigate(typeof(GlobalSearchPage) , text);
     }
 }

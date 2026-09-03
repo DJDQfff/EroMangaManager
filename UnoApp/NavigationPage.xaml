@@ -5,6 +5,7 @@
     xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     xmlns:dto="using:Core.DTOs"
     xmlns:local="using:UnoApp"
+    xmlns:unolibrary="using:UnoLibrary"
     xmlns:model="using:Core.Models"
     x:Name="rootPage"
     Loaded="RootPage_Loaded"
@@ -14,11 +15,15 @@
         Grid.Row="1"
         ItemInvoked="Navigationview_ItemInvoked"
         PaneDisplayMode="Top">
-        <NavigationView.MenuItems>
-            <NavigationViewItem Content="随机本子" />
-            <NavigationViewItem Content="随机标签" />
-            <NavigationViewItem />
-        </NavigationView.MenuItems>
+        <NavigationView.MenuItemTemplate>
+            <DataTemplate  x:DataType="unolibrary:NavigationItem">
+                <NavigationViewItem
+                Content="{x:Bind UidValue}"
+                DataContext="{x:Bind}"
+                Icon="{x:Bind Icon}" />
+            </DataTemplate>
+
+        </NavigationView.MenuItemTemplate>
 
         <NavigationView.Content>
             <Grid RowDefinitions="auto,*">

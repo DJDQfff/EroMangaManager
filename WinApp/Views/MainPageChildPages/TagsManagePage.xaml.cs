@@ -1,5 +1,7 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
+using WinApp.Strings;
+
 namespace WinApp.Views.MainPageChildPages;
 
 /// <summary>......................................................................................................................................................................
@@ -101,10 +103,10 @@ public sealed partial class TagsManagePage : Page
         if (sender is MenuFlyoutItem { DataContext: string str })
         {
             var a = new SearchParameter() { Tags = [str] };
-            await App
-                .Services.GetRequiredService<MainPage>()
-                .NavigateToPage<GlobalSearchPage>()
-                .Search(a);
+            var page = App
+                 .Services.GetRequiredService<MainPage>()
+                 .NavigateToPage(StringsEnum.GlobalSearch) as GlobalSearchPage;
+            await page!.Search(a);
         }
     }
 

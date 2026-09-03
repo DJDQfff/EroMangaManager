@@ -1,5 +1,9 @@
 using Core.Models;
 
+using UnoLibrary;
+
+using WinApp.Strings;
+
 namespace UnoApp;
 
 public sealed partial class NavigationPage : Page
@@ -9,6 +13,7 @@ public sealed partial class NavigationPage : Page
     public NavigationPage(RemoteMangaViewModel remoteMangaViewModel)
     {
         InitializeComponent();
+
         ViewModel = remoteMangaViewModel;
     }
 

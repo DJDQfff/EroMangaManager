@@ -1,6 +1,8 @@
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
+using WinApp.Strings;
+
 namespace WinApp.UserControls;
 
 public sealed partial class MangasGridView : UserControl
@@ -46,10 +48,10 @@ public sealed partial class MangasGridView : UserControl
     [RelayCommand]
     private async Task SearchSimilar(Manga manga)
     {
-        await App
-            .Services.GetRequiredService<MainPage>()
-            .NavigateToPage<GlobalSearchPage>()
-            .Search(manga.Name);
+        var page = App
+             .Services.GetRequiredService<MainPage>()
+             .NavigateToPage(StringsEnum.GlobalSearch) as GlobalSearchPage;
+        await page!.Search(manga.Name);
     }
 
     private void Moveto_Loaded(object sender, RoutedEventArgs e)
