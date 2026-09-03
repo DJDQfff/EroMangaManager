@@ -3,14 +3,14 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:WinApp.Views"
+    xmlns:unolibrary="using:UnoLibrary"
     xmlns:mainpagechild="using:WinApp.Views.MainPageChildPages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uid="using:UnoLibrary.Strings"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
     <Page.Resources>
-        <DataTemplate x:Key="datatemplate" x:DataType="local:NavigationItem">
+        <DataTemplate x:Key="datatemplate" x:DataType="unolibrary:NavigationItem">
             <NavigationViewItem
                 Content="{x:Bind UidValue}"
                 DataContext="{x:Bind}"

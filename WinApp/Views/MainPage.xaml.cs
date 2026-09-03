@@ -5,10 +5,6 @@ using WinApp.Strings;
 
 namespace WinApp.Views;
 
-internal record NavigationItem(Type Page, StringsEnum Uid, SymbolIcon Icon)
-{
-    public string UidValue => StringsExtension.ResourceLoader.GetString(Uid.ToString());
-}
 
 /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
 public sealed partial class MainPage : Page
@@ -24,20 +20,20 @@ public sealed partial class MainPage : Page
 
         MainNavigationView.MenuItemsSource = new NavigationItem[]
         {
-            new(typeof(Bookcase), StringsEnum.Bookcase, new(Symbol.ViewAll)),
-            new(typeof(LibraryPage), StringsEnum.Library, new(Symbol.Library)),
-            new(typeof(GlobalSearchPage), StringsEnum.GlobalSearch, new(Symbol.Find)),
-            new(typeof(TagsManagePage), StringsEnum.MangaTagsManage, new(Symbol.Manage)),
-            new(typeof(FindSameManga), StringsEnum.FindSameMangaByName, new(Symbol.Copy)),
-            //new(typeof(RemoveRepeatTags2), StringsEnum.RemoveRepeatTags, new(Symbol.Tag)),
-            new(typeof(IrregularNameSearch), StringsEnum.IrregularName, new(Symbol.Edit)),
-            new(typeof(ServerPage), StringsEnum.Server, new(Symbol.Remote)),
+            new(typeof(Bookcase),StringsExtension.ResourceLoader.GetString(StringsEnum.Bookcase.ToString()) , new(Symbol.ViewAll)),
+            new(typeof(LibraryPage), StringsExtension.ResourceLoader.GetString(StringsEnum.Library.ToString()), new(Symbol.Library)),
+            new(typeof(GlobalSearchPage), StringsExtension.ResourceLoader.GetString(StringsEnum.GlobalSearch.ToString()), new(Symbol.Find)),
+            new(typeof(TagsManagePage), StringsExtension.ResourceLoader.GetString(StringsEnum.MangaTagsManage.ToString()), new(Symbol.Manage)),
+            new(typeof(FindSameManga), StringsExtension.ResourceLoader.GetString(StringsEnum.FindSameMangaByName.ToString()), new(Symbol.Copy)),
+            //new(typeof(RemoveRepeatTags2), StringsExtension.ResourceLoader.GetString(StringsEnum.RemoveRepeatTags.ToString()), new(Symbol.Tag)),
+            new(typeof(IrregularNameSearch), StringsExtension.ResourceLoader.GetString(StringsEnum.IrregularName.ToString()), new(Symbol.Edit)),
+            new(typeof(ServerPage), StringsExtension.ResourceLoader.GetString(StringsEnum.Server.ToString()), new(Symbol.Remote)),
         };
 
         MainNavigationView.FooterMenuItemsSource = new NavigationItem[]
         {
-            new(typeof(UsageDocumentPage), StringsEnum.Usage, new(Symbol.Help)),
-            //new(typeof(UpdateRecordsPage), StringsEnum.UpdateRecords, new(Symbol.ShowResults) ),
+            new(typeof(UsageDocumentPage), StringsExtension.ResourceLoader.GetString(StringsEnum.Usage.ToString()), new(Symbol.Help)),
+            //new(typeof(UpdateRecordsPage), StringsExtension.ResourceLoader.GetString(StringsEnum.UpdateRecords.ToString()), new(Symbol.ShowResults) ),
         };
     }
 
