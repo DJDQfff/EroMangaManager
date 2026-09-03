@@ -4,4 +4,7 @@ global using Core.DTOs;
 global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.UI.Xaml.Media.Imaging;
+global using UnoLibrary;
 global using Microsoft.UI.Xaml.Data;
+
+global using Core.Models;

@@ -8,24 +8,7 @@
     xmlns:unolibrary="using:UnoLibrary"
     xmlns:model="using:Core.Models"
     x:Name="rootPage"
-    Loaded="RootPage_Loaded"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <NavigationView
-        x:Name="navigationview"
-        Grid.Row="1"
-        ItemInvoked="Navigationview_ItemInvoked"
-        PaneDisplayMode="Top">
-        <NavigationView.MenuItemTemplate>
-            <DataTemplate  x:DataType="unolibrary:NavigationItem">
-                <NavigationViewItem
-                Content="{x:Bind UidValue}"
-                DataContext="{x:Bind}"
-                Icon="{x:Bind Icon}" />
-            </DataTemplate>
-
-        </NavigationView.MenuItemTemplate>
-
-        <NavigationView.Content>
             <Grid RowDefinitions="auto,*">
                 <CommandBar
                     Grid.Row="0"
@@ -207,6 +190,4 @@
                         Visibility="Collapsed" />
                 </Grid>
             </Grid>
-        </NavigationView.Content>
-    </NavigationView>
 </Page>

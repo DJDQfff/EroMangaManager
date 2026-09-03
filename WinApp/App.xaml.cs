@@ -27,7 +27,7 @@ public partial class App : Application
     private void ConfigureServices()
     {
         var services = new ServiceCollection();
-        services.AddTransient<IPages,Pages>();
+        services.AddSingleton<IPages,Pages>();
         //无其他依赖项
         services.AddTransient<ClipboardHelper>();
         services.AddSingleton<ZipEntryHelper>();

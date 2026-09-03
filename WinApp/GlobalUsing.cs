@@ -30,7 +30,7 @@ global using UnoLibrary.ContentDialogPages;
 
 global using static WinApp.Services.ZipEntryExtensionMethod;
 global using SharpCompress.Archives;
-global using UnoLibrary.Strings;
+
 global using WinApp.Services;
 global using WinApp.Views;
 global using WinApp.Views.ContentDialogPages;
@@ -40,3 +40,4 @@ global using WinApp.Views.SettingPageChildPages;
 global using Windows.Storage;
 global using Windows.Storage.Pickers;
 global using WinRT.Interop;
+global using UnoLibrary.Strings;

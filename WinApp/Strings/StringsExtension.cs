@@ -1,7 +1,5 @@
 ﻿using Microsoft.UI.Xaml.Markup;
 
-using WinApp.Strings;
-
 using Windows.ApplicationModel.Resources;
 
 namespace UnoLibrary.Strings;

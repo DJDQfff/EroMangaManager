@@ -1,10 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
-using Core.Models;
-
-using SharpCompress.IO;
-
 namespace UnoApp;
 
 public partial class RemoteMangaViewModel(MangaAPIClient _client) : ObservableObject

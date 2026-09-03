@@ -1,15 +1,24 @@
+
+
+
+
 namespace UnoApp;
 
 public sealed partial class MainWindow : Window
 {
-    private readonly ServerStorage _serverStorage;
-    private readonly MangaAPIClient _mangaApiClient;
-
-    public MainWindow (ServerStorage serverStorage , MangaAPIClient mangaApiClient)
+     readonly ServerStorage _serverStorage;
+     readonly MangaAPIClient _mangaApiClient;
+    readonly MainPage _mainPage;
+    public MainWindow (ServerStorage serverStorage,MainPage mainPage , MangaAPIClient mangaApiClient)
     {
         InitializeComponent();
         _serverStorage = serverStorage;
         _mangaApiClient = mangaApiClient;
+        mainPage.ServiceProvider = App.Services;
+        mainFrame.Content = mainPage;
+        _mainPage = mainPage;
+
+        mainPage.Loaded += OnRootContentLoaded;
     }
 
     /// <summary>
@@ -47,12 +56,15 @@ public sealed partial class MainWindow : Window
             await connectDialog.ShowAsync();
 
         }
-
+        if(_mainPage.NavigateToPage(StringsEnum.Bookcase) is NavigationPage page)
+        {
+            await page.OnNavigatedTo();
+        }
 
         // 3. 对话框成功关闭（说明连接成功），加载主界面
-        if (this.Content is SafeArea { Content: ContentControl rootFrame })
-        {
-            rootFrame.Content = App.Services.GetRequiredService<NavigationPage>();
-        }
+        //if (this.Content is SafeArea { Content: ContentControl rootFrame })
+        //{
+        //    rootFrame.Content = App.Services.GetRequiredService<SettingPage>();
+        //}
     }
 }

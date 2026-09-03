@@ -1,8 +1,5 @@
-using Core.Models;
 
-using UnoLibrary;
 
-using WinApp.Strings;
 
 namespace UnoApp;
 
@@ -16,7 +13,13 @@ public sealed partial class NavigationPage : Page
 
         ViewModel = remoteMangaViewModel;
     }
+    public async Task OnNavigatedTo ()
+    {
+        await ViewModel.GetGroups();
 
+        await ViewModel.SelectFirst();
+
+    }
     private async void Gridview_ItemClick(object _, ItemClickEventArgs e)
     {
         if (e.ClickedItem is Manga manga)
@@ -106,49 +109,31 @@ public sealed partial class NavigationPage : Page
     //    image.Source = new BitmapImage(uri);
     //}
 
-    private async void Navigationview_ItemInvoked(
-        NavigationView _,
-        NavigationViewItemInvokedEventArgs args
-    )
-    {
-        switch (args.InvokedItemContainer.Content)
-        {
-            case "随机本子":
-                {
-                    await ViewModel.UpdateSelectedGroupRandomManga();
-                }
-                break;
-            case "随机标签": { }
-
-                break;
-        }
-    }
-
     private async void Numberbox_ValueChanged(NumberBox _, NumberBoxValueChangedEventArgs args)
     {
-        if (navigationview.SelectedItem is MangasGroupDTO selectedGroup)
-        {
-            var count = ViewModel.Mangas.Count;
+        //if (navigationview.SelectedItem is MangasGroupDTO selectedGroup)
+        //{
+        //    var count = ViewModel.Mangas.Count;
 
-            var newvalue = (int)args.NewValue;
+        //    var newvalue = (int)args.NewValue;
 
-            var oldvalue = (int)args.OldValue;
+        //    var oldvalue = (int)args.OldValue;
 
-            if (newvalue > oldvalue)
-            {
-                await ViewModel.UpdateCollection(
-                    selectedGroup,
-                    (newvalue - 2) * ViewModel.DisplayAmount + count
-                );
-            }
-            else
-            {
-                await ViewModel.UpdateCollection(
-                    selectedGroup,
-                    (newvalue - 1) * ViewModel.DisplayAmount + count
-                );
-            }
-        }
+        //    if (newvalue > oldvalue)
+        //    {
+        //        await ViewModel.UpdateCollection(
+        //            selectedGroup,
+        //            (newvalue - 2) * ViewModel.DisplayAmount + count
+        //        );
+        //    }
+        //    else
+        //    {
+        //        await ViewModel.UpdateCollection(
+        //            selectedGroup,
+        //            (newvalue - 1) * ViewModel.DisplayAmount + count
+        //        );
+        //    }
+        //}
     }
 
     private void SharedMangaFlyout_Opening (object sender , object _)
@@ -186,12 +171,7 @@ public sealed partial class NavigationPage : Page
         }
     }
 
-    private async void RootPage_Loaded (object sender , RoutedEventArgs e)
-    {
-    await ViewModel.GetGroups ();
 
-    await ViewModel.SelectFirst ();
 
-    }
 
 }

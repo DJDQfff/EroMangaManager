@@ -1,3 +1,5 @@
+
+
 namespace UnoApp;
 
 public partial class App : Application
@@ -17,6 +19,9 @@ public partial class App : Application
     private void ConfigureServices ()
     {
         ServiceCollection services = new();
+        services.AddSingleton<IPages , Pages>();
+        services.AddSingleton<MainPage>();
+        services.AddTransient<SettingPage>();
         services.AddSingleton<ServerStorage>();
         services.AddSingleton<MangaAPIClient>();
         services.AddSingleton<MainWindow>();
@@ -48,7 +53,7 @@ public partial class App : Application
         MainWindow.SetWindowIcon();
         // Ensure the current window is active
         MainWindow.Activate();
-       MainWindow.StartInitialization();
+       //MainWindow.StartInitialization();
     }
 
     /// <summary>
