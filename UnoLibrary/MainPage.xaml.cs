@@ -56,9 +56,10 @@ public sealed partial class MainPage : Page
     }
     public object NavigateToPage(StringsEnum uid)
     {
-        var pageType = Pages.Find(uid).Page;
+        var item = Pages.Find(uid);
+        var pageType = item.Page;
         var page = ServiceProvider.GetRequiredService(pageType);
-        MainNavigationView.SelectedItem = page;
+        MainNavigationView.SelectedItem = item;
         PageContainer.Content = null;
         PageContainer.Content = page;
         return page;

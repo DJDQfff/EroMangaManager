@@ -1,6 +1,6 @@
 ﻿using Windows.ApplicationModel.DataTransfer;
 
-namespace WinApp.Services;
+namespace UnoLibrary;
 
 public class ClipboardHelper
 {

@@ -5,15 +5,6 @@ namespace WinApp;
 
 public record Pages:IPages
 {
-    public NavigationItem Find(StringsEnum uid)
-    {
-        var item = MainPages.Concat(FooterPages).Concat([SettingPage]).SingleOrDefault(x => x.Uid == uid);
-        if (item is null)
-        {
-            throw new Exception($"未找到页面 {uid}");
-        }
-        return item;
-    }
    public NavigationItem[] MainPages { get; } = [
     
         new(typeof(Bookcase),StringsEnum.Bookcase,StringsExtension.ResourceLoader.GetString(StringsEnum.Bookcase.ToString()) , new(Symbol.ViewAll)),

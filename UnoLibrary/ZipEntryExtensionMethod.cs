@@ -1,6 +1,6 @@
-﻿using Core.Setting;
+﻿
 
-namespace WinApp.Services;
+namespace UnoLibrary;
 
 /// <summary>
 ///

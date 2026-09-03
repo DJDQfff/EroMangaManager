@@ -28,7 +28,7 @@ global using Microsoft.Windows.AppNotifications;
 global using UnoLibrary;
 global using UnoLibrary.ContentDialogPages;
 
-global using static WinApp.Services.ZipEntryExtensionMethod;
+global using static UnoLibrary.ZipEntryExtensionMethod;
 global using SharpCompress.Archives;
 
 global using WinApp.Services;

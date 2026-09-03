@@ -34,7 +34,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DJDQfff.BaiduTranslateAPI" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MyLibrary\CommonLibrary\CommonLibrary.csproj" />
+    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\Database\Database.csproj" />
   </ItemGroup>
 
   <ItemGroup>

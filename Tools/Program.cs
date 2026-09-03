@@ -1,14 +1,14 @@
 ﻿global using static System.Console;
 using Tools;
 
-var version = "2026.8.31";
+var version = "2026.9.4";
 var Slnx = "E:\\Projects\\EroMangaManager";
 //var remoteSlnx= "E:\\Projects\\EroMangaManagerRemote";
 
 
 // 执行 MSIX 打包
 MsixPackager msixPackager = new (version , Slnx);
-msixPackager.CleanThenRestoreSlnx();
+//msixPackager.CleanThenRestoreSlnx();
 msixPackager.BuildMsix();
 
 Console.WriteLine("MSIX 打包完成，生成文件：");
