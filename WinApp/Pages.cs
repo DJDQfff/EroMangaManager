@@ -6,7 +6,7 @@ using WinApp.Strings;
 
 namespace WinApp;
 
-public class Pages
+public record Pages:IPages
 {
     public NavigationItem Find(StringsEnum uid)
     {
@@ -17,7 +17,7 @@ public class Pages
         }
         return item;
     }
-   public NavigationItem[] MainPages = [
+   public NavigationItem[] MainPages { get; } = [
     
         new(typeof(Bookcase),StringsEnum.Bookcase,StringsExtension.ResourceLoader.GetString(StringsEnum.Bookcase.ToString()) , new(Symbol.ViewAll)),
         new(typeof(LibraryPage),StringsEnum.Library, StringsExtension.ResourceLoader.GetString(StringsEnum.Library.ToString()), new(Symbol.Library)),
@@ -29,7 +29,7 @@ public class Pages
         new(typeof(ServerPage),StringsEnum.Server, StringsExtension.ResourceLoader.GetString(StringsEnum.Server.ToString()), new(Symbol.Remote)),
     ];
 
-    public NavigationItem[] FooterPages =
+    public NavigationItem[] FooterPages { get; } =
     [
                      new(typeof(UsageDocumentPage),StringsEnum.Usage, StringsExtension.ResourceLoader.GetString(StringsEnum.Usage.ToString()), new(Symbol.Help)),
             //new(typeof(UpdateRecordsPage), StringsExtension.ResourceLoader.GetString(StringsEnum.UpdateRecords.ToString()), new(Symbol.ShowResults) ),
@@ -37,5 +37,5 @@ public class Pages
     ];
 
 
-    public NavigationItem SettingPage = new (typeof(SettingPage),StringsEnum.Setting , StringsExtension.ResourceLoader.GetString(StringsEnum.Setting.ToString()) , new(Symbol.Setting));
+    public NavigationItem SettingPage { get; } = new (typeof(SettingPage),StringsEnum.Setting , StringsExtension.ResourceLoader.GetString(StringsEnum.Setting.ToString()) , new(Symbol.Setting));
 }

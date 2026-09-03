@@ -3,6 +3,8 @@
 
 using WinApp.Strings;
 
+using Microsoft.Extensions.DependencyInjection;
+using UnoLibrary;
 namespace WinApp.Views;
 
 
@@ -10,11 +12,11 @@ namespace WinApp.Views;
 public sealed partial class MainPage : Page
 {
     public IServiceProvider ServiceProvider { get; set; } = null!;
-    Pages Pages { get; set; } = null!;
+    IPages Pages { get; set; } = null!;
     /// <summary>
     ///
     /// </summary>
-    public MainPage( Pages pages)
+    public MainPage( IPages pages)
     {
         InitializeComponent();
         Pages = pages;

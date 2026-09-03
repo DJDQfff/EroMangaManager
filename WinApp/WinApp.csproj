@@ -69,7 +69,6 @@
     <None Remove="UserControls\TagTextBlock.xaml" />
     <None Remove="Views\ContentDialogPages\RenameCategoryName.xaml" />
     <None Remove="Views\ContentDialogPages\RenameDialog.xaml" />
-    <None Remove="Views\MainPage.xaml" />
     <None Remove="Views\MainPageChildPages\Bookcase.xaml" />
     <None Remove="Views\MainPageChildPages\FindSameManga.xaml" />
     <None Remove="Views\MainPageChildPages\IrregularNameSearch.xaml" />
@@ -156,9 +155,6 @@
     </Page>
     <Page Update="Views\ContentDialogPages\TagCategorySelect.xaml">
       <IsDefaultItem>true</IsDefaultItem>
-    </Page>
-    <Page Update="Views\MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Views\MainPageChildPages\Bookcase.xaml">
       <Generator>MSBuild:Compile</Generator>
