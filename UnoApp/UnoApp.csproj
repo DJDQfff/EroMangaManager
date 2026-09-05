@@ -65,9 +65,7 @@
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <AndroidDebuggable>True</AndroidDebuggable>
   </PropertyGroup>
-  <ItemGroup>
-    <None Remove="ConnectionDialog.xaml" />
-  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" />
     <PackageReference Include="DJDQfff.BaiduTranslateAPI" />
@@ -80,19 +78,6 @@
   <ItemGroup>
     <UnoIcon Include="Assets\Icons\icon.svg" />
   </ItemGroup>
-  <ItemGroup>
-    <Page Update="ConnectionDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="SettingPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+
+  
 </Project>
