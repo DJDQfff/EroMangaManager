@@ -1,0 +1,5 @@
+﻿Unoplatform使用RESW文件本地化不能使用文件夹名限定符，如：
+Resources.language-en.resw、Resources.language-zh-CN.resw。
+标准WinApp正常，但是Unoplatform不支持这种命名方式，会返回空字符串。
+必须使用文件夹来区分地区语言。
+而且吊毛VS好像对RESW的定制编辑器也不支持文件名限定符，只支持文件夹限定符。

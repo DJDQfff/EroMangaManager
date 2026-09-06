@@ -1,6 +1,7 @@
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
+using UnoLibrary.Services;
 
 namespace WinApp.UserControls;
 
@@ -18,6 +19,40 @@ public sealed partial class MangasGridView : UserControl
         get => (object)GetValue(ItemsSourceProperty);
         set => SetValue(ItemsSourceProperty, value);
     }
+
+    [RelayCommand]
+    public async Task NavigateSearchName(string text)
+    {
+        if (string.IsNullOrEmpty(text))
+            return;
+
+        var mainpage = App.Services.GetRequiredService<MainPage>();
+        //await mainpage.NavigateToPage<GlobalSearchPage>().Search(text);
+        var globalSearchPage =
+            mainpage.NavigateToPage(StringsEnum.GlobalSearch) as GlobalSearchPage;
+        await globalSearchPage!.Search(text);
+        //MainPage.Current?.MainFrame.Navigate(typeof(GlobalSearchPage) , text);
+    }
+
+    [RelayCommand]
+    private async Task NavigateSearchTags(string text)
+    {
+        var page =
+            App.Services.GetRequiredService<MainPage>().NavigateToPage(StringsEnum.GlobalSearch)
+            as GlobalSearchPage;
+        await page!.Search(new string[] { text });
+    }
+
+    public StorageOperation StorageOperation { get; set; } =
+        App.Services.GetRequiredService<StorageOperation>();
+
+    public CoverHelper CoverHelper { get; set; } = App.Services.GetRequiredService<CoverHelper>();
+
+    public ClipboardHelper ClipboardHelper { get; set; } =
+        App.Services.GetRequiredService<ClipboardHelper>();
+
+    public ContentDialogCreater ContentDialogCreater { get; set; } =
+        App.Services.GetRequiredService<ContentDialogCreater>();
 
     public MangaOperationViewModel ViewModel { get; set; } =
         App.Services.GetRequiredService<MangaOperationViewModel>();
@@ -42,15 +77,6 @@ public sealed partial class MangasGridView : UserControl
                 gridview.ItemTemplate = Resources[field] as DataTemplate;
             }
         }
-    }
-
-    [RelayCommand]
-    private async Task SearchSimilar(Manga manga)
-    {
-        var page = App
-             .Services.GetRequiredService<MainPage>()
-             .NavigateToPage(StringsEnum.GlobalSearch) as GlobalSearchPage;
-        await page!.Search(manga.Name);
     }
 
     private void Moveto_Loaded(object sender, RoutedEventArgs e)

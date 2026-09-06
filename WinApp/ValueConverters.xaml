@@ -6,7 +6,6 @@
   <converter:Base64ToImageConverter x:Key="base64toimageconverter" />
 
   <converter:GetRandomSolidColorBrush x:Key="randomcolor" />
-  <converter:FileSizeConverter x:Key="size2" />
   <converter:ControlVisibility x:Key="controlvisibilityconverter" />
 
   <converter:ItemsConverter x:Key="itemsconverter" />

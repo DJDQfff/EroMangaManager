@@ -1,4 +1,4 @@
-﻿namespace UnoLibrary;
+﻿namespace UnoLibrary.Services;
 
 /// <summary>
 /// WindowsColor帮助类

@@ -1,15 +1,17 @@
-﻿
+﻿using CommunityToolkit.Mvvm.Input;
+
 namespace WinApp.Services;
 
-public class StorageOperation(
+public partial class StorageOperation(
     ObservableCollectionVM collectionVM,
-    MainWindow window,
+    Window window,
     Exporter exporter
 )
 {
+    [RelayCommand]
     public async Task ExportAsPDFAsync(Manga mangaBook)
     {
-        var fileSavePicker = new FileSavePicker();
+        FileSavePicker fileSavePicker = new();
         fileSavePicker.FileTypeChoices.Add("PDF", [".pdf"]);
         fileSavePicker.SuggestedFileName = mangaBook.FileDisplayName;
 

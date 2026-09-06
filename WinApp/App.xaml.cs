@@ -3,6 +3,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Windows.ApplicationModel.WindowsAppRuntime;
 using Microsoft.Windows.AppNotifications.Builder;
+using UnoLibrary.Services;
 
 namespace WinApp;
 
@@ -27,7 +28,7 @@ public partial class App : Application
     private void ConfigureServices()
     {
         var services = new ServiceCollection();
-        services.AddSingleton<IPages,Pages>();
+        services.AddSingleton<IPages, Pages>();
         //无其他依赖项
         services.AddTransient<ClipboardHelper>();
         services.AddSingleton<ZipEntryHelper>();
@@ -45,11 +46,14 @@ public partial class App : Application
         services.AddSingleton<StorageFolderHelper>();
         services.AddSingleton<CoverHelper>();
         services.AddSingleton<MainWindow>();
+        services.AddSingleton<Window>(sp => sp.GetRequiredService<MainWindow>());
+        // Window 和 MainWindow 注入的是同一个实例
         services.AddSingleton<MangaFactory>();
         services.AddSingleton<SettingViewModel>();
         services.AddTransient<TagCategorySelect>();
         services.AddSingleton<ManageTagsViewModel2>();
         services.AddTransient<MangaOperationViewModel>();
+        services.AddTransient<ContentDialogCreater>();
         //Pages
         services.AddSingleton<MainPage>();
         services.AddTransient<CommonSettingPage>();

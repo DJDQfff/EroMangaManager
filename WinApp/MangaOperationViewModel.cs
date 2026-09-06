@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-
 using Microsoft.Windows.AppNotifications.Builder;
+using UnoLibrary.Services;
 
 namespace WinApp;
 
@@ -18,18 +18,6 @@ public partial class MangaOperationViewModel(
     public ObservableCollection<string> ExePaths => settingViewModel.ExePaths;
     public SvgImageSource ErrorImage => coverHelper.ErrorCoverImage;
     public ObservableCollection<MangasGroup> MangasGroups => observableCollectionVM.MangasGroups;
-
-    [RelayCommand]
-    private async Task OverviewInformation(Manga manga)
-    {
-        await dialogHelper.OverviewInformation(manga);
-    }
-
-    [RelayCommand]
-    private void Copy(string text)
-    {
-        clipboardHelper.Copy(text);
-    }
 
     [RelayCommand]
     public async Task OpenWith((Manga, string?) tuple)
@@ -132,12 +120,6 @@ public partial class MangaOperationViewModel(
         {
             observableCollectionVM.AccessDenied();
         }
-    }
-
-    [RelayCommand]
-    private async Task ExportAsPDF(Manga manga)
-    {
-        await storageOperation.ExportAsPDFAsync(manga);
     }
 
     [RelayCommand]

@@ -36,7 +36,7 @@
         Text="{uid:Strings Uid=MoveToOtherFolder}"
       />
       <MenuFlyoutItem
-        Command="{x:Bind ViewModel.OverviewInformationCommand}"
+        Command="{x:Bind ContentDialogCreater.OverviewInformationCommand}"
         CommandParameter="{Binding Mode=OneWay}"
         DataContext="{Binding}"
         Icon="View"
@@ -49,15 +49,15 @@
         Icon="Rename"
         Text="{uid:Strings Uid=RenameFile}"
       />
-      <MenuFlyoutItem
-        Command="{x:Bind SearchSimilarCommand}"
-        CommandParameter="{Binding Mode=OneWay}"
+      <!--<MenuFlyoutItem
+        Command="{x:Bind NavigateSearchNameCommand}"
+        CommandParameter="{Binding , Mode=OneWay}"
         DataContext="{Binding}"
         Icon="Find"
-        Text="{uid:Strings Uid=SearchSimialr}"
-      />
+        Text="{uid:Strings Uid=SearchSimilar}"
+      />-->
       <MenuFlyoutItem
-        Command="{x:Bind ViewModel.ExportAsPDFCommand}"
+        Command="{x:Bind StorageOperation.ExportAsPDFCommand}"
         CommandParameter="{Binding Mode=OneWay}"
         DataContext="{Binding}"
         Icon="Save"
@@ -88,7 +88,7 @@
           HorizontalAlignment="Center"
           VerticalAlignment="Center"
           Manga="{x:Bind Mode=OneWay}"
-          ViewModel="{Binding ViewModel, ElementName=usercontrol, Mode=OneWay}"
+          ViewModel="{Binding CoverHelper, ElementName=usercontrol, Mode=OneWay}"
         />
         <basic:Name
           x:Name="name"
@@ -97,7 +97,8 @@
           Margin="1"
           Padding="2"
           Manga="{x:Bind Mode=OneWay}"
-          ViewModel="{Binding ViewModel, ElementName=usercontrol, Mode=OneWay}"
+          CopyCommand="{Binding ClipboardHelper.CopyCommand, ElementName=usercontrol, Mode=OneWay}"
+          NavigateCommand="{Binding NavigateSearchNameCommand, ElementName=usercontrol, Mode=OneWay}"
         />
         <uno:SizeImagesChaptersAmount x:Name="info" Grid.Row="2" Manga="{x:Bind Mode=OneWay}" />
       </Grid>
@@ -112,20 +113,22 @@
         <basic:Name
           x:Name="name"
           Manga="{x:Bind Mode=OneWay}"
-          ViewModel="{Binding ViewModel, ElementName=usercontrol, Mode=OneWay}"
+          CopyCommand="{Binding ClipboardHelper.CopyCommand, ElementName=usercontrol, Mode=OneWay}"
+          NavigateCommand="{Binding NavigateSearchNameCommand, ElementName=usercontrol, Mode=OneWay}"
         />
         <Grid Grid.Row="1" ColumnDefinitions="*,*">
           <basic:Cover
             x:Name="cover"
             Grid.Column="0"
             Manga="{x:Bind Mode=OneWay}"
-            ViewModel="{Binding ViewModel, ElementName=usercontrol, Mode=OneWay}"
+            ViewModel="{Binding CoverHelper, ElementName=usercontrol, Mode=OneWay}"
           />
           <basic:TagsItemRepeater
             x:Name="tags"
             Grid.Column="1"
             Manga="{x:Bind Mode=OneWay}"
-            ViewModel="{Binding ViewModel, ElementName=usercontrol, Mode=OneWay}"
+            CopyCommand="{Binding ClipboardHelper.CopyCommand, ElementName=usercontrol, Mode=OneWay}"
+            NavigateCommand="{Binding NavigateSearchTagsCommand, ElementName=usercontrol, Mode=OneWay}"
           />
         </Grid>
         <uno:SizeImagesChaptersAmount x:Name="info" Grid.Row="2" Manga="{x:Bind Mode=OneWay}" />
@@ -140,10 +143,14 @@
         <basic:Cover
           Grid.Column="0"
           Manga="{x:Bind Mode=OneWay}"
-          ViewModel="{Binding ViewModel, ElementName=usercontrol, Mode=OneWay}"
+          ViewModel="{Binding CoverHelper, ElementName=usercontrol, Mode=OneWay}"
         />
         <Grid Grid.Column="1" RowDefinitions="auto,5*,auto">
-          <basic:Name Manga="{x:Bind Mode=OneWay}" />
+          <basic:Name
+            Manga="{x:Bind Mode=OneWay}"
+            CopyCommand="{Binding ClipboardHelper.CopyCommand, ElementName=usercontrol, Mode=OneWay}"
+            NavigateCommand="{Binding NavigateSearchNameCommand, ElementName=usercontrol, Mode=OneWay}"
+          />
           <TextBlock
             Text="{x:Bind FolderPath, Mode=OneWay}"
             TextAlignment="Justify"

@@ -1,6 +1,8 @@
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
+using UnoLibrary.Services;
+
 namespace WinApp.UserControls.MangaBasicInfo;
 
 public sealed partial class Cover : UserControl
@@ -19,16 +21,16 @@ public sealed partial class Cover : UserControl
         set => SetValue(MangaProperty, value);
     }
 
-    public MangaOperationViewModel ViewModel
+    public CoverHelper ViewModel
     {
-        get => (MangaOperationViewModel)GetValue(ViewModelProperty);
+        get => (CoverHelper)GetValue(ViewModelProperty);
         set => SetValue(ViewModelProperty, value);
     }
 
     // ViewModel 用于在 XAML 中绑定，必须为 DependencyProperty
     public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(
         nameof(ViewModel),
-        typeof(MangaOperationViewModel),
+        typeof(CoverHelper),
         typeof(Cover),
         new PropertyMetadata(null)
     );
@@ -40,6 +42,6 @@ public sealed partial class Cover : UserControl
 
     private void Image_ImageFailed(object sender, ExceptionRoutedEventArgs e)
     {
-        image.Source = ViewModel.ErrorImage;
+        image.Source = ViewModel.ErrorCoverImage;
     }
 }

@@ -1,6 +1,4 @@
-﻿
-
-namespace UnoLibrary;
+﻿namespace UnoLibrary.Services;
 
 /// <summary>
 /// 封面帮助类

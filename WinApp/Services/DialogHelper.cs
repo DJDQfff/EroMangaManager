@@ -4,33 +4,11 @@
 /// 需要通过对话框用户进行交互，以及一些读取程序设置的操作
 /// </summary>
 public class DialogHelper(
-    MainWindow window,
+    Window window,
     StorageOperation storageOperation,
     SettingViewModel setting
 )
 {
-    public async Task<StorageFile> PickSingleFile(string title, string fileType)
-    {
-        FileOpenPicker picker = new()
-        {
-            ViewMode = PickerViewMode.Thumbnail,
-            SuggestedStartLocation = PickerLocationId.PicturesLibrary,
-            FileTypeFilter = { fileType },
-            SettingsIdentifier = "EroManga",
-            CommitButtonText = title,
-        };
-        var handle = WindowNative.GetWindowHandle(window);
-        WinRT.Interop.InitializeWithWindow.Initialize(picker, handle);
-        var file = await picker.PickSingleFileAsync();
-        return file;
-    }
-
-    public async Task OverviewInformation(Manga manga)
-    {
-        OverviewInformation dialog = new(manga) { XamlRoot = window.Content.XamlRoot };
-        _ = await dialog.ShowAsync();
-    }
-
     /// <summary>
     /// 修改文件名
     /// </summary>

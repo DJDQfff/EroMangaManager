@@ -1,22 +1,21 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804
 // 上介绍了“空白页”项模板
 
-
-
-
+using UnoLibrary.Strings;
+using Windows.ApplicationModel.Resources;
 
 namespace UnoLibrary;
-
 
 /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
 public sealed partial class MainPage : Page
 {
     public IServiceProvider ServiceProvider { get; set; } = null!;
     IPages Pages { get; set; } = null!;
+
     /// <summary>
     ///
     /// </summary>
-    public MainPage( IPages pages)
+    public MainPage(IPages pages)
     {
         InitializeComponent();
         Pages = pages;
@@ -54,6 +53,7 @@ public sealed partial class MainPage : Page
             PageContainer.Content = page;
         }
     }
+
     public object NavigateToPage(StringsEnum uid)
     {
         var item = Pages.Find(uid);
@@ -63,8 +63,8 @@ public sealed partial class MainPage : Page
         PageContainer.Content = null;
         PageContainer.Content = page;
         return page;
-
     }
+
     public TPage NavigateToPage<TPage>()
         where TPage : Page
     {

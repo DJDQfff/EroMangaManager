@@ -1,4 +1,8 @@
-
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Localization;
+using Microsoft.UI.Xaml.Automation;
+using Uno.Extensions.Hosting; // ✅ CreateBuilder 所在命名空间
+using Uno.Extensions.Localization;
 
 namespace UnoApp;
 
@@ -10,56 +14,60 @@ public partial class App : Application
     /// </summary>
     public static IServiceProvider Services { get; private set; } = null!;
 
-    public App ()
+    public App()
     {
         InitializeComponent();
-        ConfigureServices();
-
     }
-    private void ConfigureServices ()
-    {
-        ServiceCollection services = new();
-        services.AddSingleton<IPages , Pages>();
-        services.AddSingleton<MainPage>();
-        services.AddTransient<SettingPage>();
-        services.AddSingleton<ServerStorage>();
-        services.AddSingleton<MangaAPIClient>();
-        services.AddSingleton<MainWindow>();
-        services.AddSingleton<RemoteMangaViewModel>();
-        services.AddSingleton<NavigationPage>();
-        Services = services.BuildServiceProvider();
-    }
-    protected MainWindow? MainWindow { get; private set; }
 
-    protected override async void OnLaunched (LaunchActivatedEventArgs args)
+    //protected mainWindow? mainWindow { get; private set; }
+
+    protected override async void OnLaunched(LaunchActivatedEventArgs args)
     {
-        MainWindow = Services.GetRequiredService<MainWindow>();
+        var builder = this.CreateBuilder(args)
+            .Configure(host =>
+            {
+                host.UseLocalization()
+                    .ConfigureServices(
+                        (context, services) =>
+                        {
+                            services.AddSingleton<IPages, Pages>();
+                            services.AddSingleton<MainPage>();
+                            services.AddTransient<SettingPage>();
+                            services.AddSingleton<ServerStorage>();
+                            services.AddSingleton<MangaAPIClient>();
+                            services.AddSingleton<MainWindow>();
+                            services.AddSingleton<RemoteMangaViewModel>();
+                            services.AddSingleton<NavigationPage>();
+                        }
+                    );
+            });
+        Services = builder.Build().Services;
+
+        var mainWindow = Services.GetRequiredService<MainWindow>();
 #if DEBUG
-
-        MainWindow.UseStudio();
+        //mainWindow.UseStudio();
 #endif
         // Do not repeat app initialization when the Window already has content,
         // just ensure that the window is active
-        if (MainWindow.Content is not SafeArea { Content: ContentControl rootFrame })
+        if (mainWindow.Content is not SafeArea { Content: ContentControl rootFrame })
         {
             // Create a Frame to act as the navigation context and navigate to the first page
             rootFrame = new();
 
             // Place the frame in the current Window
-            MainWindow.Content = rootFrame;
+            mainWindow.Content = rootFrame;
         }
 
-
-        MainWindow.SetWindowIcon();
+        mainWindow.SetWindowIcon();
         // Ensure the current window is active
-        MainWindow.Activate();
-       //MainWindow.StartInitialization();
+        mainWindow.Activate();
+        //mainWindow.StartInitialization();
     }
 
     /// <summary>
     /// Configures global Uno Platform logging
     /// </summary>
-    public static void InitializeLogging ()
+    public static void InitializeLogging()
     {
 #if DEBUG
         // Logging is disabled by default for release builds, as it incurs a significant
@@ -88,9 +96,9 @@ public partial class App : Application
             builder.SetMinimumLevel(LogLevel.Information);
 
             // Default filters for Uno Platform namespaces
-            builder.AddFilter("Uno" , LogLevel.Warning);
-            builder.AddFilter("Windows" , LogLevel.Warning);
-            builder.AddFilter("Microsoft" , LogLevel.Warning);
+            builder.AddFilter("Uno", LogLevel.Warning);
+            builder.AddFilter("Windows", LogLevel.Warning);
+            builder.AddFilter("Microsoft", LogLevel.Warning);
 
             // Generic Xaml events
             // builder.AddFilter("Microsoft.UI.Xaml", LogLevel.Debug );

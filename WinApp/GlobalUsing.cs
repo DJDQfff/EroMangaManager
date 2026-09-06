@@ -25,12 +25,11 @@ global using Microsoft.UI.Xaml.Media;
 global using Microsoft.UI.Xaml.Media.Imaging;
 global using Microsoft.UI.Xaml.Navigation;
 global using Microsoft.Windows.AppNotifications;
+global using SharpCompress.Archives;
 global using UnoLibrary;
 global using UnoLibrary.ContentDialogPages;
-
-global using static UnoLibrary.ZipEntryExtensionMethod;
-global using SharpCompress.Archives;
-
+global using static UnoLibrary.Services.ZipEntryExtensionMethod;
+global using UnoLibrary.Strings;
 global using WinApp.Services;
 global using WinApp.Views;
 global using WinApp.Views.ContentDialogPages;
@@ -40,4 +39,3 @@ global using WinApp.Views.SettingPageChildPages;
 global using Windows.Storage;
 global using Windows.Storage.Pickers;
 global using WinRT.Interop;
-global using UnoLibrary.Strings;

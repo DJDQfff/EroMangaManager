@@ -9,11 +9,11 @@ public sealed partial class TagCategorySelect : ContentDialog
 {
     readonly DatabaseController databaseController;
 
-    public TagCategorySelect(MainWindow mainWindow, DatabaseController _databaseController)
+    public TagCategorySelect(Window window, DatabaseController _databaseController)
     {
         InitializeComponent();
         databaseController = _databaseController;
-        XamlRoot = mainWindow.Content!.XamlRoot;
+        XamlRoot = window.Content!.XamlRoot;
     }
 
     public string? CategoryName => combobox.SelectedItem as string;

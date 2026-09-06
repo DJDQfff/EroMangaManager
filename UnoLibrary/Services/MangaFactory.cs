@@ -1,6 +1,4 @@
-﻿
-
-namespace UnoLibrary;
+﻿namespace UnoLibrary.Services;
 
 /// <summary>
 /// 基于该平台的实例创建方法

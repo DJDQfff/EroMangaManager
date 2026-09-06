@@ -5,16 +5,16 @@
     <WindowsPackageType>MSIX</WindowsPackageType>
     <OutputType>Exe</OutputType>
     <!--<UnoDisableHotDesign>true</UnoDisableHotDesign>-->
-<!--这个顺序有很多奇怪问题，有时候突然就出问题了-->
-	  <TargetFrameworks>
+    <!--这个顺序有很多奇怪问题，有时候突然就出问题了-->
+    <TargetFrameworks>
 		  net10.0-desktop;
-	  net10.0-android;
-	  net10.0-ios;
-	  net10.0-windows10.0.26100.0;
-	  net10.0-browserwasm;
-	  net10.0
+	      net10.0-android;
+	      net10.0-ios;
+	      net10.0-windows10.0.26100.0;
+	      net10.0-browserwasm;
+	      net10.0
   </TargetFrameworks>
-	  <UnoSingleProject>true</UnoSingleProject>
+    <UnoSingleProject>true</UnoSingleProject>
     <!-- Display name -->
     <ApplicationTitle>本子管理器</ApplicationTitle>
     <!-- App Identifier -->
@@ -41,7 +41,7 @@
       UnoFeatures are used to quickly add and manage features enabled for your app.
       https://aka.platform.uno/singleproject-features
     -->
-    <UnoFeatures>Mvvm;Toolkit;SkiaRenderer </UnoFeatures>
+    <UnoFeatures>Mvvm;Toolkit;SkiaRenderer;Localization;Hosting  </UnoFeatures>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <!--   在dotnet publish命令行中使用-r 参数更好   <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">android-arm;android-arm64</RuntimeIdentifiers>
   -->
@@ -49,9 +49,8 @@
   </PropertyGroup>
   <!-- 在文件底部添加这个 Group -->
   <PropertyGroup Condition="'$(Configuration)' == 'Release' and '$(TargetFramework)' == 'net10.0-android'">
-	  <ApplicationId>djdqfff.EroMangaBrowser</ApplicationId>
-
-	  <EnableLLVM>True</EnableLLVM>
+    <ApplicationId>djdqfff.EroMangaBrowser</ApplicationId>
+    <EnableLLVM>True</EnableLLVM>
     <PublishTrimmed>True</PublishTrimmed>
     <RunAOTCompilation>False</RunAOTCompilation>
     <AndroidKeyStore>True</AndroidKeyStore>
@@ -78,6 +77,4 @@
   <ItemGroup>
     <UnoIcon Include="Assets\Icons\icon.svg" />
   </ItemGroup>
-
-  
 </Project>

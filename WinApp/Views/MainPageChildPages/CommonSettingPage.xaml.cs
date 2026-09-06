@@ -1,5 +1,7 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
+using UnoLibrary.Services;
+
 namespace WinApp.Views.SettingPageChildPages;
 
 /// <summary>
@@ -24,10 +26,10 @@ public sealed partial class CommonSettingPage : Page
     /// <summary>
     /// 一般设置页面
     /// </summary>
-    public CommonSettingPage(SettingViewModel settingViewModel, DialogHelper dialogHelper)
+    public CommonSettingPage(SettingViewModel settingViewModel, ContentDialogCreater creater)
     {
         InitializeComponent();
         ViewModel = settingViewModel;
-        ManageMangaOpenWay3Setting.DialogHelper = dialogHelper;
+        ManageMangaOpenWay3Setting.ContentDialogCreater = creater;
     }
 }

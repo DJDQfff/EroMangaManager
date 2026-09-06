@@ -1,5 +1,4 @@
-﻿
-namespace UnoLibrary;
+﻿namespace UnoLibrary.Services;
 
 /// <summary>
 /// 翻译器

@@ -1,4 +1,4 @@
-﻿namespace UnoLibrary;
+﻿namespace UnoLibrary.Services;
 
 public class WinUISetting : ISettingFilePath
 {

@@ -1,6 +1,8 @@
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
+using UnoLibrary.Services;
+
 namespace WinApp.UserControls;
 
 public sealed partial class ManageMangaOpenWay3Setting : UserControl
@@ -24,24 +26,25 @@ public sealed partial class ManageMangaOpenWay3Setting : UserControl
         InitializeComponent();
     }
 
-    public static readonly DependencyProperty DialogHelperProperty = DependencyProperty.Register(
-        nameof(DialogHelper),
-        typeof(DialogHelper),
-        typeof(ManageMangaOpenWay3Setting),
-        new PropertyMetadata(null)
-    );
+    public static readonly DependencyProperty ContentDialogCreaterProperty =
+        DependencyProperty.Register(
+            nameof(ContentDialogCreater),
+            typeof(ContentDialogCreater),
+            typeof(ManageMangaOpenWay3Setting),
+            new PropertyMetadata(null)
+        );
 
     // 2. 包装属性
-    public DialogHelper DialogHelper
+    public ContentDialogCreater ContentDialogCreater
     {
-        get => (DialogHelper)GetValue(DialogHelperProperty);
-        set => SetValue(DialogHelperProperty, value);
+        get => (ContentDialogCreater)GetValue(ContentDialogCreaterProperty);
+        set => SetValue(ContentDialogCreaterProperty, value);
     }
 
     [RelayCommand]
     private async Task AddExe()
     {
-        var file = await DialogHelper.PickSingleFile("选择exe文件", ".exe");
+        var file = await ContentDialogCreater.PickSingleFile("选择exe文件", ".exe");
         if (file is not null)
         {
             ViewModel.AddExePath(file.Path);

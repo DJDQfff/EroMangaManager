@@ -1,11 +1,12 @@
-
-
+using Microsoft.Extensions.Localization;
+using UnoLibrary.Strings;
+using Windows.ApplicationModel.Resources;
 
 namespace UnoApp;
 
 public sealed partial class NavigationPage : Page
 {
-    public RemoteMangaViewModel ViewModel { get; } 
+    public RemoteMangaViewModel ViewModel { get; }
 
     public NavigationPage(RemoteMangaViewModel remoteMangaViewModel)
     {
@@ -13,13 +14,14 @@ public sealed partial class NavigationPage : Page
 
         ViewModel = remoteMangaViewModel;
     }
-    public async Task OnNavigatedTo ()
+
+    public async Task OnNavigatedTo()
     {
         await ViewModel.GetGroups();
 
         await ViewModel.SelectFirst();
-
     }
+
     private async void Gridview_ItemClick(object _, ItemClickEventArgs e)
     {
         if (e.ClickedItem is Manga manga)
@@ -136,21 +138,23 @@ public sealed partial class NavigationPage : Page
         //}
     }
 
-    private void SharedMangaFlyout_Opening (object sender , object _)
+    private void SharedMangaFlyout_Opening(object sender, object _)
     {
         if (sender is MenuFlyout { Target.DataContext: Manga currentManga } menuFlyout)
         {
             // 1. 处理“删除”菜单项的 Command
-            var deleteMenuItem = menuFlyout.Items.OfType<MenuFlyoutItem>()
-                                               .FirstOrDefault(x => x.Name == "DeleteMenuItem");
-                // 直接访问当前页面的 ViewModel，把 Command 赋给它
-                deleteMenuItem?.Command = ViewModel.DeleteCommand;
-                deleteMenuItem?.CommandParameter = currentManga;
+            var deleteMenuItem = menuFlyout
+                .Items.OfType<MenuFlyoutItem>()
+                .FirstOrDefault(x => x.Name == "DeleteMenuItem");
+            // 直接访问当前页面的 ViewModel，把 Command 赋给它
+            deleteMenuItem?.Command = ViewModel.DeleteCommand;
+            deleteMenuItem?.CommandParameter = currentManga;
 
             // 2. 处理“搜索Tag”子菜单（保持之前的逻辑）
             //  找到那个占位的子菜单
-            var tagSubItem = menuFlyout.Items.OfType<MenuFlyoutSubItem>()
-                                           .FirstOrDefault(x => x.Name == "TagSubItem");
+            var tagSubItem = menuFlyout
+                .Items.OfType<MenuFlyoutSubItem>()
+                .FirstOrDefault(x => x.Name == "TagSubItem");
 
             if (tagSubItem != null)
             {
@@ -161,17 +165,13 @@ public sealed partial class NavigationPage : Page
                 {
                     var menuItem = new MenuFlyoutItem
                     {
-                        Text = tag ,
-                        Command = ViewModel.SearchByTagCommand ,
-                        CommandParameter = tag
+                        Text = tag,
+                        Command = ViewModel.SearchByTagCommand,
+                        CommandParameter = tag,
                     };
                     tagSubItem.Items.Add(menuItem);
                 }
             }
         }
     }
-
-
-
-
 }

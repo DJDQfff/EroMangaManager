@@ -9,49 +9,34 @@ public sealed partial class RenameMangaByEditString : UserControl
         InitializeComponent();
     }
 
-    // 1. ������������ (ע�⣺���������� MangaProperty)
     public static readonly DependencyProperty MangaProperty = DependencyProperty.Register(
         nameof(Manga),
         typeof(Manga),
         typeof(RenameMangaByEditString),
         new PropertyMetadata(null, OnMangaChanged)
-    ); // ע�����Ա���ص�
-
-    // 2. ��װ���� (���ָɾ�����Ҫ���κ��Զ����߼�)
+    );
     public Manga Manga
     {
         get => (Manga)GetValue(MangaProperty);
         set => SetValue(MangaProperty, value);
     }
 
-    // 3. ���Ա���ص����� Manga ����ֵʱ����ܻ��Զ����ô˷���
     private static void OnMangaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        var control = (RenameMangaByEditString)d;
-        var newManga = e.NewValue as Manga;
-
-        // ���� DataContext ��֧�� XAML �е� {x:Bind} �� {Binding}
-        control.DataContext = newManga;
-
-        // �� Manga ������ʱ��ͬ������ TextBox ���ı�
-        if (newManga != null)
+        if (d is RenameMangaByEditString control && e.NewValue is Manga newmanga)
         {
-            control.textbox.Text = newManga.FileDisplayName;
+            control.DataContext = newmanga;
+            control.textbox.Text = newmanga.FileDisplayName;
         }
     }
 
-    // 4. ������ԭ�е�ҵ���߼������ֲ��䣩
-    private bool isnewnameok;
-
     public bool IsNewnameOK
     {
-        set { isnewnameok = value; }
-        get { return isnewnameok && (NewDisplayName != Manga?.FileDisplayName); }
+        set;
+        get { return field && (NewDisplayName != Manga?.FileDisplayName); }
     }
-
     public event Action WrongInput = delegate { };
     public event Action CorrectInput = delegate { };
-
     public string NewDisplayName => textbox.Text;
 
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

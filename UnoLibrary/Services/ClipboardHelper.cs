@@ -1,9 +1,11 @@
-﻿using Windows.ApplicationModel.DataTransfer;
+﻿using CommunityToolkit.Mvvm.Input;
+using Windows.ApplicationModel.DataTransfer;
 
-namespace UnoLibrary;
+namespace UnoLibrary.Services;
 
-public class ClipboardHelper
+public partial class ClipboardHelper
 {
+    [RelayCommand]
     public void Copy(string text)
     {
         if (string.IsNullOrEmpty(text))
