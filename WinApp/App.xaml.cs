@@ -1,5 +1,6 @@
 ﻿// To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
+using Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Windows.ApplicationModel.WindowsAppRuntime;
 using Microsoft.Windows.AppNotifications.Builder;
@@ -42,7 +43,6 @@ public partial class App : Application
         //依赖前面的
         services.AddSingleton<Translator>();
         services.AddSingleton<StorageOperation>();
-        services.AddSingleton<DialogHelper>();
         services.AddSingleton<StorageFolderHelper>();
         services.AddSingleton<CoverHelper>();
         services.AddSingleton<MainWindow>();
@@ -52,7 +52,6 @@ public partial class App : Application
         services.AddSingleton<SettingViewModel>();
         services.AddTransient<TagCategorySelect>();
         services.AddSingleton<ManageTagsViewModel2>();
-        services.AddTransient<MangaOperationViewModel>();
         services.AddTransient<ContentDialogCreater>();
         //Pages
         services.AddSingleton<MainPage>();
@@ -67,7 +66,7 @@ public partial class App : Application
         services.AddSingleton<FindSameManga>();
         services.AddTransient<IrregularNameSearch>();
         services.AddSingleton<ServerPage>();
-
+        services.AddTransient<INotifier, Notifier>();
         //数据库
         services.AddDbContextFactory<DataBase_Version3>(options =>
             options.UseSqlite(
@@ -140,9 +139,14 @@ public partial class App : Application
                 .BuildNotification();
             AppNotificationManager.Default.Show(appNotification);
         };
-        globalviewmodel.WorkDoneEvent += Toast;
-        globalviewmodel.WorkFailedEvent += Toast;
-        globalviewmodel.AccessDeniedEvent += ToastAccessDenied;
+        globalviewmodel.WorkDoneEvent += (message) =>
+            Services.GetRequiredService<INotifier>().Notify(message);
+        globalviewmodel.WorkFailedEvent += (message) =>
+            Services.GetRequiredService<INotifier>().Notify(message);
+        globalviewmodel.AccessDeniedEvent += () =>
+            Services
+                .GetRequiredService<INotifier>()
+                .Notify(StringsExtension.ResourceLoader.GetString("AccessDenied"));
 
         #endregion 事件赋值
 
@@ -161,7 +165,7 @@ public partial class App : Application
         // so retrieve it.
         var mainInstance = Microsoft.Windows.AppLifecycle.AppInstance.FindOrRegisterForKey("main");
 
-        // If the instance that's executing the OnLaunched handler right now
+        // If the instance that'message executing the OnLaunched handler right now
         // isn't the "main" instance.
         if (!mainInstance.IsCurrent)
         {
@@ -214,24 +218,8 @@ public partial class App : Application
         //    folders.Remove(f);
         //    folders.Insert(0, f);
         //}
-#if DEBUG_TESTFOLDER
-        folders = [@"E:\test"];
-#endif
         var viewmodel = Services.GetRequiredService<ObservableCollectionVM>();
         Services.GetRequiredService<MangaFactory>().GetAllFolders(viewmodel, folders);
         viewmodel.InitialGroup += Services.GetRequiredService<MangaFactory>().InitialGroup2;
-    }
-
-    private void Toast(string message)
-    {
-        var appNotification = new AppNotificationBuilder().AddText(message).BuildNotification();
-        AppNotificationManager.Default.Show(appNotification);
-    }
-
-    private void ToastAccessDenied()
-    {
-        var denied = StringsExtension.ResourceLoader.GetString("AccessDenied");
-        var appNotification = new AppNotificationBuilder().AddText(denied).BuildNotification();
-        AppNotificationManager.Default.Show(appNotification);
     }
 }

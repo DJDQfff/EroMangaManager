@@ -1,9 +1,10 @@
+using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
+
 namespace WinApp.UserControls;
 
 public sealed partial class RenameMangaByEditString : UserControl
 {
-    readonly IServiceProvider services = App.Services;
-
     public RenameMangaByEditString()
     {
         InitializeComponent();
@@ -64,6 +65,31 @@ public sealed partial class RenameMangaByEditString : UserControl
         }
     }
 
+    public static readonly DependencyProperty MangaFileIOProperty = DependencyProperty.Register(
+        nameof(MangaFileIO),
+        typeof(MangaFileIO),
+        typeof(RenameMangaByEditString),
+        new PropertyMetadata(null)
+    );
+    public MangaFileIO MangaFileIO
+    {
+        get => (MangaFileIO)GetValue(MangaFileIOProperty);
+        set => SetValue(MangaFileIOProperty, value);
+    }
+
+    public static readonly DependencyProperty ObservableCollectionVMProperty =
+        DependencyProperty.Register(
+            nameof(ObservableCollectionVM),
+            typeof(ObservableCollectionVM),
+            typeof(RenameMangaByEditString),
+            new PropertyMetadata(null)
+        );
+    public ObservableCollectionVM ObservableCollectionVM
+    {
+        get => (ObservableCollectionVM)GetValue(ObservableCollectionVMProperty);
+        set => SetValue(ObservableCollectionVMProperty, value);
+    }
+
     [RelayCommand]
     private async Task Rename()
     {
@@ -71,18 +97,16 @@ public sealed partial class RenameMangaByEditString : UserControl
         try
         {
             var manga = Manga;
-            string newpath = await Task.Run(() =>
-                services.GetRequiredService<MangaFileIO>().MoveManga(manga, null, newname)
-            );
+            string newpath = await Task.Run(() => MangaFileIO.MoveManga(manga, null, newname));
             manga?.FilePath = newpath;
         }
         catch (UnauthorizedAccessException)
         {
-            services.GetRequiredService<ObservableCollectionVM>().AccessDenied();
+            ObservableCollectionVM.AccessDenied();
         }
         catch (System.IO.IOException)
         {
-            services.GetRequiredService<ObservableCollectionVM>().AccessDenied();
+            ObservableCollectionVM.AccessDenied();
         }
     }
 }

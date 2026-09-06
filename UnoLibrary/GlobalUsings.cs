@@ -1,5 +1,8 @@
 ﻿global using System.Diagnostics;
+global using System.Windows.Input;
 global using CommonLibrary;
+global using CommunityToolkit.Mvvm.Input;
+global using Core.Interfaces;
 global using Core.Models;
 global using Core.Services;
 global using Core.Setting;
@@ -14,5 +17,6 @@ global using SharpCompress.Archives;
 global using UnoLibrary;
 global using UnoLibrary.Services;
 global using UnoLibrary.Strings;
+global using WinApp.Services;
 global using Windows.Storage.Pickers;
 global using WinRT.Interop;

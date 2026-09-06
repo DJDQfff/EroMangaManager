@@ -1,7 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-
-namespace Core.ViewModels;
+﻿namespace Core.ViewModels;
 
 /// <summary>
 /// 所有需要持续观察的集合都放在这，ViewModel

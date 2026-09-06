@@ -1,5 +1,8 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
+using Core.Interfaces;
+using UnoLibrary.Services;
+
 namespace WinApp.Views.MainPageChildPages;
 
 /// <summary>
@@ -11,6 +14,14 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
     readonly SettingViewModel settingViewModel;
     readonly ObservableCollectionVM ViewModel;
     readonly CoverSetter coverSetter;
+    readonly CoverHelper coverHelper;
+    readonly ClipboardHelper clipboardHelper;
+    readonly StorageOperation storageOperation;
+    readonly ContentDialogCreater contentDialogCreater;
+    readonly MangaFactory mangaFactory;
+    readonly MangaFileIO mangaFileIO;
+    readonly MainPage mainPage;
+    readonly INotifier notifier;
     public MangasGroup? MangasGroup
     {
         get;
@@ -38,13 +49,29 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
     public Bookcase(
         CoverSetter _coverSetter,
         SettingViewModel _settingViewModel,
-        ObservableCollectionVM _ViewModel
+        ObservableCollectionVM _ViewModel,
+        CoverHelper _coverHelper,
+        ClipboardHelper _clipboardHelper,
+        StorageOperation _storageOperation,
+        ContentDialogCreater _contentDialogCreater,
+        MangaFactory _mangaFactory,
+        MangaFileIO _mangaFileIO,
+        MainPage _mainPage,
+        INotifier _notifier
     )
     {
         InitializeComponent();
         coverSetter = _coverSetter;
         settingViewModel = _settingViewModel;
         ViewModel = _ViewModel;
+        coverHelper = _coverHelper;
+        clipboardHelper = _clipboardHelper;
+        storageOperation = _storageOperation;
+        contentDialogCreater = _contentDialogCreater;
+        mangaFactory = _mangaFactory;
+        mangaFileIO = _mangaFileIO;
+        mainPage = _mainPage;
+        notifier = _notifier;
     }
 
     /// <summary>

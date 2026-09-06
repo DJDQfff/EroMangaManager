@@ -1,8 +1,6 @@
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-using UnoLibrary.Services;
-
 namespace WinApp.UserControls;
 
 public sealed partial class MangasGridView : UserControl
@@ -13,7 +11,6 @@ public sealed partial class MangasGridView : UserControl
         typeof(MangasGridView),
         new PropertyMetadata(null)
     );
-
     public object ItemsSource
     {
         get => (object)GetValue(ItemsSourceProperty);
@@ -26,10 +23,9 @@ public sealed partial class MangasGridView : UserControl
         if (string.IsNullOrEmpty(text))
             return;
 
-        var mainpage = App.Services.GetRequiredService<MainPage>();
         //await mainpage.NavigateToPage<GlobalSearchPage>().Search(text);
         var globalSearchPage =
-            mainpage.NavigateToPage(StringsEnum.GlobalSearch) as GlobalSearchPage;
+            MainPage.NavigateToPage(StringsEnum.GlobalSearch) as GlobalSearchPage;
         await globalSearchPage!.Search(text);
         //MainPage.Current?.MainFrame.Navigate(typeof(GlobalSearchPage) , text);
     }
@@ -37,29 +33,54 @@ public sealed partial class MangasGridView : UserControl
     [RelayCommand]
     private async Task NavigateSearchTags(string text)
     {
-        var page =
-            App.Services.GetRequiredService<MainPage>().NavigateToPage(StringsEnum.GlobalSearch)
-            as GlobalSearchPage;
+        var page = MainPage.NavigateToPage(StringsEnum.GlobalSearch) as GlobalSearchPage;
         await page!.Search(new string[] { text });
     }
-
-    public StorageOperation StorageOperation { get; set; } =
-        App.Services.GetRequiredService<StorageOperation>();
-
-    public CoverHelper CoverHelper { get; set; } = App.Services.GetRequiredService<CoverHelper>();
-
-    public ClipboardHelper ClipboardHelper { get; set; } =
-        App.Services.GetRequiredService<ClipboardHelper>();
-
-    public ContentDialogCreater ContentDialogCreater { get; set; } =
-        App.Services.GetRequiredService<ContentDialogCreater>();
-
-    public MangaOperationViewModel ViewModel { get; set; } =
-        App.Services.GetRequiredService<MangaOperationViewModel>();
 
     public MangasGridView()
     {
         InitializeComponent();
+    }
+
+    // 不需要 Register / GetValue / SetValue
+    public StorageOperation StorageOperation { get; set; } = null!;
+    public ClipboardHelper ClipboardHelper { get; set; } = null!;
+    public ContentDialogCreater ContentDialogCreater { get; set; } = null!;
+    public MangaFactory MangaFactory { get; set; } = null!;
+    public MangaFileIO MangaFileIO { get; set; } = null!;
+    public CoverSetter CoverSetter { get; set; } = null!;
+    public CoverHelper CoverHelper { get; set; } = null!;
+    public MainPage MainPage { get; set; } = null!;
+    public INotifier Notifier { get; set; } = null!;
+
+    // 5. ObservableCollectionVM
+    public static readonly DependencyProperty ObservableCollectionVMProperty =
+        DependencyProperty.Register(
+            nameof(ObservableCollectionVM),
+            typeof(ObservableCollectionVM),
+            typeof(MangasGridView),
+            new PropertyMetadata(null)
+        );
+
+    public ObservableCollectionVM ObservableCollectionVM
+    {
+        get => (ObservableCollectionVM)GetValue(ObservableCollectionVMProperty);
+        set => SetValue(ObservableCollectionVMProperty, value);
+    }
+
+    // 7. SettingViewModel
+    public static readonly DependencyProperty SettingViewModelProperty =
+        DependencyProperty.Register(
+            nameof(SettingViewModel),
+            typeof(SettingViewModel),
+            typeof(MangasGridView),
+            new PropertyMetadata(null)
+        );
+
+    public SettingViewModel SettingViewModel
+    {
+        get => (SettingViewModel)GetValue(SettingViewModelProperty);
+        set => SetValue(SettingViewModelProperty, value);
     }
 
     /// <summary>
@@ -84,7 +105,7 @@ public sealed partial class MangasGridView : UserControl
         if (sender is MenuFlyoutSubItem { DataContext: Manga manga })
         {
             moveto.Items.Clear();
-            var ways = ViewModel.MangasGroups;
+            var ways = ObservableCollectionVM.MangasGroups;
             foreach (var way in ways)
             {
                 var item = new MenuFlyoutItem { Text = way.FolderPath };
@@ -104,7 +125,23 @@ public sealed partial class MangasGridView : UserControl
                 }
                 item.Click += async (sender, e) =>
                 {
-                    await ViewModel.MoveManga(manga, way);
+                    try
+                    {
+                        string newpath = await Task.Run(() =>
+                            MangaFileIO.MoveManga(manga, way.FolderPath, null)
+                        );
+                        manga.FilePath = newpath;
+
+                        ObservableCollectionVM.PlaceInCorrectGroup(manga);
+                    }
+                    catch (UnauthorizedAccessException)
+                    {
+                        ObservableCollectionVM.AccessDenied();
+                    }
+                    catch (System.IO.IOException)
+                    {
+                        ObservableCollectionVM.AccessDenied();
+                    }
                 };
             }
         }
@@ -115,7 +152,7 @@ public sealed partial class MangasGridView : UserControl
         if (sender is MenuFlyoutSubItem { DataContext: Manga mnaga })
         {
             openwith.Items.Clear();
-            var ways = ViewModel.ExePaths;
+            var ways = SettingViewModel.ExePaths;
 
             foreach (var way in ways)
             {
@@ -126,9 +163,66 @@ public sealed partial class MangasGridView : UserControl
                 item.Click += async (sender, e) =>
                 {
                     var manga = mnaga; // 获取datacontext，可能导致ui线程错误
-                    await ViewModel.OpenWith((manga, way));
+                    await OpenWith((manga, way));
                 };
             }
+        }
+    }
+
+    [RelayCommand]
+    public async Task OpenWith((Manga, string?) tuple)
+    {
+        Manga manga = default!;
+        string way = "explorer.exe"; // 默认值
+        switch (tuple)
+        {
+            case (Manga manga1, null):
+                {
+                    manga = manga1;
+                    way = SettingViewModel.AppConfig.MangaOpenWay3.DefaultWay;
+                }
+                break;
+            case (Manga manga1, string way1):
+                {
+                    manga = manga1;
+                    way = way1;
+                }
+                break;
+        }
+
+        try
+        {
+            await Process.Start(way, $"\"{manga.FilePath}\"").WaitForExitAsync();
+
+            if (MangaFileIO.Exists(manga))
+            {
+                var path = await MangaFactory.GetCoverFile(manga);
+
+                await MangaFileIO.LoadMangaInfo(manga);
+
+                manga.CoverUri = path;
+
+                // 本来这个是在后台线程中执行的，但是因为LoadMangaInfo方法中有UI线程的操作，所以会报错，因此改为在UI线程中执行
+                // 但是不知道为什么，这个本来在xaml中执行会报错，在viewmodel中就不报错
+                //this.DispatcherQueue.TryEnqueue(async () =>
+                //{
+                //    await mangaFileIO.LoadMangaInfo(manga);
+
+                //    manga.CoverUri = path;
+
+                //});
+            }
+            else
+            {
+                ObservableCollectionVM.RemoveManga(manga);
+                ObservableCollectionVM.InvokeEvent_AfterDeleteMnagaSource(manga);
+            }
+        }
+        catch (Exception)
+        {
+            Notifier.Notify(
+                $"{manga.Name}\r{StringsExtension.ResourceLoader.GetString("OpenFailed")}"
+            );
         }
     }
 
@@ -161,7 +255,45 @@ public sealed partial class MangasGridView : UserControl
     {
         if (sender is Grid { DataContext: Manga manga })
         {
-            await ViewModel.OpenWith((manga, null));
+            await OpenWith((manga, null));
         }
+    }
+
+    [RelayCommand]
+    public async Task Delete(Manga manga)
+    {
+        try
+        {
+            var result = await ContentDialogCreater.ConfirmDeleteSourceFileDialog(manga);
+            if (result)
+            {
+                ObservableCollectionVM.RemoveManga(manga);
+                ObservableCollectionVM.InvokeEvent_AfterDeleteMnagaSource(manga);
+            }
+        }
+        catch (UnauthorizedAccessException)
+        {
+            ObservableCollectionVM.AccessDenied();
+        }
+        catch (System.IO.IOException)
+        {
+            ObservableCollectionVM.AccessDenied();
+        }
+    }
+
+    [RelayCommand]
+    private void LocateMangaInFolder(Manga manga)
+    {
+        ExplorerFile.ExplorerSelectFile(manga.FilePath);
+    }
+
+    [RelayCommand]
+    private async Task RenameManga(Manga manga)
+    {
+        await ContentDialogCreater.RenameSourceFileInDialog(
+            manga,
+            MangaFileIO,
+            ObservableCollectionVM
+        );
     }
 }

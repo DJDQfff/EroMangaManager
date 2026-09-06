@@ -1,6 +1,6 @@
-﻿using UnoLibrary.Strings;
+﻿namespace UnoLibrary;
 
-namespace UnoLibrary;
+public record NavigationItem(Type Page, StringsEnum Uid, string UidValue, SymbolIcon Icon);
 
 public interface IPages
 {

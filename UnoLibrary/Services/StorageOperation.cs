@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Mvvm.Input;
-
-namespace WinApp.Services;
+﻿namespace WinApp.Services;
 
 public partial class StorageOperation(
     ObservableCollectionVM collectionVM,

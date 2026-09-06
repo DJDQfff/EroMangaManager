@@ -8,18 +8,21 @@ namespace WinApp.Views.MainPageChildPages;
 /// </summary>
 public sealed partial class IrregularNameSearch : Page
 {
-    private readonly ObservableCollection<Manga> books = [];
+    readonly ObservableCollection<Manga> books = [];
     readonly ObservableCollectionVM observableCollectionVM;
     readonly CoverSetter coverSetter;
+    readonly MangaFileIO mangaFileIO;
 
     public IrregularNameSearch(
         ObservableCollectionVM _observableCollectionVM,
-        CoverSetter _coverSetter
+        CoverSetter _coverSetter,
+        MangaFileIO _mangaFileIO
     )
     {
         InitializeComponent();
         observableCollectionVM = _observableCollectionVM;
         this.coverSetter = _coverSetter;
+        mangaFileIO = _mangaFileIO;
         observableCollectionVM.EventAfterDeleteMangaSource += Delete;
     }
 

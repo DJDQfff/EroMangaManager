@@ -52,6 +52,18 @@
     <ProjectReference Include="..\Server\Server.csproj" />
     <ProjectReference Include="..\UnoLibrary\UnoLibrary.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="UserControls\MangasGridView.xaml.cs">
+      <IsDefaultItem>true</IsDefaultItem>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\MangasGridView.xaml">
+      <IsDefaultItem>true</IsDefaultItem>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
   <!-- 
     Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution 
     Explorer "Package and Publish" context menu entry to be enabled for this project even if 

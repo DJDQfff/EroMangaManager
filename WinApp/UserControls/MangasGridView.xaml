@@ -22,7 +22,7 @@
         Text="{uid:Strings Uid=OpenWithExternal}"
       />
       <MenuFlyoutItem
-        Command="{x:Bind ViewModel.LocateMangaInFolderCommand}"
+        Command="{x:Bind LocateMangaInFolderCommand}"
         CommandParameter="{Binding Mode=OneWay}"
         DataContext="{Binding}"
         Icon="OpenLocal"
@@ -43,7 +43,7 @@
         Text="{uid:Strings Uid=OverviewInformation}"
       />
       <MenuFlyoutItem
-        Command="{x:Bind ViewModel.RenameMangaCommand}"
+        Command="{x:Bind RenameMangaCommand}"
         CommandParameter="{Binding Mode=OneWay}"
         DataContext="{Binding}"
         Icon="Rename"
@@ -65,7 +65,7 @@
       />
       <MenuFlyoutSeparator />
       <MenuFlyoutItem
-        Command="{x:Bind ViewModel.DeleteCommand}"
+        Command="{x:Bind DeleteCommand}"
         CommandParameter="{Binding Mode=OneWay}"
         DataContext="{Binding}"
         Foreground="Red"
@@ -88,7 +88,7 @@
           HorizontalAlignment="Center"
           VerticalAlignment="Center"
           Manga="{x:Bind Mode=OneWay}"
-          ViewModel="{Binding CoverHelper, ElementName=usercontrol, Mode=OneWay}"
+          CoverHelper="{Binding CoverHelper, ElementName=usercontrol, Mode=OneWay}"
         />
         <basic:Name
           x:Name="name"
@@ -121,7 +121,7 @@
             x:Name="cover"
             Grid.Column="0"
             Manga="{x:Bind Mode=OneWay}"
-            ViewModel="{Binding CoverHelper, ElementName=usercontrol, Mode=OneWay}"
+            CoverHelper="{Binding CoverHelper, ElementName=usercontrol, Mode=OneWay}"
           />
           <basic:TagsItemRepeater
             x:Name="tags"
@@ -143,7 +143,7 @@
         <basic:Cover
           Grid.Column="0"
           Manga="{x:Bind Mode=OneWay}"
-          ViewModel="{Binding CoverHelper, ElementName=usercontrol, Mode=OneWay}"
+          CoverHelper="{Binding CoverHelper, ElementName=usercontrol, Mode=OneWay}"
         />
         <Grid Grid.Column="1" RowDefinitions="auto,5*,auto">
           <basic:Name

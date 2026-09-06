@@ -1,9 +1,6 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804
 // 上介绍了“空白页”项模板
 
-using UnoLibrary.Strings;
-using Windows.ApplicationModel.Resources;
-
 namespace UnoLibrary;
 
 /// <summary> 可用于自身或导航至 Frame 内部的空白页。 </summary>
