@@ -32,18 +32,18 @@ public partial class App : Application
         services.AddSingleton<IPages, Pages>();
         //无其他依赖项
         services.AddTransient<ClipboardHelper>();
-        services.AddSingleton<ZipEntryHelper>();
+        services.AddTransient<ZipEntryHelper>();
         services.AddTransient<MangaStreamProvider>();
-        services.AddSingleton<Exporter>();
-        services.AddSingleton<MangaFileIO>();
-        services.AddSingleton<SettingViewModel>();
+        services.AddTransient<Exporter>();
+        services.AddTransient<MangaFileIO>();
         services.AddSingleton<CoverSetter>();
         services.AddSingleton<ObservableCollectionVM>();
         services.AddTransient<ISettingFilePath, WinUISetting>();
+        services.AddTransient<StorageFolderHelper>();
+
         //依赖前面的
-        services.AddSingleton<Translator>();
+        services.AddTransient<Translator>();
         services.AddSingleton<StorageOperation>();
-        services.AddSingleton<StorageFolderHelper>();
         services.AddSingleton<CoverHelper>();
         services.AddSingleton<MainWindow>();
         services.AddSingleton<Window>(sp => sp.GetRequiredService<MainWindow>());
