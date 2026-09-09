@@ -125,9 +125,10 @@ public sealed partial class MangasGridView : UserControl
                 }
                 item.Click += async (sender, e) =>
                 {
+                    string newpath = null;
                     try
                     {
-                        string newpath = await Task.Run(() =>
+                        newpath = await Task.Run(() =>
                             MangaFileIO.MoveManga(manga, way.FolderPath, null)
                         );
                         manga.FilePath = newpath;
@@ -136,11 +137,11 @@ public sealed partial class MangasGridView : UserControl
                     }
                     catch (UnauthorizedAccessException)
                     {
-                        ObservableCollectionVM.AccessDenied();
+                        ObservableCollectionVM.AccessDenied(newpath);
                     }
                     catch (System.IO.IOException)
                     {
-                        ObservableCollectionVM.AccessDenied();
+                        ObservableCollectionVM.AccessDenied(newpath);
                     }
                 };
             }
@@ -273,11 +274,14 @@ public sealed partial class MangasGridView : UserControl
         }
         catch (UnauthorizedAccessException)
         {
-            ObservableCollectionVM.AccessDenied();
+            var a = StringsExtension.ResourceLoader.GetString("AccessDenied");
+            ObservableCollectionVM.AccessDenied(a);
         }
         catch (System.IO.IOException)
         {
-            ObservableCollectionVM.AccessDenied();
+            var a = StringsExtension.ResourceLoader.GetString("AccessDenied");
+
+            ObservableCollectionVM.AccessDenied(a);
         }
     }
 

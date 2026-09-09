@@ -1,10 +1,7 @@
 ﻿// To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
-using Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Windows.ApplicationModel.WindowsAppRuntime;
-using Microsoft.Windows.AppNotifications.Builder;
-using UnoLibrary.Services;
 
 namespace WinApp;
 
@@ -40,7 +37,6 @@ public partial class App : Application
         services.AddSingleton<ObservableCollectionVM>();
         services.AddTransient<ISettingFilePath, WinUISetting>();
         services.AddTransient<StorageFolderHelper>();
-
         //依赖前面的
         services.AddTransient<Translator>();
         services.AddSingleton<StorageOperation>();
@@ -66,7 +62,7 @@ public partial class App : Application
         services.AddSingleton<FindSameManga>();
         services.AddTransient<IrregularNameSearch>();
         services.AddSingleton<ServerPage>();
-        services.AddTransient<INotifier, Notifier>();
+        services.AddSingleton<INotifier, Notifier>();
         //数据库
         services.AddDbContextFactory<DataBase_Version3>(options =>
             options.UseSqlite(
@@ -83,12 +79,6 @@ public partial class App : Application
     /// <param name="args">Details about the launch request and process.</param>
     protected override async void OnLaunched(LaunchActivatedEventArgs args)
     {
-        #region 快速执行
-
-#if DEBUG
-        //await Windows.System.Launcher.LaunchFolderPathAsync(LocalFolder);
-#endif
-
         Services.GetRequiredService<CoverSetter>().SetCover += async manga =>
         {
             if (manga.CoverUri.EndsWith(".svg"))
@@ -128,37 +118,11 @@ public partial class App : Application
             language
         );
 
-        #region 事件赋值
-
-        var globalviewmodel = Services.GetRequiredService<ObservableCollectionVM>();
-
-        globalviewmodel.ErrorZipEvent += str =>
-        {
-            var appNotification = new AppNotificationBuilder()
-                .AddText($"{str}\r{StringsExtension.ResourceLoader.GetString("ErrorString1")}")
-                .BuildNotification();
-            AppNotificationManager.Default.Show(appNotification);
-        };
-        globalviewmodel.WorkDoneEvent += (message) =>
-            Services.GetRequiredService<INotifier>().Notify(message);
-        globalviewmodel.WorkFailedEvent += (message) =>
-            Services.GetRequiredService<INotifier>().Notify(message);
-        globalviewmodel.AccessDeniedEvent += () =>
-            Services
-                .GetRequiredService<INotifier>()
-                .Notify(StringsExtension.ResourceLoader.GetString("AccessDenied"));
-
-        #endregion 事件赋值
-
-        InitializeGlobalViewModel();
-
         DeploymentResult result = DeploymentManager.GetStatus();
         if (result.Status is not DeploymentStatus.Ok)
         {
             await Task.Run(() => DeploymentManager.Initialize());
         }
-
-        #endregion 快速执行
 
         // If this is the first instance launched, then register it as the "main" instance.
         // If this isn't the first instance launched, then "main" will already be registered,
@@ -174,15 +138,12 @@ public partial class App : Application
                 .Windows.AppLifecycle.AppInstance.GetCurrent()
                 .GetActivatedEventArgs();
             await mainInstance.RedirectActivationToAsync(activatedEventArgs);
-            System.Diagnostics.Process.GetCurrentProcess().Kill();
+            Process.GetCurrentProcess().Kill();
             return;
         }
 
         var window = Services.GetRequiredService<MainWindow>();
-        // 格式："类库名称/资源文件名" (如果资源文件是默认的 Resources.resw，则省略 .resw)
-        window.Title = Windows
-            .ApplicationModel.Resources.ResourceLoader.GetForViewIndependentUse()
-            .GetString("AppDisplayName");
+        window.Title = StringsExtension.ResourceLoader.GetString("AppDisplayName");
 
         var page = Services.GetRequiredService<MainPage>();
         page.ServiceProvider = Services;
@@ -192,34 +153,11 @@ public partial class App : Application
 
         window.Activate();
 
-        #region 需要后台执行
-
-        await globalviewmodel.StartInitial();
-
-        //await Current.BackgroundCoverSetter.LoopWork3();
-
-        //GlobalViewModel.InitialEachFoldersInOrder();
-
-        #endregion 需要后台执行
-    }
-
-    /// <summary>
-    /// 初始化文件夹目录
-    /// </summary>
-    private void InitializeGlobalViewModel()
-    {
         var folders = Services.GetRequiredService<DatabaseController>().MangaFolder_GetAllPaths();
 
-        // 这个是以前设计的会把默认书架放第一个加载
-        //var defaultpath = AppConfig.AppConfig.General.DefaultBookcaseFolder;
-        //var f = folders.SingleOrDefault(x => x == defaultpath);
-        //if (f != null)
-        //{
-        //    folders.Remove(f);
-        //    folders.Insert(0, f);
-        //}
-        var viewmodel = Services.GetRequiredService<ObservableCollectionVM>();
-        Services.GetRequiredService<MangaFactory>().GetAllFolders(viewmodel, folders);
-        viewmodel.InitialGroup += Services.GetRequiredService<MangaFactory>().InitialGroup2;
+        var factory = Services.GetRequiredService<MangaFactory>();
+
+        factory.GetAllFolders(folders);
+        await factory.StartInitial();
     }
 }

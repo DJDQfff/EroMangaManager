@@ -1,10 +1,20 @@
-﻿namespace Core.ViewModels;
+﻿using Core.Interfaces;
+
+namespace Core.ViewModels;
 
 /// <summary>
 /// 所有需要持续观察的集合都放在这，ViewModel
 /// </summary>
 public class ObservableCollectionVM
 {
+    public ObservableCollectionVM(INotifier notifier)
+    {
+        this.ErrorZipEvent += str => notifier.Notify($"🚨❌{str}❌🚨");
+        this.WorkDoneEvent += (message) => notifier.Notify($"🎉🎉{message}🎉🎉");
+        this.WorkFailedEvent += (message) => notifier.Notify($"💥{message}💥");
+        this.AccessDeniedEvent += (message) => notifier.Notify($"🚫🔒{message}🔒🚫");
+    }
+
     /// <summary>
     /// 出现无法解析的Manga时引发
     /// </summary>
@@ -28,7 +38,7 @@ public class ObservableCollectionVM
     /// <summary>
     /// 访问被拒绝，通常因文件权限不足引发
     /// </summary>
-    public event Action? AccessDeniedEvent; // TODO 没有验证这个事件及相关的try-catch能否正常工作
+    public event Action<string> AccessDeniedEvent; // TODO 没有验证这个事件及相关的try-catch能否正常工作
 
     /// <summary>
     /// 本子文件夹集合
@@ -125,7 +135,7 @@ public class ObservableCollectionVM
     /// <summary>
     /// 触发访问被拒绝异常
     /// </summary>
-    public void AccessDenied() => AccessDeniedEvent?.Invoke();
+    public void AccessDenied(string message) => AccessDeniedEvent?.Invoke(message);
 
     /// <summary>
     /// 发现错误漫画时引发
@@ -137,30 +147,9 @@ public class ObservableCollectionVM
     }
 
     /// <summary>
-    /// 后台更新MangasGroup的Func
-    /// </summary>
-    public Func<MangasGroup, Task> InitialGroup = null!;
-
-    /// <summary>
     /// 开始初始化所有MangasGroup，会以自我递归的方式，初始化所有groups
     /// </summary>
     /// <returns></returns>
-    public async Task StartInitial()
-    {
-        if (MangasGroups.Any(x => x.UpdateState == MangasGroupUpdateState.Busy))
-        {
-            return;
-        }
-        var group = MangasGroups.FirstOrDefault(x => x.UpdateState == MangasGroupUpdateState.Ready);
-
-        if (group is not null)
-        {
-            await InitialGroup.Invoke(group);
-
-            await StartInitial();
-        }
-    }
-
     /// <summary>
     /// 把一个本子放到他应该在的集合里面，这个一般用在移动本子后
     /// </summary>

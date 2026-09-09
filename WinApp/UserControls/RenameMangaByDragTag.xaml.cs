@@ -57,11 +57,11 @@ public sealed partial class RenameMangaByDragTag : UserControl
         }
         catch (UnauthorizedAccessException)
         {
-            services.GetRequiredService<ObservableCollectionVM>().AccessDenied();
+            services.GetRequiredService<ObservableCollectionVM>().AccessDenied(manga.Name);
         }
         catch (System.IO.IOException)
         {
-            services.GetRequiredService<ObservableCollectionVM>().AccessDenied();
+            services.GetRequiredService<ObservableCollectionVM>().AccessDenied(manga.Name);
         }
 
         NameChanged?.Invoke(manga);

@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using System.Threading.Tasks;
 using Core.Setting;
 using SharpCompress.Common;
 using SharpCompress.Readers;

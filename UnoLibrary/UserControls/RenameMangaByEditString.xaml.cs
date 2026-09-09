@@ -102,11 +102,11 @@ public sealed partial class RenameMangaByEditString : UserControl
         }
         catch (UnauthorizedAccessException)
         {
-            ObservableCollectionVM.AccessDenied();
+            ObservableCollectionVM.AccessDenied(newname);
         }
         catch (System.IO.IOException)
         {
-            ObservableCollectionVM.AccessDenied();
+            ObservableCollectionVM.AccessDenied(newname);
         }
     }
 }

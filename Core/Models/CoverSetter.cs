@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace Core.Models;
+﻿namespace Core.Models;
 
 /// <summary>
 /// 后台封面加载工作类
