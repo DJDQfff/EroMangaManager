@@ -50,7 +50,6 @@ public sealed partial class MangasGridView : UserControl
     public MangaFactory MangaFactory { get; set; } = null!;
     public MangaIO MangaFileIO { get; set; } = null!;
     public CoverSetter CoverSetter { get; set; } = null!;
-    public CoverHelper CoverHelper { get; set; } = null!;
     public MainPage MainPage { get; set; } = null!;
     public INotifier Notifier { get; set; } = null!;
 

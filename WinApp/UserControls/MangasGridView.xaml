@@ -88,7 +88,6 @@
           HorizontalAlignment="Center"
           VerticalAlignment="Center"
           Manga="{x:Bind Mode=OneWay}"
-          CoverHelper="{Binding CoverHelper, ElementName=usercontrol, Mode=OneWay}"
         />
         <basic:Name
           x:Name="name"
@@ -117,12 +116,7 @@
           NavigateCommand="{Binding NavigateSearchNameCommand, ElementName=usercontrol, Mode=OneWay}"
         />
         <Grid Grid.Row="1" ColumnDefinitions="*,*">
-          <basic:Cover
-            x:Name="cover"
-            Grid.Column="0"
-            Manga="{x:Bind Mode=OneWay}"
-            CoverHelper="{Binding CoverHelper, ElementName=usercontrol, Mode=OneWay}"
-          />
+          <basic:Cover x:Name="cover" Grid.Column="0" Manga="{x:Bind Mode=OneWay}" />
           <basic:TagsItemRepeater
             x:Name="tags"
             Grid.Column="1"
@@ -140,11 +134,7 @@
         ContextFlyout="{StaticResource mangaflyout}"
         DoubleTapped="Grid_DoubleTapped"
       >
-        <basic:Cover
-          Grid.Column="0"
-          Manga="{x:Bind Mode=OneWay}"
-          CoverHelper="{Binding CoverHelper, ElementName=usercontrol, Mode=OneWay}"
-        />
+        <basic:Cover Grid.Column="0" Manga="{x:Bind Mode=OneWay}" />
         <Grid Grid.Column="1" RowDefinitions="auto,5*,auto">
           <basic:Name
             Manga="{x:Bind Mode=OneWay}"

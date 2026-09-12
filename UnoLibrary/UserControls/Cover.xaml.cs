@@ -21,22 +21,22 @@ public sealed partial class Cover : UserControl
         set => SetValue(MangaProperty, value);
     }
 
-    //不能使用普通属性，千问说普通属性无法在 XAML 中使用{Binding}绑定。
-    //必须使用 DependencyProperty
-    //public CoverHelper CoverHelper { set; get; } = null!;
-    public CoverHelper CoverHelper
-    {
-        get => (CoverHelper)GetValue(CoverHelperProperty);
-        set => SetValue(CoverHelperProperty, value);
-    }
+    ////不能使用普通属性，千问说普通属性无法在 XAML 中使用{Binding}绑定。
+    ////必须使用 DependencyProperty
+    ////public CoverHelper CoverHelper { set; get; } = null!;
+    //public CoverHelper CoverHelper
+    //{
+    //    get => (CoverHelper)GetValue(CoverHelperProperty);
+    //    set => SetValue(CoverHelperProperty, value);
+    //}
 
-    // ViewModel 用于在 XAML 中绑定，必须为 DependencyProperty
-    public static readonly DependencyProperty CoverHelperProperty = DependencyProperty.Register(
-        nameof(CoverHelper),
-        typeof(CoverHelper),
-        typeof(Cover),
-        new PropertyMetadata(null)
-    );
+    //// ViewModel 用于在 XAML 中绑定，必须为 DependencyProperty
+    //public static readonly DependencyProperty CoverHelperProperty = DependencyProperty.Register(
+    //    nameof(CoverHelper),
+    //    typeof(CoverHelper),
+    //    typeof(Cover),
+    //    new PropertyMetadata(null)
+    //);
 
     public Cover()
     {
@@ -45,6 +45,6 @@ public sealed partial class Cover : UserControl
 
     private void Image_ImageFailed(object sender, ExceptionRoutedEventArgs e)
     {
-        image.Source = CoverHelper.ErrorCoverImage;
+        image.Source = new SvgImageSource(new Uri("ms-appx://UnoLibrary/Assets/error.svg")); // CoverHelper.ErrorCoverImage;
     }
 }

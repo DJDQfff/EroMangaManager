@@ -14,7 +14,6 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
     readonly SettingViewModel settingViewModel;
     readonly ObservableCollectionVM ViewModel;
     readonly CoverSetter coverSetter;
-    readonly CoverHelper coverHelper;
     readonly ClipboardHelper clipboardHelper;
     readonly ContentDialogCreater contentDialogCreater;
     readonly MangaFactory mangaFactory;
@@ -49,7 +48,6 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
         CoverSetter _coverSetter,
         SettingViewModel _settingViewModel,
         ObservableCollectionVM _ViewModel,
-        CoverHelper _coverHelper,
         ClipboardHelper _clipboardHelper,
         ContentDialogCreater _contentDialogCreater,
         MangaFactory _mangaFactory,
@@ -62,7 +60,6 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
         coverSetter = _coverSetter;
         settingViewModel = _settingViewModel;
         ViewModel = _ViewModel;
-        coverHelper = _coverHelper;
         clipboardHelper = _clipboardHelper;
         contentDialogCreater = _contentDialogCreater;
         mangaFactory = _mangaFactory;
