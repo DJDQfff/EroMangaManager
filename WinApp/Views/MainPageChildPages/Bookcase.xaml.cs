@@ -19,7 +19,7 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
     readonly StorageOperation storageOperation;
     readonly ContentDialogCreater contentDialogCreater;
     readonly MangaFactory mangaFactory;
-    readonly MangaFileIO mangaFileIO;
+    readonly MangaIO mangaFileIO;
     readonly MainPage mainPage;
     readonly INotifier notifier;
     public MangasGroup? MangasGroup
@@ -55,7 +55,7 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
         StorageOperation _storageOperation,
         ContentDialogCreater _contentDialogCreater,
         MangaFactory _mangaFactory,
-        MangaFileIO _mangaFileIO,
+        MangaIO _mangaFileIO,
         MainPage _mainPage,
         INotifier _notifier
     )

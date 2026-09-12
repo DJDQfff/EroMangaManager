@@ -17,25 +17,24 @@ public partial class StorageOperation(
         InitializeWithWindow.Initialize(fileSavePicker, handle);
 
         var storageFile = await fileSavePicker.PickSaveFileAsync();
-        if (storageFile is null)
+        if (storageFile is not null)
         {
-            return;
-        }
-        try
-        {
-            await Task.Run(() => exporter.Export_PDFSharp(mangaBook, storageFile.Path));
-            var done = StringsExtension.ResourceLoader.GetString("ExportDone");
-            if (done != null)
+            try
             {
-                collectionVM.WorkDone(done);
+                await Task.Run(() => exporter.Export_PDFSharp(mangaBook, storageFile.Path));
+                var done = StringsExtension.ResourceLoader.GetString("ExportDone");
+                if (done != null)
+                {
+                    collectionVM.WorkDone(done);
+                }
             }
-        }
-        catch
-        {
-            var failed = StringsExtension.ResourceLoader.GetString("ExportFailed");
-            if (failed != null)
+            catch
             {
-                collectionVM.WorkFailed(failed);
+                var failed = StringsExtension.ResourceLoader.GetString("ExportFailed");
+                if (failed != null)
+                {
+                    collectionVM.WorkFailed(failed);
+                }
             }
         }
     }

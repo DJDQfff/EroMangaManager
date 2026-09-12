@@ -7,7 +7,7 @@ public class MangaFactory(
     ObservableCollectionVM ViewModel,
     CoverHelper coverHelper,
     CoverSetter coverSetter,
-    MangaFileIO mangaFileIO
+    MangaIO mangaFileIO
 )
 {
     /// <summary>ViewModel初始化</summary>
@@ -108,28 +108,6 @@ public class MangaFactory(
 
                 //await App.Current.CoverSetter.AppendLoadWorks(mangasFolder.Mangas,false,true);
             }
-        }
-    }
-
-    public async Task<string> GetCoverFile(Manga manga)
-    {
-        try
-        {
-            // 结合思路二的简洁性：用 switch 表达式直接路由
-            string? coverpath = manga.Type switch
-            {
-                "" => mangaFileIO.LoadCoverFromInternalFolder(manga.FilePath),
-                _ => await coverHelper.TryCreatCoverFileAsync(manga.FilePath, null),
-            };
-
-            // 结合思路一的防御性：如果是 null，直接返回默认封面，无需抛异常
-            return coverpath ?? coverHelper.DefaultCoverUri;
-        }
-        catch (Exception)
-        {
-            // 发生任何异常（如文件损坏等），返回错误封面
-            // TODO: 建议在这里加一行日志记录 ex.Message
-            return coverHelper.ErrorCoverUri;
         }
     }
 }

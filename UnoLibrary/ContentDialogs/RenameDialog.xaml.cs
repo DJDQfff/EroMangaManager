@@ -26,7 +26,7 @@ public sealed partial class RenameDialog : ContentDialog
     /// <param name="mangaBook"></param>
     public RenameDialog(
         Manga mangaBook,
-        MangaFileIO mangaFileIO,
+        MangaIO mangaFileIO,
         ObservableCollectionVM observableCollectionVM
     )
     {

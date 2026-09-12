@@ -32,7 +32,7 @@ public partial class App : Application
         services.AddTransient<ZipEntryHelper>();
         services.AddTransient<MangaStreamProvider>();
         services.AddTransient<Exporter>();
-        services.AddTransient<MangaFileIO>();
+        services.AddTransient<MangaIO, MangaIO_WinAppSDK>();
         services.AddSingleton<CoverSetter>();
         services.AddSingleton<ObservableCollectionVM>();
         services.AddTransient<ISettingFilePath, WinUISetting>();
@@ -83,16 +83,14 @@ public partial class App : Application
         {
             if (manga.CoverUri.EndsWith(".svg"))
             {
-                manga.CoverUri = await Services
-                    .GetRequiredService<MangaFactory>()
-                    .GetCoverFile(manga);
+                manga.CoverUri = await Services.GetRequiredService<MangaIO>().GetCoverFile(manga);
             }
         };
         Services.GetRequiredService<CoverSetter>().MangaInfo += async manga =>
         {
             if (manga.FileSize == 0)
             {
-                await Services.GetRequiredService<MangaFileIO>().LoadMangaInfo(manga);
+                await Services.GetRequiredService<MangaIO>().LoadMangaInfo(manga);
             }
         };
 

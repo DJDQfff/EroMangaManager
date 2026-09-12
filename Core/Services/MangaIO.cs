@@ -8,7 +8,7 @@ namespace Core.Services;
 /// <summary>
 /// manga的io操作
 /// </summary>
-public class MangaFileIO
+public class MangaIO
 {
     /// <summary>
     /// 高级属性加载
@@ -27,7 +27,7 @@ public class MangaFileIO
                 manga.Chapters.Add(chapter);
             }
             manga.ImageAmount = await Task.Run(() => CountImageAmount(manga));
-            //manga.ChapterAmount = await Task.Run(() => MangaFileIO.CountChapterAmount(manga));
+            //manga.ChapterAmount = await Task.Run(() => MangaIO.CountChapterAmount(manga));
         }
         catch
         {
@@ -334,5 +334,10 @@ public class MangaFileIO
                 //book.FilePath = newpath;
             }
         }
+    }
+
+    public virtual async Task<string> GetCoverFile(Manga manga)
+    {
+        return null;
     }
 }

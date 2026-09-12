@@ -47,7 +47,7 @@ public sealed partial class MangasGridView : UserControl
     public ClipboardHelper ClipboardHelper { get; set; } = null!;
     public ContentDialogCreater ContentDialogCreater { get; set; } = null!;
     public MangaFactory MangaFactory { get; set; } = null!;
-    public MangaFileIO MangaFileIO { get; set; } = null!;
+    public MangaIO MangaFileIO { get; set; } = null!;
     public CoverSetter CoverSetter { get; set; } = null!;
     public CoverHelper CoverHelper { get; set; } = null!;
     public MainPage MainPage { get; set; } = null!;
@@ -197,7 +197,7 @@ public sealed partial class MangasGridView : UserControl
 
             if (MangaFileIO.Exists(manga))
             {
-                var path = await MangaFactory.GetCoverFile(manga);
+                var path = await MangaFileIO.GetCoverFile(manga);
 
                 await MangaFileIO.LoadMangaInfo(manga);
 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using CommunityToolkit.Mvvm.Input;
-using UnoLibrary.ContentDialogPages;
-using WinApp.Services;
+﻿using UnoLibrary.ContentDialogPages;
 using WinApp.Views.ContentDialogPages;
 
 namespace UnoLibrary.Services;
@@ -57,7 +52,7 @@ public partial class ContentDialogCreater(
     /// <returns></returns>
     public async Task RenameSourceFileInDialog(
         Manga eroManga,
-        MangaFileIO mangaFileIO,
+        MangaIO mangaFileIO,
         ObservableCollectionVM observableCollectionVM
     )
     {

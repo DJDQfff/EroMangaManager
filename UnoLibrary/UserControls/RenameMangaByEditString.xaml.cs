@@ -67,13 +67,13 @@ public sealed partial class RenameMangaByEditString : UserControl
 
     public static readonly DependencyProperty MangaFileIOProperty = DependencyProperty.Register(
         nameof(MangaFileIO),
-        typeof(MangaFileIO),
+        typeof(MangaIO),
         typeof(RenameMangaByEditString),
         new PropertyMetadata(null)
     );
-    public MangaFileIO MangaFileIO
+    public MangaIO MangaFileIO
     {
-        get => (MangaFileIO)GetValue(MangaFileIOProperty);
+        get => (MangaIO)GetValue(MangaFileIOProperty);
         set => SetValue(MangaFileIOProperty, value);
     }
 

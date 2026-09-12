@@ -11,12 +11,12 @@ public sealed partial class IrregularNameSearch : Page
     readonly ObservableCollection<Manga> books = [];
     readonly ObservableCollectionVM observableCollectionVM;
     readonly CoverSetter coverSetter;
-    readonly MangaFileIO mangaFileIO;
+    readonly MangaIO mangaFileIO;
 
     public IrregularNameSearch(
         ObservableCollectionVM _observableCollectionVM,
         CoverSetter _coverSetter,
-        MangaFileIO _mangaFileIO
+        MangaIO _mangaFileIO
     )
     {
         InitializeComponent();

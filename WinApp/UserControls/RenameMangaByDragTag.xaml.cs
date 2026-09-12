@@ -51,7 +51,7 @@ public sealed partial class RenameMangaByDragTag : UserControl
         try
         {
             string newpath = await Task.Run(() =>
-                services.GetRequiredService<MangaFileIO>().MoveManga(manga, null, text)
+                services.GetRequiredService<MangaIO>().MoveManga(manga, null, text)
             );
             manga.FilePath = newpath;
         }
