@@ -61,10 +61,10 @@ public partial class Manga : ObservableObject /*,IMangaView*/
             Type = Path.GetExtension(value).ToLower();
         }
 
-        Name = string.Join(' ' , BracketBasedStringParser.Get_OutsideContent(FileDisplayName));
+        Name = string.Join(' ', BracketBasedStringParser.Get_OutsideContent(FileDisplayName));
         Tags = BracketBasedStringParser
             .Get_InsideContent(FileDisplayName)
-            .SelectMany(x => x.Split('&' , '、'))
+            .SelectMany(x => x.Split('&', '、'))
             .Distinct()
             .ToArray();
 
