@@ -27,4 +27,25 @@ public class MangaIO_WinAppSDK(CoverHelper coverHelper) : MangaIO
             return coverHelper.ErrorCoverUri;
         }
     }
+
+    public override async Task Delete(Manga manga)
+    {
+        switch (manga.Type)
+        {
+            case "":
+                {
+                    var folder = await StorageFolder.GetFolderFromPathAsync(manga.FilePath);
+
+                    await folder.DeleteAsync(StorageDeleteOption.Default);
+                }
+                break;
+
+            default:
+                {
+                    var file = await StorageFile.GetFileFromPathAsync(manga.FilePath);
+                    await file.DeleteAsync();
+                }
+                break;
+        }
+    }
 }

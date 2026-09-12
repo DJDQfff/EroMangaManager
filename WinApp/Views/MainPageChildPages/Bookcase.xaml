@@ -171,7 +171,6 @@
       ObservableCollectionVM="{x:Bind ViewModel, Mode=OneWay}"
       CoverHelper="{x:Bind coverHelper, Mode=OneWay}"
       ClipboardHelper="{x:Bind clipboardHelper, Mode=OneWay}"
-      StorageOperation="{x:Bind storageOperation, Mode=OneWay}"
       ContentDialogCreater="{x:Bind contentDialogCreater, Mode=OneWay}"
       MangaFactory="{x:Bind mangaFactory, Mode=OneWay}"
       MangaFileIO="{x:Bind mangaFileIO, Mode=OneWay}"

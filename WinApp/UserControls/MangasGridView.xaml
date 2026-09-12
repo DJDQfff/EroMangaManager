@@ -57,7 +57,7 @@
         Text="{uid:Strings Uid=SearchSimilar}"
       />-->
       <MenuFlyoutItem
-        Command="{x:Bind StorageOperation.ExportAsPDFCommand}"
+        Command="{x:Bind ContentDialogCreater.ExportAsPDFCommand}"
         CommandParameter="{Binding Mode=OneWay}"
         DataContext="{Binding}"
         Icon="Save"

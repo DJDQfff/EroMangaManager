@@ -39,7 +39,6 @@ public partial class App : Application
         services.AddTransient<StorageFolderHelper>();
         //依赖前面的
         services.AddTransient<Translator>();
-        services.AddSingleton<StorageOperation>();
         services.AddSingleton<CoverHelper>();
         services.AddSingleton<MainWindow>();
         services.AddSingleton<Window>(sp => sp.GetRequiredService<MainWindow>());

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccessDenied" xml:space="preserve">
+    <value>Access denied</value>
+  </data>
   <data name="AddAFolder" xml:space="preserve">
     <value>Add folders</value>
   </data>
@@ -125,6 +128,9 @@
   </data>
   <data name="AddExe" xml:space="preserve">
     <value>Add exe</value>
+  </data>
+  <data name="AllInBrackets" xml:space="preserve">
+    <value>All are included in parentheses</value>
   </data>
   <data name="Answer_MangaLibrary" xml:space="preserve">
     <value>Separate management of the doujinshi by folder</value>
@@ -137,6 +143,9 @@
   </data>
   <data name="Answer_WhatISTheApp" xml:space="preserve">
     <value>This is a software used to manage the local hard disk notebook. If you don't know what a book is,Then there's a high probability you won't use this software.。</value>
+  </data>
+  <data name="AppDisplayName" xml:space="preserve">
+    <value>Doujinshi Manager</value>
   </data>
   <data name="AppUILanguage" xml:space="preserve">
     <value>language</value>
@@ -156,6 +165,9 @@
   <data name="ChangeSortMethod" xml:space="preserve">
     <value>Toggle sorting</value>
   </data>
+  <data name="Chapters" xml:space="preserve">
+    <value>chapter</value>
+  </data>
   <data name="ChineseTranslateTeam" xml:space="preserve">
     <value>Sinicization group</value>
   </data>
@@ -170,6 +182,9 @@
   </data>
   <data name="ContainInvalaidChar" xml:space="preserve">
     <value>Contains illegal characters</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>copy</value>
   </data>
   <data name="CustomExe" xml:space="preserve">
     <value>Custom exe</value>
@@ -194,6 +209,12 @@
   </data>
   <data name="DeleteSourceFile" xml:space="preserve">
     <value>Delete the source file</value>
+  </data>
+  <data name="DeletieModeDisabled" xml:space="preserve">
+    <value>Delete mode disabled: Move to Recycle Bin only</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>This is a manga manager to manage and read your comics in zip format. The internal images must be in jpg, png, and webp formats</value>
   </data>
   <data name="Description_20221219" xml:space="preserve">
     <value>Add the ability to export PDFs</value>
@@ -240,6 +261,9 @@
   <data name="ExportToPDF" xml:space="preserve">
     <value>Export to PDF</value>
   </data>
+  <data name="FileInfoViewMode" xml:space="preserve">
+    <value>File view mode</value>
+  </data>
   <data name="FilteredImages" xml:space="preserve">
     <value>Filter the gallery</value>
   </data>
@@ -261,6 +285,15 @@
   <data name="GitHubFeedBack" xml:space="preserve">
     <value>Github feedback</value>
   </data>
+  <data name="GlobalSearch" xml:space="preserve">
+    <value>Global Search</value>
+  </data>
+  <data name="HaveNoneBrackets" xml:space="preserve">
+    <value>There are no parentheses</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>fig</value>
+  </data>
   <data name="Import" xml:space="preserve">
     <value>Import</value>
   </data>
@@ -279,6 +312,9 @@
   <data name="LoadSubDirectory" xml:space="preserve">
     <value>Load the subfolder</value>
   </data>
+  <data name="LocateInExplorer" xml:space="preserve">
+    <value>Open in the Resource Browser</value>
+  </data>
   <data name="MailFeedbackToDeveloper" xml:space="preserve">
     <value>Email feedback djdqfff@qq.com</value>
   </data>
@@ -294,6 +330,21 @@
   <data name="MangaTagsManage" xml:space="preserve">
     <value>Tags Management</value>
   </data>
+  <data name="Method1" xml:space="preserve">
+    <value>Method 1. Quick, accurate, small range</value>
+  </data>
+  <data name="Method2" xml:space="preserve">
+    <value>Method 2.Quick, inaccurate</value>
+  </data>
+  <data name="Method3" xml:space="preserve">
+    <value>Method 3. Slow</value>
+  </data>
+  <data name="Method4" xml:space="preserve">
+    <value>Method 4. very slow , but accurate</value>
+  </data>
+  <data name="MoveToOtherFolder" xml:space="preserve">
+    <value>Move to a different folder</value>
+  </data>
   <data name="NameWithoutBrackets" xml:space="preserve">
     <value>The file name is unparenthesed</value>
   </data>
@@ -308,6 +359,9 @@
   </data>
   <data name="NoSelectedFolder" xml:space="preserve">
     <value>No folder selected</value>
+  </data>
+  <data name="NotCorrectBracketPairs" xml:space="preserve">
+    <value>Unpaired parentheses</value>
   </data>
   <data name="NowInitializingMaybeError" xml:space="preserve">
     <value>Initializing the folder, now using the tool feature may be incorrect</value>
@@ -335,6 +389,9 @@
   </data>
   <data name="OpenItsPlacedFolder" xml:space="preserve">
     <value>Open the folder you're in</value>
+  </data>
+  <data name="OpenWithExternal" xml:space="preserve">
+    <value>Open from the outside</value>
   </data>
   <data name="OSRelated" xml:space="preserve">
     <value>System associations</value>
@@ -393,11 +450,20 @@
   <data name="SearchByTag" xml:space="preserve">
     <value>Search by Tag</value>
   </data>
+  <data name="SearchSimialr" xml:space="preserve">
+    <value>Find Similarities</value>
+  </data>
+  <data name="SearchThisTag" xml:space="preserve">
+    <value>Look for this tag</value>
+  </data>
   <data name="SelectExe" xml:space="preserve">
     <value>Select the exe program</value>
   </data>
   <data name="SeriesMangas" xml:space="preserve">
     <value>Comic series</value>
+  </data>
+  <data name="Server" xml:space="preserve">
+    <value>Server</value>
   </data>
   <data name="SetAsDefaultBookcaseFolder" xml:space="preserve">
     <value>Set it as the default presentation folder</value>
@@ -405,8 +471,17 @@
   <data name="SetBack" xml:space="preserve">
     <value>restore</value>
   </data>
+  <data name="Setting" xml:space="preserve">
+    <value>Setting</value>
+  </data>
   <data name="ShowFolderBookcase" xml:space="preserve">
     <value>Displays the bookshelf</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Begin</value>
+  </data>
+  <data name="StorageOperation" xml:space="preserve">
+    <value>Storage operations</value>
   </data>
   <data name="SwitchViewMode" xml:space="preserve">
     <value>Toggle the view</value>
@@ -438,72 +513,6 @@
   <data name="Usage" xml:space="preserve">
     <value>Usage</value>
   </data>
-  <data name="Version_20221219" xml:space="preserve">
-    <value>2022.12.19</value>
-  </data>
-  <data name="Version_20221226" xml:space="preserve">
-    <value>2022.12.26</value>
-  </data>
-  <data name="Version_20230109" xml:space="preserve">
-    <value>2023.01.09</value>
-  </data>
-  <data name="Version_20230125" xml:space="preserve">
-    <value>2023.01.25</value>
-  </data>
-  <data name="Version_20230205" xml:space="preserve">
-    <value>2023.2.5</value>
-  </data>
-  <data name="Version_before" xml:space="preserve">
-    <value>Earlier versions</value>
-  </data>
-  <data name="WhetherOpenFilterImageFunction" xml:space="preserve">
-    <value>Whether to enable single-page filtering (turning this on will slow down the comic opening)</value>
-  </data>
-  <data name="WhetherPickSubFolder" xml:space="preserve">
-    <value>Whether to add subfolders</value>
-  </data>
-  <data name="WhetherShowDialogBeforeDelete" xml:space="preserve">
-    <value>No confirmation is required for deletion</value>
-  </data>
-  <data name="Yes" xml:space="preserve">
-    <value>be</value>
-  </data>
-  <data name="zhCN" xml:space="preserve">
-    <value>Simplified</value>
-  </data>
-  <data name="ZipComic" xml:space="preserve">
-    <value>Zip comic pack</value>
-  </data>
-  <data name="MoveToOtherFolder" xml:space="preserve">
-    <value>Move to a different folder</value>
-  </data>
-  <data name="Method1" xml:space="preserve">
-    <value>Method 1. Quick, accurate, small range</value>
-  </data>
-  <data name="Method2" xml:space="preserve">
-    <value>Method 2.Quick, inaccurate</value>
-  </data>
-  <data name="Start" xml:space="preserve">
-    <value>Begin</value>
-  </data>
-  <data name="HaveNoneBrackets" xml:space="preserve">
-    <value>There are no parentheses</value>
-  </data>
-  <data name="NotCorrectBracketPairs" xml:space="preserve">
-    <value>Unpaired parentheses</value>
-  </data>
-  <data name="Method3" xml:space="preserve">
-    <value>Method 3. Slow</value>
-  </data>
-  <data name="Method4" xml:space="preserve">
-    <value>Method 4. very slow , but accurate</value>
-  </data>
-  <data name="AllInBrackets" xml:space="preserve">
-    <value>All are included in parentheses</value>
-  </data>
-  <data name="WhereContains" xml:space="preserve">
-    <value>contains this text</value>
-  </data>
   <data name="UsageLong" xml:space="preserve">
     <value>
 Directions for use:
@@ -531,49 +540,43 @@ Self-use software, free sharing.
 If you have love, take it yourself, and if you don't like it, don't spray it.
 </value>
   </data>
-  <data name="StorageOperation" xml:space="preserve">
-    <value>Storage operations</value>
+  <data name="Version_20221219" xml:space="preserve">
+    <value>2022.12.19</value>
   </data>
-  <data name="SearchSimialr" xml:space="preserve">
-    <value>Find Similarities</value>
+  <data name="Version_20221226" xml:space="preserve">
+    <value>2022.12.26</value>
   </data>
-  <data name="Copy" xml:space="preserve">
-    <value>copy</value>
+  <data name="Version_20230109" xml:space="preserve">
+    <value>2023.01.09</value>
   </data>
-  <data name="LocateInExplorer" xml:space="preserve">
-    <value>Open in the Resource Browser</value>
+  <data name="Version_20230125" xml:space="preserve">
+    <value>2023.01.25</value>
   </data>
-  <data name="AccessDenied" xml:space="preserve">
-    <value>Access denied</value>
+  <data name="Version_20230205" xml:space="preserve">
+    <value>2023.2.5</value>
   </data>
-  <data name="Chapters" xml:space="preserve">
-    <value>chapter</value>
+  <data name="Version_before" xml:space="preserve">
+    <value>Earlier versions</value>
   </data>
-  <data name="Images" xml:space="preserve">
-    <value>fig</value>
+  <data name="WhereContains" xml:space="preserve">
+    <value>contains this text</value>
   </data>
-  <data name="SearchThisTag" xml:space="preserve">
-    <value>Look for this tag</value>
+  <data name="WhetherOpenFilterImageFunction" xml:space="preserve">
+    <value>Whether to enable single-page filtering (turning this on will slow down the comic opening)</value>
   </data>
-  <data name="FileInfoViewMode" xml:space="preserve">
-    <value>File view mode</value>
+  <data name="WhetherPickSubFolder" xml:space="preserve">
+    <value>Whether to add subfolders</value>
   </data>
-  <data name="OpenWithExternal" xml:space="preserve">
-    <value>Open from the outside</value>
+  <data name="WhetherShowDialogBeforeDelete" xml:space="preserve">
+    <value>No confirmation is required for deletion</value>
   </data>
-  <data name="GlobalSearch" xml:space="preserve">
-    <value>Global Search</value>
+  <data name="Yes" xml:space="preserve">
+    <value>be</value>
   </data>
-  <data name="Server" xml:space="preserve">
-    <value>Server</value>
+  <data name="zhCN" xml:space="preserve">
+    <value>Simplified</value>
   </data>
-  <data name="AppDisplayName" xml:space="preserve">
-    <value>Doujinshi Manager</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>This is a manga manager to manage and read your comics in zip format. The internal images must be in jpg, png, and webp formats</value>
-  </data>
-  <data name="Setting" xml:space="preserve">
-    <value>Setting</value>
+  <data name="ZipComic" xml:space="preserve">
+    <value>Zip comic pack</value>
   </data>
 </root>

@@ -340,4 +340,27 @@ public class MangaIO
     {
         return null;
     }
+
+    public virtual async Task<string> GetCoverFile(Manga manga, string chaptername)
+    {
+        return null;
+    }
+
+    public virtual async Task Delete(Manga manga)
+    {
+        switch (manga.Type)
+        {
+            case "":
+                {
+                    System.IO.Directory.Delete(manga.FilePath, true);
+                }
+                break;
+
+            default:
+                {
+                    System.IO.File.Delete(manga.FilePath);
+                }
+                break;
+        }
+    }
 }

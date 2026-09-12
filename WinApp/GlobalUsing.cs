@@ -33,7 +33,6 @@ global using UnoLibrary.ContentDialogPages;
 global using UnoLibrary.Services;
 global using static UnoLibrary.Services.ZipEntryExtensionMethod;
 global using UnoLibrary.Strings;
-global using WinApp.Services;
 global using WinApp.Views;
 global using WinApp.Views.ContentDialogPages;
 global using WinApp.Views.FunctionChildPages;

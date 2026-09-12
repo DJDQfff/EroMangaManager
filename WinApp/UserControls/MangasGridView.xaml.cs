@@ -43,7 +43,6 @@ public sealed partial class MangasGridView : UserControl
     }
 
     // 不需要 Register / GetValue / SetValue
-    public StorageOperation StorageOperation { get; set; } = null!;
     public ClipboardHelper ClipboardHelper { get; set; } = null!;
     public ContentDialogCreater ContentDialogCreater { get; set; } = null!;
     public MangaFactory MangaFactory { get; set; } = null!;

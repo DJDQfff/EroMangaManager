@@ -17,6 +17,5 @@ global using SharpCompress.Archives;
 global using UnoLibrary;
 global using UnoLibrary.Services;
 global using UnoLibrary.Strings;
-global using WinApp.Services;
 global using Windows.Storage.Pickers;
 global using WinRT.Interop;

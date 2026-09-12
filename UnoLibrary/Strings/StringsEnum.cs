@@ -4,6 +4,7 @@
 public enum StringsEnum
 {
     Setting,
+    DeletieModeDisabled,
     Method3,
     Method4,
     UsageLong,

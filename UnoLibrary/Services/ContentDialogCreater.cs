@@ -5,11 +5,81 @@ namespace UnoLibrary.Services;
 
 public partial class ContentDialogCreater(
     Window window,
-    StorageOperation storageOperation,
+    MangaIO mangaIO,
     SettingViewModel setting,
-    CoverHelper coverHelper
+    CoverHelper coverHelper,
+    Exporter exporter,
+    ObservableCollectionVM collectionVM,
+    INotifier notifier
 )
 {
+    [RelayCommand]
+    public async Task ExportAsPDFAsync(Manga mangaBook)
+    {
+        FileSavePicker fileSavePicker = new();
+        fileSavePicker.FileTypeChoices.Add("PDF", [".pdf"]);
+        fileSavePicker.SuggestedFileName = mangaBook.FileDisplayName;
+
+        var handle = WindowNative.GetWindowHandle(window);
+        InitializeWithWindow.Initialize(fileSavePicker, handle);
+
+        var storageFile = await fileSavePicker.PickSaveFileAsync();
+        if (storageFile is not null)
+        {
+            try
+            {
+                await Task.Run(() => exporter.Export_PDFSharp(mangaBook, storageFile.Path));
+                var done = StringsExtension.ResourceLoader.GetString("ExportDone");
+                if (done != null)
+                {
+                    collectionVM.WorkDone(done);
+                }
+            }
+            catch
+            {
+                var failed = StringsExtension.ResourceLoader.GetString("ExportFailed");
+                if (failed != null)
+                {
+                    collectionVM.WorkFailed(failed);
+                }
+            }
+        }
+    }
+
+    ///// <summary>
+    ///// 删除源文件时，会触发删除确认弹框，删除模式，这两个参数都是从程序设置中读取的，因此封装到助手类里面
+    ///// </summary>
+    ///// <param name="eroManga"></param>
+    ///// <returns></returns>
+    //public async Task<bool> ConfirmDeleteSourceFileDialog(Manga eroManga)
+    //{
+    //    var whetherShow = setting.AppConfig.General.WhetherShowDialogBeforeDelete;
+
+    //    var temp2 = setting.AppConfig.General.StorageFileDeleteOption;
+
+    //    var deletemode = temp2 ? StorageDeleteOption.PermanentDelete : StorageDeleteOption.Default;
+
+    //    if (!whetherShow)
+    //    {
+    //        ConfirmDeleteMangaFile confirm = new(eroManga) { XamlRoot = window.Content!.XamlRoot };
+    //        var result = await confirm.ShowAsync();
+    //        switch (result)
+    //        {
+    //            case ContentDialogResult.Primary:
+    //                await storageOperation.Delete(eroManga, deletemode);
+    //                return true;
+
+    //            default:
+    //                return false;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        await storageOperation.Delete(eroManga, deletemode);
+
+    //        return true;
+    //    }
+    //}
     /// <summary>
     /// 删除源文件时，会触发删除确认弹框，删除模式，这两个参数都是从程序设置中读取的，因此封装到助手类里面
     /// </summary>
@@ -17,29 +87,23 @@ public partial class ContentDialogCreater(
     /// <returns></returns>
     public async Task<bool> ConfirmDeleteSourceFileDialog(Manga eroManga)
     {
-        var temp1 = setting.AppConfig.General.WhetherShowDialogBeforeDelete;
+        var whetherShow = setting.AppConfig.General.WhetherShowDialogBeforeDelete;
 
-        var temp2 = setting.AppConfig.General.StorageFileDeleteOption;
-
-        var deletemode = temp2 ? StorageDeleteOption.PermanentDelete : StorageDeleteOption.Default;
-
-        if (!temp1)
+        if (!whetherShow)
         {
             ConfirmDeleteMangaFile confirm = new(eroManga) { XamlRoot = window.Content!.XamlRoot };
             var result = await confirm.ShowAsync();
-            switch (result)
+            if (result == ContentDialogResult.Primary)
             {
-                case ContentDialogResult.Primary:
-                    await storageOperation.Delete(eroManga, deletemode);
-                    return true;
-
-                default:
-                    return false;
+                await mangaIO.Delete(eroManga);
+                return true;
             }
+
+            return false;
         }
         else
         {
-            await storageOperation.Delete(eroManga, deletemode);
+            await mangaIO.Delete(eroManga);
 
             return true;
         }

@@ -71,7 +71,17 @@ public sealed partial class ServerPage : Page
                 this.DispatcherQueue.TryEnqueue(() => serverViewmodel.Logs.Add(log));
 
             serverViewmodel.EventDeleteMang += async manga =>
-                _ = await services.GetRequiredService<StorageOperation>().Delete(manga);
+            {
+                try
+                {
+                    await services.GetRequiredService<MangaIO>().Delete(manga);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            };
 
             serverViewmodel.EventDeleteMang += async manga =>
             {
