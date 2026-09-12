@@ -7,38 +7,10 @@ namespace Core.ViewModels;
 /// </summary>
 public class ObservableCollectionVM
 {
-    public ObservableCollectionVM(INotifier notifier)
-    {
-        this.ErrorZipEvent += str => notifier.Notify($"🚨❌{str}❌🚨");
-        this.WorkDoneEvent += (message) => notifier.Notify($"🎉🎉{message}🎉🎉");
-        this.WorkFailedEvent += (message) => notifier.Notify($"💥{message}💥");
-        this.AccessDeniedEvent += (message) => notifier.Notify($"🚫🔒{message}🔒🚫");
-    }
-
-    /// <summary>
-    /// 出现无法解析的Manga时引发
-    /// </summary>
-    public event Action<string>? ErrorZipEvent;
-
     /// <summary>
     /// 删除本子源文件后引发的事件
     /// </summary>
     public event Action<Manga>? EventAfterDeleteMangaSource;
-
-    /// <summary>
-    /// 完成某项任务时引发
-    /// </summary>
-    public event Action<string>? WorkDoneEvent;
-
-    /// <summary>
-    /// 任务失败事件
-    /// </summary>
-    public event Action<string>? WorkFailedEvent;
-
-    /// <summary>
-    /// 访问被拒绝，通常因文件权限不足引发
-    /// </summary>
-    public event Action<string> AccessDeniedEvent; // TODO 没有验证这个事件及相关的try-catch能否正常工作
 
     /// <summary>
     /// 本子文件夹集合
@@ -118,32 +90,6 @@ public class ObservableCollectionVM
         MangasGroup folder = MangasGroups.Single(x => x.FolderPath == folderpath);
         _ = SearchResultMangas.Remove(mangaBook);
         return folder.RemoveManga(mangaBook);
-    }
-
-    /// <summary>
-    /// 事情完成时发生
-    /// </summary>
-    /// <param name="message"></param>
-    public void WorkDone(string message) => WorkDoneEvent?.Invoke(message);
-
-    /// <summary>
-    /// 任务失败
-    /// </summary>
-    /// <param name="message"></param>
-    public void WorkFailed(string message) => WorkFailedEvent?.Invoke(message);
-
-    /// <summary>
-    /// 触发访问被拒绝异常
-    /// </summary>
-    public void AccessDenied(string message) => AccessDeniedEvent?.Invoke(message);
-
-    /// <summary>
-    /// 发现错误漫画时引发
-    /// </summary>
-    /// <param name="manganame"></param>
-    public void ErrorMangaEvent(string manganame)
-    {
-        ErrorZipEvent?.Invoke(manganame);
     }
 
     /// <summary>

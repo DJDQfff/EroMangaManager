@@ -12,17 +12,20 @@ public sealed partial class IrregularNameSearch : Page
     readonly ObservableCollectionVM observableCollectionVM;
     readonly CoverSetter coverSetter;
     readonly MangaIO mangaFileIO;
+    readonly INotifier notifier;
 
     public IrregularNameSearch(
         ObservableCollectionVM _observableCollectionVM,
         CoverSetter _coverSetter,
-        MangaIO _mangaFileIO
+        MangaIO _mangaFileIO,
+        INotifier _notifier
     )
     {
         InitializeComponent();
         observableCollectionVM = _observableCollectionVM;
         this.coverSetter = _coverSetter;
         mangaFileIO = _mangaFileIO;
+        notifier = _notifier;
         observableCollectionVM.EventAfterDeleteMangaSource += Delete;
     }
 

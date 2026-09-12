@@ -1,6 +1,8 @@
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
+using Windows.Devices.Geolocation;
+
 namespace WinApp.UserControls;
 
 public sealed partial class MangasGridView : UserControl
@@ -136,11 +138,11 @@ public sealed partial class MangasGridView : UserControl
                     }
                     catch (UnauthorizedAccessException)
                     {
-                        ObservableCollectionVM.AccessDenied(newpath);
+                        Notifier.NotifyAccessDenied(newpath);
                     }
-                    catch (System.IO.IOException)
+                    catch (IOException)
                     {
-                        ObservableCollectionVM.AccessDenied(newpath);
+                        Notifier.NotifyAccessDenied(newpath);
                     }
                 };
             }
@@ -274,13 +276,13 @@ public sealed partial class MangasGridView : UserControl
         catch (UnauthorizedAccessException)
         {
             var a = StringsExtension.ResourceLoader.GetString("AccessDenied");
-            ObservableCollectionVM.AccessDenied(a);
+            Notifier.NotifyAccessDenied(a);
         }
-        catch (System.IO.IOException)
+        catch (IOException)
         {
             var a = StringsExtension.ResourceLoader.GetString("AccessDenied");
 
-            ObservableCollectionVM.AccessDenied(a);
+            Notifier.NotifyAccessDenied(a);
         }
     }
 
@@ -293,10 +295,6 @@ public sealed partial class MangasGridView : UserControl
     [RelayCommand]
     private async Task RenameManga(Manga manga)
     {
-        await ContentDialogCreater.RenameSourceFileInDialog(
-            manga,
-            MangaFileIO,
-            ObservableCollectionVM
-        );
+        await ContentDialogCreater.RenameSourceFileInDialog(manga, MangaFileIO);
     }
 }

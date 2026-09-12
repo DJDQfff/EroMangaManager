@@ -9,7 +9,6 @@ public partial class ContentDialogCreater(
     SettingViewModel setting,
     CoverHelper coverHelper,
     Exporter exporter,
-    ObservableCollectionVM collectionVM,
     INotifier notifier
 )
 {
@@ -32,7 +31,7 @@ public partial class ContentDialogCreater(
                 var done = StringsExtension.ResourceLoader.GetString("ExportDone");
                 if (done != null)
                 {
-                    collectionVM.WorkDone(done);
+                    notifier.NotifyWorkDone(done);
                 }
             }
             catch
@@ -40,7 +39,7 @@ public partial class ContentDialogCreater(
                 var failed = StringsExtension.ResourceLoader.GetString("ExportFailed");
                 if (failed != null)
                 {
-                    collectionVM.WorkFailed(failed);
+                    notifier.NotifyFailure(failed);
                 }
             }
         }
@@ -114,14 +113,10 @@ public partial class ContentDialogCreater(
     /// </summary>
     /// <param name="eroManga"></param>
     /// <returns></returns>
-    public async Task RenameSourceFileInDialog(
-        Manga eroManga,
-        MangaIO mangaFileIO,
-        ObservableCollectionVM observableCollectionVM
-    )
+    public async Task RenameSourceFileInDialog(Manga eroManga, MangaIO mangaFileIO)
     {
         // TODO 暂时放弃，不会写页面UI，写出来也丑。等EditTag功能好了，在改回EditTag页面
-        RenameDialog renameDialog = new(eroManga, mangaFileIO, observableCollectionVM)
+        RenameDialog renameDialog = new(eroManga, mangaFileIO, notifier)
         {
             XamlRoot = window!.Content!.XamlRoot,
         };

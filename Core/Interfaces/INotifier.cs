@@ -7,6 +7,10 @@ namespace Core.Interfaces;
 public interface INotifier
 {
     void Notify(string message, int durationInSeconds = 5);
+    void NotifyError(string message, int durationInSeconds = 5);
+    void NotifyFailure(string message, int durationInSeconds = 5);
+    void NotifyAccessDenied(string message, int durationInSeconds = 5);
+    void NotifyWorkDone(string message, int durationInSeconds = 5);
 
     public static class ErrorSymbols
     {

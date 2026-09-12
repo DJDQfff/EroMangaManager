@@ -33,7 +33,7 @@
             Height="320"
             Margin="4"
             HorizontalAlignment="Stretch"
-            ObservableCollectionVM="{Binding observableCollectionVM,ElementName=RootPage,Mode=OneWay}"
+            INotifier="{Binding notifier,ElementName=RootPage,Mode=OneWay}"
             MangaFileIO="{Binding mangaFileIO,ElementName=RootPage,Mode=OneWay}"
             Manga="{x:Bind}"
           />

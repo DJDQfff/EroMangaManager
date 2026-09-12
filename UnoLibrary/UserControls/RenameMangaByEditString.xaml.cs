@@ -76,18 +76,16 @@ public sealed partial class RenameMangaByEditString : UserControl
         get => (MangaIO)GetValue(MangaFileIOProperty);
         set => SetValue(MangaFileIOProperty, value);
     }
-
-    public static readonly DependencyProperty ObservableCollectionVMProperty =
-        DependencyProperty.Register(
-            nameof(ObservableCollectionVM),
-            typeof(ObservableCollectionVM),
-            typeof(RenameMangaByEditString),
-            new PropertyMetadata(null)
-        );
-    public ObservableCollectionVM ObservableCollectionVM
+    public static readonly DependencyProperty INotifierProperty = DependencyProperty.Register(
+        nameof(INotifier),
+        typeof(INotifier),
+        typeof(RenameMangaByEditString),
+        new PropertyMetadata(null)
+    );
+    public INotifier INotifier
     {
-        get => (ObservableCollectionVM)GetValue(ObservableCollectionVMProperty);
-        set => SetValue(ObservableCollectionVMProperty, value);
+        get => (INotifier)GetValue(INotifierProperty);
+        set => SetValue(INotifierProperty, value);
     }
 
     [RelayCommand]
@@ -102,11 +100,11 @@ public sealed partial class RenameMangaByEditString : UserControl
         }
         catch (UnauthorizedAccessException)
         {
-            ObservableCollectionVM.AccessDenied(newname);
+            INotifier.NotifyAccessDenied(newname);
         }
         catch (System.IO.IOException)
         {
-            ObservableCollectionVM.AccessDenied(newname);
+            INotifier.NotifyAccessDenied(newname);
         }
     }
 }

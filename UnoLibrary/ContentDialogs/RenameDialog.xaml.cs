@@ -24,15 +24,11 @@ public sealed partial class RenameDialog : ContentDialog
     ///
     /// </summary>
     /// <param name="mangaBook"></param>
-    public RenameDialog(
-        Manga mangaBook,
-        MangaIO mangaFileIO,
-        ObservableCollectionVM observableCollectionVM
-    )
+    public RenameDialog(Manga mangaBook, MangaIO mangaFileIO, INotifier notifier)
     {
         this.InitializeComponent();
         this.renamecontrol.Manga = mangaBook;
         renamecontrol.MangaFileIO = mangaFileIO;
-        renamecontrol.ObservableCollectionVM = observableCollectionVM;
+        renamecontrol.INotifier = notifier;
     }
 }
