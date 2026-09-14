@@ -33,7 +33,7 @@
         <ComboBox
           x:Name="combochangefolder"
           DisplayMemberPath="FolderPath"
-          ItemsSource="{x:Bind ViewModel.MangasGroups, Mode=OneWay}"
+          ItemsSource="{x:Bind ObservableCollectionVM.MangasGroups, Mode=OneWay}"
           SelectedItem="{x:Bind settingViewModel.AppConfig.General.DefaultBookcaseFolder, Mode=TwoWay, Converter={StaticResource displayfolder}}"
           SelectionChanged="Combochangefolder_SelectionChanged"
         />
@@ -166,15 +166,7 @@
       Grid.Row="1"
       Margin="4"
       x:FieldModifier="public"
-      CoverSetter="{x:Bind coverSetter, Mode=OneWay}"
-      SettingViewModel="{x:Bind settingViewModel, Mode=OneWay}"
-      ObservableCollectionVM="{x:Bind ViewModel, Mode=OneWay}"
-      ClipboardHelper="{x:Bind clipboardHelper, Mode=OneWay}"
-      ContentDialogCreater="{x:Bind contentDialogCreater, Mode=OneWay}"
-      MangaFactory="{x:Bind mangaFactory, Mode=OneWay}"
-      MangaFileIO="{x:Bind mangaFileIO, Mode=OneWay}"
-      MainPage="{x:Bind mainPage, Mode=OneWay}"
-      Notifier="{x:Bind notifier, Mode=OneWay     }"
+      MangaOperationViewModel="{x:Bind MangaOperationViewModel,Mode=OneWay}"
       ItemTemplateIndex="{x:Bind settingViewModel.AppConfig.General.MangasGridViewDataTemplateKey}"
     />
   </Grid>

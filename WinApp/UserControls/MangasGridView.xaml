@@ -22,7 +22,7 @@
         Text="{uid:Strings Uid=OpenWithExternal}"
       />
       <MenuFlyoutItem
-        Command="{x:Bind LocateMangaInFolderCommand}"
+        Command="{x:Bind MangaOperationViewModel.LocateMangaInFolderCommand}"
         CommandParameter="{Binding Mode=OneWay}"
         DataContext="{Binding}"
         Icon="OpenLocal"
@@ -36,28 +36,28 @@
         Text="{uid:Strings Uid=MoveToOtherFolder}"
       />
       <MenuFlyoutItem
-        Command="{x:Bind ContentDialogCreater.OverviewInformationCommand}"
+        Command="{x:Bind MangaOperationViewModel.ContentDialogCreater.OverviewInformationCommand}"
         CommandParameter="{Binding Mode=OneWay}"
         DataContext="{Binding}"
         Icon="View"
         Text="{uid:Strings Uid=OverviewInformation}"
       />
       <MenuFlyoutItem
-        Command="{x:Bind RenameMangaCommand}"
+        Command="{x:Bind MangaOperationViewModel.RenameMangaCommand}"
         CommandParameter="{Binding Mode=OneWay}"
         DataContext="{Binding}"
         Icon="Rename"
         Text="{uid:Strings Uid=RenameFile}"
       />
       <!--<MenuFlyoutItem
-        Command="{x:Bind NavigateSearchNameCommand}"
+        Command="{x:Bind MangaOperationViewModel.NavigateSearchNameCommand}"
         CommandParameter="{Binding , Mode=OneWay}"
         DataContext="{Binding}"
         Icon="Find"
         Text="{uid:Strings Uid=SearchSimilar}"
       />-->
       <MenuFlyoutItem
-        Command="{x:Bind ContentDialogCreater.ExportAsPDFCommand}"
+        Command="{x:Bind MangaOperationViewModel. ContentDialogCreater.ExportAsPDFCommand}"
         CommandParameter="{Binding Mode=OneWay}"
         DataContext="{Binding}"
         Icon="Save"
@@ -65,7 +65,7 @@
       />
       <MenuFlyoutSeparator />
       <MenuFlyoutItem
-        Command="{x:Bind DeleteCommand}"
+        Command="{x:Bind MangaOperationViewModel. DeleteCommand}"
         CommandParameter="{Binding Mode=OneWay}"
         DataContext="{Binding}"
         Foreground="Red"
@@ -96,8 +96,8 @@
           Margin="1"
           Padding="2"
           Manga="{x:Bind Mode=OneWay}"
-          CopyCommand="{Binding ClipboardHelper.CopyCommand, ElementName=usercontrol, Mode=OneWay}"
-          NavigateCommand="{Binding NavigateSearchNameCommand, ElementName=usercontrol, Mode=OneWay}"
+          CopyCommand="{Binding  MangaOperationViewModel.ClipboardHelperCopyCommand, ElementName=usercontrol, Mode=OneWay}"
+          NavigateCommand="{Binding MangaOperationViewModel.NavigateSearchNameCommand, ElementName=usercontrol, Mode=OneWay}"
         />
         <uno:SizeImagesChaptersAmount x:Name="info" Grid.Row="2" Manga="{x:Bind Mode=OneWay}" />
       </Grid>
@@ -112,8 +112,8 @@
         <basic:Name
           x:Name="name"
           Manga="{x:Bind Mode=OneWay}"
-          CopyCommand="{Binding ClipboardHelper.CopyCommand, ElementName=usercontrol, Mode=OneWay}"
-          NavigateCommand="{Binding NavigateSearchNameCommand, ElementName=usercontrol, Mode=OneWay}"
+          CopyCommand="{Binding  MangaOperationViewModel.ClipboardHelperCopyCommand, ElementName=usercontrol, Mode=OneWay}"
+          NavigateCommand="{Binding MangaOperationViewModel.NavigateSearchNameCommand, ElementName=usercontrol, Mode=OneWay}"
         />
         <Grid Grid.Row="1" ColumnDefinitions="*,*">
           <basic:Cover x:Name="cover" Grid.Column="0" Manga="{x:Bind Mode=OneWay}" />
@@ -121,8 +121,8 @@
             x:Name="tags"
             Grid.Column="1"
             Manga="{x:Bind Mode=OneWay}"
-            CopyCommand="{Binding ClipboardHelper.CopyCommand, ElementName=usercontrol, Mode=OneWay}"
-            NavigateCommand="{Binding NavigateSearchTagsCommand, ElementName=usercontrol, Mode=OneWay}"
+            CopyCommand="{Binding  MangaOperationViewModel.ClipboardHelperCopyCommand, ElementName=usercontrol, Mode=OneWay}"
+            NavigateCommand="{Binding MangaOperationViewModel.NavigateSearchTagsCommand, ElementName=usercontrol, Mode=OneWay}"
           />
         </Grid>
         <uno:SizeImagesChaptersAmount x:Name="info" Grid.Row="2" Manga="{x:Bind Mode=OneWay}" />
@@ -138,8 +138,8 @@
         <Grid Grid.Column="1" RowDefinitions="auto,5*,auto">
           <basic:Name
             Manga="{x:Bind Mode=OneWay}"
-            CopyCommand="{Binding ClipboardHelper.CopyCommand, ElementName=usercontrol, Mode=OneWay}"
-            NavigateCommand="{Binding NavigateSearchNameCommand, ElementName=usercontrol, Mode=OneWay}"
+            CopyCommand="{Binding  MangaOperationViewModel.ClipboardHelperCopyCommand, ElementName=usercontrol, Mode=OneWay}"
+            NavigateCommand="{Binding MangaOperationViewModel.NavigateSearchNameCommand, ElementName=usercontrol, Mode=OneWay}"
           />
           <TextBlock
             Text="{x:Bind FolderPath, Mode=OneWay}"

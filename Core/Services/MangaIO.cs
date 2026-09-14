@@ -186,7 +186,6 @@ public class MangaIO
                             Default = Encoding.GetEncoding("GBK"),
                         };
                     }
-                    ;
 
                     var archive = ArchiveFactory.OpenArchive(manga.FilePath, options);
                     var nonfolderentries = archive

@@ -12,14 +12,9 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
     readonly SettingViewModel settingViewModel;
-    readonly ObservableCollectionVM ViewModel;
-    readonly CoverSetter coverSetter;
-    readonly ClipboardHelper clipboardHelper;
-    readonly ContentDialogCreater contentDialogCreater;
-    readonly MangaFactory mangaFactory;
-    readonly MangaIO mangaFileIO;
-    readonly MainPage mainPage;
-    readonly INotifier notifier;
+    readonly CoverSetter CoverSetter;
+    readonly MangaOperationViewModel MangaOperationViewModel;
+    readonly ObservableCollectionVM ObservableCollectionVM;
     public MangasGroup? MangasGroup
     {
         get;
@@ -45,27 +40,17 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
     ///
     /// </summary>
     public Bookcase(
-        CoverSetter _coverSetter,
         SettingViewModel _settingViewModel,
-        ObservableCollectionVM _ViewModel,
-        ClipboardHelper _clipboardHelper,
-        ContentDialogCreater _contentDialogCreater,
-        MangaFactory _mangaFactory,
-        MangaIO _mangaFileIO,
-        MainPage _mainPage,
-        INotifier _notifier
+        MangaOperationViewModel _mangaOperationViewModel,
+        ObservableCollectionVM _observableCollectionVM,
+        CoverSetter _coversetter
     )
     {
         InitializeComponent();
-        coverSetter = _coverSetter;
+        CoverSetter = _coversetter;
         settingViewModel = _settingViewModel;
-        ViewModel = _ViewModel;
-        clipboardHelper = _clipboardHelper;
-        contentDialogCreater = _contentDialogCreater;
-        mangaFactory = _mangaFactory;
-        mangaFileIO = _mangaFileIO;
-        mainPage = _mainPage;
-        notifier = _notifier;
+        MangaOperationViewModel = _mangaOperationViewModel;
+        ObservableCollectionVM = _observableCollectionVM;
     }
 
     /// <summary>
@@ -75,7 +60,7 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
     public async Task OnNavigated(MangasGroup e)
     {
         MangasGroup = e;
-        await coverSetter.MultiLoadWork(MangasGroup.DisplayMangas, true, false);
+        await CoverSetter.MultiLoadWork(MangasGroup.DisplayMangas, true, false);
     }
 
     //private async void ApplyFilter_Click (object sender , RoutedEventArgs e)
@@ -159,7 +144,7 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
         if (e.AddedItems.Count > 0)
         {
             MangasGroup = e.AddedItems[0] as MangasGroup;
-            await coverSetter.MultiLoadWork(MangasGroup!.DisplayMangas, true, true);
+            await CoverSetter.MultiLoadWork(MangasGroup!.DisplayMangas, true, true);
         }
     }
 
@@ -178,9 +163,7 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
             var newvalue = (int)args.NewValue;
 
             MangasGroup.Display((newvalue - 1) * 20, 20);
-            await App
-                .Services.GetRequiredService<CoverSetter>()
-                .MultiLoadWork(MangasGroup.DisplayMangas, true, true);
+            await CoverSetter.MultiLoadWork(MangasGroup.DisplayMangas, true, true);
         }
     }
 }

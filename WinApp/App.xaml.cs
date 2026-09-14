@@ -62,6 +62,7 @@ public partial class App : Application
         services.AddTransient<IrregularNameSearch>();
         services.AddSingleton<ServerPage>();
         services.AddSingleton<INotifier, Notifier>();
+        services.AddSingleton<MangaOperationViewModel>();
         //数据库
         services.AddDbContextFactory<DataBase_Version3>(options =>
             options.UseSqlite(

@@ -1,4 +1,6 @@
-﻿global using System.Diagnostics;
+﻿global using System.Collections.ObjectModel;
+global using System.ComponentModel;
+global using System.Diagnostics;
 global using System.Windows.Input;
 global using CommonLibrary;
 global using CommunityToolkit.Mvvm.Input;
