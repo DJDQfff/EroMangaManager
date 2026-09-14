@@ -2,6 +2,7 @@
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Windows.ApplicationModel.WindowsAppRuntime;
+using Server;
 
 namespace WinApp;
 
@@ -28,6 +29,7 @@ public partial class App : Application
         var services = new ServiceCollection();
         services.AddSingleton<IPages, Pages>();
         //无其他依赖项
+        services.AddSingleton<ASPNETCoreServer>();
         services.AddTransient<ClipboardHelper>();
         services.AddTransient<ZipEntryHelper>();
         services.AddTransient<MangaStreamProvider>();
@@ -58,11 +60,12 @@ public partial class App : Application
         services.AddTransient<LibraryPage>();
         services.AddTransient<GlobalSearchPage>();
         services.AddTransient<TagsManagePage>();
-        services.AddSingleton<FindSameManga>();
+        services.AddTransient<FindSameManga>();
         services.AddTransient<IrregularNameSearch>();
         services.AddSingleton<ServerPage>();
         services.AddSingleton<INotifier, Notifier>();
         services.AddSingleton<MangaOperationViewModel>();
+        services.AddTransient<SearchMangaViewModel>();
         //数据库
         services.AddDbContextFactory<DataBase_Version3>(options =>
             options.UseSqlite(

@@ -197,19 +197,25 @@ public partial class SameMangaSearchViewModel
     {
         RepeatPairs.Clear();
 
-        var dic=Source
-            .SelectMany(x => Get_OutsideContent(x.FileDisplayName)
-            .SelectMany(x => x.Split(sperators)))
+        var dic = Source
+            .SelectMany(x =>
+                Get_OutsideContent(x.FileDisplayName).SelectMany(x => x.Split(sperators))
+            )
             .CountBy(x => x)
             .Where(x => x.Value > 1)
             .Where(x => !int.TryParse(x.Key, out _))
             .Where(x => !char.TryParse(x.Key, out _))
             .ToDictionary();
-        string? func (Manga x) =>
-           Get_OutsideContent(x.FileDisplayName)
-               .SelectMany(x => x.Split(sperators))
-               .FirstOrDefault(y => dic.ContainsKey(y));
-        await ByEachKey(Source,  func , x => !string.IsNullOrWhiteSpace(x.Key), x => string.IsNullOrWhiteSpace(x.Name));
+        string? func(Manga x) =>
+            Get_OutsideContent(x.FileDisplayName)
+                .SelectMany(x => x.Split(sperators))
+                .FirstOrDefault(y => dic.ContainsKey(y));
+        await ByEachKey(
+            Source,
+            func,
+            x => !string.IsNullOrWhiteSpace(x.Key),
+            x => string.IsNullOrWhiteSpace(x.Name)
+        );
     }
 
     /// <summary>

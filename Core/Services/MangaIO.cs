@@ -335,16 +335,24 @@ public class MangaIO
         }
     }
 
+    /// <summary>
+    /// 异步获取指定漫画的封面文件路径。
+    /// </summary>
+    /// <remarks>可能执行 I/O 操作，应使用 await。实现可重写以提供具体的获取逻辑。</remarks>
+    /// <param name="manga">要获取封面的 Manga 实例。不能为空。</param>
+    /// <returns>包含封面文件路径或 URL 的字符串；若未找到封面则返回 null。</returns>
     public virtual async Task<string> GetCoverFile(Manga manga)
     {
-        return null;
+        throw new NotImplementedException(
+            "GetCoverFile 方法尚未实现。请在派生类中提供具体的封面获取逻辑。"
+        );
     }
 
-    public virtual async Task<string> GetCoverFile(Manga manga, string chaptername)
-    {
-        return null;
-    }
-
+    /// <summary>
+    /// 删除
+    /// </summary>
+    /// <param name="manga"></param>
+    /// <returns></returns>
     public virtual async Task Delete(Manga manga)
     {
         switch (manga.Type)

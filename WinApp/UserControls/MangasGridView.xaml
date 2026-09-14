@@ -65,7 +65,7 @@
       />
       <MenuFlyoutSeparator />
       <MenuFlyoutItem
-        Command="{x:Bind MangaOperationViewModel. DeleteCommand}"
+        Command="{x:Bind MangaOperationViewModel.DeleteCommand}"
         CommandParameter="{Binding Mode=OneWay}"
         DataContext="{Binding}"
         Foreground="Red"
@@ -128,26 +128,35 @@
         <uno:SizeImagesChaptersAmount x:Name="info" Grid.Row="2" Manga="{x:Bind Mode=OneWay}" />
       </Grid>
     </DataTemplate>
+
     <DataTemplate x:Key="Template2" x:DataType="models:Manga">
-      <Grid
-        ColumnDefinitions="*,2*"
-        ContextFlyout="{StaticResource mangaflyout}"
-        DoubleTapped="Grid_DoubleTapped"
-      >
+      <Grid MaxWidth="300" ColumnDefinitions="*,2*" DoubleTapped="Grid_DoubleTapped">
+        <Grid.ContextFlyout>
+          <MenuFlyout>
+            <MenuFlyoutItem
+              Command="{Binding MangaOperationViewModel.LocateMangaInFolderCommand, ElementName=usercontrol, Mode=OneWay}"
+              CommandParameter="{x:Bind Mode=OneWay}"
+              DataContext="{x:Bind}"
+              Icon="OpenLocal"
+              Text="{uid:Strings Uid=LocateInExplorer}"
+            />
+          </MenuFlyout>
+        </Grid.ContextFlyout>
         <basic:Cover Grid.Column="0" Manga="{x:Bind Mode=OneWay}" />
-        <Grid Grid.Column="1" RowDefinitions="auto,5*,auto">
+        <Grid Grid.Column="1" RowDefinitions="auto,5*,auto,auto">
           <basic:Name
             Manga="{x:Bind Mode=OneWay}"
             CopyCommand="{Binding  MangaOperationViewModel.ClipboardHelperCopyCommand, ElementName=usercontrol, Mode=OneWay}"
             NavigateCommand="{Binding MangaOperationViewModel.NavigateSearchNameCommand, ElementName=usercontrol, Mode=OneWay}"
           />
           <TextBlock
+            Grid.Row="1"
             Text="{x:Bind FolderPath, Mode=OneWay}"
             TextAlignment="Justify"
             TextWrapping="Wrap"
           />
-          <TextBlock Grid.Row="1" Text="{x:Bind FileFullName, Mode=OneWay}" TextWrapping="Wrap" />
-          <uno:SizeImagesChaptersAmount Grid.Row="2" Manga="{x:Bind Mode=OneWay}" />
+          <TextBlock Grid.Row="2" Text="{x:Bind FileFullName, Mode=OneWay}" TextWrapping="Wrap" />
+          <uno:SizeImagesChaptersAmount Grid.Row="3" Manga="{x:Bind Mode=OneWay}" />
         </Grid>
       </Grid>
     </DataTemplate>
@@ -156,7 +165,7 @@
     x:Name="gridview"
     IsItemClickEnabled="False"
     ItemContainerStyle="{ThemeResource GridViewItemRevealStyle}"
-    ItemsSource="{x:Bind ItemsSource, Mode=OneWay}"
+    ItemsSource="{x:Bind MangaSource, Mode=OneWay}"
     SelectionMode="Single"
   />
 </UserControl>

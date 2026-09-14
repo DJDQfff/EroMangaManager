@@ -10,17 +10,23 @@ public sealed partial class FindSameManga : Page
     private readonly SameMangaSearchViewModel viewModel = new();
     private readonly ObservableCollectionVM observableCollectionVM;
     private CancellationTokenSource cancellationTokenSource = new();
+    public MangaOperationViewModel MangaOperationViewModel { get; }
 
     /// <summary>
     ///
     /// </summary>
-    public FindSameManga(ObservableCollectionVM _observableCollectionVM, CoverSetter _coverSetter)
+    public FindSameManga(
+        ObservableCollectionVM _observableCollectionVM,
+        MangaOperationViewModel mangaOperationViewModel,
+        CoverSetter _coverSetter
+    )
     {
         InitializeComponent();
+
         this.observableCollectionVM = _observableCollectionVM;
+        MangaOperationViewModel = mangaOperationViewModel;
         _observableCollectionVM.EventAfterDeleteMangaSource +=
             viewModel.DeleteStorageFileInRootObservable;
-        //viewModel.AddToResult += x => App.Current.BackgroundCoverSetter.mangas.Insert(0, x);
         viewModel.AddGroup += async x =>
             await _coverSetter.MultiLoadWork(x.Collections, true, true);
     }

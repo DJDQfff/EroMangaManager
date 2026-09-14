@@ -10,114 +10,108 @@ namespace WinApp.Views.MainPageChildPages;
 /// </summary>
 public sealed partial class ServerPage : Page
 {
-    readonly IServiceProvider services = App.Services;
-    ASPNETCoreServer? serverViewmodel;
+    ASPNETCoreServer ServerViewmodel { get; } = null!;
 
-    public ServerPage()
+    public ServerPage(ASPNETCoreServer _serverViewmodel)
     {
         InitializeComponent();
-    }
-
-    private void BtnClearLog_Click(object sender, RoutedEventArgs e)
-    {
-        serverViewmodel?.Logs.Clear();
+        this.ServerViewmodel = _serverViewmodel;
     }
 
     private async void BtnStart_Click(object sender, RoutedEventArgs e)
     {
-        if (serverViewmodel is not null && serverViewmodel.IsRunning)
+        if (!ServerViewmodel.IsRunning)
         {
-            return;
-        }
+            btnStart.IsEnabled = false;
+            progressRing.Visibility = Visibility.Visible;
+            txtStatus.Text = "启动中...";
+            statusDot.Background = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 255, 180, 0));
 
-        btnStart.IsEnabled = false;
-        progressRing.Visibility = Visibility.Visible;
-        txtStatus.Text = "启动中...";
-        statusDot.Background = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 255, 180, 0));
-
-        try
-        {
-            serverViewmodel = new ASPNETCoreServer(
-                App.Services.GetRequiredService<ObservableCollectionVM>()
-            );
-            logListView.ItemsSource = serverViewmodel.Logs;
-
-            serverViewmodel.CallCoverSetterAppendWorks += async mangas =>
+            try
             {
-                var tcs = new TaskCompletionSource();
-                this.DispatcherQueue.TryEnqueue(() =>
-                {
-                    _ = App
-                        .Services.GetRequiredService<CoverSetter>()
-                        .MultiLoadWork(mangas, true, true)
-                        .ContinueWith(_ => tcs.SetResult());
-                });
-                await tcs.Task;
-            };
+                logListView.ItemsSource = ServerViewmodel.Logs;
 
-            serverViewmodel.CallCoverSetterSingleWork += async manga =>
-            {
-                var tcs = new TaskCompletionSource();
-                this.DispatcherQueue.TryEnqueue(() =>
+                ServerViewmodel.CallCoverSetterAppendWorks += async mangas =>
                 {
-                    _ = App
-                        .Services.GetRequiredService<CoverSetter>()
-                        .SingleLoadWork(manga, true, true)
-                        .ContinueWith(_ => tcs.SetResult());
-                });
-                await tcs.Task;
-            };
-            serverViewmodel.AddLog += (log) =>
-                this.DispatcherQueue.TryEnqueue(() => serverViewmodel.Logs.Add(log));
+                    var tcs = new TaskCompletionSource();
+                    this.DispatcherQueue.TryEnqueue(() =>
+                    {
+                        _ = App
+                            .Services.GetRequiredService<CoverSetter>()
+                            .MultiLoadWork(mangas, true, true)
+                            .ContinueWith(_ => tcs.SetResult());
+                    });
+                    await tcs.Task;
+                };
 
-            serverViewmodel.EventDeleteMang += async manga =>
-            {
-                try
+                ServerViewmodel.CallCoverSetterSingleWork += async manga =>
                 {
-                    await services.GetRequiredService<MangaIO>().Delete(manga);
-                    return true;
-                }
-                catch
-                {
-                    return false;
-                }
-            };
+                    var tcs = new TaskCompletionSource();
+                    this.DispatcherQueue.TryEnqueue(() =>
+                    {
+                        _ = App
+                            .Services.GetRequiredService<CoverSetter>()
+                            .SingleLoadWork(manga, true, true)
+                            .ContinueWith(_ => tcs.SetResult());
+                    });
+                    await tcs.Task;
+                };
+                ServerViewmodel.AddLog += (log) =>
+                    this.DispatcherQueue.TryEnqueue(() => ServerViewmodel.Logs.Add(log));
 
-            serverViewmodel.EventDeleteMang += async manga =>
-            {
-                var result = this.DispatcherQueue.TryEnqueue(() =>
-                    App.Services.GetRequiredService<ObservableCollectionVM>().RemoveManga(manga)
+                ServerViewmodel.EventDeleteMang += async manga =>
+                {
+                    try
+                    {
+                        await ServerViewmodel.DeleteManga(manga);
+                        return true;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                };
+
+                ServerViewmodel.EventDeleteMang += async manga =>
+                {
+                    var result = this.DispatcherQueue.TryEnqueue(() =>
+                        ServerViewmodel.RemoveManga(manga)
+                    );
+
+                    return result;
+                };
+                await ServerViewmodel.StartServer();
+
+                this.DataContext = ServerViewmodel;
+
+                ServerViewmodel.ValidatePort(12965);
+                // TODO 如果设备安装了虚拟网卡（如hyperv等虚拟机），获取的ip不是正确ip
+                txtFullAddress.Text = ServerViewmodel.FullAddress;
+                txtStatus.Text = "运行中";
+                statusDot.Background = new SolidColorBrush(
+                    Windows.UI.Color.FromArgb(255, 0, 200, 0)
                 );
-
-                return result;
-            };
-            await serverViewmodel.StartServer();
-
-            this.DataContext = serverViewmodel;
-
-            serverViewmodel.ValidatePort(12965);
-            // TODO 如果设备安装了虚拟网卡（如hyperv等虚拟机），获取的ip不是正确ip
-            txtFullAddress.Text = serverViewmodel.FullAddress;
-            txtStatus.Text = "运行中";
-            statusDot.Background = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 200, 0));
-            btnStart.Content = "服务已启动";
-        }
-        catch (Exception ex)
-        {
-            txtStatus.Text = "启动失败";
-            statusDot.Background = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 255, 68, 68));
-            btnStart.IsEnabled = true;
-
-            _ = new ContentDialog
+                btnStart.Content = "服务已启动";
+            }
+            catch (Exception ex)
             {
-                Title = "启动失败",
-                Content = ex.Message,
-                CloseButtonText = "确定",
-            }.ShowAsync();
-        }
-        finally
-        {
-            progressRing.Visibility = Visibility.Collapsed;
+                txtStatus.Text = "启动失败";
+                statusDot.Background = new SolidColorBrush(
+                    Windows.UI.Color.FromArgb(255, 255, 68, 68)
+                );
+                btnStart.IsEnabled = true;
+
+                _ = new ContentDialog
+                {
+                    Title = "启动失败",
+                    Content = ex.Message,
+                    CloseButtonText = "确定",
+                }.ShowAsync();
+            }
+            finally
+            {
+                progressRing.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

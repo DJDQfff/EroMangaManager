@@ -5,16 +5,17 @@ namespace WinApp.UserControls;
 
 public sealed partial class MangasGridView : UserControl
 {
-    public static readonly DependencyProperty ItemsSourceProperty = DependencyProperty.Register(
-        nameof(ItemsSource),
-        typeof(object),
+    public static readonly DependencyProperty MangaSourceProperty = DependencyProperty.Register(
+        nameof(MangaSource),
+        typeof(IEnumerable<Manga>), // ✅ 改为强类型
         typeof(MangasGridView),
         new PropertyMetadata(null)
     );
-    public object ItemsSource
+
+    public IEnumerable<Manga> MangaSource
     {
-        get => (object)GetValue(ItemsSourceProperty);
-        set => SetValue(ItemsSourceProperty, value);
+        get => (IEnumerable<Manga>)GetValue(MangaSourceProperty);
+        set => SetValue(MangaSourceProperty, value);
     }
 
     public MangasGridView()
@@ -28,7 +29,7 @@ public sealed partial class MangasGridView : UserControl
     /// </summary>
     public string ItemTemplateIndex
     {
-        get => field ?? "0";
+        get => field ?? "Template0";
         set
         {
             if (value != null)
@@ -38,7 +39,19 @@ public sealed partial class MangasGridView : UserControl
             }
         }
     }
-    public MangaOperationViewModel MangaOperationViewModel { get; set; } = null!;
+
+    public static readonly DependencyProperty MangaOperationViewModelProperty =
+        DependencyProperty.Register(
+            nameof(MangaOperationViewModel),
+            typeof(MangaOperationViewModel),
+            typeof(MangasGridView),
+            new PropertyMetadata(null)
+        );
+    public MangaOperationViewModel MangaOperationViewModel
+    {
+        get => (MangaOperationViewModel)GetValue(MangaOperationViewModelProperty);
+        set => SetValue(MangaOperationViewModelProperty, value);
+    }
 
     private void Moveto_Loaded(object sender, RoutedEventArgs e)
     {
@@ -97,6 +110,28 @@ public sealed partial class MangasGridView : UserControl
         if (sender is Grid { DataContext: Manga manga })
         {
             await MangaOperationViewModel.OpenWith((manga, null));
+        }
+    }
+
+    private void openwith_Loading(FrameworkElement sender, object args)
+    {
+        if (sender is MenuFlyoutSubItem { DataContext: Manga mnaga } flytotitem)
+        {
+            flytotitem.Items.Clear();
+            var ways = MangaOperationViewModel.ExePaths;
+
+            foreach (var way in ways)
+            {
+                var item = new MenuFlyoutItem { Text = Path.GetFileNameWithoutExtension(way) };
+
+                flytotitem.Items.Add(item);
+
+                item.Click += async (sender, e) =>
+                {
+                    var manga = mnaga; // 获取datacontext，可能导致ui线程错误
+                    await MangaOperationViewModel.OpenWith((manga, way));
+                };
+            }
         }
     }
 }

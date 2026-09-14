@@ -3,12 +3,17 @@ using System.Net;
 using System.Net.Sockets;
 using Core.DTOs;
 using Core.Models;
+using Core.Services;
 using Core.ViewModels;
 using SharpCompress.Archives;
 
 namespace Server;
 
-public class ASPNETCoreServer(ObservableCollectionVM collectionVM)
+public class ASPNETCoreServer(
+    ObservableCollectionVM collectionVM,
+    SearchMangaViewModel searchViewModel,
+    MangaIO mangaIO
+)
 {
     Task? _serverTask;
 
@@ -41,6 +46,12 @@ public class ASPNETCoreServer(ObservableCollectionVM collectionVM)
                 $"端口不匹配！实际端口：{Port}，预设端口：{expectedPort}"
             );
     }
+
+    public void ClearLogs() => Logs.Clear();
+
+    public async Task DeleteManga(Manga manga) => await mangaIO.Delete(manga);
+
+    public void RemoveManga(Manga manga) => collectionVM.RemoveManga(manga);
 
     public async Task StartServer()
     {
@@ -166,7 +177,7 @@ public class ASPNETCoreServer(ObservableCollectionVM collectionVM)
             async (string tag, CancellationToken ct) =>
             {
                 // 1. 直接调用异步流式方法，并将 CancellationToken 传递进去
-                var mangasStream = collectionVM.FilterMangasAsync(null, [tag], ct);
+                var mangasStream = searchViewModel.FilterMangasAsync(null, [tag], ct);
                 // 定义一个异步迭代器，逐个处理并返回
                 async IAsyncEnumerable<Manga> StreamMangas(
                     [System.Runtime.CompilerServices.EnumeratorCancellation]
@@ -295,17 +306,20 @@ public class ASPNETCoreServer(ObservableCollectionVM collectionVM)
                 return File.Exists(cover) ? Results.File(cover) : Results.NotFound();
             }
         );
-        app.MapGet("/covers/base64/{guid}" , async (string guid) =>
-        {
-            var file = collectionVM.MangaList.Single(x => x.Guid == guid);
-            await CallCoverSetterSingleWork.Invoke(file);
-            var cover = file?.CoverUri;
-            if (cover is null || !File.Exists(cover))
-                return Results.NotFound();
-            var bytes = await File.ReadAllBytesAsync(cover);
-            // 直接返回 byte[]，让 ASP.NET Core 自动处理 Base64 序列化
-            return Results.Ok(bytes);
-        });
+        app.MapGet(
+            "/covers/base64/{guid}",
+            async (string guid) =>
+            {
+                var file = collectionVM.MangaList.Single(x => x.Guid == guid);
+                await CallCoverSetterSingleWork.Invoke(file);
+                var cover = file?.CoverUri;
+                if (cover is null || !File.Exists(cover))
+                    return Results.NotFound();
+                var bytes = await File.ReadAllBytesAsync(cover);
+                // 直接返回 byte[]，让 ASP.NET Core 自动处理 Base64 序列化
+                return Results.Ok(bytes);
+            }
+        );
         app.MapDelete(
             "/mangas/{guid}",
             async (string guid) =>

@@ -6,8 +6,7 @@
 public class MangaFactory(
     ObservableCollectionVM ViewModel,
     CoverHelper coverHelper,
-    CoverSetter coverSetter,
-    MangaIO mangaFileIO
+    CoverSetter coverSetter
 )
 {
     /// <summary>ViewModel初始化</summary>

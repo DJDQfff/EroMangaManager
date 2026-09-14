@@ -23,12 +23,12 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
             field = value;
             if (value is null)
             {
-                Bookcase_GridView.ItemsSource = null!;
+                Bookcase_GridView.MangaSource = null!;
                 Bookcase_HintTextBlock.Visibility = Visibility.Visible;
             }
             else
             {
-                Bookcase_GridView.ItemsSource = value.DisplayMangas;
+                Bookcase_GridView.MangaSource = value.DisplayMangas;
                 Bookcase_HintTextBlock.Visibility = Visibility.Collapsed;
 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(MangasGroup)));

@@ -1,6 +1,4 @@
-﻿using Core.Interfaces;
-
-namespace Core.ViewModels;
+﻿namespace Core.ViewModels;
 
 /// <summary>
 /// 所有需要持续观察的集合都放在这，ViewModel
@@ -88,7 +86,6 @@ public class ObservableCollectionVM
     {
         string folderpath = mangaBook.FolderPath;
         MangasGroup folder = MangasGroups.Single(x => x.FolderPath == folderpath);
-        _ = SearchResultMangas.Remove(mangaBook);
         return folder.RemoveManga(mangaBook);
     }
 
@@ -113,114 +110,4 @@ public class ObservableCollectionVM
             }
         }
     }
-
-    #region 搜索ViewModel相关
-    /// <summary>
-    /// 对单个搜索结果执行事件
-    /// </summary>
-    public event Action<IEnumerable<Manga>> SearchResultNewAddMulti = null!;
-
-    /// <summary>
-    /// 对单个搜索结果执行事件
-    /// </summary>
-    public event Func<Manga, Task> SearchResultNewAddSingle = null!;
-
-    /// <summary>
-    /// 搜索需要内容
-    /// </summary>
-    public string SearchRequiredText { get; set; } = "";
-
-    /// <summary>
-    /// 搜索只能需要tag
-    /// </summary>
-    public ObservableCollection<string> SearchRequiredTags { get; } = [];
-
-    //public List<string> SearchAllTags { get; set; } = [];
-    /// <summary>
-    /// 搜索可选tag
-    /// </summary>
-    public ObservableCollection<string> SearchAvailableTags { get; } = [];
-
-    /// <summary>
-    /// 搜索结果
-    /// </summary>
-    public ObservableCollection<Manga> SearchResultMangas { get; } = [];
-
-    /// <summary>
-    /// 2. 新增的异步流式方法
-    /// </summary>
-    /// <param name="name"></param>
-    /// <param name="tags"></param>
-    /// <param name="ct"></param>
-    /// <returns></returns>
-    public async IAsyncEnumerable<Manga> FilterMangasAsync(
-        string? name,
-        IEnumerable<string> tags,
-        [System.Runtime.CompilerServices.EnumeratorCancellation] CancellationToken ct = default
-    )
-    {
-        // 复用底层过滤逻辑
-        foreach (var manga in FilterMangas(name, tags))
-        {
-            // 响应客户端断开连接
-            ct.ThrowIfCancellationRequested();
-
-            // 避免内存大集合过滤时阻塞线程
-            await Task.Yield();
-
-            yield return manga;
-        }
-    }
-
-    /// <summary>
-    /// 执行搜索内容，添加到可观察集合
-    /// </summary>
-    /// <returns></returns>
-    public async Task Search()
-    {
-        // 直接调用纯逻辑方法，避免代码重复
-        var result = FilterMangas(SearchRequiredText, SearchRequiredTags);
-
-        // 更新 UI 状态（这部分对 ASP.NET Core 后端不可见）
-        SearchResultMangas.Clear();
-        foreach (var manga in result)
-        {
-            await SearchResultNewAddSingle.Invoke(manga!);
-            await Task.Yield();
-            SearchResultMangas.Add(manga);
-        }
-    }
-
-    // 3. 抽取出的私有底层过滤逻辑（避免代码重复）
-    private IEnumerable<Manga> FilterMangas(string? name, IEnumerable<string> tags)
-    {
-        // 基础校验。这一段一定要有，不然在ui界面无任何搜索条件时，会返回所有内容
-        if (string.IsNullOrWhiteSpace(name) && (tags == null || !tags.Any()))
-        {
-            return [];
-        }
-
-        return MangasGroups
-            .SelectMany(x => x.Mangas)
-            .Where(x => x.Name.Contains(name?.Trim() ?? string.Empty))
-            .Where(x => tags == null || !tags.Any() || tags.All(y => x.Tags.Contains(y)));
-    }
-
-    /// <summary>
-    /// 【保留】原有供 UI 调用的搜索方法，行为完全不变。
-    /// </summary>
-    /// <summary>
-    /// 筛选tag
-    /// </summary>
-    /// <param name="query"></param>
-    public void FiltSearchTags(string query)
-    {
-        SearchAvailableTags.Clear();
-        foreach (var tag in AllTags.Except(SearchRequiredTags))
-        {
-            if (tag.Contains(query))
-                SearchAvailableTags.Add(tag);
-        }
-    }
-    #endregion
 }

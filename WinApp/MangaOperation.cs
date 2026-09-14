@@ -1,11 +1,12 @@
-﻿namespace WinApp;
+﻿using Microsoft.VisualBasic;
+
+namespace WinApp.Services;
 
 public partial class MangaOperationViewModel(
     CoverHelper coverHelper,
     ClipboardHelper clipboardHelper,
     ObservableCollectionVM observableCollectionVM,
     ContentDialogCreater contentDialogCreater,
-    MangaFactory mangaFactory,
     MainPage mainPage,
     MangaIO mangaIO,
     SettingViewModel settingViewModel,
@@ -32,7 +33,7 @@ public partial class MangaOperationViewModel(
     }
 
     [RelayCommand]
-    private async Task NavigateSearchTags(string text)
+    public async Task NavigateSearchTags(string text)
     {
         var page = mainPage.NavigateToPage(StringsEnum.GlobalSearch) as GlobalSearchPage;
         await page!.Search(new string[] { text });
@@ -139,13 +140,10 @@ public partial class MangaOperationViewModel(
     }
 
     [RelayCommand]
-    private void LocateMangaInFolder(Manga manga)
-    {
-        ExplorerFile.ExplorerSelectFile(manga.FilePath);
-    }
+    public void LocateMangaInFolder(Manga manga) => ExplorerFile.ExplorerSelectFile(manga.FilePath);
 
     [RelayCommand]
-    private async Task RenameManga(Manga manga)
+    public async Task RenameManga(Manga manga)
     {
         await contentDialogCreater.RenameSourceFileInDialog(manga, mangaIO);
     }

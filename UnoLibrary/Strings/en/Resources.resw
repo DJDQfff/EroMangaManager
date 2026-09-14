@@ -142,7 +142,7 @@
     <value>This sub-label is read from the sub-name of this book. For example, in the file "[玉Sugar] キミ色保護色 (COMIC BAVEL June 2021 Issue) [無邪気漢化組] [無邪気無修宇宙分組] [MJK-22-Z2748] [無修正].zip", in this software, the content contained in a pair of parentheses will be recognized as a Tag, and the content not included in the parentheses will be recognized as the subname of the book. This is not necessarily 100% correctly identifiable.</value>
   </data>
   <data name="Answer_WhatISTheApp" xml:space="preserve">
-    <value>This is a software used to manage the local hard disk notebook. If you don't know what a book is,Then there's a high probability you won't use this software.。</value>
+    <value>This is a software used to manage the local hard disk notebook. If you don't know what a book is,Then there's a high probability you won't use this software.</value>
   </data>
   <data name="AppDisplayName" xml:space="preserve">
     <value>Doujinshi Manager</value>

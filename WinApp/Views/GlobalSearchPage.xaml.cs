@@ -6,30 +6,36 @@ namespace WinApp.Views.MainPageChildPages;
 /// </summary>
 public sealed partial class GlobalSearchPage : Page
 {
-    readonly ObservableCollectionVM viewmodel;
-    readonly SettingViewModel settingViewModel;
+    SearchMangaViewModel SearchMangaViewModel2 { get; }
+    ObservableCollectionVM ObservableCollectionVM { get; }
+    SettingViewModel SettingViewModel { get; }
 
     /// <summary>
     ///
     /// </summary>
     public GlobalSearchPage(
-        ObservableCollectionVM _viewmodel,
         SettingViewModel _settingViewModel,
-        CoverSetter coverSetter
+        ObservableCollectionVM observableCollectionVM,
+        CoverSetter coverSetter,
+        SearchMangaViewModel _viewmodel,
+        MangaOperationViewModel _mangaOperationViewModel
     )
     {
         InitializeComponent();
-        viewmodel = _viewmodel;
-        settingViewModel = _settingViewModel;
+        ObservableCollectionVM = observableCollectionVM;
+        SearchMangaViewModel2 = _viewmodel;
+        ResultGridView.MangaOperationViewModel = _mangaOperationViewModel;
+        SettingViewModel = _settingViewModel;
 
-        viewmodel.EventAfterDeleteMangaSource += x =>
+        ObservableCollectionVM.EventAfterDeleteMangaSource += x =>
         {
-            viewmodel.RemoveManga(x); /*viewmodel.SearchResultMangas.Remove(x);*/
+            ObservableCollectionVM.RemoveManga(x);
+            SearchMangaViewModel2.ResultMangas.Remove(x);
         };
 
-        viewmodel.SearchResultNewAddSingle += async x =>
+        SearchMangaViewModel2.ResultNewAddSingle += async x =>
             await coverSetter.SingleLoadWork(x, true, true);
-        viewmodel.SearchResultNewAddMulti += async x =>
+        SearchMangaViewModel2.ResultNewAddMulti += async x =>
             await coverSetter.MultiLoadWork(x, true, true);
     }
 
@@ -50,9 +56,9 @@ public sealed partial class GlobalSearchPage : Page
             //直接把manga传进来，参数自己修改
             case Manga manga:
                 {
-                    viewmodel.SearchRequiredText = manga.Name;
+                    SearchMangaViewModel2.RequiredText = manga.Name;
 
-                    viewmodel.SearchRequiredTags.Clear();
+                    SearchMangaViewModel2.RequiredTags.Clear();
                     foreach (var tag in manga.Tags)
                     {
                         MangaTagTokenizingTextBox.AddTokenItem(tag);
@@ -62,33 +68,40 @@ public sealed partial class GlobalSearchPage : Page
 
             case string manganame:
                 {
-                    viewmodel.SearchRequiredText = manganame;
-                    viewmodel.SearchRequiredTags.Clear();
+                    SearchMangaViewModel2.RequiredText = manganame;
+                    SearchMangaViewModel2.RequiredTags.Clear();
                 }
                 break;
 
             case IEnumerable<string> tags:
                 {
-                    viewmodel.SearchRequiredText = string.Empty;
-                    viewmodel.SearchRequiredTags.Clear();
+                    SearchMangaViewModel2.RequiredText = string.Empty;
+                    SearchMangaViewModel2.RequiredTags.Clear();
                     foreach (var tag in tags)
                     {
-                        viewmodel.SearchRequiredTags.Add(tag);
+                        SearchMangaViewModel2.RequiredTags.Add(tag);
                     }
                 }
                 break;
         }
-        await viewmodel.Search();
+        await SearchMangaViewModel2.SearchAsync();
     }
 
-    // TODO 搞不清这个干嘛的
+    /// <summary>
+    /// 输入验证/拦截：
+    /// 当用户在标签搜索框中输入一个标签并尝试将其添加为 Token 时，
+    /// 如果该标签在系统中不存在，
+    /// 则取消添加（防止用户输入无效/拼写错误的标签）。
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="args"></param>
     private void TagTokenBox_TokenItemAdding(
         TokenizingTextBox sender,
         TokenItemAddingEventArgs args
     )
     {
         var t = args.TokenText;
-        if (!viewmodel.AllTags.Contains(t))
+        if (!SearchMangaViewModel2.AvailableTags.Contains(t))
         {
             args.Cancel = true;
         }
@@ -96,7 +109,7 @@ public sealed partial class GlobalSearchPage : Page
 
     private async void TagTokenBox_TokenItemChanged(TokenizingTextBox sender, object args)
     {
-        await viewmodel.Search();
+        await SearchMangaViewModel2.SearchAsync();
     }
 
     private async void NameBox_TextChanged(
@@ -104,7 +117,7 @@ public sealed partial class GlobalSearchPage : Page
         AutoSuggestBoxTextChangedEventArgs args
     )
     {
-        await viewmodel.Search();
+        await SearchMangaViewModel2.SearchAsync();
     }
 
     //private void ShowInBookcaseButton_Click (object sender , RoutedEventArgs e)
@@ -128,6 +141,6 @@ public sealed partial class GlobalSearchPage : Page
         AutoSuggestBoxTextChangedEventArgs args
     )
     {
-        viewmodel.FiltSearchTags(MangaTagTokenizingTextBox.Text);
+        SearchMangaViewModel2.FiltTags(MangaTagTokenizingTextBox.Text);
     }
 }
