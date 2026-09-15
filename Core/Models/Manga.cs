@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
+using Core.ViewModels;
 
 namespace Core.Models;
 
@@ -64,7 +65,8 @@ public partial class Manga : ObservableObject /*,IMangaView*/
         Name = string.Join(' ', BracketBasedStringParser.Get_OutsideContent(FileDisplayName));
         Tags = BracketBasedStringParser
             .Get_InsideContent(FileDisplayName)
-            .SelectMany(x => x.Split('&', '、'))
+            .SelectMany(x => x.Split(SameMangaSearchViewModel.Sperators))
+            .Where(tag => !string.IsNullOrWhiteSpace(tag))
             .Distinct()
             .ToArray();
 

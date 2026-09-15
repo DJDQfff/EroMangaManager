@@ -55,7 +55,7 @@
     <usercontrol:MangasGridView
       x:Name="ResultGridView"
       Grid.Row="1"
-      ItemTemplateIndex="{x:Bind SettingViewModel.AppConfig.General.MangasGridViewDataTemplateKey}"
+      ItemTemplateIndex="Template0"
       MangaSource="{x:Bind SearchMangaViewModel2.ResultMangas, Mode=OneWay}"
     />
   </Grid>

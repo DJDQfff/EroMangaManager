@@ -12,9 +12,9 @@ public partial class SameMangaSearchViewModel
     : RepeatItemsGroupWithMethod<string, Manga, RepeatMangasGroup>
 {
     /// <summary>
-    /// 表示查重方法执行中
+    /// 分隔符
     /// </summary>
-    private readonly char[] sperators =
+    public static readonly char[] Sperators =
     [
         ' ',
         '&',
@@ -31,6 +31,8 @@ public partial class SameMangaSearchViewModel
         '、',
         '•',
         '﹐',
+        ',',
+        '，',
     ];
 
     [ObservableProperty]
@@ -60,8 +62,8 @@ public partial class SameMangaSearchViewModel
                 //var tags1 = manga1.Tags;
                 //var tags2 = manga2.Tags;
 
-                var namepieces1 = manga1.Name.Split(sperators);
-                var namepieces2 = manga2.Name.Split(sperators);
+                var namepieces1 = manga1.Name.Split(Sperators);
+                var namepieces2 = manga2.Name.Split(Sperators);
                 var intersect = namepieces1.Intersect(namepieces2); //.Any();
                 if (intersect.Any())
                 {
@@ -102,7 +104,7 @@ public partial class SameMangaSearchViewModel
                 {
                     Action = x =>
                         x.Name /*.ToCharArray();//*/
-                        .Split(sperators),
+                        .Split(Sperators),
                     Sources = _mangas,
                     MinItemLength = 1,
                 };
@@ -199,7 +201,7 @@ public partial class SameMangaSearchViewModel
 
         var dic = Source
             .SelectMany(x =>
-                Get_OutsideContent(x.FileDisplayName).SelectMany(x => x.Split(sperators))
+                Get_OutsideContent(x.FileDisplayName).SelectMany(x => x.Split(Sperators))
             )
             .CountBy(x => x)
             .Where(x => x.Value > 1)
@@ -208,7 +210,7 @@ public partial class SameMangaSearchViewModel
             .ToDictionary();
         string? func(Manga x) =>
             Get_OutsideContent(x.FileDisplayName)
-                .SelectMany(x => x.Split(sperators))
+                .SelectMany(x => x.Split(Sperators))
                 .FirstOrDefault(y => dic.ContainsKey(y));
         await ByEachKey(
             Source,

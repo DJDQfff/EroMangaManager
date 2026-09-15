@@ -14,60 +14,34 @@
   mc:Ignorable="d"
 >
   <UserControl.Resources>
-    <MenuFlyout x:Key="mangaflyout">
+    <MenuFlyout x:Key="mangaflyout" Opening="MenuFlyout_Opening">
       <MenuFlyoutSubItem
         x:Name="openwith"
         Icon="OpenWith"
-        Loaded="MenuFlyoutItem_Loaded"
+        Loading="openwith_Loading"
         Text="{uid:Strings Uid=OpenWithExternal}"
       />
       <MenuFlyoutItem
-        Command="{x:Bind MangaOperationViewModel.LocateMangaInFolderCommand}"
-        CommandParameter="{Binding Mode=OneWay}"
-        DataContext="{Binding}"
+        x:Name="LocateItem"
         Icon="OpenLocal"
         Text="{uid:Strings Uid=LocateInExplorer}"
       />
       <MenuFlyoutSubItem
         x:Name="moveto"
-        DataContext="{Binding}"
         Icon="MoveToFolder"
-        Loaded="Moveto_Loaded"
+        Loading="moveto_Loading"
         Text="{uid:Strings Uid=MoveToOtherFolder}"
       />
       <MenuFlyoutItem
-        Command="{x:Bind MangaOperationViewModel.ContentDialogCreater.OverviewInformationCommand}"
-        CommandParameter="{Binding Mode=OneWay}"
-        DataContext="{Binding}"
+        x:Name="OverviewInformation"
         Icon="View"
         Text="{uid:Strings Uid=OverviewInformation}"
       />
-      <MenuFlyoutItem
-        Command="{x:Bind MangaOperationViewModel.RenameMangaCommand}"
-        CommandParameter="{Binding Mode=OneWay}"
-        DataContext="{Binding}"
-        Icon="Rename"
-        Text="{uid:Strings Uid=RenameFile}"
-      />
-      <!--<MenuFlyoutItem
-        Command="{x:Bind MangaOperationViewModel.NavigateSearchNameCommand}"
-        CommandParameter="{Binding , Mode=OneWay}"
-        DataContext="{Binding}"
-        Icon="Find"
-        Text="{uid:Strings Uid=SearchSimilar}"
-      />-->
-      <MenuFlyoutItem
-        Command="{x:Bind MangaOperationViewModel. ContentDialogCreater.ExportAsPDFCommand}"
-        CommandParameter="{Binding Mode=OneWay}"
-        DataContext="{Binding}"
-        Icon="Save"
-        Text="{uid:Strings Uid=ExportToPDF}"
-      />
+      <MenuFlyoutItem x:Name="Rename" Icon="Rename" Text="{uid:Strings Uid=RenameFile}" />
+      <MenuFlyoutItem x:Name="Export" Icon="Save" Text="{uid:Strings Uid=ExportToPDF}" />
       <MenuFlyoutSeparator />
       <MenuFlyoutItem
-        Command="{x:Bind MangaOperationViewModel.DeleteCommand}"
-        CommandParameter="{Binding Mode=OneWay}"
-        DataContext="{Binding}"
+        x:Name="Delete"
         Foreground="Red"
         Icon="Delete"
         Text="{uid:Strings Uid=DeleteIt}"
@@ -130,18 +104,12 @@
     </DataTemplate>
 
     <DataTemplate x:Key="Template2" x:DataType="models:Manga">
-      <Grid MaxWidth="300" ColumnDefinitions="*,2*" DoubleTapped="Grid_DoubleTapped">
-        <Grid.ContextFlyout>
-          <MenuFlyout>
-            <MenuFlyoutItem
-              Command="{Binding MangaOperationViewModel.LocateMangaInFolderCommand, ElementName=usercontrol, Mode=OneWay}"
-              CommandParameter="{x:Bind Mode=OneWay}"
-              DataContext="{x:Bind}"
-              Icon="OpenLocal"
-              Text="{uid:Strings Uid=LocateInExplorer}"
-            />
-          </MenuFlyout>
-        </Grid.ContextFlyout>
+      <Grid
+        MaxWidth="500"
+        ContextFlyout="{StaticResource mangaflyout}"
+        ColumnDefinitions="*,2*"
+        DoubleTapped="Grid_DoubleTapped"
+      >
         <basic:Cover Grid.Column="0" Manga="{x:Bind Mode=OneWay}" />
         <Grid Grid.Column="1" RowDefinitions="auto,5*,auto,auto">
           <basic:Name
