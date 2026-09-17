@@ -124,14 +124,13 @@ public sealed partial class MangasGridView : UserControl
                 var item = new MenuFlyoutItem { Text = way.FolderPath };
                 moveto.Items.Add(item);
 
-                if (
-                    way.FolderPath == manga.FolderPath //不能同文件夹移动
-                    || !string.Equals(
-                        Path.GetPathRoot(way.FolderPath),
-                        Path.GetPathRoot(manga.FilePath),
-                        StringComparison.OrdinalIgnoreCase
-                    ) //不能跨盘移动（没做这个功能）
-                )
+                if (way.FolderPath == manga.FolderPath) //不能同文件夹移动
+                //|| !string.Equals(
+                //    Path.GetPathRoot(way.FolderPath),
+                //    Path.GetPathRoot(manga.FilePath),
+                //    StringComparison.OrdinalIgnoreCase
+                //不能跨盘移动（没做这个功能）
+
                 {
                     item.IsEnabled = false;
                     continue;

@@ -60,7 +60,7 @@ public class CoverHelper
         );
         var coverfolder = storageFolder.Path;
         Directory.Delete(coverfolder, true);
-        storageFolderHelper.EnsureTemporaryFolderChild_Covers(Covers.ToString());
+        await storageFolderHelper.EnsureTemporaryFolderChild_CoversAsync(Covers.ToString());
     }
 
     /// <summary> 尝试创建封面文件。 </summary>

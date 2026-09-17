@@ -8,7 +8,7 @@ public class StorageFolderHelper
 {
     public StorageFolderHelper()
     {
-        EnsureTemporaryFolderChild_Covers("Covers", "Filters");
+        _ = EnsureTemporaryFolderChild_CoversAsync("Covers", "Filters");
     }
 
     /// <summary> 在app临时文件夹获取子文件夹 </summary>
@@ -28,14 +28,14 @@ public class StorageFolderHelper
     /// </summary>
     /// <param name="foldernames"> 子文件夹名称 </param>
     /// <returns> </returns>
-    public void EnsureTemporaryFolderChild_Covers(params string[] foldernames)
+    public async Task EnsureTemporaryFolderChild_CoversAsync(params string[] foldernames)
     {
-        var temporaryfolderpath = ApplicationData.Current.TemporaryFolder.Path;
+        var temporaryFolder = ApplicationData.Current.TemporaryFolder;
 
         foreach (var folder in foldernames)
         {
-            var newfolder = Path.Combine(temporaryfolderpath, folder);
-            Directory.CreateDirectory(newfolder);
+            // CreateFolderAsync 默认在文件夹已存在时不会抛出异常（等价于 Directory.CreateDirectory）
+            await temporaryFolder.CreateFolderAsync(folder, CreationCollisionOption.OpenIfExists);
         }
     }
 

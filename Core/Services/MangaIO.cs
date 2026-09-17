@@ -305,32 +305,32 @@ public class MangaIO
     /// <summary>
     /// 移动、重命名漫画。
     /// </summary>
-    /// <param name="book"></param>
+    /// <param name="manga"></param>
     /// <param name="targetfolder">目标文件夹</param>
     /// <param name="newname">新名字</param>
-    public string MoveManga(Manga book, string? targetfolder, string? newname)
+    public virtual string MoveManga(Manga manga, string? targetfolder, string? newname)
     {
-        targetfolder ??= book.FolderPath; //这个路径并没有验证是否存在
+        targetfolder ??= manga.FolderPath; //这个路径并没有验证是否存在
 
-        newname ??= book.FileDisplayName;
-        var newpath = Path.Combine(targetfolder, newname + book.Type);
+        newname ??= manga.FileDisplayName;
+        var newpath = Path.Combine(targetfolder, newname + manga.Type);
 
         // TODO 可能重名
-        switch (book.Type)
+        switch (manga.Type)
         {
             case "":
             {
-                Directory.Move(book.FilePath, newpath);
+                Directory.Move(manga.FilePath, newpath);
                 return newpath;
-                //book.FilePath = newpath;
+                //manga.FilePath = newpath;
                 // 由于manganame使用MVVM绑定到了UI，所以跨线程，不能直接操作
             }
 
             default:
             {
-                File.Move(book.FilePath, newpath);
+                File.Move(manga.FilePath, newpath);
                 return newpath;
-                //book.FilePath = newpath;
+                //manga.FilePath = newpath;
             }
         }
     }
