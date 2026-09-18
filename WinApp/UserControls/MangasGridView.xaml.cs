@@ -24,18 +24,38 @@ public sealed partial class MangasGridView : UserControl
     }
 
     /// TODO 考虑多个DataTemplate合并为一个，使用VisualStateManager切换不同的布局，减少代码量。
-    /// <summary>
-    /// TODO 考虑改为依赖属性，方便在xaml中绑定。改了之后奇怪bug
-    /// </summary>
+    public static readonly DependencyProperty ItemTemplateIndexProperty =
+        DependencyProperty.Register(
+            nameof(ItemTemplateIndex),
+            typeof(string),
+            typeof(MangasGridView),
+            new PropertyMetadata("Template0", OnItemTemplateIndexChanged)
+        );
     public string ItemTemplateIndex
     {
-        get => field ?? "Template0";
-        set
+        get => (string)GetValue(ItemTemplateIndexProperty);
+        set => SetValue(ItemTemplateIndexProperty, value);
+    }
+
+    private static void OnItemTemplateIndexChanged(
+        DependencyObject d,
+        DependencyPropertyChangedEventArgs e
+    )
+    {
+        if (d is MangasGridView control && e.NewValue is string templateKey)
         {
-            if (value != null)
+            if (
+                control.Resources.TryGetValue(templateKey, out var resource)
+                && resource is DataTemplate dt
+            )
             {
-                field = value;
-                gridview.ItemTemplate = Resources[field] as DataTemplate;
+                control.gridview.ItemTemplate = dt;
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine(
+                    $"[MangasGridView] Warning: DataTemplate '{templateKey}' not found in Resources."
+                );
             }
         }
     }

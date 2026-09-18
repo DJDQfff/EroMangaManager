@@ -132,6 +132,7 @@
   <GridView
     x:Name="gridview"
     IsItemClickEnabled="False"
+    ItemTemplate="{StaticResource Template0}"
     ItemContainerStyle="{ThemeResource GridViewItemRevealStyle}"
     ItemsSource="{x:Bind MangaSource, Mode=OneWay}"
     SelectionMode="Single"
