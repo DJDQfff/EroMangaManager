@@ -216,7 +216,7 @@ public partial class SameMangaSearchViewModel
             Source,
             func,
             x => !string.IsNullOrWhiteSpace(x.Key),
-            x => string.IsNullOrWhiteSpace(x.Name)
+            x => !string.IsNullOrWhiteSpace(x.Name)
         );
     }
 

@@ -41,7 +41,7 @@ public sealed partial class FindSameManga : Page
         cancellationTokenSource = new();
         viewModel.Source =
         [
-            .. observableCollectionVM.MangaList.SkipWhile(x => string.IsNullOrWhiteSpace(x.Name)),
+            .. observableCollectionVM.MangaList.Where(x => !string.IsNullOrWhiteSpace(x.Name)),
         ];
 
         switch (combobox.SelectedIndex)

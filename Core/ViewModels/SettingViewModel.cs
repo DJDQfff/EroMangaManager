@@ -26,7 +26,7 @@ namespace Core.ViewModels
             AppConfig = new ConfigurationBuilder<IAppConfig>().UseIniFile(iniPath.IniPath).Build();
             var exes = AppConfig
                 .MangaOpenWay3.OpenWays?.Split('|', '?')
-                .SkipWhile(string.IsNullOrWhiteSpace)
+                .Where(x => !string.IsNullOrWhiteSpace(x))
                 .Skip(2);
             ExePaths = new(exes!);
             DefaultWay = AppConfig.MangaOpenWay3.DefaultWay;

@@ -121,7 +121,7 @@ public partial class ItemsConverter : IValueConverter
     {
         if (value is string a)
         {
-            var b = a.Split('|').SkipWhile(x => string.IsNullOrWhiteSpace(x));
+            var b = a.Split('|').Where(x => !string.IsNullOrWhiteSpace(x));
             return b;
         }
         else
