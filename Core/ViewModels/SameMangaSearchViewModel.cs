@@ -57,7 +57,7 @@ public partial class SameMangaSearchViewModel
             var mangas = Source.Where(x => x.Tags.Contains(tag)).OrderBy(x => x.Tags.Length);
             Source = [.. Source.Except(mangas)];
 
-            string? func1(Manga manga1, Manga manga2)
+            static string? func1(Manga manga1, Manga manga2)
             {
                 //var tags1 = manga1.Tags;
                 //var tags2 = manga2.Tags;
@@ -98,7 +98,7 @@ public partial class SameMangaSearchViewModel
                 continue;
             }
 
-            IEnumerable<string> func(IEnumerable<Manga> _mangas)
+            static IEnumerable<string> func(IEnumerable<Manga> _mangas)
             {
                 StringCollection<Manga, string> stringCollection = new()
                 {

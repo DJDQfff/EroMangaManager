@@ -55,7 +55,7 @@ public class CoverSetter
     /// <returns></returns>
     public async Task MultiLoadWork(IEnumerable<Manga> mangas, bool setcover, bool loadinfo)
     {
-        foreach (var manga in mangas)
+        foreach (var manga in mangas.ToArray())
         {
             await SingleLoadWork(manga, setcover, loadinfo);
         }

@@ -29,9 +29,9 @@ public class MangaIO
             manga.ImageAmount = await Task.Run(() => CountImageAmount(manga));
             //manga.ChapterAmount = await Task.Run(() => MangaIO.CountChapterAmount(manga));
         }
-        catch
+        catch (Exception ex)
         {
-            // TODO 这样套不行
+            System.Diagnostics.Debug.WriteLine($"LoadMangaInfo failed for {manga.FilePath}: {ex}");
         }
     }
 
@@ -112,15 +112,21 @@ public class MangaIO
             }
             default:
             {
-                var archive = ArchiveFactory.OpenArchive(manga.FilePath);
-                var amount = archive.Entries.Count(x =>
-                    SupportedType.ImageType.Contains(
-                        Path.GetExtension(x.Key) ?? string.Empty,
-                        StringComparer.OrdinalIgnoreCase
-                    )
-                );
-                archive.Dispose();
-                return amount;
+                // ✅ 安全写法：确保 Count 计算完毕后，archive 在同一作用域内确定释放
+                int count;
+                using (var archive = ArchiveFactory.OpenArchive(manga.FilePath))
+                {
+                    // ToList() 强制立即完成所有枚举，避免延迟求值导致的生命周期延长
+                    count = archive
+                        .Entries.Where(x =>
+                            SupportedType.ImageType.Contains(
+                                Path.GetExtension(x.Key) ?? string.Empty,
+                                StringComparer.OrdinalIgnoreCase
+                            )
+                        )
+                        .Count();
+                } // ← Dispose 在此处确定性执行，与 return 无关
+                return count;
             }
         }
     }
@@ -188,44 +194,53 @@ public class MangaIO
                     }
 
                     var archive = ArchiveFactory.OpenArchive(manga.FilePath, options);
-                    var nonfolderentries = archive
-                        .Entries.Where(x => !x.IsDirectory)
-                        .Where(x =>
-                            SupportedType.ImageType.Contains(
-                                Path.GetExtension(x.Key) ?? string.Empty,
-                                StringComparer.OrdinalIgnoreCase
-                            )
-                        )
-                        .Select(x => x.Key!);
-
-                    var folderentries = archive
-                        .Entries.Where(x => x.IsDirectory)
-                        .Select(x => x.Key!)
-                        .OrderByDescending(x => x!.Length);
-
-                    foreach (var folder in folderentries)
+                    try
                     {
-                        var items = nonfolderentries.Where(x => x.Contains(folder));
-                        if (items.Any())
+                        var nonfolderentries = archive
+                            .Entries.Where(x => !x.IsDirectory)
+                            .Where(x =>
+                                SupportedType.ImageType.Contains(
+                                    Path.GetExtension(x.Key) ?? string.Empty,
+                                    StringComparer.OrdinalIgnoreCase
+                                )
+                            )
+                            .Select(x => x.Key!)
+                            .ToList();
+
+                        var folderentries = archive
+                            .Entries.Where(x => x.IsDirectory)
+                            .Select(x => x.Key!)
+                            .OrderByDescending(x => x!.Length)
+                            .ToList();
+
+                        foreach (var folder in folderentries)
+                        {
+                            var items = nonfolderentries.Where(x => x.Contains(folder));
+                            if (items.Any())
+                            {
+                                var chapter = new Chapter(manga)
+                                {
+                                    Chaptername = folder,
+                                    Chapterimagekey = [.. items],
+                                };
+                                chapters.Add(chapter);
+                                nonfolderentries = [.. nonfolderentries.Except(items)];
+                            }
+                        }
+                        // TOTO 这里没有验证：剩下的是否就是直接包含在根目录下的
+                        if (nonfolderentries.Any())
                         {
                             var chapter = new Chapter(manga)
                             {
-                                Chaptername = folder,
-                                Chapterimagekey = [.. items],
+                                Chaptername = manga.Name,
+                                Chapterimagekey = [.. nonfolderentries],
                             };
                             chapters.Add(chapter);
-                            nonfolderentries = [.. nonfolderentries.Except(items)];
                         }
                     }
-                    // TOTO 这里没有验证：剩下的是否就是直接包含在根目录下的
-                    if (nonfolderentries.Any())
+                    finally
                     {
-                        var chapter = new Chapter(manga)
-                        {
-                            Chaptername = manga.Name,
-                            Chapterimagekey = [.. nonfolderentries],
-                        };
-                        chapters.Add(chapter);
+                        archive.Dispose();
                     }
                 }
                 break;
@@ -266,7 +281,7 @@ public class MangaIO
 
             default:
                 {
-                    var archive = ArchiveFactory.OpenArchive(manga.FilePath);
+                    using var archive = ArchiveFactory.OpenArchive(manga.FilePath);
                     var folders = archive.Entries.Where(x => x.IsDirectory).ToList();
                     for (var index = folders.Count - 1; index >= 0; index--)
                     {
@@ -286,8 +301,7 @@ public class MangaIO
                             }
                         }
                     }
-                    var files = archive.Entries.Where(x => !x.IsDirectory);
-                    archive.Dispose();
+                    var files = archive.Entries.Where(x => !x.IsDirectory).ToList();
                     count = folders.Count(folder =>
                         files.Any(file => file.Key!.Contains(folder.Key!))
                     );

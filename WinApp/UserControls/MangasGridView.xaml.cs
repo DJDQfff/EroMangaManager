@@ -50,7 +50,11 @@ public sealed partial class MangasGridView : UserControl
     public MangaOperationViewModel MangaOperationViewModel
     {
         get => (MangaOperationViewModel)GetValue(MangaOperationViewModelProperty);
-        set => SetValue(MangaOperationViewModelProperty, value);
+        set
+        {
+            SetValue(MangaOperationViewModelProperty, value);
+            MangaOperationViewModel.ExternalProcessExited += manga => { };
+        }
     }
 
     private async void Grid_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
@@ -58,6 +62,21 @@ public sealed partial class MangasGridView : UserControl
         if (sender is Grid { DataContext: Manga manga })
         {
             await MangaOperationViewModel.OpenWith((manga, null));
+            if (MangaOperationViewModel.MangaIO.Exists(manga))
+            {
+                var path = await MangaOperationViewModel.MangaIO.GetCoverFile(manga);
+
+                await MangaOperationViewModel.MangaIO.LoadMangaInfo(manga);
+
+                manga.CoverUri = path;
+            }
+            else
+            {
+                MangaOperationViewModel.ObservableCollectionVM.RemoveManga(manga);
+                MangaOperationViewModel.ObservableCollectionVM.InvokeEvent_AfterDeleteMnagaSource(
+                    manga
+                );
+            }
         }
     }
 

@@ -48,7 +48,6 @@ public static class ZipEncodingDetector
             };
 
             // 3. 打开压缩包并遍历条目
-            // 注意：这里使用 ZipArchive.Open 而不是 OpenArchive
             using var archive = ZipArchive.OpenArchive(zipPath, options);
 
             foreach (var entry in archive.Entries)

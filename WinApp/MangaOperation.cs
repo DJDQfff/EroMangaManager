@@ -13,11 +13,14 @@ public partial class MangaOperationViewModel(
     INotifier notifier
 )
 {
+    public MangaIO MangaIO => mangaIO;
+    public ObservableCollectionVM ObservableCollectionVM => observableCollectionVM;
     public ICommand ClipboardHelperCopyCommand => clipboardHelper.CopyCommand;
     public ContentDialogCreater ContentDialogCreater => contentDialogCreater;
     public ObservableCollection<string> ExePaths => settingViewModel.ExePaths;
     public SvgImageSource ErrorImage => coverHelper.ErrorCoverImage;
     public ObservableCollection<MangasGroup> MangasGroups => observableCollectionVM.MangasGroups;
+    public event Action<Manga> ExternalProcessExited;
 
     [RelayCommand]
     public async Task NavigateSearchName(string text)
@@ -43,50 +46,24 @@ public partial class MangaOperationViewModel(
     public async Task OpenWith((Manga, string?) tuple)
     {
         Manga manga = default!;
-        string way = "explorer.exe"; // 默认值
-        switch (tuple)
+        string way = settingViewModel.AppConfig.MangaOpenWay3.DefaultWay;
+
+        // 简化 switch 逻辑
+        if (tuple is (Manga m, string w))
         {
-            case (Manga manga1, null):
-                {
-                    manga = manga1;
-                    way = settingViewModel.AppConfig.MangaOpenWay3.DefaultWay;
-                }
-                break;
-            case (Manga manga1, string way1):
-                {
-                    manga = manga1;
-                    way = way1;
-                }
-                break;
+            manga = m;
+            way = w;
+        }
+        else if (tuple is (Manga m1, null))
+        {
+            manga = m1;
         }
 
         try
         {
             await Process.Start(way, $"\"{manga.FilePath}\"").WaitForExitAsync();
-
-            if (mangaIO.Exists(manga))
-            {
-                var path = await mangaIO.GetCoverFile(manga);
-
-                await mangaIO.LoadMangaInfo(manga);
-
-                manga.CoverUri = path;
-
-                // 本来这个是在后台线程中执行的，但是因为LoadMangaInfo方法中有UI线程的操作，所以会报错，因此改为在UI线程中执行
-                // 但是不知道为什么，这个本来在xaml中执行会报错，在viewmodel中就不报错
-                //this.DispatcherQueue.TryEnqueue(async () =>
-                //{
-                //    await mangaFileIO.LoadMangaInfo(manga);
-
-                //    manga.CoverUri = path;
-
-                //});
-            }
-            else
-            {
-                observableCollectionVM.RemoveManga(manga);
-                observableCollectionVM.InvokeEvent_AfterDeleteMnagaSource(manga);
-            }
+            ExternalProcessExited?.Invoke(manga);
+            return;
         }
         catch (Exception)
         {
@@ -95,8 +72,6 @@ public partial class MangaOperationViewModel(
             );
         }
     }
-
-    public async Task Reload(Manga manga) { }
 
     [RelayCommand]
     public async Task Delete(Manga manga)
