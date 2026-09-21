@@ -10,6 +10,7 @@ public sealed partial class LibraryPage : Page
     readonly SettingViewModel settingviewmodel;
     readonly DatabaseController databaseController;
     readonly MangaFactory mangaFactory;
+    MainPage MainPage { get; }
 
     /// <summary>
     /// 构造函数
@@ -18,7 +19,8 @@ public sealed partial class LibraryPage : Page
         ObservableCollectionVM _viewModel,
         SettingViewModel _settingviewmodel,
         DatabaseController _databaseController,
-        MangaFactory _mangaFactory
+        MangaFactory _mangaFactory,
+        MainPage mainpage
     )
     {
         InitializeComponent();
@@ -26,6 +28,7 @@ public sealed partial class LibraryPage : Page
         settingviewmodel = _settingviewmodel;
         databaseController = _databaseController;
         mangaFactory = _mangaFactory;
+        MainPage = mainpage;
     }
 
     private async void RemoveFolderButton_Click(object sender, RoutedEventArgs e)
@@ -43,9 +46,7 @@ public sealed partial class LibraryPage : Page
     {
         if (sender is MenuFlyoutItem { DataContext: MangasGroup group })
         {
-            var page =
-                App.Services.GetRequiredService<MainPage>().NavigateToPage(StringsEnum.GlobalSearch)
-                as Bookcase;
+            var page = MainPage.NavigateToPage(StringsEnum.Bookcase) as Bookcase;
             await page!.OnNavigated(group);
         }
     }

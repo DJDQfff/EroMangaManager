@@ -11,6 +11,7 @@ namespace WinApp.Views.MainPageChildPages;
 public sealed partial class Bookcase : Page, INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
+    private readonly MangaFilterOptions _filter = new();
     readonly SettingViewModel settingViewModel;
     readonly CoverSetter CoverSetter;
     readonly MangaOperationViewModel MangaOperationViewModel;
@@ -25,9 +26,13 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
             {
                 Bookcase_GridView.MangaSource = null!;
                 Bookcase_HintTextBlock.Visibility = Visibility.Visible;
+                Bookcase_HintTextBlock.Text =
+                    "" /* NoSelectedFolder */
+                ;
             }
             else
             {
+                value.RefreshDisplay(paged: true, page: 1);
                 Bookcase_GridView.MangaSource = value.DisplayMangas;
                 Bookcase_HintTextBlock.Visibility = Visibility.Collapsed;
 
@@ -143,8 +148,23 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
         }
         if (e.AddedItems.Count > 0)
         {
-            MangasGroup = e.AddedItems[0] as MangasGroup;
-            await CoverSetter.MultiLoadWork(MangasGroup!.DisplayMangas, true, true);
+            // 切文件夹：清筛选、回全部模式第 1 页
+            ResetFilterUI();
+            _filter.ClearAll();
+
+            var g = e.AddedItems[0] as MangasGroup;
+            if (g is not null)
+            {
+                g.ClearFilter();
+
+                // 先设字段，再刷新（setter 里会 RefreshDisplay 并赋 MangaSource）
+                MangasGroup = g;
+
+                DisplayModeRadio.SelectedIndex = 1;
+                numberbox.Value = 1;
+
+                await CoverSetter.MultiLoadWork(g.DisplayMangas, true, true);
+            }
         }
     }
 
@@ -162,8 +182,136 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
         {
             var newvalue = (int)args.NewValue;
 
-            MangasGroup.Display((newvalue - 1) * 20, 20);
+            RefreshDisplay();
             await CoverSetter.MultiLoadWork(MangasGroup.DisplayMangas, true, true);
+        }
+    }
+
+    private void DisplayModeRadio_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        bool paged = DisplayModeRadio.SelectedIndex == 1;
+        numberbox.IsEnabled = paged;
+        if (!paged)
+            numberbox.Value = 1;
+        RefreshDisplay();
+    }
+
+    private async void ApplyFilter_Click(object sender, RoutedEventArgs e)
+    {
+        if (MangasGroup is null)
+            return;
+
+        CollectFilterFromUI();
+        MangasGroup.ApplyFilter(_filter);
+
+        numberbox.Value = 1;
+        RefreshDisplay();
+
+        FilterFlyout.Hide();
+        await CoverSetter.MultiLoadWork(MangasGroup.DisplayMangas, true, true);
+    }
+
+    private async void ClearFilter_Click(object sender, RoutedEventArgs e)
+    {
+        if (MangasGroup is null)
+            return;
+
+        ResetFilterUI();
+        _filter.ClearAll();
+        MangasGroup.ClearFilter();
+
+        numberbox.Value = 1;
+        RefreshDisplay();
+
+        await CoverSetter.MultiLoadWork(MangasGroup.DisplayMangas, true, true);
+    }
+
+    /// <summary>唯一刷新入口：重算 DisplayMangas 并重新赋 MangaSource</summary>
+    private void RefreshDisplay()
+    {
+        if (MangasGroup is null)
+            return;
+
+        bool paged = DisplayModeRadio.SelectedIndex == 1;
+
+        // 更新 NumberBox 范围
+        int pageCount = MangasGroup.PageCount;
+        numberbox.Maximum = Math.Max(1, pageCount);
+        if (numberbox.Value > numberbox.Maximum)
+            numberbox.Value = numberbox.Maximum;
+
+        int page = (int)numberbox.Value;
+        MangasGroup.RefreshDisplay(paged, page);
+
+        // 关键：换引用，让 x:Bind 刷新
+        Bookcase_GridView.MangaSource = MangasGroup.DisplayMangas.ToList();
+
+        // 空状态
+        if (MangasGroup.CurrentCount == 0)
+        {
+            Bookcase_HintTextBlock.Visibility = Visibility.Visible;
+            Bookcase_HintTextBlock.Text =
+                "" /* TODO NoMatchResult */
+            ;
+        }
+        else
+        {
+            Bookcase_HintTextBlock.Visibility = Visibility.Collapsed;
+        }
+    }
+
+    private void CollectFilterFromUI()
+    {
+        _filter.FilterByName = ChkName.IsChecked == true;
+        _filter.NameKeyword = TxtName.Text ?? "";
+
+        _filter.FilterByFileSize = ChkSize.IsChecked == true;
+        _filter.MinFileSize = long.TryParse(TxtSizeMin.Text, out var mn) ? mn * 1024 * 1024 : 0;
+        _filter.MaxFileSize = long.TryParse(TxtSizeMax.Text, out var mx) ? mx * 1024 * 1024 : 0;
+
+        _filter.FileTypes.Clear();
+        bool any = false;
+        foreach (var cb in FilterTypePanel.Children.OfType<CheckBox>())
+        {
+            if (cb.IsChecked == true && cb.Tag is string tag && !string.IsNullOrEmpty(tag))
+            {
+                _filter.FileTypes.Add(tag);
+                any = true;
+            }
+        }
+        if (!any)
+        {
+            _filter.FileTypes.Add("__folder__");
+            _filter.FileTypes.Add(".zip");
+        }
+
+        _filter.FilterByTag = ChkTag.IsChecked == true;
+        _filter.TagKeyword = TxtTag.Text ?? "";
+    }
+
+    private void ResetFilterUI()
+    {
+        ChkName.IsChecked = false;
+        TxtName.Text = "";
+
+        ChkSize.IsChecked = false;
+        TxtSizeMin.Text = "";
+        TxtSizeMax.Text = "";
+
+        ChkFolder.IsChecked = true;
+        ChkZip.IsChecked = true;
+
+        ChkTag.IsChecked = false;
+        TxtTag.Text = "";
+    }
+
+    private void TypeCheckBox_Unchecked(object sender, RoutedEventArgs e)
+    {
+        if (ChkFolder.IsChecked != true && ChkZip.IsChecked != true)
+        {
+            // 回退：不允许一个都不勾
+            if (sender is CheckBox cb)
+                cb.IsChecked = true;
         }
     }
 }

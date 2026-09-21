@@ -128,7 +128,83 @@
                     </Flyout>
                 </AppBarButton.Flyout>
             </AppBarButton>-->
+      <AppBarButton Icon="Filter" Label="筛选">
+        <AppBarButton.Flyout>
+          <Flyout x:Name="FilterFlyout">
+            <ScrollViewer MaxHeight="520">
+              <StackPanel Width="300" Spacing="10">
+                <!--  ===== 显示模式 =====  -->
+                <TextBlock FontWeight="SemiBold" Text="显示模式" />
+                <RadioButtons
+                  x:Name="DisplayModeRadio"
+                  SelectedIndex="1"
+                  SelectionChanged="DisplayModeRadio_SelectionChanged"
+                >
+                  <RadioButton Content="全部" Tag="0" />
+                  <RadioButton Content="分页（每页 20）" Tag="1" />
+                </RadioButtons>
 
+                <MenuFlyoutSeparator />
+
+                <!--  ===== 筛选条件 =====  -->
+                <TextBlock FontWeight="SemiBold" Text="筛选条件" />
+
+                <!--  名称  -->
+                <CheckBox x:Name="ChkName" Content="按名称（含翻译名）" />
+                <TextBox x:Name="TxtName" PlaceholderText="包含关键字" />
+
+                <!--  大小  -->
+                <CheckBox x:Name="ChkSize" Content="按文件大小 (MB)" />
+                <Grid ColumnDefinitions="*,Auto,*" ColumnSpacing="4">
+                  <TextBox x:Name="TxtSizeMin" PlaceholderText="最小" />
+                  <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="~" />
+                  <TextBox x:Name="TxtSizeMax" Grid.Column="2" PlaceholderText="最大" />
+                </Grid>
+
+                <!--  类型  -->
+                <TextBlock FontWeight="SemiBold" Text="文件类型" />
+                <StackPanel x:Name="FilterTypePanel" Orientation="Horizontal" Spacing="2">
+                  <CheckBox
+                    x:Name="ChkFolder"
+                    Content="文件夹"
+                    IsChecked="True"
+                    Tag="__folder__"
+                    Unchecked="TypeCheckBox_Unchecked"
+                  />
+                  <CheckBox
+                    x:Name="ChkZip"
+                    Content="压缩包"
+                    IsChecked="True"
+                    Tag=".zip"
+                    Unchecked="TypeCheckBox_Unchecked"
+                  />
+                </StackPanel>
+
+                <!--  标签  -->
+                <CheckBox x:Name="ChkTag" Content="按标签" />
+                <TextBox x:Name="TxtTag" PlaceholderText="标签关键字，逗号分隔" />
+
+                <MenuFlyoutSeparator />
+
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                  <Button
+                    HorizontalAlignment="Stretch"
+                    Click="ApplyFilter_Click"
+                    Content="应用"
+                    Style="{StaticResource AccentButtonStyle}"
+                  />
+                  <Button
+                    Grid.Column="1"
+                    HorizontalAlignment="Stretch"
+                    Click="ClearFilter_Click"
+                    Content="清除"
+                  />
+                </Grid>
+              </StackPanel>
+            </ScrollViewer>
+          </Flyout>
+        </AppBarButton.Flyout>
+      </AppBarButton>
       <AppBarButton
         AllowFocusOnInteraction="True"
         Icon="Switch"
@@ -166,8 +242,8 @@
       Grid.Row="1"
       Margin="4"
       x:FieldModifier="public"
-      MangaOperationViewModel="{x:Bind MangaOperationViewModel,Mode=OneWay}"
       ItemTemplateIndex="{x:Bind settingViewModel.AppConfig.General.MangasGridViewDataTemplateKey}"
+      MangaOperationViewModel="{x:Bind MangaOperationViewModel, Mode=OneWay}"
     />
   </Grid>
 </Page>
