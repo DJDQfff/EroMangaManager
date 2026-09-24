@@ -102,8 +102,8 @@ public class MangaFactory(
             //}
             mangasFolder.AddManga(list);
             //mangasFolder.Filter(null , 0 , 0);
-            mangasFolder.Display(0, 20);
-            await coverSetter.MultiLoadWork(mangasFolder.DisplayMangas, true, true);
+            //mangasFolder.Display(0, 20);
+            //await coverSetter.MultiLoadWork(mangasFolder.DisplayMangas, true, true);
             mangasFolder.UpdateState = MangasGroupUpdateState.Over;
 
             //await App.Current.CoverSetter.AppendLoadWorks(mangasFolder.Mangas,false,true);

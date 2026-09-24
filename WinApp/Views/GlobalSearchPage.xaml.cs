@@ -28,10 +28,7 @@ public sealed partial class GlobalSearchPage : Page
         SettingViewModel = _settingViewModel;
 
         ObservableCollectionVM.EventAfterDeleteMangaSource += x =>
-        {
-            ObservableCollectionVM.RemoveManga(x);
             SearchMangaViewModel2.ResultMangas.Remove(x);
-        };
 
         SearchMangaViewModel2.ResultNewAddSingle += async x =>
             await coverSetter.SingleLoadWork(x, true, true);

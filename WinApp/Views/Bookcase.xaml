@@ -242,6 +242,7 @@
       Grid.Row="1"
       Margin="4"
       x:FieldModifier="public"
+      MangaSource="{x:Bind MangasGroup.DisplayMangas,Mode=OneWay}"
       ItemTemplateIndex="{x:Bind settingViewModel.AppConfig.General.MangasGridViewDataTemplateKey}"
       MangaOperationViewModel="{x:Bind MangaOperationViewModel, Mode=OneWay}"
     />

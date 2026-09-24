@@ -1,8 +1,5 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
-using Core.Interfaces;
-using UnoLibrary.Services;
-
 namespace WinApp.Views.MainPageChildPages;
 
 /// <summary>
@@ -24,7 +21,7 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
             field = value;
             if (value is null)
             {
-                Bookcase_GridView.MangaSource = null!;
+                //Bookcase_GridView.MangaSource = null!;
                 Bookcase_HintTextBlock.Visibility = Visibility.Visible;
                 Bookcase_HintTextBlock.Text =
                     "" /* NoSelectedFolder */
@@ -33,7 +30,7 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
             else
             {
                 value.RefreshDisplay(paged: true, page: 1);
-                Bookcase_GridView.MangaSource = value.DisplayMangas;
+                //Bookcase_GridView.MangaSource = value.DisplayMangas;
                 Bookcase_HintTextBlock.Visibility = Visibility.Collapsed;
 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(MangasGroup)));
@@ -56,6 +53,8 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
         settingViewModel = _settingViewModel;
         MangaOperationViewModel = _mangaOperationViewModel;
         ObservableCollectionVM = _observableCollectionVM;
+        ObservableCollectionVM.EventAfterDeleteMangaSource += manga =>
+            MangasGroup?.DisplayMangas.Remove(manga);
     }
 
     /// <summary>

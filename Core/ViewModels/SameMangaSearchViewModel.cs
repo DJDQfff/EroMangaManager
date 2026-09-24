@@ -16,7 +16,7 @@ public partial class SameMangaSearchViewModel
     /// </summary>
     public static readonly char[] Sperators =
     [
-        ' ',
+        // ' ',
         '&',
         '+',
         '～',
