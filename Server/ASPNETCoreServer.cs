@@ -10,8 +10,8 @@ using SharpCompress.Archives;
 namespace Server;
 
 public class ASPNETCoreServer(
+    SearchFilterViewModelFactory filterFactory,
     ObservableCollectionVM collectionVM,
-    SearchMangaViewModel searchViewModel,
     MangaIO mangaIO
 )
 {
@@ -175,7 +175,8 @@ public class ASPNETCoreServer(
         app.MapGet(
             "/mangas/with_tag/{tag}",
             async (string tag, CancellationToken ct) =>
-            {
+            { // 每次请求建一个（源是实时 Func，轻量）
+                var searchViewModel = filterFactory.CreateForGlobal();
                 // 1. 直接调用异步流式方法，并将 CancellationToken 传递进去
                 var mangasStream = searchViewModel.FilterMangasAsync(null, [tag], ct);
                 // 定义一个异步迭代器，逐个处理并返回

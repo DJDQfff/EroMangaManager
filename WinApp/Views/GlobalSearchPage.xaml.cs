@@ -1,143 +1,129 @@
-﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
-namespace WinApp.Views.MainPageChildPages;
+﻿namespace WinApp.Views.MainPageChildPages;
 
-/// <summary>
-/// 可用于自身或导航至 Frame 内部的空白页。
-/// </summary>
 public sealed partial class GlobalSearchPage : Page
 {
-    SearchMangaViewModel SearchMangaViewModel2 { get; }
+    SearchFilterViewModel SearchVm { get; }
     ObservableCollectionVM ObservableCollectionVM { get; }
     SettingViewModel SettingViewModel { get; }
 
-    /// <summary>
-    ///
-    /// </summary>
+    /// <summary>TokenizingTextBox 的建议源（UI 自己维护）</summary>
+    public ObservableCollection<string> AvailableTagsForUI { get; } = [];
+
     public GlobalSearchPage(
         SettingViewModel _settingViewModel,
         ObservableCollectionVM observableCollectionVM,
         CoverSetter coverSetter,
-        SearchMangaViewModel _viewmodel,
+        SearchFilterViewModelFactory filterFactory,
         MangaOperationViewModel _mangaOperationViewModel
     )
     {
+        SearchVm = filterFactory.CreateForGlobal();
+
         InitializeComponent();
+
         ObservableCollectionVM = observableCollectionVM;
-        SearchMangaViewModel2 = _viewmodel;
-        ResultGridView.MangaOperationViewModel = _mangaOperationViewModel;
         SettingViewModel = _settingViewModel;
 
-        ObservableCollectionVM.EventAfterDeleteMangaSource += x =>
-            SearchMangaViewModel2.ResultMangas.Remove(x);
+        ResultGridView.MangaOperationViewModel = _mangaOperationViewModel;
+        ResultGridView.MangaSource = SearchVm.DisplayMangas;
 
-        SearchMangaViewModel2.ResultNewAddSingle += async x =>
-            await coverSetter.SingleLoadWork(x, true, true);
-        SearchMangaViewModel2.ResultNewAddMulti += async x =>
-            await coverSetter.MultiLoadWork(x, true, true);
+        // 删除本子时同步结果
+        ObservableCollectionVM.EventAfterDeleteMangaSource += x => SearchVm.DisplayMangas.Remove(x);
+
+        // 封面加载
+        SearchVm.ResultNewAddSingle += async x => await coverSetter.SingleLoadWork(x, true, true);
+        SearchVm.ResultNewAddMulti += async x => await coverSetter.MultiLoadWork(x, true, true);
     }
 
+    #region 外部调用入口
+
+    /// <summary>
+    /// 程序化设置搜索条件：只改 VM，控件靠 ItemsSource 绑定显示。
+    /// </summary>
     public async Task Search(object parameter)
     {
         switch (parameter)
         {
-            case SearchParameter searchParameter:
-                {
-                    var tags = searchParameter.Tags;
-                    foreach (var tag in tags)
-                    {
-                        MangaTagTokenizingTextBox.AddTokenItem(tag);
-                    }
-                    //SearchStartButton_Click(SearchStartButton , new RoutedEventArgs());
-                }
+            case SearchParameter sp:
+                SearchVm.NameKeyword = "";
+                SearchVm.RequiredTags.Clear();
+                foreach (var tag in sp.Tags)
+                    SearchVm.RequiredTags.Add(tag);
                 break;
-            //直接把manga传进来，参数自己修改
-            case Manga manga:
-                {
-                    SearchMangaViewModel2.RequiredText = manga.Name;
 
-                    SearchMangaViewModel2.RequiredTags.Clear();
-                    foreach (var tag in manga.Tags)
-                    {
-                        MangaTagTokenizingTextBox.AddTokenItem(tag);
-                    }
-                }
+            case Manga manga:
+                SearchVm.NameKeyword = manga.Name;
+                SearchVm.RequiredTags.Clear();
+                foreach (var tag in manga.Tags)
+                    SearchVm.RequiredTags.Add(tag);
                 break;
 
             case string manganame:
-                {
-                    SearchMangaViewModel2.RequiredText = manganame;
-                    SearchMangaViewModel2.RequiredTags.Clear();
-                }
+                SearchVm.NameKeyword = manganame;
+                SearchVm.RequiredTags.Clear();
                 break;
 
             case IEnumerable<string> tags:
-                {
-                    SearchMangaViewModel2.RequiredText = string.Empty;
-                    SearchMangaViewModel2.RequiredTags.Clear();
-                    foreach (var tag in tags)
-                    {
-                        SearchMangaViewModel2.RequiredTags.Add(tag);
-                    }
-                }
+                SearchVm.NameKeyword = "";
+                SearchVm.RequiredTags.Clear();
+                foreach (var tag in tags)
+                    SearchVm.RequiredTags.Add(tag);
                 break;
         }
-        await SearchMangaViewModel2.SearchAsync();
+
+        await SearchVm.SearchAsync();
     }
 
-    /// <summary>
-    /// 输入验证/拦截：
-    /// 当用户在标签搜索框中输入一个标签并尝试将其添加为 Token 时，
-    /// 如果该标签在系统中不存在，
-    /// 则取消添加（防止用户输入无效/拼写错误的标签）。
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="args"></param>
-    private void TagTokenBox_TokenItemAdding(
-        TokenizingTextBox sender,
-        TokenItemAddingEventArgs args
-    )
-    {
-        var t = args.TokenText;
-        if (!SearchMangaViewModel2.AvailableTags.Contains(t))
-        {
-            args.Cancel = true;
-        }
-    }
+    #endregion
 
-    private async void TagTokenBox_TokenItemChanged(TokenizingTextBox sender, object args)
-    {
-        await SearchMangaViewModel2.SearchAsync();
-    }
+    #region 名称
 
     private async void NameBox_TextChanged(
         AutoSuggestBox sender,
         AutoSuggestBoxTextChangedEventArgs args
     )
     {
-        await SearchMangaViewModel2.SearchAsync();
+        // 只在用户输入时触发，避免程序设置 Text 时重复搜索
+        if (args.Reason != AutoSuggestionBoxTextChangeReason.UserInput)
+            return;
+
+        // TwoWay 绑定已经把 Text 写进 SearchVm.NameKeyword，这里只负责搜索
+        await SearchVm.SearchAsync();
     }
 
-    //private void ShowInBookcaseButton_Click (object sender , RoutedEventArgs e)
-    //{
-    //    var result = ResultGridView.ItemsSource;
+    #endregion
 
-    //    var condition = result as IEnumerable<Manga>;
+    #region 标签
 
-    //    var mangasfolder = new MangasGroups()
-    //    {
-    //        ShowString = (
-    //            NameAugoSuggestBox.Text + "+" + MangaTagTokenizingTextBox.SelectedTokenText
-    //        ).Trim('+') ,
-    //    };
-    //    mangasfolder.Mangas.AddRange(condition);
-    //    MainPage.Current.MainFrame.Navigate(typeof(Bookcase) , mangasfolder);
-    //}
+    /// <summary>输入验证：只允许已存在的标签</summary>
+    private void TagTokenBox_TokenItemAdding(
+        TokenizingTextBox sender,
+        TokenItemAddingEventArgs args
+    )
+    {
+        var t = args.TokenText;
+        if (!SearchVm.AvailableTags.Contains(t, StringComparer.OrdinalIgnoreCase))
+            args.Cancel = true;
+    }
 
+    /// <summary>用户手动增删 token 后，同步回 VM 并重搜</summary>
+    private async void TagTokenBox_TokenItemChanged(TokenizingTextBox sender, object args)
+    {
+        //SearchVm.RequiredTags.Clear();
+        //foreach (var item in MangaTagTokenizingTextBox.SelectedItems.OfType<string>())
+        //    SearchVm.RequiredTags.Add(item);
+
+        await SearchVm.SearchAsync();
+    }
+
+    /// <summary>输入时过滤建议</summary>
     private void TagTokenizingTextBox_TextChanged(
         AutoSuggestBox sender,
         AutoSuggestBoxTextChangedEventArgs args
     )
     {
-        SearchMangaViewModel2.FiltTags(MangaTagTokenizingTextBox.Text);
+        SearchVm.FiltTags(MangaTagTokenizingTextBox.Text, AvailableTagsForUI);
     }
+
+    #endregion
 }

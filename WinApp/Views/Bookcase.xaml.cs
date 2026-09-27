@@ -1,51 +1,41 @@
-﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
+﻿using Core.Interfaces;
+using UnoLibrary.Services;
 
 namespace WinApp.Views.MainPageChildPages;
 
-/// <summary>
-/// 可用于自身或导航至 Frame 内部的空白页。
-/// </summary>
 public sealed partial class Bookcase : Page, INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
-    private readonly MangaFilterOptions _filter = new();
+
     readonly SettingViewModel settingViewModel;
     readonly CoverSetter CoverSetter;
     readonly MangaOperationViewModel MangaOperationViewModel;
     readonly ObservableCollectionVM ObservableCollectionVM;
-    public MangasGroup? MangasGroup
+    readonly SearchFilterViewModelFactory _filterFactory;
+
+    /// <summary>TokenizingTextBox 的建议源（UI 自己维护）</summary>
+    public ObservableCollection<string> AvailableTagsForUI { get; } = [];
+
+    /// <summary>当前页面的筛选/分页 VM</summary>
+    public SearchFilterViewModel? FilterVm
     {
         get;
-        set
+        private set
         {
             field = value;
-            if (value is null)
-            {
-                //Bookcase_GridView.MangaSource = null!;
-                Bookcase_HintTextBlock.Visibility = Visibility.Visible;
-                Bookcase_HintTextBlock.Text =
-                    "" /* NoSelectedFolder */
-                ;
-            }
-            else
-            {
-                value.RefreshDisplay(paged: true, page: 1);
-                //Bookcase_GridView.MangaSource = value.DisplayMangas;
-                Bookcase_HintTextBlock.Visibility = Visibility.Collapsed;
-
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(MangasGroup)));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FilterVm)));
         }
     }
 
-    /// <summary>
-    ///
-    /// </summary>
+    /// <summary>当前选中的 group（仅用于 ComboBox 显示/切换）</summary>
+    private MangasGroup? _currentGroup;
+
     public Bookcase(
         SettingViewModel _settingViewModel,
         MangaOperationViewModel _mangaOperationViewModel,
         ObservableCollectionVM _observableCollectionVM,
-        CoverSetter _coversetter
+        CoverSetter _coversetter,
+        SearchFilterViewModelFactory filterFactory
     )
     {
         InitializeComponent();
@@ -53,119 +43,267 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
         settingViewModel = _settingViewModel;
         MangaOperationViewModel = _mangaOperationViewModel;
         ObservableCollectionVM = _observableCollectionVM;
-        ObservableCollectionVM.EventAfterDeleteMangaSource += manga =>
-            MangasGroup?.DisplayMangas.Remove(manga);
+        _filterFactory = filterFactory;
     }
 
-    /// <summary>
-    /// 导航时，传入要绑定的数据
-    /// </summary>
-    /// <param name="e"></param>
+    #region 导航
+
     public async Task OnNavigated(MangasGroup e)
     {
-        MangasGroup = e;
-        await CoverSetter.MultiLoadWork(MangasGroup.DisplayMangas, true, false);
+        await SwitchToGroup(e);
     }
 
-    //private async void ApplyFilter_Click (object sender , RoutedEventArgs e)
-    //{
+    #endregion
 
-    //    // 获取筛选参数 还没有作这个控件
-    //    //string? name = string.IsNullOrWhiteSpace(FilterName.Text) ? null : FilterName.Text;
-
-    //    int chapterAmount = ChapterTypeRadio.SelectedIndex;
-
-    //    long fileSize = 0;
-    //    if (long.TryParse(FilterSizeMin.Text , out long sizeMin))
-    //        fileSize = sizeMin * 1024 * 1024;
-
-    //    // 调用 group.Filter 方法
-
-    //    //MangasGroups?.Filter(null , chapterAmount , fileSize);
-
-    //    // 刷新显示
-    //    numberbox.Maximum = (MangasGroups?.Mangas.Count + 19) / 20 ?? 1;
-    //    //numberbox.Value = 1;
-    //    MangasGroups. Display (0 , 20);
-    //    await App.Current.CoverSetter.AppendLoadWorks(MangasGroups.DisplayMangas , true , false);
-
-    //}
-
-    //private void ClearFilter_Click (object sender , RoutedEventArgs e)
-    //{
-    //    FilterTypePanel.Children.OfType<CheckBox>().ToList().ForEach(cb => cb.IsChecked = false);
-    //    ChapterTypeRadio.SelectedIndex = 0;
-    //    FilterSizeMin.Text = "";
-    //    FilterSizeMax.Text = "";
-
-    //    numberbox.Value = 1;
-    //    MangasGroups.Filter(null , 0 , 0);
-    //     MangasGroups.  Display(0 , 20);
-    //}
-    //TODO 本子名翻译功能。 因为原来的Bookcase被拆分为Bookcase和Bookcase两个类，所以这个方法现在有bug
-    //private async void TranslateEachName (object sender , RoutedEventArgs e)
-    //{
-    //    var button = sender as AppBarButton;
-    //    button.IsEnabled = false;
-
-    //    try
-    //    {
-    //        await Translator.TranslateAllName();
-    //    }
-    //    catch { }
-
-    //    var items = Bookcase_GridView.Items;
-    //    foreach (var item in items)
-    //    {
-    //        var manga = item as Manga;
-    //        var grid = Bookcase_GridView.ContainerFromItem(item) as GridViewItem;
-    //        var root = grid.ContentTemplateRoot as Grid;
-    //        var run = root.FindName("runtext") as Microsoft.UI.Xaml.Documents.Run;
-    //        run.Text = manga.TranslatedName;
-    //    }
-
-    //    button.IsEnabled = true;
-    //}
-
-    private void Order(object sender, RoutedEventArgs e)
-    {
-        MangasGroup?.SortMangas(x => x.FileSize);
-    }
+    #region 切换文件夹 / 分组
 
     private async void Combochangefolder_SelectionChanged(
         object sender,
         SelectionChangedEventArgs e
     )
     {
-        // TODO 这个change事件，操作已缓存page实例正常。
-        // 但如果页面每次都重新创建，就会出现问题。
-        // 如调用NavigateToPage<Bookcase>().OnNavigated(MangasGroup)后，
-        // ComboBox的SelectionChanged事件会再次触发
         if (e.RemovedItems.Count > 0)
         {
-            MangasGroup = null;
+            FilterVm = null;
+            Bookcase_GridView.MangaSource = null!;
         }
-        if (e.AddedItems.Count > 0)
+
+        if (e.AddedItems.Count > 0 && e.AddedItems[0] is MangasGroup g)
         {
-            // 切文件夹：清筛选、回全部模式第 1 页
-            ResetFilterUI();
-            _filter.ClearAll();
-
-            var g = e.AddedItems[0] as MangasGroup;
-            if (g is not null)
-            {
-                g.ClearFilter();
-
-                // 先设字段，再刷新（setter 里会 RefreshDisplay 并赋 MangaSource）
-                MangasGroup = g;
-
-                DisplayModeRadio.SelectedIndex = 1;
-                numberbox.Value = 1;
-
-                await CoverSetter.MultiLoadWork(g.DisplayMangas, true, true);
-            }
+            await SwitchToGroup(g);
         }
     }
+
+    /// <summary>切换到一个 group：建 VM、刷新、加载封面</summary>
+    private async Task SwitchToGroup(MangasGroup group)
+    {
+        _currentGroup = group;
+
+        FilterVm = _filterFactory.CreateForGroup(group);
+        Bookcase_GridView.MangaSource = FilterVm.DisplayMangas;
+
+        // 清空标签控件（新 VM 的 RequiredTags 是空的）
+        await TagTokenizingTextBox.ClearAsync();
+
+        // 初始：分页模式，第 1 页
+        FilterVm.IsPaged = true;
+        FilterVm.CurrentPage = 1;
+        FilterVm.RefreshDisplay();
+
+        // NumberBox 初值同步
+        numberbox.Value = 1;
+        numberbox.Maximum = Math.Max(1, FilterVm.PageCount);
+        numberbox.IsEnabled = FilterVm.IsPaged;
+
+        UpdateHintVisibility();
+
+        await CoverSetter.MultiLoadWork(FilterVm.DisplayMangas, true, true);
+    }
+
+    #endregion
+
+    #region 显示模式 / 翻页
+
+    private void DisplayModeRadio_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (FilterVm is null)
+            return;
+
+        FilterVm.IsPaged = DisplayModeRadio.SelectedIndex == 1;
+        numberbox.IsEnabled = FilterVm.IsPaged;
+
+        FilterVm.CurrentPage = 1;
+        FilterVm.RefreshDisplay();
+
+        numberbox.Value = 1;
+        numberbox.Maximum = Math.Max(1, FilterVm.PageCount);
+
+        UpdateHintVisibility();
+    }
+
+    private async void Numberbox_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
+    {
+        if (FilterVm is null)
+            return;
+
+        int page = (int)args.NewValue;
+        if (page == FilterVm.CurrentPage)
+            return; // 防重复刷新
+
+        FilterVm.CurrentPage = page;
+        FilterVm.RefreshDisplay();
+
+        UpdateHintVisibility();
+
+        await CoverSetter.MultiLoadWork(FilterVm.DisplayMangas, true, true);
+    }
+
+    #endregion
+
+    #region 筛选按钮
+
+    private async void ApplyFilter_Click(object sender, RoutedEventArgs e)
+    {
+        if (FilterVm is null)
+            return;
+
+        CollectFilterFromUI(); // 把 UI 上的条件写进 FilterVm
+        FilterVm.ApplyFilterAndRefresh();
+
+        numberbox.Value = 1;
+        numberbox.Maximum = Math.Max(1, FilterVm.PageCount);
+
+        UpdateHintVisibility();
+        FilterFlyout.Hide();
+
+        await CoverSetter.MultiLoadWork(FilterVm.DisplayMangas, true, true);
+    }
+
+    private async void ClearFilter_Click(object sender, RoutedEventArgs e)
+    {
+        if (FilterVm is null)
+            return;
+
+        await TagTokenizingTextBox.ClearAsync(); // 清控件 → 触发 TokenItemChanged → 清 VM.RequiredTags
+        ResetFilterUI();
+        FilterVm.ClearFilterAndRefresh();
+
+        numberbox.Value = 1;
+        numberbox.Maximum = Math.Max(1, FilterVm.PageCount);
+
+        UpdateHintVisibility();
+
+        await CoverSetter.MultiLoadWork(FilterVm.DisplayMangas, true, true);
+    }
+
+    #endregion
+
+    #region 筛选 UI <-> VM
+
+    /// <summary>把 XAML 上的控件状态写进 FilterVm</summary>
+    private void CollectFilterFromUI()
+    {
+        if (FilterVm is null)
+            return;
+
+        FilterVm.NameKeyword = ChkName.IsChecked == true ? (TxtName.Text ?? "") : "";
+        FilterVm.FilterByChapterName = ChkChapterName.IsChecked == true;
+        FilterVm.ChapterNameKeyword =
+            ChkChapterName.IsChecked == true ? (TxtChapterName.Text ?? "") : "";
+        FilterVm.FilterByFileSize = ChkSize.IsChecked == true;
+        FilterVm.MinFileSize = long.TryParse(TxtSizeMin.Text, out var mn) ? mn * 1024 * 1024 : 0;
+        FilterVm.MaxFileSize = long.TryParse(TxtSizeMax.Text, out var mx) ? mx * 1024 * 1024 : 0;
+
+        FilterVm.FilterByChapterAmount = ChkChapter.IsChecked == true;
+        FilterVm.MinChapterAmount = int.TryParse(TxtChapterMin.Text, out var cmn)
+            ? Math.Max(1, cmn)
+            : 1;
+        FilterVm.MaxChapterAmount = int.TryParse(TxtChapterMax.Text, out var cmx) ? cmx : 0;
+
+        FilterVm.FileTypes.Clear();
+        foreach (var cb in FilterTypePanel.Children.OfType<CheckBox>())
+            if (cb.IsChecked == true && cb.Tag is string tag && !string.IsNullOrEmpty(tag))
+                FilterVm.FileTypes.Add(tag);
+
+        if (FilterVm.FileTypes.Count == 0) // 兜底：至少一个
+        {
+            FilterVm.FileTypes.Add("__folder__");
+            FilterVm.FileTypes.Add(".zip");
+        }
+    }
+
+    /// <summary>把 UI 控件复位到默认</summary>
+    private void ResetFilterUI()
+    {
+        ChkName.IsChecked = false;
+        TxtName.Text = "";
+        ChkChapterName.IsChecked = false;
+        TxtChapterName.Text = "";
+        ChkSize.IsChecked = false;
+        TxtSizeMin.Text = "";
+        TxtSizeMax.Text = "";
+        ChkChapter.IsChecked = false;
+        TxtChapterMin.Text = "";
+        TxtChapterMax.Text = "";
+        ChkFolder.IsChecked = true;
+        ChkZip.IsChecked = true;
+        // 标签控件由调用方负责清空（ClearFilter_Click 里 await ClearAsync）
+    }
+
+    /// <summary>类型至少勾一个</summary>
+    private void TypeCheckBox_Unchecked(object sender, RoutedEventArgs e)
+    {
+        if (ChkFolder.IsChecked != true && ChkZip.IsChecked != true)
+        {
+            if (sender is CheckBox cb)
+                cb.IsChecked = true;
+        }
+    }
+
+    #endregion
+
+    #region 标签筛选
+
+    /// <summary>输入验证：只允许已存在的标签</summary>
+    private void TagTokenBox_TokenItemAdding(
+        TokenizingTextBox sender,
+        TokenItemAddingEventArgs args
+    )
+    {
+        if (FilterVm is null)
+        {
+            args.Cancel = true;
+            return;
+        }
+
+        var t = args.TokenText;
+        if (!FilterVm.AvailableTags.Contains(t, StringComparer.OrdinalIgnoreCase))
+            args.Cancel = true;
+    }
+
+    /// <summary>用户手动增删 token 后，同步回 VM</summary>
+    private void TagTokenBox_TokenItemChanged(TokenizingTextBox sender, object args)
+    {
+        //if (FilterVm is null)
+        //    return;
+
+        //FilterVm.RequiredTags.Clear();
+        //foreach (var item in TagTokenizingTextBox.SelectedItems.OfType<string>())
+        //    FilterVm.RequiredTags.Add(item);
+    }
+
+    /// <summary>输入时过滤建议</summary>
+    private void TagTokenizingTextBox_TextChanged(
+        AutoSuggestBox sender,
+        AutoSuggestBoxTextChangedEventArgs args
+    )
+    {
+        if (FilterVm is null)
+            return;
+
+        FilterVm.FiltTags(TagTokenizingTextBox.Text, AvailableTagsForUI);
+    }
+
+    #endregion
+
+    #region 空状态
+
+    private void UpdateHintVisibility()
+    {
+        bool empty = FilterVm is null || FilterVm.FilteredCount == 0;
+        Bookcase_HintTextBlock.Visibility = empty ? Visibility.Visible : Visibility.Collapsed;
+
+        if (FilterVm is null)
+            Bookcase_HintTextBlock.Text = /* NoSelectedFolder */
+                "未选择文件夹";
+        else
+            Bookcase_HintTextBlock.Text = /* NoMatchResult */
+                "无匹配结果";
+    }
+
+    #endregion
+
+    #region 视图模板
 
     [RelayCommand]
     private async Task ChangeMangaGridViewDataTemplate(string index)
@@ -175,142 +313,5 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
         settingViewModel.AppConfig.General.MangasGridViewDataTemplateKey = key;
     }
 
-    private async void Numberbox_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
-    {
-        if (MangasGroup != null)
-        {
-            var newvalue = (int)args.NewValue;
-
-            RefreshDisplay();
-            await CoverSetter.MultiLoadWork(MangasGroup.DisplayMangas, true, true);
-        }
-    }
-
-    private void DisplayModeRadio_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        bool paged = DisplayModeRadio.SelectedIndex == 1;
-        numberbox.IsEnabled = paged;
-        if (!paged)
-            numberbox.Value = 1;
-        RefreshDisplay();
-    }
-
-    private async void ApplyFilter_Click(object sender, RoutedEventArgs e)
-    {
-        if (MangasGroup is null)
-            return;
-
-        CollectFilterFromUI();
-        MangasGroup.ApplyFilter(_filter);
-
-        numberbox.Value = 1;
-        RefreshDisplay();
-
-        FilterFlyout.Hide();
-        await CoverSetter.MultiLoadWork(MangasGroup.DisplayMangas, true, true);
-    }
-
-    private async void ClearFilter_Click(object sender, RoutedEventArgs e)
-    {
-        if (MangasGroup is null)
-            return;
-
-        ResetFilterUI();
-        _filter.ClearAll();
-        MangasGroup.ClearFilter();
-
-        numberbox.Value = 1;
-        RefreshDisplay();
-
-        await CoverSetter.MultiLoadWork(MangasGroup.DisplayMangas, true, true);
-    }
-
-    /// <summary>唯一刷新入口：重算 DisplayMangas 并重新赋 MangaSource</summary>
-    private void RefreshDisplay()
-    {
-        if (MangasGroup is null)
-            return;
-
-        bool paged = DisplayModeRadio.SelectedIndex == 1;
-
-        // 更新 NumberBox 范围
-        int pageCount = MangasGroup.PageCount;
-        numberbox.Maximum = Math.Max(1, pageCount);
-        if (numberbox.Value > numberbox.Maximum)
-            numberbox.Value = numberbox.Maximum;
-
-        int page = (int)numberbox.Value;
-        MangasGroup.RefreshDisplay(paged, page);
-
-        // 关键：换引用，让 x:Bind 刷新
-        Bookcase_GridView.MangaSource = MangasGroup.DisplayMangas.ToList();
-
-        // 空状态
-        if (MangasGroup.CurrentCount == 0)
-        {
-            Bookcase_HintTextBlock.Visibility = Visibility.Visible;
-            Bookcase_HintTextBlock.Text =
-                "" /* TODO NoMatchResult */
-            ;
-        }
-        else
-        {
-            Bookcase_HintTextBlock.Visibility = Visibility.Collapsed;
-        }
-    }
-
-    private void CollectFilterFromUI()
-    {
-        _filter.FilterByName = ChkName.IsChecked == true;
-        _filter.NameKeyword = TxtName.Text ?? "";
-
-        _filter.FilterByFileSize = ChkSize.IsChecked == true;
-        _filter.MinFileSize = long.TryParse(TxtSizeMin.Text, out var mn) ? mn * 1024 * 1024 : 0;
-        _filter.MaxFileSize = long.TryParse(TxtSizeMax.Text, out var mx) ? mx * 1024 * 1024 : 0;
-
-        _filter.FileTypes.Clear();
-        bool any = false;
-        foreach (var cb in FilterTypePanel.Children.OfType<CheckBox>())
-        {
-            if (cb.IsChecked == true && cb.Tag is string tag && !string.IsNullOrEmpty(tag))
-            {
-                _filter.FileTypes.Add(tag);
-                any = true;
-            }
-        }
-        if (!any)
-        {
-            _filter.FileTypes.Add("__folder__");
-            _filter.FileTypes.Add(".zip");
-        }
-
-        _filter.FilterByTag = ChkTag.IsChecked == true;
-        _filter.TagKeyword = TxtTag.Text ?? "";
-    }
-
-    private void ResetFilterUI()
-    {
-        ChkName.IsChecked = false;
-        TxtName.Text = "";
-
-        ChkSize.IsChecked = false;
-        TxtSizeMin.Text = "";
-        TxtSizeMax.Text = "";
-
-        ChkFolder.IsChecked = true;
-        ChkZip.IsChecked = true;
-
-        ChkTag.IsChecked = false;
-        TxtTag.Text = "";
-    }
-
-    private void TypeCheckBox_Unchecked(object sender, RoutedEventArgs e)
-    {
-        if (ChkFolder.IsChecked != true && ChkZip.IsChecked != true)
-        {
-            // 回退：不允许一个都不勾
-            if (sender is CheckBox cb)
-                cb.IsChecked = true;
-        }
-    }
+    #endregion
 }

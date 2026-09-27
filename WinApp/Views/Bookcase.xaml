@@ -9,6 +9,7 @@
   xmlns:models="using:Core.Models"
   xmlns:uid="using:UnoLibrary.Strings"
   xmlns:usercontrols="using:WinApp.UserControls"
+  xmlns:toolkit="using:CommunityToolkit.WinUI.Controls"
   Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
   mc:Ignorable="d"
 >
@@ -37,13 +38,8 @@
           SelectedItem="{x:Bind settingViewModel.AppConfig.General.DefaultBookcaseFolder, Mode=TwoWay, Converter={StaticResource displayfolder}}"
           SelectionChanged="Combochangefolder_SelectionChanged"
         />
-        <!--<TextBlock x:Name="CommandText"
-                           HorizontalAlignment="Left"
-                           VerticalAlignment="Center"
-                           HorizontalTextAlignment="Center"
-                           Text="{x:Bind MangasGroup.ShowString, Mode=OneWay}"
-                           TextAlignment="Center" />-->
       </CommandBar.Content>
+
       <AppBarElementContainer VerticalContentAlignment="Center">
         <NumberBox
           x:Name="numberbox"
@@ -60,83 +56,22 @@
           Value="1"
         />
       </AppBarElementContainer>
+
       <AppBarElementContainer VerticalAlignment="Center" VerticalContentAlignment="Center">
         <usercontrols:MangaOpenButton ToolTipService.ToolTip="{uid:Strings Uid=DefaultWay}" />
       </AppBarElementContainer>
 
-      <!--<AppBarButton
-                AllowFocusOnInteraction="True"
-                Content="Filter"
-                Icon="Filter">
-                <AppBarButton.Flyout>
-                    <Flyout>
-                        <StackPanel Width="220" Spacing="8">
-                            <Button
-                                HorizontalAlignment="Stretch"
-                                Click="ApplyFilter_Click"
-                                Content="应用筛选" />
-                            <Button
-                                HorizontalAlignment="Stretch"
-                                Click="ClearFilter_Click"
-                                Content="清除筛选" />
-
-            -->
-      <!--  章节数筛选  -->
-      <!--
-                            <TextBlock FontWeight="SemiBold" Text="章节数" />
-                            <RadioButtons
-                                x:Name="ChapterTypeRadio"
-                                MaxColumns="3"
-                                SelectedIndex="0">
-                                <RadioButton Content="无限制" Tag="0" />
-                                <RadioButton Content="单章节" Tag="1" />
-                                <RadioButton Content="多章节" Tag="2" />
-                            </RadioButtons>
-
-            -->
-      <!--  文件大小筛选（MB）  -->
-      <!--
-                            <TextBlock FontWeight="SemiBold" Text="文件大小 (MB)" />
-                            <Grid ColumnDefinitions="*,Auto,*">
-                                <TextBox x:Name="FilterSizeMin" PlaceholderText="最小" />
-                                <TextBlock
-                                    Grid.Column="1"
-                                    Margin="4,0"
-                                    VerticalAlignment="Center"
-                                    Text="~" />
-                                <TextBox
-                                    x:Name="FilterSizeMax"
-                                    Grid.Column="2"
-                                    PlaceholderText="最大" />
-                            </Grid>
-
-            -->
-      <!--  类型筛选（多选）  -->
-      <!--
-                            <TextBlock FontWeight="SemiBold" Text="文件类型" />
-                            <StackPanel x:Name="FilterTypePanel" Spacing="2">
-                                <CheckBox Content="文件夹" Tag="" />
-                                <CheckBox Content=".zip" Tag=".zip" />
-                                <CheckBox Content=".7z" Tag=".7z" />
-                                <CheckBox Content=".rar" Tag=".rar" />
-                                <CheckBox Content=".cbz" Tag=".cbz" />
-                                <CheckBox Content=".cbr" Tag=".cbr" />
-                                <CheckBox Content=".cb7" Tag=".cb7" />
-                            </StackPanel>
-
-                        </StackPanel>
-                    </Flyout>
-                </AppBarButton.Flyout>
-            </AppBarButton>-->
-      <AppBarButton Icon="Filter" Label="筛选">
+      <!-- ===================== 筛选 ===================== -->
+      <AppBarButton AllowFocusOnInteraction="True" Icon="Filter" Label="筛选">
         <AppBarButton.Flyout>
           <Flyout x:Name="FilterFlyout">
             <ScrollViewer MaxHeight="520">
-              <StackPanel Width="300" Spacing="10">
-                <!--  ===== 显示模式 =====  -->
+              <StackPanel Width="320" Spacing="10">
+                <!-- ===== 显示模式 ===== -->
                 <TextBlock FontWeight="SemiBold" Text="显示模式" />
                 <RadioButtons
                   x:Name="DisplayModeRadio"
+                  MaxColumns="2"
                   SelectedIndex="1"
                   SelectionChanged="DisplayModeRadio_SelectionChanged"
                 >
@@ -146,22 +81,96 @@
 
                 <MenuFlyoutSeparator />
 
-                <!--  ===== 筛选条件 =====  -->
+                <!-- ===== 筛选条件 ===== -->
                 <TextBlock FontWeight="SemiBold" Text="筛选条件" />
 
-                <!--  名称  -->
-                <CheckBox x:Name="ChkName" Content="按名称（含翻译名）" />
-                <TextBox x:Name="TxtName" PlaceholderText="包含关键字" />
-
-                <!--  大小  -->
-                <CheckBox x:Name="ChkSize" Content="按文件大小 (MB)" />
-                <Grid ColumnDefinitions="*,Auto,*" ColumnSpacing="4">
-                  <TextBox x:Name="TxtSizeMin" PlaceholderText="最小" />
-                  <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="~" />
-                  <TextBox x:Name="TxtSizeMax" Grid.Column="2" PlaceholderText="最大" />
+                <!-- 名称 -->
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                  <CheckBox
+                    x:Name="ChkName"
+                    Grid.Column="0"
+                    MinWidth="0"
+                    VerticalAlignment="Center"
+                    Content="名称"
+                  />
+                  <TextBox
+                    x:Name="TxtName"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    PlaceholderText="包含名称关键字"
+                    IsEnabled="{x:Bind ChkName.IsChecked.Value, Mode=OneWay}"
+                  />
                 </Grid>
 
-                <!--  类型  -->
+                <!-- 大小 -->
+                <Grid ColumnDefinitions="Auto,*,Auto,*" ColumnSpacing="8">
+                  <CheckBox
+                    x:Name="ChkSize"
+                    Grid.Column="0"
+                    MinWidth="0"
+                    VerticalAlignment="Center"
+                    Content="大小 (MB)"
+                  />
+                  <TextBox
+                    x:Name="TxtSizeMin"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    PlaceholderText="最小"
+                    IsEnabled="{x:Bind ChkSize.IsChecked.Value, Mode=OneWay}"
+                  />
+                  <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="~" />
+                  <TextBox
+                    x:Name="TxtSizeMax"
+                    Grid.Column="3"
+                    VerticalAlignment="Center"
+                    PlaceholderText="最大"
+                    IsEnabled="{x:Bind ChkSize.IsChecked.Value, Mode=OneWay}"
+                  />
+                </Grid>
+
+                <!-- 章节数 -->
+                <Grid ColumnDefinitions="Auto,*,Auto,*" ColumnSpacing="8">
+                  <CheckBox
+                    x:Name="ChkChapter"
+                    Grid.Column="0"
+                    MinWidth="0"
+                    VerticalAlignment="Center"
+                    Content="章节数"
+                  />
+                  <TextBox
+                    x:Name="TxtChapterMin"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    PlaceholderText="最小"
+                    IsEnabled="{x:Bind ChkChapter.IsChecked.Value, Mode=OneWay}"
+                  />
+                  <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="~" />
+                  <TextBox
+                    x:Name="TxtChapterMax"
+                    Grid.Column="3"
+                    VerticalAlignment="Center"
+                    PlaceholderText="最大"
+                    IsEnabled="{x:Bind ChkChapter.IsChecked.Value, Mode=OneWay}"
+                  />
+                </Grid>
+                <!-- 章节名 -->
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="8">
+                  <CheckBox
+                    x:Name="ChkChapterName"
+                    Grid.Column="0"
+                    MinWidth="0"
+                    VerticalAlignment="Center"
+                    Content="章节名"
+                  />
+                  <TextBox
+                    x:Name="TxtChapterName"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    PlaceholderText="包含章节名关键字"
+                    IsEnabled="{x:Bind ChkChapterName.IsChecked.Value, Mode=OneWay}"
+                  />
+                </Grid>
+                <!-- 类型 -->
                 <TextBlock FontWeight="SemiBold" Text="文件类型" />
                 <StackPanel x:Name="FilterTypePanel" Orientation="Horizontal" Spacing="2">
                   <CheckBox
@@ -180,9 +189,28 @@
                   />
                 </StackPanel>
 
-                <!--  标签  -->
-                <CheckBox x:Name="ChkTag" Content="按标签" />
-                <TextBox x:Name="TxtTag" PlaceholderText="标签关键字，逗号分隔" />
+                <!-- 标签 -->
+                <TextBlock FontWeight="SemiBold" Text="标签" />
+                <toolkit:TokenizingTextBox
+                  x:Name="TagTokenizingTextBox"
+                  PlaceholderText="输入或选择标签"
+                  TokenDelimiter="+"
+                  ItemsSource="{x:Bind FilterVm.RequiredTags, Mode=OneWay}"
+                  SuggestedItemsSource="{x:Bind AvailableTagsForUI, Mode=OneWay}"
+                  TextChanged="TagTokenizingTextBox_TextChanged"
+                  TokenItemAdded="TagTokenBox_TokenItemChanged"
+                  TokenItemRemoved="TagTokenBox_TokenItemChanged"
+                  TokenItemAdding="TagTokenBox_TokenItemAdding"
+                >
+                  <toolkit:TokenizingTextBox.QueryIcon>
+                    <FontIconSource FontFamily="Segoe MDL2 Assets" Glyph="&#xE11A;" />
+                  </toolkit:TokenizingTextBox.QueryIcon>
+                  <toolkit:TokenizingTextBox.SuggestedItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                      <TextBlock Text="{x:Bind Mode=OneTime}" />
+                    </DataTemplate>
+                  </toolkit:TokenizingTextBox.SuggestedItemTemplate>
+                </toolkit:TokenizingTextBox>
 
                 <MenuFlyoutSeparator />
 
@@ -205,6 +233,8 @@
           </Flyout>
         </AppBarButton.Flyout>
       </AppBarButton>
+
+      <!-- ===================== 视图模式 ===================== -->
       <AppBarButton
         AllowFocusOnInteraction="True"
         Icon="Switch"
@@ -226,23 +256,14 @@
           </MenuFlyout>
         </AppBarButton.Flyout>
       </AppBarButton>
-      <!--<AppBarButton
-                Click="Order"
-                Icon="Sort"
-                Label="{uid:Strings Uid=ChangeSortMethod}" />-->
-      <!--<AppBarButton
-                x:Name="TranslateButton"
-                x:Load="False"
-                Click="TranslateEachName"
-                Icon="Font"
-                Label="{uid:Strings Uid=Translate}" />-->
     </CommandBar>
+
     <usercontrols:MangasGridView
       x:Name="Bookcase_GridView"
       Grid.Row="1"
       Margin="4"
       x:FieldModifier="public"
-      MangaSource="{x:Bind MangasGroup.DisplayMangas,Mode=OneWay}"
+      MangaSource="{x:Bind FilterVm.DisplayMangas, Mode=OneWay}"
       ItemTemplateIndex="{x:Bind settingViewModel.AppConfig.General.MangasGridViewDataTemplateKey}"
       MangaOperationViewModel="{x:Bind MangaOperationViewModel, Mode=OneWay}"
     />

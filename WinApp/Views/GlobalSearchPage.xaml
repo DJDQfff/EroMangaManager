@@ -23,7 +23,7 @@
           VerticalContentAlignment="Stretch"
           Header="{uid:Strings Uid=SearchByName}"
           QueryIcon="Find"
-          Text="{x:Bind SearchMangaViewModel2.RequiredText, Mode=TwoWay}"
+          Text="{x:Bind SearchVm.NameKeyword, Mode=TwoWay}"
           TextChanged="NameBox_TextChanged"
         />
         <toolkit:TokenizingTextBox
@@ -33,8 +33,8 @@
           HorizontalAlignment="Stretch"
           VerticalAlignment="Stretch"
           Header="{uid:Strings Uid=SearchByTag}"
-          ItemsSource="{x:Bind      SearchMangaViewModel2.RequiredTags, Mode=OneWay}"
-          SuggestedItemsSource="{x:Bind SearchMangaViewModel2.AvailableTags, Mode=OneWay}"
+          ItemsSource="{x:Bind SearchVm.RequiredTags, Mode=OneWay}"
+          SuggestedItemsSource="{x:Bind AvailableTagsForUI, Mode=OneWay}"
           TextChanged="TagTokenizingTextBox_TextChanged"
           TokenDelimiter="+"
           TokenItemAdded="TagTokenBox_TokenItemChanged"
@@ -56,7 +56,7 @@
       x:Name="ResultGridView"
       Grid.Row="1"
       ItemTemplateIndex="Template0"
-      MangaSource="{x:Bind SearchMangaViewModel2.ResultMangas, Mode=OneWay}"
+      MangaSource="{x:Bind SearchVm.DisplayMangas, Mode=OneWay}"
     />
   </Grid>
 </Page>
