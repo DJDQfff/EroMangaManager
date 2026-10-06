@@ -19,18 +19,14 @@ namespace Core.ViewModels;
 ///      供外部调用方做流式过滤（如 ASPNETCoreServer 的 /mangas/with_tag/{tag}）。
 /// 4. 分页只影响 RefreshDisplay 的切片，不影响 ApplyFilter 的过滤结果。
 /// </summary>
-public partial class SearchFilterViewModel : ObservableObject
+public partial class SearchFilterViewModel(Func<IReadOnlyList<Manga>> sourceProvider)
+    : ObservableObject
 {
-    public SearchFilterViewModel(Func<IReadOnlyList<Manga>> sourceProvider) =>
-        _sourceProvider = sourceProvider;
-
     public event Action<IEnumerable<Manga>>? ResultNewAddMulti;
     public event Func<Manga, Task>? ResultNewAddSingle;
 
-    private readonly Func<IReadOnlyList<Manga>> _sourceProvider;
-
     /// <summary>当前源（每次访问重新取，保证实时性）</summary>
-    public IReadOnlyList<Manga> Source => _sourceProvider();
+    public IReadOnlyList<Manga> Source => sourceProvider();
 
     #region 筛选条件（UI 直接绑这里）
 
@@ -103,7 +99,7 @@ public partial class SearchFilterViewModel : ObservableObject
     public partial int PageCount { get; set; } = 1;
 
     /// <summary>当前有效源的总条数（筛选后）</summary>
-    public int FilteredCount => _filtered.Count;
+    public int FilteredCount => CurrentSource.Count;
 
     /// <summary>UI 实际绑定</summary>
     public ObservableCollection<Manga> DisplayMangas { get; } = [];

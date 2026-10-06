@@ -1,5 +1,6 @@
-﻿using Core.ViewModels;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace Core.ViewModels;
 
 public class SearchFilterViewModelFactory(IServiceProvider sp)
 {

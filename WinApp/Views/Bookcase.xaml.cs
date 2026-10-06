@@ -43,6 +43,8 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
         settingViewModel = _settingViewModel;
         MangaOperationViewModel = _mangaOperationViewModel;
         ObservableCollectionVM = _observableCollectionVM;
+        ObservableCollectionVM.EventAfterDeleteMangaSource += manga =>
+            FilterVm?.DisplayMangas.Remove(manga);
         _filterFactory = filterFactory;
     }
 
@@ -83,17 +85,14 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
         Bookcase_GridView.MangaSource = FilterVm.DisplayMangas;
 
         // 清空标签控件（新 VM 的 RequiredTags 是空的）
-        await TagTokenizingTextBox.ClearAsync();
-
+        //await TagTokenizingTextBox.ClearAsync();
+        FilterVm.RequiredTags.Clear();
+        // 同步 UI 到默认模式（分页）
+        DisplayModeRadio.SelectedIndex = 1; // 事件里 FilterVm.IsPaged == true，return，无副作用
         // 初始：分页模式，第 1 页
         FilterVm.IsPaged = true;
         FilterVm.CurrentPage = 1;
         FilterVm.RefreshDisplay();
-
-        // NumberBox 初值同步
-        numberbox.Value = 1;
-        numberbox.Maximum = Math.Max(1, FilterVm.PageCount);
-        numberbox.IsEnabled = FilterVm.IsPaged;
 
         UpdateHintVisibility();
 
@@ -109,14 +108,15 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
         if (FilterVm is null)
             return;
 
-        FilterVm.IsPaged = DisplayModeRadio.SelectedIndex == 1;
-        numberbox.IsEnabled = FilterVm.IsPaged;
+        bool paged = DisplayModeRadio.SelectedIndex == 1;
 
+        // 值没变，跳过（避免首次弹出 Flyout 时重复刷新）
+        if (FilterVm.IsPaged == paged)
+            return;
+
+        FilterVm.IsPaged = paged;
         FilterVm.CurrentPage = 1;
         FilterVm.RefreshDisplay();
-
-        numberbox.Value = 1;
-        numberbox.Maximum = Math.Max(1, FilterVm.PageCount);
 
         UpdateHintVisibility();
     }
@@ -125,19 +125,16 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
     {
         if (FilterVm is null)
             return;
+        if (Math.Abs(args.NewValue - args.OldValue) < 0.001)
+            return;
 
-        int page = (int)args.NewValue;
-        if (page == FilterVm.CurrentPage)
-            return; // 防重复刷新
-
-        FilterVm.CurrentPage = page;
+        FilterVm.CurrentPage = (int)args.NewValue; // 显式同步（TwoWay 应该已经做了，保险）
         FilterVm.RefreshDisplay();
 
         UpdateHintVisibility();
 
         await CoverSetter.MultiLoadWork(FilterVm.DisplayMangas, true, true);
     }
-
     #endregion
 
     #region 筛选按钮
@@ -164,7 +161,8 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
         if (FilterVm is null)
             return;
 
-        await TagTokenizingTextBox.ClearAsync(); // 清控件 → 触发 TokenItemChanged → 清 VM.RequiredTags
+        // 清控件 → 触发 TokenItemChanged → 清 VM.RequiredTags
+        FilterVm.RequiredTags.Clear();
         ResetFilterUI();
         FilterVm.ClearFilterAndRefresh();
 

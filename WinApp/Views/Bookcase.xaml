@@ -49,11 +49,13 @@
           AcceptsExpression="False"
           LargeChange="10"
           Minimum="1"
+          IsEnabled="{x:Bind FilterVm.IsPaged, Mode=OneWay}"
+          Maximum="{x:Bind FilterVm.PageCount, Mode=OneWay}"
+          Value="{x:Bind FilterVm.CurrentPage, Mode=TwoWay}"
           SmallChange="1"
           SpinButtonPlacementMode="Inline"
           ValidationMode="InvalidInputOverwritten"
           ValueChanged="Numberbox_ValueChanged"
-          Value="1"
         />
       </AppBarElementContainer>
 

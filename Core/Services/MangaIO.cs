@@ -228,7 +228,7 @@ public class MangaIO
                             }
                         }
                         // TOTO 这里没有验证：剩下的是否就是直接包含在根目录下的
-                        if (nonfolderentries.Any())
+                        if (nonfolderentries.Count != 0)
                         {
                             var chapter = new Chapter(manga)
                             {
