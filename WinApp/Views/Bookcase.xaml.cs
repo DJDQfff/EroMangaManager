@@ -48,15 +48,6 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
         _filterFactory = filterFactory;
     }
 
-    #region 导航
-
-    public async Task OnNavigated(MangasGroup e)
-    {
-        await SwitchToGroup(e);
-    }
-
-    #endregion
-
     #region 切换文件夹 / 分组
 
     private async void Combochangefolder_SelectionChanged(
@@ -77,7 +68,7 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
     }
 
     /// <summary>切换到一个 group：建 VM、刷新、加载封面</summary>
-    private async Task SwitchToGroup(MangasGroup group)
+    public async Task SwitchToGroup(MangasGroup group)
     {
         _currentGroup = group;
 

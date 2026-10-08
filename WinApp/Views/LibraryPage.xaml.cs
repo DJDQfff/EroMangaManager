@@ -47,7 +47,7 @@ public sealed partial class LibraryPage : Page
         if (sender is MenuFlyoutItem { DataContext: MangasGroup group })
         {
             var page = MainPage.NavigateToPage(StringsEnum.Bookcase) as Bookcase;
-            await page!.OnNavigated(group);
+            await page!.SwitchToGroup(group);
         }
     }
 
@@ -118,7 +118,7 @@ public sealed partial class LibraryPage : Page
             var page =
                 App.Services.GetRequiredService<MainPage>().NavigateToPage(StringsEnum.GlobalSearch)
                 as Bookcase;
-            await page!.OnNavigated(group);
+            await page!.SwitchToGroup(group);
         }
     }
 
