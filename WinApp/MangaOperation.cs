@@ -103,6 +103,7 @@ public partial class MangaOperationViewModel(
             manga.FilePath = newpath;
 
             observableCollectionVM.PlaceInCorrectGroup(manga);
+            observableCollectionVM.InvokeEvent_AfterMoveMnagaSource(manga);
         }
         catch (UnauthorizedAccessException)
         {

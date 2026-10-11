@@ -11,6 +11,11 @@ public class ObservableCollectionVM
     public event Action<Manga>? EventAfterDeleteMangaSource;
 
     /// <summary>
+    /// 移动本子源文件后引发的事件
+    /// </summary>
+    public event Action<Manga>? EventAfterMoveMangaSource;
+
+    /// <summary>
     /// 本子文件夹集合
     /// </summary>
     public ObservableCollection<MangasGroup> MangasGroups { get; } = [];
@@ -76,6 +81,15 @@ public class ObservableCollectionVM
     public void InvokeEvent_AfterDeleteMnagaSource(Manga manga)
     {
         EventAfterDeleteMangaSource?.Invoke(manga);
+    }
+
+    /// <summary>
+    /// 删除manga后执行此事件
+    /// </summary>
+    /// <param name="manga"></param>
+    public void InvokeEvent_AfterMoveMnagaSource(Manga manga)
+    {
+        EventAfterMoveMangaSource?.Invoke(manga);
     }
 
     /// <summary>

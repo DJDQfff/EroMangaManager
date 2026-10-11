@@ -45,6 +45,9 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
         ObservableCollectionVM = _observableCollectionVM;
         ObservableCollectionVM.EventAfterDeleteMangaSource += manga =>
             FilterVm?.DisplayMangas.Remove(manga);
+        ObservableCollectionVM.EventAfterMoveMangaSource += manga =>
+            FilterVm?.DisplayMangas.Remove(manga);
+
         _filterFactory = filterFactory;
     }
 
