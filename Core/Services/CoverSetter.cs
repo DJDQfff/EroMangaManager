@@ -1,4 +1,4 @@
-﻿namespace Core.Models;
+﻿namespace Core.Services;
 
 /// <summary>
 /// 后台封面加载工作类
