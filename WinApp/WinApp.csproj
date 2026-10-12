@@ -24,7 +24,6 @@
     <Configurations>Debug;Release</Configurations>
     <RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
     <DefaultLanguage>zh-CN</DefaultLanguage>
-    <PackageCertificateThumbprint>AFCF4DC0CC25ABD02C39FCFD455AA8CD2E03C414</PackageCertificateThumbprint>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.WinUI.Controls.RangeSelector" />

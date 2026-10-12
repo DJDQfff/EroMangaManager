@@ -39,12 +39,16 @@ jobs:
       - name: 设置 MSBuild
         uses: microsoft/setup-msbuild@v1.3.1
 
-      - name: 解码证书 PFX
+      - name: 解码并导入证书 PFX
         shell: pwsh
         run: |
           $pfxBytes = [System.Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}")
-          $certPath = Join-Path $env:GITHUB_WORKSPACE "signing-cert.pfx"
-          [IO.File]::WriteAllBytes($certPath, $pfxBytes)
+          $pfxPath = Join-Path $env:GITHUB_WORKSPACE "signing-cert.pfx"
+          [IO.File]::WriteAllBytes($pfxPath, $pfxBytes)
+
+          $pwd = ConvertTo-SecureString -String "${{ secrets.CERTIFICATE_PASSWORD }}" -Force -AsPlainText
+          Import-PfxCertificate -FilePath $pfxPath -CertStoreLocation Cert:\CurrentUser\My -Password $pwd
+          Write-Host "证书已导入 CurrentUser\My"
 
       - name: 还原依赖
         run: dotnet restore $env:Solution_Name -p:Configuration=$env:Configuration
@@ -191,7 +195,7 @@ jobs:
         shell: pwsh
         run: |
           $pfxBytes = [System.Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}")
-          $pfxPath = Join-Path $env:GITHUB_WORKSPACE "signing-cert.pfx"
+          $pfxPath = Join-Path $env:GITHUB_WORKSPACE "certificate.pfx"
           [IO.File]::WriteAllBytes($pfxPath, $pfxBytes)
 
           $pwd = ConvertTo-SecureString -String "${{ secrets.CERTIFICATE_PASSWORD }}" -Force -AsPlainText
