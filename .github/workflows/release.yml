@@ -39,21 +39,18 @@ jobs:
       - name: 设置 MSBuild
         uses: microsoft/setup-msbuild@v1.3.1
 
-      - name: 解码并导入证书 PFX
+      - name: 解码证书 PFX
         shell: pwsh
         run: |
           $pfxBytes = [System.Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}")
           $pfxPath = Join-Path $env:GITHUB_WORKSPACE "signing-cert.pfx"
           [IO.File]::WriteAllBytes($pfxPath, $pfxBytes)
-
-          $pwd = ConvertTo-SecureString -String "${{ secrets.CERTIFICATE_PASSWORD }}" -Force -AsPlainText
-          Import-PfxCertificate -FilePath $pfxPath -CertStoreLocation Cert:\CurrentUser\My -Password $pwd
-          Write-Host "证书已导入 CurrentUser\My"
+          Write-Host "PFX 大小: $((Get-Item $pfxPath).Length) 字节"
 
       - name: 还原依赖
         run: dotnet restore $env:Solution_Name -p:Configuration=$env:Configuration
 
-      - name: 构建并发布 MSIX（${{ matrix.platform.name }}）
+      - name: 构建 MSIX（不签名，${{ matrix.platform.name }}）
         shell: pwsh
         run: |
           $csproj = "WinApp/WinApp.csproj"
@@ -66,13 +63,14 @@ jobs:
             "/p:TargetFramework=$env:WindowsTargetFramework",
             "/p:AppxBundle=Never",
             "/p:GenerateAppxPackageOnBuild=true",
-            "/p:PackageCertificateKeyFile=$env:GITHUB_WORKSPACE\signing-cert.pfx",
-            "/p:PackageCertificatePassword=${{ secrets.CERTIFICATE_PASSWORD }}"
+            "/p:AppxPackageSigningEnabled=false",
+            "/p:PackageCertificateKeyFile=",
+            "/p:PackageCertificatePassword="
           )
           & msbuild @msbuildArgs
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-      - name: 收集并签名 MSIX
+      - name: 收集并签名 MSIX（${{ matrix.platform.name }}）
         shell: pwsh
         run: |
           $platform = "${{ matrix.platform.name }}"
@@ -105,6 +103,7 @@ jobs:
             /p "${{ secrets.CERTIFICATE_PASSWORD }}" `
             $target
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          Write-Host "✅ 已签名: $target"
 
       - name: 上传 MSIX
         uses: actions/upload-artifact@v4
@@ -132,14 +131,18 @@ jobs:
           path: ./all-msix
           merge-multiple: true
 
-      - name: 查找 makeappx
+      - name: 查找 makeappx 和 signtool
         id: find-tools
         shell: pwsh
         run: |
           $makeappx = Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin" -Filter "makeappx.exe" -Recurse -ErrorAction SilentlyContinue |
                       Where-Object { $_.FullName -like "*\x64\*" } | Select-Object -First 1
           if (-not $makeappx) { Write-Error "❌ 未找到 makeappx.exe"; exit 1 }
+          $signtool = Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin" -Filter "signtool.exe" -Recurse -ErrorAction SilentlyContinue |
+                      Where-Object { $_.FullName -like "*\x64\*" } | Select-Object -First 1
+          if (-not $signtool) { Write-Error "❌ 未找到 signtool.exe"; exit 1 }
           "makeappx=$($makeappx.FullName)" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "signtool=$($signtool.FullName)" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
       - name: 打包为 MSIXBundle
         shell: pwsh
@@ -148,19 +151,18 @@ jobs:
           New-Item -ItemType Directory -Force -Path "publish" | Out-Null
           & "${{ steps.find-tools.outputs.makeappx }}" bundle /o /d "./all-msix" /p $bundle
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          Write-Host "✅ Bundle 已生成: $bundle"
 
       - name: 签名 MSIXBundle
         shell: pwsh
         run: |
           [IO.File]::WriteAllBytes("$env:GITHUB_WORKSPACE\signing-cert.pfx", [Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}"))
-          $signtool = Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin" -Filter "signtool.exe" -Recurse -ErrorAction SilentlyContinue |
-                      Where-Object { $_.FullName -like "*\x64\*" } | Select-Object -First 1
-          if (-not $signtool) { Write-Error "❌ 未找到 signtool.exe"; exit 1 }
-          & $signtool.FullName sign /fd SHA256 /a `
+          & "${{ steps.find-tools.outputs.signtool }}" sign /fd SHA256 /a `
             /f "$env:GITHUB_WORKSPACE\signing-cert.pfx" `
             /p "${{ secrets.CERTIFICATE_PASSWORD }}" `
             "publish/EroMangaManager.msixbundle"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          Write-Host "✅ Bundle 已签名"
 
       - name: 上传 MSIXBundle
         uses: actions/upload-artifact@v4
@@ -191,16 +193,12 @@ jobs:
 
       - run: dotnet workload install android
 
-      - name: 解码并导入证书 PFX
+      - name: 解码证书 PFX
         shell: pwsh
         run: |
           $pfxBytes = [System.Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}")
           $pfxPath = Join-Path $env:GITHUB_WORKSPACE "certificate.pfx"
           [IO.File]::WriteAllBytes($pfxPath, $pfxBytes)
-
-          $pwd = ConvertTo-SecureString -String "${{ secrets.CERTIFICATE_PASSWORD }}" -Force -AsPlainText
-          Import-PfxCertificate -FilePath $pfxPath -CertStoreLocation Cert:\CurrentUser\My -Password $pwd
-          Write-Host "证书已导入 CurrentUser\My"
 
       - name: 构建 Android APK (${{ matrix.arch.suffix }})
         shell: pwsh
@@ -220,7 +218,7 @@ jobs:
           if (-not $apk) { Write-Error "❌ 未生成签名 APK"; exit 1 }
           $newName = "EroMangaBrowser_${{ matrix.arch.suffix }}-Signed.apk"
           Rename-Item $apk.FullName $newName
-          Write-Host "生成: $newName"
+          Write-Host "✅ 生成: $newName"
 
       - uses: actions/upload-artifact@v4
         with:
