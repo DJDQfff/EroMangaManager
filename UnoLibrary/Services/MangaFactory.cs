@@ -3,11 +3,7 @@
 /// <summary>
 /// 基于该平台的实例创建方法
 /// </summary>
-public class MangaFactory(
-    ObservableCollectionVM ViewModel,
-    CoverHelper coverHelper,
-    CoverSetter coverSetter
-)
+public class MangaFactory(ObservableCollectionVM ViewModel, CoverHelper coverHelper)
 {
     /// <summary>ViewModel初始化</summary>
     public void GetAllFolders(IEnumerable<string> storageFolders)

@@ -83,21 +83,6 @@ public partial class App : Application
     /// <param name="args">Details about the launch request and process.</param>
     protected override async void OnLaunched(LaunchActivatedEventArgs args)
     {
-        Services.GetRequiredService<CoverSetter>().SetCover += async manga =>
-        {
-            if (manga.CoverUri.EndsWith(".svg"))
-            {
-                manga.CoverUri = await Services.GetRequiredService<MangaIO>().GetCoverFile(manga);
-            }
-        };
-        Services.GetRequiredService<CoverSetter>().MangaInfo += async manga =>
-        {
-            if (manga.FileSize == 0)
-            {
-                await Services.GetRequiredService<MangaIO>().LoadMangaInfo(manga);
-            }
-        };
-
         //DatabaseConfig.ConnectingString = $"Data Source={ApplicationData.Current.LocalFolder.Path}\\localdatabase.db";
         //DatabaseController.Migrate();
         Services.GetRequiredService<DatabaseController>().Migrate();

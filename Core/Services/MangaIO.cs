@@ -384,4 +384,30 @@ public class MangaIO
                 break;
         }
     }
+
+    /// <summary>
+    /// 确保封面是否已加载。如果coveruri属性不以svg结尾，则判断未加载，设置封面。反之则跳过
+    /// </summary>
+    /// <param name="manga"></param>
+    /// <returns></returns>
+    public async Task EnsureCoverSetted(Manga manga)
+    {
+        if (manga.CoverUri.EndsWith(".svg"))
+        {
+            manga.CoverUri = await GetCoverFile(manga);
+        }
+    }
+
+    /// <summary>
+    /// 判断漫画信息是否已加载。以filesize是否为0判断，为0则加载，反之跳过
+    /// </summary>
+    /// <param name="manga"></param>
+    /// <returns></returns>
+    public async Task EnsureMangaInfoSetted(Manga manga)
+    {
+        if (manga.FileSize == 0)
+        {
+            await LoadMangaInfo(manga);
+        }
+    }
 }

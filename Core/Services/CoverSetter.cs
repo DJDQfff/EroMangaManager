@@ -3,7 +3,7 @@
 /// <summary>
 /// 后台封面加载工作类
 /// </summary>
-public class CoverSetter
+public class CoverSetter(MangaIO mangaIO)
 {
     /// <summary>
     ///
@@ -18,16 +18,6 @@ public class CoverSetter
     public bool Isworking { set; get; }
 
     /// <summary>
-    /// 用于设置封面文件路径。因文件创建涉及到winui，且console程序也不显示图片，所以设置封面单独作为委托，需要手动设置
-    /// </summary>
-    public event Func<Manga, Task> SetCover = null!;
-
-    /// <summary>
-    /// 加载漫画基本信息，如大小章节等
-    /// </summary>
-    public event Func<Manga, Task> MangaInfo = null!;
-
-    /// <summary>
     /// 独立开始加载任务，与队列无关
     /// </summary>
     /// <param name="manga"></param>
@@ -38,11 +28,11 @@ public class CoverSetter
     {
         if (setcover)
         {
-            await SetCover.Invoke(manga);
+            await mangaIO.EnsureCoverSetted(manga);
         }
         if (loadinfo) // 以filesize是否为0，来判断漫画信息是否已初始化
         {
-            await MangaInfo.Invoke(manga);
+            await mangaIO.EnsureMangaInfoSetted(manga);
         }
     }
 

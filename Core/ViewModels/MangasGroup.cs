@@ -5,12 +5,22 @@ namespace Core.ViewModels;
 
 public partial class MangasGroup : ObservableObject
 {
+    /// <summary>
+    ///
+    /// </summary>
     public string FolderPath { get; set; } = string.Empty;
+
+    /// <summary>
+    ///
+    /// </summary>
     public string Guid { get; set; } = string.Empty;
 
     [ObservableProperty]
     public partial MangasGroupUpdateState UpdateState { get; set; } = MangasGroupUpdateState.Ready;
 
+    /// <summary>
+    ///
+    /// </summary>
     public List<Manga> Mangas { get; set; } = [];
 
     /// <summary>
@@ -20,11 +30,23 @@ public partial class MangasGroup : ObservableObject
     [ObservableProperty]
     public partial int Count { get; set; }
 
+    /// <summary>
+    ///
+    /// </summary>
     public MangasGroup() { }
 
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="storageFolderPath"></param>
     [SetsRequiredMembers]
     public MangasGroup(string storageFolderPath) => FolderPath = storageFolderPath;
 
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="mangas"></param>
+    /// <returns></returns>
     public int AddManga(params IList<Manga> mangas)
     {
         Mangas.AddRange(mangas);
@@ -32,6 +54,11 @@ public partial class MangasGroup : ObservableObject
         return Count;
     }
 
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="mangaBook"></param>
+    /// <returns></returns>
     public bool RemoveManga(Manga mangaBook)
     {
         bool removed = Mangas.Remove(mangaBook);
