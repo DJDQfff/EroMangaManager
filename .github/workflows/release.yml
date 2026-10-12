@@ -12,11 +12,13 @@ jobs:
     strategy:
       matrix:
         platform:
-          - { name: x64, rid: win-x64 }
-          - { name: x86, rid: win-x86 }
+          - { name: x64,   rid: win-x64 }
+          - { name: x86,   rid: win-x86 }
           - { name: ARM64, rid: win-arm64 }
     env:
       Solution_Name: EroMangaManager.slnx
+      Configuration: Release
+      WindowsTargetFramework: net10.0-windows10.0.26100
 
     steps:
       - uses: actions/checkout@v4
@@ -37,70 +39,130 @@ jobs:
       - name: 设置 MSBuild
         uses: microsoft/setup-msbuild@v1.3.1
 
+      - name: 解码证书 PFX
+        shell: pwsh
+        run: |
+          $pfxBytes = [System.Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}")
+          $certPath = Join-Path $env:GITHUB_WORKSPACE "signing-cert.pfx"
+          [IO.File]::WriteAllBytes($certPath, $pfxBytes)
+
       - name: 还原依赖
-        run: msbuild $env:Solution_Name /t:Restore /p:Configuration=Release /p:Platform=${{ matrix.platform }}
-        env:
-          Configuration: Release
-          Platform: ${{ matrix.platform }}
+        run: dotnet restore $env:Solution_Name -p:Configuration=$env:Configuration
 
-      - name: 解码证书
-        run: |
-          $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}")
-          $certPath = Join-Path -Path $env:GITHUB_WORKSPACE -ChildPath "signing-cert.pfx"
-          [IO.File]::WriteAllBytes("$certPath", $pfx_cert_byte)
-
-      - name: 构建并打包 MSIX
-        run: |
-          dotnet build WinApp/WinApp.csproj `
-            -c Release `
-            -p:Platform=${{ matrix.platform.name }} `
-            -p:RuntimeIdentifier=${{ matrix.platform.rid }} `
-            -p:AppxBundle=Never `
-            /p:GenerateAppxPackageOnBuild=true `
-            /p:PackageCertificateKeyFile=${{ github.workspace }}\signing-cert.pfx `
-            /p:PackageCertificatePassword=${{ secrets.CERTIFICATE_PASSWORD }}
-        env:
-          Configuration: Release
-          Platform: ${{ matrix.platform }}
-
-      - name: 收集所有 MSIX 文件
+      - name: 构建并发布 MSIX（${{ matrix.platform.name }}）
         shell: pwsh
         run: |
-          Write-Output "正在全盘搜索所有 MSIX 文件..."
-          $allMsix = Get-ChildItem -Path "D:\a\" -Filter "*.msix" -Recurse -ErrorAction SilentlyContinue | Where-Object { $_.Name -notmatch "^(Main|Singleton)" }
+          $csproj = "WinApp/WinApp.csproj"
+          $msbuildArgs = @(
+            $csproj,
+            "/t:Publish",
+            "/p:Configuration=$env:Configuration",
+            "/p:Platform=${{ matrix.platform.name }}",
+            "/p:RuntimeIdentifier=${{ matrix.platform.rid }}",
+            "/p:TargetFramework=$env:WindowsTargetFramework",
+            "/p:AppxBundle=Never",
+            "/p:GenerateAppxPackageOnBuild=true",
+            "/p:PackageCertificateKeyFile=$env:GITHUB_WORKSPACE\signing-cert.pfx",
+            "/p:PackageCertificatePassword=${{ secrets.CERTIFICATE_PASSWORD }}"
+          )
+          & msbuild @msbuildArgs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-          if (!$allMsix) {
-              Write-Error "❌ 构建未生成任何 MSIX 文件"
+      - name: 收集并签名 MSIX
+        shell: pwsh
+        run: |
+          $platform = "${{ matrix.platform.name }}"
+          $rid      = "${{ matrix.platform.rid }}"
+          $binRoot  = "WinApp/bin/$platform/$env:Configuration/$env:WindowsTargetFramework/$rid"
+          Write-Host "查找目录: $binRoot"
+
+          $msix = Get-ChildItem -Path $binRoot -Filter "*_$platform.msix" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+          if (-not $msix) {
+              Write-Error "❌ 未找到 $platform 的 MSIX 文件"
               exit 1
           }
+          Write-Host "找到: $($msix.FullName)"
 
-          $allMsix | ForEach-Object { Write-Output "  找到 MSIX: $($_.FullName)" }
-
-          $tmpDir = "./publish/${{ matrix.platform }}-msix"
-          New-Item -ItemType Directory -Force -Path $tmpDir
-
-          $allMsix | ForEach-Object { Copy-Item $_.FullName $tmpDir }
-
-      - name: 签名所有 MSIX
-        shell: pwsh
-        run: |
-          $signtool = Get-ChildItem -Path "C:\Program Files (x86)\Windows Kits\10\bin" -Filter "SignTool.exe" -Recurse | Where-Object { $_.FullName -like "*\x64\*" } | Select-Object -First 1
+          $signtool = Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin" -Filter "signtool.exe" -Recurse -ErrorAction SilentlyContinue |
+                      Where-Object { $_.FullName -like "*\x64\*" } | Select-Object -First 1
           if (-not $signtool) {
-              Write-Error "❌ 未找到 SignTool.exe"
-              exit 1
+              $signtool = Get-ChildItem "C:\Program Files\Microsoft Visual Studio" -Filter "signtool.exe" -Recurse -ErrorAction SilentlyContinue |
+                          Where-Object { $_.FullName -like "*\x64\*" } | Select-Object -First 1
           }
+          if (-not $signtool) { Write-Error "❌ 未找到 signtool.exe"; exit 1 }
 
-          $msixFiles = Get-ChildItem -Path "./publish/${{ matrix.platform }}-msix" -Filter "*.msix" -Recurse
-          foreach ($msix in $msixFiles) {
-              Write-Output "正在签名: $($msix.FullName)"
-              & $signtool.FullName sign /fd SHA256 /f signing-cert.pfx /p ${{ secrets.CERTIFICATE_PASSWORD }} $msix.FullName
-          }
+          $outDir = "publish/$platform-msix"
+          New-Item -ItemType Directory -Force -Path $outDir | Out-Null
+          $target = Join-Path $outDir $msix.Name
+          Copy-Item $msix.FullName $target -Force
+
+          & $signtool.FullName sign /fd SHA256 /a `
+            /f "$env:GITHUB_WORKSPACE\signing-cert.pfx" `
+            /p "${{ secrets.CERTIFICATE_PASSWORD }}" `
+            $target
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
       - name: 上传 MSIX
         uses: actions/upload-artifact@v4
         with:
-          name: msix-${{ matrix.platform }}
-          path: ./publish/${{ matrix.platform }}-msix/*.msix
+          name: msix-${{ matrix.platform.name }}
+          path: ./publish/${{ matrix.platform.name }}-msix/*.msix
+
+  build-msixbundle:
+    runs-on: windows-latest
+    needs: [build-winapp]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: 安装 .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: 下载所有 MSIX
+        uses: actions/download-artifact@v4
+        with:
+          pattern: msix-*
+          path: ./all-msix
+          merge-multiple: true
+
+      - name: 查找 makeappx
+        id: find-tools
+        shell: pwsh
+        run: |
+          $makeappx = Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin" -Filter "makeappx.exe" -Recurse -ErrorAction SilentlyContinue |
+                      Where-Object { $_.FullName -like "*\x64\*" } | Select-Object -First 1
+          if (-not $makeappx) { Write-Error "❌ 未找到 makeappx.exe"; exit 1 }
+          "makeappx=$($makeappx.FullName)" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
+      - name: 打包为 MSIXBundle
+        shell: pwsh
+        run: |
+          $bundle = "publish/EroMangaManager.msixbundle"
+          New-Item -ItemType Directory -Force -Path "publish" | Out-Null
+          & "${{ steps.find-tools.outputs.makeappx }}" bundle /o /d "./all-msix" /p $bundle
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: 签名 MSIXBundle
+        shell: pwsh
+        run: |
+          [IO.File]::WriteAllBytes("$env:GITHUB_WORKSPACE\signing-cert.pfx", [Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}"))
+          $signtool = Get-ChildItem "C:\Program Files (x86)\Windows Kits\10\bin" -Filter "signtool.exe" -Recurse -ErrorAction SilentlyContinue |
+                      Where-Object { $_.FullName -like "*\x64\*" } | Select-Object -First 1
+          if (-not $signtool) { Write-Error "❌ 未找到 signtool.exe"; exit 1 }
+          & $signtool.FullName sign /fd SHA256 /a `
+            /f "$env:GITHUB_WORKSPACE\signing-cert.pfx" `
+            /p "${{ secrets.CERTIFICATE_PASSWORD }}" `
+            "publish/EroMangaManager.msixbundle"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: 上传 MSIXBundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: msixbundle
+          path: publish/*.msixbundle
 
   build-android:
     runs-on: windows-latest
@@ -108,7 +170,7 @@ jobs:
       matrix:
         arch:
           - { rid: android-arm64, suffix: arm64-v8a }
-          - { rid: android-arm, suffix: armeabi-v7a }
+          - { rid: android-arm,   suffix: armeabi-v7a }
     steps:
       - uses: actions/checkout@v4
         with:
@@ -123,28 +185,32 @@ jobs:
         with:
           dotnet-version: '10.0.x'
 
-      - run: dotnet workload install android ios
+      - run: dotnet workload install android
 
-      - name: 还原签名证书
+      - name: 解码证书 PFX
         shell: pwsh
         run: |
-          [IO.File]::WriteAllBytes("${{ github.workspace }}\certificate.pfx", [Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}"))
+          [IO.File]::WriteAllBytes("$env:GITHUB_WORKSPACE\certificate.pfx", [Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}"))
 
       - name: 构建 Android APK (${{ matrix.arch.suffix }})
+        shell: pwsh
         run: |
-          dotnet publish UnoApp/UnoApp/UnoApp.csproj `
+          dotnet publish UnoApp/UnoApp.csproj `
             -f net10.0-android `
             -r ${{ matrix.arch.rid }} `
             -c Release `
             -p:AndroidPackageFormats=apk `
-            -p:AndroidSigningKeyStore=${{ github.workspace }}\certificate.pfx `
-            -p:AndroidSigningKeyPass=${{ secrets.CERTIFICATE_PASSWORD }} `
-            -p:AndroidSigningStorePass=${{ secrets.CERTIFICATE_PASSWORD }} `
+            -p:AndroidSigningKeyStore="$env:GITHUB_WORKSPACE\certificate.pfx" `
+            -p:AndroidSigningKeyPass="${{ secrets.CERTIFICATE_PASSWORD }}" `
+            -p:AndroidSigningStorePass="${{ secrets.CERTIFICATE_PASSWORD }}" `
             -o ./publish/${{ matrix.arch.suffix }}
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-          $apk = Get-ChildItem ./publish/${{ matrix.arch.suffix }} -Filter "*.apk" | Select-Object -First 1
+          $apk = Get-ChildItem ./publish/${{ matrix.arch.suffix }} -Filter "*-Signed.apk" -Recurse | Select-Object -First 1
+          if (-not $apk) { Write-Error "❌ 未生成签名 APK"; exit 1 }
           $newName = "EroMangaBrowser_${{ matrix.arch.suffix }}-Signed.apk"
           Rename-Item $apk.FullName $newName
+          Write-Host "生成: $newName"
 
       - uses: actions/upload-artifact@v4
         with:
@@ -152,7 +218,7 @@ jobs:
           path: ./publish/${{ matrix.arch.suffix }}/*.apk
 
   release:
-    needs: [build-android, build-winapp]
+    needs: [build-android, build-msixbundle]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -165,7 +231,10 @@ jobs:
         with:
           files: |
             android-apk-*/*-Signed.apk
-            msix-*/*.msix
+            msix-x64/*.msix
+            msix-x86/*.msix
+            msix-ARM64/*.msix
+            msixbundle/*.msixbundle
             DJDQfff_certificate.cer
           name: ${{ github.ref_name }}
         env:
