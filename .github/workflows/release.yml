@@ -187,10 +187,16 @@ jobs:
 
       - run: dotnet workload install android
 
-      - name: 解码证书 PFX
+      - name: 解码并导入证书 PFX
         shell: pwsh
         run: |
-          [IO.File]::WriteAllBytes("$env:GITHUB_WORKSPACE\certificate.pfx", [Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}"))
+          $pfxBytes = [System.Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}")
+          $pfxPath = Join-Path $env:GITHUB_WORKSPACE "signing-cert.pfx"
+          [IO.File]::WriteAllBytes($pfxPath, $pfxBytes)
+
+          $pwd = ConvertTo-SecureString -String "${{ secrets.CERTIFICATE_PASSWORD }}" -Force -AsPlainText
+          Import-PfxCertificate -FilePath $pfxPath -CertStoreLocation Cert:\CurrentUser\My -Password $pwd
+          Write-Host "证书已导入 CurrentUser\My"
 
       - name: 构建 Android APK (${{ matrix.arch.suffix }})
         shell: pwsh
