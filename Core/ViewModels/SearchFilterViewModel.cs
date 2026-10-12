@@ -300,7 +300,7 @@ public partial class SearchFilterViewModel(
             await Task.Yield();
         }
 
-        await coverSetter.MultiLoadWork(DisplayMangas, true, true);
+        //await coverSetter.MultiLoadWork(DisplayMangas, true, true);
     }
 
     /// <summary>同步版本</summary>

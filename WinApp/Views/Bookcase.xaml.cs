@@ -58,12 +58,6 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
         SelectionChangedEventArgs e
     )
     {
-        if (e.RemovedItems.Count > 0)
-        {
-            FilterVm = null;
-            Bookcase_GridView.MangaSource = null!;
-        }
-
         if (e.AddedItems.Count > 0 && e.AddedItems[0] is MangasGroup g)
         {
             await SwitchToGroup(g);
@@ -76,7 +70,6 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
         _currentGroup = group;
 
         FilterVm = _filterFactory.CreateForGroup(group);
-        Bookcase_GridView.MangaSource = FilterVm.DisplayMangas;
 
         // 清空标签控件（新 VM 的 RequiredTags 是空的）
         //await TagTokenizingTextBox.ClearAsync();
@@ -119,10 +112,14 @@ public sealed partial class Bookcase : Page, INotifyPropertyChanged
     {
         if (FilterVm is null)
             return;
-        if (Math.Abs(args.NewValue - args.OldValue) < 0.001)
+        int page = (int)args.NewValue;
+        // 在bookcase初次加载时，会和combobox的change事件同时触发，导致加载两次
+        // 进行判断，避免重复加载
+        // 值和当前页相同，不刷新（避免首次初始化时重复 MultiLoadWork）
+        if (page == FilterVm.CurrentPage)
             return;
 
-        FilterVm.CurrentPage = (int)args.NewValue; // 显式同步（TwoWay 应该已经做了，保险）
+        FilterVm.CurrentPage = page;
         FilterVm.RefreshDisplay();
 
         UpdateHintVisibility();

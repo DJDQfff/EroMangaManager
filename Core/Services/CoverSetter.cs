@@ -24,7 +24,7 @@ public class CoverSetter(MangaIO mangaIO)
     /// <param name="setcover">是否读取封面</param>
     /// <param name="loadinfo">是否获取基本信息</param>
     /// <returns></returns>
-    public async Task SingleLoadWork(Manga manga, bool setcover, bool loadinfo)
+    public async Task SingleLoadWork(Manga manga, bool setcover = true, bool loadinfo = true)
     {
         if (setcover)
         {
@@ -43,7 +43,11 @@ public class CoverSetter(MangaIO mangaIO)
     /// <param name="setcover"></param>
     /// <param name="loadinfo"></param>
     /// <returns></returns>
-    public async Task MultiLoadWork(IEnumerable<Manga> mangas, bool setcover, bool loadinfo)
+    public async Task MultiLoadWork(
+        IEnumerable<Manga> mangas,
+        bool setcover = true,
+        bool loadinfo = true
+    )
     {
         foreach (var manga in mangas.ToArray())
         {
