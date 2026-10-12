@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
+using Core.Services;
 using iText.Commons.Internal.Runtime;
 
 namespace Core.ViewModels;
@@ -19,12 +20,11 @@ namespace Core.ViewModels;
 ///      供外部调用方做流式过滤（如 ASPNETCoreServer 的 /mangas/with_tag/{tag}）。
 /// 4. 分页只影响 RefreshDisplay 的切片，不影响 ApplyFilter 的过滤结果。
 /// </summary>
-public partial class SearchFilterViewModel(Func<IReadOnlyList<Manga>> sourceProvider)
-    : ObservableObject
+public partial class SearchFilterViewModel(
+    Func<IReadOnlyList<Manga>> sourceProvider,
+    CoverSetter coverSetter
+) : ObservableObject
 {
-    public event Action<IEnumerable<Manga>>? ResultNewAddMulti;
-    public event Func<Manga, Task>? ResultNewAddSingle;
-
     /// <summary>当前源（每次访问重新取，保证实时性）</summary>
     public IReadOnlyList<Manga> Source => sourceProvider();
 
@@ -106,11 +106,12 @@ public partial class SearchFilterViewModel(Func<IReadOnlyList<Manga>> sourceProv
 
     /// <summary>可用标签（补全用，每次查询；量大再缓存）</summary>
     public IReadOnlyList<string> AvailableTags =>
-        Source
-            .SelectMany(x => x.Tags)
-            .Distinct(StringComparer.OrdinalIgnoreCase)
-            .OrderBy(t => t)
-            .ToList();
+        [
+            .. Source
+                .SelectMany(x => x.Tags)
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .OrderBy(t => t),
+        ];
 
     private List<Manga> _filtered = [];
     private bool _isFiltered = false;
@@ -295,19 +296,18 @@ public partial class SearchFilterViewModel(Func<IReadOnlyList<Manga>> sourceProv
 
         foreach (var manga in DisplayMangas.ToArray())
         {
-            if (ResultNewAddSingle is not null)
-                await ResultNewAddSingle.Invoke(manga);
+            await coverSetter.SingleLoadWork(manga, true, true);
             await Task.Yield();
         }
 
-        ResultNewAddMulti?.Invoke(DisplayMangas);
+        await coverSetter.MultiLoadWork(DisplayMangas, true, true);
     }
 
     /// <summary>同步版本</summary>
-    public void Search()
+    public async Task Search()
     {
         ApplyFilterAndRefresh();
-        ResultNewAddMulti?.Invoke(DisplayMangas);
+        await coverSetter.MultiLoadWork(DisplayMangas, true, true);
     }
 
     /// <summary>标签补全过滤（原 FiltTags）。AvailableTags 是只读计算属性，结果写入 target。</summary>

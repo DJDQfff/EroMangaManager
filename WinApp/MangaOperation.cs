@@ -20,7 +20,7 @@ public partial class MangaOperationViewModel(
     public ObservableCollection<string> ExePaths => settingViewModel.ExePaths;
     public SvgImageSource ErrorImage => coverHelper.ErrorCoverImage;
     public ObservableCollection<MangasGroup> MangasGroups => observableCollectionVM.MangasGroups;
-    public event Action<Manga> ExternalProcessExited;
+    public event Action<Manga> ExternalProcessExited = null!;
 
     [RelayCommand]
     public async Task NavigateSearchName(string text)

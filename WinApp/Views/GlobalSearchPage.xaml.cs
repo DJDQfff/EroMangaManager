@@ -29,10 +29,6 @@ public sealed partial class GlobalSearchPage : Page
 
         // 删除本子时同步结果
         ObservableCollectionVM.EventAfterDeleteMangaSource += x => SearchVm.DisplayMangas.Remove(x);
-
-        // 封面加载
-        SearchVm.ResultNewAddSingle += async x => await coverSetter.SingleLoadWork(x, true, true);
-        SearchVm.ResultNewAddMulti += async x => await coverSetter.MultiLoadWork(x, true, true);
     }
 
     #region 外部调用入口
