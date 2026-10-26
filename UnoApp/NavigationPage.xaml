@@ -5,8 +5,8 @@
   xmlns:controls="using:CommunityToolkit.WinUI.Controls"
   xmlns:dto="using:Core.DTOs"
   xmlns:local="using:UnoApp"
-  xmlns:unolibrary="using:UnoLibrary"
   xmlns:model="using:Core.Models"
+  xmlns:unolibrary="using:UnoLibrary"
   x:Name="rootPage"
   Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
 >
@@ -100,6 +100,13 @@
                         <MenuFlyoutItem x:Name="DeleteMenuItem" Text="删除" />
                         <MenuFlyoutSeparator />
                         <MenuFlyoutSubItem x:Name="TagSubItem" Text="搜索Tag" />
+                        <MenuFlyoutSubItem
+                          DataContext="{x:Bind }"
+                          x:Name="moveto"
+                          Icon="MoveToFolder"
+                          Loading="moveto_Loading"
+                          Text="移动到"
+                        />
                       </MenuFlyout>
                     </Button.Flyout>
                   </Button>

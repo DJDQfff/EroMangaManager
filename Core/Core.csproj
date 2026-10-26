@@ -12,7 +12,6 @@
     <PackageReference Include="CommunityToolkit.Common" />
     <PackageReference Include="CommunityToolkit.Mvvm" />
     <PackageReference Include="Config.Net" />
-    <PackageReference Include="itext7" />
     <PackageReference Include="SharpCompress" />
     <PackageReference Include="SixLabors.ImageSharp" />
     <PackageReference Include="PDFsharp" />

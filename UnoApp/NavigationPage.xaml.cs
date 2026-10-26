@@ -172,6 +172,35 @@ public sealed partial class NavigationPage : Page
                     tagSubItem.Items.Add(menuItem);
                 }
             }
+
+            // 3. 处理“移动到”子菜单
+            var movetoItem = menuFlyout
+                .Items.OfType<MenuFlyoutSubItem>()
+                .FirstOrDefault(x => x.Name == "moveto");
+            if (movetoItem != null)
+            {
+                movetoItem.Items.Clear();
+
+                foreach (var tag in ViewModel.Groups)
+                {
+                    var menuItem = new MenuFlyoutItem
+                    {
+                        Text = tag.Name,
+                        DataContext = tag,
+                        //Command = ViewModel.SearchByTagCommand,
+                        CommandParameter = tag,
+                    };
+                    movetoItem.Items.Add(menuItem);
+                }
+            }
+        }
+    }
+
+    private void moveto_Loading(FrameworkElement sender, object args)
+    {
+        if (sender is MenuFlyoutSubItem { DataContext: Manga manga } item)
+        {
+            item.Items.Single(x => x.DataContext == ViewModel.SelectedGroup).IsEnabled = false;
         }
     }
 }
