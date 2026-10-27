@@ -21,47 +21,74 @@ public partial class App : Application
 
     //protected mainWindow? mainWindow { get; private set; }
 
+    /// <summary>
+    /// 根窗口。Windows / Skia 桌面端需要自己创建并持有引用，否则可能被回收后窗口关闭
+    /// </summary>
+    public static Window? RootWindow { get; private set; }
+
     protected override async void OnLaunched(LaunchActivatedEventArgs args)
     {
-        var builder = this.CreateBuilder(args)
-            .Configure(host =>
-            {
-                host.UseLocalization()
-                    .ConfigureServices(
-                        (context, services) =>
-                        {
-                            services.AddSingleton<IPages, Pages>();
-                            services.AddSingleton<MainPage>();
-                            services.AddTransient<SettingPage>();
-                            services.AddSingleton<ServerStorage>();
-                            services.AddSingleton<MangaAPIClient>();
-                            services.AddSingleton<MainWindow>();
-                            services.AddSingleton<RemoteMangaViewModel>();
-                            services.AddSingleton<NavigationPage>();
-                        }
-                    );
-            });
-        Services = builder.Build().Services;
-
-        var mainWindow = Services.GetRequiredService<MainWindow>();
-#if DEBUG
-        //mainWindow.UseStudio();
-#endif
-        // Do not repeat app initialization when the Window already has content,
-        // just ensure that the window is active
-        if (mainWindow.Content is not SafeArea { Content: ContentControl rootFrame })
+        try
         {
-            // Create a Frame to act as the navigation context and navigate to the first page
-            rootFrame = new();
+            var builder = this.CreateBuilder(args)
+                .Configure(host =>
+                {
+                    host.UseLocalization()
+                        .ConfigureServices(
+                            (context, services) =>
+                            {
+                                services.AddSingleton<IPages, Pages>();
+                                services.AddSingleton<MainPage>();
+                                services.AddTransient<SettingPage>();
+                                services.AddSingleton<ServerStorage>();
+                                services.AddSingleton<MangaAPIClient>();
+                                services.AddSingleton<MainWindow>(); // UserControl，不是 Window
+                                services.AddSingleton<RemoteMangaViewModel>();
+                                services.AddSingleton<NavigationPage>();
+                            }
+                        );
+                });
+            Services = builder.Build().Services;
 
-            // Place the frame in the current Window
-            mainWindow.Content = rootFrame;
+            // MainWindow 只是 UserControl，所以这一行在 Android/iOS/WASM 上也能正常返回
+            var shell = Services.GetRequiredService<MainWindow>();
+
+#if UNO_SINGLE_WINDOW
+            // 单窗口平台：Uno 启动时已创建唯一的窗口，只能复用它，不能 new Window()
+            var window = Window.Current ?? new Window();
+#else
+            // Windows / Skia 桌面端支持多窗口，自己创建
+            var window = new Window();
+#endif
+            RootWindow = window;
+            window.Content = shell;
+            window.SetWindowIcon();
+            window.Activate();
         }
+        catch (Exception ex)
+        {
+            // OnLaunched 是 async void，异常原本会被 Uno 调度器吞掉，界面只会一直停在闪屏
+            System.Diagnostics.Debug.WriteLine(ex);
+            ShowStartupError(ex);
+        }
+    }
 
-        mainWindow.SetWindowIcon();
-        // Ensure the current window is active
-        mainWindow.Activate();
-        //mainWindow.StartInitialization();
+    private static void ShowStartupError(Exception ex)
+    {
+        var text = new TextBlock
+        {
+            Text = ex.ToString(),
+            TextWrapping = TextWrapping.Wrap,
+            Margin = new Thickness(16),
+        };
+#if UNO_SINGLE_WINDOW
+        if (Window.Current is { } window)
+        {
+            window.Content = text;
+        }
+#else
+        new Window { Content = text }.Activate();
+#endif
     }
 
     /// <summary>

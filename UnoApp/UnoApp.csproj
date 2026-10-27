@@ -70,6 +70,15 @@
     <PackageReference Include="DJDQfff.BaiduTranslateAPI" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
   </ItemGroup>
+
+  <!--
+    单窗口平台（Android / iOS / WebAssembly）上 Uno 在启动时已经创建了唯一的窗口，
+    应用代码只能使用 Window.Current，不能 new Window()（会抛 InvalidOperationException）。
+    这里定义编译符号，App.xaml.cs 用它决定窗口从哪里来。
+  -->
+  <PropertyGroup Condition="$(TargetFramework.Contains('-android')) or $(TargetFramework.Contains('-ios')) or $(TargetFramework.Contains('-browserwasm'))">
+    <DefineConstants>$(DefineConstants);UNO_SINGLE_WINDOW</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\UnoLibrary\UnoLibrary.csproj" />

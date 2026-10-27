@@ -2,7 +2,7 @@ using UnoLibrary.Strings;
 
 namespace UnoApp;
 
-public sealed partial class MainWindow : Window
+public sealed partial class MainWindow : UserControl
 {
     readonly ServerStorage _serverStorage;
     readonly MangaAPIClient _mangaApiClient;
@@ -49,7 +49,7 @@ public sealed partial class MainWindow : Window
             // 2. 此时 XamlRoot 绝对有效，可以安全弹出强制连接对话框
             ConnectDialog connectDialog = new(_serverStorage, _mangaApiClient)
             {
-                XamlRoot = this.Content!.XamlRoot,
+                XamlRoot = this.XamlRoot,
             };
 
             await connectDialog.ShowAsync();
