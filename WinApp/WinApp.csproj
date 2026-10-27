@@ -59,4 +59,20 @@
   <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
   </PropertyGroup>
+
+  <!--
+    按配置选择包清单：
+      Debug   -> Package.Debug.appxmanifest（独立身份 EroMangaManager.Debug，显示名带 (Debug)）
+      Release -> Package.appxmanifest     （商店保留身份，发布用）
+
+    显式声明 AppxManifest 项后，MSIX 工具链不会再自动包含 Package.appxmanifest
+    （见 Microsoft.Build.Msix.Packaging.targets 里 '@(AppxManifest)'=='' 的判断）。
+    注意：Debug 与 Release 是两个不同的包身份，各自的包数据目录互相独立。
+  -->
+  <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+    <AppxManifest Include="Package.Debug.appxmanifest" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(Configuration)' != 'Debug'">
+    <AppxManifest Include="Package.appxmanifest" />
+  </ItemGroup>
 </Project>

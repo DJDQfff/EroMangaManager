@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Debug 专用包清单。
+  与 Package.appxmanifest（Release / 商店发布用）的区别只有 <Identity> 和显示名：
+    - Identity Name 改成本地调试专用名（ASCII，非商店保留名），避免和正式版冲突，
+      两者的包数据目录也因此互不影响。
+    - Publisher 与正式版保持一致，这样 Debug 用同一个证书签名也能通过。
+    - 开始菜单显示名改为“本子管理器 (Debug)”，方便区分。
+-->
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  IgnorableNamespaces="uap rescap">
+  <Identity
+    Name="EroMangaManager.Debug"
+    Publisher="CN=457EFD62-D91C-4992-872B-0F5CE97FDC67"
+    Version="2026.10.18.0" />
+  <mp:PhoneIdentity PhoneProductId="3f2b9c41-5d7e-4c8a-9b12-6a0d7e4f2c11" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <Properties>
+    <DisplayName>本子管理器 (Debug)</DisplayName>
+    <PublisherDisplayName>DJDQfff</PublisherDisplayName>
+    <Logo>Assets\AppIcons\StoreLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.17763.0" MaxVersionTested="10.0.19041.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+  <Applications>
+    <Application Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="$targetentrypoint$">
+      <uap:VisualElements
+        DisplayName="本子管理器 (Debug)"
+        Description="ms-resource:Description"
+        BackgroundColor="transparent"
+        Square150x150Logo="Assets\AppIcons\Square150x150Logo.png"
+        Square44x44Logo="Assets\AppIcons\Square44x44Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\AppIcons\Wide310x150Logo.png"  ShortName="本子管理器 (Debug)" Square71x71Logo="Assets\AppIcons\SmallTile.png" Square310x310Logo="Assets\AppIcons\LargeTile.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo"/>
+            <uap:ShowOn Tile="wide310x150Logo"/>
+            <uap:ShowOn Tile="square310x310Logo"/>
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile >
+        <uap:SplashScreen Image="Assets\AppIcons\SplashScreen.png"  BackgroundColor="transparent"/>
+        <uap:LockScreen  BadgeLogo="Assets\AppIcons\BadgeLogo.png" Notification="badge"/>
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
+    <uap:Capability Name="picturesLibrary"/>
+    <Capability Name="codeGeneration"/>
+    <Capability Name="internetClientServer"/>
+    <Capability Name="privateNetworkClientServer"/>
+  </Capabilities>
+</Package>
