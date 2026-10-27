@@ -4,7 +4,7 @@ global using System.Collections.ObjectModel;
 global using System.ComponentModel;
 global using System.IO;
 global using System.Linq;
-global using CommonLibrary;
+global using System.Diagnostics;
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using Core.Models;
 global using SharpCompress.Archives;

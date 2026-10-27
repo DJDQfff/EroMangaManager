@@ -14,7 +14,6 @@
     <File Path="TODO.md" />
     <File Path="WinApp/DJDQfff_certificate.cer" />
   </Folder>
-  <Project Path="../MyLibrary/CommonLibrary/CommonLibrary.csproj" />
   <Project Path="Core/Core.csproj" />
   <Project Path="Database/Database.csproj" />
   <Project Path="Server/Server.csproj" />

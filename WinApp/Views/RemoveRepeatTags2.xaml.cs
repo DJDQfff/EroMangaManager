@@ -15,7 +15,7 @@ public sealed partial class RemoveRepeatTags2 : Page
         InitializeComponent();
         foreach (var book in App.Services.GetRequiredService<ObservableCollectionVM>().MangaList)
         {
-            if (book.Tags.ContainRepeat())
+            if (book.Tags.Distinct().Count() < book.Tags.Length/*去重后变少了，存在重复内容*/)
             {
                 RepaetBooks.Add(book);
             }
@@ -24,7 +24,7 @@ public sealed partial class RemoveRepeatTags2 : Page
 
     private void RemoveIfTagRepeat(Manga book)
     {
-        if (!book.Tags.ContainRepeat())
+        if (!(book.Tags.Distinct().Count() < book.Tags.Length/*去重后变少了，存在重复内容*/))
         {
             _ = RepaetBooks.Remove(book);
         }

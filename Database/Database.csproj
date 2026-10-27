@@ -42,7 +42,4 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" />
     <PackageReference Include="SharpCompress" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\MyLibrary\CommonLibrary\CommonLibrary.csproj" />
-  </ItemGroup>
 </Project>

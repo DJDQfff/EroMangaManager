@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
-using CommonLibrary;
 
 namespace Database.Entities
 {
@@ -46,10 +45,9 @@ namespace Database.Entities
             {
                 if (tags is null)
                 {
-                    var ss = Keywords.Split('\r');
-
-                    tags = new ObservableCollection<string>(ss);
-                    tags.RemoveEmptyLine();
+                    tags = new ObservableCollection<string>(
+                        Keywords.Split('\r').Where(s => !string.IsNullOrWhiteSpace(s))
+                    );
                 }
 
                 return tags;

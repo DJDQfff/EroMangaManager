@@ -1,6 +1,6 @@
-﻿using CommonLibrary.CollectionFindRepeat;
-using CommonLibrary.RepetitiveGroup;
-using static CommonLibrary.BracketBasedStringParser;
+﻿using Core.CollectionFindRepeat;
+using Core.RepetitiveGroup;
+using static Core.BracketBasedStringParser;
 
 namespace Core.ViewModels;
 

@@ -52,7 +52,7 @@ public sealed partial class IrregularNameSearch : Page
                     checkbox2.IsChecked == true
                     && BracketBasedStringParser.Get_OutsideContent(book.FileDisplayName).Count == 0
                 )
-                || (checkbox3.IsChecked == true && book.Tags.ContainRepeat())
+                || (checkbox3.IsChecked == true && book.Tags.Distinct().Count() < book.Tags.Length/*去重后变少了，存在重复内容*/)
                 || (!string.IsNullOrEmpty(textbox.Text) && book.Name.Contains(textbox.Text))
             )
             {
