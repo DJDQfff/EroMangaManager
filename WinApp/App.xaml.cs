@@ -1,4 +1,4 @@
-﻿// To learn more about WinUI, the WinUI project structure,
+// To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Windows.ApplicationModel.WindowsAppRuntime;
@@ -12,6 +12,9 @@ namespace WinApp;
 public partial class App : Application
 {
     public static IServiceProvider Services { get; private set; } = null!;
+
+    /// <summary> 根窗口（OnLaunched 里创建，DI 里注入的 Window 也指向它） </summary>
+    public static Window? RootWindow { get; private set; }
 
     /// <summary>
     /// Initializes the singleton application object.  This is the first line of authored code
@@ -42,9 +45,9 @@ public partial class App : Application
         //依赖前面的
         services.AddTransient<Translator>();
         services.AddSingleton<CoverHelper>();
-        services.AddSingleton<MainWindow>();
-        services.AddSingleton<Window>(sp => sp.GetRequiredService<MainWindow>());
-        // Window 和 MainWindow 注入的是同一个实例
+        services.AddSingleton<UnoLibrary.MainWindow>();
+        // Window 由 OnLaunched 创建后赋给 RootWindow，这里用工厂取同一个实例
+        services.AddSingleton<Window>(sp => RootWindow!);
         services.AddSingleton<MangaFactory>();
         services.AddSingleton<SettingViewModel>();
         services.AddTransient<TagCategorySelect>();
@@ -129,14 +132,23 @@ public partial class App : Application
             return;
         }
 
-        var window = Services.GetRequiredService<MainWindow>();
-        window.Title = StringsExtension.ResourceLoader.GetString("AppDisplayName");
+        // 共享主界面（UnoLibrary.MainWindow）+ WinApp 自己的窗口
+        var shell = Services.GetRequiredService<UnoLibrary.MainWindow>();
+        var window = new Window
+        {
+            Title = StringsExtension.ResourceLoader.GetString("AppDisplayName"),
+        };
+        window.ExtendsContentIntoTitleBar = true;
+        window.SetTitleBar(shell.TitleBarElement);
+        window.AppWindow.SetIcon(Services.GetRequiredService<CoverHelper>().DefaultCoverUri);
+        window.Content = shell;
+        RootWindow = window;
 
         var page = Services.GetRequiredService<MainPage>();
         page.ServiceProvider = Services;
         page.OnNavigated();
 
-        window.SetPage<MainPage>(page);
+        shell.SetPage<MainPage>(page);
 
         window.Activate();
 

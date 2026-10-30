@@ -1,4 +1,4 @@
-﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
+// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
 
 namespace WinApp.Views.MainPageChildPages;
@@ -125,7 +125,7 @@ public sealed partial class TagsManagePage : Page
     {
         var dialog = new RenameCategoryName()
         {
-            XamlRoot = App.Services.GetRequiredService<MainWindow>().Content.XamlRoot,
+            XamlRoot = App.RootWindow!.Content.XamlRoot,
         };
         var result = await dialog.ShowAsync();
         if (result == ContentDialogResult.Primary)

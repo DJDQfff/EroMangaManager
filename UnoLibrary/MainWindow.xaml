@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<UserControl
+  x:Class="UnoLibrary.MainWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  mc:Ignorable="d"
+>
+  <!--
+    ===== 迁移 WinApp 到 Uno Platform 之后要做的事（现在都不能启用）=====
+
+    迁移完成后，所有目标框架（含 Windows）都会引用 Uno.Toolkit，此时可以直接把安全区写进 XAML，
+    用它替代 MainWindow.xaml.cs 构造函数里 `#if UNO_SINGLE_WINDOW` 的代码包装：
+
+      1) 在根 UserControl 上加命名空间：
+           xmlns:utu="using:Uno.Toolkit.UI"
+
+      2) 把下面的 Grid 整体包一层 SafeArea：
+           <utu:SafeArea Insets="Top">
+             <Grid x:Name="RootGrid">
+               现有内容保持不变
+             </Grid>
+           </utu:SafeArea>
+
+      3) 删除 MainWindow.xaml.cs 构造函数里的 SafeArea 包装代码（那段只因为现在的
+         WinApp 是纯 WinAppSDK、不能引用 Uno.Toolkit 才用条件编译顶着的）
+
+      4) 把 UnoLibrary.csproj 条件组里的 Toolkit 移进全局 UnoFeatures（见 csproj 里的注释）
+
+    为什么现在不能直接写进来：SafeArea 属于 Uno.Toolkit，而 Uno.Toolkit 依赖 Uno.WinUI。
+    当前 WinApp 是纯 WinAppSDK 应用，如果在 XAML 里无条件使用，会让 UnoLibrary 的 windows
+    目标也被迫引用 Uno.Toolkit，从而把 Uno 的 UI 栈拖进 WinApp 的商店包。
+  -->
+  <Grid x:Name="RootGrid">
+    <Grid.RowDefinitions>
+      <RowDefinition x:Name="TitleBarRow" Height="36" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <!--  WinApp 把它用作 Window 的自定义标题栏拖拽区域；移动端通过 IsTitleBarVisible 隐藏  -->
+    <Rectangle x:Name="newtitlebar" Grid.Row="0" Fill="Transparent" />
+
+    <!--  页面容器：由调用方通过 SetPage&lt;TPage&gt; 指定内容  -->
+    <ContentControl
+      x:Name="PageContainer"
+      Grid.Row="1"
+      HorizontalAlignment="Stretch"
+      VerticalAlignment="Stretch"
+      HorizontalContentAlignment="Stretch"
+      VerticalContentAlignment="Stretch"
+    />
+  </Grid>
+</UserControl>

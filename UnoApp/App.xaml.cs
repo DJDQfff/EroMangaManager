@@ -3,6 +3,7 @@ using Microsoft.Extensions.Localization;
 using Microsoft.UI.Xaml.Automation;
 using Uno.Extensions.Hosting; // ✅ CreateBuilder 所在命名空间
 using Uno.Extensions.Localization;
+using UnoLibrary.Strings;
 
 namespace UnoApp;
 
@@ -42,7 +43,6 @@ public partial class App : Application
                                 services.AddTransient<SettingPage>();
                                 services.AddSingleton<ServerStorage>();
                                 services.AddSingleton<MangaAPIClient>();
-                                services.AddSingleton<MainWindow>(); // UserControl，不是 Window
                                 services.AddSingleton<RemoteMangaViewModel>();
                                 services.AddSingleton<NavigationPage>();
                             }
@@ -50,8 +50,10 @@ public partial class App : Application
                 });
             Services = builder.Build().Services;
 
-            // MainWindow 只是 UserControl，所以这一行在 Android/iOS/WASM 上也能正常返回
-            var shell = Services.GetRequiredService<MainWindow>();
+            // 共享主界面（UnoLibrary.MainWindow）；移动端的安全区由 MainWindow 自己处理
+            var shell = new MainWindow();
+            shell.IsTitleBarVisible = false;
+            FrameworkElement root = shell;
 
 #if UNO_SINGLE_WINDOW
             // 单窗口平台：Uno 启动时已创建唯一的窗口，只能复用它，不能 new Window()
@@ -61,9 +63,27 @@ public partial class App : Application
             var window = new Window();
 #endif
             RootWindow = window;
-            window.Content = shell;
+            window.Content = root;
+
+            // 与 WinApp 一致：在 App 里解析根页面并把 IServiceProvider 交给它
+            var mainPage = Services.GetRequiredService<MainPage>();
+            mainPage.ServiceProvider = Services;
+            shell.SetPage<MainPage>(mainPage);
+
             window.SetWindowIcon();
             window.Activate();
+
+            // UnoApp 比 WinApp 多一步：Android 上先确认能连上服务端（连不上就弹强制连接框）
+            if (OperatingSystem.IsAndroid())
+            {
+                await EnsureServerConnectedAsync(root);
+            }
+
+            // 连接成功后再让外壳导航到 NavigationPage
+            if (mainPage.NavigateToPage(StringsEnum.Bookcase) is NavigationPage navigationPage)
+            {
+                await navigationPage.OnNavigatedTo();
+            }
         }
         catch (Exception ex)
         {
@@ -71,6 +91,54 @@ public partial class App : Application
             System.Diagnostics.Debug.WriteLine(ex);
             ShowStartupError(ex);
         }
+    }
+
+    /// <summary>
+    /// Android 启动时先确认能连上服务端；连不上就弹出强制连接对话框（原来在 MainWindow 的
+    /// OnRootContentLoaded 里靠 Loaded 事件触发，现在改为 App 里显式调用）。
+    /// </summary>
+    private static async Task EnsureServerConnectedAsync(FrameworkElement root)
+    {
+        var client = Services.GetRequiredService<MangaAPIClient>();
+        var storage = Services.GetRequiredService<ServerStorage>();
+
+        try
+        {
+            if (await client.CheckConnectionAsync())
+            {
+                return;
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine(ex);
+        }
+
+        // 等可视树挂载后再弹框，否则 XamlRoot 为空会抛异常
+        await WaitForLoadedAsync(root);
+
+        ConnectDialog connectDialog = new(storage, client) { XamlRoot = root.XamlRoot };
+        await connectDialog.ShowAsync();
+    }
+
+    /// <summary> 等待元素进入可视树（已经 Loaded 则立即返回） </summary>
+    private static Task WaitForLoadedAsync(FrameworkElement element)
+    {
+        if (element.IsLoaded)
+        {
+            return Task.CompletedTask;
+        }
+
+        var tcs = new TaskCompletionSource();
+
+        void OnLoaded(object? sender, RoutedEventArgs e)
+        {
+            element.Loaded -= OnLoaded;
+            tcs.TrySetResult();
+        }
+
+        element.Loaded += OnLoaded;
+        return tcs.Task;
     }
 
     private static void ShowStartupError(Exception ex)

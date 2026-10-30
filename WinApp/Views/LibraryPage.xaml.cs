@@ -1,4 +1,4 @@
-﻿// https://go.microsoft.com/fwlink/?LinkId=234238
+// https://go.microsoft.com/fwlink/?LinkId=234238
 // 上介绍了“空白页”项模板
 
 namespace WinApp.Views.MainPageChildPages;
@@ -63,7 +63,7 @@ public sealed partial class LibraryPage : Page
     {
         var folderPicker = new FolderPicker();
 
-        var handle = WindowNative.GetWindowHandle(App.Services.GetRequiredService<MainWindow>());
+        var handle = WindowNative.GetWindowHandle(App.RootWindow!);
         InitializeWithWindow.Initialize(folderPicker, handle);
 
         folderPicker.FileTypeFilter.Add(".");

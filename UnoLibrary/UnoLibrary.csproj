@@ -1,4 +1,4 @@
-﻿<Project Sdk="Uno.Sdk">
+<Project Sdk="Uno.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net10.0;net10.0-ios;net10.0-android;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop</TargetFrameworks>
     <UnoSingleProject>true</UnoSingleProject>
@@ -12,9 +12,19 @@
       https://aka.platform.uno/singleproject-features
     -->
 
-    <UnoFeatures>
-      SkiaRenderer;Mvvm;
-    </UnoFeatures>
+    <UnoFeatures>SkiaRenderer;Mvvm</UnoFeatures>
+  </PropertyGroup>
+
+  <!--
+    移动端（Android / iOS / WebAssembly）才启用的东西：
+      - Toolkit：提供 Uno.Toolkit.UI.SafeArea，用来避开状态栏/刘海（Uno Platform 的默认适配做法）
+      - UNO_SINGLE_WINDOW：MainWindow 里据此决定是否把内容包一层 SafeArea
+    Windows / 桌面目标不启用，保证 WinApp 这类纯 WinAppSDK 项目不会被动引入 Uno.Toolkit/Uno.WinUI 依赖。
+    将来 WinApp 迁到 Uno Platform 后，把这个条件扩展到它的目标框架即可。
+  -->
+  <PropertyGroup Condition="$(TargetFramework.Contains('-android')) or $(TargetFramework.Contains('-ios')) or $(TargetFramework.Contains('-browserwasm'))">
+    <UnoFeatures>$(UnoFeatures);Toolkit</UnoFeatures>
+    <DefineConstants>$(DefineConstants);UNO_SINGLE_WINDOW</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
