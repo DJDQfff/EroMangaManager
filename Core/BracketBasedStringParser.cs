@@ -37,10 +37,8 @@ public static class BracketBasedStringParser
     public static bool ContainAnyBrackets(string str)
     {
         foreach (var b in LeftRightBrackets)
-        {
             if (str.Contains(b))
                 return true;
-        }
         return false;
     }
 
@@ -56,15 +54,10 @@ public static class BracketBasedStringParser
         {
             int count1 = tagstring.Count(n => n == LeftBrackets[i]);
             int count2 = tagstring.Count(n => n == RightBrackets[i]);
-            if (count1 != count2)
-            {
-                return -1;
-            }
-            if (count1 != 0)
-            {
-                brackettype++;
-            }
+            if (count1 != count2) return -1;
+            if (count1 != 0) brackettype++;
         }
+
         return brackettype;
     }
 
@@ -74,11 +67,11 @@ public static class BracketBasedStringParser
     /// <param name="input"></param>
     /// <returns></returns>
     public static List<string> Get_InsideContent(string input) =>
-        [
-            .. SplitByBrackets_KeepBracket(input)
-                .Where(piece => piece.IsIncludedInBracketPair())
-                .SelectMany(x => SplitByBrackets(x)),
-        ];
+    [
+        .. SplitByBrackets_KeepBracket(input)
+            .Where(piece => piece.IsIncludedInBracketPair())
+            .SelectMany(x => SplitByBrackets(x)),
+    ];
 
     /// <summary>
     /// 获取括号外字符串 推荐用这个
@@ -87,11 +80,11 @@ public static class BracketBasedStringParser
     /// <returns></returns>
     /// <remarks>如果这个没有括号外内容，会返回一个长度为0的list</remarks>
     public static List<string> Get_OutsideContent(string input) =>
-        [
-            .. SplitByBrackets_KeepBracket(input)
-                .Where(piece => !piece.IsIncludedInBracketPair())
-                .SelectMany(x => SplitByBrackets(x)),
-        ];
+    [
+        .. SplitByBrackets_KeepBracket(input)
+            .Where(piece => !piece.IsIncludedInBracketPair())
+            .SelectMany(x => SplitByBrackets(x)),
+    ];
 
     /// <summary>
     /// 是否包含在一对括号中（不要求首尾括号是相对应的类型）
@@ -100,16 +93,10 @@ public static class BracketBasedStringParser
     /// <returns></returns>
     public static bool IsIncludedInBracketPair(this string name)
     {
-        if (name.Length < 2)
-        {
-            return false;
-        }
+        if (name.Length < 2) return false;
         var start = name[0];
         var end = name[^1];
-        if (LeftRightBrackets.Contains(start) && LeftRightBrackets.Contains(end))
-        {
-            return true;
-        }
+        if (LeftRightBrackets.Contains(start) && LeftRightBrackets.Contains(end)) return true;
         return false;
     }
 
@@ -163,14 +150,13 @@ public static class BracketBasedStringParser
         var pieces = new List<string>();
         var n = new StringBuilder(_FileDisplayName);
         for (int i = n.Length - 1; i > 0; i--)
-        {
             if (LeftRightBrackets.Contains(n[i]))
             {
                 n.Insert(i + 1, '/');
 
                 n.Insert(i, '/');
             }
-        }
+
         // 这一步会把tag中的空格给消除，是一个小缺陷。以前使用空格有这个问题，现在换了个字符不知道有没有
         var _pieces = n.ToString().Split(['/']).Where(x => !string.IsNullOrWhiteSpace(x));
 
@@ -188,6 +174,7 @@ public static class BracketBasedStringParser
                 continue;
             }
         }
+
         return pieces;
     }
 
@@ -203,6 +190,7 @@ public static class BracketBasedStringParser
             var n = name[1..^1];
             return n.TrimBracket();
         }
+
         return name.Trim();
     }
 
@@ -251,16 +239,13 @@ public static class BracketBasedStringParser
                 manganame = _FileDisplayName;
                 tagslist.Clear();
             }
+
             if (CorrectBracketPairConut(_FileDisplayName) != -1)
-            {
                 //  所有tag都被括号包起来了，本子名应该未包含在括号里面，这样无法识别
                 Debug.WriteLine($"无法解析出Name：\n{_FileDisplayName}");
-            }
             else
-            {
                 //其他情况下的bug，应该没有了
                 Debug.WriteLine($"无法解析出Name：\n{_FileDisplayName}");
-            }
         }
 
         return (manganame, tagslist);
@@ -291,10 +276,7 @@ public static class BracketBasedStringParser
     /// <returns></returns>
     public static string Get_OutsideContent_Recursion(string name)
     {
-        if (CorrectBracketPairConut(name) == -1)
-        {
-            return name;
-        }
+        if (CorrectBracketPairConut(name) == -1) return name;
         var _name = name.Trim();
 
         var leftbracketindex = _name.IndexOfAny([.. LeftBrackets]);
@@ -338,6 +320,7 @@ public static class BracketBasedStringParser
             var str = t.Value;
             strings.Add(str);
         }
+
         strings.Sort((x, y) => -x.Length + y.Length);
         return strings.First();
     }

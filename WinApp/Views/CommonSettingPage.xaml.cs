@@ -2,34 +2,35 @@
 
 using UnoLibrary.Services;
 
-namespace WinApp.Views.SettingPageChildPages;
-
-/// <summary>
-/// 可用于自身或导航至 Frame 内部的空白页。
-/// </summary>
-public sealed partial class CommonSettingPage : Page
+namespace WinApp.Views.SettingPageChildPages
 {
-    public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(
-        nameof(ViewModel),
-        typeof(SettingViewModel),
-        typeof(CommonSettingPage),
-        new PropertyMetadata(null)
-    );
-
-    // 2. 包装属性
-    public SettingViewModel ViewModel
-    {
-        get => (SettingViewModel)GetValue(ViewModelProperty);
-        set => SetValue(ViewModelProperty, value);
-    }
-
     /// <summary>
-    /// 一般设置页面
+    /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public CommonSettingPage(SettingViewModel settingViewModel, ContentDialogCreater creater)
+    public sealed partial class CommonSettingPage : Page
     {
-        InitializeComponent();
-        ViewModel = settingViewModel;
-        ManageMangaOpenWay3Setting.ContentDialogCreater = creater;
+        public static readonly DependencyProperty ViewModelProperty = DependencyProperty.Register(
+            nameof(ViewModel),
+            typeof(SettingViewModel),
+            typeof(CommonSettingPage),
+            new PropertyMetadata(null)
+        );
+
+        // 2. 包装属性
+        public SettingViewModel ViewModel
+        {
+            get => (SettingViewModel)GetValue(ViewModelProperty);
+            set => SetValue(ViewModelProperty, value);
+        }
+
+        /// <summary>
+        /// 一般设置页面
+        /// </summary>
+        public CommonSettingPage(SettingViewModel settingViewModel, ContentDialogCreater creater)
+        {
+            InitializeComponent();
+            ViewModel = settingViewModel;
+            ManageMangaOpenWay3Setting.ContentDialogCreater = creater;
+        }
     }
 }

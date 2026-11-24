@@ -18,7 +18,9 @@ public sealed partial class RenameDialog : ContentDialog
     /// <param name="mangaBook"></param>
     /// <param name="suggestedname"></param>
     public RenameDialog(Manga mangaBook, string suggestedname)
-        : base() { }
+        : base()
+    {
+    }
 
     /// <summary>
     ///

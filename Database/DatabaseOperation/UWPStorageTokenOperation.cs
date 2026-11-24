@@ -26,7 +26,7 @@ public partial class DatabaseController
     public void UWPStorageToken_AddSingle(string path, string token, bool fileoffolder)
     {
         using var database = contextFactory.CreateDbContext();
-        var access = new UWPAccessIStorage()
+        var access = new UWPAccessIStorage
         {
             AccessToken = token,
             Path = path,

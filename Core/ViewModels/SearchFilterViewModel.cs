@@ -40,15 +40,13 @@ public partial class SearchFilterViewModel(
     [ObservableProperty]
     public partial bool FilterByFileSize { get; set; }
 
-    [ObservableProperty]
-    public partial long MinFileSize { get; set; }
+    [ObservableProperty] public partial long MinFileSize { get; set; }
 
     /// <summary>是否启用章节数筛选</summary>
     [ObservableProperty]
     public partial bool FilterByChapterAmount { get; set; }
 
-    [ObservableProperty]
-    public partial int MinChapterAmount { get; set; } = 1;
+    [ObservableProperty] public partial int MinChapterAmount { get; set; } = 1;
 
     /// <summary>0 表示不限</summary>
     [ObservableProperty]
@@ -69,8 +67,8 @@ public partial class SearchFilterViewModel(
     public partial bool ShowAllWhenNoCondition { get; set; } = true;
 
     #endregion
-    #region 筛选条件（UI 直接绑这里）
 
+    #region 筛选条件（UI 直接绑这里）
 
     /// <summary>是否启用章节名筛选</summary>
     [ObservableProperty]
@@ -81,13 +79,12 @@ public partial class SearchFilterViewModel(
     public partial string ChapterNameKeyword { get; set; } = "";
 
     #endregion
+
     #region 显示 / 分页
 
-    [ObservableProperty]
-    public partial bool IsPaged { get; set; } = true;
+    [ObservableProperty] public partial bool IsPaged { get; set; } = true;
 
-    [ObservableProperty]
-    public partial int PageSize { get; set; } = 20;
+    [ObservableProperty] public partial int PageSize { get; set; } = 20;
 
     /// <summary>当前页（从 1 开始）。NumberBox 双向绑这个。</summary>
     [ObservableProperty]
@@ -105,12 +102,12 @@ public partial class SearchFilterViewModel(
 
     /// <summary>可用标签（补全用，每次查询；量大再缓存）</summary>
     public IReadOnlyList<string> AvailableTags =>
-        [
-            .. Source
-                .SelectMany(x => x.Tags)
-                .Distinct(StringComparer.OrdinalIgnoreCase)
-                .OrderBy(t => t),
-        ];
+    [
+        .. Source
+            .SelectMany(x => x.Tags)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .OrderBy(t => t),
+    ];
 
     private List<Manga> _filtered = [];
     private bool _isFiltered = false;
@@ -162,6 +159,7 @@ public partial class SearchFilterViewModel(
                 || m.TranslatedName.Contains(kw, StringComparison.OrdinalIgnoreCase)
             );
         }
+
         if (FilterByChapterName && !string.IsNullOrWhiteSpace(ChapterNameKeyword))
         {
             var kw = ChapterNameKeyword.Trim();
@@ -169,21 +167,18 @@ public partial class SearchFilterViewModel(
                 m.Chapters.Any(c => c.Chaptername.Contains(kw, StringComparison.OrdinalIgnoreCase))
             );
         }
+
         if (RequiredTags.Count > 0)
-        {
             q = q.Where(m =>
                 RequiredTags.All(tag =>
                     m.Tags.Any(t => t.Equals(tag, StringComparison.OrdinalIgnoreCase))
                 )
             );
-        }
 
         if (FilterByFileSize)
-        {
             q = q.Where(m =>
                 m.FileSize >= MinFileSize && (MaxFileSize <= 0 || m.FileSize <= MaxFileSize)
             );
-        }
         if (FilterByChapterAmount)
         {
             int min = Math.Max(1, MinChapterAmount);
@@ -192,6 +187,7 @@ public partial class SearchFilterViewModel(
                 && (MaxChapterAmount <= 0 || m.Chapters.Count <= MaxChapterAmount)
             );
         } // 类型永远生效，至少一个
+
         if (FileTypes.Count > 0)
         {
             bool wantFolder = FileTypes.Contains("__folder__");
@@ -314,13 +310,11 @@ public partial class SearchFilterViewModel(
     {
         target.Clear();
         foreach (var tag in AvailableTags.Except(RequiredTags))
-        {
             if (
                 string.IsNullOrEmpty(query)
                 || tag.Contains(query, StringComparison.OrdinalIgnoreCase)
             )
                 target.Add(tag);
-        }
     }
 
     #endregion
@@ -332,6 +326,7 @@ public partial class SearchFilterViewModel(
     // =====================================================================
 
     #region 外部入口：流式过滤
+
     /// <summary>
     /// 同步过滤逻辑。条件由参数传入。
     /// 无条件时返回空（保持原 SearchMangaViewModel 的语义）。
@@ -353,11 +348,9 @@ public partial class SearchFilterViewModel(
         }
 
         if (tags is not null && tags.Any())
-        {
             q = q.Where(m =>
                 tags.All(y => m.Tags.Any(t => t.Equals(y, StringComparison.OrdinalIgnoreCase)))
             );
-        }
 
         return q;
     }

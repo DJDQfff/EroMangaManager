@@ -16,7 +16,9 @@ public class Chapter
     /// <summary>
     ///
     /// </summary>
-    public Chapter() { }
+    public Chapter()
+    {
+    }
 
     /// <summary>
     ///

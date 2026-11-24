@@ -38,6 +38,7 @@ public class ZipEntryHelper
             image.SaveAsPng(imageStream);
             imageStream.Position = 0;
         }
+
         var randomAccessStream = imageStream.AsRandomAccessStream();
 
         randomAccessStream.Seek(0); //记得偏移量归零，

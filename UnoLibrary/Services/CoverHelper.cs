@@ -21,9 +21,9 @@ public class CoverHelper
     /// <summary>
     /// 默认书籍封面路径
     /// </summary>
-    public string DefaultCoverUri { get; } = "ms-appx:///Assets/SVGs/book.svg";
+    public string DefaultCoverUri { get; } = "ms-appx:///Assets/Svg/book.svg";
 
-    public string ErrorCoverUri { get; } = "ms-appx:///Assets/SVGs/book-wrong-fill.svg";
+    public string ErrorCoverUri { get; } = "ms-appx:///Assets/Svg/bookwrong.svg";
 
     /// <summary>
     /// 获取默认封面
@@ -76,15 +76,11 @@ public class CoverHelper
         var storageItem = await folder.TryGetItemAsync(coverfile);
 
         if (storageItem is null)
-        {
             return await CreatCoverFile_Origin_SharpCompress(storageFile, filteredImages)
                 .ConfigureAwait(false);
-        }
         else
-        {
             // 命中缓存时，ValueTask 会将结果存在栈上的结构体中，零堆分配！
             return storageItem.Path;
-        }
     }
 
     /// <summary>
@@ -118,6 +114,7 @@ public class CoverHelper
                 }
             }
         }
+
         return path;
     }
 }

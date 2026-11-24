@@ -1,7 +1,7 @@
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace WinApp.UserControls.MangaBasicInfo;
+namespace UnoLibrary.UserControls;
 
 public sealed partial class TagsItemRepeater : UserControl
 {
@@ -22,6 +22,7 @@ public sealed partial class TagsItemRepeater : UserControl
         get => (ICommand)GetValue(CopyCommandProperty);
         set => SetValue(CopyCommandProperty, value);
     }
+
     public static readonly DependencyProperty NavigateCommandProperty = DependencyProperty.Register(
         nameof(NavigateCommand),
         typeof(ICommand),

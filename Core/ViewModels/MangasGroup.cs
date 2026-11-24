@@ -15,8 +15,7 @@ public partial class MangasGroup : ObservableObject
     /// </summary>
     public string Guid { get; set; } = string.Empty;
 
-    [ObservableProperty]
-    public partial MangasGroupUpdateState UpdateState { get; set; } = MangasGroupUpdateState.Ready;
+    [ObservableProperty] public partial MangasGroupUpdateState UpdateState { get; set; } = MangasGroupUpdateState.Ready;
 
     /// <summary>
     ///
@@ -33,7 +32,9 @@ public partial class MangasGroup : ObservableObject
     /// <summary>
     ///
     /// </summary>
-    public MangasGroup() { }
+    public MangasGroup()
+    {
+    }
 
     /// <summary>
     ///

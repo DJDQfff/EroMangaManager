@@ -27,7 +27,6 @@ public partial class Exporter(MangaStreamProvider mangaStreamProviderm)
             int startPageCount = pdf.PageCount;
 
             foreach (var stream in mangaStreamProviderm.GetStreams(chapter))
-            {
                 using (stream)
                 {
                     try
@@ -56,6 +55,7 @@ public partial class Exporter(MangaStreamProvider mangaStreamProviderm)
                         {
                             continue;
                         }
+
                         var page = pdf.AddPage();
                         using var ximage = XImage.FromStream(memoryStream);
 
@@ -71,7 +71,6 @@ public partial class Exporter(MangaStreamProvider mangaStreamProviderm)
                         Console.WriteLine($"[警告] 跳过损坏的图片: {ex.Message}");
                     }
                 }
-            }
 
             // 计算该章节实际添加的页数
             int addedPages = pdf.PageCount - startPageCount;
@@ -119,11 +118,9 @@ public class CustomFontResolver : IFontResolver
     {
         // 检查请求的字体名称是否在我们定义的字典中
         if (_fontFiles.ContainsKey(familyName))
-        {
             // 返回一个 FontResolverInfo 对象，告诉 PdfSharp 使用哪个字体
             // 参数分别是：字体名称、是否模拟粗体、是否模拟斜体
             return new FontResolverInfo(familyName, false, false);
-        }
         // 如果找不到，返回 null，PdfSharp 会尝试使用备用字体或抛出异常
         return null;
     }
@@ -138,10 +135,8 @@ public class CustomFontResolver : IFontResolver
     {
         // 根据字体名称找到对应的文件路径
         if (_fontFiles.TryGetValue(faceName, out var value))
-        {
             // 读取字体文件的所有字节并返回
             return File.ReadAllBytes(value);
-        }
         return null;
     }
 }

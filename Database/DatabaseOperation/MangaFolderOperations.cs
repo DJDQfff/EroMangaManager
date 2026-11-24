@@ -28,11 +28,12 @@ public partial class DatabaseController
         var a = database.MangaFolders.FirstOrDefault(x => x.Path == path);
         if (a is null)
         {
-            var folder = new MangaFolder() { Path = path };
+            var folder = new MangaFolder { Path = path };
             database.MangaFolders.Add(folder);
             await database.SaveChangesAsync();
             return true;
         }
+
         return false;
     }
 

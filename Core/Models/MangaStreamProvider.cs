@@ -26,12 +26,10 @@ public class MangaStreamProvider
             var result = ZipEncodingDetector.IsAllEntriesUseUtf8(chapter.Manga.FilePath);
             ReaderOptions options = new();
             if (!result)
-            {
                 options.ArchiveEncoding = new ArchiveEncoding
                 {
                     Default = Encoding.GetEncoding("GBK"),
                 };
-            }
             ;
 
             archive = ArchiveFactory.OpenArchive(chapter.Manga.FilePath, options);
@@ -40,7 +38,6 @@ public class MangaStreamProvider
         try
         {
             foreach (var str in chapter.Chapterimagekey)
-            {
                 switch (chapter.Manga.Type)
                 {
                     case "": // 文件夹
@@ -49,21 +46,16 @@ public class MangaStreamProvider
                         break;
 
                     default: // 压缩包
-                        {
-                            var entry = archive.Entries.SingleOrDefault(x => x.Key == str);
+                    {
+                        var entry = archive.Entries.SingleOrDefault(x => x.Key == str);
 
-                            if (entry is null)
-                            {
-                                yield break;
-                            }
-                            else
-                            {
-                                yield return entry.OpenEntryStream();
-                            }
-                        }
+                        if (entry is null)
+                            yield break;
+                        else
+                            yield return entry.OpenEntryStream();
+                    }
                         break;
                 }
-            }
         }
         finally
         {

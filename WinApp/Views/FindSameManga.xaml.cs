@@ -1,64 +1,64 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
-namespace WinApp.Views.FunctionChildPages;
-
-/// <summary>
-/// 可用于自身或导航至 Frame 内部的空白页。
-/// </summary>
-public sealed partial class FindSameManga : Page
+namespace WinApp.Views.FunctionChildPages
 {
-    private readonly SameMangaSearchViewModel viewModel = new();
-    private readonly ObservableCollectionVM observableCollectionVM;
-    private CancellationTokenSource cancellationTokenSource = new();
-    public MangaOperationViewModel MangaOperationViewModel { get; }
-
     /// <summary>
-    ///
+    /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public FindSameManga(
-        ObservableCollectionVM _observableCollectionVM,
-        MangaOperationViewModel mangaOperationViewModel,
-        CoverSetter _coverSetter
-    )
+    public sealed partial class FindSameManga : Page
     {
-        InitializeComponent();
+        private readonly SameMangaSearchViewModel viewModel = new();
+        private readonly ObservableCollectionVM observableCollectionVM;
+        private CancellationTokenSource cancellationTokenSource = new();
+        public MangaOperationViewModel MangaOperationViewModel { get; }
 
-        this.observableCollectionVM = _observableCollectionVM;
-        MangaOperationViewModel = mangaOperationViewModel;
-        _observableCollectionVM.EventAfterDeleteMangaSource +=
-            viewModel.DeleteStorageFileInRootObservable;
-        viewModel.AddGroup += async x =>
-            await _coverSetter.MultiLoadWork(x.Collections, true, true);
-    }
-
-    private async void Button_Click(object sender, RoutedEventArgs e)
-    {
-        if (cancellationTokenSource is null)
-            return;
-
-        cancellationTokenSource.Cancel();
-
-        cancellationTokenSource = new();
-        viewModel.Source =
-        [
-            .. observableCollectionVM.MangaList.Where(x => !string.IsNullOrWhiteSpace(x.Name)),
-        ];
-
-        switch (combobox.SelectedIndex)
+        /// <summary>
+        ///
+        /// </summary>
+        public FindSameManga(
+            ObservableCollectionVM _observableCollectionVM,
+            MangaOperationViewModel mangaOperationViewModel,
+            CoverSetter _coverSetter
+        )
         {
-            case 0:
-                await viewModel.Method0(cancellationTokenSource);
-                break;
+            InitializeComponent();
 
-            case 1:
-                await viewModel.Method1();
-                break;
+            this.observableCollectionVM = _observableCollectionVM;
+            MangaOperationViewModel = mangaOperationViewModel;
+            _observableCollectionVM.EventAfterDeleteMangaSource +=
+                viewModel.DeleteStorageFileInRootObservable;
+            viewModel.AddGroup += async x =>
+                await _coverSetter.MultiLoadWork(x.Collections, true, true);
+        }
 
-            case 2:
-                await viewModel.Method2(cancellationTokenSource);
-                break;
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (cancellationTokenSource is null)
+                return;
 
-            case 3:
+            cancellationTokenSource.Cancel();
+
+            cancellationTokenSource = new();
+            viewModel.Source =
+            [
+                .. observableCollectionVM.MangaList.Where(x => !string.IsNullOrWhiteSpace(x.Name)),
+            ];
+
+            switch (combobox.SelectedIndex)
+            {
+                case 0:
+                    await viewModel.Method0(cancellationTokenSource);
+                    break;
+
+                case 1:
+                    await viewModel.Method1();
+                    break;
+
+                case 2:
+                    await viewModel.Method2(cancellationTokenSource);
+                    break;
+
+                case 3:
                 {
                     // 可能有bug，没有设置xaml content
                     var selectcategory = App.Services.GetRequiredService<TagCategorySelect>();
@@ -74,7 +74,8 @@ public sealed partial class FindSameManga : Page
                         }
                     }
                 }
-                break;
+                    break;
+            }
         }
     }
 }

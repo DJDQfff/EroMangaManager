@@ -118,10 +118,7 @@ public class ObservableCollectionVM
         if (oldgroup.RemoveManga(manga))
         {
             var newgroup = MangasGroups.Single(x => x.FolderPath == manga.FolderPath);
-            if (!newgroup.Mangas.Contains(manga))
-            {
-                newgroup.AddManga(manga);
-            }
+            if (!newgroup.Mangas.Contains(manga)) newgroup.AddManga(manga);
         }
     }
 }

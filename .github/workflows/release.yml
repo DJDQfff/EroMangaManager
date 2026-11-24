@@ -19,17 +19,13 @@ jobs:
       Solution_Name: EroMangaManager.slnx
       Configuration: Release
       WindowsTargetFramework: net10.0-windows10.0.26100
+      Desktop_Project: Desktop/Desktop.csproj
 
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: recursive
-
-      - name: 克隆 MyLibrary
-        run: |
-          cd ..
-          git clone https://github.com/DJDQfff/MyLibrary.git MyLibrary
 
       - name: 安装 .NET
         uses: actions/setup-dotnet@v4
@@ -53,19 +49,17 @@ jobs:
       - name: 构建 MSIX（不签名，${{ matrix.platform.name }}）
         shell: pwsh
         run: |
-          $csproj = "WinApp/WinApp.csproj"
           $msbuildArgs = @(
-            $csproj,
+            $env:Desktop_Project,
             "/t:Publish",
             "/p:Configuration=$env:Configuration",
             "/p:Platform=${{ matrix.platform.name }}",
             "/p:RuntimeIdentifier=${{ matrix.platform.rid }}",
             "/p:TargetFramework=$env:WindowsTargetFramework",
-            "/p:AppxBundle=Never",
             "/p:GenerateAppxPackageOnBuild=true",
-            "/p:AppxPackageSigningEnabled=false",
-            "/p:PackageCertificateKeyFile=",
-            "/p:PackageCertificatePassword="
+            "/p:AppxBundle=Never",
+            "/p:UapAppxPackageBuildMode=Sideloading",
+            "/p:AppxPackageSigningEnabled=false"
           )
           & msbuild @msbuildArgs
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
@@ -75,12 +69,15 @@ jobs:
         run: |
           $platform = "${{ matrix.platform.name }}"
           $rid      = "${{ matrix.platform.rid }}"
-          $binRoot  = "WinApp/bin/$platform/$env:Configuration/$env:WindowsTargetFramework/$rid"
-          Write-Host "查找目录: $binRoot"
+          $binRoot  = "Desktop/bin"
+          Write-Host "搜索根目录: $binRoot（按 RID=$rid 过滤）"
 
-          $msix = Get-ChildItem -Path $binRoot -Filter "*_$platform.msix" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+          $msix = Get-ChildItem -Path $binRoot -Filter "*.msix" -Recurse -ErrorAction SilentlyContinue |
+                  Where-Object { $_.FullName -like "*$rid*" -and $_.Extension -eq '.msix' } |
+                  Sort-Object LastWriteTime -Descending |
+                  Select-Object -First 1
           if (-not $msix) {
-              Write-Error "❌ 未找到 $platform 的 MSIX 文件"
+              Write-Error "❌ 在 $binRoot 下未找到 RID=$rid 的 MSIX 文件"
               exit 1
           }
           Write-Host "找到: $($msix.FullName)"
@@ -106,12 +103,12 @@ jobs:
 
           $tag = "${{ github.ref_name }}"
           if ($tag -match '^v(.+)$') {
-              $newName = "EroMangaManager-$($matches[1])-$platform.msix"
-              Rename-Item $target $newName
-              Write-Host "✅ 已签名并重命名: $newName"
+              $newName = "EroMangaManager-Desktop-WinApp-$($matches[1])-$platform.msix"
           } else {
-              Write-Host "✅ 已签名（无 tag，保留原名）: $($msix.Name)"
+              $newName = "EroMangaManager-Desktop-WinApp-$platform.msix"
           }
+          Rename-Item $target $newName
+          Write-Host "✅ 已签名并重命名: $newName"
 
       - name: 上传 MSIX
         uses: actions/upload-artifact@v4
@@ -157,9 +154,9 @@ jobs:
         run: |
           $tag = "${{ github.ref_name }}"
           if ($tag -match '^v(.+)$') {
-              $bundle = "publish/EroMangaManager-$($matches[1]).msixbundle"
+              $bundle = "publish/EroMangaManager-Desktop-WinApp-$($matches[1])-x64-x86-ARM64.msixbundle"
           } else {
-              $bundle = "publish/EroMangaManager.msixbundle"
+              $bundle = "publish/EroMangaManager-Desktop-WinApp-x64-x86-ARM64.msixbundle"
           }
           New-Item -ItemType Directory -Force -Path "publish" | Out-Null
           & "${{ steps.find-tools.outputs.makeappx }}" bundle /o /d "./all-msix" /p $bundle
@@ -172,9 +169,9 @@ jobs:
           [IO.File]::WriteAllBytes("$env:GITHUB_WORKSPACE\signing-cert.pfx", [Convert]::FromBase64String("${{ secrets.CERTIFICATE_PFX }}"))
           $tag = "${{ github.ref_name }}"
           if ($tag -match '^v(.+)$') {
-              $bundle = "publish/EroMangaManager-$($matches[1]).msixbundle"
+              $bundle = "publish/EroMangaManager-Desktop-WinApp-$($matches[1])-x64-x86-ARM64.msixbundle"
           } else {
-              $bundle = "publish/EroMangaManager.msixbundle"
+              $bundle = "publish/EroMangaManager-Desktop-WinApp-x64-x86-ARM64.msixbundle"
           }
           & "${{ steps.find-tools.outputs.signtool }}" sign /fd SHA256 /a `
             /f "$env:GITHUB_WORKSPACE\signing-cert.pfx" `
@@ -201,11 +198,6 @@ jobs:
         with:
           submodules: recursive
 
-      - name: 克隆 MyLibrary
-        run: |
-          cd ..
-          git clone https://github.com/DJDQfff/MyLibrary.git MyLibrary
-
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '10.0.x'
@@ -222,7 +214,7 @@ jobs:
       - name: 构建 Android APK (${{ matrix.arch.suffix }})
         shell: pwsh
         run: |
-          dotnet publish UnoApp/UnoApp.csproj `
+          dotnet publish Client/Client.csproj `
             -f net10.0-android `
             -r ${{ matrix.arch.rid }} `
             -c Release `
@@ -237,9 +229,9 @@ jobs:
           if (-not $apk) { Write-Error "❌ 未生成签名 APK"; exit 1 }
           $tag = "${{ github.ref_name }}"
           if ($tag -match '^v(.+)$') {
-              $newName = "EroMangaBrowser-$($matches[1])-${{ matrix.arch.suffix }}-Signed.apk"
+              $newName = "EroMangaManager-Client-Android-$($matches[1])-${{ matrix.arch.suffix }}-Signed.apk"
           } else {
-              $newName = "EroMangaBrowser-${{ matrix.arch.suffix }}-Signed.apk"
+              $newName = "EroMangaManager-Client-Android-${{ matrix.arch.suffix }}-Signed.apk"
           }
           Rename-Item $apk.FullName $newName
           Write-Host "✅ 生成: $newName"

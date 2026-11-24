@@ -40,12 +40,10 @@ public class StringCollection<TSource, TArrayItem>
             //var behindFdj = checkList.GetRange(index + 1, checkList.Count - index);
             var maxLength = currentCheckItem.ParserArray.Length;
             for (int start = 0; start < maxLength; start++)
+            for (int length = MinItemLength; start + length <= maxLength; length++)
             {
-                for (int length = MinItemLength; start + length <= maxLength; length++)
-                {
-                    var item = currentCheckItem.ParserArray[start..(length + start)]; // 这是以前的.Skip(start).Take(length);
-                    CountBehind(checkList, index, item);
-                }
+                var item = currentCheckItem.ParserArray[start..(length + start)]; // 这是以前的.Skip(start).Take(length);
+                CountBehind(checkList, index, item);
             }
         }
     }
@@ -66,10 +64,7 @@ public class StringCollection<TSource, TArrayItem>
             var currentCheckArrayLength = currentCheck.ParserArray.Length;
 
             // 调用提取出来的方法，如果找到则直接跳出外层循环
-            if (FindMatch(currentCheck, currentCheckArrayLength, checkTargets, index))
-            {
-                break;
-            }
+            if (FindMatch(currentCheck, currentCheckArrayLength, checkTargets, index)) break;
         }
     }
 
@@ -115,20 +110,16 @@ public class StringCollection<TSource, TArrayItem>
     )
     {
         for (int start = 0; start < arrayLength; start++)
+        for (
+            int length = arrayLength;
+            MinItemLength <= length && start + length <= arrayLength;
+            length--
+        )
         {
-            for (
-                int length = arrayLength;
-                MinItemLength <= length && start + length <= arrayLength;
-                length--
-            )
-            {
-                var item = currentCheck.ParserArray[start..(length + start)];
-                if (CountBehind(targets, currentIndex, item))
-                {
-                    return true; // 找到即返回，优雅地跳出所有循环
-                }
-            }
+            var item = currentCheck.ParserArray[start..(length + start)];
+            if (CountBehind(targets, currentIndex, item)) return true; // 找到即返回，优雅地跳出所有循环
         }
+
         return false;
     }
 
@@ -161,19 +152,19 @@ public class StringCollection<TSource, TArrayItem>
                     repeatitem.CheckArrays.Add(behindTarget);
                 }
             }
+
             if (repeatitem.Count >= MinOccurTimes)
             {
                 RepeatItemsList.Add(repeatitem);
                 Console.WriteLine(repeatitem.Count);
-                foreach (var item1 in repeatitem.Items)
-                {
-                   Debug. WriteLine(item1);
-                }
+                foreach (var item1 in repeatitem.Items) Debug.WriteLine(item1);
                 return true;
             }
         }
+
         return false;
     }
+
     /// <summary>
     /// 一个短数组在长数组中重复出现的次数（原位滑动窗口比对）
     /// </summary>
@@ -183,13 +174,12 @@ public class StringCollection<TSource, TArrayItem>
         for (int index = 0; index + shortArray.Length <= longArray.Length; index++)
         {
             var comparor = longArray[index..(index + shortArray.Length)];
-            if (shortArray.SequenceEqual(comparor))
-            {
-                count++;
-            }
+            if (shortArray.SequenceEqual(comparor)) count++;
         }
+
         return count;
     }
+
     public class RepeatItem(TArrayItem[] content)
     {
         /// <summary>

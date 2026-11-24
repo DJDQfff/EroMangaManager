@@ -3,11 +3,11 @@
 
 using Database;
 
-namespace UnoLibrary.ContentDialogPages;
+namespace UnoLibrary.ContentDialogs;
 
 public sealed partial class TagCategorySelect : ContentDialog
 {
-    readonly DatabaseController databaseController;
+    private readonly DatabaseController databaseController;
 
     public TagCategorySelect(Window window, DatabaseController _databaseController)
     {
@@ -21,9 +21,6 @@ public sealed partial class TagCategorySelect : ContentDialog
     private void Combobox_Loaded(object sender, RoutedEventArgs e)
     {
         var category = databaseController.TagCategory_Query();
-        if (category != null)
-        {
-            combobox.ItemsSource = category;
-        }
+        if (category != null) combobox.ItemsSource = category;
     }
 }

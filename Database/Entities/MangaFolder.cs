@@ -1,18 +1,17 @@
-﻿namespace Database.Entities
+﻿namespace Database.Entities;
+
+/// <summary>
+/// 添加的文件夹
+/// </summary>
+public class MangaFolder : IDatabaseID
 {
     /// <summary>
-    /// 添加的文件夹
+    ///
     /// </summary>
-    public class MangaFolder : IDatabaseID
-    {
-        /// <summary>
-        ///
-        /// </summary>
-        public int ID { set; get; }
+    public int ID { set; get; }
 
-        /// <summary>
-        ///
-        /// </summary>
-        public string Path { set; get; } = null!;
-    }
+    /// <summary>
+    ///
+    /// </summary>
+    public string Path { set; get; } = null!;
 }

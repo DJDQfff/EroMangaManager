@@ -1,7 +1,4 @@
-using System.Windows.Input;
-using CommunityToolkit.Mvvm.Input;
-
-namespace WinApp.UserControls;
+namespace UnoLibrary.UserControls;
 
 public sealed partial class RenameMangaByEditString : UserControl
 {
@@ -16,6 +13,7 @@ public sealed partial class RenameMangaByEditString : UserControl
         typeof(RenameMangaByEditString),
         new PropertyMetadata(null, OnMangaChanged)
     );
+
     public Manga Manga
     {
         get => (Manga)GetValue(MangaProperty);
@@ -34,8 +32,9 @@ public sealed partial class RenameMangaByEditString : UserControl
     public bool IsNewnameOK
     {
         set;
-        get { return field && (NewDisplayName != Manga?.FileDisplayName); }
+        get { return field && NewDisplayName != Manga?.FileDisplayName; }
     }
+
     public event Action WrongInput = delegate { };
     public event Action CorrectInput = delegate { };
     public string NewDisplayName => textbox.Text;
@@ -71,17 +70,20 @@ public sealed partial class RenameMangaByEditString : UserControl
         typeof(RenameMangaByEditString),
         new PropertyMetadata(null)
     );
+
     public MangaIO MangaFileIO
     {
         get => (MangaIO)GetValue(MangaFileIOProperty);
         set => SetValue(MangaFileIOProperty, value);
     }
+
     public static readonly DependencyProperty INotifierProperty = DependencyProperty.Register(
         nameof(INotifier),
         typeof(INotifier),
         typeof(RenameMangaByEditString),
         new PropertyMetadata(null)
     );
+
     public INotifier INotifier
     {
         get => (INotifier)GetValue(INotifierProperty);

@@ -32,16 +32,10 @@ public class SimilarNameComparor(IEnumerable<Manga> _books)
         var list2 = new List<Manga>();
         //简单分类
         foreach (var book in books)
-        {
             if (book.Name.Contains(' '))
-            {
                 list1.Add(book);
-            }
             else
-            {
                 list2.Add(book);
-            }
-        }
 
         // 对dic2里的本子，找出唯一本子名，挪到dic1里去
         list1.Sort((x, y) => x.Name.Length - y.Name.Length);
@@ -58,12 +52,8 @@ public class SimilarNameComparor(IEnumerable<Manga> _books)
     {
         // TODO 看看能不能用迭代器
         if (!books.Contains(book))
-        {
             throw new ArgumentException("传入本子不是要比较的一部分");
-        }
         else
-        {
             return mangaBookDictionary[book];
-        }
     }
 }

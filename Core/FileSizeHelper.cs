@@ -1,13 +1,14 @@
 ﻿namespace Core;
+
 public static class FileSizeHelper
 {
-    private static readonly string[] BinaryUnits = ["B" , "KiB" , "MiB" , "GiB" , "TiB" , "PiB"];
-    private static readonly string[] DecimalUnits = ["B" , "KB" , "MB" , "GB" , "TB" , "PB"];
+    private static readonly string[] BinaryUnits = ["B", "KiB", "MiB", "GiB", "TiB", "PiB"];
+    private static readonly string[] DecimalUnits = ["B", "KB", "MB", "GB", "TB", "PB"];
 
     /// <summary>
     /// 格式化文件大小（IEC 二进制标准，1024 进制），例如：KiB, MiB， GiB
     /// </summary>
-    public static string FormatFileSizeBinary (long bytes)
+    public static string FormatFileSizeBinary(long bytes)
     {
         if (bytes <= 0)
             return "0 B";
@@ -27,7 +28,7 @@ public static class FileSizeHelper
     /// <summary>
     /// 格式化文件大小（SI 十进制标准，1000 进制），单位为 KB、MB、GB 等
     /// </summary>
-    public static string FormatFileSizeDecimal (long bytes)
+    public static string FormatFileSizeDecimal(long bytes)
     {
         if (bytes <= 0)
             return "0 B";

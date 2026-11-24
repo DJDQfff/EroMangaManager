@@ -1,5 +1,4 @@
-﻿
-namespace Core.ViewModels;
+﻿namespace Core.ViewModels;
 
 /// <summary>
 /// 阅读页面的ViewModel
@@ -71,10 +70,7 @@ public class ReaderVM : IDisposable
     /// <returns></returns>
     public Stream? GetOrAddShowedEntry(IArchiveEntry entry)
     {
-        if (isworking)
-        {
-            return null;
-        }
+        if (isworking) return null;
 
         try
         {
@@ -90,6 +86,7 @@ public class ReaderVM : IDisposable
             {
                 bitimage = value;
             }
+
             isworking = false;
             return bitimage;
         }
@@ -108,10 +105,7 @@ public class ReaderVM : IDisposable
     {
         foreach (IArchiveEntry entry in FilteredArchiveImageEntries)
         {
-            if (_IsClosing)
-            {
-                return;
-            }
+            if (_IsClosing) return;
             //Stream bitmapImage = entry.OpenEntryStream();
             _ = GetOrAddShowedEntry(entry);
         }

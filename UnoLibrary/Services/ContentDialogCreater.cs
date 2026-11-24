@@ -1,4 +1,4 @@
-﻿using UnoLibrary.ContentDialogPages;
+﻿using UnoLibrary.ContentDialogs;
 using WinApp.Views.ContentDialogPages;
 
 namespace UnoLibrary.Services;
@@ -24,25 +24,17 @@ public partial class ContentDialogCreater(
 
         var storageFile = await fileSavePicker.PickSaveFileAsync();
         if (storageFile is not null)
-        {
             try
             {
                 await Task.Run(() => exporter.Export_PDFSharp(mangaBook, storageFile.Path));
                 var done = StringsExtension.ResourceLoader.GetString("ExportDone");
-                if (done != null)
-                {
-                    notifier.NotifyWorkDone(done);
-                }
+                if (done != null) notifier.NotifyWorkDone(done);
             }
             catch
             {
                 var failed = StringsExtension.ResourceLoader.GetString("ExportFailed");
-                if (failed != null)
-                {
-                    notifier.NotifyFailure(failed);
-                }
+                if (failed != null) notifier.NotifyFailure(failed);
             }
-        }
     }
 
     ///// <summary>

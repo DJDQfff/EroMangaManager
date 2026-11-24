@@ -1,9 +1,7 @@
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-using UnoLibrary.Services;
-
-namespace WinApp.UserControls.MangaBasicInfo;
+namespace UnoLibrary.UserControls;
 
 public sealed partial class Cover : UserControl
 {
@@ -43,8 +41,24 @@ public sealed partial class Cover : UserControl
         InitializeComponent();
     }
 
-    private void Image_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+    private async void Image_ImageFailed(object sender, ExceptionRoutedEventArgs e)
     {
-        image.Source = new SvgImageSource(new Uri("ms-appx://UnoLibrary/Assets/error.svg")); // CoverHelper.ErrorCoverImage;
+        try
+        {
+//  在win上，路径被识别成绝对路径。
+//但是在linux上，如/home/xxx/xxx.jpg被识别成相对路径，在xaml绑定中会在前面补上运行时目录
+// 手动加载流赋值
+            using (var stream = File.OpenRead(Manga.CoverUri))
+            {
+                var bitmapImage = new BitmapImage();
+                await bitmapImage.SetSourceAsync(stream.AsRandomAccessStream());
+                image.Source = bitmapImage; // 这里的 image 是你 XAML 中的 x:Name
+            }
+        }
+        catch
+        {
+            // 加载错误图标
+            image.Source = new SvgImageSource(new Uri("ms-appx:///Assets/error.svg")); // CoverHelper.ErrorCoverImage;
+        }
     }
 }

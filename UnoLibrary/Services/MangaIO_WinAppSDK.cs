@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace UnoLibrary.Services;
+﻿namespace UnoLibrary.Services;
 
 public class MangaIO_WinAppSDK(CoverHelper coverHelper) : MangaIO
 {
@@ -11,7 +7,7 @@ public class MangaIO_WinAppSDK(CoverHelper coverHelper) : MangaIO
         try
         {
             // 结合思路二的简洁性：用 switch 表达式直接路由
-            string? coverpath = manga.Type switch
+            var coverpath = manga.Type switch
             {
                 "" => LoadCoverFromInternalFolder(manga.FilePath),
                 _ => await coverHelper.TryCreatCoverFileAsync(manga.FilePath, null),
@@ -20,10 +16,10 @@ public class MangaIO_WinAppSDK(CoverHelper coverHelper) : MangaIO
             // 结合思路一的防御性：如果是 null，直接返回默认封面，无需抛异常
             return coverpath ?? coverHelper.DefaultCoverUri;
         }
-        catch (Exception)
+        catch (Exception exception)
         {
             // 发生任何异常（如文件损坏等），返回错误封面
-            // TODO: 建议在这里加一行日志记录 ex.Message
+            Debug.WriteLine(exception.Message);
             return coverHelper.ErrorCoverUri;
         }
     }
@@ -33,18 +29,18 @@ public class MangaIO_WinAppSDK(CoverHelper coverHelper) : MangaIO
         switch (manga.Type)
         {
             case "":
-                {
-                    var folder = await StorageFolder.GetFolderFromPathAsync(manga.FilePath);
+            {
+                var folder = await StorageFolder.GetFolderFromPathAsync(manga.FilePath);
 
-                    await folder.DeleteAsync(StorageDeleteOption.Default);
-                }
+                await folder.DeleteAsync(StorageDeleteOption.Default);
+            }
                 break;
 
             default:
-                {
-                    var file = await StorageFile.GetFileFromPathAsync(manga.FilePath);
-                    await file.DeleteAsync();
-                }
+            {
+                var file = await StorageFile.GetFileFromPathAsync(manga.FilePath);
+                await file.DeleteAsync();
+            }
                 break;
         }
     }

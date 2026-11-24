@@ -30,7 +30,9 @@ public partial class MangasGroupDTO : ObservableObject
     /// <summary>
     /// 无参构造，保留用于序列化
     /// </summary>
-    public MangasGroupDTO() { }
+    public MangasGroupDTO()
+    {
+    }
 
     /// <summary>
     ///

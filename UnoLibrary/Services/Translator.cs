@@ -26,21 +26,14 @@ public class Translator(ObservableCollectionVM collectionVM)
         }
 
         if (results != null)
-        {
             //List<(string, string)> translateTuples = new List<(string, string)>();
-
             foreach (var manga in collectionVM.MangaList)
             {
                 var newname = results.Where(n => n.src == manga.Name)?.FirstOrDefault()?.dst;
-                if (newname != null)
-                {
-                    manga.TranslatedName = newname;
-                    //translateTuples.Add((Manga.FilePath, newname));
-                }
+                if (newname != null) manga.TranslatedName = newname;
+                //translateTuples.Add((Manga.FilePath, newname));
             }
-
-            // 找到了，在生成ReadingInfo时，就已经添加到datavase了，所以上面直接修改TranslatedName会被EFCore跟踪修改
-            //await DatabaseController.ReadingInfo_MultiTranslateName(translateTuples);
-        }
+        // 找到了，在生成ReadingInfo时，就已经添加到datavase了，所以上面直接修改TranslatedName会被EFCore跟踪修改
+        //await DatabaseController.ReadingInfo_MultiTranslateName(translateTuples);
     }
 }

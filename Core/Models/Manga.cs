@@ -38,7 +38,9 @@ public partial class Manga : ObservableObject /*,IMangaView*/
     public partial int ChapterAmount { get; set; }
 
     /// <summary> 实例化EroManga </summary>
-    public Manga() { }
+    public Manga()
+    {
+    }
 
     /// <summary>
     ///
@@ -56,6 +58,7 @@ public partial class Manga : ObservableObject /*,IMangaView*/
             FileDisplayName = Path.GetFileName(FilePath);
             Type = string.Empty;
         }
+
         if (File.Exists(FilePath))
         {
             FileDisplayName = Path.GetFileNameWithoutExtension(FilePath);
@@ -77,7 +80,9 @@ public partial class Manga : ObservableObject /*,IMangaView*/
             FileFullName = Path.GetFileName(FilePath);
         }
         else
+        {
             throw new InvalidOperationException($"无法从文件路径提取目录名: '{FilePath}'");
+        }
     }
 
     /// <summary> 漫画翻译后的名称 </summary>

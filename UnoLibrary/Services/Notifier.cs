@@ -6,16 +6,14 @@ using Core.Interfaces;
 using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
 #endif
+
 namespace UnoLibrary.Services;
 
 public class Notifier : INotifier
 {
     public void Notify(string message, int durationInSeconds = 5)
     {
-        if (message == null)
-        {
-            return;
-        }
+        if (message == null) return;
 #if WINDOWS
         var appNotification = new AppNotificationBuilder().AddText(message).BuildNotification();
         AppNotificationManager.Default.Show(appNotification);

@@ -1,5 +1,6 @@
-﻿using System.Linq;          // IGrouping
-using System.Collections;   // IEnumerator / IEnumerable
+﻿using System.Linq; // IGrouping
+using System.Collections; // IEnumerator / IEnumerable
+
 namespace Core.RepetitiveGroup;
 
 /// <summary>
@@ -26,10 +27,7 @@ public class Group<TKey, TElement> : IGrouping<TKey, TElement>, IDisposable
     public void Initial(IGrouping<TKey, TElement> _files)
     {
         Key = _files.Key;
-        foreach (var file in _files)
-        {
-            Collections.Add(file);
-        }
+        foreach (var file in _files) Collections.Add(file);
     }
 
     public void Initial(TKey key)
@@ -44,10 +42,7 @@ public class Group<TKey, TElement> : IGrouping<TKey, TElement>, IDisposable
 
     public void AddElement(IEnumerable<TElement> elements)
     {
-        foreach (var element in elements)
-        {
-            Collections.Add(element);
-        }
+        foreach (var element in elements) Collections.Add(element);
     }
 
     /// <summary>

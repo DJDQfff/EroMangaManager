@@ -211,7 +211,7 @@
     <value>Delete the source file</value>
   </data>
   <data name="DeletieModeDisabled" xml:space="preserve">
-    <value>Delete mode disabled: Move to Recycle Bin only</value>
+    <value>Delete mode disabled: On WinMove to Recycle Bin only;On Linux,directly delte</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>This is a manga manager to manage and read your comics in zip format. The internal images must be in jpg, png, and webp formats</value>

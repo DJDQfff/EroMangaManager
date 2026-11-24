@@ -1,6 +1,4 @@
-﻿
-
-namespace Core.RepetitiveGroup;
+﻿namespace Core.RepetitiveGroup;
 
 public class RepeatItemsGroupWithMethod<TKey, TElement, TGroup>
     : GroupsViewModel<TKey, TElement, TGroup>
@@ -27,13 +25,11 @@ public class RepeatItemsGroupWithMethod<TKey, TElement, TGroup>
             await Task.Run(() =>
             {
                 for (var index = elements.Count - 1; index >= 0; index--)
-                {
                     if (elementgetkey(elements[index], key))
                     {
                         group.AddElement(elements[index]);
                         elements.RemoveAt(index);
                     }
-                }
             });
             if (group.Collections.Count > 1)
             {
@@ -52,10 +48,7 @@ public class RepeatItemsGroupWithMethod<TKey, TElement, TGroup>
     {
         while (elements.Count > 1)
         {
-            if (cancellationToken.Token.IsCancellationRequested)
-            {
-                return;
-            }
+            if (cancellationToken.Token.IsCancellationRequested) return;
 
             TGroup group = new();
 
@@ -64,13 +57,9 @@ public class RepeatItemsGroupWithMethod<TKey, TElement, TGroup>
                 {
                     for (int index = elements.Count - 2; index >= 0; index--)
                     {
-                        if (cancellationToken.Token.IsCancellationRequested)
-                        {
-                            return;
-                        }
+                        if (cancellationToken.Token.IsCancellationRequested) return;
                         var key = compare(elements[^1], elements[index]);
                         if (key != null)
-                        {
                             if (filt(key))
                             {
                                 if (group.Key is null)
@@ -78,14 +67,15 @@ public class RepeatItemsGroupWithMethod<TKey, TElement, TGroup>
                                     group.Initial(key);
                                     group.AddElement(elements[^1]);
                                 }
+
                                 if (key.Equals(group.Key))
                                 {
                                     group.AddElement(elements[index]);
                                     elements.Remove(elements[index]);
                                 }
                             }
-                        }
                     }
+
                     elements.Remove(elements[^1]);
                 },
                 cancellationToken.Token
@@ -95,10 +85,7 @@ public class RepeatItemsGroupWithMethod<TKey, TElement, TGroup>
             {
                 RepeatPairs.Add(group);
                 AddGroup?.Invoke(group);
-                foreach (var manga in group.Collections)
-                {
-                    AddToResult?.Invoke(manga);
-                }
+                foreach (var manga in group.Collections) AddToResult?.Invoke(manga);
             }
         }
     }
@@ -133,18 +120,13 @@ public class RepeatItemsGroupWithMethod<TKey, TElement, TGroup>
         async IAsyncEnumerable<TGroup> GetGroups()
         {
             foreach (var cc in a)
-            {
                 if (cc.Count() > 1)
                 {
                     TGroup group = new();
                     group.Initial(cc!);
                     var can = filt?.Invoke(group);
-                    if (can.GetValueOrDefault())
-                    {
-                        yield return group;
-                    }
+                    if (can.GetValueOrDefault()) yield return group;
                 }
-            }
         }
 
         await foreach (var group in GetGroups())

@@ -1,7 +1,7 @@
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace WinApp.UserControls.MangaBasicInfo;
+namespace UnoLibrary.UserControls;
 
 public sealed partial class Name : UserControl
 {
@@ -20,6 +20,7 @@ public sealed partial class Name : UserControl
         get => (Manga)GetValue(MangaProperty);
         set => SetValue(MangaProperty, value);
     }
+
     public static readonly DependencyProperty CopyCommandProperty = DependencyProperty.Register(
         nameof(CopyCommand),
         typeof(ICommand),

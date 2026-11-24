@@ -26,14 +26,9 @@ public class CoverSetter(MangaIO mangaIO)
     /// <returns></returns>
     public async Task SingleLoadWork(Manga manga, bool setcover = true, bool loadinfo = true)
     {
-        if (setcover)
-        {
-            await mangaIO.EnsureCoverSetted(manga);
-        }
+        if (setcover) await mangaIO.EnsureCoverSetted(manga);
         if (loadinfo) // 以filesize是否为0，来判断漫画信息是否已初始化
-        {
             await mangaIO.EnsureMangaInfoSetted(manga);
-        }
     }
 
     /// <summary>
@@ -49,10 +44,7 @@ public class CoverSetter(MangaIO mangaIO)
         bool loadinfo = true
     )
     {
-        foreach (var manga in mangas.ToArray())
-        {
-            await SingleLoadWork(manga, setcover, loadinfo);
-        }
+        foreach (var manga in mangas.ToArray()) await SingleLoadWork(manga, setcover, loadinfo);
     }
 
     /// <summary>
@@ -91,15 +83,11 @@ public class CoverSetter(MangaIO mangaIO)
 
                     await SingleLoadWork(manga, setcover, loadinfo);
                 }
-                if (popqueue.Count == 0)
-                {
-                    _ = Stacks.Pop();
-                }
+
+                if (popqueue.Count == 0) _ = Stacks.Pop();
             }
-            if (Stacks.Count == 0)
-            {
-                Isworking = false;
-            }
+
+            if (Stacks.Count == 0) Isworking = false;
         }
     }
 }

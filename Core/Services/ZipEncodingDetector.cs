@@ -51,7 +51,6 @@ public static class ZipEncodingDetector
             using var archive = ZipArchive.OpenArchive(zipPath, options);
 
             foreach (var entry in archive.Entries)
-            {
                 try
                 {
                     // 触发 CustomDecoder 进行解码
@@ -62,7 +61,6 @@ public static class ZipEncodingDetector
                     // 只要有一个文件名的 UTF-8 解码失败，就说明不是全 UTF-8
                     return false;
                 }
-            }
 
             // 所有文件名都成功通过了严格的 UTF-8 解码
             return true;

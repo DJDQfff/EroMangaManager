@@ -71,10 +71,7 @@ public partial class SearchMangaViewModel(ObservableCollectionVM collectionVM) :
         ResultMangas.Clear();
         foreach (var manga in result)
         {
-            if (ResultNewAddSingle != null)
-            {
-                await ResultNewAddSingle.Invoke(manga);
-            }
+            if (ResultNewAddSingle != null) await ResultNewAddSingle.Invoke(manga);
             await Task.Yield(); // 让出线程，避免 UI 卡顿
             ResultMangas.Add(manga);
         }
@@ -90,10 +87,7 @@ public partial class SearchMangaViewModel(ObservableCollectionVM collectionVM) :
     {
         var result = FilterMangas(RequiredText, RequiredTags).ToList();
         ResultMangas.Clear();
-        foreach (var manga in result)
-        {
-            ResultMangas.Add(manga);
-        }
+        foreach (var manga in result) ResultMangas.Add(manga);
         ResultNewAddMulti?.Invoke(ResultMangas);
     }
 
@@ -105,10 +99,8 @@ public partial class SearchMangaViewModel(ObservableCollectionVM collectionVM) :
         AvailableTags.Clear();
         // 数据源来自注入的 ObservableCollectionVM
         foreach (var tag in collectionVM.AllTags.Except(RequiredTags))
-        {
             if (tag.Contains(query))
                 AvailableTags.Add(tag);
-        }
     }
 
     /// <summary>
@@ -117,10 +109,7 @@ public partial class SearchMangaViewModel(ObservableCollectionVM collectionVM) :
     private IEnumerable<Manga> FilterMangas(string? name, IEnumerable<string> tags)
     {
         // 基础校验：无搜索条件时返回空，避免无条件全量加载
-        if (string.IsNullOrWhiteSpace(name) && (tags == null || !tags.Any()))
-        {
-            return [];
-        }
+        if (string.IsNullOrWhiteSpace(name) && (tags == null || !tags.Any())) return [];
 
         // 数据源来自注入的 ObservableCollectionVM
         return collectionVM

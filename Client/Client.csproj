@@ -1,0 +1,90 @@
+<Project Sdk="Uno.Sdk">
+    <PropertyGroup>
+        <!-- 显式指定为 MSIX 打包模式 -->
+        <AppxPackage>true</AppxPackage>
+        <WindowsPackageType>MSIX</WindowsPackageType>
+        <OutputType>Exe</OutputType>
+        <!--<UnoDisableHotDesign>true</UnoDisableHotDesign>-->
+
+        <!-- 在 Linux 上构建时，Rider 不会像命令行那样自动过滤掉不支持的平台（如 Windows 的 WinAppSDK 目标）。
+        因此会报错 UNOB0014，提示"在 macOS 或 Linux 上构建不受支持"。-->
+        <!-- 1. 基础列表：所有平台都支持的通用目标 net10.0-browserwasm在rider上会导致便是失败及rider自身混乱-->
+        <TargetFrameworks>net10.0-android;net10.0-desktop</TargetFrameworks>
+        <!-- 2. 仅在 Windows 上追加 Windows 目标 -->
+        <TargetFrameworks Condition=" $([MSBuild]::IsOSPlatform('windows')) ">$(TargetFrameworks);net10.0-windows10.0.26100</TargetFrameworks>
+        <!-- 3. 仅在非 Linux（即 Windows/macOS）上追加 iOS 目标 -->
+        <TargetFrameworks Condition=" !$([MSBuild]::IsOSPlatform('linux')) ">$(TargetFrameworks);net10.0-ios</TargetFrameworks>
+
+
+         
+
+        <!-- Display name -->
+        <ApplicationTitle>本子管理器</ApplicationTitle>
+        <!-- App Identifier -->
+        <ApplicationId>djdqfff.EroMangaManager.Client.Debug</ApplicationId>
+        <!-- Versions -->
+        <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+        <ApplicationVersion>1</ApplicationVersion>
+        <!-- Package Publisher -->
+        <ApplicationPublisher>djdqfff</ApplicationPublisher>
+        <!-- Package Description -->
+        <Description>EroMangaBrowser, Local Network Browser For EroMangaManager. Powered by Uno Platform.</Description>
+        <!--
+          If you encounter this error message:
+    
+            error NETSDK1148: A referenced assembly was compiled using a newer version of Microsoft.Windows.SDK.NET.dll.
+            Please update to a newer .NET SDK in order to reference this assembly.
+    
+          This means that the two packages below must be aligned with the "build" version number of
+          the "Microsoft.Windows.SDK.BuildTools" package above, and the "revision" version number
+          must be the highest found in https://www.nuget.org/packages/Microsoft.Windows.SDK.NET.Ref.
+        -->
+        <!-- <WindowsSdkPackageVersion>10.0.22621.28</WindowsSdkPackageVersion> -->
+        <!--
+          UnoFeatures are used to quickly add and manage features enabled for your app.
+          https://aka.platform.uno/singleproject-features
+        -->
+      
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <!--   在dotnet publish命令行中使用-r 参数更好   <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">android-arm;android-arm64</RuntimeIdentifiers>
+      -->
+        <!--直接写无效<RuntimeIdentifiers>android-arm64</RuntimeIdentifiers>-->
+    </PropertyGroup>
+    <!-- 在文件底部添加这个 Group -->
+    <PropertyGroup Condition="'$(Configuration)' == 'Release' and '$(TargetFramework)' == 'net10.0-android'">
+        <ApplicationId>djdqfff.EroMangaManager.Client</ApplicationId>
+        <EnableLLVM>True</EnableLLVM>
+        <PublishTrimmed>True</PublishTrimmed>
+        <RunAOTCompilation>False</RunAOTCompilation>
+        <AndroidKeyStore>True</AndroidKeyStore>
+        <AndroidSigningAlias>djdqfff</AndroidSigningAlias>
+        <AndroidSigningStorePass>512131415zcb</AndroidSigningStorePass>
+        <AndroidSigningKeyPass>512131415zcb</AndroidSigningKeyPass>
+        <AndroidSigningKeyAlias>djdqfff</AndroidSigningKeyAlias>
+        <AndroidSigningKeyStore>..\..\DJDQfff_new.pfx</AndroidSigningKeyStore>
+
+        <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+        <AndroidDebuggable>True</AndroidDebuggable>
+    </PropertyGroup>
+    <ItemGroup>
+        <UnoIcon Include="Assets/Icons/icon.svg" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives"/>
+        <PackageReference Include="DJDQfff.BaiduTranslateAPI"/>
+    </ItemGroup>
+
+    <!--
+      单窗口平台（Android / iOS / WebAssembly）上 Uno 在启动时已经创建了唯一的窗口，
+      应用代码只能使用 Window.Current，不能 new Window()（会抛 InvalidOperationException）。
+      这里定义编译符号，App.xaml.cs 用它决定窗口从哪里来。
+    -->
+    <PropertyGroup Condition="$(TargetFramework.Contains('-android')) or $(TargetFramework.Contains('-ios')) or $(TargetFramework.Contains('-browserwasm'))">
+        <DefineConstants>$(DefineConstants);UNO_SINGLE_WINDOW</DefineConstants>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Core\Core.csproj"/>
+        <ProjectReference Include="..\UnoLibrary\UnoLibrary.csproj"/>
+    </ItemGroup>
+
+</Project>

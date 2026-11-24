@@ -211,7 +211,7 @@
     <value>删除源文件</value>
   </data>
   <data name="DeletieModeDisabled" xml:space="preserve">
-    <value>删除模式已禁用：仅移动到回收站</value>
+    <value>删除模式已禁用：在win移动到回收站；在linux上直接删除</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>这是一个漫画管理器，用于管理及阅读你的以zip形式保存的漫画。内部图片要求为jpg、png、webp格式</value>

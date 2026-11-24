@@ -14,10 +14,7 @@ public interface IPages
             .Append(SettingPage) // Append 是扩展方法，比 Concat([x]) 更轻量
             .SingleOrDefault(x => x.Uid == uid);
 
-        if (item is not null)
-        {
-            return item;
-        }
+        if (item is not null) return item;
 
         throw new KeyNotFoundException($"未找到对应的导航页面: {uid}");
     }

@@ -8,7 +8,7 @@ namespace Core.ViewModels;
 
 public partial class ManageTagsViewModel2
 {
-    readonly DatabaseController databaseController;
+    private readonly DatabaseController databaseController;
 
     /// <summary>
     /// 从数据库读取category以初始化
@@ -54,10 +54,7 @@ public partial class ManageTagsViewModel2
         {
             var list = new List<string>();
 
-            foreach (var a in CategoryTags)
-            {
-                list.AddRange(a.Tags);
-            }
+            foreach (var a in CategoryTags) list.AddRange(a.Tags);
             return list.Distinct();
         }
     }
@@ -67,12 +64,12 @@ public partial class ManageTagsViewModel2
     /// </summary>
     /// <param name="category"></param>
     /// <returns></returns>
-    public async Task<TagCategory?> AddCategory(string category,string[]? words)
+    public async Task<TagCategory?> AddCategory(string category, string[]? words)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(category); // ✅ 快速失败，带明确消息
         if (CategoryTags.FirstOrDefault(x => x.CategoryName == category) is null)
         {
-            var tagCategory = await databaseController.TagCategory_AddCategorySingle(category,words);
+            var tagCategory = await databaseController.TagCategory_AddCategorySingle(category, words);
 
             CategoryTags.Add(tagCategory);
 
@@ -94,10 +91,7 @@ public partial class ManageTagsViewModel2
     {
         var a = tags.Except(Tags).Distinct();
 
-        foreach (var tag in a)
-        {
-            ImCategoryedTags.Add(tag);
-        }
+        foreach (var tag in a) ImCategoryedTags.Add(tag);
     }
 
     /// <summary>
@@ -113,10 +107,7 @@ public partial class ManageTagsViewModel2
             var tags = tagCategory.Tags;
             CategoryTags.Remove(tagCategory);
             await databaseController.TagCategory_RemoveCategory(tagCategory);
-            foreach (var tag in tags)
-            {
-                ImCategoryedTags.Add(tag);
-            }
+            foreach (var tag in tags) ImCategoryedTags.Add(tag);
             CategorysChanged?.Invoke();
         }
     }
@@ -134,20 +125,16 @@ public partial class ManageTagsViewModel2
     )
     {
         if (oldcategory is null)
-        {
             foreach (var tag in tags)
             {
                 ImCategoryedTags.Remove(tag);
                 newcategory.Tags.Add(tag);
             }
-        }
         else
-        {
             foreach (var tag in tags)
             {
                 oldcategory.Tags.Remove(tag);
                 newcategory.Tags.Add(tag);
             }
-        }
     }
 }

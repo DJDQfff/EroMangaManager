@@ -1,30 +1,32 @@
 <Solution>
-  <Configurations>
-    <Platform Name="ARM64" />
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
-  <Folder Name="/Solution Items/">
-    <File Path=".editorconfig" />
-    <File Path="Directory.Build.props" />
-    <File Path="Directory.Build.targets" />
-    <File Path="Directory.Packages.props" />
-    <File Path="global.json" />
-    <File Path="README.md" />
-    <File Path="TODO.md" />
-    <File Path="WinApp/DJDQfff_certificate.cer" />
-  </Folder>
-  <Project Path="Core/Core.csproj" />
-  <Project Path="Database/Database.csproj" />
-  <Project Path="Server/Server.csproj" />
-  <Project Path="UnoApp/UnoApp.csproj">
-    <Deploy Solution="Debug|x64" />
-  </Project>
-  <Project Path="UnoLibrary/UnoLibrary.csproj" />
-  <Project Path="WinApp/WinApp.csproj">
-    <Platform Solution="*|ARM64" Project="ARM64" />
-    <Platform Solution="*|x64" Project="x64" />
-    <Platform Solution="*|x86" Project="x86" />
-    <Deploy />
-  </Project>
+    <Configurations>
+        <Platform Name="ARM64" />
+        <Platform Name="x64" />
+        <Platform Name="x86" />
+    </Configurations>
+    <Folder Name="/Solution Items/">
+        <File Path=".editorconfig" />
+        <File Path="Directory.Build.props" />
+        <File Path="Directory.Build.targets" />
+        <File Path="Directory.Packages.props" />
+        <File Path="global.json" />
+        <File Path="README.md" />
+        <File Path="TODO.md" />
+        <File Path="DJDQfff_certificate.cer" />
+    </Folder>
+    <Project Path="Client\Client.csproj">
+        <Deploy Solution="Debug|x64" />
+    </Project>
+    <Project Path="Core/Core.csproj" />
+    <Project Path="Database/Database.csproj" />
+    <Project Path="Desktop\Desktop.csproj" />
+    <Project Path="Server/Server.csproj" />
+    <Project Path="UnoLibrary/UnoLibrary.csproj" />
+  <!--  <Project Path="WinApp/WinApp.csproj">
+        <Platform Solution="*|ARM64" Project="ARM64"/>
+        <Platform Solution="*|x64" Project="x64"/>
+        <Platform Solution="*|x86" Project="x86"/>
+        <Deploy/>
+    </Project>
+    -->
 </Solution>

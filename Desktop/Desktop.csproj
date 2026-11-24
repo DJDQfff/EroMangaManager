@@ -1,0 +1,57 @@
+<Project Sdk="Uno.Sdk">
+    <PropertyGroup>
+        <!-- 在 Linux 上构建时，Rider 不会像命令行那样自动过滤掉不支持的平台（如 Windows 的 UnoApp2SDK 目标）。
+        因此会报错 UNOB0014，提示"在 macOS 或 Linux 上构建不受支持"。-->
+        <!-- 1. 基础列表：所有平台都支持的通用目标 。rider无法识别此目标：net10.0-browserwasm  -->
+        <TargetFrameworks>net10.0-android;net10.0-desktop</TargetFrameworks>
+        <!-- 2. 仅在 Windows 上追加 Windows 目标 -->
+        <TargetFrameworks Condition=" $([MSBuild]::IsOSPlatform('windows')) ">$(TargetFrameworks);net10.0-windows10.0.26100</TargetFrameworks>
+        <!-- 3. 仅在非 Linux（即 Windows/macOS）上追加 iOS 目标 -->
+        <TargetFrameworks Condition=" !$([MSBuild]::IsOSPlatform('linux')) ">$(TargetFrameworks);net10.0-ios</TargetFrameworks>
+
+
+        <OutputType>Exe</OutputType>
+
+
+        <!-- Display name -->
+        <ApplicationTitle>EroMangaManager</ApplicationTitle>
+        <!-- App Identifier -->
+        <ApplicationId>com.EroMangaManager.Desktop</ApplicationId>
+        <!-- Versions -->
+        <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+        <ApplicationVersion>1</ApplicationVersion>
+        <!-- Package Publisher -->
+        <ApplicationPublisher>djdqfff</ApplicationPublisher>
+        <!-- Package Description -->
+        <Description>EroMangaManager. Powered by Uno Platform.</Description>
+
+        <!--
+          UnoFeatures are used to quickly add and manage features enabled for your app.
+          https://aka.platform.uno/singleproject-features
+        -->
+
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="CommunityToolkit.WinUI.Controls.RangeSelector"/>
+        <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls"/>
+        <PackageReference Include="CommunityToolkit.WinUI.Controls.TokenizingTextBox"/>
+        <PackageReference Include="DJDQfff.BaiduTranslateAPI"/>
+
+
+        <PackageReference Include="SharpCompress"/>
+
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Core\Core.csproj"/>
+        <ProjectReference Include="..\Database\Database.csproj"/>
+        <ProjectReference Include="..\Server\Server.csproj"/>
+        <ProjectReference Include="..\UnoLibrary\UnoLibrary.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(Configuration)' == 'Debug'">
+        <AppxManifest Include="Package.Debug.appxmanifest"/>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Configuration)' != 'Debug'">
+        <AppxManifest Include="Package.appxmanifest"/>
+    </ItemGroup>
+</Project>

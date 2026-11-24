@@ -120,10 +120,7 @@ public partial class DatabaseController
         using var database = contextFactory.CreateDbContext();
         var tagKeywords = database.TagCategorys.Single(n => n.CategoryName == categoryname);
         var keywordsList = tagKeywords.Keywords.Split('\r').ToList();
-        foreach (var word in tags)
-        {
-            keywordsList.Remove(word);
-        }
+        foreach (var word in tags) keywordsList.Remove(word);
         tagKeywords.Keywords = string.Join("\r", keywordsList);
         await database.SaveChangesAsync();
     }
@@ -145,12 +142,11 @@ public partial class DatabaseController
             string oldTagName = keywordContainInfo[keyword];
 
             if (keywordContainInfo[target.Key] != null) // 若这个关键词已包含在数据库中，则从中移除
-            {
                 await this.TagCategory_DeleteKeywordsSingle(oldTagName, keyword);
-            }
 
             await this.TagCategory_AppendKeywordSingle(newTagName, keyword); // 添加的目标Tag
         }
+
         await database.SaveChangesAsync();
     }
 
@@ -169,6 +165,7 @@ public partial class DatabaseController
             string tagname = all.First(x => x.Value.Contains(k)).Key;
             keyValuePairs.Add(k, tagname);
         }
+
         return keyValuePairs;
     }
 
@@ -180,10 +177,7 @@ public partial class DatabaseController
     {
         using var database = contextFactory.CreateDbContext();
         var a = database.TagCategorys.SingleOrDefault(x => x.CategoryName == category);
-        if (a != null)
-        {
-            database.Remove(a);
-        }
+        if (a != null) database.Remove(a);
         await database.SaveChangesAsync();
     }
 

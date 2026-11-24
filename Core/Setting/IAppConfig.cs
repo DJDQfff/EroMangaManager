@@ -20,7 +20,6 @@ public interface IAppConfig
 /// 一般设置项
 /// </summary>
 #pragma warning disable IDE1006 // 命名样式
-
 public interface General
 #pragma warning restore IDE1006 // 命名样式
 {
@@ -117,7 +116,6 @@ public class DefaultAppUILanguageStrings
 /// 新的漫画打开方式设置，旧的不再使用
 /// </summary>
 #pragma warning disable IDE1006 // 命名样式
-
 public interface MangaOpenWay3
 #pragma warning restore IDE1006 // 命名样式
 {
@@ -131,13 +129,16 @@ public interface MangaOpenWay3
     /// 打开方式字符串都放这里，因为config.net还不支持集合，用这个代替，需要在外部再套一层集合操作
     /// ?的两个为默认设置，|后面跟的是打开exe
     /// </summary>
-    [DefaultValue("?InternalReadPage?OSRelated?explorer.exe")]
+    
+// 这个是以前设计给win用的，而且这些功能不用了
+//[DefaultValue("?InternalReadPage?OSRelated?explorer.exe")]
+    [DefaultValue("?InternalReadPage?OSRelated?")]
     string OpenWays { set; get; }
 
     /// <summary>
     /// 默认exe，注意，在MangaeMangaOpenWay3Setting.xaml控件中，RadioButtons无法通过此设置数据绑定（双向不可以，单向不知道），额外通过wayindex来绑定。
     /// </summary>
-    [DefaultValue("explorer.exe")]
+
     string DefaultWay { set; get; }
 }
 
@@ -145,7 +146,6 @@ public interface MangaOpenWay3
 /// 漫画打开方式相关设置
 /// </summary>
 #pragma warning disable IDE1006 // 命名样式
-
 public interface MangaOpenWaySetting
 #pragma warning restore IDE1006 // 命名样式
 {

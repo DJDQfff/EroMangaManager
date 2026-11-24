@@ -90,6 +90,7 @@ public partial class DatabaseController
                 ?? throw new InvalidOperationException($"未找到路径为 '{path}' 的阅读记录");
             a.Name_Translated = translatedname;
         }
+
         database.UpdateRange(info);
         await database.SaveChangesAsync();
     }

@@ -1,18 +1,17 @@
 ﻿// https://go.microsoft.com/fwlink/?LinkId=234238 上介绍了“空白页”项模板
 
-namespace WinApp.Views.SettingPageChildPages
+namespace UnoLibrary;
+
+/// <summary>
+/// 可用于自身或导航至 Frame 内部的空白页。
+/// </summary>
+public sealed partial class UsageDocumentPage : Page
 {
     /// <summary>
-    /// 可用于自身或导航至 Frame 内部的空白页。
+    ///
     /// </summary>
-    public sealed partial class UsageDocumentPage : Page
+    public UsageDocumentPage()
     {
-        /// <summary>
-        ///
-        /// </summary>
-        public UsageDocumentPage()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

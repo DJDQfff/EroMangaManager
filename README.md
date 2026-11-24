@@ -2,14 +2,7 @@
 
 ## 自用软件，无偿分享。有爱自取，不喜勿喷。
 
-此为WinAppSdk/WinUI3版本。有一个UWP版本和一个UWP/WinUI3版本，皆已存档。
-
-此仓库为根仓库，克隆此仓库时带子模块即可。
-开发、打包、发布皆使用本地设备，github仅用作备份。
-无意义commit较多，协同开发较混乱。
-
-Release页面由本地发布，非workflow自动执行。
-（也有workflow流程，但github action 调试太痛苦，故弃止不用）
+此为UnoPlatform版本。另有WinAppSdk/WinUI3版本、UWP版本和一个UWP/WinUI3版本，皆已存档。
 
 此处截图功能不全，仅用于Microsoft商店发布提交
 

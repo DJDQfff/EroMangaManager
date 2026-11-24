@@ -7,7 +7,7 @@ namespace UnoLibrary;
 public sealed partial class MainPage : Page
 {
     public IServiceProvider ServiceProvider { get; set; } = null!;
-    IPages Pages { get; set; } = null!;
+    private IPages Pages { get; set; } = null!;
 
     /// <summary>
     ///
@@ -38,6 +38,7 @@ public sealed partial class MainPage : Page
             NavigateToPage(StringsEnum.Setting);
             return;
         }
+
         if (
             args.InvokedItemContainer is NavigationViewItem
             {
@@ -69,9 +70,7 @@ public sealed partial class MainPage : Page
 
         // 选中菜单项的逻辑与 page 实例无关，只依赖类型
         if (MainNavigationView.MenuItemsSource is IEnumerable<NavigationItem> items)
-        {
             MainNavigationView.SelectedItem = items.Single(x => x.Page == typeof(TPage));
-        }
         PageContainer.Content = null;
         PageContainer.Content = page;
 

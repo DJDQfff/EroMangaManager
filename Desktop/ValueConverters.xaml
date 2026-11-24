@@ -1,0 +1,11 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Desktop="using:Desktop">
+    <Desktop:Base64ToImageConverter x:Key="Base64ToImageConverter" />
+
+    <Desktop:GetRandomSolidColorBrush x:Key="RandomColor" />
+    <Desktop:ControlVisibility x:Key="ControlVisibilityConverter" />
+
+    <Desktop:ItemsConverter x:Key="ItemsConverter" />
+</ResourceDictionary>

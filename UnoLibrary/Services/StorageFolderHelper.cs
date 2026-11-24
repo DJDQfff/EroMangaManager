@@ -33,10 +33,8 @@ public class StorageFolderHelper
         var temporaryFolder = ApplicationData.Current.TemporaryFolder;
 
         foreach (var folder in foldernames)
-        {
             // CreateFolderAsync 默认在文件夹已存在时不会抛出异常（等价于 Directory.CreateDirectory）
-            await temporaryFolder.CreateFolderAsync(folder, CreationCollisionOption.OpenIfExists);
-        }
+            _ = await temporaryFolder.CreateFolderAsync(folder, CreationCollisionOption.OpenIfExists);
     }
 
     /// <summary>
@@ -47,10 +45,7 @@ public class StorageFolderHelper
     /// <returns> </returns>
     public bool Contain(IEnumerable<IStorageItem> Items, StorageFolder check)
     {
-        if (Items.Any(x => x.Path == check.Path))
-        {
-            return true;
-        }
+        if (Items.Any(x => x.Path == check.Path)) return true;
         return false;
     }
 }

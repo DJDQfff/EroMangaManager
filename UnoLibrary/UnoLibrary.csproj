@@ -1,55 +1,63 @@
 <Project Sdk="Uno.Sdk">
-  <PropertyGroup>
-    <TargetFrameworks>net10.0;net10.0-ios;net10.0-android;net10.0-windows10.0.26100;net10.0-browserwasm;net10.0-desktop</TargetFrameworks>
-    <UnoSingleProject>true</UnoSingleProject>
-    <OutputType>Library</OutputType>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <!-- Ensures the .xr.xml files are generated in a proper layout folder -->
-    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+    <PropertyGroup>
+        <!-- 在 Linux 上构建时，Rider 不会像命令行那样自动过滤掉不支持的平台（如 Windows 的 WinAppSDK 目标）。
+        因此会报错 UNOB0014，提示"在 macOS 或 Linux 上构建不受支持"。-->
+        <!-- 1. 基础列表：所有平台都支持的通用目标 -->
+        <TargetFrameworks>net10.0-android;net10.0-browserwasm;net10.0-desktop</TargetFrameworks>
+        <!-- 2. 仅在 Windows 上追加 Windows 目标 -->
+        <TargetFrameworks Condition=" $([MSBuild]::IsOSPlatform('windows')) ">$(TargetFrameworks);net10.0-windows10.0.26100</TargetFrameworks>
+        <!-- 3. 仅在非 Linux（即 Windows/macOS）上追加 iOS 目标 -->
+        <TargetFrameworks Condition=" !$([MSBuild]::IsOSPlatform('linux')) ">$(TargetFrameworks);net10.0-ios</TargetFrameworks>
+
+        <OutputType>Library</OutputType>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <!-- Ensures the .xr.xml files are generated in a proper layout folder -->
+        <GenerateLibraryLayout>true</GenerateLibraryLayout>
+
+        <!--
+          UnoFeatures let's you quickly add and manage implicit package references based on the features you want to use.
+          https://aka.platform.uno/singleproject-features
+        -->
+
+
+    </PropertyGroup>
 
     <!--
-      UnoFeatures let's you quickly add and manage implicit package references based on the features you want to use.
-      https://aka.platform.uno/singleproject-features
+      移动端（Android / iOS / WebAssembly）才启用的东西：
+        - Toolkit：提供 Uno.Toolkit.UI.SafeArea，用来避开状态栏/刘海（Uno Platform 的默认适配做法）
+        - UNO_SINGLE_WINDOW：MainWindow 里据此决定是否把内容包一层 SafeArea
+      Windows / 桌面目标不启用，保证 WinApp 这类纯 WinAppSDK 项目不会被动引入 Uno.Toolkit/Uno.WinUI 依赖。
+      将来 WinApp 迁到 Uno Platform 后，把这个条件扩展到它的目标框架即可。
     -->
+    <PropertyGroup Condition="$(TargetFramework.Contains('-android')) or $(TargetFramework.Contains('-ios')) or $(TargetFramework.Contains('-browserwasm'))">
+        <UnoFeatures>$(UnoFeatures);Toolkit</UnoFeatures>
+        <DefineConstants>$(DefineConstants);UNO_SINGLE_WINDOW</DefineConstants>
+    </PropertyGroup>
 
-    <UnoFeatures>SkiaRenderer;Mvvm</UnoFeatures>
-  </PropertyGroup>
+    <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
+        <!--
+        If you encounter this error message:
+    
+          error NETSDK1148: A referenced assembly was compiled using a newer version of Microsoft.Windows.SDK.NET.dll.
+          Please update to a newer .NET SDK in order to reference this assembly.
+    
+        This means that the two packages below must be aligned with the "build" version number of
+        the "Microsoft.Windows.SDK.BuildTools" package above, and the "revision" version number
+        must be the highest found in https://www.nuget.org/packages/Microsoft.Windows.SDK.NET.Ref.
+        -->
+        <!-- <FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" RuntimeFrameworkVersion="10.0.22621.28" />
+        <FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.22621.28" /> -->
+    </ItemGroup>
 
-  <!--
-    移动端（Android / iOS / WebAssembly）才启用的东西：
-      - Toolkit：提供 Uno.Toolkit.UI.SafeArea，用来避开状态栏/刘海（Uno Platform 的默认适配做法）
-      - UNO_SINGLE_WINDOW：MainWindow 里据此决定是否把内容包一层 SafeArea
-    Windows / 桌面目标不启用，保证 WinApp 这类纯 WinAppSDK 项目不会被动引入 Uno.Toolkit/Uno.WinUI 依赖。
-    将来 WinApp 迁到 Uno Platform 后，把这个条件扩展到它的目标框架即可。
-  -->
-  <PropertyGroup Condition="$(TargetFramework.Contains('-android')) or $(TargetFramework.Contains('-ios')) or $(TargetFramework.Contains('-browserwasm'))">
-    <UnoFeatures>$(UnoFeatures);Toolkit</UnoFeatures>
-    <DefineConstants>$(DefineConstants);UNO_SINGLE_WINDOW</DefineConstants>
-  </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives"/>
+        <PackageReference Include="DJDQfff.BaiduTranslateAPI"/>
 
-  <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
-    <!--
-    If you encounter this error message:
+    </ItemGroup>
 
-      error NETSDK1148: A referenced assembly was compiled using a newer version of Microsoft.Windows.SDK.NET.dll.
-      Please update to a newer .NET SDK in order to reference this assembly.
-
-    This means that the two packages below must be aligned with the "build" version number of
-    the "Microsoft.Windows.SDK.BuildTools" package above, and the "revision" version number
-    must be the highest found in https://www.nuget.org/packages/Microsoft.Windows.SDK.NET.Ref.
-    -->
-    <!-- <FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" RuntimeFrameworkVersion="10.0.22621.28" />
-    <FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.22621.28" /> -->
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" />
-    <PackageReference Include="DJDQfff.BaiduTranslateAPI" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj" />
-    <ProjectReference Include="..\Database\Database.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Core\Core.csproj"/>
+        <ProjectReference Include="..\Database\Database.csproj"/>
+    </ItemGroup>
+    
 </Project>

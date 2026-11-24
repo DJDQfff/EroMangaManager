@@ -4,4 +4,6 @@ using System.Text;
 
 namespace Core.Interfaces;
 
-internal interface IPageNavigatedToCall { }
+internal interface IPageNavigatedToCall
+{
+}

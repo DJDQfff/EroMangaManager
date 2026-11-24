@@ -11,7 +11,6 @@ public class MangaFactory(ObservableCollectionVM ViewModel, CoverHelper coverHel
         ViewModel.MangasGroups.Clear();
 
         foreach (var folder in storageFolders)
-        {
             //不存在则跳过
             if (Directory.Exists(folder))
             {
@@ -21,24 +20,24 @@ public class MangaFactory(ObservableCollectionVM ViewModel, CoverHelper coverHel
                 };
                 ViewModel.MangasGroups.Add(mangasFolder);
             }
-        }
     }
 
     public async Task StartInitial()
     {
-        if (ViewModel.MangasGroups.Any(x => x.UpdateState == MangasGroupUpdateState.Busy))
+        while (true)
         {
-            return;
-        }
-        var group = ViewModel.MangasGroups.FirstOrDefault(x =>
-            x.UpdateState == MangasGroupUpdateState.Ready
-        );
+            if (ViewModel.MangasGroups.Any(x => x.UpdateState == MangasGroupUpdateState.Busy)) return;
 
-        if (group is not null)
-        {
-            await InitialGroup2(group);
+            var group = ViewModel.MangasGroups.FirstOrDefault(x => x.UpdateState == MangasGroupUpdateState.Ready);
 
-            await StartInitial();
+            if (group is not null)
+            {
+                await InitialGroup2(group);
+
+                continue;
+            }
+
+            break;
         }
     }
 

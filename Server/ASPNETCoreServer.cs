@@ -15,7 +15,7 @@ public class ASPNETCoreServer(
     MangaIO mangaIO
 )
 {
-    Task? _serverTask;
+    private Task? _serverTask;
 
     // ───────── 展示属性 ─────────
     public string Ip { get; private set; } = GetLocalIP();
@@ -32,6 +32,7 @@ public class ASPNETCoreServer(
     public ObservableCollection<LogEntry> Logs { get; } = [];
     private static readonly SemaphoreSlim _coverSemaphore = new(1, 1);
 
+    // TODO 这个方法不准，优势获取到虚拟网卡（win），有时获取到本机环回地址（linux）
     private static string GetLocalIP()
     {
         return Dns.GetHostEntry(Dns.GetHostName())
@@ -60,10 +61,7 @@ public class ASPNETCoreServer(
         var builder = WebApplication.CreateBuilder();
 
         // 添加这行代码，允许同步 IO，downloads中使用的是同步方法
-        builder.WebHost.ConfigureKestrel(options =>
-        {
-            options.AllowSynchronousIO = true;
-        });
+        builder.WebHost.ConfigureKestrel(options => { options.AllowSynchronousIO = true; });
         //  注册 CORS 服务
         builder.Services.AddCors(options =>
         {
@@ -83,6 +81,8 @@ public class ASPNETCoreServer(
         //  启用 CORS 中间件
         app.UseCors();
 
+        // TODO 需要让防火墙允许通过12965这个端口，目前只有手动开启，以后再程序里面自动打开
+        // linux：sudo ufw allow from 192.168.0.0/24 to any port 12965 proto tcp
         app.Urls.Add("http://*:12965");
         MapHttpMethod(app);
 
@@ -92,8 +92,7 @@ public class ASPNETCoreServer(
     private void MapHttpMethod(WebApplication app)
     {
         //中间件：记录日志
-        app.Use(
-            async (context, next) =>
+        app.Use(async (context, next) =>
             {
                 var start = DateTime.Now;
                 var method = context.Request.Method;
@@ -175,18 +174,19 @@ public class ASPNETCoreServer(
         app.MapGet(
             "/mangas/with_tag/{tag}",
             async (string tag, CancellationToken ct) =>
-            { // 每次请求建一个（源是实时 Func，轻量）
+            {
+                // 每次请求建一个（源是实时 Func，轻量）
                 var searchViewModel = filterFactory.CreateForGlobal();
                 // 1. 直接调用异步流式方法，并将 CancellationToken 传递进去
                 var mangasStream = searchViewModel.FilterMangasAsync(null, [tag], ct);
+
                 // 定义一个异步迭代器，逐个处理并返回
                 async IAsyncEnumerable<Manga> StreamMangas(
                     [System.Runtime.CompilerServices.EnumeratorCancellation]
-                        CancellationToken ct = default
+                    CancellationToken ct = default
                 )
                 {
                     await foreach (var manga in mangasStream)
-                    {
                         // 1. 触发委托处理单个 manga (假设委托内部已更新 manga 的属性)
                         // 如果委托支持单条处理，建议传入 [manga]
                         if (manga != null)
@@ -195,7 +195,6 @@ public class ASPNETCoreServer(
                             // 2. 立即返回当前处理好的 manga
                             yield return manga;
                         }
-                    }
                 }
 
                 return Results.Ok(StreamMangas(ct));
@@ -235,7 +234,9 @@ public class ASPNETCoreServer(
                 }
             }
         );
+
         #region 另一种传输方式，有问题，会中断连接
+
         //有问题，会中断连接
         //       app.MapGet("/downloads2/{guid}", async (string guid, HttpContext context) =>
         //       {
@@ -293,7 +294,9 @@ public class ASPNETCoreServer(
         //           return Results.Empty;
         //       }
         //);
+
         #endregion
+
         //app.MapGet("/covers/all", () => Results.Ok(viewmodel.MangaList.Select(x => x.CoverUri)));
         app.MapGet(
             "/covers/file/{guid}",

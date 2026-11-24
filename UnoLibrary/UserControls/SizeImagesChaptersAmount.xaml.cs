@@ -1,4 +1,4 @@
-namespace UnoLibrary;
+namespace UnoLibrary.UserControls;
 
 public sealed partial class SizeImagesChaptersAmount : UserControl
 {

@@ -35,8 +35,7 @@ public partial class SameMangaSearchViewModel
         '，',
     ];
 
-    [ObservableProperty]
-    public partial bool IsWorking { get; set; } = false;
+    [ObservableProperty] public partial bool IsWorking { get; set; } = false;
 
     private static bool FiltKeystring(string? str) => !string.IsNullOrWhiteSpace(str);
 
@@ -65,11 +64,7 @@ public partial class SameMangaSearchViewModel
                 var namepieces1 = manga1.Name.Split(Sperators);
                 var namepieces2 = manga2.Name.Split(Sperators);
                 var intersect = namepieces1.Intersect(namepieces2); //.Any();
-                if (intersect.Any())
-                {
-                    return /*$"[{tag}]" + "\t" +*/
-                    intersect.First();
-                }
+                if (intersect.Any()) return /*$"[{tag}]" + "\t" +*/ intersect.First();
                 return null;
             }
 
@@ -93,10 +88,7 @@ public partial class SameMangaSearchViewModel
         {
             var mangas = Source.Where(x => x.Tags.Contains(tag)).ToList();
             Source = [.. Source.Except(mangas)];
-            if (mangas.Count < 2)
-            {
-                continue;
-            }
+            if (mangas.Count < 2) continue;
 
             static IEnumerable<string> func(IEnumerable<Manga> _mangas)
             {
@@ -104,7 +96,7 @@ public partial class SameMangaSearchViewModel
                 {
                     Action = x =>
                         x.Name /*.ToCharArray();//*/
-                        .Split(Sperators),
+                            .Split(Sperators),
                     Sources = _mangas,
                     MinItemLength = 1,
                 };
@@ -134,6 +126,7 @@ public partial class SameMangaSearchViewModel
         foreach (var tag in tags)
         {
             var mangas = Source.Where(x => x.Tags.Contains(tag)).ToList();
+
             string? func(Manga x, Manga y)
             {
                 if (x.Tags.Contains(tag) && y.Tags.Contains(tag))
@@ -143,8 +136,10 @@ public partial class SameMangaSearchViewModel
                     if (piecesx.Intersect(piecesy).Any())
                         return "[" + tag + "]" + piecesx.Intersect(piecesy).First();
                 }
+
                 return null;
             }
+
             var _viewmodel = new SameMangaSearchViewModel();
             await _viewmodel.StartCompareSequence(
                 mangas,
@@ -153,10 +148,7 @@ public partial class SameMangaSearchViewModel
                 cancellationTokenSource
             );
 
-            foreach (var pair in _viewmodel.RepeatPairs)
-            {
-                RepeatPairs.Add(pair);
-            }
+            foreach (var pair in _viewmodel.RepeatPairs) RepeatPairs.Add(pair);
 
             //await StartCompareSequence(mangas , func ,filtKeystring);
         }
@@ -171,6 +163,7 @@ public partial class SameMangaSearchViewModel
     public async Task Method2(CancellationTokenSource cancellationTokenSource)
     {
         RepeatPairs.Clear();
+
         static string? func1(Manga manga1, Manga manga2)
         {
             var tags1 = manga1.Tags;
@@ -180,11 +173,9 @@ public partial class SameMangaSearchViewModel
             var namepieces2 = Get_OutsideContent(manga2.FileDisplayName);
 
             if (tags1.Intersect(tags2).Any() && namepieces1.Intersect(namepieces2).Any())
-            {
                 return tags1.Intersect(tags2).First()
-                    + "|"
-                    + namepieces1.Intersect(namepieces2).First();
-            }
+                       + "|"
+                       + namepieces1.Intersect(namepieces2).First();
             return null;
         }
 
@@ -208,10 +199,12 @@ public partial class SameMangaSearchViewModel
             .Where(x => !int.TryParse(x.Key, out _))
             .Where(x => !char.TryParse(x.Key, out _))
             .ToDictionary();
+
         string? func(Manga x) =>
             Get_OutsideContent(x.FileDisplayName)
                 .SelectMany(x => x.Split(Sperators))
                 .FirstOrDefault(y => dic.ContainsKey(y));
+
         await ByEachKey(
             Source,
             func,

@@ -31,7 +31,6 @@ public partial class DatabaseController
             [PresetTagCategory.短篇.ToString(), "短篇"],
         ];
         foreach (var list in vs)
-        {
             try
             {
                 var temp = database.TagCategorys.Single(n => n.CategoryName == list[0]);
@@ -43,7 +42,7 @@ public partial class DatabaseController
                 var one = TagCategoryFactory.Creat(tagname, list);
                 database.TagCategorys.Add(one);
             }
-        }
+
         await database.SaveChangesAsync();
     }
 
@@ -55,7 +54,7 @@ public partial class DatabaseController
             $"{assemblyName}.{enbededResourceFileName}.7z"
         );
         ReaderOptions readerOptions = new() { Password = "F9429775-6EAB-48FC-9F8A-4E079F90AF3F" };
-        MemoryStream stream = new ();
+        MemoryStream stream = new();
         zip!.Position = 0;
         var archive = ArchiveFactory.OpenArchive(zip, readerOptions);
 
@@ -65,6 +64,7 @@ public partial class DatabaseController
             stream.Position = 0;
             break;
         }
+
         StreamReader sr = new(stream);
         var a = sr.ReadToEnd();
         sr.Close();
